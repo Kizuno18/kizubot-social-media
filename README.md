@@ -46,9 +46,9 @@ Watch the replay example on **[TikTok](https://www.tiktok.com/@kizubotpxg/video/
 
 ## Motion series
 
-Twenty-one motion-graphics shorts made in code (HyperFrames + GSAP) from real customer prints, from trading-card shiny montages to a movie-trailer parody and a one-night time-lapse. **[See the series →](motion/)**
+Forty-one motion-graphics shorts made in code (HyperFrames + GSAP) from real customer prints, from trading-card shiny montages and a movie-trailer parody to a 3D museum walk and an infinite zoom. **[See the series →](motion/)**
 
-<p align="center"><a href="motion/"><img src="assets/motion-serie-grid.jpg" width="100%" alt="One frame from each of the twenty motion shorts"></a></p>
+<p align="center"><a href="motion/"><img src="assets/motion-serie-grid.jpg" width="100%" alt="One frame from each of the series shorts 01 to 20"></a></p>
 
 ## What makes a KizuBot Short
 
@@ -86,7 +86,7 @@ Delivery MP4s are also preserved at the [repository root](https://github.com/Kiz
 ```text
 README.md                 Project introduction and official channels
 assets/                   Cover, official mascot and selected video frames
-motion/                   Motion-graphics series (21 MP4s) and its index
+motion/                   Motion-graphics series (41 MP4s) and its index
 artwork.md                Cover prompt and artwork provenance
 sources.md                Reference study and channel-link evidence
 ```

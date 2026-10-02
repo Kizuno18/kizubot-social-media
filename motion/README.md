@@ -1,8 +1,10 @@
 # Motion series
 
-Twenty-one vertical motion-graphics shorts for KizuBot, made in code with [HyperFrames](https://github.com/heygen-com/hyperframes) and GSAP. Each one is 1080×1920 at 30 fps (v3 at 60 fps), 17–23 seconds long, with Brazilian Portuguese on-screen text, an original synthesized soundtrack and audio normalized to about −14 LUFS.
+Forty-one vertical motion-graphics shorts for KizuBot, made in code with [HyperFrames](https://github.com/heygen-com/hyperframes) and GSAP. Each one is 1080×1920 at 30 fps (v3 at 60 fps), 17–25 seconds long, with Brazilian Portuguese on-screen text, an original synthesized soundtrack and audio normalized to about −14 LUFS.
 
-<p align="center"><img src="../assets/motion-serie-grid.jpg" width="100%" alt="One frame from each of the twenty motion shorts, numbered 01 to 20"></p>
+<p align="center"><img src="../assets/motion-serie-grid.jpg" width="100%" alt="One frame from each of the series shorts 01 to 20"></p>
+
+<p align="center"><img src="../assets/motion-serie-grid-21-40.jpg" width="100%" alt="One frame from each of the series shorts 21 to 40"></p>
 
 | File | Title | Concept |
 | --- | --- | --- |
@@ -27,11 +29,32 @@ Twenty-one vertical motion-graphics shorts for KizuBot, made in code with [Hyper
 | [`18-plantao.mp4`](18-plantao.mp4) | Plantão | Breaking-news parody, live from the beach |
 | [`19-match.mp4`](19-match.mp4) | Deu match | Dating-app parody, super like on KizuBot |
 | [`20-uma-noite.mp4`](20-uma-noite.mp4) | Uma noite | One-night time-lapse with alerts at their real print times |
+| [`21-pokedex.mp4`](21-pokedex.mp4) | Kizudex | Handheld creature-dex scanning the robot |
+| [`22-abrindo-o-loot.mp4`](22-abrindo-o-loot.mp4) | Abrindo o loot | Gacha box pulls revealing real drops |
+| [`23-receita-de-farm.mp4`](23-receita-de-farm.mp4) | Receita de farm | Cooking-show parody, "bake for one night" |
+| [`24-rota-do-farm.mp4`](24-rota-do-farm.mp4) | Rota do farm | GPS route through a 3D city, each stop a print |
+| [`25-avaliacoes.mp4`](25-avaliacoes.mp4) | Avaliações | App-store listing with the real reviews |
+| [`26-tier-list.mp4`](26-tier-list.mp4) | Tier list | S tier overflows into S+ |
+| [`27-stories.mp4`](27-stories.mp4) | Stories | Stories sequence with poll and link stickers |
+| [`28-museu.mp4`](28-museu.mp4) | Museu do farm | 3D gallery walk, prints framed as artworks |
+| [`29-planeta-pxg.mp4`](29-planeta-pxg.mp4) | Planeta PXG | Nature-documentary parody |
+| [`30-a-faixa.mp4`](30-a-faixa.mp4) | A faixa | DAW music video where every real alert is a note |
+| [`31-manual-de-montagem.mp4`](31-manual-de-montagem.mp4) | Manual de montagem | Flat-pack assembly manual |
+| [`32-procura-se.mp4`](32-procura-se.mp4) | Procura-se | Western WANTED posters, stamped by the sheriff bot |
+| [`33-quadro-branco.mp4`](33-quadro-branco.mp4) | Quadro branco | Whiteboard explainer drawn live |
+| [`34-karaoke.mp4`](34-karaoke.mp4) | Karaokê | Karaoke where the lyrics are real customer quotes |
+| [`35-previsao-do-tempo.mp4`](35-previsao-do-tempo.mp4) | Previsão do farm | TV weather-forecast parody |
+| [`36-o-cubo.mp4`](36-o-cubo.mp4) | O cubo | 3D puzzle cube product film |
+| [`37-batalha-rpg.mp4`](37-batalha-rpg.mp4) | Batalha RPG | Turn-based RPG battle against tiredness |
+| [`38-missao-farm.mp4`](38-missao-farm.mp4) | Missão farm | Mission-control rocket launch |
+| [`39-premio.mp4`](39-premio.mp4) | Prêmio Kizu | Awards-ceremony parody |
+| [`40-zoom-infinito.mp4`](40-zoom-infinito.mp4) | Zoom infinito | One continuous zoom through the series' worlds |
 
 ## Content rules
 
 - Only real material: the official logo, customer screenshots already published on kizubot.com, and numbers stated on the site. Quotes are trimmed, never reworded.
 - Full names, phone numbers and face photos are cropped out; screenshots about bans or moderation are not used.
-- Video 20 combines real alerts from different customers and days, each at its screenshot's time; the video says so on screen.
+- Videos that combine prints from different customers say so on screen (for example 20, which shows alerts from different customers and days, each at its screenshot's time).
+- Screenshots showing real-money earnings or game staff are not used.
 
 The larger renders were re-encoded with H.264 (CRF 22, 7 Mb/s cap) for this repository; the audio is unchanged.

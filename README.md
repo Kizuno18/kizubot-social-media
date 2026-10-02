@@ -44,6 +44,12 @@ The gallery uses real delivery frames. The cover is an original illustration; it
 
 Watch the replay example on **[TikTok](https://www.tiktok.com/@kizubotpxg/video/7691831520100732180)**, **[YouTube Shorts](https://www.youtube.com/shorts/xEAFzw1aQQ4)** or **[Instagram Reels](https://www.instagram.com/reel/Dd9_ODDFTEV/)**.
 
+## Motion series
+
+Twenty-one motion-graphics shorts made in code (HyperFrames + GSAP) from real customer prints, from trading-card shiny montages to a movie-trailer parody and a one-night time-lapse. **[See the series →](motion/)**
+
+<p align="center"><a href="motion/"><img src="assets/motion-serie-grid.jpg" width="100%" alt="One frame from each of the twenty motion shorts"></a></p>
+
 ## What makes a KizuBot Short
 
 - **Gameplay leads.** The hook comes from something viewers can actually see: movement, a hunt, an encounter or a replay.
@@ -80,6 +86,7 @@ Delivery MP4s are also preserved at the [repository root](https://github.com/Kiz
 ```text
 README.md                 Project introduction and official channels
 assets/                   Cover, official mascot and selected video frames
+motion/                   Motion-graphics series (21 MP4s) and its index
 artwork.md                Cover prompt and artwork provenance
 sources.md                Reference study and channel-link evidence
 ```

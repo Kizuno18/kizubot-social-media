@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>060 Primeiro a notificação. Depois…</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F04 · ESPERA O ALARME — ep. 060 (jeans pocket) ================= */
+  :root { --f4-ink: #f4f6ff; --f4-dim: #c2c9dc; --f4-lime: #c6ff3d; --f4-gold: #ffd166; --stitch: #e0a24a; }
+  #root { background: #070a12; }
+  .f4-set { position: absolute; inset: 0; overflow: hidden; }
+  #setCam { position: absolute; inset: -140px; }
+  .denim {
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0 2px, rgba(255,255,255,0) 2px 7px),
+      repeating-linear-gradient(45deg, rgba(0,0,0,.24) 0 1.5px, rgba(0,0,0,0) 1.5px 6px),
+      radial-gradient(90% 60% at 45% 30%, #3b5888 0%, #23375c 50%, #0f182b 100%); }
+  #denim { position: absolute; inset: 0; }
+  .dnoise { position: absolute; inset: 0; opacity: .5; mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='d'><feTurbulence type='fractalNoise' baseFrequency='0.04 0.5' numOctaves='3' seed='6' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .8  0 0 0 0 .85  0 0 0 0 1  0 0 0 1.3 -0.35'/></filter><rect width='100%' height='100%' filter='url(%23d)'/></svg>");
+    background-size: 400px 400px; }
+  #roomTint { position: absolute; inset: 0; background: radial-gradient(80% 55% at 50% 40%, rgba(150, 80, 255, .55), rgba(60, 20, 120, .35) 55%, rgba(10, 4, 20, 0) 100%); mix-blend-mode: screen; opacity: 0; }
+  #setDim { position: absolute; inset: 0; background: rgba(5, 6, 12, .55); opacity: 0; }
+  .f4-topshade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,7,14,.88) 0%, rgba(5,7,14,.55) 28%, rgba(5,7,14,0) 48%); }
+  .f4-vig { position: absolute; inset: 0; background: radial-gradient(105% 72% at 50% 46%, rgba(0,0,0,0) 45%, rgba(0,0,0,.86) 100%); pointer-events: none; }
+  #grain { position: absolute; inset: -240px; opacity: .12; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -0.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 240px 240px; }
+  .kz-progress { height: 8px; background: rgba(255,255,255,.06); }
+  .kz-progress > div { background: linear-gradient(90deg, #8b5cf6, var(--f4-lime)); }
+
+  /* stage: phone in the front pocket */
+  #stageCam { position: absolute; inset: 0; transform-origin: 540px 700px; }
+  #phoneRig { position: absolute; left: 270px; top: 760px; width: 540px; height: 1120px; }
+  #phoneGlow { position: absolute; left: -380px; top: -380px; width: 1300px; height: 1300px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(180, 140, 255, .55), rgba(140, 100, 255, .14) 55%, rgba(140, 100, 255, 0) 100%); mix-blend-mode: screen; }
+  #phoneBuzz { position: absolute; inset: 0; }
+  #phoneRot { position: absolute; inset: 0; }
+  .phone { position: absolute; inset: 0; border-radius: 80px; padding: 16px; background: linear-gradient(150deg, #34343e 0%, #101015 34%, #050507 100%);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.10), inset 0 0 0 7px #060608, 0 40px 80px rgba(0,0,0,.6); }
+  .screen { position: absolute; inset: 16px; border-radius: 66px; overflow: hidden; background: radial-gradient(130% 70% at 50% 0%, #2c1656 0%, #130a25 50%, #07050c 100%); }
+  .island { position: absolute; top: 36px; left: 50%; width: 38px; margin-left: -19px; height: 38px; border-radius: 50%; background: #000; box-shadow: inset 0 0 0 4px #15151b; }
+  .ls-time { position: absolute; top: 120px; left: 0; right: 0; text-align: center; font: 400 160px "Sora", sans-serif; color: rgba(255,255,255,.95); letter-spacing: -0.04em; line-height: 1; }
+  .notif { position: absolute; left: 24px; right: 24px; top: 330px; height: 220px; border-radius: 42px; padding: 26px 28px; background: linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,.12)); border: 2px solid rgba(255,255,255,.16); }
+  .n-head { display: flex; align-items: center; gap: 16px; }
+  .n-icon { width: 64px; height: 64px; border-radius: 18px; overflow: hidden; flex: none; background: radial-gradient(circle at 50% 35%, #4a1a8a, #12081f); }
+  .n-icon img { width: 100%; display: block; }
+  .n-app { font: 800 27px "Inter", sans-serif; color: #fff; white-space: nowrap; }
+  .n-msg { margin-top: 20px; font: 600 36px "Inter", sans-serif; color: #fff; line-height: 1.18; }
+  .n-msg .bl { filter: blur(11px); }
+  #panel { position: absolute; inset: 0; clip-path: path("M -20 1160 C 300 1250, 700 1210, 1100 1010 L 1100 1920 L -20 1920 Z");
+    box-shadow: inset 0 0 0 9999px rgba(0,0,0,.12); }
+  #panelShade { position: absolute; inset: 0; clip-path: path("M -20 1160 C 300 1250, 700 1210, 1100 1010 L 1100 1920 L -20 1920 Z");
+    background: linear-gradient(180deg, rgba(0,0,0,.0) 0%, rgba(0,0,0,.0) 52%, rgba(0,0,0,.35) 100%); }
+  #stitchSvg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+  #rivet { position: absolute; left: 960px; top: 1012px; width: 54px; height: 54px; border-radius: 50%; background: radial-gradient(circle at 38% 34%, #ffe0b0 0%, #c8803e 40%, #6b3d17 100%); box-shadow: 0 4px 10px rgba(0,0,0,.6); }
+
+  .f4-hook { font-family: "Anton", sans-serif; font-size: 128px; line-height: 1.18; text-transform: uppercase; color: var(--f4-ink); }
+  .lime { color: var(--f4-lime); }
+  .gold { color: var(--f4-gold); }
+  .blk { display: block; }
+  .act { position: absolute; left: 90px; width: 870px; top: 250px; text-align: center; font-family: "Anton", sans-serif; font-size: 124px; line-height: 1.15; color: var(--f4-ink); text-transform: uppercase; }
+  .act small { display: block; font: 700 32px "JetBrains Mono", monospace; letter-spacing: .16em; color: var(--f4-lime); margin-bottom: 6px; }
+
+  /* act 1 */
+  #p1Wrap { position: absolute; left: 90px; top: 470px; width: 900px; height: 471px; }
+  .f4-print { position: absolute; inset: 0; border-radius: 28px; overflow: hidden; background: #262629; box-shadow: 0 0 0 3px rgba(198, 255, 61, .55), 0 40px 120px rgba(124, 58, 237, .45); }
+  .f4-print img { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+  .ph-green { position: absolute; left: 2.5%; right: 2.5%; top: 4%; height: 72%; border-radius: 18px; background: linear-gradient(180deg, #1f4a35, #0b1a12); }
+  .ph-cap { position: absolute; left: 2%; top: 83%; width: 35%; height: 12%; border-radius: 12px; background: #333336; }
+  .hl { position: absolute; border-radius: 16px; border: 6px solid var(--f4-lime); box-shadow: 0 0 26px rgba(198, 255, 61, .5); opacity: 0; }
+  .hl.g { border-color: var(--f4-gold); box-shadow: 0 0 26px rgba(255, 209, 102, .55); }
+  .f4-tag { position: absolute; left: 90px; padding: 10px 20px; border-radius: 999px; background: rgba(8, 5, 14, .85); border: 2px solid var(--f4-lime);
+    font: 700 30px "JetBrains Mono", monospace; letter-spacing: .08em; color: var(--f4-lime); text-transform: uppercase; }
+
+  /* depois */
+  #ghostWrap { position: absolute; left: 180px; top: 640px; width: 720px; height: 752px; }
+  .ghost { position: absolute; inset: 0; border-radius: 28px; overflow: hidden; background: #111; filter: blur(26px) brightness(.6); }
+  .ghost img { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+  #ghostQ { position: absolute; left: 180px; width: 720px; top: 880px; text-align: center; font-family: "Anton", sans-serif; font-size: 300px; line-height: 1; color: rgba(255,255,255,.85); }
+
+  /* act 2 */
+  #rays { position: absolute; left: 50%; top: 800px; width: 2400px; height: 2400px; margin: -1200px 0 0 -1200px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(255, 220, 150, .15) 0deg 6deg, rgba(255, 220, 150, 0) 6deg 18deg);
+    -webkit-mask-image: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.4) 45%, transparent 75%); mask-image: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.4) 45%, transparent 75%); opacity: 0; }
+  #flipStage { position: absolute; left: 180px; top: 430px; width: 720px; height: 752px; perspective: 1800px; }
+  #p2Wrap { position: absolute; inset: 0; transform-style: preserve-3d; }
+  .card2 { position: absolute; inset: 0; border-radius: 28px; overflow: hidden; background: #111; box-shadow: 0 0 0 4px rgba(255, 209, 102, .7), 0 40px 120px rgba(255, 190, 80, .3); }
+  .card2 img { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+  .ph-sprite { position: absolute; left: 33%; top: 8%; width: 30%; height: 30%; border-radius: 50%; background: rgba(240, 230, 255, .5); }
+  .ph-t { position: absolute; left: 12%; height: 4.5%; border-radius: 8px; background: rgba(255,255,255,.35); }
+  .chips { position: absolute; left: 90px; width: 790px; top: 1220px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .chip { padding: 14px 28px; border-radius: 999px; font: 800 52px "Inter", sans-serif; background: rgba(20, 12, 34, .92); border: 3px solid var(--f4-gold); color: var(--f4-ink); opacity: 0; }
+  .spark { position: absolute; left: 0; top: 0; width: 18px; height: 18px; opacity: 0; }
+  #sparkField { position: absolute; left: 540px; top: 800px; width: 0; height: 0; }
+
+  .eye { position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+  .ask { font: 900 64px "Inter", sans-serif; color: var(--f4-ink); max-width: 800px; line-height: 1.12; }
+  .ask b { color: var(--f4-gold); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  #hush { position: absolute; inset: 0; background: radial-gradient(60% 42% at 50% 48%, #2a1546 0%, #150d24 70%); opacity: 0; pointer-events: none; z-index: 44; }
+  #blackout { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 45; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="17" data-fps="30">
+  <div class="f4-set">
+    <div id="setCam"><div id="denim" class="denim"></div><div class="dnoise"></div></div>
+    <div id="roomTint"></div>
+    <div id="setDim"></div>
+  </div>
+
+  <!-- STAGE: phone in the pocket, 0 - 3.871 -->
+  <section id="stage" class="clip" data-start="0" data-duration="3.871">
+    <div id="stageCam">
+      <div id="phoneRig">
+        <div id="phoneGlow"></div>
+        <div id="phoneBuzz">
+          <div id="phoneRot">
+            <div class="phone">
+              <div class="screen" id="screen">
+                <div class="ls-time">13:03</div>
+                <div class="notif" id="notif">
+                  <div class="n-head"><div class="n-icon"><img src="kit/img/brand/kizubot-head.png" alt="" /></div><div class="n-app">KizuBot™ | kizubot.com</div></div>
+                  <div class="n-msg">pokemonCaught <span class="bl">~ I've caught Rapidash</span></div>
+                </div>
+              </div>
+              <div class="island"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- the front of the pocket covers the phone -->
+      <div id="panel" class="denim"></div>
+      <div id="panelShade"></div>
+      <svg id="stitchSvg" viewBox="0 0 1080 1920">
+        <path d="M -20 1160 C 300 1250, 700 1210, 1100 1010" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="10" />
+        <path d="M -20 1192 C 300 1282, 700 1242, 1100 1042" fill="none" stroke="var(--stitch)" stroke-width="5" stroke-dasharray="16 11" />
+        <path d="M -20 1218 C 300 1308, 700 1268, 1100 1068" fill="none" stroke="var(--stitch)" stroke-width="5" stroke-dasharray="16 11" />
+      </svg>
+      <div id="rivet"></div>
+    </div>
+  </section>
+
+  <div class="f4-topshade"></div>
+
+  <!-- S1 hook 0 - 1.935 -->
+  <section id="s1" class="clip" data-start="0" data-duration="1.935">
+    <div class="kz-hook-band" id="s1in" style="top:240px; height:500px; left:100px; right:150px">
+      <div class="f4-hook blk" id="h1">Primeiro a</div>
+      <div class="f4-hook blk" id="h2">notificação.</div>
+      <div class="f4-hook lime blk" id="h3">Depois…</div>
+    </div>
+  </section>
+
+  <!-- ACT 1 3.871 - 5.806 -->
+  <section id="a1" class="clip" data-start="3.871" data-duration="1.935">
+    <div id="a1in" style="position:absolute; inset:0">
+      <div class="act" id="a1t"><small>1 de 2</small>A notificação</div>
+      <div id="p1Wrap">
+        <div class="f4-print" id="p1">
+          <img src="kit/img/prints/shiny-rapidash--alarm.png" alt="" />
+        </div>
+        <div class="hl" id="hl1" style="left:1.6%; top:3.6%; width:96.4%; height:77.5%"></div>
+      </div>
+      <div class="f4-tag" id="tag1" style="top:980px">print real de cliente</div>
+    </div>
+  </section>
+
+  <!-- DEPOIS 5.806 - 7.742 -->
+  <section id="dp" class="clip" data-start="5.806" data-duration="1.936">
+    <div id="dpIn" style="position:absolute; inset:0">
+      <div class="kz-hook-band" style="top:250px; height:330px">
+        <div class="f4-hook lime" id="dpT" style="font-size:220px; line-height:1.1">Depois…</div>
+      </div>
+      <div id="ghostWrap"><div class="ghost" id="ghost"><img src="kit/img/prints/shiny-rapidash--card.png" alt="" /></div></div>
+      <div id="ghostQ">?</div>
+    </div>
+  </section>
+
+  <!-- ACT 2 7.742 - 11.613 -->
+  <section id="a2" class="clip" data-start="7.742" data-duration="3.871">
+    <div id="a2in" style="position:absolute; inset:0">
+      <div id="rays"></div>
+      <div class="act" id="a2t" style="top:240px"><small>2 de 2</small>A captura</div>
+      <div id="flipStage">
+        <div id="p2Wrap">
+          <div class="card2" id="p2">
+            <img src="kit/img/prints/shiny-rapidash--card.png" alt="" />
+          </div>
+          <div class="hl g" id="hlName" style="left:19%; top:38.6%; width:53%; height:9.4%"></div>
+          <div class="hl g" id="hlLvl" style="left:6%; top:52.4%; width:85%; height:6.8%"></div>
+          <div class="hl g" id="hlNpc" style="left:6%; top:58.6%; width:85%; height:6.8%"></div>
+        </div>
+      </div>
+      <div class="f4-tag" id="tag2" style="top:1200px; border-color: var(--f4-gold); color: var(--f4-gold)">print real de cliente</div>
+      <div id="sparkField"></div>
+      <div class="chips" id="chips" style="top:1270px">
+        <span class="chip" id="c1">nível 100</span>
+        <span class="chip" id="c2">inegociável</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINE 11.613 - 13.548 -->
+  <section id="ln" class="clip" data-start="11.613" data-duration="1.935">
+    <div class="kz-safe" id="lnIn" style="right:200px; bottom:600px">
+      <div class="f4-hook" id="l1" style="font-size:104px">Primeiro a notificação.</div>
+      <div class="f4-hook gold" id="l2" style="font-size:150px; margin-top:10px">Depois, o shiny.</div>
+    </div>
+  </section>
+
+  <!-- END 13.548 - 17 -->
+  <section id="end" class="clip" data-start="13.548" data-duration="3.452">
+    <div class="kz-end" id="endIn" style="padding-right:200px">
+      <div style="position:relative; width:540px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" style="width:540px" />
+        <div class="eye" id="eye" style="left:169px; top:7px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">Rapidash shiny: <b>nota de 0 a 10?</b></div>
+    </div>
+  </section>
+
+  <div class="f4-vig"></div>
+  <div id="grain"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+  <div id="hush"></div>
+  <div id="blackout"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 17;
+  const b = KZ.beats(124);            // beat 0.4839 s, bar 1.935 s
+  const BAR = b(4);
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#setCam", { x: -12, y: 0, scale: 1.03 }, { x: 12, y: -24, scale: 1.08, duration: D, ease: "sine.inOut" }, 0);
+  tl.fromTo("#grain", { x: 0, y: 0 }, { x: -120, y: 96, duration: D, ease: "steps(" + Math.round(D * 12) + ")" }, 0);
+
+  function buzz(at, seed, amp) {
+    KZ.shake(tl, "#phoneBuzz", at, amp || 9, 0.3, seed);
+    tl.fromTo("#phoneGlow", { opacity: 1 }, { opacity: 0.55, duration: 0.45, ease: "power2.out", immediateRender: false }, at);
+    tl.fromTo("#screen", { filter: "brightness(1.5)" }, { filter: "brightness(1)", duration: 0.35, ease: "power2.out", immediateRender: false }, at);
+  }
+
+  /* STAGE */
+  tl.fromTo("#phoneRot", { rotation: -7 }, { rotation: 0, duration: 0.8, ease: "power3.inOut" }, BAR + 0.05);
+  tl.fromTo("#phoneRig", { y: 0, scale: 1 }, { y: -560, scale: 1.0, duration: 0.8, ease: "power3.inOut" }, BAR + 0.05);
+  tl.fromTo("#stageCam", { scale: 1, y: 0 }, { scale: 1.32, y: -120, duration: 1.0, ease: "power3.inOut" }, BAR + 0.85);
+  buzz(0.0, 3, 11); buzz(b(1), 5); buzz(b(2), 8); buzz(b(3), 11);
+  buzz(BAR + b(3), 13, 6);
+
+  /* S1 hook */
+  tl.fromTo("#h1", { scale: 1.2, opacity: 0.6 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0);
+  KZ.slam(tl, "#h2", 0.14, 1.6);
+  KZ.slam(tl, "#h3", 0.3, 1.9);
+  KZ.shake(tl, "#h3", b(2), 7, 0.3, 21);
+  tl.to("#s1in", { scale: 1.04, duration: 1.4, ease: "sine.inOut" }, 0.4);
+  tl.to("#s1in", { y: -60, opacity: 0, duration: 0.18, ease: "power2.in" }, BAR - 0.2);
+
+  /* ACT 1: the notification (a real alarm -> alert sound) */
+  const A1 = 3.871;
+  KZ.flash(tl, "#flash", A1, 0.7);
+  tl.fromTo("#setDim", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, A1);
+  KZ.slam(tl, "#a1t", A1, 1.5);
+  tl.fromTo("#p1Wrap", { y: 90, scale: 1.1, filter: "blur(18px)" }, { y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }, A1 + 0.05);
+  KZ.pop(tl, "#tag1", A1 + 0.35, 0.3);
+  tl.fromTo("#hl1", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, A1 + b(1.5));
+  tl.to("#p1Wrap", { scale: 1.04, duration: 1.3, ease: "sine.inOut" }, A1 + 0.55);
+  tl.to("#a1in", { opacity: 0, x: -120, duration: 0.18, ease: "power2.in" }, 5.806 - 0.2);
+
+  /* DEPOIS… (heartbeats, then silence) */
+  const DP = 5.806;
+  tl.fromTo("#dpT", { scale: 1.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, DP);
+  tl.fromTo("#ghostWrap", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 0.94, duration: 0.24, ease: "power2.out" }, DP + 0.0);
+  KZ.pop(tl, "#ghostQ", DP + 0.3, 0.35);
+  [0.25, 0.73, 1.2].forEach(function (o, i) {
+    tl.fromTo("#ghostWrap", { scale: 0.99 + i * 0.02 }, { scale: 0.94 + i * 0.02, duration: 0.4, ease: "power2.out", immediateRender: false }, DP + o);
+    KZ.shake(tl, "#dpIn", DP + o, 4 + i * 3, 0.2, 31 + i);
+  });
+  tl.fromTo("#hush", { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none" }, 7.35);
+  tl.set("#hush", { opacity: 0 }, 7.742);
+
+  /* ACT 2: the capture — card flips in on the drop */
+  const R = 7.742;
+  KZ.flash(tl, "#flash", R, 0.95);
+  tl.fromTo("#roomTint", { opacity: 0 }, { opacity: 0.9, duration: 0.6, ease: "power2.out" }, R);
+  tl.fromTo("#rays", { opacity: 0, rotation: 0, scale: 0.7 }, { opacity: 1, rotation: 35, scale: 1, duration: 3.9, ease: "power1.out" }, R);
+  tl.fromTo("#p2Wrap", { rotationY: -100, scale: 0.8, filter: "blur(10px)" }, { rotationY: 0, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "back.out(1.4)" }, R);
+  KZ.shake(tl, "#flipStage", R + 0.55, 6, 0.22, 91);
+  KZ.slam(tl, "#a2t", R + 0.1, 1.5);
+  KZ.pop(tl, "#tag2", R + 0.5, 0.3);
+  (function () {
+    const field = document.getElementById("sparkField");
+    const cols = ["#ffd166", "#ffffff", "#ffe8a3", "#c6ff3d", "#d8b4fe"];
+    const pr = function (n) { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+    const parts = [];
+    for (let i = 0; i < 30; i++) {
+      const el = document.createElement("div"); el.className = "spark";
+      const s = 9 + pr(i * 3 + 1) * 16; el.style.width = s + "px"; el.style.height = s + "px"; el.style.background = cols[i % 5]; el.style.borderRadius = (i % 2 ? "50%" : "3px");
+      field.appendChild(el);
+      const a = pr(i * 5 + 2) * Math.PI * 2, sp = 420 + pr(i * 7 + 3) * 560;
+      parts.push({ el: el, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 180 });
+    }
+    const dr = { T: 0 }, FL = 1.2;
+    tl.fromTo(dr, { T: 0 }, { T: 1, duration: FL, ease: "none", onUpdate: function () {
+      const t = dr.T * FL, fade = Math.min(1, (1 - dr.T) / 0.35);
+      parts.forEach(function (p) { p.el.style.transform = "translate(" + (p.vx * t) + "px," + (p.vy * t + 380 * t * t) + "px) rotate(" + (220 * t) + "deg)"; p.el.style.opacity = String(dr.T === 0 ? 0 : fade); });
+    } }, R + 0.5);
+  })();
+  tl.fromTo("#hlName", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, R + b(1.5));
+  tl.fromTo("#hlLvl", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, R + b(3));
+  tl.fromTo("#c1", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.4)" }, R + b(3));
+  tl.fromTo("#hlNpc", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, R + b(4.5));
+  tl.fromTo("#c2", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.4)" }, R + b(4.5));
+  tl.to("#flipStage", { scale: 1.03, duration: 2.6, ease: "sine.inOut" }, R + 1.0);
+  tl.to("#a2in", { opacity: 0, scale: 0.95, duration: 0.18, ease: "power2.in" }, 11.613 - 0.2);
+
+  /* LINE: completes the hook */
+  const L = 11.613;
+  tl.to("#setDim", { opacity: 0.6, duration: 0.3 }, L);
+  KZ.slam(tl, "#l1", L, 1.5);
+  KZ.slam(tl, "#l2", L + b(1), 1.9);
+  KZ.shake(tl, "#l2", L + b(1) + 0.05, 7, 0.25, 51);
+  tl.to("#l2", { scale: 1.05, duration: 1.2, ease: "sine.inOut" }, L + b(1) + 0.3);
+  tl.to("#lnIn", { opacity: 0, scale: 0.94, duration: 0.16, ease: "power2.in" }, 13.548 - 0.18);
+
+  /* END */
+  const E = 13.548;
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, E + 0.04);
+  KZ.eyePulse(tl, "#eye", E + 0.14, 3);
+  KZ.rise(tl, "#endUrl", E + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", E + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, E + 0.6);
+  tl.fromTo("#blackout", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.in", immediateRender: false }, D - 0.4);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

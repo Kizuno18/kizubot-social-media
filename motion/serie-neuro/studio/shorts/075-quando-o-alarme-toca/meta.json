@@ -1,0 +1,68 @@
+{
+  "id": "075",
+  "slug": "quando-o-alarme-toca",
+  "family": "Só Quem Joga PxG Entende",
+  "title": "Quando o alarme do KizuBot toca:",
+  "concept": "Reaction supercut on pop-colour meme cards: the KizuBot alarm motif rings and each real customer reaction slams in with its real print (MANO MANO, carai/estourou, cantou big, the guy watching a movie with his wife -> kkkk, que chique kk).",
+  "neuro": [
+    "in-group-identity",
+    "emotional-contagion",
+    "social-proof",
+    "variable-reward",
+    "sonic-branding",
+    "comment-prompt"
+  ],
+  "hook": "QUANDO O ALARME DO KIZUBOT TOCA:",
+  "duration": 17.54,
+  "music": {
+    "style": "funk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/prints/shiny-venusaur.png",
+    "kit/img/prints/boss-metagross-metal-coat.png",
+    "kit/img/prints/shiny-cubone.png",
+    "kit/img/prints/shiny-feraligatr--quote.png",
+    "kit/img/prints/shiny-feraligatr--alarm-card.png",
+    "kit/img/prints/alarme-12335-itens--alarm.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Quando o alarme do KizuBot toca: MANO MANO 😂 Reações reais de clientes quando o shiny, o boss e o drop raro aparecem. Qual seria sua reação? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#reacao"
+      ]
+    },
+    "youtube": {
+      "title": "Quando o alarme do KizuBot toca: (reações reais) 🔔",
+      "description": "Reações reais de clientes quando o alarme do KizuBot toca: MANO MANO (shiny Venusaur), carai/estourou (boss Metagross e Metal Coat), cantou big (shiny Cubone), kkkk (shiny Feraligatr vendo filme com a esposa) e que chique (12335 itens dropados). Prints reais de clientes diferentes. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Quando o alarme do KizuBot toca: 🔔 Reações reais de clientes diferentes. Qual seria a sua reação? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Qual é a sua reação quando o alarme toca? 🔔",
+  "notes": "Five real reactions, each with its own print, under a persistent 'prints reais de clientes diferentes' label. 'carai / estourou' is from another group member (ASSETS.md), tagged 'reação de outro membro do grupo'. 'Que chique kk' comes from alarme-12335-itens (that is where ASSETS.md lists it; alarme-12335-itens is not in the index). The build caption 'E esse aqui tava vendo um filme…' is our own paraphrase; the verbatim line appears in the print. Laughter trimmed to 'kkkkkkk' in the big caption (the print shows the full line). The KizuBot alert motif plays on each alarm print."
+}

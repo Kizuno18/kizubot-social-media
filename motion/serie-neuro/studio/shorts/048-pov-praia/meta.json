@@ -1,0 +1,65 @@
+{
+  "id": "048",
+  "slug": "pov-praia",
+  "family": "POV",
+  "title": "POV: você foi pra praia e o bot ficou farmando",
+  "concept": "Bright flat beach POV: you raise the phone camera, the real KizuBot alarms drop over the viewfinder (dropStone ~ Earth Stone 16:19 / 16:21) with the real 'Enquanto bot moie / Eu tô na praia kkkk', a 3-2-1 self-timer builds into the shutter, and the shutter reveals the real customer print; then 'E não foi só ele:' brings a second real group-chat print (represa / cachoeira).",
+  "neuro": [
+    "pov-self-reference",
+    "narrative-transport",
+    "countdown-anticipation",
+    "social-proof",
+    "in-group-identity",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "POV: você foi pra praia.",
+  "duration": 20,
+  "music": {
+    "style": "funk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/prints/beach-while-bot-farms.png",
+    "kit/img/prints/beach-satire-group--historia.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "POV: você foi pra praia e o bot ficou farmando 🏖️ Earth Stone caindo às 16:19 e 16:21 enquanto o cara tava na areia. Prints reais de clientes. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#praia",
+        "#pov"
+      ]
+    },
+    "youtube": {
+      "title": "POV: você foi pra praia e o bot ficou farmando (prints reais)",
+      "description": "POV: você foi pra praia e o KizuBot ficou farmando — alarmes reais de Earth Stone às 16:19 e 16:21, 'Enquanto bot moie / Eu tô na praia'. E não foi só ele: represa, cachoeira… 100% AFK, alarmes no celular e no WhatsApp. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "POV: você foi pra praia e o bot ficou farmando. 🏖️ Você na praia, o bot no farm — prints reais de clientes. Praia, represa ou cachoeira? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#praia"
+      ]
+    }
+  },
+  "pinned_comment": "Praia, represa ou cachoeira? 🏖️",
+  "notes": "Notification banners over a generic camera viewfinder (no app trade dress) carry the verbatim alarm text/times of beach-while-bot-farms.png; chat bubbles 'Enquanto bot moie' / 'Eu tô na praia kkkk' are verbatim. The concept's 'eu-nao-vendo-arte-na-praia' print = beach-satire-group; per ASSETS.md the represa/cachoeira line is another member, so the focus crop --historia is used and the screen says 'prints reais de clientes diferentes'. Pull quote trimmed from the start: '…um na represa pescando e outro na cachoeira' + 'Esse grupo e bot tem história' (emoji omitted). Added a 3-2-1 self-timer build and the shutter as the reveal. Rubric: hook 8, re-hooks 9, clarity 8, craft 8, truth 9, sound 8, brand 9, CTA 9, loop 8, distinct 9 (avg 8.5). 1 render."
+}

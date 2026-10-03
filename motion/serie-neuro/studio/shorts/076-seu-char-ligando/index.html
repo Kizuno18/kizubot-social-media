@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>076 Seu char está ligando</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F08 Ligação Recebida — visual system (phone call UI, generic, no OS trade dress) ===== */
+  :root {
+    --c-ink: #f7f5ff; --c-sub: #b9b2d9; --c-lav: #d8b4fe; --c-acc: #22c55e; --c-dec: #ef4444;
+    --c-gold: #fbbf24; --c-gold-2: #fde68a; --c-lime: #c6ff3d;
+    --f-ui: "Sora", "Inter", sans-serif; --f-cap: "Bricolage Grotesque", "Inter", sans-serif;
+  }
+  #root { background: #07070f; }
+  #wall { position: absolute; inset: 0; overflow: hidden; background: linear-gradient(180deg, #0b0d24 0%, #120a2a 52%, #06050d 100%); }
+  .blob { position: absolute; border-radius: 50%; }
+  #bl1 { width: 1100px; height: 1100px; left: -380px; top: -260px; background: radial-gradient(circle, rgba(124, 58, 237, 0.55) 0%, rgba(124, 58, 237, 0) 62%); }
+  #bl2 { width: 1000px; height: 1000px; right: -420px; top: 520px; background: radial-gradient(circle, rgba(37, 99, 235, 0.42) 0%, rgba(37, 99, 235, 0) 62%); }
+  #bl3 { width: 1200px; height: 1200px; left: -200px; bottom: -620px; background: radial-gradient(circle, rgba(192, 38, 211, 0.35) 0%, rgba(192, 38, 211, 0) 62%); }
+  #wallShade { position: absolute; inset: 0; background: radial-gradient(120% 70% at 50% 45%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.55) 100%); }
+
+  /* persistent call layer */
+  #callUI { position: absolute; inset: 0; }
+  #avWrap { position: absolute; left: 380px; top: 630px; width: 320px; height: 320px; }
+  #avInner { position: absolute; inset: 0; }
+  .ring { position: absolute; inset: 0; border-radius: 50%; border: 5px solid rgba(216, 180, 254, 0.75); }
+  #avCircle { position: absolute; inset: 0; border-radius: 50%; overflow: hidden;
+    background: radial-gradient(circle at 50% 38%, #3a1d6b 0%, #1a1030 70%); border: 6px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 30px 90px rgba(124, 58, 237, 0.55); }
+  #avCircle img { position: absolute; left: 0px; top: 30px; width: 320px; }
+  #avEye { position: absolute; left: 123px; top: 100px; width: 80px; height: 80px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(250, 232, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+
+  #pill { position: absolute; left: 110px; top: 252px; width: 760px; height: 140px; border-radius: 70px;
+    background: rgba(255, 255, 255, 0.075); border: 2px solid rgba(255, 255, 255, 0.14); opacity: 0; }
+  #pillName { position: absolute; left: 160px; top: 18px; font: 800 56px/1 var(--f-cap); color: var(--c-ink); letter-spacing: -0.01em; }
+  #pillTime { position: absolute; left: 162px; top: 84px; font: 700 36px/1 var(--f-ui); color: #4ade80; font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 14px; }
+  #pillDot { width: 16px; height: 16px; border-radius: 50%; background: #4ade80; display: block; }
+  #pillTag { position: absolute; right: 40px; top: 46px; width: 44px; height: 44px; }
+
+  #viz { position: absolute; left: 0; right: 0; top: 960px; height: 90px; display: flex; justify-content: center; align-items: center; gap: 7px; opacity: 0; }
+  #viz i { display: block; width: 10px; height: 90px; border-radius: 6px; background: linear-gradient(180deg, #e9d5ff, #a855f7); transform-origin: 50% 50%; }
+
+  #ctrls { position: absolute; inset: 0; opacity: 0; }
+  .cbtn { position: absolute; width: 124px; height: 124px; border-radius: 50%; background: rgba(255, 255, 255, 0.09); border: 2px solid rgba(255, 255, 255, 0.12);
+    display: flex; align-items: center; justify-content: center; }
+  .cbtn svg { width: 56px; height: 56px; }
+  #endBtn { position: absolute; left: 465px; top: 1250px; width: 150px; height: 150px; border-radius: 50%; background: var(--c-dec);
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 16px 50px rgba(239, 68, 68, 0.45); }
+  #endBtn svg { width: 74px; height: 74px; transform: rotate(135deg); }
+
+  /* incoming screen */
+  .lbl { font: 700 30px/1 var(--f-ui); letter-spacing: 0.26em; text-transform: uppercase; color: #c4b5fd; }
+  #lblTop { position: absolute; left: 0; right: 0; top: 256px; text-align: center; }
+  #nmBig { position: absolute; left: 0; right: 0; top: 306px; text-align: center; font: 800 150px/1 var(--f-cap); color: var(--c-ink); letter-spacing: -0.02em; }
+  #subBig { position: absolute; left: 0; right: 0; top: 468px; text-align: center; font: 800 96px/1.08 var(--f-cap); color: var(--c-lav); letter-spacing: -0.01em; }
+  #subBig .dt { display: inline-block; }
+  .rbtn { position: absolute; width: 176px; height: 176px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .rbtn svg { width: 84px; height: 84px; }
+  #decBtn { left: 212px; top: 1092px; background: var(--c-dec); box-shadow: 0 18px 60px rgba(239, 68, 68, 0.4); }
+  #decBtn svg { transform: rotate(135deg); }
+  #accBtn { left: 692px; top: 1092px; background: var(--c-acc); box-shadow: 0 18px 60px rgba(34, 197, 94, 0.5); }
+  #accBurst { position: absolute; left: 692px; top: 1092px; width: 176px; height: 176px; border-radius: 50%; border: 6px solid #4ade80; opacity: 0; }
+  .rlbl { position: absolute; top: 1290px; width: 240px; text-align: center; font: 700 30px/1 var(--f-ui); color: var(--c-sub); }
+
+  /* captions = the char's voice */
+  .cap { position: absolute; left: 90px; right: 90px; top: 560px; text-align: center; font: 800 100px/1.1 var(--f-cap); color: var(--c-ink); letter-spacing: -0.015em;
+    text-shadow: 0 8px 40px rgba(0, 0, 0, 0.45); }
+  .cap .ln { display: block; }
+  .cap .w { display: inline-block; }
+  .hl-lav { color: var(--c-lav); }
+  .hl-lime { color: var(--c-lime); }
+  .hl-gold { color: var(--c-gold); }
+  #shinyWord { font-size: 168px; line-height: 1.02; color: var(--c-gold); text-shadow: 0 0 50px rgba(251, 191, 36, 0.6), 0 8px 30px rgba(0, 0, 0, 0.4); }
+
+  /* print scene */
+  .ptag { position: absolute; left: 0; right: 0; top: 414px; text-align: center; }
+  .ptag span { display: inline-block; padding: 9px 22px; border-radius: 999px; background: rgba(8, 6, 16, 0.85); border: 2px solid var(--c-lav);
+    font: 700 30px/1 var(--f-ui); letter-spacing: 0.04em; color: var(--c-lav); text-transform: uppercase; }
+  #card3 { position: absolute; left: 220px; top: 480px; width: 640px; height: 582px; border-radius: 30px; overflow: hidden;
+    border: 4px solid rgba(251, 191, 36, 0.75); box-shadow: 0 0 0 10px rgba(251, 191, 36, 0.1), 0 40px 120px rgba(251, 191, 36, 0.28); background: #1b1b22; }
+  #card3 img { display: block; width: 100%; }
+  .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font: 700 34px var(--f-ui); color: #777; background: repeating-linear-gradient(45deg, #222 0 20px, #2a2a2a 20px 40px); }
+  #ring3 { position: absolute; left: 349px; top: 692px; width: 170px; height: 170px; border-radius: 50%; border: 5px dashed var(--c-gold); }
+  #q3 { position: absolute; left: 110px; right: 110px; top: 1096px; text-align: center; font: 800 62px/1.08 var(--f-cap); color: var(--c-ink); }
+  #q3 .ln { display: block; }
+  #sparks { position: absolute; inset: 0; pointer-events: none; }
+  #sparks i { position: absolute; left: 0; top: 0; width: 26px; height: 26px; display: block;
+    background: radial-gradient(circle, #fff7d6 0%, #fbbf24 40%, rgba(251, 191, 36, 0) 70%); border-radius: 50%; opacity: 0; }
+
+  /* call ended */
+  #endLbl { position: absolute; left: 0; right: 0; top: 600px; text-align: center; color: #fca5a5; }
+  #farm1, #farm2 { position: absolute; left: 0; right: 0; text-align: center; font: 800 124px/1.06 var(--f-cap); letter-spacing: -0.02em; }
+  #farm1 { top: 660px; color: var(--c-ink); }
+  #farm2 { top: 792px; color: var(--c-lime); }
+  #afkChip { position: absolute; left: 0; right: 0; top: 968px; text-align: center; }
+  #afkChip span { display: inline-block; padding: 16px 34px; border-radius: 999px; background: var(--c-lime); color: #10140a; font: 800 44px/1 var(--f-ui); letter-spacing: 0.02em; }
+
+  /* end card */
+  #endWrap { position: absolute; inset: 0; }
+  #logoBox { position: absolute; left: 240px; top: 400px; width: 600px; }
+  #logoBox img { display: block; width: 600px; }
+  #eyeEnd { position: absolute; left: 186px; top: 4px; width: 116px; height: 116px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(250, 232, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  #endUrl { position: absolute; left: 0; right: 0; top: 976px; text-align: center; font: 700 66px/1 var(--f-ui); color: var(--c-ink); letter-spacing: -0.01em; }
+  #endAsk { position: absolute; left: 150px; width: 700px; top: 1092px; height: 128px; border-radius: 64px; background: rgba(34, 197, 94, 0.14); border: 3px solid rgba(74, 222, 128, 0.7);
+    display: flex; align-items: center; justify-content: center; gap: 22px; font: 800 70px/1 var(--f-cap); color: var(--c-ink); }
+  #endAsk svg { width: 58px; height: 58px; flex: none; }
+
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+  #fade { position: absolute; inset: 0; background: #07070f; opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="18.87" data-fps="30">
+  <!-- wallpaper (untimed) -->
+  <div id="wall">
+    <div class="blob" id="bl1"></div>
+    <div class="blob" id="bl2"></div>
+    <div class="blob" id="bl3"></div>
+    <div id="wallShade"></div>
+  </div>
+
+  <!-- persistent call layer (untimed): avatar, header pill, voice meter, controls -->
+  <div id="callUI">
+    <div id="pill">
+      <div id="pillName">SEU CHAR</div>
+      <div id="pillTime"><i id="pillDot"></i><span id="timer">00:00</span></div>
+      <div id="pillTag"><svg viewBox="0 0 24 24" width="44" height="44" fill="#4ade80"><rect x="2" y="15" width="4" height="6" rx="1"/><rect x="8" y="11" width="4" height="10" rx="1"/><rect x="14" y="7" width="4" height="14" rx="1"/><rect x="20" y="3" width="3" height="18" rx="1" opacity=".35"/></svg></div>
+    </div>
+    <div id="viz"></div>
+    <div id="ctrls">
+      <div class="cbtn" style="left:238px; top:1086px"><svg viewBox="0 0 24 24" fill="none" stroke="#e9e5f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/><path d="M4 4l16 16"/></svg></div>
+      <div class="cbtn" style="left:478px; top:1086px"><svg viewBox="0 0 24 24" fill="#e9e5f7"><circle cx="6" cy="5" r="1.7"/><circle cx="12" cy="5" r="1.7"/><circle cx="18" cy="5" r="1.7"/><circle cx="6" cy="11" r="1.7"/><circle cx="12" cy="11" r="1.7"/><circle cx="18" cy="11" r="1.7"/><circle cx="6" cy="17" r="1.7"/><circle cx="12" cy="17" r="1.7"/><circle cx="18" cy="17" r="1.7"/></svg></div>
+      <div class="cbtn" style="left:718px; top:1086px"><svg viewBox="0 0 24 24" fill="none" stroke="#e9e5f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg></div>
+      <div id="endBtn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+    </div>
+    <div id="avWrap">
+      <div id="avInner">
+        <div class="ring" id="rg1"></div>
+        <div class="ring" id="rg2"></div>
+        <div class="ring" id="rg3"></div>
+        <div id="avCircle"><img src="kit/img/brand/kizubot-head.png" alt="" /><div id="avEye"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S1 incoming call: 0 - 1.935 -->
+  <section id="s1" class="clip" data-start="0" data-duration="1.935">
+    <div id="s1in" style="position:absolute; inset:0">
+      <div class="lbl" id="lblTop">chamada de voz</div>
+      <div id="nmBig">SEU CHAR</div>
+      <div id="subBig">tá ligando<span class="dt" id="d1">.</span><span class="dt" id="d2">.</span><span class="dt" id="d3">.</span></div>
+      <div id="accBurst"></div>
+      <div class="rbtn" id="decBtn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+      <div class="rbtn" id="accBtn"><svg id="accIco" viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+      <div class="rlbl" id="decLbl" style="left:180px">recusar</div>
+      <div class="rlbl" id="accLbl" style="left:660px">atender</div>
+    </div>
+  </section>
+
+  <!-- S2 in-call captions: 1.935 - 9.677 -->
+  <section id="s2" class="clip" data-start="1.935" data-duration="7.742">
+    <div class="cap" id="c1"><div class="ln">Oi, sou eu,</div><div class="ln">seu <span class="hl-lav">char.</span></div></div>
+    <div class="cap" id="c2"><div class="ln"><span class="hl-lime">Tô caçando</span></div><div class="ln">aqui…</div></div>
+    <div class="cap" id="c3"><div class="ln">Pode voltar</div><div class="ln">a <span class="hl-lav">dormir.</span></div></div>
+    <div class="cap" id="c4"><div class="ln">Ah…</div><div class="ln">apareceu um</div><div class="ln"><span id="shinyWord">SHINY.</span></div></div>
+  </section>
+
+  <!-- S3 real print: 9.677 - 12.581 -->
+  <section id="s3" class="clip" data-start="9.677" data-duration="2.904">
+    <div id="s3in" style="position:absolute; inset:0">
+      <div class="ptag" id="tag3"><span>print real de cliente</span></div>
+      <div id="card3"><img src="kit/img/prints/shiny-dratini-new-server--shot.png" alt="" /></div>
+      <div id="ring3"></div>
+      <div id="q3"><div class="ln">“Mais um <span class="hl-gold">shiny</span></div><div class="ln">na conta no</div><div class="ln">server novo”</div></div>
+      <div id="sparks"></div>
+    </div>
+  </section>
+
+  <!-- S4 goodbye: 12.581 - 14.516 -->
+  <section id="s4" class="clip" data-start="12.581" data-duration="1.935">
+    <div class="cap" id="c5"><div class="ln">Tchau,</div><div class="ln">vou voltar</div><div class="ln">pra <span class="hl-lime">hunt.</span></div></div>
+  </section>
+
+  <!-- S5 call ended: 14.516 - 15.968 -->
+  <section id="s5" class="clip" data-start="14.516" data-duration="1.452">
+    <div id="s5in" style="position:absolute; inset:0">
+      <div class="lbl" id="endLbl">chamada encerrada</div>
+      <div id="farm1">O farm</div>
+      <div id="farm2">continua.</div>
+      <div id="afkChip"><span>100% AFK</span></div>
+    </div>
+  </section>
+
+  <!-- S6 end card: 15.968 - 18.87 -->
+  <section id="s6" class="clip" data-start="15.968" data-duration="2.902">
+    <div id="endWrap">
+      <div id="logoBox"><img id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" /><div id="eyeEnd"></div></div>
+      <div id="endUrl">kizubot.com</div>
+      <div id="endAsk"><svg viewBox="0 0 24 24" fill="#4ade80"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg><span>Você atenderia?</span></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+  <div id="fade"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 18.87;
+  const b = KZ.beats(124);          // beat 0.4839 s, bar 1.9355 s
+  const T_ANS = b(4), T_C1 = b(5), T_C2 = b(9), T_C3 = b(12), T_C4 = b(16), T_SH = b(18);
+  const T_PR = b(20), T_C5 = b(26), T_END = b(30), T_EC = b(33);
+
+  // ---------- helpers (F08) ----------
+  function splitCap(capEl) {
+    const words = [];
+    capEl.querySelectorAll(".ln").forEach(function (ln) {
+      const nodes = Array.prototype.slice.call(ln.childNodes);
+      ln.textContent = "";
+      nodes.forEach(function (nd) {
+        if (nd.nodeType === 3) {
+          nd.textContent.split(/(\s+)/).forEach(function (tok) {
+            if (!tok) return;
+            if (/^\s+$/.test(tok)) { ln.appendChild(document.createTextNode(" ")); return; }
+            const s = document.createElement("span"); s.className = "w"; s.textContent = tok; ln.appendChild(s); words.push(s);
+          });
+        } else { nd.classList.add("w"); ln.appendChild(nd); words.push(nd); }
+      });
+    });
+    return words;
+  }
+  // words appear like live speech captions; times = array or (start, gap)
+  function say(sel, at, gap, exitAt) {
+    const ws = splitCap(document.querySelector(sel));
+    ws.forEach(function (w, i) {
+      const t = Array.isArray(at) ? at[i] : at + i * gap;
+      tl.fromTo(w, { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.24, ease: "back.out(2)" }, t);
+    });
+    if (exitAt) tl.to(sel, { opacity: 0, y: -40, duration: 0.16, ease: "power2.in" }, exitAt);
+    return ws;
+  }
+  const spans = [];   // speech windows for the voice meter
+  function speak(a, z) { spans.push([a, z]); }
+
+  // ---------- wallpaper drift ----------
+  KZ.drift(tl, "#bl1", D, 60, 40, 6.2);
+  KZ.drift(tl, "#bl2", D, -50, 60, 5.4);
+  KZ.drift(tl, "#bl3", D, 40, -50, 7.1);
+
+  // ---------- S1 incoming (frame 0 already readable) ----------
+  tl.fromTo("#nmBig", { scale: 1.1 }, { scale: 1, duration: 0.35, ease: "power3.out" }, 0);
+  tl.fromTo("#subBig", { y: 16 }, { y: 0, duration: 0.35, ease: "power3.out" }, 0);
+  [0, 1].forEach(function (k) {
+    const t0 = k * b(2);
+    ["#rg1", "#rg2", "#rg3"].forEach(function (r, i) {
+      tl.fromTo(r, { scale: 1, opacity: 0.85 }, { scale: 1.6, opacity: 0, duration: 0.9, ease: "power2.out", immediateRender: k === 0 }, t0 + i * 0.16);
+    });
+    KZ.shake(tl, "#avInner", t0, 6, 0.42, 11 + k);
+    tl.fromTo("#accIco", { rotation: 0 }, { rotation: -16, duration: 0.07, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, t0);
+    KZ.eyePulse(tl, "#avEye", t0 + 0.05, 1);
+  });
+  ["#d1", "#d2", "#d3"].forEach(function (d, i) {
+    tl.fromTo(d, { opacity: 0.2 }, { opacity: 1, duration: 0.2, ease: "none", yoyo: true, repeat: 3 }, 0.1 + i * 0.16);
+  });
+  tl.fromTo("#accBtn", { scale: 1 }, { scale: 1.07, duration: 0.42, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0.05);
+  // finger press on "atender"
+  tl.to("#accBtn", { scale: 0.86, duration: 0.08, ease: "power2.in" }, 1.62);
+  tl.to("#accBtn", { scale: 1.08, duration: 0.18, ease: "back.out(3)" }, 1.70);
+  tl.fromTo("#accBurst", { scale: 1, opacity: 0.9 }, { scale: 2.6, opacity: 0, duration: 0.45, ease: "power2.out" }, 1.70);
+  tl.to(["#lblTop", "#nmBig", "#subBig"], { y: -60, opacity: 0, duration: 0.2, ease: "power2.in", stagger: 0.03 }, 1.72);
+  tl.to(["#decBtn", "#decLbl", "#accLbl"], { y: 120, opacity: 0, duration: 0.2, ease: "power2.in" }, 1.72);
+  tl.to("#accBtn", { y: 120, opacity: 0, duration: 0.18, ease: "power2.in" }, 1.86);
+
+  // avatar morphs into the in-call header (shared element)
+  tl.to(["#rg1", "#rg2", "#rg3"], { opacity: 0, duration: 0.1 }, 1.74);
+  tl.fromTo("#avWrap", { x: 0, y: 0, scale: 1 }, { x: -360, y: -468, scale: 0.34375, duration: 0.34, ease: "power3.inOut" }, 1.74);
+  tl.fromTo("#pill", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.9);
+  tl.fromTo("#ctrls", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.98);
+  tl.fromTo("#viz", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.1);
+  tl.fromTo("#pillDot", { opacity: 1 }, { opacity: 0.25, duration: 0.48, ease: "sine.inOut", yoyo: true, repeat: 25 }, T_ANS);
+
+  // ---------- S2 captions ----------
+  say("#c1", T_C1, 0.13, T_C2 - 0.16); speak(T_C1, T_C1 + 1.15);
+  say("#c2", T_C2, 0.16, T_C3 - 0.16); speak(T_C2, T_C2 + 0.95);
+  say("#c3", T_C3, 0.14, T_C4 - 0.16); speak(T_C3, T_C3 + 1.0);
+  say("#c4", [T_C4, b(17), b(17) + 0.14, T_SH], 0, null); speak(T_C4, T_SH + 0.5);
+  tl.fromTo("#shinyWord", { scale: 0.3, rotation: -8 }, { scale: 1, rotation: 0, duration: 0.42, ease: "back.out(2.6)", immediateRender: false }, T_SH);
+  tl.to("#shinyWord", { scale: 1.08, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_SH + 0.45);
+  KZ.flash(tl, "#flash", T_SH, 0.25, "#fbbf24");
+  KZ.shake(tl, "#c4", 9.2, 8, 0.24, 5);
+  tl.to("#c4", { scale: 1.25, opacity: 0, duration: 0.2, ease: "power2.in" }, T_PR - 0.2);
+  tl.to("#ctrls", { opacity: 0, y: 60, duration: 0.2, ease: "power2.in" }, T_PR - 0.2);
+  tl.to("#viz", { opacity: 0.25, duration: 0.2 }, T_PR - 0.2);
+
+  // ---------- S3 real print (the drop) ----------
+  KZ.flash(tl, "#flash", T_PR, 0.7);
+  tl.fromTo("#card3", { y: 160, scale: 0.86, opacity: 0, rotation: -3 }, { y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.45, ease: "expo.out" }, T_PR);
+  tl.to("#card3", { scale: 1.04, duration: 2.3, ease: "sine.inOut" }, T_PR + 0.45);
+  KZ.rise(tl, "#tag3", T_PR + 0.12, 0.3, 24);
+  tl.fromTo("#ring3", { scale: 2.2, opacity: 0, rotation: -90 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, T_PR + 0.25);
+  tl.to("#ring3", { rotation: 120, duration: 2.2, ease: "none" }, T_PR + 0.7);
+  say("#q3", T_PR + 0.62, 0.1, null);
+  tl.to("#s3in", { opacity: 0, scale: 0.94, duration: 0.18, ease: "power2.in" }, T_C5 - 0.18);
+  // gold sparks burst from the shiny (deterministic ballistic)
+  (function () {
+    const host = document.getElementById("sparks"); const r = KZ.rng(76); const N = 22; const P = [];
+    for (let i = 0; i < N; i++) {
+      const s = document.createElement("i"); host.appendChild(s);
+      const ang = r() * Math.PI * 2, sp = 380 + r() * 520;
+      P.push({ el: s, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp - 260, sc: 0.6 + r() * 1.1, d: r() * 0.08 });
+    }
+    const o = { t: 0 }; const cx = 434 - 13, cy = 777 - 13;
+    tl.fromTo(o, { t: 0 }, { t: 1.2, duration: 1.2, ease: "none", onUpdate: function () {
+      P.forEach(function (p) {
+        const t = Math.max(0, o.t - p.d);
+        const x = cx + p.vx * t, y = cy + p.vy * t + 700 * t * t;
+        p.el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) scale(" + p.sc.toFixed(2) + ")";
+        p.el.style.opacity = t <= 0 ? 0 : Math.max(0, 1 - t / 1.05).toFixed(3);
+      });
+    } }, T_PR + 0.05);
+  })();
+
+  // ---------- S4 goodbye ----------
+  tl.to("#viz", { opacity: 1, duration: 0.2 }, T_C5);
+  tl.fromTo("#ctrls", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, T_C5);
+  say("#c5", T_C5 + 0.05, 0.14, null); speak(T_C5 + 0.05, T_C5 + 1.1);
+  tl.to("#endBtn", { scale: 0.86, duration: 0.08, ease: "power2.in" }, T_END - 0.22);
+  tl.to("#endBtn", { scale: 1, duration: 0.16, ease: "back.out(3)" }, T_END - 0.14);
+  tl.to("#c5", { opacity: 0, y: -40, duration: 0.16, ease: "power2.in" }, T_END - 0.16);
+
+  // ---------- S5 call ended ----------
+  tl.to(["#ctrls", "#viz"], { opacity: 0, duration: 0.2, ease: "power2.in" }, T_END);
+  tl.to("#pillTime", { color: "#f87171", duration: 0.1 }, T_END);
+  tl.to("#pillDot", { backgroundColor: "#f87171", duration: 0.1 }, T_END);
+  tl.to("#avCircle", { filter: "grayscale(1) brightness(0.8)", duration: 0.3 }, T_END);
+  KZ.rise(tl, "#endLbl", T_END + 0.05, 0.3, 20);
+  KZ.slam(tl, "#farm1", T_END + 0.2, 1.6);
+  KZ.slam(tl, "#farm2", T_END + 0.2 + b(1), 1.6);
+  KZ.pop(tl, "#afkChip", T_END + 0.2 + b(2), 0.35);
+  tl.to(["#pill", "#avWrap"], { opacity: 0, duration: 0.22, ease: "power2.in" }, T_EC - 0.24);
+  tl.to("#s5in", { opacity: 0, scale: 0.94, duration: 0.2, ease: "power2.in" }, T_EC - 0.22);
+
+  // ---------- S6 end card (logo sting at T_EC) ----------
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T_EC);
+  KZ.eyePulse(tl, "#eyeEnd", T_EC + 0.1, 3);
+  KZ.rise(tl, "#endUrl", T_EC + 0.4, 0.35, 30);
+  tl.fromTo("#endAsk", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, T_EC + 0.75);
+  tl.to("#logoBox", { y: -14, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_EC + 0.6);
+  // loop seam: dissolve back to the bare wallpaper of frame 0
+  tl.fromTo("#endWrap", { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power1.in", immediateRender: false }, D - 0.32);
+
+  // ---------- voice meter + call timer (pure function of time) ----------
+  (function () {
+    const viz = document.getElementById("viz"); const bars = [];
+    for (let i = 0; i < 30; i++) { const e = document.createElement("i"); viz.appendChild(e); bars.push(e); }
+    const timer = document.getElementById("timer");
+    function amp(t) {
+      for (let k = 0; k < spans.length; k++) {
+        const a = spans[k][0], z = spans[k][1];
+        if (t >= a && t <= z) return Math.max(0, Math.min(1, (t - a) / 0.06, (z - t) / 0.1));
+      }
+      return 0;
+    }
+    const o = { t: 0 };
+    tl.fromTo(o, { t: 0 }, { t: D, duration: D, ease: "none", onUpdate: function () {
+      const t = o.t;
+      const el = Math.max(0, Math.min(t, T_END) - T_ANS);
+      timer.textContent = "00:" + String(Math.floor(el)).padStart(2, "0");
+      const a = amp(t);
+      for (let i = 0; i < bars.length; i++) {
+        const mid = 1 - Math.abs(i - 14.5) / 16;
+        const v = 0.1 + a * mid * (0.25 + 0.75 * Math.abs(Math.sin(t * 11.3 + i * 0.9) * Math.sin(t * 6.7 + i * 1.7)));
+        bars[i].style.transform = "scaleY(" + v.toFixed(3) + ")";
+      }
+    } }, 0);
+  })();
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

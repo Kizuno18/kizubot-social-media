@@ -1,0 +1,60 @@
+{
+  "id": "108",
+  "slug": "de-todos-que-ja-usei",
+  "family": "Prova Real",
+  "title": "\"De todos que já usei…\" — clientes sobre o KizuBot",
+  "concept": "A veteran's verdict: 'De todos q ja usei até hoje desde a minha época de tibia esse seu me surpreendeu de mais!!!' with a pixel-terminal nostalgia beat for the Tibia line, 'Ele é bem completo', then a second customer's 'Dentre todos, foi o mais completo e com o suporte.' sealed with a COMPLETO stamp.",
+  "neuro": [
+    "social-proof",
+    "authority-by-experience",
+    "nostalgia",
+    "in-group-identity",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "“DE TODOS Q JA USEI…”",
+  "duration": 16.15,
+  "music": {
+    "style": "funk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/prints/de-todos-que-ja-usei.png",
+    "kit/img/prints/mais-completo-com-suporte--quote.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [],
+  "platforms": {
+    "tiktok": {
+      "caption": "'De todos q ja usei até hoje desde a minha época de tibia…' 👴 E outro cliente: 'Dentre todos, foi o mais completo e com o suporte.' Prints reais de clientes diferentes. Quem lembra do Tibia? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#tibia",
+        "#provareal"
+      ]
+    },
+    "youtube": {
+      "title": "\"De todos que já usei…\" — clientes sobre o KizuBot",
+      "description": "Print real: 'De todos q ja usei até hoje desde a minha época de tibia esse seu me surpreendeu de mais!!!' / 'Ele é bem completo quase n tem bug'. Outro cliente: 'Dentre todos, foi o mais completo e com o suporte.' Prints reais de clientes diferentes. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "'De todos q ja usei…' 👴 Desde a época do Tibia… quem lembra? Prints reais de clientes diferentes. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#tibia"
+      ]
+    }
+  },
+  "pinned_comment": "Desde a época do Tibia… quem lembra? 👴",
+  "notes": "Hook keeps the customer's spelling ('q ja usei') instead of the concept's normalised 'QUE JÁ USEI'. Second print is shown only down to 'e com o suporte.' so the line about 'lucro' (possible real-money earnings) stays out of frame. No competitor names appear. The terminal label repeats the verbatim fragment 'desde a minha época de tibia'."
+}

@@ -1,0 +1,16 @@
+{
+  "duration": 20,
+  "style": "phonk",
+  "seed": 1,
+  "sections": [
+    {"at": 0.0, "type": "groove"},
+    {"at": 6.5, "type": "build"},
+    {"at": 8.35, "type": "drop"},
+    {"at": 16.0, "type": "outro"}
+  ],
+  "stops": [],
+  "sfx": [
+    {"t": 0.0, "name": "impact", "gain": -6}
+  ],
+  "logo": 16.05
+}

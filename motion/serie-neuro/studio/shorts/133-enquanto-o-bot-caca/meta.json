@@ -1,0 +1,18 @@
+{
+  "id": "000",
+  "slug": "slug",
+  "family": "",
+  "title": "",
+  "concept": "",
+  "neuro": [],
+  "hook": "",
+  "duration": 20,
+  "assets": [],
+  "claims": [],
+  "platforms": {
+    "tiktok": {"caption": "", "hashtags": []},
+    "youtube": {"title": "", "description": "", "hashtags": []},
+    "instagram": {"caption": "", "hashtags": []}
+  },
+  "pinned_comment": ""
+}

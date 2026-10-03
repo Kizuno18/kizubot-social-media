@@ -1,0 +1,60 @@
+{
+  "id": "107",
+  "slug": "queria-ter-comprado-antes",
+  "family": "Prova Real",
+  "title": "Ele queria ter comprado o KizuBot antes",
+  "concept": "Two customers, one regret: 'eu quero mt ter comprado isso antes' with his own 'queria*' correction drawn as a marker fix, then a second customer's 'como não peguei esse BOT antes?', ending with the word 'antes' highlighted in both.",
+  "neuro": [
+    "social-proof",
+    "regret-loss-aversion",
+    "humor",
+    "pattern-recognition",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "ELE QUERIA* TER COMPRADO ANTES.",
+  "duration": 15.69,
+  "music": {
+    "style": "phonk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/prints/queria-ter-comprado-antes--quote.png",
+    "kit/img/prints/mato-sem-player-q-paz.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [],
+  "platforms": {
+    "tiktok": {
+      "caption": "Ele queria ter comprado o KizuBot antes 😅 E não foi só ele. Prints reais de clientes diferentes. Quanto tempo você perdeu farmando na mão? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#provareal",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "\"Queria ter comprado antes\" (e não foi só ele) 😅",
+      "description": "Print real: 'eu quero mt ter comprado isso antes' / 'queria*'. Outro cliente: 'q paz' / 'como não peguei esse BOT antes?'. Prints reais de clientes diferentes. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Ele queria ter comprado o KizuBot antes 😅 E não foi só ele. Quanto tempo você perdeu farmando na mão? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk"
+      ]
+    }
+  },
+  "pinned_comment": "Quanto tempo você perdeu farmando na mão? 😅",
+  "notes": "Hook is narration ('ELE QUERIA* TER COMPRADO ANTES.', no quote marks) because the verbatim line is 'eu quero mt ter comprado isso antes' + 'queria*'; the quote is shown verbatim with the correction drawn over 'quero'. Second proof uses mato-sem-player-q-paz.png (source mato-sem-player-q-paz.png) zoomed on 'q paz' / 'como não peguei esse BOT antes?' (profanity already blurred by the asset editor; first line is cut in the safe crop, so it is not quoted). Label 'prints reais de clientes diferentes'."
+}

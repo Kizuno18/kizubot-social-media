@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>050 POV: filme com a namorada e o celular vibra</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F02 POV system (shared by 046-050) ================= */
+  :root { --pov-ink: #0b1020; --pov-box: #ffffff; --pov-hl: #fbbf24; --pov-tag: #3b82f6; --pov-tag-ink: #ffffff; }
+  .layer { position: absolute; inset: 0; }
+  .pov { position: absolute; left: 90px; right: 120px; top: 300px; display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 30; }
+  .pov-tag { font: 900 62px/1 "Inter", sans-serif; color: var(--pov-tag-ink); background: var(--pov-tag); padding: 14px 30px 16px; border-radius: 20px; letter-spacing: 0.02em; margin-bottom: 20px; box-shadow: 0 0 40px rgba(59, 130, 246, 0.45); }
+  .pov-line { font: 800 124px/1.08 "Inter", sans-serif; letter-spacing: -0.035em; color: var(--pov-ink); background: var(--pov-box); padding: 6px 30px 14px; border-radius: 26px; box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45); white-space: nowrap; }
+  .pov-line + .pov-line { margin-top: -6px; }
+  .pov-line.md { font-size: 108px; }
+  .pov-line .hl { background: var(--pov-hl); border-radius: 16px; padding: 0 14px; }
+  .pov-line.inv { background: #7c3aed; color: #fff; }
+  .ptag { position: absolute; font: 900 32px "Inter", sans-serif; letter-spacing: 0.06em; text-transform: uppercase; color: #0b1020; background: #fbbf24; padding: 12px 22px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 6; }
+  .printcard { position: absolute; border-radius: 30px; overflow: hidden; background: #111; border: 5px solid #f8fafc; box-shadow: 0 50px 120px rgba(0, 0, 0, 0.7); }
+  .printcard .zoom { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+  .printcard .zoom img { display: block; width: 100%; }
+  .printcard svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(45deg, #2a2d33 0 24px, #212328 24px 48px); font: 700 34px "JetBrains Mono", monospace; color: #8a8f99; }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .ask { display: flex; flex-direction: column; align-items: center; }
+  .ask span { font: 800 64px/1.1 "Inter", sans-serif; letter-spacing: -0.03em; color: #120c18; background: #fff; padding: 6px 26px 12px; border-radius: 20px; white-space: nowrap; }
+  .ask span + span { margin-top: -4px; }
+  .ask span b { color: #2563eb; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  #blk { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 59; }
+  .kz-progress > div { background: linear-gradient(90deg, #3b82f6, #fbbf24); }
+
+  /* ================= 050: movie night on the couch ================= */
+  #worldIn { transform-origin: 540px 900px; }
+  #wall { background: linear-gradient(180deg, #121c36 0%, #0c1426 60%, #080d1a 100%); }
+  #tvWash { position: absolute; left: -160px; top: 220px; width: 1400px; height: 1200px; border-radius: 50%; background: radial-gradient(closest-side, rgba(80, 140, 255, 0.5), rgba(80, 140, 255, 0.12) 55%, rgba(80, 140, 255, 0)); mix-blend-mode: screen; }
+  #lampGlow { position: absolute; left: -260px; top: 360px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(closest-side, rgba(251, 176, 59, 0.42), rgba(251, 176, 59, 0)); mix-blend-mode: screen; }
+  #tv { position: absolute; left: 150px; top: 540px; width: 780px; height: 450px; border-radius: 18px; background: #04060c; padding: 16px; box-shadow: 0 0 0 4px #1a2236, 0 0 120px rgba(80, 140, 255, 0.45); }
+  #tvScreen { position: relative; width: 100%; height: 100%; border-radius: 6px; overflow: hidden; background: linear-gradient(180deg, #1e1b4b 0%, #7c3aed 40%, #f472b6 70%, #fb923c 100%); }
+  #film { position: absolute; left: -60px; top: 0; width: 900px; height: 100%; }
+  #tvFlick { position: absolute; inset: 0; background: #0b1020; opacity: 0; }
+  #phGlow { position: absolute; left: 560px; top: 1480px; width: 420px; height: 300px; border-radius: 50%; background: radial-gradient(closest-side, rgba(220, 235, 255, 0.85), rgba(160, 200, 255, 0)); mix-blend-mode: screen; opacity: 0; }
+  #couchPhone { position: absolute; left: 650px; top: 1570px; width: 170px; height: 112px; }
+  #couchPhoneIn { position: absolute; inset: 0; border-radius: 20px; background: #0a0b10; padding: 8px; box-shadow: 0 0 0 3px #262836; }
+  #couchPhoneIn i { position: absolute; inset: 8px; border-radius: 14px; background: #10141f; }
+  #couchPhoneIn b { position: absolute; inset: 8px; border-radius: 14px; background: linear-gradient(135deg, #e0ecff, #9cc2ff); opacity: 0; }
+  #dim { background: #03050b; opacity: 0; }
+  .nfloat { position: absolute; left: 130px; width: 800px; padding: 26px 32px 30px; border-radius: 44px; background: rgba(255, 255, 255, 0.95); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); text-align: left; }
+  .nfloat .nt { display: flex; align-items: center; gap: 16px; font: 700 32px "Inter", sans-serif; color: #3d3546; }
+  .nfloat .ico { width: 66px; height: 66px; border-radius: 18px; overflow: hidden; background: #1a1124; flex: none; position: relative; }
+  .nfloat .ico img { position: absolute; width: 96px; left: -15px; top: -6px; }
+  .nfloat .nt b { color: #120c18; font-weight: 800; }
+  .nfloat .nt .tm { margin-left: auto; color: #2563eb; font-weight: 800; }
+  .nfloat .nx { margin-top: 12px; font: 700 60px/1.12 "Inter", sans-serif; color: #120c18; letter-spacing: -0.02em; }
+  #gold { position: absolute; left: -100px; top: 140px; width: 1280px; height: 1240px; border-radius: 50%; background: radial-gradient(closest-side, rgba(251, 191, 36, 0.55), rgba(251, 191, 36, 0)); opacity: 0; }
+  .spk { position: absolute; width: 14px; height: 14px; background: #fde68a; transform: rotate(45deg); border-radius: 2px; box-shadow: 0 0 14px #fbbf24; opacity: 0; }
+  #pull { position: absolute; left: 90px; right: 120px; top: 260px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  #pull div { font: 800 60px/1.18 "Inter", sans-serif; color: #fff; letter-spacing: -0.02em; white-space: nowrap; }
+  #pull div b { color: #fbbf24; font-weight: 800; }
+  #endTint { background: radial-gradient(70% 45% at 50% 40%, rgba(59, 20, 112, 0.94) 0%, rgba(11, 7, 18, 0.97) 70%); opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="17.2" data-fps="30">
+
+  <!-- ===== untimed: the living room (POV from the couch) ===== -->
+  <div class="layer" id="world">
+    <div class="layer" id="worldIn">
+      <div class="layer" id="wall"></div>
+      <div id="tvWash"></div>
+      <div id="lampGlow"></div>
+      <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute; inset:0">
+        <!-- floor lamp -->
+        <path d="M110 560 L60 760 L240 760 L190 560 Z" fill="#f2c27b"/>
+        <rect x="142" y="760" width="12" height="560" fill="#2a2f3d"/>
+        <ellipse cx="148" cy="1322" rx="70" ry="14" fill="#1b2030"/>
+        <!-- shelf with plant -->
+        <rect x="860" y="380" width="200" height="14" rx="4" fill="#1d2640"/>
+        <path d="M930 380 C910 330 900 300 920 270 M950 380 C960 320 990 300 1010 290 M940 380 C940 330 945 300 950 260" stroke="#2f855a" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <rect x="912" y="350" width="70" height="34" rx="8" fill="#3a2a20"/>
+        <!-- console -->
+        <rect x="110" y="1010" width="860" height="78" rx="10" fill="#33261e"/>
+        <rect x="130" y="1088" width="20" height="60" fill="#241a14"/><rect x="930" y="1088" width="20" height="60" fill="#241a14"/>
+        <!-- floor -->
+        <rect x="0" y="1148" width="1080" height="772" fill="#0a0f1c"/>
+        <!-- couch (you are sitting on it) -->
+        <path d="M-60 1420 C-60 1360 0 1330 60 1330 L230 1330 C290 1330 320 1380 320 1440 L320 1960 L-60 1960 Z" fill="#1f3b4d"/>
+        <path d="M760 1440 C760 1380 790 1330 850 1330 L1020 1330 C1080 1330 1140 1360 1140 1420 L1140 1960 L760 1960 Z" fill="#1f3b4d"/>
+        <rect x="260" y="1520" width="560" height="440" rx="40" fill="#18303f"/>
+        <path d="M200 1960 C260 1720 360 1660 540 1690 C700 1716 820 1700 900 1960 Z" fill="#6d28d9" opacity="0.92"/>
+        <path d="M330 1800 C420 1760 520 1770 600 1800" stroke="#8b5cf6" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <!-- popcorn bucket -->
+        <path d="M380 1440 L600 1440 L575 1720 L405 1720 Z" fill="#f8fafc"/>
+        <path d="M406 1440 L436 1440 L432 1720 L414 1720 Z M466 1440 L496 1440 L493 1720 L474 1720 Z M526 1440 L556 1440 L552 1720 L533 1720 Z" fill="#ef4444"/>
+        <g fill="#fff7d6"><circle cx="400" cy="1430" r="34"/><circle cx="450" cy="1410" r="38"/><circle cx="510" cy="1405" r="36"/><circle cx="565" cy="1425" r="34"/><circle cx="480" cy="1380" r="30"/><circle cx="535" cy="1378" r="26"/></g>
+        <g fill="#fde68a"><circle cx="425" cy="1400" r="16"/><circle cx="545" cy="1398" r="14"/><circle cx="492" cy="1356" r="12"/></g>
+      </svg>
+      <div id="tv"><div id="tvScreen">
+        <svg id="film" viewBox="0 0 900 418" preserveAspectRatio="none">
+          <circle cx="560" cy="200" r="90" fill="#fde68a" opacity="0.9"/>
+          <path d="M0 330 C150 280 300 300 450 320 C600 340 750 300 900 310 L900 418 L0 418 Z" fill="#1e1b4b"/>
+          <path d="M380 330 C380 290 400 270 420 270 C440 270 452 290 452 330 Z M470 330 C470 286 492 264 514 264 C536 264 548 286 548 330 Z" fill="#0b0a24"/>
+          <circle cx="416" cy="250" r="22" fill="#0b0a24"/><circle cx="510" cy="242" r="22" fill="#0b0a24"/>
+        </svg>
+        <div style="position:absolute; left:0; right:0; top:0; height:40px; background:#000"></div>
+        <div style="position:absolute; left:0; right:0; bottom:0; height:40px; background:#000"></div>
+        <div id="tvFlick"></div>
+      </div></div>
+      <div id="phGlow"></div>
+      <div id="couchPhone"><div id="couchPhoneIn"><i></i><b id="cpLit"></b></div></div>
+    </div>
+  </div>
+  <div class="layer" id="dim"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- ===== C1 hook: 0 - 2.308 ===== -->
+  <section id="c1" class="clip" data-start="0" data-duration="2.308">
+    <div class="pov" id="hookBox" style="top:280px">
+      <div class="pov-tag" id="povTag">POV:</div>
+      <div id="h1" style="display:flex; flex-direction:column; align-items:center">
+        <div class="pov-line">filme com a</div>
+        <div class="pov-line">namorada</div>
+      </div>
+      <div id="h2" style="display:flex; flex-direction:column; align-items:center; position:absolute; top:112px">
+        <div class="pov-line" id="h2a">e o celular</div>
+        <div class="pov-line" id="h2b"><span class="hl">vibra.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== C2 the notification: 2.308 - 4.615 ===== -->
+  <section id="c2" class="clip" data-start="2.308" data-duration="2.307">
+    <div class="nfloat" id="nf" style="top:520px">
+      <div class="nt"><span class="ico"><img src="kit/img/brand/kizubot-head.png" alt="" /></span><b>KizuBot™ | kizubot.com</b><span class="tm">19:19</span></div>
+      <div class="nx"><div>pokemonCaught ~</div><div>I've caught feraligatr</div></div>
+    </div>
+  </section>
+
+  <!-- ===== C3 the image: blurred guess -> sharp on the drop: 4.615 - 9.231 ===== -->
+  <section id="c3" class="clip" data-start="4.615" data-duration="4.616">
+    <div class="layer" id="c3in">
+      <div id="gold"></div>
+      <div class="layer" id="spks"></div>
+      <div class="ptag" id="ptag" style="left:150px; top:232px">print real de cliente</div>
+      <div class="printcard" id="card" style="left:160px; top:300px; width:760px; height:806px">
+        <div class="zoom" id="cardImg"><img src="kit/img/prints/shiny-feraligatr--card.png" alt="" /></div>
+        <svg viewBox="0 0 760 806" preserveAspectRatio="none">
+          <rect id="hl1" x="214" y="290" width="334" height="62" rx="14" fill="none" stroke="#fbbf24" stroke-width="7" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <rect id="hl2" x="466" y="398" width="214" height="86" rx="14" fill="none" stroke="#c6ff3d" stroke-width="6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+        </svg>
+      </div>
+      <div class="pov" id="povG" style="top:560px">
+        <div class="pov-line md" id="g1">adivinha</div>
+        <div class="pov-line md" id="g2">o que <span class="hl">era?</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== C4 the context (real quote): 9.231 - 11.538 ===== -->
+  <section id="c4" class="clip" data-start="9.231" data-duration="2.307">
+    <div class="layer" id="c4in">
+      <div id="pull"><div id="p1">“eu tava relaxado assistindo</div><div id="p2"><b>um filme c a minha mulher</b>”</div></div>
+      <div class="ptag" id="ptag2" style="left:150px; top:470px">print real de cliente</div>
+      <div class="printcard" id="qc1" style="left:150px; top:540px; width:780px; height:146px"><div class="zoom"><img src="kit/img/prints/shiny-feraligatr--quote.png" alt="" /></div></div>
+      <div class="printcard" id="qc2" style="left:150px; top:706px; width:780px; height:152px"><div class="zoom"><img src="kit/img/prints/shiny-feraligatr--alarm.png" alt="" /></div></div>
+    </div>
+  </section>
+
+  <!-- ===== C5 POV close: 11.538 - 13.846 ===== -->
+  <section id="c5" class="clip" data-start="11.538" data-duration="2.308">
+    <div class="pov" id="povEnd" style="top:320px">
+      <div class="pov-line md" id="e1">Play no filme.</div>
+      <div class="pov-line md inv" id="e2" style="margin-top:22px">Shiny no</div>
+      <div class="pov-line md inv" id="e3">automático.</div>
+    </div>
+  </section>
+
+  <!-- ===== C6 end card: 13.846 - 17.2 ===== -->
+  <section id="c6" class="clip" data-start="13.846" data-duration="3.354">
+    <div class="layer" id="endTint"></div>
+    <div class="kz-end" id="c6in">
+      <div style="position:relative; width:560px" id="logoBox">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><span>Você <b>pausaria</b></span><span>o filme?</span></div>
+    </div>
+  </section>
+
+  <div id="blk"></div>
+  <div id="flash"></div>
+</div>
+<script>
+  (function () {
+    const box = document.getElementById("spks");
+    const r = KZ.rng(50);
+    for (let i = 0; i < 16; i++) {
+      const d = document.createElement("div");
+      d.className = "spk";
+      d.style.left = (150 + r() * 780) + "px"; d.style.top = (260 + r() * 900) + "px";
+      const s = 10 + r() * 16; d.style.width = s + "px"; d.style.height = s + "px";
+      box.appendChild(d);
+    }
+  })();
+
+  const tl = gsap.timeline({ paused: true });
+  const D = 17.2;
+  const b = KZ.beats(104);                 // beat 0.5769 s, bar 2.3077 s
+  const T2 = b(4), T3 = b(8), T4 = b(12), T5 = b(16), T6 = b(20), T7 = b(24);
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+
+  // ---------- ambient: TV flicker, film pan, slow push ----------
+  tl.fromTo("#film", { x: 0 }, { x: -60, duration: D, ease: "none" }, 0);
+  const fl = [0.0, 0.25, 0.05, 0.35, 0.1, 0.2, 0.0, 0.3, 0.08, 0.18, 0.02, 0.28, 0.06, 0.22, 0.0, 0.3, 0.1, 0.2];
+  fl.forEach(function (v, i) {
+    if (i === 0) tl.fromTo("#tvFlick", { opacity: 0 }, { opacity: v, duration: 0.4, ease: "sine.inOut" }, 0);
+    else tl.to("#tvFlick", { opacity: v, duration: 0.45, ease: "sine.inOut" }, i * 0.95);
+  });
+  tl.fromTo("#tvWash", { opacity: 0.85 }, { opacity: 1, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 17 }, 0);
+  tl.fromTo("#worldIn", { scale: 1.07 }, { scale: 1.0, duration: T2, ease: "power2.out" }, 0);
+  // the phone on the couch buzzes on frame 0
+  tl.fromTo("#cpLit", { opacity: 0 }, { opacity: 1, duration: 0.08 }, 0);
+  tl.fromTo("#phGlow", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 0);
+  KZ.shake(tl, "#couchPhoneIn", 0.0, 6, 0.3, 3);
+  KZ.shake(tl, "#couchPhoneIn", b(2), 6, 0.3, 4);
+
+  // ---------- C1 hook ----------
+  tl.fromTo("#povTag", { scale: 1.15 }, { scale: 1, duration: 0.3, ease: "power3.out" }, 0);
+  tl.fromTo("#h1", { scale: 1.08, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, 0);
+  tl.to("#h1", { y: -30, opacity: 0, duration: 0.12, ease: "power2.in" }, b(2) - 0.12);
+  tl.fromTo("#h2a", { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2.2)" }, b(2));
+  tl.fromTo("#h2b", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)" }, b(2) + 0.12);
+  KZ.shake(tl, "#h2", b(3), 12, 0.3, 9);
+  tl.to("#hookBox", { scale: 0.86, opacity: 0, y: -60, duration: 0.16, ease: "power2.in" }, T2 - 0.16);
+
+  // ---------- C2 the notification flies out of the phone ----------
+  tl.to("#dim", { opacity: 0.45, duration: 0.3 }, T2);
+  tl.fromTo("#nf", { x: 230, y: 1000, scale: 0.2, opacity: 0 }, { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "power4.out" }, b(5) - 0.05);
+  KZ.shake(tl, "#couchPhoneIn", b(5) - 0.1, 6, 0.3, 5);
+  tl.to("#nf", { y: -16, duration: 1.4, ease: "sine.inOut" }, b(5) + 0.4);
+  tl.to("#nf", { scale: 0.85, opacity: 0, y: -200, duration: 0.2, ease: "power2.in" }, T3 - 0.2);
+
+  // ---------- C3 blurred image + the guess (build) -> sharp on the drop ----------
+  tl.to("#dim", { opacity: 0.7, duration: 0.3 }, T3);
+  tl.fromTo("#card", { y: 900, scale: 0.6, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "power4.out" }, T3);
+  tl.fromTo("#cardImg", { filter: "blur(30px) brightness(0.8)" }, { filter: "blur(26px) brightness(0.8)", duration: 2.0, ease: "none" }, T3);
+  tl.fromTo("#g1", { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2.2)" }, b(9));
+  tl.fromTo("#g2", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)" }, b(9) + 0.14);
+  KZ.punch(tl, "#povG", b(10), 1.06, 0.3);
+  KZ.punch(tl, "#povG", b(11), 1.1, 0.25);
+  tl.fromTo("#card", { rotation: 0 }, { rotation: 1.5, duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 9, immediateRender: false }, b(10));
+  tl.to("#povG", { scale: 0.6, opacity: 0, duration: 0.14, ease: "power2.in" }, T4 - 0.14);
+  tl.fromTo("#blk", { opacity: 0 }, { opacity: 0.6, duration: 0.1, ease: "power2.in" }, T4 - 0.2);
+  tl.to("#blk", { opacity: 0, duration: 0.05, ease: "none" }, T4 - 0.02);
+  // THE DROP: snaps sharp
+  KZ.flash(tl, "#flash", T4, 0.8, "#fff7d6");
+  tl.to("#cardImg", { filter: "blur(0px) brightness(1)", duration: 0.12, ease: "power2.out" }, T4);
+  tl.fromTo("#card", { scale: 1.12 }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, T4);
+  KZ.shake(tl, "#c3in", T4 + 0.04, 14, 0.3, 51);
+  tl.fromTo("#gold", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }, T4);
+  tl.fromTo("#ptag", { scale: 2.4, opacity: 0, rotation: -14 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.24, ease: "power4.out" }, T4 + 0.25);
+  document.querySelectorAll(".spk").forEach(function (el, i) {
+    const rr = KZ.rng(300 + i);
+    const t = T4 + 0.05 + rr() * 0.5;
+    tl.fromTo(el, { scale: 0, opacity: 0, rotation: 45 }, { scale: 1.4, opacity: 1, rotation: 135, duration: 0.35, ease: "power2.out" }, t);
+    tl.to(el, { scale: 0, opacity: 0, duration: 0.5, ease: "power2.in" }, t + 0.45 + rr() * 0.6);
+  });
+  tl.to("#hl1", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, b(13.5));
+  tl.to("#hl2", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, b(14.5));
+  tl.to("#card", { rotation: -0.8, y: -10, duration: 1.6, ease: "sine.inOut" }, T4 + 0.5);
+  tl.to("#c3in", { scale: 0.94, opacity: 0, duration: 0.18, ease: "power2.in" }, T5 - 0.18);
+
+  // ---------- C4 the real context ----------
+  tl.fromTo("#p1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T5);
+  tl.fromTo("#p2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T5 + 0.15);
+  tl.fromTo("#qc1", { x: -120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, b(17));
+  tl.fromTo("#ptag2", { scale: 2, opacity: 0, rotation: 10 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.24, ease: "power4.out" }, b(17) + 0.2);
+  tl.fromTo("#qc2", { x: 120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, b(18));
+  tl.to("#c4in", { scale: 0.94, opacity: 0, duration: 0.18, ease: "power2.in" }, T6 - 0.18);
+
+  // ---------- C5 POV close ----------
+  tl.to("#dim", { opacity: 0.2, duration: 0.35 }, T6);
+  tl.fromTo("#e1", { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2.2)" }, T6);
+  tl.fromTo("#e2", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, b(21));
+  tl.fromTo("#e3", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, b(21) + 0.14);
+  KZ.shake(tl, "#povEnd", b(21) + 0.2, 10, 0.24, 52);
+  tl.to("#povEnd", { scale: 0.9, opacity: 0, duration: 0.16, ease: "power2.in" }, T7 - 0.16);
+
+  // ---------- C6 end card + sonic logo ----------
+  tl.to("#endTint", { opacity: 1, duration: 0.3, ease: "power2.out" }, T7);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T7 + 0.05);
+  KZ.eyePulse(tl, "#eye2", T7 + 0.15, 3);
+  KZ.rise(tl, "#endUrl", T7 + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T7 + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, T7 + 0.6);
+  // loop seam: back to the couch of frame 0
+  tl.to(["#c6in", "#endTint"], { opacity: 0, duration: 0.38, ease: "power1.in" }, D - 0.45);
+  tl.to("#dim", { opacity: 0, duration: 0.38, ease: "power1.in" }, D - 0.45);
+  tl.to("#worldIn", { scale: 1.07, duration: 0.38, ease: "power1.in" }, D - 0.45);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

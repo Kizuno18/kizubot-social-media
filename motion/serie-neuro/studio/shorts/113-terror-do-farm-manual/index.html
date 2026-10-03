@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>113 O verdadeiro terror do PxG</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ============ F15 TERROR NO PXG — horror VHS system (shared by 111-115) ============ */
+  :root {
+    --hz-bg: #060203; --hz-red: #ff2a2a; --hz-blood: #8a0b10; --hz-bone: #efe6d8; --hz-dim: #7a6a64;
+    --hz-gold: #ffd25a; --hz-cool: #dfe9ff;
+  }
+  #root { background: var(--hz-bg); }
+  .hz-bg-red { position: absolute; inset: 0; background:
+      radial-gradient(60% 38% at 50% 40%, rgba(120, 8, 14, 0.55) 0%, rgba(40, 3, 6, 0.35) 45%, rgba(6, 2, 3, 0) 75%),
+      linear-gradient(180deg, #0d0405 0%, #060203 60%, #040102 100%); }
+  .hz-bg-violet { position: absolute; inset: 0; opacity: 0; background:
+      radial-gradient(65% 42% at 50% 42%, rgba(91, 33, 182, 0.55) 0%, rgba(40, 12, 80, 0.35) 45%, rgba(8, 4, 16, 0) 78%),
+      linear-gradient(180deg, #0e0818 0%, #08050f 100%); }
+  #grain { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.06; mix-blend-mode: screen; pointer-events: none; z-index: 30; }
+  .hz-scan { position: absolute; inset: 0; pointer-events: none; z-index: 31;
+    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0 2px, rgba(0, 0, 0, 0) 2px 5px); }
+  #track { position: absolute; left: -40px; right: -40px; top: 0; height: 150px; z-index: 32; pointer-events: none; opacity: 0; mix-blend-mode: screen;
+    background:
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.10) 0 1px, rgba(255, 255, 255, 0) 1px 4px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(220, 220, 255, 0.16) 42%, rgba(255, 255, 255, 0.30) 50%, rgba(220, 220, 255, 0.16) 58%, rgba(255, 255, 255, 0) 100%); }
+  #flick { position: absolute; inset: 0; background: #000; opacity: 0; z-index: 33; pointer-events: none; }
+  .hz-vig { position: absolute; inset: -60px; z-index: 29; pointer-events: none;
+    background: radial-gradient(75% 60% at 50% 46%, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.78) 100%); }
+  .hz-osd { position: absolute; z-index: 34; font-family: "VT323", monospace; font-size: 60px; color: #f2f2f2; letter-spacing: 0.04em;
+    text-shadow: -3px 0 rgba(255, 30, 60, 0.75), 3px 0 rgba(40, 220, 255, 0.6); }
+  .kz-progress { background: rgba(255, 255, 255, 0.06); }
+  .kz-progress > div { background: linear-gradient(90deg, #8a0b10, #ff2a2a); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  #blackout { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 45; }
+
+  .hz-title { font-family: "Creepster", cursive; color: var(--hz-bone); line-height: 1.12; letter-spacing: 0.02em;
+    text-shadow: 0 0 30px rgba(255, 30, 30, 0.35), 0 6px 0 rgba(0, 0, 0, 0.6); }
+  .hz-narr { font-family: "Special Elite", monospace; color: var(--hz-bone); font-size: 66px; line-height: 1.22; text-align: center;
+    text-shadow: 0 0 18px rgba(0, 0, 0, 0.9), 0 0 2px rgba(0, 0, 0, 1); }
+  .hz-caret { display: inline-block; color: var(--hz-red); margin-left: 4px; }
+  .gl { display: grid; }
+  .gl > * { grid-area: 1 / 1; }
+  .gl .gr, .gl .gc { opacity: 0; mix-blend-mode: screen; }
+  .gl .gr { color: #ff1f3d !important; }
+  .gl .gc { color: #23e0ff !important; }
+  .gl .gb { position: relative; z-index: 2; }
+
+
+  /* ============ 113 specifics: horror trailer cards ============ */
+  .hz-bg-red { background:
+      radial-gradient(70% 40% at 50% 104%, rgba(150, 10, 18, 0.55) 0%, rgba(60, 4, 8, 0.25) 50%, rgba(6, 2, 3, 0) 80%),
+      linear-gradient(180deg, #050102 0%, #080203 60%, #0d0304 100%); }
+  .card { position: absolute; inset: 0; }
+  .ht { position: absolute; left: 90px; right: 90px; text-align: center; text-transform: uppercase; }
+  #h1 { top: 300px; font-size: 118px; }
+  #h2 { top: 418px; font-size: 250px; color: var(--hz-red); line-height: 1.0; text-shadow: 0 0 60px rgba(255, 20, 20, 0.6), 0 8px 0 rgba(0, 0, 0, 0.7); }
+  #h3 { top: 680px; font-size: 140px; }
+  .beat { position: absolute; left: 90px; right: 200px; text-align: center; font-family: "Special Elite", monospace; color: var(--hz-bone); text-shadow: 0 0 24px rgba(0, 0, 0, 0.9); }
+  .streak { position: absolute; left: -200px; right: -200px; height: 70px; opacity: 0; mix-blend-mode: screen;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 60, 60, 0.85) 0%, rgba(255, 30, 30, 0.35) 25%, rgba(255, 0, 0, 0) 70%); }
+  #gamer { position: absolute; left: 140px; top: 900px; width: 800px; height: 560px; }
+  #monGlow { position: absolute; left: 190px; top: 840px; width: 700px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 40, 40, 0.38) 0%, rgba(255, 20, 20, 0.12) 45%, rgba(255, 0, 0, 0) 70%); }
+  /* 8 horas */
+  #big8 { position: absolute; left: 0; right: 0; top: 230px; text-align: center; font: 400 760px "Creepster", cursive; line-height: 1; color: #d0141e; text-shadow: 0 0 90px rgba(255, 0, 0, 0.55), 0 14px 0 rgba(0, 0, 0, 0.8); }
+  #handWrap { position: absolute; left: 540px; top: 640px; width: 0; height: 0; opacity: 0.55; }
+  #hand { position: absolute; left: -6px; top: -330px; width: 12px; height: 330px; border-radius: 6px; background: linear-gradient(180deg, #ff2a2a, rgba(255, 42, 42, 0.2)); transform-origin: 6px 330px; box-shadow: 0 0 30px rgba(255, 0, 0, 0.6); }
+  /* clicando */
+  #cursor { position: absolute; left: 400px; top: 440px; width: 320px; height: 440px; transform-origin: 30px 30px; }
+  .ring { position: absolute; left: 290px; top: 330px; width: 240px; height: 240px; border-radius: 50%; border: 8px solid rgba(255, 42, 42, 0.9); opacity: 0; }
+  /* sozinho */
+  #lone { position: absolute; left: 470px; top: 820px; width: 140px; height: 160px; }
+  #loneGlow { position: absolute; left: 290px; top: 640px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(170, 200, 255, 0.22) 0%, rgba(170, 200, 255, 0) 60%); }
+  /* o sono vem: eyelids */
+  .lid { position: absolute; left: -200px; right: -200px; height: 1100px; background: #000; }
+  #lidT { top: -1100px; border-radius: 0 0 50% 50% / 0 0 30% 30%; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9); }
+  #lidB { top: 1920px; border-radius: 50% 50% 0 0 / 30% 30% 0 0; box-shadow: 0 -30px 60px rgba(0, 0, 0, 0.9); }
+  /* shiny */
+  #star { position: absolute; left: 340px; top: 470px; width: 400px; height: 400px; }
+  #starGlow { position: absolute; left: 190px; top: 320px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(255, 210, 90, 0.45) 0%, rgba(255, 210, 90, 0) 60%); }
+  /* title */
+  #tt1 { position: absolute; left: 90px; right: 90px; top: 360px; text-align: center; font-size: 240px; color: var(--hz-red); line-height: 1.0; text-transform: uppercase;
+    text-shadow: 0 0 70px rgba(255, 20, 20, 0.65), 0 10px 0 rgba(0, 0, 0, 0.8); }
+  #tt2 { position: absolute; left: 90px; right: 90px; top: 590px; text-align: center; font-size: 210px; color: var(--hz-red); line-height: 1.0; text-transform: uppercase;
+    text-shadow: 0 0 70px rgba(255, 20, 20, 0.65), 0 10px 0 rgba(0, 0, 0, 0.8); }
+  #tt3 { position: absolute; left: 90px; right: 200px; top: 900px; text-align: center; font-size: 58px; letter-spacing: 0.04em; }
+  #ttRule { position: absolute; left: 290px; width: 500px; top: 870px; height: 3px; background: linear-gradient(90deg, rgba(255,42,42,0), rgba(255,42,42,0.9), rgba(255,42,42,0)); }
+  /* twist */
+  #ouNao { position: absolute; left: 90px; right: 90px; top: 360px; text-align: center; font: 400 170px "Archivo Black", sans-serif; text-transform: uppercase; color: var(--kz-lime); line-height: 1.0; text-shadow: 0 12px 0 rgba(0, 0, 0, 0.35), 0 0 60px rgba(198, 255, 61, 0.35); }
+  #robotWrap { position: absolute; left: 160px; top: 980px; width: 760px; transform-origin: 380px 380px; }
+  #robot { width: 760px; display: block; }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  #wm { position: absolute; left: 190px; top: 300px; width: 700px; }
+  .stamp { position: absolute; padding: 22px 36px; border-radius: 26px; font: 400 80px "Archivo Black", sans-serif; text-transform: uppercase; line-height: 1; }
+  #st1 { left: 170px; top: 610px; background: var(--kz-lime); color: #111; box-shadow: 0 14px 0 #5b7a12; }
+  #st2 { left: 110px; top: 780px; background: #fff; color: #2e1065; box-shadow: 0 14px 0 #6d28d9; }
+  .slog { position: absolute; left: 90px; right: 200px; text-align: center; font: 400 88px "Archivo Black", sans-serif; text-transform: uppercase; line-height: 1.05; color: #fff; }
+  #sl1 { top: 470px; } #sl2 { top: 575px; color: var(--kz-lime); }
+  #slSub { position: absolute; left: 90px; right: 200px; top: 720px; text-align: center; font: 700 56px "Inter", sans-serif; color: var(--kz-lav); }
+  /* end */
+  #endBg { position: absolute; inset: 0; background: radial-gradient(60% 40% at 50% 40%, rgba(91, 33, 182, 0.6) 0%, rgba(8, 4, 16, 0) 75%), #08050f; }
+  .ask { font: 900 62px "Inter", sans-serif; color: var(--kz-ink); max-width: 700px; line-height: 1.12; }
+  .ask b { color: var(--hz-gold); }
+  #pumpkin { position: absolute; left: 92px; top: 800px; width: 150px; height: 140px; }
+  #loopBg { position: absolute; inset: 0; opacity: 0; z-index: 46; pointer-events: none; background:
+      radial-gradient(70% 40% at 50% 104%, rgba(150, 10, 18, 0.55) 0%, rgba(60, 4, 8, 0.25) 50%, rgba(6, 2, 3, 0) 80%), #060203; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="19.4" data-fps="30">
+  <div class="hz-bg-red" id="bgRed"></div>
+  <div class="hz-bg-violet" id="bgViolet"></div>
+
+  <!-- S1 hook: 0 - 1.846 -->
+  <section id="s1" class="clip" data-start="0" data-duration="1.846">
+    <div id="s1in" class="card">
+      <div id="monGlow"></div>
+      <svg id="gamer" viewBox="0 0 800 560">
+        <rect x="230" y="40" width="340" height="220" rx="16" fill="#1a0507"/>
+        <rect id="scr" x="246" y="54" width="308" height="188" rx="8" fill="#ff2a2a" opacity="0.85"/>
+        <rect x="246" y="54" width="308" height="188" rx="8" fill="url(#scrg)"/>
+        <rect x="380" y="260" width="40" height="50" fill="#120304"/>
+        <rect x="310" y="306" width="180" height="14" rx="6" fill="#120304"/>
+        <rect x="60" y="330" width="680" height="26" rx="6" fill="#0d0203"/>
+        <rect x="280" y="318" width="240" height="12" rx="4" fill="#3a0a0d"/>
+        <path d="M400 150 C432 150 452 174 452 204 C452 226 442 242 428 250 C478 262 520 296 532 360 L268 360 C280 296 322 262 372 250 C358 242 348 226 348 204 C348 174 368 150 400 150 Z" fill="#030102"/>
+        <path d="M250 360 C250 330 290 300 400 300 C510 300 550 330 550 360 L560 560 L240 560 Z" fill="#050203"/>
+        <defs><linearGradient id="scrg" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/><stop offset="100%" stop-color="#000000" stop-opacity="0.35"/></linearGradient></defs>
+      </svg>
+      <div class="ht hz-title" id="h1">O verdadeiro</div>
+      <div class="ht hz-title" id="h2"><span class="gl" id="h2g" style="display:inline-grid"><span class="gr">Terror</span><span class="gc">Terror</span><span class="gb">Terror</span></span></div>
+      <div class="ht hz-title" id="h3">do PxG.</div>
+    </div>
+  </section>
+
+  <!-- trailer beats -->
+  <section id="b1" class="clip" data-start="1.846" data-duration="0.923">
+    <div id="b1in" class="card">
+      <div class="streak" id="sk_b1in" style="top:1100px"></div>
+      <div id="big8">8</div>
+      <div id="handWrap"><div id="hand"></div></div>
+      <div class="beat" id="b1t" style="top:1060px; font-size:150px">horas.</div>
+    </div>
+  </section>
+  <section id="b2" class="clip" data-start="2.769" data-duration="0.923">
+    <div id="b2in" class="card">
+      <div class="streak" id="sk_b2in" style="top:1040px"></div>
+      <div class="ring" id="r1"></div><div class="ring" id="r2"></div><div class="ring" id="r3"></div><div class="ring" id="r4"></div>
+      <svg id="cursor" viewBox="0 0 26 36"><path d="M2 2 L2 30 L9 23 L14 34 L19 32 L14 21 L24 21 Z" fill="#efe6d8" stroke="#1a0b0b" stroke-width="2" stroke-linejoin="round"/></svg>
+      <div class="beat" id="b2t" style="top:1000px; font-size:130px">clicando.</div>
+    </div>
+  </section>
+  <section id="b3" class="clip" data-start="3.692" data-duration="0.923">
+    <div id="b3in" class="card">
+      <div class="streak" id="sk_b3in" style="top:600px"></div>
+      <div id="loneGlow"></div>
+      <div id="eyeGlint" style="position:absolute; left:742px; top:700px; width:90px; height:90px; border-radius:50%; opacity:0; background: radial-gradient(circle, rgba(250,230,255,1) 0%, rgba(192,132,252,0.9) 16%, rgba(168,85,247,0.25) 42%, rgba(168,85,247,0) 70%)"></div>
+      <svg id="lone" viewBox="0 0 140 160"><rect x="20" y="10" width="100" height="64" rx="6" fill="#cfdcff"/><rect x="62" y="74" width="16" height="16" fill="#2a2a33"/><rect x="40" y="90" width="60" height="6" rx="3" fill="#2a2a33"/><path d="M38 112 h64 v14 h-64 z M50 126 v30 M90 126 v30 M44 100 h52 v12 h-52 z" stroke="#141418" stroke-width="8" fill="#141418"/></svg>
+      <div class="beat" id="b3t" style="top:560px; font-size:130px">sozinho.</div>
+    </div>
+  </section>
+  <section id="b4" class="clip" data-start="4.615" data-duration="0.923">
+    <div id="b4in" class="card">
+      <div id="haze" style="position:absolute; inset:0; background: radial-gradient(70% 45% at 50% 52%, rgba(190, 70, 60, 0.55) 0%, rgba(110, 30, 30, 0.35) 45%, rgba(30, 6, 8, 0) 80%)"></div>
+      <div class="streak" id="sk_b4in" style="top:915px"></div>
+      <div class="beat" id="b4t" style="top:880px; font-size:110px">o sono vem.</div>
+      <div class="lid" id="lidT"></div><div class="lid" id="lidB"></div>
+    </div>
+  </section>
+  <section id="b5" class="clip" data-start="5.538" data-duration="1.847">
+    <div id="b5in" class="card">
+      <div class="streak" id="sk_b5in" style="top:990px"></div>
+      <div id="starGlow"></div>
+      <svg id="star" viewBox="0 0 40 40"><path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ffd25a"/><circle cx="20" cy="20" r="3" fill="#fff8dc"/></svg>
+      <div class="beat" id="b5t" style="top:950px; font-size:120px; color:#ffd25a">o shiny…</div>
+      <div class="ht hz-title" id="b6t" style="top:900px; font-size:260px; color:var(--hz-red); opacity:0"><span class="gl" id="fogeG" style="display:inline-grid"><span class="gr">foge.</span><span class="gc">foge.</span><span class="gb">foge.</span></span></div>
+    </div>
+  </section>
+
+  <!-- title card: 7.385 - 9.231 -->
+  <section id="s3" class="clip" data-start="7.385" data-duration="1.846">
+    <div id="s3in" class="card">
+      <div class="hz-title" id="tt1"><span class="gl" id="tt1g" style="display:inline-grid"><span class="gr">Farm</span><span class="gc">Farm</span><span class="gb">Farm</span></span></div>
+      <div class="hz-title" id="tt2">Manual</div>
+      <div id="ttRule"></div>
+      <div class="hz-narr" id="tt3"><span id="tt3t"></span></div>
+    </div>
+  </section>
+
+  <!-- twist: 9.231 - 11.077 -->
+  <section id="s4" class="clip" data-start="9.231" data-duration="1.846">
+    <div id="s4in" class="card">
+      <div id="ouNao">Ou não.</div>
+    </div>
+  </section>
+
+  <!-- claims: 11.077 - 13.846 -->
+  <section id="s5" class="clip" data-start="11.077" data-duration="2.769">
+    <div id="s5in" class="card">
+      <img id="wm" src="kit/img/brand/kizubot-wordmark.png" alt="" />
+      <div class="stamp" id="st1">100% AFK</div>
+      <div class="stamp" id="st2">PC desligado</div>
+    </div>
+  </section>
+
+  <!-- slogan: 13.846 - 15.692 -->
+  <section id="s6" class="clip" data-start="13.846" data-duration="1.846">
+    <div id="s6in" class="card">
+      <div class="slog" id="sl1">PC desligado,</div>
+      <div class="slog" id="sl2">farm ligado.</div>
+      <div id="slSub">o KizuBot farma por você</div>
+    </div>
+  </section>
+
+  <!-- robot dances through the funk (9.231 - 15.692) -->
+  <section id="rb" class="clip" data-start="9.231" data-duration="6.461">
+    <div id="robotWrap">
+      <img id="robot" src="kit/img/brand/kizubot-robot.png" alt="" />
+      <div class="eye" id="eyeR" style="left:258px; top:43px; width:110px; height:110px"></div>
+    </div>
+  </section>
+
+  <!-- end card: 15.692 - 19.4 -->
+  <section id="s7" class="clip" data-start="15.692" data-duration="3.708">
+    <div id="endBg"></div>
+    <div class="kz-end" id="s7in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye7" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">Qual o seu pior <b>pesadelo no PxG?</b></div>
+    </div>
+    <svg id="pumpkin" viewBox="0 0 150 140">
+      <defs><radialGradient id="pg" cx="50%" cy="45%" r="60%"><stop offset="0%" stop-color="#ff9a3c"/><stop offset="100%" stop-color="#c2410c"/></radialGradient></defs>
+      <path d="M72 22 C70 10 78 4 86 6 L84 14 C80 14 78 18 79 24 Z" fill="#3f6212"/>
+      <ellipse cx="45" cy="80" rx="38" ry="48" fill="url(#pg)"/><ellipse cx="105" cy="80" rx="38" ry="48" fill="url(#pg)"/><ellipse cx="75" cy="80" rx="40" ry="52" fill="url(#pg)"/>
+      <path d="M58 104 Q75 116 92 104 L88 98 L82 104 L75 98 L68 104 L62 98 Z" fill="#1a0b02"/>
+      <circle cx="75" cy="66" r="15" fill="#1a0b02"/><circle id="pkEye" cx="75" cy="66" r="11" fill="#c084fc"/>
+    </svg>
+  </section>
+
+  <canvas id="grain" width="90" height="320"></canvas>
+  <div class="hz-scan" id="scan"></div>
+  <div id="track"></div>
+  <div class="hz-vig" id="vig"></div>
+  <div id="flick"></div>
+  <div class="hz-osd" id="osd1" style="left:70px; top:120px">▶ PLAY</div>
+  <div class="hz-osd" id="osdTc" style="left:70px; top:1580px">SP 00:00:00</div>
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+  <div id="blackout"></div>
+  <div id="loopBg"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 19.4;
+  const b = KZ.beats(130);           // beat = 0.4615 s
+
+  /* ---------- F15 horror helpers (inline, shared by 111-115) ---------- */
+  const HZ = {};
+  HZ.hash = function (n) { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+  // seven-segment LED display (SVG), chars like [" ", "3", ":", "3", "3"]
+  HZ.seg = function (el, chars) {
+    const T = 16, L = 76, V = 74;
+    const h = (cx, cy) => [[cx - L / 2, cy], [cx - L / 2 + T / 2, cy - T / 2], [cx + L / 2 - T / 2, cy - T / 2], [cx + L / 2, cy], [cx + L / 2 - T / 2, cy + T / 2], [cx - L / 2 + T / 2, cy + T / 2]];
+    const v = (cx, cy) => [[cx, cy - V / 2], [cx + T / 2, cy - V / 2 + T / 2], [cx + T / 2, cy + V / 2 - T / 2], [cx, cy + V / 2], [cx - T / 2, cy + V / 2 - T / 2], [cx - T / 2, cy - V / 2 + T / 2]];
+    const S = { a: h(50, 9), g: h(50, 90), d: h(50, 171), f: v(9, 49.5), b: v(91, 49.5), e: v(9, 130.5), c: v(91, 130.5) };
+    const MAP = { "0": "abcdef", "1": "bc", "2": "abged", "3": "abgcd", "4": "fgbc", "5": "afgcd", "6": "afgedc", "7": "abc", "8": "abcdefg", "9": "abcdfg", " ": "" };
+    let x = 26, out = "";
+    chars.forEach(function (c) {
+      if (c === ":") {
+        out += '<g class="colon"><rect class="on" x="' + (x + 4) + '" y="50" width="20" height="20" rx="3" transform="skewX(-8)"/><rect class="on" x="' + (x - 6) + '" y="112" width="20" height="20" rx="3" transform="skewX(-8)"/></g>';
+        x += 44; return;
+      }
+      const on = MAP[c] || "";
+      out += '<g transform="translate(' + x + ',0) skewX(-8)">';
+      "abcdefg".split("").forEach(function (k) {
+        out += '<polygon class="' + (on.indexOf(k) >= 0 ? "on" : "off") + '" points="' + S[k].map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" ") + '"/>';
+      });
+      out += "</g>";
+      x += 124;
+    });
+    el.innerHTML = '<svg viewBox="0 0 ' + (x + 6) + ' 182" width="100%">' + out + "</svg>";
+    return el.querySelector("svg");
+  };
+  // low-res VHS grain redrawn on a quantized clock (pure function of time)
+  HZ.grain = function (tl, canvas, D, fps) {
+    const ctx = canvas.getContext("2d"), W = canvas.width, H = canvas.height;
+    const img = ctx.createImageData(W, H);
+    let last = -1;
+    const draw = function (k) {
+      const r = KZ.rng(9000 + k * 7), d = img.data;
+      for (let y = 0; y < H; y++) {
+        const row = 0.75 + 0.5 * r();          // horizontal streaks
+        for (let x2 = 0; x2 < W; x2++) {
+          const i = (y * W + x2) * 4, vv = Math.min(255, r() * 255 * row);
+          d[i] = d[i + 1] = d[i + 2] = vv; d[i + 3] = 255;
+        }
+      }
+      ctx.putImageData(img, 0, 0);
+    };
+    const o = { t: 0 };
+    tl.fromTo(o, { t: 0 }, { t: D, duration: D, ease: "none", onUpdate: function () {
+      const k = Math.floor(o.t * (fps || 15));
+      if (k !== last) { last = k; draw(k); }
+    } }, 0);
+    draw(0);
+  };
+  // ambient flicker on an overlay between [from, to): pure function of quantized time
+  HZ.flicker = function (tl, el, from, to, seed, strength, rate) {
+    const o = { t: from };
+    tl.fromTo(o, { t: from }, { t: to, duration: to - from, ease: "none", onUpdate: function () {
+      const k = Math.floor(o.t * (rate || 15));
+      const hsh = HZ.hash(k * 3.17 + seed);
+      el.style.opacity = hsh > 0.88 ? (strength * (0.45 + 0.55 * HZ.hash(k + seed * 2))).toFixed(3) : "0";
+    } }, from);
+    tl.set(el, { opacity: 0 }, to);
+  };
+  // RGB-split jitter on a .gl stack (base stays legible)
+  HZ.glitch = function (tl, stack, at, dur, amp) {
+    const el = typeof stack === "string" ? document.querySelector(stack) : stack;
+    const copies = el.querySelectorAll(".gr, .gc");
+    const o = { a: 0 };
+    tl.set(copies, { opacity: 0.85 }, at);
+    tl.fromTo(o, { a: 1 }, { a: 0, duration: dur, ease: "power3.in", immediateRender: false, onUpdate: function () {
+      const step = Math.floor(tl.time() * 30);
+      copies.forEach(function (c, i) {
+        gsap.set(c, { x: (HZ.hash(step * 13 + i * 7) * 2 - 1) * (amp || 12) * o.a, y: (HZ.hash(step * 29 + i * 11) * 2 - 1) * (amp || 12) * 0.35 * o.a });
+      });
+    } }, at);
+    tl.set(copies, { x: 0, y: 0, opacity: 0 }, at + dur);
+  };
+  // VHS tracking band sweep + tear jitter on a target
+  HZ.track = function (tl, at, dur, target, seed) {
+    tl.fromTo("#track", { y: -160, opacity: 0.9 }, { y: 1960, opacity: 0.9, duration: dur, ease: "none", immediateRender: false }, at);
+    tl.set("#track", { opacity: 0 }, at + dur);
+    if (target) {
+      const n = 5;
+      for (let i = 0; i < n; i++) tl.set(target, { x: (HZ.hash(seed * 5 + i) * 2 - 1) * 26, skewX: (HZ.hash(seed * 9 + i) * 2 - 1) * 4 }, at + i * 0.033);
+      tl.set(target, { x: 0, skewX: 0 }, at + n * 0.033);
+    }
+  };
+  // typed narration line
+  HZ.type = function (tl, el, text, at, cps) { KZ.typewriter(tl, el, text, at, cps || 40); };
+  // gold sparkle burst (deterministic)
+  HZ.sparks = function (tl, box, n, at, cx, cy, seed, color) {
+    const r = KZ.rng(seed);
+    for (let i = 0; i < n; i++) {
+      const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      s.setAttribute("viewBox", "0 0 40 40"); s.setAttribute("class", "spark");
+      s.innerHTML = '<path d="M20 0 L24 16 L40 20 L24 24 L20 40 L16 24 L0 20 L16 16 Z" fill="' + (color || "#ffd25a") + '"/>';
+      box.appendChild(s);
+      const ang = r() * Math.PI * 2, dist = 180 + r() * 360, sc = 0.5 + r() * 1.1;
+      tl.fromTo(s, { x: cx - 20, y: cy - 20, scale: 0, opacity: 1, rotation: 0 },
+        { x: cx - 20 + Math.cos(ang) * dist, y: cy - 20 + Math.sin(ang) * dist * 0.8 + 60, scale: sc, rotation: r() * 180, duration: 0.9 + r() * 0.5, ease: "power3.out" }, at + r() * 0.08);
+      tl.to(s, { opacity: 0, scale: 0, duration: 0.35, ease: "power2.in" }, at + 0.9 + r() * 0.4);
+    }
+  };
+
+
+  /* ---------- global layers ---------- */
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  HZ.grain(tl, document.getElementById("grain"), D, 10);
+  tl.fromTo("#vig", { scale: 1, opacity: 1 }, { scale: 1.07, opacity: 0.85, duration: b(2), ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+  const tc = document.getElementById("osdTc");
+  const clk = { t: 0 };
+  tl.fromTo(clk, { t: 0 }, { t: D, duration: D, ease: "none", onUpdate: function () {
+    const s = Math.floor(clk.t), f = Math.floor((clk.t % 1) * 30);
+    tc.textContent = "SP 00:00:" + String(s).padStart(2, "0") + ":" + String(f).padStart(2, "0");
+  } }, 0);
+  HZ.flicker(tl, document.getElementById("flick"), 0.5, 7.2, 113, 0.5, 15);
+
+  /* ---------- S1 hook ---------- */
+  KZ.slam(tl, "#h1", 0.0, 1.6);
+  tl.fromTo("#h2", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "power4.out" }, 0.1);
+  HZ.glitch(tl, "#h2g", 0.1, 0.4, 18);
+  KZ.shake(tl, "#s1in", 0.14, 14, 0.3, 3);
+  KZ.slam(tl, "#h3", 0.26, 1.6);
+  tl.fromTo("#s1in", { scale: 1.0 }, { scale: 1.08, duration: 1.846, ease: "none", immediateRender: false }, 0);
+  HZ.glitch(tl, "#h2g", 1.2, 0.2, 10);
+  tl.fromTo("#scr", { opacity: 0.85 }, { opacity: 0.55, duration: 0.12, ease: "none", yoyo: true, repeat: 7 }, 0.3);
+  tl.fromTo("#monGlow", { opacity: 0.8, scale: 0.96 }, { opacity: 1, scale: 1.04, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0);
+  HZ.track(tl, 1.35, 0.45, null, 1);
+
+  /* ---------- trailer beats (one per two beats, cut on the beat) ---------- */
+  [["#sk_b1in", 1.846], ["#sk_b2in", 2.769], ["#sk_b3in", 3.692], ["#sk_b4in", 4.615], ["#sk_b5in", 5.538]].forEach(function (p, i) {
+    tl.fromTo(p[0], { opacity: 0, scaleX: 0.2 }, { opacity: 1, scaleX: 1.15, duration: 0.18, ease: "power3.out" }, p[1]);
+    tl.to(p[0], { opacity: 0.35, scaleX: 1.0, duration: 0.6, ease: "power2.out" }, p[1] + 0.18);
+  });
+  // 8 horas: clock hand sweeps, ticks
+  tl.fromTo("#big8", { scale: 1.15, opacity: 0 }, { scale: 1.0, opacity: 1, duration: 0.3, ease: "power3.out" }, 1.846);
+  tl.fromTo("#hand", { rotation: -40 }, { rotation: 140, duration: 0.92, ease: "steps(4)" }, 1.846);
+  KZ.slam(tl, "#b1t", 1.88, 1.5);
+  // clicando: four clicks
+  [0, 0.18, 0.36, 0.54].forEach(function (o, i) {
+    const t = 2.769 + 0.04 + o;
+    tl.fromTo("#cursor", { scale: 1 }, { scale: 0.86, duration: 0.05, ease: "power2.in", immediateRender: i === 0 }, t);
+    tl.to("#cursor", { scale: 1, duration: 0.09, ease: "power2.out" }, t + 0.05);
+    tl.fromTo("#r" + (i + 1), { scale: 0.2, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.4, ease: "power2.out" }, t);
+  });
+  KZ.slam(tl, "#b2t", 2.8, 1.5);
+  // sozinho: far away, tiny, push-in
+  tl.fromTo("#b3in", { scale: 1.0 }, { scale: 1.1, duration: 0.92, ease: "none" }, 3.692);
+  tl.fromTo("#b3t", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 3.72);
+  tl.fromTo("#eyeGlint", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.15, ease: "power2.out" }, 4.05);
+  tl.to("#eyeGlint", { scaleY: 0.08, duration: 0.06, ease: "power1.in" }, 4.3);
+  tl.to("#eyeGlint", { scaleY: 1, duration: 0.06, ease: "power1.out" }, 4.36);
+  tl.to("#eyeGlint", { opacity: 0, duration: 0.12, ease: "power1.in" }, 4.46);
+  // o sono vem: eyelids close, blink
+  tl.fromTo("#b4t", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 4.64);
+  tl.fromTo("#haze", { scale: 1.0, filter: "blur(0px)" }, { scale: 1.12, filter: "blur(6px)", duration: 0.9, ease: "none" }, 4.615);
+  tl.fromTo("#lidT", { y: 0 }, { y: 760, duration: 0.6, ease: "power2.inOut" }, 4.62);
+  tl.fromTo("#lidB", { y: 0 }, { y: -780, duration: 0.6, ease: "power2.inOut" }, 4.62);
+  tl.to("#lidT", { y: 1060, duration: 0.12, ease: "power2.in" }, 5.25);
+  tl.to("#lidB", { y: -1060, duration: 0.12, ease: "power2.in" }, 5.25);
+  tl.to("#lidT", { y: 300, duration: 0.14, ease: "power2.out" }, 5.4);
+  tl.to("#lidB", { y: -300, duration: 0.14, ease: "power2.out" }, 5.4);
+  // o shiny... foge.
+  tl.fromTo("#star", { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2)" }, 5.538);
+  tl.fromTo("#starGlow", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }, 5.538);
+  tl.to("#star", { rotation: 20, scale: 1.08, duration: 0.5, ease: "sine.inOut" }, 5.94);
+  KZ.rise(tl, "#b5t", 5.6, 0.3, 30);
+  tl.to("#star", { x: 330, y: -520, scale: 0.05, rotation: 200, duration: 0.42, ease: "power3.in" }, 6.462);
+  tl.to("#starGlow", { opacity: 0, duration: 0.3, ease: "power2.in" }, 6.462);
+  tl.to("#b5t", { opacity: 0, duration: 0.1, ease: "power2.in" }, 6.42);
+  tl.set("#b6t", { opacity: 1 }, 6.5);
+  tl.fromTo("#b6t", { scale: 1.8 }, { scale: 1, duration: 0.22, ease: "power4.out", immediateRender: false }, 6.5);
+  HZ.glitch(tl, "#fogeG", 6.5, 0.45, 20);
+  KZ.shake(tl, "#b5in", 6.52, 12, 0.3, 9);
+  tl.set("#b5in", { opacity: 0 }, 7.2);
+
+  /* ---------- title card ---------- */
+  KZ.flash(tl, "#flash", 7.385, 0.55, "#ff2a2a");
+  tl.fromTo("#tt1", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 7.385);
+  HZ.glitch(tl, "#tt1g", 7.385, 0.5, 22);
+  tl.fromTo("#tt2", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 7.5);
+  KZ.shake(tl, "#s3in", 7.4, 16, 0.35, 13);
+  tl.fromTo("#ttRule", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.out" }, 7.95);
+  HZ.type(tl, "#tt3t", "Em breve no seu PC.", 8.08, 34);
+  tl.fromTo("#s3in", { scale: 1.0 }, { scale: 1.05, duration: 1.8, ease: "none", immediateRender: false }, 7.385);
+  // record scratch: rewind wobble
+  tl.to("#s3in", { x: -40, skewX: 8, duration: 0.06, ease: "none" }, 9.05);
+  tl.to("#s3in", { x: 30, skewX: -6, duration: 0.06, ease: "none" }, 9.11);
+  tl.to("#s3in", { x: 0, skewX: 0, filter: "saturate(0)", duration: 0.06, ease: "none" }, 9.17);
+  HZ.track(tl, 9.0, 0.25, null, 2);
+
+  /* ---------- twist: color + funk ---------- */
+  const TW = 9.231;
+  KZ.flash(tl, "#flash", TW, 0.9);
+  tl.set("#bgViolet", { opacity: 1 }, TW);
+  tl.set("#bgRed", { opacity: 0 }, TW);
+  tl.set("#grain", { opacity: 0 }, TW);
+  tl.set("#scan", { opacity: 0.45 }, TW);
+  tl.set(["#osd1", "#osdTc"], { opacity: 0 }, TW);
+  tl.fromTo("#ouNao", { scale: 0.2, rotation: -12, opacity: 0 }, { scale: 1, rotation: -4, opacity: 1, duration: 0.35, ease: "back.out(2.6)" }, TW);
+  for (let i = 1; i < 4; i++) KZ.punch(tl, "#ouNao", TW + b(i), 1.08, 0.3);
+  // robot bounce on every beat (funk)
+  tl.fromTo("#robotWrap", { y: 700 }, { y: 0, duration: 0.45, ease: "power4.out" }, TW + 0.05);
+  for (let i = 1; i < 14; i++) {
+    const t = TW + b(i);
+    tl.to("#robotWrap", { y: -26, rotation: (i % 2 ? 3 : -3), duration: 0.12, ease: "power2.out" }, t);
+    tl.to("#robotWrap", { y: 0, duration: 0.3, ease: "power2.in" }, t + 0.12);
+  }
+  KZ.eyePulse(tl, "#eyeR", TW + 0.4, 3);
+  tl.to("#s4in", { opacity: 0, duration: 0.12, ease: "power2.in" }, 11.077 - 0.12);
+
+  /* ---------- claims ---------- */
+  tl.fromTo("#wm", { scale: 0.5, opacity: 0, y: -40 }, { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 11.077);
+  tl.fromTo("#st1", { scale: 2.6, opacity: 0, rotation: -14 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.24, ease: "power4.out" }, 12.0);
+  KZ.shake(tl, "#s5in", 12.04, 10, 0.2, 5);
+  tl.fromTo("#st2", { scale: 2.6, opacity: 0, rotation: 12 }, { scale: 1, opacity: 1, rotation: 4, duration: 0.24, ease: "power4.out" }, 12.923);
+  KZ.shake(tl, "#s5in", 12.96, 10, 0.2, 6);
+  tl.to("#s5in", { opacity: 0, duration: 0.12, ease: "power2.in" }, 13.846 - 0.12);
+
+  /* ---------- slogan ---------- */
+  KZ.slam(tl, "#sl1", 13.846, 1.7);
+  KZ.slam(tl, "#sl2", 14.308, 1.7);
+  KZ.rise(tl, "#slSub", 14.75, 0.35, 24);
+  tl.to(["#s6in", "#robotWrap"], { opacity: 0, duration: 0.14, ease: "power2.in" }, 15.692 - 0.14);
+
+  /* ---------- end card ---------- */
+  const TE = 15.692;
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, TE);
+  KZ.eyePulse(tl, "#eye7", TE + 0.1, 2);
+  KZ.rise(tl, "#endUrl", TE + 0.46, 0.35, 30);
+  KZ.rise(tl, "#endAsk", TE + 0.92, 0.4, 30);
+  tl.fromTo("#pumpkin", { scale: 0, rotation: 20, opacity: 0 }, { scale: 1, rotation: 8, opacity: 1, duration: 0.45, ease: "back.out(2.4)" }, TE + 1.3);
+  tl.fromTo("#pkEye", { opacity: 0.3 }, { opacity: 1, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, TE + 1.45);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, TE + 0.9);
+  // loop bridge: back to the red trailer darkness
+  tl.fromTo("#loopBg", { opacity: 0 }, { opacity: 1, duration: 0.32, ease: "power1.in" }, D - 0.4);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

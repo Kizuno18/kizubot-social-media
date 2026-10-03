@@ -1,0 +1,149 @@
+{
+  "duration": 20,
+  "style": "lofi",
+  "bpm": 84,
+  "seed": 93,
+  "sections": [
+    {
+      "at": 0.0,
+      "type": "intro"
+    },
+    {
+      "at": 2.86,
+      "type": "groove",
+      "energy": 0.8
+    },
+    {
+      "at": 7.14,
+      "type": "break"
+    },
+    {
+      "at": 8.57,
+      "type": "drop",
+      "energy": 0.9
+    },
+    {
+      "at": 12.14,
+      "type": "groove",
+      "energy": 0.8
+    },
+    {
+      "at": 17.14,
+      "type": "outro"
+    }
+  ],
+  "stops": [],
+  "sfx": [
+    {
+      "t": 0.0,
+      "name": "snap",
+      "gain": -6
+    },
+    {
+      "t": 0.0,
+      "name": "kick",
+      "gain": -10
+    },
+    {
+      "t": 0.62,
+      "name": "type",
+      "gain": -12
+    },
+    {
+      "t": 1.43,
+      "name": "motif",
+      "gain": -15
+    },
+    {
+      "t": 2.86,
+      "name": "chime",
+      "gain": -10
+    },
+    {
+      "t": 4.65,
+      "name": "px-whoosh-short",
+      "gain": -16
+    },
+    {
+      "t": 5.0,
+      "name": "chime",
+      "gain": -10
+    },
+    {
+      "t": 5.9,
+      "name": "px-click",
+      "gain": -12
+    },
+    {
+      "t": 6.15,
+      "name": "snap",
+      "gain": -8
+    },
+    {
+      "t": 6.6,
+      "name": "px-click",
+      "gain": -12
+    },
+    {
+      "t": 6.96,
+      "name": "px-click",
+      "gain": -12
+    },
+    {
+      "t": 7.32,
+      "name": "px-click",
+      "gain": -12
+    },
+    {
+      "t": 8.2,
+      "name": "px-whoosh-short",
+      "gain": -16
+    },
+    {
+      "t": 8.57,
+      "name": "chime",
+      "gain": -9
+    },
+    {
+      "t": 9.77,
+      "name": "snap",
+      "gain": -8
+    },
+    {
+      "t": 10.0,
+      "name": "pop",
+      "gain": -11
+    },
+    {
+      "t": 12.14,
+      "name": "px-key-press",
+      "gain": -10
+    },
+    {
+      "t": 12.49,
+      "name": "type",
+      "gain": -13
+    },
+    {
+      "t": 13.44,
+      "name": "type",
+      "gain": -14
+    },
+    {
+      "t": 14.04,
+      "name": "snap",
+      "gain": -9
+    },
+    {
+      "t": 16.43,
+      "name": "px-whoosh",
+      "gain": -9
+    },
+    {
+      "t": 19.5,
+      "name": "chime",
+      "gain": -16
+    }
+  ],
+  "logo": 17.18
+}

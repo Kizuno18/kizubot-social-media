@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>048 POV: você foi pra praia</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F02 POV system (shared by 046-050) ================= */
+  :root { --pov-ink: #0b1620; --pov-box: #ffffff; --pov-hl: #5eead4; --pov-tag: #ff5a4e; --pov-tag-ink: #ffffff; }
+  .layer { position: absolute; inset: 0; }
+  .pov { position: absolute; left: 90px; right: 120px; top: 300px; display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 30; }
+  .pov-tag { font: 900 62px/1 "Inter", sans-serif; color: var(--pov-tag-ink); background: var(--pov-tag); padding: 14px 30px 16px; border-radius: 20px; letter-spacing: 0.02em; margin-bottom: 20px; box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25); }
+  .pov-line { font: 800 112px/1.08 "Inter", sans-serif; letter-spacing: -0.035em; color: var(--pov-ink); background: var(--pov-box); padding: 6px 30px 14px; border-radius: 26px; box-shadow: 0 16px 40px rgba(0, 40, 70, 0.28); white-space: nowrap; }
+  .pov-line + .pov-line { margin-top: -6px; }
+  .pov-line.xxl { font-size: 148px; padding: 4px 34px 16px; border-radius: 30px; }
+  .pov-line .hl { background: var(--pov-hl); border-radius: 16px; padding: 0 14px; }
+  .pov-line.inv { background: #7c3aed; color: #fff; }
+  .ptag { position: absolute; font: 900 32px "Inter", sans-serif; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: #ff5a4e; padding: 12px 22px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); z-index: 6; }
+  .printcard { position: absolute; border-radius: 30px; overflow: hidden; background: #111; border: 5px solid #ffffff; box-shadow: 0 50px 120px rgba(0, 30, 60, 0.5); }
+  .printcard .zoom { position: absolute; left: 0; top: 0; width: 100%; }
+  .printcard .zoom img { display: block; width: 100%; }
+  .printcard svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(45deg, #2a2d33 0 24px, #212328 24px 48px); font: 700 34px "JetBrains Mono", monospace; color: #8a8f99; }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .ask { display: flex; flex-direction: column; align-items: center; }
+  .ask span { font: 800 64px/1.1 "Inter", sans-serif; letter-spacing: -0.03em; color: #120c18; background: #fff; padding: 6px 26px 12px; border-radius: 20px; white-space: nowrap; }
+  .ask span + span { margin-top: -4px; }
+  .ask span b { color: #0e7490; }
+  .banner { position: absolute; left: 150px; width: 780px; padding: 22px 28px 26px; border-radius: 40px; background: rgba(255, 255, 255, 0.94); box-shadow: 0 18px 50px rgba(0, 30, 60, 0.3); text-align: left; }
+  .banner .nt { display: flex; align-items: center; gap: 16px; font: 700 30px "Inter", sans-serif; color: #3d3546; }
+  .banner .ico { width: 62px; height: 62px; border-radius: 16px; overflow: hidden; background: #1a1124; flex: none; position: relative; }
+  .banner .ico img { position: absolute; width: 90px; left: -14px; top: -6px; }
+  .banner .nt b { color: #120c18; font-weight: 800; }
+  .banner .nt .tm { margin-left: auto; color: #0e7490; font-weight: 800; }
+  .banner .nx { margin-top: 10px; font: 700 56px/1.12 "Inter", sans-serif; color: #120c18; letter-spacing: -0.02em; }
+  .cbub { position: absolute; display: flex; align-items: flex-end; gap: 18px; padding: 18px 30px 22px 34px; border-radius: 36px; background: #1f2b31; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35); }
+  .cbub b { font: 800 64px/1.05 "Inter", sans-serif; color: #fff; letter-spacing: -0.02em; white-space: nowrap; }
+  .cbub i { font: 600 30px "Inter", sans-serif; font-style: normal; color: #9fb0b8; margin-bottom: 6px; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  .kz-progress > div { background: linear-gradient(90deg, #ff5a4e, #ffd166); }
+
+  /* ================= 048: the beach ================= */
+  #worldIn { transform-origin: 540px 900px; }
+  #sky { position: absolute; left: 0; top: 0; width: 1080px; height: 920px; background: linear-gradient(180deg, #1aa6ee 0%, #5cc8f7 55%, #c7ecfc 100%); }
+  #sunGlow { position: absolute; left: 520px; top: 40px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 252, 220, 0.95), rgba(255, 240, 160, 0.45) 45%, rgba(255, 240, 160, 0)); }
+  #rays { position: absolute; left: 400px; top: -80px; width: 800px; height: 800px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.28) 0deg 7deg, rgba(255, 255, 255, 0) 7deg 22deg); -webkit-mask-image: radial-gradient(closest-side, #000 20%, transparent 100%); }
+  #sun { position: absolute; left: 715px; top: 235px; width: 170px; height: 170px; border-radius: 50%; background: #fffbe0; box-shadow: 0 0 60px #fff6b0; }
+  .cloud { position: absolute; height: 70px; border-radius: 40px; background: #ffffff; opacity: 0.92; }
+  .cloud::before, .cloud::after { content: ""; position: absolute; background: #ffffff; border-radius: 50%; }
+  .cloud::before { width: 110px; height: 110px; left: 40px; top: -55px; }
+  .cloud::after { width: 80px; height: 80px; left: 120px; top: -36px; }
+  #sea { position: absolute; left: 0; top: 900px; width: 1080px; height: 380px; background: linear-gradient(180deg, #0a7fc2 0%, #1aa3dc 55%, #5fd0ea 100%); }
+  .wv { position: absolute; left: 0; width: 2160px; height: 40px; }
+  #sand { position: absolute; left: 0; top: 1250px; width: 1080px; height: 670px; background: radial-gradient(rgba(190, 140, 70, 0.25) 2px, transparent 3px) 0 0 / 46px 46px, linear-gradient(180deg, #ffe2a6 0%, #f7cf86 100%); }
+  #foam { position: absolute; left: -40px; top: 1218px; width: 1160px; height: 70px; }
+  #gull { position: absolute; left: 160px; top: 420px; width: 120px; height: 50px; }
+  #camWin { position: absolute; left: 120px; top: 210px; width: 840px; height: 1500px; border-radius: 96px; box-shadow: 0 0 0 1800px #0c0b10, inset 0 0 0 5px rgba(255, 255, 255, 0.18); }
+  #grid { position: absolute; left: 120px; top: 210px; width: 840px; height: 1500px; border-radius: 96px; overflow: hidden; }
+  #grid i { position: absolute; background: rgba(255, 255, 255, 0.35); }
+  #camBar { position: absolute; left: 120px; top: 1480px; width: 840px; height: 230px; border-radius: 0 0 96px 96px; background: rgba(8, 10, 14, 0.55); }
+  #modes { position: absolute; left: 120px; width: 840px; top: 1510px; display: flex; justify-content: center; gap: 46px; font: 800 30px "Inter", sans-serif; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.8); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); }
+  #modes .on { color: #ffd166; }
+  #shutterBtn { position: absolute; left: 480px; top: 1574px; width: 120px; height: 120px; border-radius: 50%; border: 8px solid #fff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35); }
+  #shutterBtn i { position: absolute; inset: 8px; border-radius: 50%; background: #fff; }
+  #focus { position: absolute; left: 420px; top: 800px; width: 240px; height: 240px; border: 5px solid #ffd166; border-radius: 10px; opacity: 0; }
+  #count { position: absolute; left: 120px; right: 120px; top: 640px; text-align: center; font: 400 360px/1 "Archivo Black", sans-serif; color: #fff; text-shadow: 0 12px 50px rgba(0, 40, 80, 0.45); }
+  #count span { position: absolute; left: 0; right: 0; opacity: 0; }
+  #dim { background: #04121c; opacity: 0; }
+  #pull { position: absolute; left: 90px; right: 120px; top: 270px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  #pull div.sm { font: 800 58px/1.16 "Inter", sans-serif; letter-spacing: -0.02em; }
+  #pull div { font: 400 64px/1.12 "Archivo Black", sans-serif; color: #fff; text-shadow: 0 6px 24px rgba(0, 30, 50, 0.5); white-space: nowrap; }
+  #pull div b { color: #5eead4; font-weight: 400; }
+  #endTint { background: radial-gradient(70% 45% at 50% 40%, rgba(59, 20, 112, 0.94) 0%, rgba(11, 7, 18, 0.97) 70%); opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="20" data-fps="30">
+
+  <!-- ===== untimed: the beach (POV world) ===== -->
+  <div class="layer" id="world">
+    <div class="layer" id="worldIn">
+      <div id="sky"></div>
+      <div id="sunGlow"></div>
+      <div id="rays"></div>
+      <div id="sun"></div>
+      <div class="cloud" id="cl1" style="left:90px; top:300px; width:250px"></div>
+      <div class="cloud" id="cl2" style="left:560px; top:560px; width:200px; opacity:0.75"></div>
+      <svg id="gull" viewBox="0 0 120 50"><path d="M6 30 C24 8 42 10 60 30 C78 10 96 8 114 30" stroke="#24323d" stroke-width="7" fill="none" stroke-linecap="round"/></svg>
+      <svg width="1080" height="80" viewBox="0 0 1080 80" style="position:absolute; left:0; top:842px"><path d="M0 80 L0 50 C90 20 160 34 240 46 C330 10 420 0 520 40 C600 24 660 30 720 52 C820 18 930 12 1080 46 L1080 80 Z" fill="#6aa7c9"/><path d="M0 80 L0 64 C140 48 260 58 380 66 C520 50 680 52 820 66 C930 56 1010 58 1080 64 L1080 80 Z" fill="#4f8fb5"/></svg>
+      <div id="sea">
+        <svg class="wv" id="wv1" style="top:60px" viewBox="0 0 2160 40"><path d="M0 20 Q 67 0 135 20 T 270 20 T 405 20 T 540 20 T 675 20 T 810 20 T 945 20 T 1080 20 T 1215 20 T 1350 20 T 1485 20 T 1620 20 T 1755 20 T 1890 20 T 2025 20 T 2160 20" stroke="#ffffff" stroke-opacity="0.35" stroke-width="5" fill="none"/></svg>
+        <svg class="wv" id="wv2" style="top:170px" viewBox="0 0 2160 40"><path d="M0 20 Q 67 0 135 20 T 270 20 T 405 20 T 540 20 T 675 20 T 810 20 T 945 20 T 1080 20 T 1215 20 T 1350 20 T 1485 20 T 1620 20 T 1755 20 T 1890 20 T 2025 20 T 2160 20" stroke="#ffffff" stroke-opacity="0.45" stroke-width="7" fill="none"/></svg>
+        <svg class="wv" id="wv3" style="top:270px" viewBox="0 0 2160 40"><path d="M0 20 Q 67 0 135 20 T 270 20 T 405 20 T 540 20 T 675 20 T 810 20 T 945 20 T 1080 20 T 1215 20 T 1350 20 T 1485 20 T 1620 20 T 1755 20 T 1890 20 T 2025 20 T 2160 20" stroke="#ffffff" stroke-opacity="0.55" stroke-width="9" fill="none"/></svg>
+      </div>
+      <div id="sand"></div>
+      <svg id="foam" viewBox="0 0 1160 70"><path d="M0 30 C60 6 120 6 180 28 C240 50 300 50 360 28 C420 6 480 6 540 28 C600 50 660 50 720 28 C780 6 840 6 900 28 C960 50 1020 50 1080 28 C1110 18 1140 16 1160 20 L1160 70 L0 70 Z" fill="#ffffff" opacity="0.9"/></svg>
+      <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute; inset:0">
+        <!-- umbrella -->
+        <path d="M318 1080 L262 1760" stroke="#f5f5f4" stroke-width="16" stroke-linecap="round"/>
+        <path d="M40 1150 C80 990 560 990 600 1150 Z" fill="#ff5a4e"/>
+        <path d="M150 1150 C170 1020 260 1000 320 1000 C290 1020 250 1080 240 1150 Z" fill="#ffffff"/>
+        <path d="M400 1150 C400 1080 360 1020 320 1000 C400 1004 470 1040 500 1150 Z" fill="#ffffff"/>
+        <path d="M40 1150 Q 95 1180 150 1150 Q 195 1180 240 1150 Q 280 1180 320 1150 Q 360 1180 400 1150 Q 450 1180 500 1150 Q 550 1180 600 1150" fill="#ff5a4e"/>
+        <!-- towel (POV lying on it) -->
+        <path d="M120 1960 L250 1560 L930 1560 L1080 1960 Z" fill="#7c3aed"/>
+        <path d="M205 1700 L278 1560 L370 1560 L318 1700 Z M140 1900 L188 1760 L300 1760 L262 1900 Z" fill="#c4b5fd" opacity="0.0"/>
+        <path d="M250 1560 L930 1560 L960 1640 L222 1640 Z" fill="#c4b5fd"/>
+        <path d="M196 1720 L990 1720 L1018 1800 L170 1800 Z" fill="#c4b5fd"/>
+        <!-- coconut + flip-flops -->
+        <circle cx="900" cy="1440" r="80" fill="#7c4a24"/><circle cx="900" cy="1408" r="56" fill="#e9d8a6"/>
+        <path d="M920 1400 L990 1250" stroke="#ff5a4e" stroke-width="12" stroke-linecap="round"/>
+        <ellipse cx="560" cy="1470" rx="46" ry="88" fill="#22c55e" transform="rotate(-18 560 1470)"/>
+        <ellipse cx="660" cy="1490" rx="46" ry="88" fill="#22c55e" transform="rotate(12 660 1490)"/>
+        <path d="M545 1430 L560 1400 L590 1440 M650 1450 L660 1420 L690 1462" stroke="#f5f5f4" stroke-width="8" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <div class="layer" id="dim"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- ===== C1 hook: 0 - 1.846 ===== -->
+  <section id="c1" class="clip" data-start="0" data-duration="1.846">
+    <div class="pov" id="hookBox" style="top:290px">
+      <div class="pov-tag" id="povTag">POV:</div>
+      <div class="pov-line xxl" id="h1">você foi</div>
+      <div class="pov-line xxl" id="h2">pra <span class="hl">praia.</span></div>
+    </div>
+  </section>
+
+  <!-- ===== C2 the camera: 1.846 - 7.385 ===== -->
+  <section id="c2" class="clip" data-start="1.846" data-duration="5.539">
+    <div class="layer" id="c2in">
+      <div id="grid"><i style="left:280px; top:0; width:3px; height:1500px"></i><i style="left:560px; top:0; width:3px; height:1500px"></i><i style="left:0; top:500px; width:840px; height:3px"></i><i style="left:0; top:1000px; width:840px; height:3px"></i></div>
+      <div id="focus"></div>
+      <div id="count"><span id="n3">3</span><span id="n2">2</span><span id="n1">1</span></div>
+      <div id="camBar"></div>
+      <div id="modes"><span>VÍDEO</span><span class="on">FOTO</span><span>RETRATO</span></div>
+      <div id="shutterBtn"><i></i></div>
+      <div id="camWin"></div>
+      <div class="banner" id="bn1" style="top:250px">
+        <div class="nt"><span class="ico"><img src="kit/img/brand/kizubot-head.png" alt="" /></span><b>KizuBot™ | kizubot.com</b><span class="tm">16:19</span></div>
+        <div class="nx">dropStone ~ Earth Stone</div>
+      </div>
+      <div class="banner" id="bn2" style="top:480px">
+        <div class="nt"><span class="ico"><img src="kit/img/brand/kizubot-head.png" alt="" /></span><b>KizuBot™ | kizubot.com</b><span class="tm">16:21</span></div>
+        <div class="nx">dropStone ~ Earth Stone</div>
+      </div>
+      <div class="cbub" id="cb1" style="left:150px; top:560px"><b>Enquanto bot moie</b><i>16:22</i></div>
+      <div class="cbub" id="cb2" style="left:150px; top:720px"><b>Eu tô na praia kkkk</b><i>16:22</i></div>
+    </div>
+  </section>
+
+  <!-- ===== C3 the real print (drop): 7.385 - 10.154 ===== -->
+  <section id="c3" class="clip" data-start="7.385" data-duration="2.769">
+    <div class="layer" id="c3in">
+      <div class="ptag" id="ptag1" style="left:150px; top:226px">print real de cliente</div>
+      <div class="printcard" id="card1" style="left:160px; top:292px; width:740px; height:1040px">
+        <div class="zoom" id="scroll1"><img src="kit/img/prints/beach-while-bot-farms.png" alt="" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== C4 re-hook: 10.154 - 11.077 ===== -->
+  <section id="c4" class="clip" data-start="10.154" data-duration="0.923">
+    <div class="pov" id="povR" style="top:520px">
+      <div class="pov-line" id="r1">E não foi</div>
+      <div class="pov-line" id="r2"><span class="hl">só ele:</span></div>
+    </div>
+  </section>
+
+  <!-- ===== C5 the group print: 11.077 - 14.769 ===== -->
+  <section id="c5" class="clip" data-start="11.077" data-duration="3.692">
+    <div class="layer" id="c5in">
+      <div id="pull">
+        <div id="p0" class="sm">“…um na represa pescando</div>
+        <div id="p0b" class="sm">e outro na cachoeira”</div>
+        <div id="p1" style="margin-top:30px">“Esse grupo e bot</div><div id="p2"><b>tem história</b>”</div>
+      </div>
+      <div class="ptag" id="ptag2" style="left:110px; top:740px">prints reais de clientes diferentes</div>
+      <div class="printcard" id="card2" style="left:110px; top:808px; width:860px; height:155px">
+        <div class="zoom"><img src="kit/img/prints/beach-satire-group--historia.png" alt="" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== C6 POV close: 14.769 - 16.615 ===== -->
+  <section id="c6" class="clip" data-start="14.769" data-duration="1.846">
+    <div class="pov" id="povEnd" style="top:330px">
+      <div class="pov-line" id="e1">Você na praia.</div>
+      <div class="pov-line inv" id="e2" style="margin-top:22px">O bot no farm.</div>
+    </div>
+  </section>
+
+  <!-- ===== C7 end card: 16.615 - 20 ===== -->
+  <section id="c7" class="clip" data-start="16.615" data-duration="3.385">
+    <div class="layer" id="endTint"></div>
+    <div class="kz-end" id="c7in">
+      <div style="position:relative; width:560px" id="logoBox">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><span><b>Praia</b>, <b>represa</b></span><span>ou <b>cachoeira</b>?</span></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 20;
+  const b = KZ.beats(130);                 // beat 0.4615 s, bar 1.846 s
+  const T2 = b(4), T3 = b(8), T4 = b(12), T5 = b(16), T6 = b(22), T6b = b(24), T7 = b(32), T8 = b(36);
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+
+  // ---------- ambient beach (always moving) ----------
+  tl.fromTo("#rays", { rotation: 0 }, { rotation: 40, duration: D, ease: "none" }, 0);
+  tl.fromTo("#wv1", { x: 0 }, { x: -540, duration: D, ease: "none" }, 0);
+  tl.fromTo("#wv2", { x: -270 }, { x: -1080, duration: D, ease: "none" }, 0);
+  tl.fromTo("#wv3", { x: 0 }, { x: -1080, duration: D, ease: "none" }, 0);
+  tl.fromTo("#foam", { y: 0, scaleY: 1 }, { y: 26, scaleY: 1.25, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 12 }, 0);
+  tl.fromTo("#cl1", { x: 0 }, { x: 120, duration: D, ease: "none" }, 0);
+  tl.fromTo("#cl2", { x: 0 }, { x: -90, duration: D, ease: "none" }, 0);
+  tl.fromTo("#gull", { x: 0, y: 0 }, { x: 760, y: -120, duration: D, ease: "none" }, 0);
+  tl.fromTo("#gull", { scaleY: 1 }, { scaleY: 0.55, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 70 }, 0);
+  tl.fromTo("#worldIn", { scale: 1.08 }, { scale: 1.0, duration: T2, ease: "power2.out" }, 0);
+
+  // ---------- C1 hook ----------
+  tl.fromTo("#povTag", { scale: 1.15 }, { scale: 1, duration: 0.3, ease: "power3.out" }, 0);
+  tl.fromTo("#h1", { scale: 1.08, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, 0);
+  tl.fromTo("#h2", { scale: 0.7, opacity: 0, y: 24 }, { scale: 1, opacity: 1, y: 0, duration: 0.24, ease: "back.out(2.2)" }, 0.06);
+  tl.fromTo("#h2 .hl", { backgroundColor: "#ffffff" }, { backgroundColor: "#5eead4", duration: 0.12, ease: "none" }, b(2));
+  KZ.punch(tl, "#hookBox", b(2), 1.06, 0.35);
+  tl.to("#hookBox", { scale: 0.86, opacity: 0, y: -60, duration: 0.16, ease: "power2.in" }, T2 - 0.16);
+
+  // ---------- C2 camera up + banners + chat ----------
+  tl.fromTo("#c2in", { scale: 1.25, y: 500, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.45, ease: "power4.out" }, T2);
+  tl.to("#worldIn", { scale: 1.16, duration: 0.6, ease: "power3.out" }, T2);
+  tl.fromTo("#bn1", { y: -140, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.36, ease: "back.out(1.7)" }, b(5));
+  tl.fromTo("#bn2", { y: -140, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.36, ease: "back.out(1.7)" }, b(7));
+  KZ.shake(tl, "#c2in", b(5) + 0.02, 7, 0.24, 91);
+  KZ.shake(tl, "#c2in", b(7) + 0.02, 7, 0.24, 92);
+  tl.to(["#bn1", "#bn2"], { y: -420, opacity: 0, duration: 0.25, ease: "power3.in" }, T3 - 0.2);
+  tl.fromTo("#cb1", { scale: 0.3, opacity: 0, x: -60 }, { scale: 1, opacity: 1, x: 0, duration: 0.32, ease: "back.out(2.2)" }, T3);
+  tl.fromTo("#cb2", { scale: 0.3, opacity: 0, x: -60 }, { scale: 1, opacity: 1, x: 0, duration: 0.32, ease: "back.out(2.2)" }, b(10));
+  tl.to(["#cb1", "#cb2"], { y: -30, duration: 1.2, ease: "sine.inOut" }, b(10.5));
+  tl.to(["#cb1", "#cb2"], { scale: 0.6, opacity: 0, duration: 0.16, ease: "power2.in" }, T4 - 0.14);
+  // build: self-timer 3-2-1, focus box
+  ["#n3", "#n2", "#n1"].forEach(function (n, i) {
+    const t = b(12 + i);
+    tl.fromTo(n, { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "power4.out" }, t);
+    tl.to(n, { scale: 0.7, opacity: 0, duration: 0.14, ease: "power2.in" }, t + 0.32);
+  });
+  tl.fromTo("#focus", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power3.out" }, b(15));
+  tl.to("#focus", { scale: 0.92, duration: 0.12, ease: "power2.inOut", yoyo: true, repeat: 1 }, b(15) + 0.2);
+  tl.fromTo("#shutterBtn i", { scale: 1 }, { scale: 0.8, duration: 0.08, ease: "power2.in", yoyo: true, repeat: 1 }, T5 - 0.12);
+
+  // ---------- C3 shutter -> the real print on the drop ----------
+  KZ.flash(tl, "#flash", T5, 0.95);
+  tl.to("#dim", { opacity: 0.6, duration: 0.05, ease: "none" }, T5);
+  tl.to("#worldIn", { filter: "blur(9px)", duration: 0.3 }, T5);
+  tl.fromTo("#card1", { scale: 1.3, rotation: 5, opacity: 0 }, { scale: 1, rotation: -1.2, opacity: 1, duration: 0.38, ease: "power4.out" }, T5);
+  KZ.shake(tl, "#c3in", T5 + 0.06, 12, 0.26, 93);
+  tl.fromTo("#ptag1", { scale: 2.4, opacity: 0, rotation: -14 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.24, ease: "power4.out" }, T5 + 0.2);
+  tl.fromTo("#scroll1", { y: 0 }, { y: -628, duration: 1.7, ease: "power2.inOut" }, T5 + 0.75);
+  tl.to("#card1", { rotation: 0.6, duration: 2.2, ease: "sine.inOut" }, T5 + 0.4);
+  tl.to("#c3in", { scale: 0.92, opacity: 0, duration: 0.16, ease: "power2.in" }, T6 - 0.16);
+
+  // ---------- C4 "E não foi só ele:" ----------
+  tl.to("#dim", { opacity: 0.2, duration: 0.2 }, T6);
+  tl.fromTo("#r1", { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.26, ease: "back.out(2.2)" }, T6);
+  tl.fromTo("#r2", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "back.out(3)" }, T6 + 0.16);
+  tl.to("#povR", { scale: 0.9, opacity: 0, duration: 0.14, ease: "power2.in" }, T6b - 0.14);
+
+  // ---------- C5 the group print ----------
+  tl.to("#dim", { opacity: 0.72, duration: 0.2 }, T6b);
+  tl.fromTo("#p0", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T6b);
+  tl.fromTo("#p0b", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T6b + 0.15);
+  tl.fromTo("#card2", { y: 260, opacity: 0, rotation: 3 }, { y: 0, opacity: 1, rotation: -1, duration: 0.4, ease: "power3.out" }, b(25));
+  tl.fromTo("#ptag2", { scale: 2, opacity: 0, rotation: 10 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.24, ease: "power4.out" }, b(25) + 0.3);
+  tl.fromTo("#p1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, b(27));
+  tl.fromTo("#p2", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: "back.out(2.5)" }, b(27) + 0.2);
+  KZ.punch(tl, "#p2", b(29), 1.08, 0.3);
+  tl.to("#card2", { rotation: 0.4, y: -10, duration: 2.4, ease: "sine.inOut" }, b(26));
+  tl.to("#c5in", { scale: 0.94, opacity: 0, duration: 0.18, ease: "power2.in" }, T7 - 0.18);
+
+  // ---------- C6 POV close ----------
+  tl.to("#dim", { opacity: 0, duration: 0.35, ease: "power2.out" }, T7);
+  tl.to("#worldIn", { filter: "blur(0px)", scale: 1.03, duration: 0.5, ease: "power3.out" }, T7);
+  tl.fromTo("#e1", { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2.2)" }, T7);
+  tl.fromTo("#e2", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, b(34));
+  KZ.shake(tl, "#povEnd", b(34) + 0.05, 10, 0.24, 94);
+  tl.to("#povEnd", { scale: 0.9, opacity: 0, duration: 0.16, ease: "power2.in" }, T8 - 0.16);
+
+  // ---------- C7 end card + sonic logo ----------
+  tl.to("#endTint", { opacity: 1, duration: 0.3, ease: "power2.out" }, T8);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T8 + 0.05);
+  KZ.eyePulse(tl, "#eye2", T8 + 0.15, 3);
+  KZ.rise(tl, "#endUrl", T8 + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T8 + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, T8 + 0.6);
+  // loop seam: back to the bright beach of frame 0
+  tl.to(["#c7in", "#endTint"], { opacity: 0, duration: 0.38, ease: "power1.in" }, D - 0.45);
+  tl.to("#worldIn", { scale: 1.08, duration: 0.38, ease: "power1.in" }, D - 0.45);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

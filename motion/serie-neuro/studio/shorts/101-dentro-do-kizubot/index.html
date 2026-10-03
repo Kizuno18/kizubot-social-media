@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>101 O que tem dentro do KizuBot?</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+/* ================= F13 · RAIO-X — "blueprint" system ================= */
+:root {
+  --bp-paper: #0a1530; --bp-line: #7dd3fc; --bp-line2: #bae6fd; --bp-ink: #e8f4ff; --bp-dim: #9cc0e0;
+  --bp-acc: #c6ff3d; --bp-lav: #d8b4fe; --bp-done: #d8b4fe;
+}
+#root { background: var(--bp-paper); }
+.bp-paper { position:absolute; inset:0; background:
+  linear-gradient(rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(90deg, rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  linear-gradient(90deg, rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  radial-gradient(80% 60% at 50% 42%, #14254f 0%, #0a1530 68%, #060d20 100%); }
+.bp-grain { position:absolute; inset:0; opacity:.5; background: radial-gradient(120% 90% at 50% 50%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
+.bp-frame { position:absolute; left: 36px; top: 36px; right: 36px; bottom: 36px; border: 3px solid rgba(186,230,253,.35); }
+.bp-frame::before { content:""; position:absolute; left: 10px; top: 10px; right: 10px; bottom: 10px; border: 1px solid rgba(186,230,253,.18); }
+.bp-tb { position:absolute; left: 490px; top: 1436px; width: 550px; height: 140px; border: 3px solid rgba(186,230,253,.45); background: rgba(10,21,48,.6); display:grid; grid-template-columns: 1fr 120px; grid-template-rows: 1fr 1fr; }
+.bp-tb div { border: 1px solid rgba(186,230,253,.25); display:flex; align-items:center; padding: 0 16px; font: 400 30px "JetBrains Mono", monospace; color: var(--bp-dim); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; overflow:hidden; }
+.bp-tb b { font-weight: 400; color: var(--bp-ink); }
+.bp-fig { position:absolute; left: 100px; top: 232px; font: 400 30px "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--bp-line2); text-transform: uppercase; }
+.bp-display { font-family: "Chakra Petch", sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1.0; letter-spacing: .005em; color: var(--bp-ink); }
+.bp-body { font: 800 58px "Inter", sans-serif; color: var(--bp-ink); line-height: 1.1; }
+.bp-mono { font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .1em; }
+.kz-progress { height: 10px; background: rgba(186,230,253,.08); }
+.kz-progress > div { background: linear-gradient(90deg, #38bdf8, #7dd3fc 60%, #c6ff3d); }
+/* drawing */
+svg.bp { overflow: visible; }
+svg.bp .sh { fill: none; stroke: currentColor; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+svg.bp .int { fill: none; stroke: var(--bp-acc); stroke-width: 3; stroke-dasharray: 9 8; stroke-linecap: round; }
+svg.bp .guide { fill: none; stroke: rgba(186,230,253,.45); stroke-width: 2; stroke-dasharray: 6 8; }
+svg.bp .ld { fill: none; stroke: var(--bp-line2); stroke-width: 3; }
+svg.bp .tagc { fill: #0a1530; stroke: var(--bp-line2); stroke-width: 3; }
+svg.bp .tagt { font: 700 36px "Chakra Petch", sans-serif; fill: var(--bp-ink); text-anchor: middle; dominant-baseline: central; }
+.cap { position:absolute; left: 90px; width: 790px; top: 1150px; height: 246px; border: 3px solid rgba(186,230,253,.5); background: rgba(8,17,40,.92); }
+.cap::after { content:""; position:absolute; right: -3px; top: -3px; width: 26px; height: 26px; border-top: 6px solid var(--bp-acc); border-right: 6px solid var(--bp-acc); }
+.capi { position:absolute; left: 30px; right: 30px; top: 22px; opacity: 0; }
+.capi .hd { display:flex; align-items:center; gap: 18px; font: 400 36px "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--bp-acc); text-transform: uppercase; }
+.capi .hd i { font-style: normal; width: 56px; height: 56px; border-radius: 50%; border: 3px solid var(--bp-acc); display:flex; align-items:center; justify-content:center; font: 700 32px "Chakra Petch", sans-serif; color: var(--bp-acc); }
+.capi .tx { margin-top: 14px; text-wrap: balance; }
+.eye { position:absolute; border-radius:50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+#flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; z-index:70; }
+
+/* ================= 101 specifics ================= */
+#hookTxt { position:absolute; left: 110px; right: 182px; top: 262px; height: 420px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+#hookTxt .bp-display { font-size: 124px; white-space: nowrap; line-height: 1.02; }
+#hookTxt .q { color: var(--bp-acc); }
+#figWrap { position:absolute; left: 0; top: 232px; width: 1080px; height: 900px; transform-origin: 50% 0%; color: var(--bp-line); }
+#fig { position:absolute; left:0; top:0; width: 1080px; height: 900px; }
+#scan { position:absolute; left: 60px; right: 60px; top: 0; height: 120px; opacity: 0; background: linear-gradient(180deg, rgba(198,255,61,0), rgba(198,255,61,.16)); border-bottom: 5px solid var(--bp-acc); box-shadow: 0 10px 30px rgba(198,255,61,.35); }
+#xr { position:absolute; left: 760px; top: 232px; display:flex; align-items:center; gap: 12px; font: 400 30px "JetBrains Mono", monospace; letter-spacing: .12em; color: var(--bp-acc); opacity: 0; }
+#xr i { width: 18px; height: 18px; border-radius: 50%; background: var(--bp-acc); display:block; box-shadow: 0 0 14px var(--bp-acc); }
+.ask { font: 900 62px "Inter", sans-serif; color: var(--bp-ink); max-width: 820px; line-height: 1.1; }
+.ask b { color: var(--bp-acc); }
+.kz-end .kz-url { color: var(--bp-ink); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="19.375" data-fps="30">
+  <div class="bp-paper" id="paper"></div>
+  <div class="bp-grain"></div>
+  <div class="bp-frame"></div>
+  <div class="bp-tb"><div><b>KizuBot</b>&nbsp;· desenho</div><div>1:1</div><div>Raio-X · fig. 1</div><div><b>1/5</b></div></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- DRAWING 0 – 15.8 -->
+  <section id="sfig" class="clip" data-start="0" data-duration="15.8">
+    <div class="kz-full" id="sfigin">
+      <div class="bp-fig" id="figA">fig. 1 — vista frontal</div>
+      <div class="bp-fig" id="figB" style="opacity:0">fig. 1 — vista explodida</div>
+      <div id="xr"><i></i>raio-x</div>
+      <div id="figWrap">
+        <svg id="fig" class="bp" viewBox="0 0 1080 900">
+          <!-- explode guides -->
+          <g id="guides" opacity="0">
+            <path class="guide" d="M500,128 V112"/><path class="guide" d="M500,344 V376"/>
+            <path class="guide" d="M372,410 H414"/><path class="guide" d="M628,410 H586"/>
+            <path class="guide" d="M453,614 V646"/><path class="guide" d="M547,614 V646"/>
+            <path class="guide" d="M500,0 l-10,16 M500,0 l10,16" stroke-dasharray="none"/>
+          </g>
+          <g id="gAnt"><line class="sh" x1="500" y1="58" x2="500" y2="126" pathLength="1"/><circle class="sh" cx="500" cy="40" r="17" pathLength="1"/></g>
+          <g id="gHead">
+            <rect class="sh" x="375" y="130" width="250" height="212" rx="56" pathLength="1"/>
+            <rect class="sh" x="405" y="206" width="190" height="100" rx="42" pathLength="1"/>
+            <circle class="sh" id="eyeC" cx="500" cy="256" r="32" pathLength="1"/>
+            <circle cx="500" cy="256" r="12" fill="currentColor" id="eyeDot" opacity="0"/>
+            <circle class="sh" cx="375" cy="236" r="10" pathLength="1"/><circle class="sh" cx="625" cy="236" r="10" pathLength="1"/>
+            <g class="intg" id="iBrain" opacity="0">
+              <path class="int" d="M436,190 C424,160 462,146 476,160 C484,144 516,144 524,160 C540,148 578,162 564,190 Z"/>
+              <path class="int" d="M470,190 V176 M500,190 V168 M530,190 V176" stroke-dasharray="none"/>
+              <circle cx="470" cy="176" r="5" fill="#c6ff3d"/><circle cx="500" cy="168" r="5" fill="#c6ff3d"/><circle cx="530" cy="176" r="5" fill="#c6ff3d"/>
+            </g>
+          </g>
+          <g id="gTorso">
+            <rect class="sh" x="472" y="342" width="56" height="40" rx="8" pathLength="1"/>
+            <rect class="sh" x="390" y="380" width="220" height="232" rx="36" pathLength="1"/>
+            <path class="sh" d="M420,570 H580 M440,594 H560" pathLength="1"/>
+            <g class="intg" id="iHeart" opacity="0">
+              <path class="int" d="M500,424 L540,447 L540,493 L500,516 L460,493 L460,447 Z"/>
+              <path id="ecg" d="M466,470 H482 L490,450 L500,492 L510,460 L516,470 H534" fill="none" stroke="#c6ff3d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+            </g>
+          </g>
+          <g id="gArmL">
+            <circle class="sh" cx="372" cy="410" r="17" pathLength="1"/>
+            <rect class="sh" x="300" y="420" width="50" height="164" rx="25" transform="rotate(12 325 502)" pathLength="1"/>
+            <circle class="sh" cx="300" cy="612" r="26" pathLength="1"/>
+            <path class="sh" d="M284,630 l-12,18 M316,630 l12,18" pathLength="1"/>
+            <circle class="int intg" id="iJL" cx="372" cy="410" r="8" opacity="0"/>
+          </g>
+          <g id="gArmR">
+            <circle class="sh" cx="628" cy="410" r="17" pathLength="1"/>
+            <rect class="sh" x="650" y="420" width="50" height="164" rx="25" transform="rotate(-12 675 502)" pathLength="1"/>
+            <circle class="sh" cx="700" cy="612" r="26" pathLength="1"/>
+            <path class="sh" d="M684,630 l-12,18 M716,630 l12,18" pathLength="1"/>
+            <circle class="int intg" id="iJR" cx="628" cy="410" r="8" opacity="0"/>
+          </g>
+          <g id="gLegs">
+            <rect class="sh" x="422" y="650" width="62" height="140" rx="18" pathLength="1"/>
+            <rect class="sh" x="516" y="650" width="62" height="140" rx="18" pathLength="1"/>
+            <rect class="sh" x="404" y="790" width="96" height="32" rx="12" pathLength="1"/>
+            <rect class="sh" x="500" y="790" width="96" height="32" rx="12" pathLength="1"/>
+            <g class="intg" id="iKnees" opacity="0"><circle class="int" cx="453" cy="720" r="15"/><circle class="int" cx="547" cy="720" r="15"/></g>
+          </g>
+          <!-- leaders + tags -->
+          <line class="ld" id="l1" x1="466" y1="256" x2="246" y2="256" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <line class="ld" id="l2" x1="560" y1="166" x2="754" y2="150" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <line class="ld" id="l3" x1="517" y1="40" x2="754" y2="40" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <line class="ld" id="l4" x1="546" y1="470" x2="754" y2="470" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <line class="ld" id="l5" x1="300" y1="520" x2="222" y2="520" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <line class="ld" id="l6" x1="404" y1="806" x2="262" y2="806" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <g id="t1" opacity="0"><circle class="tagc" cx="215" cy="256" r="30"/><text class="tagt" x="215" y="258">1</text></g>
+          <g id="t2" opacity="0"><circle class="tagc" cx="785" cy="150" r="30"/><text class="tagt" x="785" y="152">2</text></g>
+          <g id="t3" opacity="0"><circle class="tagc" cx="785" cy="40" r="30"/><text class="tagt" x="785" y="42">3</text></g>
+          <g id="t4" opacity="0"><circle class="tagc" cx="785" cy="470" r="30"/><text class="tagt" x="785" y="472">4</text></g>
+          <g id="t5" opacity="0"><circle class="tagc" cx="191" cy="520" r="30"/><text class="tagt" x="191" y="522">5</text></g>
+          <g id="t6" opacity="0"><circle class="tagc" cx="231" cy="806" r="30"/><text class="tagt" x="231" y="808">6</text></g>
+        </svg>
+      </div>
+      <div id="scan"></div>
+    </div>
+  </section>
+
+  <!-- HOOK TEXT 0 – 2.6 -->
+  <section id="s1" class="clip" data-start="0" data-duration="2.6">
+    <div class="kz-full" id="s1in">
+      <div id="hookTxt">
+        <div class="bp-display" id="h1">O que tem</div>
+        <div class="bp-display" id="h1b">dentro do</div>
+        <div class="bp-display" id="h2">KizuBot<span class="q">?</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPTIONS 3.75 – 15.1 -->
+  <section id="scap" class="clip" data-start="3.75" data-duration="11.35">
+    <div class="kz-full" id="scapin">
+      <div class="cap" id="cap">
+        <div class="capi" id="c1"><div class="hd"><i>1</i>olho · detecção</div><div class="bp-body tx">detecta shiny, mega e boss</div></div>
+        <div class="capi" id="c2"><div class="hd"><i>2</i>cérebro · IA</div><div class="bp-body tx">decide o que fazer</div></div>
+        <div class="capi" id="c3"><div class="hd"><i>3</i>antena · alarmes</div><div class="bp-body tx">avisa no WhatsApp e Telegram</div></div>
+        <div class="capi" id="c4"><div class="hd"><i>4</i>coração · humanização</div><div class="bp-body tx">pausas e ritmo variáveis</div></div>
+        <div class="capi" id="c5"><div class="hd"><i>5</i>braços · combate</div><div class="bp-body tx">luta e captura</div></div>
+        <div class="capi" id="c6"><div class="hd"><i>6</i>pernas · cavebot</div><div class="bp-body tx">anda pela rota gravada</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- END 15.625 – 19.375 -->
+  <section id="send" class="clip" data-start="15.625" data-duration="3.75">
+    <div class="kz-end" id="sendin">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>Qual peça é</div><div><b>a mais importante?</b></div></div>
+    </div>
+  </section>
+
+  <!-- loop bridge -->
+  <section id="sb" class="clip" data-start="19.05" data-duration="0.325">
+    <div class="kz-full" id="sbin">
+      <div style="position:absolute; left:110px; right:182px; top:262px; height:420px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center">
+        <div class="bp-display" style="font-size:124px; white-space:nowrap; line-height:1.02">O que tem</div>
+        <div class="bp-display" style="font-size:124px; white-space:nowrap; line-height:1.02">dentro do</div>
+        <div class="bp-display" style="font-size:124px; white-space:nowrap; line-height:1.02">KizuBot<span style="color:#c6ff3d">?</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 19.375;
+  const b = KZ.beats(96);            // beat 0.625 s, bar 2.5 s
+  const LIME = "#c6ff3d", CYAN = "#7dd3fc", DONE = "#d8b4fe";
+
+  /* ---------- ambient ---------- */
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#paper", { backgroundPosition: "-1px -1px, -1px -1px, 0 0, 0 0, 0 0" }, { backgroundPosition: "-1px 59px, -1px 59px, 0 30px, 0 30px, 0 0", duration: D, ease: "none" }, 0);
+
+  /* ---------- hook: drawing traces itself, x-ray scan ---------- */
+  tl.fromTo("#hookTxt", { scale: 1.06, filter: "blur(4px)" }, { scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, 0);
+  tl.fromTo("#h2 .q", { rotation: -25, scale: 1.6 }, { rotation: 0, scale: 1, duration: 0.4, ease: "back.out(3)" }, 0.05);
+  // assembled pose for the hook (parts closed in), smaller and lower
+  tl.fromTo("#figWrap", { scale: 0.74, y: 470 }, { scale: 0.76, y: 462, duration: 2.4, ease: "sine.inOut" }, 0);
+  tl.fromTo("#gAnt", { y: 66 }, { y: 66, duration: 0.01 }, 0);
+  tl.fromTo("#gHead", { y: 38 }, { y: 38, duration: 0.01 }, 0);
+  tl.fromTo("#gArmL", { x: 40, y: -10 }, { x: 40, y: -10, duration: 0.01 }, 0);
+  tl.fromTo("#gArmR", { x: -40, y: -10 }, { x: -40, y: -10, duration: 0.01 }, 0);
+  tl.fromTo("#gLegs", { y: -38 }, { y: -38, duration: 0.01 }, 0);
+  tl.fromTo("#fig .sh", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0, duration: 0.5, stagger: 0.025, ease: "power2.out" }, 0);
+  tl.set("#eyeDot", { opacity: 1 }, 0.7);
+  tl.set("#xr", { opacity: 1 }, 0.9);
+  tl.fromTo("#xr i", { opacity: 1 }, { opacity: 0.2, duration: 0.15, ease: "steps(1)", yoyo: true, repeat: 7 }, 0.9);
+  tl.set("#scan", { opacity: 1 }, 0.9);
+  tl.fromTo("#scan", { y: 640 }, { y: 1150, duration: 1.1, ease: "power1.inOut" }, 0.9);
+  tl.set("#scan", { opacity: 0 }, 2.02);
+  tl.fromTo("#fig .sh", { opacity: 1 }, { opacity: 0.55, duration: 0.6, immediateRender: false }, 1.0);
+  [["#iBrain", 1.05], ["#iJL", 1.3], ["#iJR", 1.3], ["#iHeart", 1.4], ["#iKnees", 1.75]].forEach(function (p) {
+    tl.fromTo(p[0], { opacity: 0 }, { opacity: 1, duration: 0.2 }, p[1]);
+  });
+  tl.fromTo("#ecg", { strokeDasharray: "0 200" }, { strokeDasharray: "200 0", duration: 0.5, ease: "none", repeat: 3 }, 1.45);
+  tl.to("#s1in", { y: -160, opacity: 0, duration: 0.25, ease: "power3.in" }, b(4) - 0.22);
+
+  /* ---------- explode (b4) ---------- */
+  const TX = b(4);
+  tl.to("#figWrap", { scale: 1.1, y: 0, duration: 0.6, ease: "power3.inOut" }, TX);
+  tl.to("#gAnt", { y: 0, duration: 0.5, ease: "back.out(1.6)" }, TX + 0.2);
+  tl.to("#gHead", { y: 0, duration: 0.5, ease: "back.out(1.6)" }, TX + 0.2);
+  tl.to("#gArmL", { x: 0, y: 0, duration: 0.5, ease: "back.out(1.6)" }, TX + 0.25);
+  tl.to("#gArmR", { x: 0, y: 0, duration: 0.5, ease: "back.out(1.6)" }, TX + 0.25);
+  tl.to("#gLegs", { y: 0, duration: 0.5, ease: "back.out(1.6)" }, TX + 0.3);
+  tl.to("#fig .sh", { opacity: 1, duration: 0.3 }, TX + 0.2);
+  tl.fromTo("#guides", { opacity: 0 }, { opacity: 1, duration: 0.3 }, TX + 0.6);
+  tl.set("#figA", { opacity: 0 }, TX + 0.3);
+  tl.set("#figB", { opacity: 1 }, TX + 0.3);
+  tl.set("#xr", { opacity: 0 }, TX + 0.3);
+  KZ.typewriter(tl, "#figB", "fig. 1 — vista explodida", TX + 0.3, 40);
+
+  /* ---------- callouts ---------- */
+  const parts = ["#gHead", "#gHead", "#gAnt", "#gTorso", "#gArmL", "#gLegs"];
+  const T = [b(6), b(9), b(12), b(15), b(18), b(21)];
+  T.forEach(function (t, i) {
+    const n = i + 1;
+    // previous part -> done colour
+    if (i > 0 && parts[i - 1] !== parts[i]) tl.set(parts[i - 1], { color: DONE }, t);
+    if (i === 4) tl.set("#gArmR", { color: LIME }, t);
+    if (i === 5) tl.set("#gArmR", { color: DONE }, t);
+    tl.set(parts[i], { color: LIME }, t);
+    tl.fromTo("#l" + n, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, t);
+    tl.fromTo("#t" + n, { opacity: 0, scale: 0.2, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, t + 0.22);
+    for (let j = 1; j <= 6; j++) tl.set("#c" + j, { opacity: j === n ? 1 : 0 }, t);
+    tl.fromTo("#c" + n, { y: 24 }, { y: 0, duration: 0.25, ease: "power3.out", immediateRender: false }, t);
+    KZ.punch(tl, "#cap", t, 1.02, 0.25);
+  });
+  tl.fromTo("#cap", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, b(6) - 0.05);
+  // eye glints on callout 1, heart beats on 4
+  tl.fromTo("#eyeDot", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.6, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, b(6) + 0.3);
+  tl.fromTo("#ecg", { strokeDasharray: "0 200" }, { strokeDasharray: "200 0", duration: 0.45, ease: "none", repeat: 3, immediateRender: false }, b(15));
+  // drop (b15): flash + push
+  KZ.flash(tl, "#flash", b(15), 0.55, "#bae6fd");
+  tl.fromTo("#figWrap", { scale: 1.15 }, { scale: 1.1, duration: 0.5, ease: "power3.out", immediateRender: false }, b(15));
+  tl.to("#figWrap", { y: -10, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, b(15) + 0.5);
+
+  /* ---------- reassemble -> real logo ---------- */
+  const TR = b(24);
+  tl.to(["#guides", "#scapin"], { opacity: 0, duration: 0.2 }, TR);
+  tl.to("[id^=l]", { opacity: 0, duration: 0.15 }, TR);
+  tl.to(["#t1", "#t2", "#t3", "#t4", "#t5", "#t6"], { opacity: 0, scale: 0.5, duration: 0.18 }, TR);
+  tl.to("#gAnt", { y: 66, duration: 0.3, ease: "power3.in" }, TR + 0.05);
+  tl.to("#gHead", { y: 38, duration: 0.3, ease: "power3.in" }, TR + 0.05);
+  tl.to("#gArmL", { x: 40, y: -10, duration: 0.3, ease: "power3.in" }, TR + 0.05);
+  tl.to("#gArmR", { x: -40, y: -10, duration: 0.3, ease: "power3.in" }, TR + 0.05);
+  tl.to("#gLegs", { y: -38, duration: 0.3, ease: "power3.in" }, TR + 0.05);
+  tl.set(["#gAnt", "#gHead", "#gTorso", "#gArmL", "#gArmR", "#gLegs"], { color: LIME }, TR + 0.35);
+  KZ.shake(tl, "#figWrap", TR + 0.36, 10, 0.2, 9);
+  tl.to("#figWrap", { scale: 0.7, y: 200, opacity: 0, duration: 0.25, ease: "power2.in" }, b(25) - 0.2);
+
+  /* ---------- end card ---------- */
+  const TE = b(25);
+  KZ.flash(tl, "#flash", TE, 0.5, "#e9d5ff");
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, TE + 0.02);
+  KZ.eyePulse(tl, "#eye2", TE + 0.12, 3);
+  KZ.rise(tl, "#endUrl", TE + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", TE + 0.85, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, TE + 0.8);
+  tl.to("#sendin", { opacity: 0, scale: 0.96, duration: 0.16, ease: "power1.in" }, D - 0.36);
+  tl.fromTo("#sbin", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, D - 0.3);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

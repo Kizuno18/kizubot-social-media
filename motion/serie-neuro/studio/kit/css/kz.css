@@ -1,0 +1,115 @@
+/* KizuBot motion kit — brand tokens and small utilities for 1080x1920 shorts.
+   Link it with <link rel="stylesheet" href="kit/css/kz.css"> (fonts.css is imported here). */
+/* fonts: link kit/css/fonts.css BEFORE this file (the HyperFrames compiler reads <link>ed @font-face, not @import) */
+
+:root {
+  /* brand */
+  --kz-bg: #0b0712;          /* near-black aubergine */
+  --kz-bg2: #140a22;
+  --kz-ink: #f5f0fa;         /* warm white */
+  --kz-violet: #a855f7;      /* primary */
+  --kz-violet-2: #7c3aed;
+  --kz-lav: #d8b4fe;         /* lavender */
+  --kz-deep: #3b0764;
+  --kz-magenta: #e879f9;
+  --kz-yellow: #facc15;      /* tiny warm accent */
+  --kz-lime: #c6ff3d;        /* pop accent used by the v3 short */
+  --kz-green: #22c55e;       /* success / tick */
+  --kz-red: #ef4444;         /* alert / negative */
+  --kz-gray: #9ca3af;
+
+  /* phone safe zones for 1080x1920 (organic TikTok/Reels/Shorts UI, see docs/NEURO.md)
+     readable box: x 90-960, y 220-1400; below y=860 keep text at x <= 880 (action rail) */
+  --safe-top: 220px;
+  --safe-bottom: 520px;
+  --safe-left: 90px;
+  --safe-right: 120px;
+  --rail-right: 200px;
+
+  --kz-font-display: "Archivo Black", "Anton", sans-serif;
+  --kz-font-ui: "Inter", sans-serif;
+  --kz-font-mono: "JetBrains Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--kz-bg); }
+body { color: var(--kz-ink); font-family: var(--kz-font-ui); -webkit-font-smoothing: antialiased; }
+
+/* composition root */
+#root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--kz-bg); }
+
+/* scenes */
+.clip { position: absolute; inset: 0; }
+.kz-full { position: absolute; inset: 0; }
+.kz-center { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+
+/* the safe box: everything that must be read lives inside it.
+   .kz-body-box = the lower band (y 860-1400) that must also clear the right action rail */
+.kz-safe {
+  position: absolute;
+  top: var(--safe-top); bottom: var(--safe-bottom);
+  left: var(--safe-left); right: var(--safe-right);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+}
+/* centred variant that ignores the right rail (for symmetric full-width art) */
+.kz-safe-sym {
+  position: absolute; top: var(--safe-top); bottom: var(--safe-bottom); left: 105px; right: 105px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+}
+
+.kz-body-box { position: absolute; top: 860px; bottom: var(--safe-bottom); left: var(--safe-left); right: var(--rail-right); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.kz-hook-band { position: absolute; top: 290px; height: 550px; left: 120px; right: 192px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+
+/* type */
+.kz-display { font-family: var(--kz-font-display); text-transform: uppercase; line-height: 0.92; letter-spacing: -0.01em; }
+.kz-hook { font-family: var(--kz-font-display); text-transform: uppercase; font-size: 118px; line-height: 0.92; }
+.kz-word { display: inline-block; will-change: transform; }
+.kz-accent { color: var(--kz-violet); }
+.kz-accent-lime { color: var(--kz-lime); }
+.kz-accent-yellow { color: var(--kz-yellow); }
+.kz-label { font-family: var(--kz-font-mono); font-size: 30px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--kz-lav); }
+.kz-stroke { -webkit-text-stroke: 3px var(--kz-ink); color: transparent; }
+
+/* chips / pills */
+.kz-chip {
+  display: inline-flex; align-items: center; gap: 14px;
+  padding: 14px 28px; border-radius: 999px;
+  background: var(--kz-violet); color: #fff;
+  font-family: "Inter", sans-serif; font-weight: 800; font-size: 38px;
+}
+.kz-chip.lime { background: var(--kz-lime); color: #111; }
+.kz-chip.dark { background: rgba(255, 255, 255, 0.08); border: 2px solid rgba(216, 180, 254, 0.35); color: var(--kz-lav); }
+
+/* cards */
+.kz-card {
+  background: #15101f; border: 3px solid rgba(168, 85, 247, 0.55);
+  border-radius: 34px; box-shadow: 0 30px 90px rgba(124, 58, 237, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+.kz-card img { display: block; width: 100%; }
+.kz-print-tag {
+  display: inline-block; padding: 8px 18px; border-radius: 999px;
+  background: rgba(11, 7, 18, 0.85); border: 2px solid var(--kz-lav);
+  font: 700 26px "Inter", sans-serif; letter-spacing: 0.04em; color: var(--kz-lav); text-transform: uppercase;
+}
+
+/* backgrounds */
+.kz-bg-glow { position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 42%, #3b1470 0%, rgba(11, 7, 18, 0) 70%), var(--kz-bg); }
+.kz-bg-grid {
+  position: absolute; inset: -200px;
+  background-image: linear-gradient(rgba(168, 85, 247, 0.12) 2px, transparent 2px), linear-gradient(90deg, rgba(168, 85, 247, 0.12) 2px, transparent 2px);
+  background-size: 90px 90px;
+}
+.kz-vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 80% at 50% 50%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.65) 100%); }
+.kz-scan { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 2px, transparent 2px 5px); }
+
+/* top progress bar (retention cue) */
+.kz-progress { position: absolute; left: 0; top: 0; height: 10px; width: 100%; background: rgba(255, 255, 255, 0.08); z-index: 50; }
+.kz-progress > div { height: 100%; width: 100%; background: linear-gradient(90deg, var(--kz-violet), var(--kz-magenta)); transform-origin: 0 50%; }
+
+/* end card */
+.kz-end { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px; text-align: center; padding: var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left); }
+.kz-end .kz-end-logo { width: 560px; }
+.kz-end .kz-url { font: 800 64px "Inter", sans-serif; color: var(--kz-ink); letter-spacing: -0.01em; }
+.kz-end .kz-cta { font: 800 44px "Inter", sans-serif; padding: 22px 44px; border-radius: 999px; background: var(--kz-violet); color: #fff; box-shadow: 0 14px 0 #4c1d95; }
+.kz-end .kz-small { font: 600 30px "Inter", sans-serif; color: var(--kz-lav); }

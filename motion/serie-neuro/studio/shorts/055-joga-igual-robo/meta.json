@@ -1,0 +1,62 @@
+{
+  "id": "055",
+  "slug": "joga-igual-robo",
+  "family": "Mito ou Verdade?",
+  "title": "Mito ou verdade: ele joga igual robô?",
+  "concept": "Game-show quiz with a robot-to-human arc: the set moves in stepped, robotic motion and cold steel until the MITO stamp warms it to amber; a perfect metronome pulse morphs into an irregular human rhythm with pauses (Humanização), and a real customer print says it looks like a player.",
+  "neuro": [
+    "curiosity-gap",
+    "commitment-guess",
+    "objection-handling",
+    "contrast",
+    "social-proof",
+    "anticipation-drop"
+  ],
+  "hook": "MITO OU VERDADE? ELE JOGA IGUAL ROBÔ?",
+  "duration": 19.18,
+  "music": {
+    "style": "gameshow",
+    "bpm": 122
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/prints/parece-player-dms.png"
+  ],
+  "claims": [
+    "sistema de Humanização (pausas e ritmo variáveis, comportamento humano)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Mito ou verdade: bot joga igual robô? 🤖 Chuta antes do carimbo! (Mito: a Humanização do KizuBot varia pausas e ritmo.) Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mitoouverdade",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Mito ou verdade: o bot joga igual robô? #pxg",
+      "description": "Ele joga igual robô? MITO. O sistema de Humanização do KizuBot varia pausas e ritmo, com comportamento humano. Print real de cliente no vídeo. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Mito ou verdade: ele joga igual robô? 🤖 Humanização: pausas e ritmo variáveis. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mitoouverdade"
+      ]
+    }
+  },
+  "pinned_comment": "Bot que parece player: é ou não é o sonho? 😂",
+  "notes": "Robot-to-human arc: stepped 'robotic' motion and a cold steel stage until the stamp, which warms the set to amber. The metronome-to-organic wave illustrates the approved Humanização claim (pausas e ritmo variáveis). Quote verbatim. No ban/GM/evasion talk."
+}

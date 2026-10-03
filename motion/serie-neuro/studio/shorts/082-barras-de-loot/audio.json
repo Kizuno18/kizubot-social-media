@@ -1,0 +1,216 @@
+{
+ "duration": 12.89,
+ "style": "house",
+ "bpm": 128,
+ "seed": 82,
+ "sections": [
+  {
+   "at": 0.0,
+   "type": "groove",
+   "energy": 0.55
+  },
+  {
+   "at": 5.625,
+   "type": "drop",
+   "energy": 0.75
+  },
+  {
+   "at": 9.375,
+   "type": "outro"
+  }
+ ],
+ "stops": [
+  {
+   "at": 5.385,
+   "len": 0.22
+  }
+ ],
+ "sfx": [
+  {
+   "t": 0,
+   "name": "px-click-soft",
+   "gain": -8
+  },
+  {
+   "t": 0.938,
+   "name": "fill",
+   "gain": -10
+  },
+  {
+   "t": 0.958,
+   "name": "counter",
+   "gain": -10
+  },
+  {
+   "t": 1.875,
+   "name": "fill",
+   "gain": -11
+  },
+  {
+   "t": 1.895,
+   "name": "counter",
+   "gain": -12
+  },
+  {
+   "t": 2.538,
+   "name": "snap",
+   "gain": -11
+  },
+  {
+   "t": 2.578,
+   "name": "fill",
+   "gain": -12
+  },
+  {
+   "t": 3.175,
+   "name": "snap",
+   "gain": -11
+  },
+  {
+   "t": 3.281,
+   "name": "counter",
+   "gain": -12
+  },
+  {
+   "t": 3.778,
+   "name": "snap",
+   "gain": -11
+  },
+  {
+   "t": 4.028,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.111,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.194,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.278,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.361,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.381,
+   "name": "snap",
+   "gain": -11
+  },
+  {
+   "t": 4.444,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.528,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.611,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.694,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.778,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.798,
+   "name": "tick",
+   "gain": -12
+  },
+  {
+   "t": 4.861,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.944,
+   "name": "tick",
+   "gain": -13
+  },
+  {
+   "t": 4.947,
+   "name": "tick",
+   "gain": -12
+  },
+  {
+   "t": 5.098,
+   "name": "tick",
+   "gain": -12
+  },
+  {
+   "t": 5.247,
+   "name": "tick",
+   "gain": -12
+  },
+  {
+   "t": 5.397,
+   "name": "tick",
+   "gain": -12
+  },
+  {
+   "t": 5.625,
+   "name": "success",
+   "gain": -4
+  },
+  {
+   "t": 5.645,
+   "name": "ding",
+   "gain": -11
+  },
+  {
+   "t": 6.562,
+   "name": "whoosh",
+   "gain": -10
+  },
+  {
+   "t": 7.062,
+   "name": "px-pop",
+   "gain": -12
+  },
+  {
+   "t": 9.795,
+   "name": "pop",
+   "gain": -12
+  },
+  {
+   "t": 10.155,
+   "name": "px-pop",
+   "gain": -12
+  },
+  {
+   "t": 11.988,
+   "name": "whoosh_down",
+   "gain": -12
+  },
+  {
+   "t": 12.137,
+   "name": "px-whoosh-short",
+   "gain": -11
+  },
+  {
+   "t": 12.287,
+   "name": "downlifter",
+   "gain": -15
+  }
+ ],
+ "logo": 9.375
+}

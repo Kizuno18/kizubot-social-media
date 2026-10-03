@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>133 Enquanto o bot caça, a família</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F19 "O Dia de Quem Usa" vlog system (shared by 131-135) ================= */
+  .layer { position: absolute; inset: 0; }
+  .vf { position: absolute; inset: 0; z-index: 40; pointer-events: none; }
+  .vf svg { position: absolute; inset: 0; }
+  .rec { position: absolute; left: 110px; top: 232px; display: flex; align-items: center; gap: 14px; font: 700 40px "Space Grotesk", sans-serif; color: #fff; letter-spacing: 0.06em; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); }
+  .rec i { width: 26px; height: 26px; border-radius: 50%; background: #ff2d2d; box-shadow: 0 0 14px #ff2d2d; }
+  .tc { position: absolute; right: 120px; top: 236px; font: 500 36px "Space Grotesk", sans-serif; color: #fff; letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); font-variant-numeric: tabular-nums; }
+  .stamp { position: absolute; left: 90px; right: 120px; top: 290px; text-align: center; font: 700 132px/0.95 "Space Grotesk", sans-serif; letter-spacing: -0.04em; color: #fff; text-shadow: 0 10px 40px rgba(120, 40, 20, 0.35); font-variant-numeric: tabular-nums; }
+  .shot { position: absolute; border-radius: 26px; overflow: hidden; background: #111; border: 6px solid #fff; box-shadow: 0 40px 90px rgba(90, 30, 10, 0.4); }
+  .shot .zoom { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+  .shot .zoom img { display: block; width: 100%; }
+  .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(45deg, #3a2d2a 0 24px, #2f2422 24px 48px); font: 700 30px "JetBrains Mono", monospace; color: #a8968f; }
+  .label { position: absolute; font: 800 30px "Inter", sans-serif; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(60, 20, 10, 0.72); padding: 10px 18px; border-radius: 10px; z-index: 41; }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .ask { font: 700 88px/1.02 "Caveat", cursive; color: #fff; text-align: center; }
+  .ask b { color: #fcd34d; font-weight: 700; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  .kz-progress > div { background: linear-gradient(90deg, #ff2d2d, #fcd34d); }
+
+  /* ================= 133: golden hour, family time ================= */
+  #sky { background: linear-gradient(180deg, #fdba74 0%, #fb923c 32%, #ec5a6e 68%, #a3245a 100%); }
+  #flare { position: absolute; left: 560px; top: 60px; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 250, 225, 0.95), rgba(255, 220, 150, 0.4) 40%, rgba(255, 200, 120, 0)); }
+  .bok { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255, 245, 220, 0.75), rgba(255, 230, 180, 0.1) 70%, rgba(255, 230, 180, 0)); }
+  #warmDim { background: #3b1408; opacity: 0; }
+  .bub { position: absolute; left: 100px; display: flex; align-items: flex-end; gap: 16px; padding: 14px 26px 18px; border-radius: 30px; background: rgba(32, 24, 22, 0.88); box-shadow: 0 16px 40px rgba(80, 30, 10, 0.35); }
+  .bub b { font: 700 56px/1.05 "Inter", sans-serif; color: #fff; letter-spacing: -0.02em; white-space: nowrap; }
+  .bub i { font: 600 30px "Inter", sans-serif; font-style: normal; color: #c9b8b0; margin-bottom: 4px; }
+  #quote { position: absolute; left: 90px; right: 120px; top: 430px; text-align: center; }
+  #quote div { font: 700 92px/1 "Caveat", cursive; color: #fff; text-shadow: 0 4px 18px rgba(120, 40, 20, 0.55); white-space: nowrap; }
+  #phoneIll { position: absolute; left: 395px; top: 560px; width: 290px; height: 520px; border-radius: 48px; background: #17121f; box-shadow: 0 0 0 6px #2d2638, 0 40px 90px rgba(80, 30, 10, 0.45); overflow: hidden; }
+  #phoneIll .scr { position: absolute; inset: 14px; border-radius: 36px; background: radial-gradient(circle at 50% 35%, #3b1470 0%, #140a22 75%); }
+  #chips { position: absolute; left: 90px; right: 160px; top: 1130px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .chip { font: 800 62px "Inter", sans-serif; color: #2a0f05; background: #fff; padding: 12px 34px 16px; border-radius: 999px; box-shadow: 0 14px 34px rgba(120, 40, 20, 0.3); white-space: nowrap; }
+  .chip.p { background: #7c3aed; color: #fff; }
+  #peak { position: absolute; left: 90px; right: 120px; top: 520px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  #peak div { font: 700 116px/1.08 "Space Grotesk", sans-serif; letter-spacing: -0.03em; color: #fff; text-shadow: 0 10px 40px rgba(120, 40, 20, 0.45); white-space: nowrap; }
+  #peak div b { color: #3b0764; font-weight: 700; background: #fcd34d; padding: 0 18px 8px; border-radius: 18px; text-shadow: none; }
+  #endTint { background: radial-gradient(70% 45% at 50% 40%, rgba(59, 20, 112, 0.92) 0%, rgba(11, 7, 18, 0.96) 70%); opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="18.4" data-fps="30">
+
+  <!-- ===== untimed: golden hour + bokeh ===== -->
+  <div class="layer" id="world">
+    <div class="layer" id="sky"></div>
+    <div id="flare"></div>
+    <div class="layer" id="bokeh"></div>
+    <div class="layer" id="warmDim"></div>
+  </div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- ===== S0 hook: 0 - 2.857 ===== -->
+  <section id="s0" class="clip" data-start="0" data-duration="2.857">
+    <div style="position:absolute; left:90px; right:120px; top:380px; display:flex; flex-direction:column; align-items:center; text-align:center" id="hk">
+      <div id="h1" style="font:700 160px/1 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#fff; text-shadow:0 10px 40px rgba(120,40,20,0.5)">ENQUANTO</div>
+      <div id="h2" style="margin-top:20px; white-space:nowrap; font:700 128px/1 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#3b0764; background:#fcd34d; padding:8px 30px 20px; border-radius:24px; box-shadow:0 18px 50px rgba(120,40,20,0.35)">O BOT CAÇA…</div>
+      <div id="h3" style="margin-top:34px; display:flex; align-items:center; gap:14px; font:800 44px 'Inter',sans-serif; color:#fff; background:rgba(59,7,100,0.78); padding:12px 26px 14px; border-radius:999px"><i style="display:block; width:20px; height:20px; border-radius:50%; background:#c6ff3d; box-shadow:0 0 10px #c6ff3d"></i>KizuBot rodando</div>
+    </div>
+  </section>
+
+  <!-- ===== S1 15:37 the handprints: 2.857 - 6.429 ===== -->
+  <section id="s1" class="clip" data-start="2.857" data-duration="3.572">
+    <div class="layer" id="s1in">
+      <div class="stamp" id="st1">15:37</div>
+      <div class="shot" id="sh1" style="left:260px; top:660px; width:560px; height:430px"><div class="zoom" id="sh1z" style="top:-150px; height:auto"><img src="kit/img/prints/family-handprints--photo.jpg" alt="" /></div></div>
+      <div class="shot" id="sh1q" style="left:260px; top:1100px; width:560px; height:212px"><div class="zoom"><img src="kit/img/prints/family-handprints--quote.png" alt="" /></div></div>
+      <div class="label" id="lab1" style="left:250px; top:612px">print real de cliente</div>
+      <div id="quote"><div id="q1">“eu me divertido</div><div id="q2">com a família”</div></div>
+    </div>
+  </section>
+
+  <!-- ===== S2 16:24 away from home: 6.429 - 10.0 ===== -->
+  <section id="s2" class="clip" data-start="6.429" data-duration="3.571">
+    <div class="layer" id="s2in">
+      <div class="stamp" id="st2">16:24</div>
+      <div class="bub" id="b1" style="top:460px"><b>Tô longe de casa cm a família</b></div>
+      <div class="bub" id="b2" style="top:570px"><b>O bot já tá rodando e liso</b></div>
+            <div class="label" id="lab2" style="left:140px; top:700px">prints reais de clientes diferentes</div>
+      <div class="shot" id="sh2" style="left:140px; top:760px; width:620px; height:371px"><div class="zoom"><img src="kit/img/prints/away-with-family--quote.png" alt="" /></div></div>
+    </div>
+  </section>
+
+  <!-- ===== S3 claim: 10.0 - 12.143 ===== -->
+  <section id="s3" class="clip" data-start="10.0" data-duration="2.143">
+    <div id="phoneIll"><div class="scr"></div><img src="kit/img/brand/kizubot-head.png" alt="" style="position:absolute; left:45px; top:120px; width:200px"/><div class="eye" id="eye1" style="left:102px; top:144px; width:90px; height:90px"></div></div>
+    <div id="chips"><div class="chip" id="c1">acesso pelo celular</div><div class="chip p" id="c2">100% AFK</div></div>
+  </section>
+
+  <!-- ===== S4 peak: 12.143 - 15.0 ===== -->
+  <section id="s4" class="clip" data-start="12.143" data-duration="2.857">
+    <div id="peak"><div id="k1">O tempo é seu.</div><div id="k2" style="margin-top:24px">O farm é <b>dele.</b></div></div>
+  </section>
+
+  <!-- ===== S5 end card: 15.0 - 18.4 ===== -->
+  <section id="s5" class="clip" data-start="15.0" data-duration="3.4">
+    <div class="layer" id="endTint"></div>
+    <div class="kz-end" id="s5in">
+      <div style="position:relative; width:560px" id="logoBox">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>O que você faria</div><div>com o <b>tempo livre?</b></div></div>
+    </div>
+  </section>
+
+  <!-- ===== untimed: camcorder viewfinder ===== -->
+  <div class="vf" id="vf">
+    <svg width="1080" height="1920" viewBox="0 0 1080 1920">
+      <g stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.9">
+        <path d="M70 280 L70 200 L150 200"/><path d="M930 200 L1010 200 L1010 280"/>
+        <path d="M70 1640 L70 1720 L150 1720"/><path d="M930 1720 L1010 1720 L1010 1640"/>
+      </g>
+    </svg>
+    <div class="rec"><i id="recDot"></i>REC</div>
+    <div class="tc" id="tc">00:00:00</div>
+  </div>
+  <div id="flash"></div>
+</div>
+<script>
+  (function () {
+    const r = KZ.rng(133);
+    const box = document.getElementById("bokeh");
+    for (let i = 0; i < 14; i++) {
+      const d = document.createElement("div");
+      d.className = "bok";
+      const s = 80 + r() * 220;
+      d.style.width = s + "px"; d.style.height = s + "px";
+      d.style.left = (-60 + r() * 1100) + "px"; d.style.top = (150 + r() * 1500) + "px";
+      d.style.opacity = (0.35 + r() * 0.5).toFixed(2);
+      box.appendChild(d);
+    }
+  })();
+
+  const tl = gsap.timeline({ paused: true });
+  const D = 18.4;
+  const b = KZ.beats(84);                    // beat 0.714 s, bar 2.857 s
+  const S = [0, b(4), b(9), b(14), b(17), b(21)];
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  (function () {
+    const el = document.getElementById("tc"); const o = { v: 0 };
+    tl.to(o, { v: D, duration: D, ease: "none", onUpdate: function () { el.textContent = "00:00:" + String(Math.floor(o.v)).padStart(2, "0"); } }, 0);
+  })();
+  tl.fromTo("#recDot", { opacity: 1 }, { opacity: 0.15, duration: 0.5, ease: "steps(1)", yoyo: true, repeat: 35 }, 0);
+
+  // ---------- gentle ambient: bokeh drift + breathing flare (no shakes in this one) ----------
+  document.querySelectorAll(".bok").forEach(function (el, i) {
+    const rr = KZ.rng(400 + i);
+    tl.fromTo(el, { x: 0, y: 0 }, { x: (rr() * 2 - 1) * 90, y: -60 - rr() * 120, duration: D, ease: "none" }, 0);
+  });
+  tl.fromTo("#flare", { scale: 1, opacity: 0.85 }, { scale: 1.12, opacity: 1, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0);
+
+  // ---------- S0 hook ----------
+  tl.fromTo("#h1", { scale: 1.08, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo("#h2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.16);
+  tl.fromTo("#h3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, b(1.2));
+  tl.to("#hk", { scale: 1.04, duration: 2.2, ease: "sine.inOut" }, 0.5);
+  tl.to("#hk", { opacity: 0, y: -40, duration: 0.25, ease: "power2.in" }, S[1] - 0.25);
+
+  // ---------- S1 15:37 ----------
+  tl.fromTo("#st1", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, S[1]);
+  tl.fromTo("#sh1", { opacity: 0, y: 60, rotation: -3 }, { opacity: 1, y: 0, rotation: -1.5, duration: 0.6, ease: "power3.out" }, S[1] + 0.1);
+  tl.fromTo("#sh1z", { scale: 1.12 }, { scale: 1, duration: 3.4, ease: "sine.out" }, S[1] + 0.1);
+  tl.fromTo("#lab1", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, S[1] + 0.6);
+  tl.fromTo("#q1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S[1] + b(1));
+  tl.fromTo("#q2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S[1] + b(1.6));
+  tl.fromTo("#sh1q", { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, S[1] + b(2.4));
+  tl.to("#s1in", { opacity: 0, duration: 0.3, ease: "power1.in" }, S[2] - 0.3);
+
+  // ---------- S2 16:24 ----------
+  tl.to("#warmDim", { opacity: 0.25, duration: 0.6 }, S[2]);
+  tl.fromTo("#st2", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, S[2]);
+  ["#b1", "#b2"].forEach(function (id, i) {
+    tl.fromTo(id, { opacity: 0, x: -40, scale: 0.92 }, { opacity: 1, x: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, S[2] + 0.25 + i * b(0.75));
+  });
+  tl.fromTo("#sh2", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, S[2] + b(2.6));
+  tl.fromTo("#lab2", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, S[2] + b(2.6) + 0.2);
+  tl.to("#s2in", { opacity: 0, duration: 0.3, ease: "power1.in" }, S[3] - 0.3);
+
+  // ---------- S3 claim ----------
+  tl.to("#warmDim", { opacity: 0.1, duration: 0.5 }, S[3]);
+  tl.fromTo("#phoneIll", { opacity: 0, y: 80, rotation: -4 }, { opacity: 1, y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.5)" }, S[3]);
+  KZ.eyePulse(tl, "#eye1", S[3] + 0.45, 2);
+  tl.fromTo("#c1", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, S[3] + 0.5);
+  tl.fromTo("#c2", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, S[3] + 0.5 + b(1));
+  tl.to(["#phoneIll", "#chips"], { opacity: 0, duration: 0.25, ease: "power1.in" }, S[4] - 0.25);
+
+  // ---------- S4 peak ----------
+  tl.to("#warmDim", { opacity: 0, duration: 0.5 }, S[4]);
+  tl.fromTo("#k1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, S[4]);
+  tl.fromTo("#k2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, S[4] + b(1.5));
+  tl.to("#peak", { scale: 1.05, duration: 2.4, ease: "sine.inOut" }, S[4] + 0.3);
+  tl.to("#peak", { opacity: 0, duration: 0.25, ease: "power1.in" }, S[5] - 0.25);
+
+  // ---------- S5 end card + sonic logo ----------
+  tl.to("#endTint", { opacity: 1, duration: 0.4, ease: "power2.out" }, S[5]);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, S[5] + 0.05);
+  KZ.eyePulse(tl, "#eye2", S[5] + 0.15, 3);
+  KZ.rise(tl, "#endUrl", S[5] + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", S[5] + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, S[5] + 0.6);
+  tl.to(["#s5in", "#endTint"], { opacity: 0, duration: 0.4, ease: "power1.in" }, D - 0.45);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

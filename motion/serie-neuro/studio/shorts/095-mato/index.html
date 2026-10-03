@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>095 Dicionário PxG: Mato</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F11 "EDITORIAL GRAIN" dictionary system (shared by 091-095) ===== */
+  :root { --d-paper: #efe8dc; --d-ink: #1a1a1a; --d-gray: #5d554a; --d-red: #c2412d; --d-strip: #bcd88f; --d-strip2: #d9c7f3; }
+  #root { background: var(--d-paper); }
+  .page { position: absolute; inset: 0; background:
+      radial-gradient(120% 70% at 50% 40%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 60%),
+      linear-gradient(90deg, rgba(60, 40, 20, 0.28) 0px, rgba(60, 40, 20, 0.08) 26px, rgba(60, 40, 20, 0) 70px),
+      var(--d-paper); }
+  .fibers { position: absolute; inset: 0; opacity: 0.5; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='540' height='540'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.012 0.05' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 0.42  0 0 0 0 0.33  0 0 0 0 0.22  0 0 0 0.35 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>"); }
+  .grain { position: absolute; left: -200px; top: -200px; width: 1480px; height: 2320px; opacity: 0.16; mix-blend-mode: multiply; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .vig { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(130% 90% at 50% 45%, rgba(0,0,0,0) 60%, rgba(70, 45, 20, 0.28) 100%); }
+  .d-head { position: absolute; left: 90px; right: 120px; top: 232px; display: flex; justify-content: space-between; align-items: baseline; }
+  .d-kicker { font: 800 30px "Inter", sans-serif; letter-spacing: 0.22em; color: var(--d-ink); text-transform: uppercase; }
+  .d-ed { position: absolute; right: 120px; top: 314px; font: 800 30px "Inter", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #6d28d9; }
+  .d-guide { font: italic 400 42px "Instrument Serif", serif; color: var(--d-gray); }
+  .d-rule { position: absolute; left: 90px; right: 120px; top: 292px; height: 9px; border-top: 3px solid var(--d-ink); border-bottom: 1.5px solid var(--d-ink); transform-origin: 0 50%; }
+  .d-word { position: absolute; left: 70px; top: 306px; font: 400 318px/1 "Instrument Serif", serif; color: var(--d-ink); letter-spacing: -0.02em; }
+  .d-pron { position: absolute; left: 92px; top: 706px; font: 400 66px "Instrument Serif", serif; color: var(--d-red); }
+  .d-class { position: absolute; left: 92px; top: 784px; right: 120px; font: italic 400 58px/1.1 "Instrument Serif", serif; color: var(--d-gray); }
+  .d-defs { position: absolute; left: 90px; top: 900px; width: 790px; height: 480px; }
+  .d-def { position: absolute; left: 0; top: 0; width: 790px; display: flex; gap: 26px; }
+  .d-num { flex: none; width: 104px; font: 400 140px/0.86 "Instrument Serif", serif; color: var(--d-red); }
+  .d-txt { flex: 1; padding-top: 6px; }
+  .d-lab { display: block; font: 800 32px "Inter", sans-serif; letter-spacing: 0.18em; text-transform: uppercase; color: var(--d-red); margin-bottom: 14px; }
+  .d-body { font: 400 84px/1.05 "Instrument Serif", serif; color: var(--d-ink); }
+  .d-body i { font-style: italic; }
+  .k { position: relative; display: inline-block; white-space: nowrap; z-index: 0; }
+  .k .strip { position: absolute; left: -14px; right: -14px; top: 18%; bottom: 2%; z-index: -1; background: var(--d-strip); transform-origin: 0 50%;
+    clip-path: polygon(0% 8%, 6% 0%, 14% 6%, 23% 1%, 31% 7%, 42% 0%, 51% 5%, 60% 0%, 71% 6%, 80% 1%, 90% 7%, 100% 2%, 99% 92%, 91% 100%, 82% 94%, 71% 100%, 62% 95%, 50% 100%, 41% 93%, 30% 99%, 19% 94%, 9% 100%, 1% 95%);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.1); }
+  .k .strip.lav { background: var(--d-strip2); }
+  .d-chip { display: inline-block; margin-top: 26px; padding: 10px 24px 12px; border: 3px solid var(--d-ink); font: 800 44px "Inter", sans-serif; letter-spacing: 0.04em; color: var(--d-ink); background: rgba(255,255,255,0.35); }
+  .d-ex { position: absolute; left: 90px; top: 880px; width: 790px; }
+  .d-exlab { font: italic 400 76px/1 "Instrument Serif", serif; color: var(--d-red); }
+  .d-quote { font: italic 400 76px/1.08 "Instrument Serif", serif; color: var(--d-ink); margin-top: 4px; }
+  .d-quote span { display: block; }
+  .d-src { font: 700 30px "Inter", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--d-gray); margin-top: 18px; }
+  .d-photo { position: absolute; background: #fff; padding: 14px; box-shadow: 0 18px 40px rgba(60, 40, 20, 0.28); }
+  .d-photo img { display: block; width: 100%; }
+  .tape { position: absolute; width: 190px; height: 54px; background: rgba(236, 226, 196, 0.82); box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+  .d-ph { display: flex; align-items: center; justify-content: center; background: #2a2b2f; color: #888; font: 800 36px "Inter", sans-serif; }
+  .d-tab { position: absolute; right: -30px; top: 420px; width: 120px; height: 150px; background: var(--d-red); border-radius: 22px 0 0 22px; color: #f6efe3;
+    font: 400 92px/150px "Instrument Serif", serif; text-align: left; padding-left: 26px; box-shadow: inset 6px 0 0 rgba(0,0,0,0.12); }
+  .d-ghost { position: absolute; left: 90px; top: 1236px; font: 400 112px/1 "Instrument Serif", serif; color: var(--d-ink); opacity: 0.16; white-space: nowrap; }
+  .d-ghost i { font-size: 52px; color: var(--d-red); margin-left: 18px; }
+  .n { font-family: "Bodoni Moda", serif; font-style: italic; font-weight: 400; font-size: 0.86em; }
+  .etch { position: absolute; }
+  .etch svg { width: 100%; height: 100%; overflow: visible; }
+  .d-folio { position: absolute; right: 200px; top: 1352px; font: italic 400 40px "Instrument Serif", serif; color: var(--d-gray); }
+  /* page turn to the brand end card */
+  .turn { position: absolute; inset: 0; transform-origin: 0% 50%; background: var(--d-paper); box-shadow: 30px 0 60px rgba(0,0,0,0.35); }
+  .endbg { position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 38%, #3b1470 0%, rgba(11, 7, 18, 0) 70%), #0b0712; }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .endwrap { position: absolute; left: 90px; right: 200px; top: 300px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .endlogo { position: relative; width: 600px; margin-left: 110px; }
+  .endlogo img { width: 100%; display: block; }
+  .endurl { margin-top: 26px; font: 900 66px "Inter", sans-serif; color: #fff; letter-spacing: -0.01em; }
+  .endask { margin-top: 34px; font: italic 400 84px/1.05 "Instrument Serif", serif; color: #f5f0fa; }
+  .endask span { display: block; }
+  .endask b { font-weight: 400; color: var(--kz-lav); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="22.86" data-fps="30">
+  <!-- untimed: the dictionary page -->
+  <div id="cam" style="position:absolute; inset:0">
+    <div class="page"></div>
+    <div class="fibers"></div>
+    <div class="d-head" id="dhead"><span class="d-kicker">Dicionário PxG</span><span class="d-guide">mato — mega</span></div>
+    <div class="d-rule" id="drule"></div>
+    <div class="d-ed" id="ded">ed. KizuBot</div>
+    <div class="d-word" id="word">MATO</div>
+    <div class="d-pron" id="pron">/má.tu/</div>
+    <div class="d-tab">M</div>
+    <div class="d-ghost" id="ghost">mega<i>/mé.ga/</i></div>
+    <div class="d-folio" id="folio">p. 95</div>
+  </div>
+
+  <!-- S1 headword class line (intro): 0 - 2.86 -->
+  <section id="s1" class="clip" data-start="0" data-duration="2.86">
+    <div class="d-class" id="cls">s.m., gír. PxG</div>
+  </section>
+
+  <!-- S2 definitions: 2.86 - 13.57 -->
+  <section id="s2" class="clip" data-start="2.86" data-duration="10.71">
+    <div class="d-defs">
+      <div class="d-def" id="d1"><div class="d-num">1.</div><div class="d-txt"><div class="d-body">Vegetação.</div></div></div>
+      <div class="etch" id="leaf" style="left:470px; top:40px; width:300px; height:330px; opacity:0"><svg viewBox="0 0 300 330" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path class="lf" d="M150 320 C 150 250 150 190 152 120"/>
+        <path class="lf" d="M152 300 C 60 280 20 200 40 120 C 60 50 120 20 152 10 C 190 30 250 60 262 130 C 276 210 230 280 152 300 Z"/>
+        <path class="lf" d="M152 250 C 120 230 90 210 72 180 M152 210 C 120 190 96 160 84 130 M152 170 C 130 150 116 120 112 90 M152 250 C 186 230 214 206 232 176 M152 210 C 184 190 208 162 220 128 M152 170 C 176 150 192 120 196 92" stroke-width="2"/>
+        <path d="M70 230 l14 8 M60 200 l14 8 M58 170 l14 8 M230 230 l-14 8 M240 200 l-14 8 M244 170 l-14 8" stroke-width="1.4"/>
+      </svg></div>
+      <div class="d-def" id="d2" style="opacity:0"><div class="d-num">2.</div><div class="d-txt"><span class="d-lab">No PxG</span><div class="d-body">Recurso de farming que rende muito e <span class="k"><span class="strip" id="st2"></span>cansa mais ainda.</span></div></div></div>
+      <div class="d-def" id="d3" style="opacity:0"><div class="d-num">3.</div><div class="d-txt"><span class="d-lab">Com KizuBot</span><div class="d-body">O que o seu char coleta <span class="k"><span class="strip lav" id="st3"></span>o dia inteiro,</span> sem player enchendo o saco.</div></div></div>
+    </div>
+  </section>
+
+  <!-- S3 usage examples, two real prints: 13.57 - 19.29 -->
+  <section id="s3" class="clip" data-start="13.57" data-duration="5.72">
+    <div class="d-ex" id="ex">
+      <div class="d-exlab" id="exlab">Ex.:</div>
+      <div class="d-quote" id="exq1"><span>“<b class="n">1</b> mes pegando mato,</span><span>9<b class="n">1</b>kk”</span></div>
+    </div>
+    <div class="d-photo" id="photo1" style="left:96px; top:1180px; width:780px">
+      <img src="kit/img/prints/mato-1-mes-91kk--quote.png" alt="" />
+      <div class="tape" style="left:-40px; top:-22px; transform: rotate(-24deg)"></div>
+    </div>
+    <div class="d-ex" id="ex2" style="opacity:0">
+      <div class="d-exlab">Ex.:</div>
+      <div class="d-quote" id="exq2" style="font-size:150px; line-height:1">“q paz”</div>
+    </div>
+    <div class="d-photo" id="photo2" style="left:96px; top:1170px; width:840px; opacity:0">
+      <img src="kit/img/prints/mato-sem-player-q-paz--quote.png" alt="" />
+      <div class="tape" style="right:-46px; top:-18px; transform: rotate(18deg)"></div>
+    </div>
+    <div class="d-src" id="src" style="position:absolute; left:96px; top:1350px">prints reais de clientes diferentes</div>
+  </section>
+
+  <div class="kz-progress" style="background: rgba(26,26,26,0.08); height: 8px"><div id="prog" style="background: #c2412d"></div></div>
+  <!-- grain + vignette above the page content -->
+  <div class="grain" id="grain"></div>
+  <div class="vig"></div>
+
+  <!-- S4 page turn + end card: 19.29 - 22.86 -->
+  <section id="s4" class="clip" data-start="19.29" data-duration="3.57">
+    <div class="endbg"></div>
+    <div class="endwrap" id="s4in">
+      <div class="endlogo" id="endLogo">
+        <img src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:187px; top:6px; width:112px; height:112px"></div>
+      </div>
+      <div class="endurl" id="endUrl">kizubot.com</div>
+      <div class="endask" id="endAsk"><span>Quanto mato você</span><span><b>já pegou na mão?</b></span></div>
+    </div>
+    <div class="turn" id="turn">
+      <div style="position:absolute; inset:0; transform: scale(1.035) rotate(0.3deg); transform-origin: 40% 40%">
+        <div class="page"></div>
+        <div class="fibers"></div>
+        <div class="d-head"><span class="d-kicker">Dicionário PxG</span><span class="d-guide">mato — mega</span></div>
+        <div class="d-rule"></div>
+        <div class="d-ed">ed. KizuBot</div>
+        <div class="d-word">MATO</div>
+        <div class="d-pron">/má.tu/</div>
+        <div class="d-tab">M</div>
+        <div class="d-ghost">mega<i>/mé.ga/</i></div>
+        <div class="d-folio">p. 95</div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 22.86;
+  const b = KZ.beats(84);            // beat = 0.714 s, bar = 2.857 s
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  // film grain at 12 fps + a slow, unhurried push-in on the page
+  const hash = function (n) { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+  const grain = document.getElementById("grain");
+  const g = { t: 0 };
+  tl.to(g, { t: D, duration: D, ease: "none", onUpdate: function () {
+    const k = Math.floor(g.t * 12);
+    grain.style.transform = "translate(" + Math.round((hash(k) - 0.5) * 180) + "px," + Math.round((hash(k + 17) - 0.5) * 180) + "px)";
+  } }, 0);
+  tl.fromTo("#cam", { scale: 1.0, rotation: -0.4 }, { scale: 1.035, rotation: 0.3, duration: 19.25, ease: "sine.inOut", transformOrigin: "40% 40%" }, 0);
+
+  // ---------- S1: headword (visible on frame 0, ink settles) ----------
+  tl.fromTo("#word", { opacity: 0.85, filter: "blur(3px)", y: 8 }, { opacity: 1, filter: "blur(0px)", y: 0, duration: 0.5, ease: "power2.out" }, 0);
+  tl.fromTo("#drule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, 0);
+  tl.fromTo("#dhead", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0.1);
+  tl.fromTo("#ded", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 1.43);
+  const pron = document.getElementById("pron"); const pronTxt = pron.textContent;
+  KZ.typewriter(tl, pron, pronTxt, b(1) - 0.1, 18);
+  tl.fromTo("#cls", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "power2.inOut" }, b(2));
+  tl.fromTo("#folio", { opacity: 0 }, { opacity: 1, duration: 0.6 }, b(2.5));
+  tl.to("#cls", { opacity: 0, y: -10, duration: 0.3, ease: "power1.in" }, 2.86 - 0.32);
+
+  // ---------- S2: definitions, one at a time (gentle wipes, no bounces) ----------
+  function wipeIn(el, at) { tl.fromTo(el, { opacity: 1, clipPath: "inset(-20% 100% -20% 0)" }, { opacity: 1, clipPath: "inset(-20% 0% -20% 0)", duration: 0.75, ease: "power2.inOut", immediateRender: false }, at); }
+  function wipeOut(el, at) { tl.to(el, { opacity: 0, y: -24, duration: 0.35, ease: "power1.in" }, at); }
+  tl.set("#d1", { clipPath: "inset(-20% 100% -20% 0)" }, 0);
+  wipeIn("#d1", 2.86);
+  (function () {
+    document.querySelectorAll("#leaf .lf").forEach(function (p, i) {
+      const L = p.getTotalLength(); p.style.strokeDasharray = L + " " + L;
+      tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 1.2, ease: "power1.inOut" }, 3.3 + i * 0.25);
+    });
+    tl.fromTo("#leaf", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 3.3);
+    tl.to("#leaf", { opacity: 0, duration: 0.3 }, b(7) - 0.4);
+  })();
+  wipeOut("#d1", b(7) - 0.4);
+  wipeIn("#d2", b(7));
+  tl.fromTo("#st2", { scaleX: 0, rotation: -2 }, { scaleX: 1, rotation: -1.2, duration: 0.28, ease: "power3.out" }, b(7) + 1.15);
+  wipeOut("#d2", b(12) - 0.4);
+  wipeIn("#d3", b(12));
+  tl.to("#ghost", { opacity: 0, duration: 0.3 }, b(12) - 0.3);
+  tl.fromTo("#st3", { scaleX: 0, rotation: 1 }, { scaleX: 1, rotation: 0.8, duration: 0.28, ease: "power3.out" }, b(12) + 1.2);
+  tl.to("#s2 .d-defs", { opacity: 0, duration: 0.3, ease: "power1.in" }, 13.57 - 0.32);
+
+  // ---------- S3: Ex. x2 (real prints, different customers) ----------
+  const T3 = 13.57;
+  tl.to("#folio", { opacity: 0, duration: 0.3 }, T3 - 0.3);
+  tl.fromTo("#exlab", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, T3);
+  tl.fromTo("#exq1 span:nth-child(1)", { clipPath: "inset(-20% 100% -20% 0)" }, { clipPath: "inset(-20% 0% -20% 0)", duration: 0.7, ease: "power2.inOut" }, T3 + 0.3);
+  tl.fromTo("#exq1 span:nth-child(2)", { clipPath: "inset(-20% 100% -20% 0)" }, { clipPath: "inset(-20% 0% -20% 0)", duration: 0.5, ease: "power2.inOut" }, T3 + 1.05);
+  tl.fromTo("#photo1", { opacity: 0, y: 60, rotation: 5 }, { opacity: 1, y: 0, rotation: 2, duration: 0.6, ease: "power3.out" }, T3 + 1.2);
+  tl.fromTo("#src", { opacity: 0 }, { opacity: 1, duration: 0.4 }, T3 + 1.5);
+  const T3b = T3 + 2.86;
+  tl.to(["#ex", "#photo1"], { opacity: 0, y: -20, duration: 0.3, ease: "power1.in" }, T3b - 0.3);
+  tl.fromTo("#ex2", { opacity: 0 }, { opacity: 1, duration: 0.01, immediateRender: false }, T3b);
+  tl.fromTo("#exq2", { clipPath: "inset(-20% 100% -20% 0)" }, { clipPath: "inset(-20% 0% -20% 0)", duration: 0.6, ease: "power2.inOut" }, T3b + 0.1);
+  tl.fromTo("#photo2", { opacity: 0, y: 60, rotation: -4 }, { opacity: 1, y: 0, rotation: -1.5, duration: 0.6, ease: "power3.out" }, T3b + 0.5);
+  tl.to(["#ex2", "#photo2", "#src"], { opacity: 0, duration: 0.28, ease: "power1.in" }, 19.29 - 0.3);
+  // ---------- S4: page turn -> brand end card ----------
+  const T4 = 19.29;
+  tl.fromTo("#turn", { rotationY: 0, opacity: 1 }, { rotationY: -100, duration: 0.7, ease: "power2.in", transformPerspective: 2400 }, T4);
+  tl.set("#turn", { opacity: 0 }, T4 + 0.7);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, b(28) + 0.04);
+  KZ.eyePulse(tl, "#eye2", b(28) + 0.13, 3);
+  KZ.rise(tl, "#endUrl", b(28) + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", b(28) + 0.8, 0.5, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, b(28) + 0.6);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

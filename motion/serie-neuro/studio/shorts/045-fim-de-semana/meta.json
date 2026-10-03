@@ -1,0 +1,69 @@
+{
+  "id": "045",
+  "slug": "fim-de-semana",
+  "family": "A Conta",
+  "title": "Seu fim de semana tem 48 horas",
+  "concept": "Two clocks burn through a weekend, a paper planner fills with life (dormir até tarde, praia, futebol, família), then flips over to the char's side: 48h parado in red, tape stop, and on the drop the columns get painted purple: 48h farmando; two real prints from different customers close it (beach + family).",
+  "neuro": [
+    "loss-aversion",
+    "self-reference",
+    "aspiration",
+    "social-proof",
+    "contrast",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "SEU FIM DE SEMANA TEM 48 HORAS.",
+  "duration": 19.7,
+  "music": {
+    "style": "phonk",
+    "bpm": 125
+  },
+  "assets": [
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/beach-while-bot-farms--photo.jpg",
+    "kit/img/prints/beach-while-bot-farms--quote.png",
+    "kit/img/prints/family-handprints--photo.jpg",
+    "kit/img/prints/family-handprints--quote.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "uso com PC desligado",
+    "roda 24/7 (48h no fim de semana)"
+  ],
+  "math": "24h × 2 = 48h",
+  "platforms": {
+    "tiktok": {
+      "caption": "Seu fim de semana tem 48 horas. Praia, família, futebol… e o seu char? Parado as 48 😴 Com o KizuBot ele farma as 48. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk",
+        "#fimdesemana"
+      ]
+    },
+    "youtube": {
+      "title": "Seu fim de semana tem 48 horas. Seu char fica parado as 48?",
+      "description": "Sábado e domingo: 48 horas de praia, família e futebol. Seu char parado as 48. Com o KizuBot ele farma as 48 — 100% AFK, com o PC desligado. Prints reais de clientes diferentes. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Seu fim de semana tem 48 horas. 🏖️ Enquanto você vive, o KizuBot farma as 48. O que você faz no fim de semana? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afkfarm"
+      ]
+    }
+  },
+  "pinned_comment": "O que você faz no fim de semana? 👇",
+  "notes": "The planner's activities are an illustrative example weekend (no claim). Prints from two different customers are labelled 'prints reais de clientes diferentes'; quotes shown as the print crops (verbatim). The planner flip is a single 3D prop (front = your weekend, back = the char's). Photos are shown through a polaroid window (crop only); the beach mosaics hiding strangers stay intact."
+}

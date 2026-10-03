@@ -1,0 +1,61 @@
+{
+  "id": "091",
+  "slug": "afk",
+  "family": "Dicionário PxG",
+  "title": "Dicionário PxG: AFK",
+  "concept": "A calm editorial dictionary entry for AFK with three numbered definitions (longe do teclado; no PxG, o exato momento em que aparece um shiny; com KizuBot, o estado em que o seu char mais rende), a real customer usage example and a page turn into the brand end card.",
+  "neuro": [
+    "in-group-identity",
+    "incongruity-humor",
+    "processing-fluency",
+    "pattern-interrupt",
+    "social-proof",
+    "comment-prompt"
+  ],
+  "hook": "AFK",
+  "duration": 20,
+  "music": {
+    "style": "lofi",
+    "bpm": 84
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/shiny-muk--quote.png"
+  ],
+  "claims": [
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Dicionário PxG: AFK 📖 1. estar longe do teclado 2. o exato momento em que aparece um shiny 3. com KizuBot, o estado em que o seu char mais rende. Qual palavra do PxG vem a seguir? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk",
+        "#dicionario"
+      ]
+    },
+    "youtube": {
+      "title": "Dicionário PxG: AFK (a definição que só quem joga entende) 📖",
+      "description": "AFK, sigla do inglês away from keyboard. 1. Estar longe do teclado. 2. No PxG: o exato momento em que aparece um shiny. 3. Com KizuBot: o estado em que o seu char mais rende (100% AFK). Ex.: \"pena que n vi piscar\" / \"tava afk\" (print real de cliente). kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Dicionário PxG: AFK 📖 Só quem joga entende a definição 2. Qual palavra do PxG vem a seguir? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk"
+      ]
+    }
+  },
+  "pinned_comment": "Qual palavra do PxG a gente define no próximo? 📖",
+  "notes": "Usage example typeset verbatim ('pena que n vi piscar' / 'tava afk') next to the real print shiny-muk--quote. Early brand cue: 'ed. KizuBot' running head plus the KizuBot motif at 1.4 s. One definition per screen to stay under 14 words; etched keyboard illustration on definition 1."
+}

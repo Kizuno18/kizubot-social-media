@@ -1,0 +1,65 @@
+{
+  "id": "054",
+  "slug": "avisa-shiny",
+  "family": "Mito ou Verdade?",
+  "title": "Mito ou verdade: ele te avisa quando nasce shiny?",
+  "concept": "Game-show quiz: does it warn you when a shiny spawns? VERDADE stamp, then the real shinyDetected alarm lands on a buzzing phone with the KizuBot alert sound, and a real smartwatch photo shows the alarms reach even the watch.",
+  "neuro": [
+    "curiosity-gap",
+    "commitment-guess",
+    "anticipation-drop",
+    "variable-reward",
+    "pavlovian-sound",
+    "social-proof"
+  ],
+  "hook": "MITO OU VERDADE? ELE TE AVISA QUANDO NASCE SHINY?",
+  "duration": 19.18,
+  "music": {
+    "style": "gameshow",
+    "bpm": 122
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/prints/shiny-cubone--alarm.png",
+    "kit/img/prints/smartwatch-alarm--watch.jpg"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp (Telegram também)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Mito ou verdade: o bot te avisa quando nasce shiny? ✨ Chuta antes do carimbo! (Verdade: alarme no zap — e chega até no relógio.) Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#mitoouverdade"
+      ]
+    },
+    "youtube": {
+      "title": "Mito ou verdade: o bot avisa quando nasce shiny? #pxg",
+      "description": "Ele te avisa quando nasce shiny? VERDADE. O KizuBot detecta shiny, mega e boss e manda alarme no WhatsApp ou Telegram — chega até no relógio. Prints reais de clientes no vídeo. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    },
+    "instagram": {
+      "caption": "Mito ou verdade: ele te avisa quando nasce shiny? ✨ Shiny nasceu? O zap avisa. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Qual alarme você mais queria receber?",
+  "notes": "Question says 'nasce' (PxG slang for spawn) instead of 'aparece' so the card fits at ≥96 px. The lock-screen prop shows 16:42 = the real alarm time in shiny-cubone (shinyDetected + pokemonCaught, 16:42). The watch print is a Darkness Stone drop alarm, used only for 'chega até no relógio' (not presented as a shiny alarm)."
+}

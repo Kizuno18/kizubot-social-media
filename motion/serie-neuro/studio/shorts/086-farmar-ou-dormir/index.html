@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>086 Você prefere: farmar 8h na mão ou dormir 8h?</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F10 · VOCÊ PREFERE? — duel grammar (copy per episode) =================
+     A = top (warm), B = bottom (cool/violet), seam + VS badge, chooser frame, B wins, twist "dá os dois". */
+  :root {
+    --a1: #e0312b; --a2: #7a0d12; --a3: #2a0306;      /* A: red corner */
+    --b1: #7c3aed; --b2: #34106e; --b3: #0d0420;      /* B: violet corner */
+    --gold: #f7c548; --gold2: #b8860b; --ink2: #120a18;
+    --seamY: 860px;
+  }
+  #root { background: #0b0712; }
+  .full { position: absolute; inset: 0; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  .kz-progress > div { background: linear-gradient(90deg, var(--gold), #fff1b8); }
+  .panel { position: absolute; left: 0; right: 0; overflow: hidden; }
+  #pA { top: 0; height: var(--seamY); }
+  #pB { top: var(--seamY); bottom: 0; }
+  .pin { position: absolute; inset: 0; }
+  #seam { position: absolute; left: -20px; right: -20px; top: calc(var(--seamY) - 7px); height: 14px; background: var(--gold); box-shadow: 0 0 30px 6px rgba(247, 197, 72, 0.55); z-index: 3; }
+  #vsW { position: absolute; left: 430px; top: calc(var(--seamY) - 110px); width: 220px; height: 220px; z-index: 6; }
+  .vs { position: absolute; inset: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  #pillW { position: absolute; left: 0; right: 0; top: 232px; display: flex; justify-content: center; z-index: 7; }
+  .pill { display: inline-block; padding: 12px 36px 14px; border-radius: 999px; background: var(--ink2); border: 5px solid var(--gold); font-family: "Archivo Black", sans-serif; font-size: 60px; line-height: 1.15; color: #fff; text-transform: uppercase; box-shadow: 0 10px 0 rgba(0, 0, 0, 0.4); }
+  .pill b { color: var(--gold); font-weight: 400; }
+  #chooser { position: absolute; left: 70px; width: 900px; top: 316px; height: 520px; border-radius: 40px; border: 9px solid var(--gold); box-shadow: 0 0 40px rgba(247, 197, 72, 0.6), inset 0 0 40px rgba(247, 197, 72, 0.3); opacity: 0; z-index: 5; }
+  .letter { display: inline-block; width: 96px; height: 96px; border-radius: 50%; background: var(--gold); color: var(--ink2); font-family: "Anton", sans-serif; font-size: 66px; line-height: 96px; text-align: center; letter-spacing: 0; box-shadow: 0 7px 0 rgba(0, 0, 0, 0.4), 0 0 0 5px rgba(0, 0, 0, 0.35); }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .ptag { display: inline-block; padding: 10px 24px; border-radius: 999px; background: rgba(0, 0, 0, 0.6); border: 3px solid var(--gold); font: 800 30px "Inter", sans-serif; letter-spacing: 0.08em; color: #fff; text-transform: uppercase; }
+  .ph-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font: 700 32px "Inter", sans-serif; color: #8d8796; background: repeating-linear-gradient(45deg, #221d29 0 24px, #1c1822 24px 48px); }
+  .conf { position: absolute; width: 18px; height: 28px; border-radius: 4px; opacity: 0; }
+  #realBand { position: absolute; left: -60px; right: -60px; top: calc(var(--seamY) - 95px); height: 190px; background: #0b0712; border-top: 8px solid var(--gold); border-bottom: 8px solid var(--gold); display: flex; align-items: center; justify-content: center; z-index: 8; transform-origin: 50% 50%; }
+  #realBand span { font-family: "Anton", sans-serif; font-size: 136px; line-height: 1.1; color: #fff; text-transform: uppercase; letter-spacing: 0.01em; }
+  #realBand b { color: var(--gold); font-weight: 400; }
+
+  /* ================= 086 skin: boxing fight card ================= */
+  #pA .bgfx { position: absolute; inset: 0; background: radial-gradient(80% 70% at 50% 60%, var(--a1) 0%, var(--a2) 55%, var(--a3) 100%); }
+  #pB .bgfx { position: absolute; inset: 0; background: radial-gradient(80% 70% at 50% 40%, var(--b1) 0%, var(--b2) 55%, var(--b3) 100%); }
+  .stripes { position: absolute; inset: -200px; background: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 0 26px, rgba(255, 255, 255, 0) 26px 70px); }
+  .ropes { position: absolute; left: 0; right: 0; height: 10px; background: linear-gradient(90deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.0)); }
+  .corner { position: absolute; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 16px; font: 400 32px "JetBrains Mono", monospace; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; }
+  .corner i { display: inline-block; width: 60px; height: 4px; background: var(--gold); }
+  .fname { position: absolute; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; }
+  .fname div { font-family: "Anton", sans-serif; font-size: 150px; line-height: 0.98; color: #fff; text-transform: uppercase; letter-spacing: 0.005em; text-shadow: 0 8px 0 rgba(0, 0, 0, 0.35); -webkit-text-stroke: 3px rgba(0, 0, 0, 0.25); }
+  #nameA { top: 438px; }
+  #nameB { top: 1040px; right: 100px; }
+  #vsW .vs { background: radial-gradient(circle at 35% 30%, #fff4c2 0%, var(--gold) 40%, var(--gold2) 100%); border: 8px solid var(--ink2); box-shadow: 0 0 0 6px var(--gold), 0 18px 40px rgba(0, 0, 0, 0.6); }
+  #vsW .vs span { font-family: "Anton", sans-serif; font-size: 110px; line-height: 1; color: var(--ink2); letter-spacing: -0.02em; }
+  #vsQ { opacity: 0; }
+  /* A props */
+  #clockA { position: absolute; left: 100px; top: 724px; width: 300px; height: 112px; border-radius: 20px; background: #0d0405; border: 4px solid #3a1416; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); }
+  #clockA .dg { font-family: "Orbitron", sans-serif; font-weight: 700; font-size: 70px; color: #ff4b4b; text-shadow: 0 0 18px rgba(255, 75, 75, 0.8); letter-spacing: 0.02em; }
+  #clicksA { position: absolute; left: 676px; top: 724px; width: 300px; height: 112px; border-radius: 20px; background: rgba(0, 0, 0, 0.55); border: 4px solid rgba(255, 255, 255, 0.18); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  #clicksA small { font: 800 30px "Inter", sans-serif; color: #ffb3b3; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.1; }
+  #clicksA b { font: 900 52px "Inter", sans-serif; color: #fff; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .plus { position: absolute; font: 900 40px "Inter", sans-serif; color: #fff; opacity: 0; }
+  #yawn { position: absolute; left: 150px; top: 598px; font-size: 96px; line-height: 1; opacity: 0; }
+  /* B props */
+  #moon { position: absolute; left: 130px; top: 1262px; width: 120px; height: 120px; border-radius: 50%; box-shadow: 30px -6px 0 0 #f4ecff; transform-origin: 50% 50%; }
+  .zz { position: absolute; font-family: "Anton", sans-serif; color: #e9ddff; opacity: 0; }
+  #alarmB { position: absolute; left: 320px; top: 1250px; width: 556px; height: 149px; border-radius: 24px; overflow: hidden; background: #1b1424; border: 5px solid var(--kz-lime); box-shadow: 0 0 0 7px rgba(198, 255, 61, 0.16), 0 20px 50px rgba(0, 0, 0, 0.55); }
+  #alarmB img { position: absolute; left: 0; top: 0; width: 100%; }
+  #alTagB { position: absolute; left: 320px; top: 1196px; opacity: 0; }
+  /* verdict */
+  #ko { position: absolute; left: 0; right: 0; top: 420px; display: flex; justify-content: center; z-index: 6; }
+  .koStamp { display: block; padding: 0 40px; border: 14px solid #fff; border-radius: 26px; font-family: "Anton", sans-serif; font-size: 230px; line-height: 1.1; color: #fff; background: rgba(170, 10, 20, 0.55); filter: url(#ink); }
+  #belt { position: absolute; left: 0; right: 100px; top: 948px; display: flex; justify-content: center; z-index: 6; }
+  .beltIn { display: flex; align-items: center; gap: 0; }
+  .beltIn .side { width: 70px; height: 70px; background: linear-gradient(180deg, #2a1d05, #120c02); border: 4px solid var(--gold2); }
+  .beltIn .plate { padding: 10px 34px 14px; border-radius: 22px; background: radial-gradient(circle at 40% 30%, #fff4c2 0%, var(--gold) 45%, var(--gold2) 100%); border: 6px solid #7a5a08; font-family: "Anton", sans-serif; font-size: 76px; line-height: 1.1; color: var(--ink2); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); }
+
+  /* twist */
+  #twBg { position: absolute; inset: 0; background: radial-gradient(80% 50% at 50% 42%, #4c1d95 0%, #1d0b3a 55%, #0b0712 100%); }
+  #twTxt { position: absolute; left: 90px; right: 120px; top: 360px; display: flex; flex-direction: column; align-items: center; }
+  #twTxt div { font-family: "Anton", sans-serif; line-height: 1.04; text-transform: uppercase; }
+  #tw1 { font-size: 110px; color: var(--kz-lav); }
+  #tw2 { font-size: 170px; color: #fff; }
+  #tw3 { font-size: 200px; color: var(--kz-lime); text-shadow: 0 0 50px rgba(198, 255, 61, 0.35); }
+  #twHead { position: absolute; left: 440px; top: 1110px; width: 200px; }
+  #twHead img { width: 200px; display: block; }
+  /* proof */
+  #prTag { position: absolute; left: 0; right: 0; top: 250px; display: flex; justify-content: center; }
+  #prW { position: absolute; left: 110px; width: 840px; top: 336px; height: 534px; }
+  .prCard { position: absolute; inset: 0; border-radius: 30px; overflow: hidden; background: #0b141a; border: 6px solid var(--kz-lime); box-shadow: 0 0 0 9px rgba(198, 255, 61, 0.16), 0 30px 70px rgba(0, 0, 0, 0.55); }
+  .prCard img { position: absolute; left: 0; top: 0; width: 100%; }
+  #prLine { position: absolute; left: 96px; width: 784px; top: 912px; text-align: center; font: 900 64px "Inter", sans-serif; line-height: 1.12; color: #fff; }
+  #prLine b { color: var(--kz-lime); }
+  #prChip { position: absolute; left: 96px; width: 784px; top: 1100px; display: flex; justify-content: center; }
+  .chip3 { display: inline-block; padding: 14px 34px 16px; border-radius: 20px; background: var(--kz-lime); color: var(--ink2); font-family: "Archivo Black", sans-serif; font-size: 66px; line-height: 1.1; text-transform: uppercase; border: 5px solid var(--ink2); box-shadow: 0 10px 0 rgba(0, 0, 0, 0.35); }
+  /* end */
+  #endBg { position: absolute; inset: 0; background: radial-gradient(70% 40% at 50% 40%, #3b1470 0%, #0b0712 72%); }
+  .ask { font: 900 66px "Inter", sans-serif; color: #fff; line-height: 1.14; text-align: center; }
+  .ask .a { color: #ff6b5b; }
+  .ask .b { color: #c4a1ff; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="ink" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" seed="11" result="noise" />
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.6 2.3" result="mask" />
+      <feComposite in="SourceGraphic" in2="mask" operator="in" />
+    </filter>
+  </defs>
+</svg>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="18.21" data-fps="30">
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- DUEL: hook 0 · A b4 · B b8 · chooser b12 · B wins b16 · "na real…" b20 -->
+  <section id="sDuel" class="clip" data-start="0" data-duration="9.1">
+    <div class="full" id="duel">
+      <div class="panel" id="pA"><div class="pin" id="pAin">
+        <div class="bgfx"></div><div class="stripes" id="strA"></div>
+        <div class="ropes" style="top:150px"></div><div class="ropes" style="top:182px"></div>
+        <div class="corner" style="top:330px"><span class="letter" id="letA">A</span>canto vermelho<i></i></div>
+        <div class="fname" id="nameA"><div id="a1">Farmar 8h</div><div id="a2">na mão</div></div>
+        <div id="clockA"><span class="dg" id="clk">04:00</span></div>
+        <div id="yawn">🥱</div>
+        <div id="clicksA"><small>cliques</small><b id="clkN">0</b></div>
+        <div class="plus" id="pl1" style="left:900px; top:690px">+1</div>
+        <div class="plus" id="pl2" style="left:930px; top:740px">+1</div>
+        <div class="plus" id="pl3" style="left:880px; top:770px">+1</div>
+      </div></div>
+      <div class="panel" id="pB"><div class="pin" id="pBin">
+        <div class="bgfx"></div><div class="stripes" id="strB"></div>
+        <div class="corner" style="top:96px; right:100px"><span class="letter" id="letB">B</span>canto roxo<i></i></div>
+      </div></div>
+      <div class="fname" id="nameB"><div id="b1">Dormir 8h?</div></div>
+      <div id="moon"></div>
+      <div class="zz" id="z1" style="left:290px; top:1240px; font-size:50px">z</div>
+      <div class="zz" id="z2" style="left:262px; top:1196px; font-size:64px">z</div>
+      <div class="zz" id="z3" style="left:300px; top:1140px; font-size:80px">Z</div>
+      <div id="alarmB"><img src="kit/img/prints/shiny-venusaur--alarm.png" alt="" /></div>
+      <div id="alTagB"><span class="ptag">print real de cliente</span></div>
+      <div id="seam"></div>
+      <div id="vsW"><div class="vs" id="vs"><span id="vsT">VS</span></div></div>
+      <div id="chooser"></div>
+      <div id="ko"><div class="koStamp" id="koS">K.O.</div></div>
+      <div id="belt"><div class="beltIn" id="beltIn"><div class="side"></div><div class="plate">CAMPEÃO</div><div class="side"></div></div></div>
+      <div id="confB"></div>
+      <div id="realBand"><span id="realT">Na real<b>…</b></span></div>
+      <div id="pillW"><div class="pill" id="pill">Você <b>prefere?</b></div></div>
+    </div>
+  </section>
+
+  <!-- TWIST: com KizuBot dá os dois -->
+  <section id="sTwist" class="clip" data-start="9.1" data-duration="2.49">
+    <div id="twBg"></div>
+    <div class="full" id="twIn">
+      <div id="twTxt"><div id="tw1">com KizuBot</div><div id="tw2">você dorme</div><div id="tw3">e farma.</div></div>
+      <div id="twHead"><img src="kit/img/brand/kizubot-head.png" alt="" /><div class="eye" id="eyeT" style="left:43px; top:16px; width:120px; height:120px"></div></div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section id="sProof" class="clip" data-start="11.59" data-duration="3.31">
+    <div id="twBg2" class="full" style="background: radial-gradient(80% 50% at 50% 40%, #3b1470 0%, #140a26 60%, #0b0712 100%)"></div>
+    <div class="full" id="prIn">
+      <div id="prTag"><span class="ptag" id="prTagIn">print real de cliente</span></div>
+      <div id="prW"><div class="prCard" id="prCard"><img src="kit/img/prints/shiny-venusaur.png" alt="" /></div></div>
+      <div id="prLine">o bot detectou <b>e capturou</b></div>
+      <div id="prChip"><span class="chip3" id="prC">100% AFK</span></div>
+    </div>
+  </section>
+
+  <!-- END CARD -->
+  <section id="sEnd" class="clip" data-start="14.9" data-duration="3.31">
+    <div id="endBg"></div>
+    <div id="brA" style="position:absolute; left:0; right:0; top:0; height:860px; background:radial-gradient(80% 70% at 50% 60%, #e0312b 0%, #7a0d12 55%, #2a0306 100%); z-index:20"></div>
+    <div id="brB" style="position:absolute; left:0; right:0; top:860px; bottom:0; background:radial-gradient(80% 70% at 50% 40%, #7c3aed 0%, #34106e 55%, #0d0420 100%); z-index:20"></div>
+    <div class="kz-end" id="endIn">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">E você: <span class="a">A</span> ou <span class="b">B</span>?</div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  /* ---------- F10 helpers ---------- */
+  function confetti(tl, sel, at, seed, n, cx, cy, colors) {
+    const c = document.querySelector(sel); const r = KZ.rng(seed);
+    for (let i = 0; i < n; i++) {
+      const d = document.createElement("div"); d.className = "conf";
+      d.style.left = cx + "px"; d.style.top = cy + "px"; d.style.background = colors[i % colors.length];
+      c.appendChild(d);
+      const ang = -Math.PI / 2 + (r() - 0.5) * 2.4, sp = 380 + r() * 420, dur = 0.9 + r() * 0.5;
+      tl.fromTo(d, { opacity: 0 }, { opacity: 1, duration: 0.02 }, at);
+      tl.fromTo(d, { x: 0, y: 0, rotation: 0 }, { x: Math.cos(ang) * sp, y: Math.sin(ang) * sp + 520, rotation: (r() - 0.5) * 900, duration: dur, ease: "power1.out" }, at);
+      tl.to(d, { opacity: 0, duration: 0.3 }, at + dur - 0.3);
+    }
+  }
+
+  const tl = gsap.timeline({ paused: true });
+  const D = 18.21;
+  const b = KZ.beats(145);                 // beat 0.4138 s, bar 1.655 s
+  const T_A = b(4), T_B = b(8), T_CH = b(12), T_WIN = b(16), T_REAL = b(20), T_TW = b(22), T_PR = b(28), T_END = b(36);
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#strA", { x: 0 }, { x: 99, duration: T_TW, ease: "none" }, 0);
+  tl.fromTo("#strB", { x: 0 }, { x: -99, duration: T_TW, ease: "none" }, 0);
+
+  /* HOOK */
+  tl.fromTo("#duel", { scale: 1.12 }, { scale: 1, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo("#pill", { scale: 1.6, opacity: 0.4 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0);
+  tl.fromTo("#nameA", { y: -60, opacity: 0.5 }, { y: 0, opacity: 1, duration: 0.24, ease: "power4.out" }, 0);
+  tl.fromTo("#nameB", { y: 60, opacity: 0.5 }, { y: 0, opacity: 1, duration: 0.24, ease: "power4.out" }, 0.08);
+  tl.fromTo("#seam", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power3.out" }, 0);
+  tl.fromTo("#vs", { scale: 2.6, rotation: -40, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 0.16);
+  KZ.pop(tl, "#letA", 0.24, 0.3);
+  KZ.pop(tl, "#letB", 0.32, 0.3);
+  tl.to("#vs", { rotation: 8, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.6);
+
+  /* A details: 04:00, clicks, yawn */
+  tl.fromTo("#clockA", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2)" }, T_A);
+  tl.fromTo("#clicksA", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2)" }, T_A + 0.1);
+  tl.fromTo("#clk", { opacity: 1 }, { opacity: 0.25, duration: 0.2, ease: "steps(1)", yoyo: true, repeat: 5 }, T_A + 0.4);
+  const clkEl = document.querySelector("#clkN"), co = { v: 0 };
+  tl.fromTo(co, { v: 0 }, { v: 1000, duration: 1.25, ease: "power1.in", onUpdate: function () { clkEl.textContent = co.v >= 999.5 ? "999+" : KZ.fmt(co.v, "int"); } }, T_A + 0.3);
+  ["#pl1", "#pl2", "#pl3"].forEach(function (p, i) {
+    for (let k = 0; k < 2; k++) {
+      const t = T_A + 0.35 + i * 0.13 + k * 0.45;
+      if (k === 0) tl.fromTo(p, { y: 0, opacity: 0 }, { y: -50, opacity: 1, duration: 0.2, ease: "power2.out" }, t);
+      else tl.fromTo(p, { y: 0, opacity: 1 }, { y: -50, opacity: 1, duration: 0.2, ease: "power2.out", immediateRender: false }, t);
+      tl.to(p, { opacity: 0, duration: 0.15 }, t + 0.2);
+    }
+  });
+  tl.fromTo("#yawn", { scale: 0.3, opacity: 0, rotation: -20 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.35, ease: "back.out(2.5)" }, T_A + 0.55);
+  KZ.shake(tl, "#nameA", T_A + 0.9, 5, 0.5, 3);
+
+  /* B details: moon, Zzz, real alarm while asleep */
+  tl.fromTo("#moon", { scale: 0, rotation: -60 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2)" }, T_B);
+  ["#z1", "#z2", "#z3"].forEach(function (z, i) {
+    tl.fromTo(z, { y: 20, opacity: 0 }, { y: -30, opacity: 1, duration: 0.5, ease: "power1.out" }, T_B + 0.15 + i * 0.14);
+  });
+  tl.fromTo("#alarmB", { x: 640, rotation: 6, opacity: 0 }, { x: 0, rotation: -1.5, opacity: 1, duration: 0.36, ease: "back.out(1.6)" }, b(9));
+  KZ.shake(tl, "#alarmB", b(9) + 0.36, 8, 0.36, 17);
+  tl.fromTo("#alTagB", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.2 }, b(9) + 0.3);
+
+  /* CHOOSER: hops A/B on the beat (build) */
+  const POS_A = 0, POS_B = 940 - 316;      // chooser top 316 (A) / 940 (B)
+  tl.fromTo("#chooser", { opacity: 0, y: POS_A }, { opacity: 1, y: POS_A, duration: 0.08 }, T_CH);
+  [[b(13), POS_B], [b(14), POS_A], [b(14.5), POS_B], [b(15), POS_A]].forEach(function (p) {
+    tl.to("#chooser", { y: p[1], duration: 0.12, ease: "power3.out" }, p[0]);
+  });
+  KZ.punch(tl, "#letA", T_CH, 1.25, 0.25);
+  KZ.punch(tl, "#letB", b(13), 1.25, 0.25);
+
+  /* B WINS (drop) */
+  tl.to("#chooser", { y: POS_B, duration: 0.1, ease: "power3.out" }, T_WIN - 0.1);
+  tl.to("#chooser", { opacity: 0, duration: 0.3 }, T_WIN + 0.5);
+  tl.to("#pAin", { filter: "grayscale(0.85) brightness(0.55)", duration: 0.25 }, T_WIN);
+  tl.to(["#clockA", "#clicksA", "#yawn"], { opacity: 0.25, duration: 0.25 }, T_WIN);
+  tl.fromTo("#koS", { scale: 2.6, opacity: 0, rotation: 2 }, { scale: 1, opacity: 1, rotation: -12, duration: 0.14, ease: "power3.in" }, T_WIN - 0.14);
+  KZ.shake(tl, "#duel", T_WIN, 9, 0.24, 4);
+  KZ.flash(tl, "#flash", T_WIN, 0.35, "#ffffff");
+  tl.to("#pBin", { filter: "brightness(1.35) saturate(1.2)", duration: 0.2 }, T_WIN);
+  KZ.punch(tl, "#letB", T_WIN, 1.35, 0.4);
+  tl.to("#vsW", { scale: 0.62, duration: 0.2, ease: "power3.out" }, T_WIN);
+  tl.to(".corner", { opacity: 0, duration: 0.15 }, b(17) - 0.1);
+  tl.fromTo("#beltIn", { y: -260, scale: 1.4, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.4, ease: "bounce.out" }, b(17));
+  confetti(tl, "#confB", T_WIN + 0.05, 86, 26, 540, 1300, ["#f7c548", "#c6ff3d", "#ffffff", "#c4a1ff"]);
+
+  /* "NA REAL…" — VS flips to "…" */
+  tl.to("#vsW", { scale: 0, duration: 0.14, ease: "power3.in" }, T_REAL - 0.12);
+  tl.to(".corner", { opacity: 1, duration: 0.2 }, T_REAL);
+  tl.fromTo("#realBand", { scaleX: 0, rotation: -4 }, { scaleX: 1, rotation: -4, duration: 0.16, ease: "power3.out" }, T_REAL);
+  tl.fromTo("#realT", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, T_REAL + 0.06);
+  tl.to("#realBand", { scaleY: 0, duration: 0.18, ease: "power3.in" }, T_TW - 0.2);
+  tl.to("#pill", { scale: 0.001, opacity: 0, duration: 0.12 }, T_REAL - 0.1);
+  tl.to(["#ko", "#belt"], { opacity: 0, duration: 0.15 }, T_REAL);
+  tl.to("#pAin", { filter: "grayscale(0) brightness(1)", duration: 0.3 }, T_REAL);
+  tl.to("#pBin", { filter: "brightness(1) saturate(1)", duration: 0.3 }, T_REAL);
+  tl.to(["#clockA", "#clicksA", "#yawn"], { opacity: 1, duration: 0.3 }, T_REAL);
+  /* panels slam together into one — "dá os dois" */
+  tl.to("#pA", { y: 230, duration: 0.3, ease: "power3.in" }, T_TW - 0.32);
+  tl.to(["#pB", "#nameB", "#moon", "#alarmB", "#alTagB", "#z1", "#z2", "#z3"], { y: -230, duration: 0.3, ease: "power3.in" }, T_TW - 0.32);
+
+  /* TWIST */
+  KZ.flash(tl, "#flash", T_TW, 0.6, "#c4a1ff");
+  KZ.slam(tl, "#tw1", T_TW, 1.8);
+  KZ.slam(tl, "#tw2", b(23), 1.8);
+  KZ.slam(tl, "#tw3", b(24), 2.2);
+  tl.fromTo("#twHead", { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(1.8)" }, b(25));
+  KZ.eyePulse(tl, "#eyeT", b(25.6), 2);
+  tl.to("#twIn", { opacity: 0, duration: 0.18, ease: "power2.in" }, T_PR - 0.18);
+
+  /* PROOF */
+  KZ.pop(tl, "#prTagIn", T_PR + 0.05, 0.3);
+  tl.fromTo("#prW", { scale: 0.6, opacity: 0, rotation: -4 }, { scale: 1, opacity: 1, rotation: -1, duration: 0.4, ease: "back.out(1.7)" }, T_PR);
+  KZ.rise(tl, "#prLine", b(29.5), 0.35, 40);
+  tl.fromTo("#prC", { scale: 0.3, opacity: 0, rotation: -12 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.32, ease: "back.out(3)" }, b(32));
+  tl.to("#prW", { scale: 1.03, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_PR + 0.5);
+  tl.to("#prIn", { scale: 0.94, opacity: 0, duration: 0.2, ease: "power2.in" }, T_END - 0.2);
+
+  /* END CARD */
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T_END + 0.02);
+  KZ.eyePulse(tl, "#eye2", T_END + 0.12, 2);
+  KZ.rise(tl, "#endUrl", T_END + 0.32, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T_END + 0.6, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_END + 0.6);
+  KZ.eyePulse(tl, "#eye2", T_END + 1.9, 1);
+  tl.to("#endIn", { scale: 0.92, opacity: 0, duration: 0.22, ease: "power2.in" }, D - 0.3);
+  // loop bridge: the two corners close back in, so the replay lands on the split hook
+  tl.fromTo("#brA", { yPercent: -100 }, { yPercent: 0, duration: 0.3, ease: "power3.in" }, D - 0.32);
+  tl.fromTo("#brB", { yPercent: 100 }, { yPercent: 0, duration: 0.3, ease: "power3.in" }, D - 0.32);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

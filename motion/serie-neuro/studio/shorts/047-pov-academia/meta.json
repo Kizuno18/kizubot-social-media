@@ -1,0 +1,66 @@
+{
+  "id": "047",
+  "slug": "pov-academia",
+  "family": "POV",
+  "title": "POV: treino de perna e o relógio vibra",
+  "concept": "First-person leg day in a flat-illustrated gym: your arm comes up, the watch buzzes with the real KizuBot alarm (lootStatistics ~ Total dropped items: 4585 … (1254/h)), a 0→4.585 count-up and an 'e você aí, agachando' squat-dip build, then a match-cut to the real customer photo of the watch at the gym and a second customer's line about leveling main and alt at the same time.",
+  "neuro": [
+    "pov-self-reference",
+    "narrative-transport",
+    "precise-number",
+    "humor-benign-violation",
+    "match-cut-proof",
+    "social-proof",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "POV: treino de perna e o relógio vibra.",
+  "duration": 19,
+  "music": {
+    "style": "phonk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/prints/gym-smartwatch-alarm--photo.jpg",
+    "kit/img/prints/gym-main-char-bot-alt--quote.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "alarmes no celular e notificações no WhatsApp (Telegram também)",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "POV: treino de perna e o relógio vibra 💪 Alarme real do KizuBot no pulso: 4.585 itens dropados enquanto o cara treinava. Prints reais de clientes. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#academia",
+        "#pov"
+      ]
+    },
+    "youtube": {
+      "title": "POV: treino de perna e o relógio vibra (alarme real do bot)",
+      "description": "POV: você tá no treino de perna e o relógio vibra com o alarme do KizuBot — 'Total dropped items: 4585'. Foto real de cliente na academia + outro cliente upando o char principal enquanto o bot upa a segundária. Alarmes no celular/WhatsApp/Telegram, 100% AFK. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "POV: treino de perna e o relógio vibra. 💪 Alarme real do KizuBot no pulso, no meio do treino. Treino rendendo, farm também. E você, treina ou farma? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#gymlife"
+      ]
+    }
+  },
+  "pinned_comment": "Treina ou farma? Agora dá os dois 💪",
+  "notes": "The illustrated watch face repeats the watch text from gym-smartwatch-alarm (ASSETS.md reading: 'lootStatistics ~ / Total dropped items: 4585 / Cok Log: 4585 (1254/h) / 20:26'); the uncertain 'Cok Log: 4585' part is trimmed to '… (1254/h)'. The concept's 'gym-main-char-bot-alt.png' = gym-main-char-bot-alt (different customer → 'prints reais de clientes diferentes'). The owner's lines 'treino tá rendendo / e bot tá torando' are not used; 'Treino rendendo. Farm também.' is our own POV copy. Added a 0→4.585 count-up and an 'e você aí, agachando.' squat-dip build; the reveal is a match cut from the illustrated gym+wrist to the real photo. Rubric: hook 8, re-hooks 9, clarity 8, craft 8, truth 9, sound 8, brand 9, CTA 9, loop 8, distinct 9 (avg 8.5). 1 render."
+}

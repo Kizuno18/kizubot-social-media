@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>KizuBot short</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* short-specific styles */
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="20" data-fps="30">
+  <!-- untimed layers: background, progress bar -->
+  <div class="kz-bg-glow"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- scenes: each is a timed .clip -->
+  <section id="s1" class="clip" data-start="0" data-duration="6">
+    <div class="kz-safe"><div id="hook" class="kz-hook">GANCHO AQUI</div></div>
+  </section>
+
+  <section id="end" class="clip" data-start="16" data-duration="4">
+    <div class="kz-end">
+      <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="kz-cta" id="endCta">Link na bio</div>
+    </div>
+  </section>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 20;
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  KZ.words(tl, "#hook", 0.05, 0.16, "slam");
+  KZ.pop(tl, "#endLogo", 16.05);
+  KZ.rise(tl, "#endUrl", 16.4);
+  KZ.pop(tl, "#endCta", 16.7);
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "id": "092",
+  "slug": "shiny",
+  "family": "Dicionário PxG",
+  "title": "Dicionário PxG: Shiny",
+  "concept": "Dictionary entry for SHINY: variante rara de cor diferente; no PxG, aquilo que aparece quando você vai ao banheiro (margin note: sempre.); com KizuBot, aquilo que o bot detecta e te avisa no WhatsApp, with the real shinyDetected Cubone alarm as the usage example.",
+  "neuro": [
+    "in-group-identity",
+    "incongruity-humor",
+    "processing-fluency",
+    "loss-aversion",
+    "social-proof",
+    "comment-prompt"
+  ],
+  "hook": "SHINY",
+  "duration": 20,
+  "music": {
+    "style": "lofi",
+    "bpm": 84
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/shiny-cubone--alarm.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Dicionário PxG: SHINY ✨ 1. variante rara 2. aquilo que aparece quando você vai ao banheiro 3. aquilo que o KizuBot detecta e te avisa no WhatsApp. Qual foi o seu primeiro shiny? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#dicionario"
+      ]
+    },
+    "youtube": {
+      "title": "Dicionário PxG: Shiny (aparece quando você vai ao banheiro) ✨",
+      "description": "SHINY, s.m. 1. Variante rara, de cor diferente. 2. No PxG: aquilo que aparece quando você vai ao banheiro. 3. Com KizuBot: aquilo que o bot detecta e te avisa no WhatsApp. Ex.: alarme real de cliente \"shinyDetected ~ --> shiny Cubone\". kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Dicionário PxG: SHINY ✨ A definição 2 é real demais. Qual foi o seu primeiro shiny? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Qual foi o seu primeiro shiny? ✨",
+  "notes": "Definition 3 reads 'Aquilo que o bot detecta e te avisa no WhatsApp' under a 'Com KizuBot' label (so the brand name isn't said twice). Added a handwritten margin note 'sempre.' on definition 2. Example = the real alarm print shiny-cubone--alarm ('shinyDetected ~ --> shiny Cubone'), with the alert sound."
+}

@@ -1,0 +1,37 @@
+{
+  "id": "101",
+  "slug": "dentro-do-kizubot",
+  "family": "Raio-X",
+  "title": "O que tem dentro do KizuBot?",
+  "concept": "Blueprint X-ray of a line-art KizuBot: the drawing traces itself, a scan reveals its internals, it explodes into parts and six numbered callouts map each part to a real module (eye = detection, brain = AI, antenna = alarms, heart = humanization, arms = combat/catch, legs = cavebot) before it snaps back together and becomes the real logo.",
+  "neuro": ["curiosity-gap", "picture-superiority", "visible-progress", "competence", "anticipation-drop", "loop", "comment-prompt"],
+  "hook": "O QUE TEM DENTRO DO KIZUBOT?",
+  "duration": 19.375,
+  "music": {"style": "tension", "bpm": 96},
+  "assets": ["kit/img/brand/kizubot-logo.png"],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "IA que decide o que fazer (combate com IA, cavebot com prioridades — changelog 21/02/2026)",
+    "alarmes no WhatsApp e Telegram",
+    "sistema de Humanização (pausas e ritmo variáveis)",
+    "combate e captura (módulos Combat e Catch)",
+    "cavebot: anda pela rota gravada (waypoints, recorder)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "O que tem dentro do KizuBot? 🔧 Raio-X peça por peça: olho que detecta shiny, mega e boss, antena que avisa no WhatsApp, coração com pausas e ritmo variáveis... Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#raiox", "#afk"]
+    },
+    "youtube": {
+      "title": "O que tem dentro do KizuBot? (raio-x peça por peça)",
+      "description": "Raio-X do KizuBot: olho = detecção de shiny, mega e boss; cérebro = IA que decide o que fazer; antena = alarmes no WhatsApp e Telegram; coração = humanização (pausas e ritmo variáveis); braços = combate e captura; pernas = cavebot pela rota gravada. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "O que tem dentro do KizuBot? 🔧 Raio-X peça por peça: detecção de shiny, mega e boss, IA, alarmes no WhatsApp, humanização, combate e cavebot. Qual peça é a mais importante pra você? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#raiox"]
+    }
+  },
+  "pinned_comment": "Qual peça é a mais importante? 🔧",
+  "notes": "Callouts renumbered in the order they appear (1 olho, 2 cérebro, 3 antena, 4 coração, 5 braços, 6 pernas) so the camera path and numbering agree; captions shortened for reading speed (e.g. 'humanização: pausas e ritmo variáveis' split into the tag 'coração · humanização' + line 'pausas e ritmo variáveis'; 'cavebot: anda pela rota gravada' → tag 'pernas · cavebot' + 'anda pela rota gravada'). The robot is a hand-drawn generic line-art trace evoking the mascot (single eye), followed by the real logo. Music drop lands on callout 4 (heart) with heartbeat SFX synced to the ECG line. Loop bridge returns to the hook."
+}

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>109 Avaliação cinco estrelas</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F14 PROVA REAL — "Pop Bold" system, episode 109 (dominant = #111, yellow stars, scorecard) ===== */
+  :root { --dom: #111111; --yellow: #ffd23f; --lime: #c6ff3d; --pink: #ff4fd8; --purple: #8a3cff; --ink: #111111; --paper: #ffffff; }
+  #root { background: var(--dom); }
+  .pb-bg { position: absolute; inset: 0; background: var(--dom); }
+  .pb-grid { position: absolute; inset: -200px; background-image: radial-gradient(rgba(255, 210, 63, 0.13) 3px, transparent 3.5px); background-size: 40px 40px; }
+  .pb-blob { position: absolute; border: 5px solid #000; }
+  .pb-chip { display: inline-block; background: var(--yellow); color: var(--ink); font: 800 34px "Bricolage Grotesque", sans-serif; letter-spacing: 0.06em;
+    padding: 12px 24px 14px; border-radius: 14px; text-transform: uppercase; }
+  .star { display: block; }
+  .star svg { display: block; width: 100%; height: 100%; overflow: visible; }
+
+  .pb-hook { position: absolute; left: 90px; right: 90px; top: 270px; height: 820px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .hk1 { font: 800 136px/1.04 "Bricolage Grotesque", sans-serif; color: #fff; display: block; letter-spacing: -0.03em; }
+  .hk2 { font: 800 128px/1.08 "Bricolage Grotesque", sans-serif; color: var(--ink); background: var(--yellow); border: 6px solid #000; border-radius: 22px;
+    box-shadow: 12px 12px 0 var(--pink); padding: 0 34px 12px; display: block; letter-spacing: -0.03em; margin-top: 10px; }
+  .stars { display: flex; gap: 14px; margin-top: 60px; }
+  .stars .star { width: 124px; height: 124px; }
+
+  /* scorecard */
+  .card { position: absolute; left: 96px; top: 330px; width: 780px; background: var(--paper); border: 6px solid #000; border-radius: 34px; box-shadow: 14px 14px 0 var(--yellow);
+    padding: 34px 40px 40px; }
+  .card .hd { font: 800 40px/1.2 "Bricolage Grotesque", sans-serif; color: #555; letter-spacing: -0.01em; }
+  .card .rt { display: flex; align-items: center; gap: 16px; margin-top: 16px; font: 800 42px "Bricolage Grotesque", sans-serif; color: var(--ink); white-space: nowrap; }
+  .card .rt .s5 { display: flex; gap: 8px; }
+  .card .rt .s5 .star { width: 56px; height: 56px; }
+  .card .hr { height: 5px; background: var(--ink); border-radius: 3px; margin: 28px 0 26px; transform-origin: 0 50%; }
+  .card .qt { font: 800 70px/1.1 "Bricolage Grotesque", sans-serif; color: var(--ink); letter-spacing: -0.025em; }
+  .card .mk { background-image: linear-gradient(transparent 58%, var(--yellow) 58%, var(--yellow) 92%, transparent 92%); background-repeat: no-repeat; background-size: 0% 100%; }
+  .chk { display: flex; align-items: center; gap: 22px; margin-top: 22px; font: 800 62px/1 "Bricolage Grotesque", sans-serif; color: var(--ink); letter-spacing: -0.02em; }
+  .chk .bx { width: 66px; height: 66px; border-radius: 16px; background: var(--lime); border: 5px solid #000; display: flex; align-items: center; justify-content: center; flex: none; }
+  .chk .bx svg { width: 42px; height: 42px; }
+  .lab { position: absolute; left: 96px; top: 1316px; font: 800 30px "Bricolage Grotesque", sans-serif; color: var(--yellow); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .pr { position: absolute; left: 96px; top: 560px; width: 780px; background: var(--paper); border: 6px solid #000; border-radius: 30px; box-shadow: 14px 14px 0 var(--pink); padding: 14px; }
+  .vp { position: relative; overflow: hidden; border-radius: 18px; background: #161717; }
+  .vp img { display: block; width: 100%; }
+  .hlb { position: absolute; border: 6px solid var(--yellow); border-radius: 12px; box-shadow: 0 0 0 4px #000; transform-origin: 0% 50%; opacity: 0; }
+  .tab { position: absolute; left: 30px; top: -30px; background: var(--ink); color: #fff; border: 4px solid #fff; font: 800 30px "Bricolage Grotesque", sans-serif; letter-spacing: 0.05em;
+    padding: 6px 18px 8px; border-radius: 12px; text-transform: uppercase; z-index: 3; white-space: nowrap; }
+
+  .peak { position: absolute; left: 90px; right: 120px; top: 300px; height: 560px; display: flex; flex-direction: column; justify-content: center; }
+  .pq { position: relative; display: block; background: var(--yellow); color: var(--ink); border: 6px solid #000; border-radius: 30px; box-shadow: 14px 14px 0 var(--pink);
+    padding: 24px 40px 32px; font: 800 116px/1.04 "Bricolage Grotesque", sans-serif; letter-spacing: -0.035em; }
+  .pq .tail { position: absolute; left: 80px; bottom: -44px; width: 64px; height: 44px; }
+  .spk { position: absolute; width: 60px; height: 60px; opacity: 0; }
+  .spk svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+  .claim { position: absolute; left: 96px; display: inline-block; color: #111; background: #ffd23f; font: 800 56px/1 "Bricolage Grotesque", sans-serif; padding: 14px 26px 18px; border-radius: 16px; letter-spacing: -0.01em; opacity: 0; white-space: nowrap; }
+  .eye { position: absolute; width: 100px; height: 100px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .pb-ask { font: 800 66px/1.12 "Bricolage Grotesque", sans-serif; color: #fff; max-width: 820px; }
+  .pb-ask b { color: var(--yellow); }
+  .pb-url { font: 800 64px "Bricolage Grotesque", sans-serif; color: #fff; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="15.69" data-fps="30">
+  <div class="pb-bg"></div>
+  <div class="pb-grid" id="grid"></div>
+  <div class="pb-blob" id="blobA" style="left:-150px; top:1320px; width:380px; height:380px; border-radius:50%; background: var(--purple);"></div>
+  <div class="pb-blob" id="blobB" style="right:-100px; top:150px; width:250px; height:250px; border-radius:46px; background: var(--pink);"></div>
+
+  <!-- HOOK -->
+  <section id="s0" class="clip" data-start="0" data-duration="2.308">
+    <div class="pb-hook" id="hk">
+      <span class="hk1" id="hk1">UM CLIENTE</span>
+      <span class="hk2" id="hk2"><span style="display:block">MANDOU</span><span style="display:block">ISSO:</span></span>
+      <div class="stars" id="hstars">
+        <span class="star" id="st1"><svg viewBox="-50 -50 100 100"><polygon class="sp" fill="#ffd23f" stroke="#000" stroke-width="5" stroke-linejoin="round" points=""/></svg></span>
+        <span class="star" id="st2"><svg viewBox="-50 -50 100 100"><polygon class="sp" fill="#ffd23f" stroke="#000" stroke-width="5" stroke-linejoin="round" points=""/></svg></span>
+        <span class="star" id="st3"><svg viewBox="-50 -50 100 100"><polygon class="sp" fill="#ffd23f" stroke="#000" stroke-width="5" stroke-linejoin="round" points=""/></svg></span>
+        <span class="star" id="st4"><svg viewBox="-50 -50 100 100"><polygon class="sp" fill="#ffd23f" stroke="#000" stroke-width="5" stroke-linejoin="round" points=""/></svg></span>
+        <span class="star" id="st5"><svg viewBox="-50 -50 100 100"><polygon class="sp" fill="#ffd23f" stroke="#000" stroke-width="5" stroke-linejoin="round" points=""/></svg></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCORECARD b5 – b17 -->
+  <section id="s1" class="clip" data-start="2.308" data-duration="5.538">
+    <div class="card" id="card">
+      <div class="hd" id="hd">Feedback de Usuário: Kizubot / PXG</div>
+      <div class="rt" id="rt">Avaliação Geral: <span class="s5">
+        <span class="star cs"><svg viewBox="-50 -50 100 100"><polygon class="sp" fill="#ffd23f" stroke="#000" stroke-width="6" stroke-linejoin="round" points=""/></svg></span>
+        <span class="star cs"><svg viewBox="-50 -50 100 100"><polygon class="sp" fill="#ffd23f" stroke="#000" stroke-width="6" stroke-linejoin="round" points=""/></svg></span>
+        <span class="star cs"><svg viewBox="-50 -50 100 100"><polygon class="sp" fill="#ffd23f" stroke="#000" stroke-width="6" stroke-linejoin="round" points=""/></svg></span>
+        <span class="star cs"><svg viewBox="-50 -50 100 100"><polygon class="sp" fill="#ffd23f" stroke="#000" stroke-width="6" stroke-linejoin="round" points=""/></svg></span>
+        <span class="star cs"><svg viewBox="-50 -50 100 100"><polygon class="sp" fill="#ffd23f" stroke="#000" stroke-width="6" stroke-linejoin="round" points=""/></svg></span></span></div>
+      <div class="hr" id="hr"></div>
+      <div class="qt" id="qt">“… entrega <span class="mk" id="mk1">exatamente o que promete.</span>”</div>
+      <div class="chk" id="k1"><span class="bx"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Eficiência</div>
+      <div class="chk" id="k2"><span class="bx"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Intuitividade</div>
+      <div class="chk" id="k3"><span class="bx"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Indicação</div>
+    </div>
+    <div class="lab" id="lab">trechos do print real de um cliente ↓</div>
+  </section>
+
+  <!-- PRINT b17 – b24 -->
+  <section id="s2" class="clip" data-start="7.846" data-duration="3.231">
+    <div class="pr" id="pr" style="top:520px">
+      <div class="tab">print real de cliente</div>
+      <div class="vp" style="height:686px"><div style="position:relative"><img src="kit/img/prints/avaliacao-5-estrelas.png" alt="" />
+        <div class="hlb" id="h1" style="left:1%; top:8.4%; width:85%; height:7.8%"></div>
+        <div class="hlb" id="h2" style="left:1%; top:16.8%; width:95%; height:13.2%"></div>
+        <div class="hlb" id="h3" style="left:1%; top:62.4%; width:96%; height:12%"></div>
+        <div class="hlb" id="h4" style="left:1%; top:75.0%; width:96%; height:12.2%"></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- PEAK b24 – b28 -->
+  <section id="s3" class="clip" data-start="11.077" data-duration="1.846">
+    <div class="peak"><div class="pq" id="pq"><span style="display:block">“enfim, bot</span><span style="display:block">maravilhoso”</span>
+      <svg class="tail" viewBox="0 0 64 44"><polygon points="0,0 64,0 8,44" fill="#ffd23f" stroke="#000" stroke-width="6" stroke-linejoin="round"/></svg></div></div>
+    <div class="pr" id="pr2" style="top:960px">
+      <div class="tab">print real de cliente</div>
+      <div class="vp" style="height:64px"><img src="kit/img/prints/avaliacao-5-estrelas--renovar.png" alt="" /><div class="hlb" id="h5" style="left:1%; top:4%; width:55%; height:92%"></div></div>
+    </div>
+    <div class="claim" id="claim" style="top:1120px">o bot farma 100% AFK</div>
+    <div id="spks"></div>
+  </section>
+
+  <!-- END b28 – D -->
+  <section id="se" class="clip" data-start="12.923" data-duration="2.767">
+    <div class="kz-end" id="sein">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px"></div>
+      </div>
+      <div class="pb-url" id="endUrl">kizubot.com</div>
+      <div class="pb-ask" id="endAsk">Que nota você daria pro seu <b>farm manual?</b></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 15.69;
+  const B = 60 / 130;
+  const b = (n) => n * B;
+
+  function starPts(n, r1, r2) {
+    const p = [];
+    for (let i = 0; i < n * 2; i++) { const r = i % 2 ? r2 : r1, a = (Math.PI * i) / n - Math.PI / 2; p.push((Math.cos(a) * r).toFixed(2) + "," + (Math.sin(a) * r).toFixed(2)); }
+    return p.join(" ");
+  }
+  document.querySelectorAll(".sp").forEach(function (p) { p.setAttribute("points", starPts(5, 48, 21)); });
+
+  KZ.drift(tl, "#grid", D, 30, 40, 5);
+  tl.fromTo("#blobA", { rotation: 0, scale: 1 }, { rotation: 40, scale: 1.08, duration: D, ease: "sine.inOut" }, 0);
+  tl.fromTo("#blobB", { rotation: 10, y: 0 }, { rotation: -10, y: 50, duration: b(4), ease: "sine.inOut", yoyo: true, repeat: Math.floor(D / b(4)) - 1 }, 0);
+
+  // ---------- HOOK: one star per half-beat ----------
+  tl.fromTo("#hk1", { scale: 1.05 }, { scale: 1, duration: 0.28, ease: "power4.out" }, 0);
+  tl.fromTo("#hk2", { scale: 0.3, rotation: -8, opacity: 0 }, { scale: 1, rotation: -3, opacity: 1, duration: 0.34, ease: "back.out(2.4)" }, 0.12);
+  ["#st1", "#st2", "#st3", "#st4", "#st5"].forEach(function (s, i) {
+    tl.fromTo(s, { scale: 0, rotation: -140 }, { scale: 1, rotation: 0, duration: 0.36, ease: "back.out(3)" }, b(1) + i * b(0.5));
+  });
+  tl.to("#hstars", { scale: 1.08, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, b(3.2));
+  tl.to("#hk", { scale: 1.03, duration: b(1.5), ease: "sine.inOut" }, b(3));
+  tl.to("#hk", { y: -1000, duration: 0.24, ease: "power3.in" }, b(5) - 0.24);
+
+  // ---------- SCORECARD ----------
+  const C = b(5);
+  tl.fromTo("#card", { y: 1300, rotation: 8 }, { y: 0, rotation: -1.5, duration: 0.45, ease: "power4.out" }, C);
+  tl.fromTo(".cs", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.3, ease: "back.out(3)", stagger: 0.06 }, C + 0.3);
+  tl.fromTo("#hr", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power2.out" }, C + 0.5);
+  tl.fromTo("#qt", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: "power3.out" }, b(6.5));
+  tl.fromTo("#mk1", { backgroundSize: "0% 100%" }, { backgroundSize: "100% 100%", duration: 0.45, ease: "power2.out" }, b(7.5));
+  ["#k1", "#k2", "#k3"].forEach(function (k, i) {
+    tl.fromTo(k, { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.28, ease: "power3.out" }, b(10) + i * b(1));
+    tl.fromTo(k + " .bx", { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.3, ease: "back.out(3)" }, b(10) + i * b(1) + 0.08);
+  });
+  KZ.rise(tl, "#lab", b(13.5), 0.3, 20);
+  tl.to("#card", { scale: 1.02, duration: b(4), ease: "sine.inOut" }, b(12.5));
+  tl.to(["#card", "#lab"], { x: -1100, rotation: -6, duration: 0.24, ease: "power3.in" }, b(17) - 0.24);
+
+  // ---------- PRINT ----------
+  const P = b(17);
+  tl.fromTo("#pr", { x: 1100, rotation: 8 }, { x: 0, rotation: 1.5, duration: 0.42, ease: "power4.out" }, P);
+  function hl(id, at) { tl.fromTo(id, { scaleX: 0, opacity: 1 }, { scaleX: 1, opacity: 1, duration: 0.3, ease: "power2.out" }, at); }
+  hl("#h1", b(17.9)); hl("#h2", b(18.6)); hl("#h3", b(20)); hl("#h4", b(21));
+  tl.to("#pr", { scale: 1.03, duration: b(6), ease: "sine.inOut" }, P + 0.4);
+  tl.to("#pr", { y: -1300, duration: 0.24, ease: "power3.in" }, b(24) - 0.24);
+
+  // ---------- PEAK ----------
+  const K = b(24);
+  KZ.flash(tl, "#flash", K, 0.5, "#ffd23f");
+  tl.fromTo("#pq", { scale: 0.3, rotation: -10, opacity: 0 }, { scale: 1, rotation: -2.5, opacity: 1, duration: 0.4, ease: "back.out(2.4)" }, K);
+  KZ.shake(tl, "#pq", K + 0.3, 10, 0.22, 7);
+  tl.fromTo("#pr2", { y: 600, rotation: 6 }, { y: 0, rotation: 1.5, duration: 0.4, ease: "power4.out" }, K + b(0.8));
+  hl("#h5", K + b(1.6));
+  tl.fromTo("#claim", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: "back.out(2)" }, K + b(2.2));
+  const host = document.getElementById("spks"); const r = KZ.rng(109);
+  for (let i = 0; i < 14; i++) {
+    const el = document.createElement("div"); el.className = "spk";
+    el.innerHTML = '<svg viewBox="-50 -50 100 100"><polygon fill="#ffd23f" stroke="#000" stroke-width="6" stroke-linejoin="round" points="' + starPts(5, 48, 21) + '"/></svg>';
+    el.style.left = (80 + r() * 860) + "px"; el.style.top = (240 + r() * 900) + "px"; host.appendChild(el);
+    const t = K + 0.05 + r() * 0.5, sc = 0.5 + r() * 0.9;
+    tl.fromTo(el, { scale: 0, opacity: 0, rotation: -90 }, { scale: sc, opacity: 1, rotation: 0, duration: 0.3, ease: "back.out(3)" }, t);
+    tl.to(el, { y: -60, opacity: 0, duration: 0.5, ease: "power2.in" }, t + 0.7 + r() * 0.4);
+  }
+
+  // ---------- END ----------
+  const E = b(28);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, E + 0.04);
+  KZ.eyePulse(tl, "#eye2", E + 0.14, 3);
+  KZ.rise(tl, "#endUrl", E + 0.42, 0.35, 30);
+  KZ.rise(tl, "#endAsk", E + 0.75, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, E + 0.6);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

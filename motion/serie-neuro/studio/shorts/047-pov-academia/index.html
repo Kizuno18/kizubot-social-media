@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>047 POV: treino de perna e o relógio vibra</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F02 POV system (shared by 046-050) ================= */
+  :root { --pov-ink: #0d0f0a; --pov-box: #ffffff; --pov-hl: #c6ff3d; --pov-tag: #c6ff3d; --pov-tag-ink: #0d0f0a; }
+  .layer { position: absolute; inset: 0; }
+  .pov { position: absolute; left: 90px; right: 120px; top: 300px; display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 30; }
+  .pov-tag { font: 900 62px/1 "Inter", sans-serif; color: var(--pov-tag-ink); background: var(--pov-tag); padding: 14px 30px 16px; border-radius: 20px; letter-spacing: 0.02em; margin-bottom: 20px; box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35); }
+  .pov-line { font: 800 110px/1.08 "Inter", sans-serif; letter-spacing: -0.035em; color: var(--pov-ink); background: var(--pov-box); padding: 6px 30px 14px; border-radius: 26px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); white-space: nowrap; }
+  .pov-line + .pov-line { margin-top: -6px; }
+  .pov-line.xl { font-size: 124px; }
+  .pov-line .hl { background: var(--pov-hl); border-radius: 16px; padding: 0 14px; }
+  .pov-line.inv { background: #7c3aed; color: #fff; }
+  .ptag { position: absolute; font: 900 32px "Inter", sans-serif; letter-spacing: 0.06em; text-transform: uppercase; color: #0d0f0a; background: #fff; padding: 12px 22px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45); z-index: 6; }
+  .printcard { position: absolute; border-radius: 30px; overflow: hidden; background: #111; border: 5px solid #f5f0fa; box-shadow: 0 50px 120px rgba(0, 0, 0, 0.65); }
+  .printcard .zoom { position: absolute; inset: 0; }
+  .printcard .zoom img { display: block; width: 100%; }
+  .printcard svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(45deg, #2a2d33 0 24px, #212328 24px 48px); font: 700 34px "JetBrains Mono", monospace; color: #8a8f99; }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .ask { display: flex; flex-direction: column; align-items: center; }
+  .ask span { font: 800 64px/1.1 "Inter", sans-serif; letter-spacing: -0.03em; color: #120c18; background: #fff; padding: 6px 26px 12px; border-radius: 20px; white-space: nowrap; }
+  .ask span + span { margin-top: -4px; }
+  .ask span b { color: #4d7c0f; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  #blk { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 59; }
+  .kz-progress > div { background: linear-gradient(90deg, #c6ff3d, #fff); }
+
+  /* ================= 047: the gym ================= */
+  #worldIn { transform-origin: 470px 1100px; }
+  #neon { position: absolute; left: 40px; top: 166px; width: 1000px; height: 12px; border-radius: 6px; background: #e8ffb0; box-shadow: 0 0 22px #c6ff3d, 0 0 70px rgba(198, 255, 61, 0.7), 0 0 160px rgba(198, 255, 61, 0.35); }
+  #neon2 { position: absolute; left: 1010px; top: 250px; width: 12px; height: 760px; border-radius: 6px; background: #e8ffb0; box-shadow: 0 0 22px #c6ff3d, 0 0 70px rgba(198, 255, 61, 0.6); opacity: 0.85; }
+  #spill { position: absolute; left: 0; top: 170px; width: 1080px; height: 520px; background: linear-gradient(180deg, rgba(198, 255, 61, 0.16), rgba(198, 255, 61, 0)); }
+  #arm { position: absolute; inset: 0; }
+  #watch { position: absolute; left: 200px; top: 830px; width: 540px; height: 540px; }
+  #watchCase { position: absolute; inset: 0; border-radius: 50%; background: #08080b; box-shadow: 0 0 0 16px #2c2d33, 0 0 0 22px #121317, 0 0 0 25px #3a3b42, 0 40px 80px rgba(0, 0, 0, 0.7); }
+  #crown { position: absolute; left: 556px; top: 230px; width: 26px; height: 80px; border-radius: 8px; background: #3a3b42; }
+  #face { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  #face .wt { display: flex; align-items: center; gap: 10px; font: 700 30px "Inter", sans-serif; color: #d8b4fe; margin-bottom: 8px; }
+  #face .wt .ico { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; position: relative; background: #1a1124; flex: none; }
+  #face .wt .ico img { position: absolute; width: 66px; left: -10px; top: -4px; }
+  #face .ws { font: 700 40px "Inter", sans-serif; color: #9aa0aa; margin-bottom: 10px; }
+  #face .wl { font: 800 52px/1.12 "Inter", sans-serif; letter-spacing: -0.02em; color: #fff; }
+  #face .wl.g { color: #c6ff3d; }
+  #faceGlow { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 50% 40%, rgba(192, 132, 252, 0.95), rgba(124, 58, 237, 0.6) 50%, rgba(59, 7, 100, 0.2) 100%); opacity: 0; }
+  .ring { position: absolute; left: 200px; top: 830px; width: 540px; height: 540px; border-radius: 50%; border: 8px solid #c6ff3d; opacity: 0; }
+  #dim { background: #07080a; opacity: 0; }
+  #big { position: absolute; left: 90px; right: 120px; top: 270px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  #big .src { font: 700 32px "JetBrains Mono", monospace; color: #c9ced6; letter-spacing: 0.02em; background: rgba(0, 0, 0, 0.55); padding: 8px 18px; border-radius: 10px; }
+  #big .num { font: 400 250px/0.95 "Archivo Black", sans-serif; color: #c6ff3d; letter-spacing: -0.02em; text-shadow: 0 0 60px rgba(198, 255, 61, 0.45), 0 10px 0 #2d3a0a; margin-top: 10px; }
+  #big .lab { font: 800 64px "Inter", sans-serif; color: #fff; margin-top: 4px; }
+  #quote { position: absolute; left: 90px; right: 120px; top: 250px; display: flex; flex-direction: column; align-items: flex-start; }
+  #quote .ql { font: 800 64px/1.16 "Inter", sans-serif; letter-spacing: -0.02em; color: #fff; white-space: nowrap; }
+  #quote .ql b { color: #c6ff3d; font-weight: 800; }
+  #quote .qm { font: 400 200px/0.6 "Archivo Black", sans-serif; color: #c6ff3d; height: 90px; }
+  #endTint { background: radial-gradient(70% 45% at 50% 40%, rgba(59, 20, 112, 0.94) 0%, rgba(11, 7, 18, 0.97) 70%); opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="19" data-fps="30">
+
+  <!-- ===== untimed: the gym (POV world) + your arm ===== -->
+  <div class="layer" id="world">
+    <div class="layer" id="worldIn">
+      <div class="layer" id="gymBob">
+        <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+          <defs>
+            <linearGradient id="gWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22252b"/><stop offset="1" stop-color="#363a42"/></linearGradient>
+            <linearGradient id="gMir" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#454b57"/><stop offset="1" stop-color="#262a31"/></linearGradient>
+            <linearGradient id="gFloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2c31"/><stop offset="1" stop-color="#15161a"/></linearGradient>
+            <clipPath id="floorClip"><rect x="0" y="1080" width="1080" height="840"/></clipPath>
+          </defs>
+          <rect width="1080" height="1920" fill="url(#gWall)"/>
+          <rect x="40" y="180" width="1000" height="900" rx="6" fill="url(#gMir)" stroke="#3b3f48" stroke-width="6"/>
+          <polygon points="250,183 360,183 150,1077 40,1077" fill="#fff" opacity="0.04"/>
+          <polygon points="420,183 460,183 250,1077 210,1077" fill="#fff" opacity="0.05"/>
+          <polygon points="820,183 930,183 720,1077 610,1077" fill="#fff" opacity="0.035"/>
+          <!-- reflected machines (faint) -->
+          <rect x="90" y="420" width="26" height="520" fill="#1a1d23"/><rect x="260" y="420" width="26" height="520" fill="#1a1d23"/>
+          <rect x="90" y="420" width="196" height="22" fill="#1a1d23"/>
+          <rect x="150" y="560" width="76" height="200" rx="8" fill="#1d2027"/>
+          <!-- floor -->
+          <rect x="0" y="1080" width="1080" height="840" fill="url(#gFloor)"/>
+          <g clip-path="url(#floorClip)" stroke="#26282e" stroke-width="4">
+            <line x1="0" y1="1150" x2="1080" y2="1150"/><line x1="0" y1="1250" x2="1080" y2="1250"/>
+            <line x1="0" y1="1390" x2="1080" y2="1390"/><line x1="0" y1="1580" x2="1080" y2="1580"/><line x1="0" y1="1820" x2="1080" y2="1820"/>
+            <line x1="540" y1="820" x2="-700" y2="1920"/><line x1="540" y1="820" x2="-160" y2="1920"/><line x1="540" y1="820" x2="300" y2="1920"/>
+            <line x1="540" y1="820" x2="780" y2="1920"/><line x1="540" y1="820" x2="1240" y2="1920"/><line x1="540" y1="820" x2="1780" y2="1920"/>
+          </g>
+          <!-- bench (left) -->
+          <rect x="70" y="1112" width="360" height="50" rx="20" fill="#2b2e36"/>
+          <rect x="110" y="1160" width="22" height="120" fill="#1d1f24"/><rect x="370" y="1160" width="22" height="120" fill="#1d1f24"/>
+          <rect x="80" y="1276" width="90" height="14" rx="4" fill="#1d1f24"/><rect x="336" y="1276" width="90" height="14" rx="4" fill="#1d1f24"/>
+          <!-- squat rack -->
+          <rect x="560" y="1292" width="440" height="22" rx="4" fill="#2a2d34"/>
+          <g fill="#30343c"><rect x="608" y="430" width="38" height="870" rx="4"/><rect x="928" y="430" width="38" height="870" rx="4"/></g>
+          <g id="holes" fill="#16181c"></g>
+          <rect x="600" y="420" width="374" height="26" rx="5" fill="#30343c"/>
+          <rect x="640" y="660" width="26" height="40" rx="4" fill="#4b5059"/><rect x="908" y="660" width="26" height="40" rx="4" fill="#4b5059"/>
+          <!-- barbell + plates -->
+          <rect x="400" y="668" width="720" height="16" rx="6" fill="#cfd4dc"/>
+          <rect x="400" y="664" width="110" height="24" rx="6" fill="#aab1bb"/><rect x="1010" y="664" width="110" height="24" rx="6" fill="#aab1bb"/>
+          <rect x="420" y="500" width="54" height="352" rx="14" fill="#dc2626"/><rect x="424" y="510" width="12" height="332" rx="6" fill="#f87171" opacity="0.6"/><rect x="476" y="548" width="34" height="256" rx="10" fill="#111317"/>
+          <rect x="1046" y="500" width="54" height="352" rx="14" fill="#dc2626"/><rect x="1050" y="510" width="12" height="332" rx="6" fill="#f87171" opacity="0.6"/><rect x="1010" y="548" width="34" height="256" rx="10" fill="#111317"/>
+          <!-- dumbbell on the floor -->
+          <circle cx="860" cy="1530" r="190" fill="#16181c"/><circle cx="860" cy="1530" r="190" fill="none" stroke="#2f333b" stroke-width="22"/>
+          <circle cx="860" cy="1530" r="120" fill="none" stroke="#262930" stroke-width="10"/><circle cx="860" cy="1530" r="34" fill="#0c0d10" stroke="#9ca3af" stroke-width="10"/>
+          <text x="860" y="1440" text-anchor="middle" font-family="Archivo Black" font-size="54" fill="#3a3e47">20 KG</text>
+          <path d="M150 1560 C150 1470 330 1470 330 1560 L345 1640 C350 1700 130 1700 135 1640 Z" fill="#1d2026"/>
+          <path d="M185 1500 C185 1420 295 1420 295 1500" stroke="#1d2026" stroke-width="30" fill="none"/>
+          <rect x="166" y="1700" width="150" height="12" rx="6" fill="#0d0e11" opacity="0.6"/>
+        </svg>
+        <div id="spill"></div>
+        <div id="neon"></div>
+        <div id="neon2"></div>
+      </div>
+      <!-- your arm + the watch -->
+      <div class="layer" id="armWrap">
+        <div class="layer" id="armBuzz">
+          <svg id="arm" width="1080" height="1920" viewBox="0 0 1080 1920">
+            <defs>
+              <linearGradient id="gSkin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d39a72"/><stop offset="1" stop-color="#a76a49"/></linearGradient>
+            </defs>
+            <path d="M-140 1052 L1220 826 L1220 1118 L-140 1352 Z" fill="url(#gSkin)"/>
+            <path d="M-140 1080 L1220 852" stroke="#e4b28c" stroke-width="10" opacity="0.6"/>
+            <g transform="rotate(-9.4 470 1100)"><rect x="378" y="900" width="184" height="420" rx="26" fill="#141519"/></g>
+          </svg>
+          <div class="ring" id="ring1"></div>
+          <div class="ring" id="ring2"></div>
+          <div id="watch">
+            <div id="crown"></div>
+            <div id="watchCase"></div>
+            <div id="face">
+              <div class="wt" id="w1"><span class="ico"><img src="kit/img/brand/kizubot-head.png" alt="" /></span>KizuBot™ | kizubot.com</div>
+              <div class="ws" id="w2">lootStatistics ~</div>
+              <div class="wl" id="w3">Total dropped</div>
+              <div class="wl" id="w4">items: 4585</div>
+              <div class="wl g" id="w5">… (1254/h)</div>
+              <div class="ws" id="w6" style="margin:10px 0 0; font-size:30px">20:26</div>
+            </div>
+            <div id="faceGlow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="layer" id="dim"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- ===== C1 hook: 0 - 1.846 ===== -->
+  <section id="c1" class="clip" data-start="0" data-duration="1.846">
+    <div class="pov" id="hookBox">
+      <div class="pov-tag" id="povTag">POV:</div>
+      <div class="pov-line" id="h1">treino de perna</div>
+      <div id="h2" style="display:flex; flex-direction:column; align-items:center; position:absolute; top:112px">
+        <div class="pov-line xl" id="h2a">e o relógio</div>
+        <div class="pov-line xl" id="h2b"><span class="hl">vibra.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== C3 count-up: 3.692 - 5.538 ===== -->
+  <section id="c3" class="clip" data-start="3.692" data-duration="1.846">
+    <div id="big">
+      <div class="src" id="bigSrc">Total dropped items</div>
+      <div class="num" id="bigNum">0</div>
+      <div class="lab" id="bigLab">itens dropados</div>
+    </div>
+  </section>
+
+  <!-- ===== C4 squat zoeira: 5.538 - 7.385 ===== -->
+  <section id="c4" class="clip" data-start="5.538" data-duration="1.847">
+    <div class="pov" id="povZ" style="top:330px">
+      <div class="pov-line xl" id="z1">e você aí,</div>
+      <div class="pov-line xl" id="z2"><span class="hl">agachando.</span></div>
+    </div>
+  </section>
+
+  <!-- ===== C5 real photo (drop): 7.385 - 9.692 ===== -->
+  <section id="c5" class="clip" data-start="7.385" data-duration="2.307">
+    <div class="layer" id="c5in">
+      <div class="ptag" id="ptag1" style="left:140px; top:236px">print real de cliente</div>
+      <div class="printcard" id="photo" style="left:150px; top:300px; width:740px; height:985px">
+        <div class="zoom" id="photoZoom" style="transform-origin:250px 760px">
+          <img src="kit/img/prints/gym-smartwatch-alarm--photo.jpg" alt="" />
+        </div>
+        <svg viewBox="0 0 740 985" preserveAspectRatio="none"><circle id="wCirc" cx="250" cy="760" r="190" fill="none" stroke="#c6ff3d" stroke-width="9" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== C6 second customer quote: 9.692 - 13.846 ===== -->
+  <section id="c6" class="clip" data-start="9.692" data-duration="4.154">
+    <div class="layer" id="c6in">
+      <div id="quote">
+        <div class="qm" id="qm">“</div>
+        <div class="ql" id="ql1">Eu na academia <b>upando</b></div>
+        <div class="ql" id="ql2"><b>o char principal</b> e o bot</div>
+        <div class="ql" id="ql3"><b>upando a segundaria</b>”</div>
+      </div>
+      <div class="ptag" id="ptag2" style="left:100px; top:756px">prints reais de clientes diferentes</div>
+      <div class="printcard" id="qcard" style="left:100px; top:830px; width:780px; height:342px">
+        <div class="zoom"><img src="kit/img/prints/gym-main-char-bot-alt--quote.png" alt="" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== C7 POV close: 13.846 - 15.692 ===== -->
+  <section id="c7" class="clip" data-start="13.846" data-duration="1.846">
+    <div class="pov" id="povEnd" style="top:300px">
+      <div class="pov-line" id="e1">Treino</div>
+      <div class="pov-line" id="e2">rendendo.</div>
+      <div class="pov-line inv" id="e3" style="margin-top:22px">Farm também.</div>
+    </div>
+  </section>
+
+  <!-- ===== C8 end card: 15.692 - 19 ===== -->
+  <section id="c8" class="clip" data-start="15.692" data-duration="3.308">
+    <div class="layer" id="endTint"></div>
+    <div class="kz-end" id="c8in">
+      <div style="position:relative; width:560px" id="logoBox">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><span>E você, <b>treina</b></span><span>ou <b>farma</b>?</span></div>
+    </div>
+  </section>
+
+  <div id="blk"></div>
+  <div id="flash"></div>
+</div>
+<script>
+  (function () {
+    const g = document.getElementById("holes");
+    const NS = "http://www.w3.org/2000/svg";
+    [627, 947].forEach(function (x) {
+      for (let y = 470; y < 1280; y += 46) {
+        const c = document.createElementNS(NS, "circle");
+        c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", 6);
+        g.appendChild(c);
+      }
+    });
+  })();
+
+  const tl = gsap.timeline({ paused: true });
+  const D = 19;
+  const b = KZ.beats(130);                 // beat 0.4615 s, bar 1.846 s
+  const T2 = b(4), T3 = b(8), T4 = b(12), T5 = b(16), T6 = b(21), T7 = b(30), T8 = b(34);
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+
+  // ---------- ambient: neon flicker + breathing camera ----------
+  tl.fromTo("#neon", { opacity: 1 }, { opacity: 0.55, duration: 0.05, ease: "none", yoyo: true, repeat: 3 }, 0.12);
+  tl.fromTo("#worldIn", { scale: 1.06 }, { scale: 1.0, duration: T2, ease: "power2.out" }, 0);
+  // gym "breathing" bob during the hook (the leg-day stance)
+  tl.fromTo("#gymBob", { y: 0 }, { y: 26, duration: b(1), ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+
+  // ---------- C1 hook ----------
+  tl.fromTo("#povTag", { scale: 1.15 }, { scale: 1, duration: 0.3, ease: "power3.out" }, 0);
+  tl.fromTo("#h1", { scale: 1.1, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, 0);
+  tl.to("#h1", { y: -30, opacity: 0, duration: 0.12, ease: "power2.in" }, b(2) - 0.12);
+  tl.fromTo("#h2a", { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2.2)" }, b(2));
+  tl.fromTo("#h2b", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)" }, b(2) + 0.12);
+  KZ.shake(tl, "#h2", b(3), 10, 0.3, 7);
+  // the arm comes up into view, watch buzzing
+  tl.fromTo("#armWrap", { y: 1150, rotation: 6 }, { y: 0, rotation: 0, duration: 0.45, ease: "power4.out" }, b(3));
+  tl.to("#hookBox", { scale: 0.86, opacity: 0, y: -60, duration: 0.16, ease: "power2.in" }, T2 - 0.16);
+
+  // ---------- C2 watch alarm (world layer) ----------
+  [b(3) + 0.3, T2, b(5)].forEach(function (t, i) {
+    KZ.shake(tl, "#armBuzz", t, 8, 0.28, 60 + i);
+  });
+  [["#ring1", T2], ["#ring2", T2 + 0.16], ["#ring1", b(5)], ["#ring2", b(5) + 0.16]].forEach(function (r, i) {
+    tl.fromTo(r[0], { scale: 1, opacity: 0.9 }, { scale: 1.45, opacity: 0, duration: 0.6, ease: "power2.out", immediateRender: i < 2 }, r[1]);
+  });
+  tl.to("#worldIn", { scale: 1.32, duration: 0.6, ease: "power3.inOut" }, T2);
+  tl.to("#dim", { opacity: 0.35, duration: 0.4 }, T2);
+  tl.fromTo("#w1", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, T2);
+  tl.fromTo("#w2", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, b(4.5));
+  tl.fromTo("#w3", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, b(5.5));
+  tl.fromTo("#w4", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, b(6));
+  tl.fromTo("#w5", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.5)" }, b(6.5));
+  tl.fromTo("#w6", { opacity: 0 }, { opacity: 1, duration: 0.25 }, b(6.5) + 0.15);
+
+  // ---------- C3 count-up re-hook ----------
+  tl.to("#worldIn", { scale: 1.12, y: 300, duration: 0.45, ease: "power3.inOut" }, T3);
+  tl.to("#dim", { opacity: 0.55, duration: 0.3 }, T3);
+  tl.fromTo("#bigSrc", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, T3);
+  tl.fromTo("#bigNum", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, T3 + 0.05);
+  KZ.countUp(tl, "#bigNum", 0, 4585, T3 + 0.1, 1.15, "int", "power2.out");
+  tl.fromTo("#bigNum", { scale: 1 }, { scale: 1.14, duration: 0.1, ease: "power3.out", immediateRender: false }, T3 + 1.27);
+  tl.to("#bigNum", { scale: 1, duration: 0.3, ease: "power2.out" }, T3 + 1.37);
+  tl.fromTo("#bigLab", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T3 + 0.45);
+  tl.to("#big", { scale: 0.9, opacity: 0, duration: 0.15, ease: "power2.in" }, T4 - 0.15);
+
+  // ---------- C4 "e você aí, agachando." (build) ----------
+  tl.fromTo("#z1", { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2.2)" }, T4);
+  tl.fromTo("#z2", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)" }, b(13));
+  // the squat: camera dips on the beats
+  [b(13), b(14), b(15)].forEach(function (t) {
+    tl.to("#worldIn", { y: 420, duration: 0.2, ease: "power2.in" }, t);
+    tl.to("#worldIn", { y: 300, duration: 0.22, ease: "power2.out" }, t + 0.22);
+  });
+  KZ.punch(tl, "#povZ", b(14), 1.06, 0.3);
+  KZ.punch(tl, "#povZ", b(15), 1.09, 0.25);
+  tl.fromTo("#blk", { opacity: 0 }, { opacity: 0.65, duration: 0.1, ease: "power2.in" }, T5 - 0.2);
+  tl.to("#blk", { opacity: 0, duration: 0.05, ease: "none" }, T5 - 0.02);
+
+  // ---------- C5 the real photo (match cut on the drop) ----------
+  KZ.flash(tl, "#flash", T5, 0.85);
+  tl.to("#dim", { opacity: 0.86, duration: 0.05, ease: "none" }, T5);
+  tl.to("#worldIn", { filter: "blur(10px)", duration: 0.3 }, T5);
+  tl.fromTo("#photo", { scale: 1.3, rotation: -5, opacity: 0 }, { scale: 1, rotation: 1.5, opacity: 1, duration: 0.38, ease: "power4.out" }, T5);
+  KZ.shake(tl, "#c5in", T5 + 0.06, 12, 0.26, 71);
+  tl.fromTo("#ptag1", { scale: 2.4, opacity: 0, rotation: -14 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.24, ease: "power4.out" }, T5 + 0.2);
+  tl.fromTo("#photoZoom", { scale: 1 }, { scale: 1.5, duration: 0.6, ease: "power3.inOut" }, b(18));
+  tl.to("#wCirc", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, b(19));
+  tl.to("#photo", { rotation: -0.5, duration: 2, ease: "sine.inOut" }, T5 + 0.4);
+  tl.to("#c5in", { x: -1100, duration: 0.22, ease: "power3.in" }, T6 - 0.22);
+
+  // ---------- C6 second customer quote ----------
+  tl.fromTo("#qm", { scale: 0.3, opacity: 0, rotation: -20 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.3, ease: "back.out(2.5)" }, T6);
+  tl.fromTo("#ql1", { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.32, ease: "power3.out" }, T6 + 0.1);
+  tl.fromTo("#ql2", { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.32, ease: "power3.out" }, b(22));
+  tl.fromTo("#ql3", { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.32, ease: "power3.out" }, b(23));
+  tl.fromTo("#qcard", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, b(24));
+  tl.fromTo("#ptag2", { scale: 2, opacity: 0, rotation: 10 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.24, ease: "power4.out" }, b(24) + 0.25);
+  tl.to("#quote", { y: -16, duration: 2.6, ease: "sine.inOut" }, b(24));
+  tl.to("#c6in", { scale: 0.94, opacity: 0, duration: 0.18, ease: "power2.in" }, T7 - 0.18);
+
+  // ---------- C7 back to the POV: "Treino rendendo. Farm também." ----------
+  tl.to("#dim", { opacity: 0.25, duration: 0.35, ease: "power2.out" }, T7);
+  tl.to("#worldIn", { filter: "blur(0px)", scale: 1.0, y: 0, duration: 0.5, ease: "power3.out" }, T7);
+  tl.to("#faceGlow", { opacity: 1, duration: 0.35, ease: "power2.out" }, T7 + 0.1);
+  tl.fromTo("#e1", { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2.2)" }, T7);
+  tl.fromTo("#e2", { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2.2)" }, T7 + 0.12);
+  tl.fromTo("#e3", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, b(32));
+  KZ.shake(tl, "#povEnd", b(32) + 0.05, 10, 0.24, 81);
+  tl.to("#povEnd", { scale: 0.9, opacity: 0, duration: 0.16, ease: "power2.in" }, T8 - 0.16);
+
+  // ---------- C8 end card + sonic logo ----------
+  tl.to("#endTint", { opacity: 1, duration: 0.3, ease: "power2.out" }, T8);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T8 + 0.05);
+  KZ.eyePulse(tl, "#eye2", T8 + 0.15, 3);
+  KZ.rise(tl, "#endUrl", T8 + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T8 + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, T8 + 0.6);
+  // loop seam: back to the gym of frame 0
+  tl.to(["#c8in", "#endTint"], { opacity: 0, duration: 0.38, ease: "power1.in" }, D - 0.45);
+  tl.to("#dim", { opacity: 0, duration: 0.38, ease: "power1.in" }, D - 0.45);
+  tl.to("#faceGlow", { opacity: 0, duration: 0.38 }, D - 0.45);
+  tl.to("#armWrap", { y: 1150, duration: 0.38, ease: "power2.in" }, D - 0.45);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

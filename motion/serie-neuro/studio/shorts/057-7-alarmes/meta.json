@@ -1,0 +1,66 @@
+{
+  "id": "057",
+  "slug": "7-alarmes",
+  "family": "Espera o Alarme",
+  "title": "7 alarmes em 29 minutos",
+  "concept": "Top-down work desk: the phone's lock screen 'rewinds' from 16:37 to 16:07, then a time-lapse clock replays the customer's 7 real alarms at their real minutes (with the 13-minute silence), the counter climbs 0→7, and the real print confirms 5 shiny alarms, 1 rare drop and 1 capture.",
+  "neuro": [
+    "anticipation",
+    "variable-reward",
+    "counting",
+    "precise-number",
+    "curiosity-gap",
+    "real-proof",
+    "self-reference",
+    "comment-prompt"
+  ],
+  "hook": "7 ALARMES EM 29 MINUTOS.",
+  "duration": 19.9,
+  "music": {
+    "style": "trap",
+    "bpm": 145
+  },
+  "assets": [
+    "kit/img/prints/shiny-raichu-7-alarms--alarms.png",
+    "kit/img/prints/shiny-raichu-7-alarms.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "7 alarmes em 29 minutos: 5 de shiny, 1 drop raro e 1 captura, tudo no celular (print real de cliente). E ele só: “vou la conferir” 👀 Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#alarme"
+      ]
+    },
+    "youtube": {
+      "title": "7 alarmes em 29 minutos (print real de cliente)",
+      "description": "16:08 até 16:37: 7 alarmes do KizuBot, com 5 shinies detectados, 1 drop raro e 1 captura (print real de cliente). Você não precisa ficar olhando: o alarme chega no seu celular. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "7 alarmes em 29 minutos. 📳 5 de shiny, 1 drop raro, 1 captura (print real de cliente). Você não precisa ficar olhando. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "7 em 29 minutos… qual foi o seu recorde?",
+  "notes": "Hook changed from '7 ALARMES EM 30 MINUTOS' to the precise '7 ALARMES EM 29 MINUTOS' (16:08–16:37 in the print; ASSETS.md says 29 min). Instead of dropping print rows during the build, a time-lapse clock (0.2 s per real minute) replays the 7 real alarm minutes on a generic mock lock screen (blurred), including the real 13-minute gap; the real print is revealed after the stop and its rows are re-counted 1→7. Concept line 'E ele nem tava olhando' (an inference) replaced by the true product line 'Você não precisa ficar olhando. O celular avisa.'; the reaction 'vou la conferir' + 👀 is shown in a crop of the same print with its time (16:41, 4 min after the last alarm). Music: trap 145 with a beat bed, build and stop instead of tension."
+}

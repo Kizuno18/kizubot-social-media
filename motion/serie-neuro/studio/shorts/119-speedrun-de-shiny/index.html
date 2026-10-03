@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>119 Speedrun de shiny</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F16 "Speedrun" system (shared with 116-120) ===== */
+  :root { --gold: #ffc93c; --gold2: #ffe08a; --lime: #c6ff3d; --hud: rgba(18, 12, 30, 0.86); --hudline: rgba(168, 85, 247, 0.45); --red: #ff4a4a; }
+  body { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+  .full { position: absolute; inset: 0; }
+  #bg { position: absolute; inset: 0; background: radial-gradient(80% 50% at 50% 34%, #241133 0%, #07060c 70%); }
+  #streakWrap { position: absolute; inset: 0; overflow: hidden; }
+  #streaks { position: absolute; left: -400px; top: -200px; width: 1900px; height: 2400px; transform: rotate(-20deg); opacity: 0.5;
+    background-image: repeating-linear-gradient(90deg, rgba(255, 201, 60, 0) 0 130px, rgba(255, 201, 60, 0.09) 130px 134px, rgba(168, 85, 247, 0) 134px 310px, rgba(168, 85, 247, 0.15) 310px 316px); }
+  #glowG { position: absolute; inset: 0; background: radial-gradient(60% 40% at 50% 40%, rgba(255, 201, 60, 0.32) 0%, rgba(255, 201, 60, 0) 70%); opacity: 0; }
+  .kz-scan { opacity: 0.35; }
+  .kz-progress { height: 8px; }
+  .kz-progress > div { background: linear-gradient(90deg, var(--kz-violet), var(--gold)); }
+  .tk { font-family: "Teko", sans-serif; font-weight: 700; text-transform: uppercase; line-height: 0.86; color: var(--kz-ink); }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; opacity: 0.35; }
+  .chiprow { position: absolute; left: 120px; width: 760px; top: 238px; display: flex; align-items: center; justify-content: space-between; }
+  .cat { display: flex; align-items: center; gap: 12px; padding: 6px 20px 6px 8px; border-radius: 12px; background: var(--hud); border: 2px solid var(--hudline); font: 700 40px "Rajdhani", sans-serif; letter-spacing: 0.06em; color: var(--kz-ink); }
+  .cat .hd { position: relative; width: 50px; height: 48px; }
+  .cat .hd img { width: 50px; display: block; }
+  .cat b { padding: 2px 12px; border-radius: 8px; background: var(--gold); color: #1a1205; font-weight: 700; }
+  .rec { display: flex; align-items: center; gap: 10px; font: 400 30px "JetBrains Mono", monospace; color: var(--kz-lav); letter-spacing: 0.12em; }
+  .rec i { width: 18px; height: 18px; border-radius: 50%; background: var(--red); box-shadow: 0 0 12px rgba(255, 74, 74, 0.9); }
+
+  /* S1 */
+  #h1 { position: absolute; left: 120px; width: 768px; top: 318px; text-align: center; font-size: 180px; white-space: nowrap; }
+  #h2 { position: absolute; left: 120px; width: 768px; top: 474px; text-align: center; font-size: 180px; white-space: nowrap; }
+  #h3 { position: absolute; left: 120px; width: 768px; top: 640px; text-align: center; font-size: 124px; white-space: nowrap; color: var(--gold); text-shadow: 0 0 50px rgba(255, 201, 60, 0.4); }
+  #catcard { position: absolute; left: 0; right: 0; top: 800px; display: flex; justify-content: center; }
+  #catcard span { padding: 10px 30px; border-radius: 14px; background: var(--hud); border: 3px solid var(--gold); font: 700 56px "Rajdhani", sans-serif; letter-spacing: 0.08em; color: var(--gold2); }
+
+  /* S2 run */
+  #hdr { position: absolute; left: 120px; width: 768px; top: 318px; text-align: center; font-size: 84px; white-space: nowrap; }
+  .clockbox { position: absolute; left: 230px; width: 548px; top: 412px; height: 196px; border-radius: 28px; background: var(--hud); border: 3px solid var(--hudline); display: flex; align-items: center; justify-content: center; }
+  #clock { font: 400 166px "JetBrains Mono", monospace; color: #fff; line-height: 1; }
+  #delta { position: absolute; left: 640px; top: 580px; padding: 6px 18px; border-radius: 12px; background: var(--gold); color: #1a1205; font: 700 48px "Rajdhani", sans-serif; transform-origin: 50% 50%; }
+  .scope { position: absolute; left: 324px; top: 652px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(124, 58, 237, 0.18), rgba(18, 12, 30, 0.9) 70%); border: 4px solid rgba(216, 180, 254, 0.45); overflow: hidden; }
+  .scope .ring { position: absolute; border-radius: 50%; border: 2px solid rgba(216, 180, 254, 0.2); }
+  .scope .cross { position: absolute; background: rgba(216, 180, 254, 0.18); }
+  #sweep { position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, rgba(198, 255, 61, 0) 0deg, rgba(198, 255, 61, 0) 300deg, rgba(198, 255, 61, 0.45) 360deg); }
+  #blip { position: absolute; left: 236px; top: 92px; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 26px rgba(255, 201, 60, 1); opacity: 0; }
+  .scope svg { position: absolute; inset: 0; width: 360px; height: 360px; }
+  #slab { position: absolute; left: 0; right: 0; top: 1022px; text-align: center; font: 700 44px "Rajdhani", sans-serif; letter-spacing: 0.1em; color: var(--kz-lav); }
+  .rows { position: absolute; left: 120px; width: 760px; top: 1090px; display: flex; flex-direction: column; gap: 14px; }
+  .rw { padding: 12px 22px 14px; border-radius: 20px; background: rgba(255, 255, 255, 0.04); border: 2px solid rgba(216, 180, 254, 0.14); }
+  .rw .top { display: flex; align-items: center; gap: 16px; }
+  .rw .ok { width: 54px; height: 54px; border-radius: 12px; background: rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; flex: none; }
+  .rw .ok svg { width: 38px; height: 38px; opacity: 0; }
+  .rw .lb { font: 700 58px "Rajdhani", sans-serif; color: rgba(245, 240, 250, 0.4); line-height: 1; }
+  .rw .tm { margin-left: auto; font: 400 56px "JetBrains Mono", monospace; color: rgba(216, 180, 254, 0.4); }
+  .rw .lg { font: 400 34px "JetBrains Mono", monospace; color: var(--kz-lav); margin-top: 8px; white-space: nowrap; min-height: 42px; }
+  .rw .lg b { color: var(--gold); font-weight: 400; }
+
+  /* S3 peak */
+  #sc { position: absolute; left: 0; right: 0; top: 500px; display: flex; justify-content: center; }
+  #sc span { padding: 8px 26px; border-radius: 12px; background: var(--hud); border: 3px solid var(--gold); font: 700 52px "Rajdhani", sans-serif; letter-spacing: 0.06em; color: var(--gold2); }
+  #pk1 { position: absolute; left: 120px; width: 768px; top: 626px; text-align: center; font: 400 108px "JetBrains Mono", monospace; color: var(--gold); text-shadow: 0 0 50px rgba(255, 201, 60, 0.55); white-space: nowrap; }
+  #pk2 { position: absolute; left: 120px; width: 768px; top: 784px; text-align: center; font-size: 120px; color: var(--lime); white-space: nowrap; }
+  #pk3 { position: absolute; left: 120px; width: 768px; top: 910px; text-align: center; font: 700 62px "Rajdhani", sans-serif; color: #fff; }
+  .px { position: absolute; left: 0; top: 0; width: 16px; height: 16px; opacity: 0; }
+
+  /* S4 proof */
+  #prova { position: absolute; left: 120px; width: 768px; top: 360px; text-align: center; font-size: 104px; white-space: nowrap; }
+  .pframe { position: absolute; left: 160px; width: 700px; top: 520px; border-radius: 24px; overflow: hidden; border: 4px solid rgba(245, 240, 250, 0.9); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); background: #15101f; }
+  .pframe img { display: block; width: 100%; }
+  .ptag { position: absolute; left: 0; right: 0; top: 920px; display: flex; justify-content: center; }
+  .ptag span { font: 700 32px "Rajdhani", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--kz-lav); padding: 8px 22px; border: 2px solid var(--kz-lav); border-radius: 999px; background: rgba(11, 7, 18, 0.8); }
+
+  .kz-end .kz-url { font: 700 70px "Rajdhani", sans-serif; letter-spacing: 0.02em; }
+  .ask { font: 700 66px "Rajdhani", sans-serif; color: var(--kz-ink); max-width: 720px; line-height: 1.05; }
+  .ask b { display: block; color: var(--gold); font-weight: 700; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="14.6" data-fps="30">
+  <div id="bg"></div>
+  <div id="streakWrap"><div id="streaks"></div></div>
+  <div id="glowG"></div>
+  <div class="kz-scan"></div>
+  <div class="kz-vignette"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <div id="chipLayer" class="full" style="pointer-events:none; z-index:20">
+    <div class="chiprow" id="chiprow">
+      <div class="cat"><span class="hd"><img src="kit/img/brand/kizubot-head.png" alt="" /><i class="eye" id="catEye" style="left:13px; top:5px; width:26px; height:26px"></i></span>KIZUBOT% <b>SHINY</b></div>
+      <div class="rec"><i id="recDot"></i>SPEEDRUN</div>
+    </div>
+  </div>
+
+  <!-- S1 hook: 0 - 1.655 -->
+  <section id="s1" class="clip" data-start="0" data-duration="1.655">
+    <div id="s1in" class="full">
+      <div class="tk" id="h1">Speedrun</div>
+      <div class="tk" id="h2">de shiny:</div>
+      <div class="tk" id="h3">novo recorde.</div>
+      <div id="catcard"><span id="catIn">SHINY ANY% · 100% AFK</span></div>
+    </div>
+  </section>
+
+  <!-- S2 run: 1.655 - 6.621 -->
+  <section id="s2" class="clip" data-start="1.655" data-duration="4.966">
+    <div id="s2in" class="full">
+      <div class="tk" id="hdr">Speedrun de shiny</div>
+      <div class="clockbox" id="cbox"><div id="clock">--:--</div></div>
+      <div id="delta">+0 min</div>
+      <div class="scope" id="scope">
+        <div class="ring" style="left:60px; top:60px; width:240px; height:240px"></div>
+        <div class="ring" style="left:120px; top:120px; width:120px; height:120px"></div>
+        <div class="cross" style="left:178px; top:0; width:4px; height:360px"></div>
+        <div class="cross" style="left:0; top:178px; width:360px; height:4px"></div>
+        <div id="sweep"></div>
+        <svg viewBox="0 0 360 360"><circle id="capRing" cx="236" cy="92" r="40" fill="none" stroke="#c6ff3d" stroke-width="7" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" transform="rotate(-90 236 92)"/></svg>
+        <div id="blip"></div>
+      </div>
+      <div id="slab">DETECÇÃO DE SHINY · ATIVA</div>
+      <div class="rows">
+        <div class="rw" id="rw1"><div class="top"><span class="ok" id="ok1"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1205" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lb" id="lb1">SHINY DETECTADO</span><span class="tm" id="tm1">--:--</span></div><div class="lg" id="lg1"></div></div>
+        <div class="rw" id="rw2"><div class="top"><span class="ok" id="ok2"><svg viewBox="0 0 24 24" fill="none" stroke="#10200a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lb" id="lb2">CAPTURADO</span><span class="tm" id="tm2">--:--</span></div><div class="lg" id="lg2"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 peak: 6.621 - 8.276 -->
+  <section id="s3" class="clip" data-start="6.621" data-duration="1.655">
+    <div id="s3in" class="full">
+      <div id="pxs"></div>
+      <div id="sc"><span id="scIn">✨ shiny Cubone</span></div>
+      <div id="pk1">16:42 → 16:42</div>
+      <div class="tk" id="pk2">Mesmo minuto.</div>
+      <div id="pk3">detectado e capturado</div>
+    </div>
+  </section>
+
+  <!-- S4 proof: 8.276 - 11.172 -->
+  <section id="s4" class="clip" data-start="8.276" data-duration="2.896">
+    <div id="s4in" class="full">
+      <div class="tk" id="prova">Prova do run</div>
+      <div class="pframe kz-card" id="pframe"><img src="kit/img/prints/shiny-cubone.png" alt="" /><div id="ul" style="position:absolute; left:14px; top:334px; width:132px; height:6px; border-radius:3px; background:#ffc93c; box-shadow:0 0 14px rgba(255,201,60,0.9); transform-origin:0 50%"></div></div>
+      <div class="ptag"><span class="kz-print-tag" id="ptag">print real de cliente</span></div>
+    </div>
+  </section>
+
+  <!-- S5 end card: 11.172 - 14.25 -->
+  <section id="s5" class="clip" data-start="11.172" data-duration="3.078">
+    <div class="kz-end" id="s5in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye5" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">Qual shiny você quer <b>no próximo run?</b></div>
+    </div>
+  </section>
+
+  <!-- S6 loop seam: 14.25 - 14.6 -->
+  <section id="s6" class="clip" data-start="14.25" data-duration="0.35">
+    <div id="s6in" class="full">
+      <div class="tk" id="lt1" style="position:absolute; left:120px; width:768px; top:318px; text-align:center; font-size:180px; white-space:nowrap">Speedrun</div>
+      <div class="tk" id="lt2" style="position:absolute; left:120px; width:768px; top:474px; text-align:center; font-size:180px; white-space:nowrap">de shiny:</div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  (function () {
+    var h = "", cols = ["#ffc93c", "#ffe08a", "#c6ff3d", "#c084fc", "#ffffff"];
+    for (var i = 0; i < 36; i++) h += '<i class="px" style="background:' + cols[i % 5] + '"></i>';
+    document.getElementById("pxs").innerHTML = h;
+  })();
+
+  const tl = gsap.timeline({ paused: true });
+  const D = 14.6;
+  const b = KZ.beats(145);            // beat = 0.4138 s
+
+  function glint(eye, at, times, first) {
+    if (first) tl.set(eye, { opacity: 0.35, scale: 1 }, 0);
+    for (var i = 0; i < times; i++) {
+      tl.fromTo(eye, { opacity: 0.2, scale: 0.8 }, { opacity: 1, scale: 1.3, duration: 0.18, ease: "power2.out", immediateRender: false }, at + i * 0.45);
+      tl.to(eye, { opacity: 0.35, scale: 1, duration: 0.25, ease: "power2.in" }, at + i * 0.45 + 0.18);
+    }
+  }
+  function setText(el, at, val) { tl.to({ v: 0 }, { v: 1, duration: 0.01, onUpdate: function () { el.textContent = val; } }, at); }
+  function typeHTML(el, at, parts, cps) {
+    // parts: [[text, isGold], ...] typed char by char (seek-safe)
+    var full = parts.map(function (p) { return p[0]; }).join(""), o = { n: 0 };
+    tl.to(o, { n: full.length, duration: full.length / cps, ease: "none", onUpdate: function () {
+      var n = Math.round(o.n), out = "", k = 0;
+      parts.forEach(function (p) { var take = Math.max(0, Math.min(p[0].length, n - k)); var s = p[0].slice(0, take).replace(/</g, "&lt;"); out += p[1] ? "<b>" + s + "</b>" : s; k += p[0].length; });
+      el.innerHTML = out;
+    } }, at);
+  }
+
+  // ---- untimed ----
+  tl.fromTo("#prog", { scaleX: 0 }, { scaleX: 1, duration: D - 0.05, ease: "power1.out" }, 0);
+  tl.fromTo("#streaks", { x: -300 }, { x: 0, duration: D, ease: "none" }, 0);
+  tl.fromTo("#chiprow", { y: -12, opacity: 1 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 0);
+  glint("#catEye", 0.7, 1, true);
+  glint("#catEye", 5.1, 1, false);
+  tl.fromTo("#recDot", { opacity: 1 }, { opacity: 0.25, duration: 0.41, ease: "none", repeat: 26, yoyo: true }, 0);
+  tl.to("#chiprow", { y: -30, opacity: 0, duration: 0.2, ease: "power2.in" }, 11.0);
+  tl.fromTo("#chiprow", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out", immediateRender: false }, 14.25);
+
+  // ---- S1 hook ----
+  tl.fromTo("#h1", { y: -14, scale: 1.03 }, { y: 0, scale: 1, duration: 0.22, ease: "power4.out" }, 0);
+  tl.fromTo("#h2", { y: 30, scale: 1.03 }, { y: 0, scale: 1, duration: 0.22, ease: "power4.out" }, 0.03);
+  tl.fromTo("#h3", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "power4.out" }, 0.12);
+  tl.fromTo("#catIn", { scale: 0, rotation: -6 }, { scale: 1, rotation: 0, duration: 0.3, ease: "back.out(3)" }, b(1) - 0.1);
+  KZ.punch(tl, "#h3", b(2), 1.08, 0.3);
+  tl.to(["#h1", "#h2", "#h3", "#catcard"], { y: -60, opacity: 0, duration: 0.14, ease: "power2.in" }, b(4) - 0.15);
+
+  // ---- S2 run ----
+  KZ.slam(tl, "#hdr", b(4), 1.4);
+  tl.fromTo("#cbox", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, b(4));
+  tl.fromTo("#scope", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.8)" }, b(4) + 0.08);
+  tl.fromTo("#slab", { opacity: 0 }, { opacity: 1, duration: 0.2 }, b(4) + 0.3);
+  tl.fromTo(".rows", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, b(4) + 0.15);
+  tl.fromTo("#sweep", { rotation: 0 }, { rotation: 360 * 4, duration: b(16) - b(4), ease: "none" }, b(4));
+  tl.fromTo("#delta", { scale: 0, opacity: 0, rotation: -12 }, { scale: 1, opacity: 1, rotation: -4, duration: 0.3, ease: "back.out(3)" }, b(14));
+  tl.fromTo("#slab", { opacity: 1 }, { opacity: 0.25, duration: 0.3, ease: "none", repeat: 3, yoyo: true, immediateRender: false }, b(5));
+  // detection at b(8): the real alarm line (verbatim from the print)
+  var tD = b(8);
+  KZ.flash(tl, "#flash", tD, 0.35, "#ffe08a");
+  tl.fromTo("#blip", { scale: 3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2.5)" }, tD);
+  tl.fromTo("#blip", { scale: 1 }, { scale: 1.5, duration: 0.2, ease: "sine.inOut", repeat: 5, yoyo: true, immediateRender: false }, tD + 0.3);
+  KZ.shake(tl, "#scope", tD + 0.02, 10, 0.3, 4);
+  setText(document.getElementById("clock"), tD, "16:42");
+  tl.set("#clock", { color: "#ffffff", scale: 1 }, 0);
+  tl.fromTo("#clock", { color: "#ffc93c", scale: 1.2 }, { color: "#ffffff", scale: 1, duration: 0.5, ease: "power2.out", immediateRender: false }, tD);
+  setText(document.getElementById("slab"), tD, "SHINY DETECTADO!");
+  tl.fromTo("#slab", { color: "#d8b4fe" }, { color: "#ffc93c", duration: 0.1, ease: "none", immediateRender: false }, tD);
+  tl.fromTo("#rw1", { borderColor: "rgba(216,180,254,0.14)" }, { borderColor: "rgba(255,201,60,0.8)", duration: 0.15, ease: "none" }, tD);
+  tl.fromTo("#ok1", { backgroundColor: "rgba(255,255,255,0.08)" }, { backgroundColor: "#ffc93c", duration: 0.12, ease: "none" }, tD);
+  tl.fromTo("#ok1 svg", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }, tD);
+  tl.fromTo("#lb1", { color: "rgba(245,240,250,0.4)" }, { color: "#ffe08a", duration: 0.12, ease: "none" }, tD);
+  setText(document.getElementById("tm1"), tD, "16:42");
+  tl.fromTo("#tm1", { color: "rgba(216,180,254,0.4)" }, { color: "#ffc93c", duration: 0.12, ease: "none" }, tD);
+  typeHTML(document.getElementById("lg1"), tD + 0.08, [["shinyDetected ~ --> ", false], ["shiny Cubone", true]], 48);
+  // capturing ring
+  setText(document.getElementById("slab"), b(10), "CAPTURANDO…");
+  tl.fromTo("#capRing", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: b(12) - b(10), ease: "power1.inOut" }, b(10));
+  // capture at b(12)
+  var tC = b(12);
+  setText(document.getElementById("slab"), tC, "CAPTURADO ✓");
+  tl.fromTo("#slab", { color: "#ffc93c" }, { color: "#c6ff3d", duration: 0.1, ease: "none", immediateRender: false }, tC);
+  tl.fromTo("#blip", { backgroundColor: "#ffc93c" }, { backgroundColor: "#c6ff3d", duration: 0.1, ease: "none", immediateRender: false }, tC);
+  KZ.punch(tl, "#scope", tC, 1.06, 0.3);
+  tl.fromTo("#clock", { color: "#c6ff3d", scale: 1.12 }, { color: "#ffffff", scale: 1, duration: 0.45, ease: "power2.out", immediateRender: false }, tC);
+  tl.fromTo("#rw2", { borderColor: "rgba(216,180,254,0.14)" }, { borderColor: "rgba(198,255,61,0.8)", duration: 0.15, ease: "none" }, tC);
+  tl.fromTo("#ok2", { backgroundColor: "rgba(255,255,255,0.08)" }, { backgroundColor: "#c6ff3d", duration: 0.12, ease: "none" }, tC);
+  tl.fromTo("#ok2 svg", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }, tC);
+  tl.fromTo("#lb2", { color: "rgba(245,240,250,0.4)" }, { color: "#ffffff", duration: 0.12, ease: "none" }, tC);
+  setText(document.getElementById("tm2"), tC, "16:42");
+  tl.fromTo("#tm2", { color: "rgba(216,180,254,0.4)" }, { color: "#c6ff3d", duration: 0.12, ease: "none" }, tC);
+  typeHTML(document.getElementById("lg2"), tC + 0.08, [["pokemonCaught ~ I've caught ", false], ["cubone", true]], 50);
+  KZ.shake(tl, "#s2in", b(15.4), 4, 0.5, 9);
+  tl.to("#s2in", { scale: 1.12, opacity: 0, duration: 0.16, ease: "power2.in" }, b(16) - 0.17);
+
+  // ---- S3 peak ----
+  KZ.flash(tl, "#flash", b(16), 0.85, "#fff4c9");
+  tl.fromTo("#glowG", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none" }, b(16));
+  tl.to("#glowG", { opacity: 0.5, duration: 1.0, ease: "power2.out" }, b(16) + 0.3);
+  tl.to("#glowG", { opacity: 0, duration: 0.3 }, b(20) - 0.2);
+  tl.fromTo("#scIn", { scale: 0, rotation: -8 }, { scale: 1, rotation: -2, duration: 0.3, ease: "back.out(3)" }, b(16) + 0.02);
+  tl.fromTo("#pk1", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, b(16));
+  KZ.shake(tl, "#s3in", b(16) + 0.04, 14, 0.3, 5);
+  KZ.slam(tl, "#pk2", b(17), 1.6);
+  KZ.rise(tl, "#pk3", b(18), 0.3, 24);
+  tl.to("#pk1", { scale: 1.05, duration: 1.0, ease: "sine.inOut" }, b(17));
+  (function () {
+    var ps = document.querySelectorAll("#pxs .px"), o = { T: 0 }, F = 1.4, G = 2200, r = KZ.rng(119), P = [];
+    ps.forEach(function () { var a = -Math.PI / 2 + (r() - 0.5) * 2.6, sp = 850 + r() * 850; P.push({ vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, spin: (r() - 0.5) * 900, s: 0.7 + r() * 0.9 }); });
+    tl.to(o, { T: 1, duration: F, ease: "none", onUpdate: function () {
+      var t = o.T * F;
+      ps.forEach(function (p, i) {
+        var q = P[i], x = 540 + q.vx * t, y = 720 + q.vy * t + 0.5 * G * t * t;
+        p.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) rotate(" + (q.spin * t).toFixed(1) + "deg) scale(" + q.s + ")";
+        p.style.opacity = o.T <= 0 ? 0 : String(Math.max(0, 1 - Math.max(0, o.T - 0.7) / 0.3));
+      });
+    } }, b(16) + 0.02);
+  })();
+  tl.to("#s3in", { opacity: 0, y: -60, duration: 0.15, ease: "power2.in" }, b(20) - 0.16);
+
+  // ---- S4 proof ----
+  KZ.slam(tl, "#prova", b(20), 1.5);
+  tl.fromTo("#pframe", { y: 160, rotation: 4, opacity: 0, scale: 0.9 }, { y: 0, rotation: -1.2, opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, b(20) + 0.05);
+  KZ.pop(tl, "#ptag", b(21), 0.3);
+  tl.fromTo("#ul", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, b(22));
+  tl.to("#pframe", { scale: 1.035, duration: 2.2, ease: "sine.inOut" }, b(21));
+  tl.to("#s4in", { opacity: 0, scale: 0.94, duration: 0.17, ease: "power2.in" }, b(27) - 0.18);
+
+  // ---- S5 end card ----
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, b(27) + 0.04);
+  glint("#eye5", b(27) + 0.14, 2, true);
+  KZ.rise(tl, "#endUrl", b(28), 0.35, 30);
+  KZ.rise(tl, "#endAsk", b(29), 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, b(29));
+  tl.to("#s5in", { opacity: 0, duration: 0.18, ease: "power1.in" }, 14.25 - 0.19);
+
+  // ---- S6 loop seam ----
+  tl.fromTo("#lt1", { opacity: 0, y: -40 }, { opacity: 1, y: -14, duration: 0.16, ease: "power3.out" }, 14.25);
+  tl.fromTo("#lt2", { opacity: 0, y: 60 }, { opacity: 1, y: 30, duration: 0.16, ease: "power3.out" }, 14.3);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

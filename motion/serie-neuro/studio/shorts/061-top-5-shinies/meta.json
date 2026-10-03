@@ -1,0 +1,72 @@
+{
+  "id": "061",
+  "slug": "top-5-shinies",
+  "family": "Top 5",
+  "title": "Top 5 shinies que clientes pegaram com o KizuBot",
+  "concept": "Countdown of five real shiny captures by KizuBot customers, from a Cubone caught in the same minute it was detected to a Feraligatr caught while the customer was watching a movie; every item is proven by the customer's real alarm/chat print.",
+  "neuro": [
+    "open-loop",
+    "curiosity-gap",
+    "variable-reward",
+    "serial-position",
+    "visible-progress",
+    "social-proof",
+    "anticipation-drop",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "TOP 5 SHINIES QUE CLIENTES PEGARAM COM O KIZUBOT.",
+  "duration": 21.9,
+  "music": {
+    "style": "trap",
+    "bpm": 145
+  },
+  "assets": [
+    "kit/img/prints/shiny-cubone--alarm.png",
+    "kit/img/prints/shiny-raichu-7-alarms--alarms.png",
+    "kit/img/prints/shiny-venusaur.png",
+    "kit/img/prints/shiny-machamp-2-chars--log1.png",
+    "kit/img/prints/shiny-machamp-2-chars--log2.png",
+    "kit/img/prints/shiny-machamp-2-chars--qa.png",
+    "kit/img/prints/shiny-feraligatr--quote.png",
+    "kit/img/prints/shiny-feraligatr--alarm.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Top 5 shinies que clientes pegaram com o KizuBot ✨ Do Cubone pego no mesmo minuto ao Feraligatr que caiu enquanto o cliente via um filme 🍿 Prints reais de clientes diferentes. Qual seria o seu #1? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#top5"
+      ]
+    },
+    "youtube": {
+      "title": "Top 5 shinies que clientes pegaram com o KizuBot ✨",
+      "description": "Do #5 ao #1: Cubone pego no mesmo minuto do alarme, Raichu com 7 alarmes em 29 minutos, Venusaur, Machamp em 2 chars diferentes e um Feraligatr pego enquanto o cliente via um filme. Prints reais de clientes diferentes. O KizuBot detecta shiny, mega e boss e avisa no WhatsApp. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Top 5 shinies que clientes pegaram com o KizuBot ✨ O #1 caiu no meio de um filme 🍿 Qual seria o seu #1? Prints reais de clientes diferentes. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Qual seria o seu #1? 👇",
+  "notes": "Hook split into two cards (≤ 6 words each). #4 caption says '7 alarmes em 29 min' (print shows 16:08→16:37) instead of the concept's '30 min'. #2 uses the asset editor's crops of the Machamp print (two log lines + the Q&A 'shiny machamp em 2 char diferente?' / 'sim' / 'os 2 foi'), captioned 'em 2 chars diferentes'. #1 caption 'pego enquanto ele via um filme' summarises the real quote. 'prints reais de clientes diferentes' shown on the hook."
+}

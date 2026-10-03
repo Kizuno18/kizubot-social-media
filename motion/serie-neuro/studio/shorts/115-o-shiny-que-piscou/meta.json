@@ -1,0 +1,68 @@
+{
+  "id": "115",
+  "slug": "o-shiny-que-piscou",
+  "family": "Terror no PxG",
+  "title": "O shiny que piscou (e ninguém estava olhando)",
+  "concept": "Paranormal night-vision trail-cam story: a shiny blinks in the dark grass for one second while nobody is watching; then a giant purple robotic eye opens ('Mas alguém estava.') and the real Shiny Muk print proves it: 'pena que n vi piscar / tava afk'.",
+  "neuro": [
+    "arousal-suspense",
+    "curiosity-gap",
+    "loss-aversion",
+    "schema-violation",
+    "seasonality",
+    "social-proof",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "O SHINY QUE PISCOU.",
+  "duration": 20.77,
+  "music": {
+    "style": "synthwave",
+    "bpm": 104,
+    "note": "80s horror-synth arpeggio break -> tape-stop silence -> synthwave drop on the eye"
+  },
+  "assets": [
+    "kit/img/prints/shiny-muk--card.png",
+    "kit/img/prints/shiny-muk--quote.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "100% AFK",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "O shiny que piscou 👀 Apareceu por um segundo, brilhou... e ninguém estava olhando. Quase ninguém. Print real de cliente: 'pena que n vi piscar, tava afk'. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#halloween"
+      ]
+    },
+    "youtube": {
+      "title": "O shiny que piscou (e ninguém estava olhando)",
+      "description": "Ele apareceu por um segundo. Brilhou. E ninguém estava olhando... mas o KizuBot estava. Print real de cliente: Shiny Muk, 'pena que n vi piscar / tava afk'. O KizuBot detecta shinys, megas e bosses, captura 100% AFK e avisa no celular. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    },
+    "instagram": {
+      "caption": "O shiny que piscou 👀 Ninguém viu. Mas o KizuBot pegou. (print real de cliente: 'pena que n vi piscar / tava afk') Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#halloween"
+      ]
+    }
+  },
+  "pinned_comment": "Já perdeu um shiny que piscou? 👀",
+  "notes": "Kept the concept's narration and payoff line ('Ninguém viu. Mas o KizuBot pegou.'); added the twist line 'Mas alguém estava.' with a drawn robotic eye (illustration, not a screenshot). The Shiny Muk card is shown cropped to the sprite + name (stats rows left out, meaning unchanged); the quote crop is verbatim. Caption 'Shiny Muk. Dono AFK.' paraphrases the print ('tava afk'). Visual: night-vision trail-cam footage to vary the F15 series look. Caption under the print sets the customer's words verbatim: 'Shiny Muk. \"tava afk\"'."
+}

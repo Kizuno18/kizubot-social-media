@@ -1,0 +1,62 @@
+{
+  "id": "095",
+  "slug": "mato",
+  "family": "Dicionário PxG",
+  "title": "Dicionário PxG: Mato",
+  "concept": "Dictionary entry for MATO: vegetação (an etched leaf draws itself); no PxG, recurso de farming que rende muito e cansa mais ainda; com KizuBot, o que o seu char coleta o dia inteiro, sem player enchendo o saco, with two real customer usage examples ('1 mes pegando mato, 91kk' and 'q paz').",
+  "neuro": [
+    "in-group-identity",
+    "incongruity-humor",
+    "processing-fluency",
+    "social-proof",
+    "relief",
+    "comment-prompt"
+  ],
+  "hook": "MATO",
+  "duration": 22.86,
+  "music": {
+    "style": "lofi",
+    "bpm": 84
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/mato-1-mes-91kk--quote.png",
+    "kit/img/prints/mato-sem-player-q-paz--quote.png"
+  ],
+  "claims": [
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Dicionário PxG: MATO 🌿 1. vegetação 2. recurso que rende muito e cansa mais ainda 3. com KizuBot: o que o seu char coleta o dia inteiro, sem player enchendo o saco. Quanto mato você já pegou na mão? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mato",
+        "#dicionario"
+      ]
+    },
+    "youtube": {
+      "title": "Dicionário PxG: Mato (rende muito e cansa mais ainda) 🌿",
+      "description": "MATO, s.m., gír. PxG. 1. Vegetação. 2. No PxG: recurso de farming que rende muito e cansa mais ainda. 3. Com KizuBot: o que o seu char coleta o dia inteiro, sem player enchendo o saco. Ex.: \"1 mes pegando mato, 91kk\" e \"q paz\" (prints reais de clientes diferentes). kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Dicionário PxG: MATO 🌿 Rende muito e cansa mais ainda. Quanto mato você já pegou na mão? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mato"
+      ]
+    }
+  },
+  "pinned_comment": "Quanto mato você já pegou na mão? 🌿",
+  "notes": "Runs 22.86 s to fit two examples. Example 1 is trimmed to exactly what the crop shows, '1 mes pegando mato, 91kk' (never extended with 'esperado', per ASSETS.md). Example 2 = 'q paz' with mato-sem-player-q-paz--quote. Labelled 'prints reais de clientes diferentes'. 91kk is in-game money, never paired with R$. Etched leaf on definition 1."
+}

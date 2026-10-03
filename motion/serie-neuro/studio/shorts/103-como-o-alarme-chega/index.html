@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>103 Como o alarme chega no pulso</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+/* ================= F13 · RAIO-X — "blueprint" system ================= */
+:root {
+  --bp-paper: #0a1530; --bp-line: #7dd3fc; --bp-line2: #bae6fd; --bp-ink: #e8f4ff; --bp-dim: #9cc0e0;
+  --bp-acc: #c6ff3d; --bp-lav: #d8b4fe; --bp-done: #d8b4fe;
+}
+#root { background: var(--bp-paper); }
+.bp-paper { position:absolute; inset:0; background:
+  linear-gradient(rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(90deg, rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  linear-gradient(90deg, rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  radial-gradient(80% 60% at 50% 42%, #14254f 0%, #0a1530 68%, #060d20 100%); }
+.bp-grain { position:absolute; inset:0; opacity:.5; background: radial-gradient(120% 90% at 50% 50%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
+.bp-frame { position:absolute; left: 36px; top: 36px; right: 36px; bottom: 36px; border: 3px solid rgba(186,230,253,.35); }
+.bp-frame::before { content:""; position:absolute; left: 10px; top: 10px; right: 10px; bottom: 10px; border: 1px solid rgba(186,230,253,.18); }
+.bp-tb { position:absolute; left: 490px; top: 1436px; width: 550px; height: 140px; border: 3px solid rgba(186,230,253,.45); background: rgba(10,21,48,.6); display:grid; grid-template-columns: 1fr 120px; grid-template-rows: 1fr 1fr; }
+.bp-tb div { border: 1px solid rgba(186,230,253,.25); display:flex; align-items:center; padding: 0 16px; font: 400 30px "JetBrains Mono", monospace; color: var(--bp-dim); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; overflow:hidden; }
+.bp-tb b { font-weight: 400; color: var(--bp-ink); }
+.bp-fig { position:absolute; left: 100px; top: 232px; font: 400 30px "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--bp-line2); text-transform: uppercase; }
+.bp-display { font-family: "Chakra Petch", sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1.0; letter-spacing: .005em; color: var(--bp-ink); }
+.bp-body { font: 800 58px "Inter", sans-serif; color: var(--bp-ink); line-height: 1.1; }
+.bp-mono { font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .1em; }
+.kz-progress { height: 10px; background: rgba(186,230,253,.08); }
+.kz-progress > div { background: linear-gradient(90deg, #38bdf8, #7dd3fc 60%, #c6ff3d); }
+/* drawing */
+svg.bp { overflow: visible; }
+svg.bp .sh { fill: none; stroke: currentColor; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+svg.bp .int { fill: none; stroke: var(--bp-acc); stroke-width: 3; stroke-dasharray: 9 8; stroke-linecap: round; }
+svg.bp .guide { fill: none; stroke: rgba(186,230,253,.45); stroke-width: 2; stroke-dasharray: 6 8; }
+svg.bp .ld { fill: none; stroke: var(--bp-line2); stroke-width: 3; }
+svg.bp .tagc { fill: #0a1530; stroke: var(--bp-line2); stroke-width: 3; }
+svg.bp .tagt { font: 700 36px "Chakra Petch", sans-serif; fill: var(--bp-ink); text-anchor: middle; dominant-baseline: central; }
+.cap { position:absolute; left: 90px; width: 790px; top: 1150px; height: 246px; border: 3px solid rgba(186,230,253,.5); background: rgba(8,17,40,.92); }
+.cap::after { content:""; position:absolute; right: -3px; top: -3px; width: 26px; height: 26px; border-top: 6px solid var(--bp-acc); border-right: 6px solid var(--bp-acc); }
+.capi { position:absolute; left: 30px; right: 30px; top: 22px; opacity: 0; }
+.capi .hd { display:flex; align-items:center; gap: 18px; font: 400 36px "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--bp-acc); text-transform: uppercase; }
+.capi .hd i { font-style: normal; width: 56px; height: 56px; border-radius: 50%; border: 3px solid var(--bp-acc); display:flex; align-items:center; justify-content:center; font: 700 32px "Chakra Petch", sans-serif; color: var(--bp-acc); }
+.capi .tx { margin-top: 14px; text-wrap: balance; }
+.eye { position:absolute; border-radius:50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+#flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; z-index:70; }
+
+
+/* ================= 103 specifics ================= */
+.bp-paper { background:
+  linear-gradient(rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(90deg, rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  linear-gradient(90deg, rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  radial-gradient(75% 45% at 50% 62%, #16295a 0%, #0a1530 66%, #060d20 100%); }
+#hookTxt { position:absolute; left: 110px; right: 182px; top: 250px; height: 540px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+#hookTxt .bp-display { font-size: 120px; white-space: nowrap; line-height: 1.04; }
+#hookTxt .g { color: var(--bp-acc); }
+#watchArt { position:absolute; left: 330px; top: 820px; width: 420px; height: 543px; color: var(--bp-line); }
+#watchArt svg { width: 420px; height: 543px; overflow: visible; }
+/* pipeline */
+#pipe { position:absolute; left: 0; top: 0; width: 1080px; height: 520px; }
+#pline { position:absolute; left: 222px; top: 352px; width: 616px; height: 6px; background: rgba(186,230,253,.25); border-radius: 3px; }
+#pfill { position:absolute; left: 222px; top: 352px; width: 616px; height: 6px; background: var(--bp-acc); border-radius: 3px; transform-origin: 0 50%; box-shadow: 0 0 14px rgba(198,255,61,.6); }
+#pkt { position:absolute; left: 152px; top: 337px; width: 36px; height: 36px; border-radius: 50%; background: var(--bp-acc); box-shadow: 0 0 26px 8px rgba(198,255,61,.55); opacity: 0; }
+.nd { position:absolute; top: 302px; width: 104px; height: 104px; margin-left: -52px; border-radius: 50%; background: #0a1530; border: 4px solid rgba(186,230,253,.6); display:flex; align-items:center; justify-content:center; color: var(--bp-line); }
+.nd svg { width: 60px; height: 60px; overflow: visible; }
+.nl { position:absolute; top: 418px; width: 220px; margin-left: -110px; text-align:center; font: 400 30px "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--bp-dim); text-transform: uppercase; }
+#capW { position:absolute; left: 90px; width: 790px; top: 474px; height: 90px; }
+.cp { position:absolute; left:0; right:0; top:0; text-align:center; opacity: 0; text-wrap: balance; }
+.stage { position:absolute; left: 90px; width: 790px; top: 616px; height: 780px; opacity: 0; }
+.card2 { position:relative; border-radius: 22px; overflow:hidden; border: 3px solid rgba(186,230,253,.55); box-shadow: 0 30px 90px rgba(0,0,0,.6); background: #0a1530; }
+.card2 img { display:block; width: 100%; }
+.ptag { display:inline-block; margin-top: 18px; padding: 8px 18px; border-radius: 999px; background: rgba(6,13,32,.9); border: 2px solid var(--bp-lav); font: 700 30px "Inter", sans-serif; letter-spacing: .04em; color: var(--bp-lav); text-transform: uppercase; }
+.chipB { display:inline-block; padding: 12px 28px; border-radius: 999px; font: 800 56px "Inter", sans-serif; }
+.evt { font: 400 44px "JetBrains Mono", monospace; letter-spacing: .02em; padding: 12px 22px; border: 3px solid rgba(186,230,253,.4); color: var(--bp-dim); margin: 0 auto 16px; width: 520px; text-align:left; }
+#quote { position:absolute; left: 90px; width: 790px; top: 1010px; text-align:center; font: 400 116px "Instrument Serif", serif; font-style: italic; color: var(--bp-ink); line-height: 1; }
+#quote b { font-weight: 400; color: var(--bp-acc); }
+#diff { position:absolute; left: 90px; width: 790px; top: 1160px; text-align:center; font: 400 30px "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--bp-dim); text-transform: uppercase; }
+.ask { font: 900 62px "Inter", sans-serif; color: var(--bp-ink); max-width: 840px; line-height: 1.1; }
+.ask b { color: var(--bp-acc); }
+.kz-end .kz-url { color: var(--bp-ink); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="19.412" data-fps="30">
+  <div class="bp-paper" id="paper"></div>
+  <div class="bp-grain"></div>
+  <div class="bp-frame"></div>
+  <div class="bp-tb"><div><b>KizuBot</b>&nbsp;· desenho</div><div>1:1</div><div>Raio-X · fig. 3</div><div><b>3/5</b></div></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- S1 HOOK 0 – 2.5 -->
+  <section id="s1" class="clip" data-start="0" data-duration="2.5">
+    <div class="kz-full" id="s1in">
+      <div id="hookTxt">
+        <div class="bp-display" id="h1">Como o</div>
+        <div class="bp-display" id="h1b">alarme</div>
+        <div class="bp-display" id="h2">chega no</div>
+        <div class="bp-display g" id="h3" style="font-size:150px">pulso?</div>
+      </div>
+      <div id="watchArt">
+        <svg class="bp" viewBox="0 0 480 620">
+          <path class="sh" d="M170,20 h140 l18,120 M170,20 l-18,120" pathLength="1"/>
+          <path class="sh" d="M152,480 l18,120 h140 l18,-120" pathLength="1"/>
+          <rect class="sh" x="90" y="140" width="300" height="340" rx="80" pathLength="1"/>
+          <rect class="sh" x="122" y="172" width="236" height="276" rx="56" pathLength="1"/>
+          <rect class="sh" x="390" y="270" width="22" height="70" rx="8" pathLength="1"/>
+          <g id="wscr" opacity="0">
+            <text x="240" y="268" text-anchor="middle" style="font: 400 30px 'JetBrains Mono', monospace; fill: #d8b4fe">KizuBot™</text>
+            <rect x="160" y="296" width="160" height="16" rx="8" fill="rgba(186,230,253,.45)"/>
+            <rect x="180" y="326" width="120" height="16" rx="8" fill="rgba(186,230,253,.3)"/>
+            <circle cx="240" cy="388" r="16" fill="#c6ff3d"/>
+          </g>
+          <g id="vib" stroke="#c6ff3d" stroke-width="5" stroke-linecap="round" fill="none" opacity="0">
+            <path d="M40,250 q-14,30 0,60 M18,232 q-22,48 0,96"/><path d="M440,250 q14,30 0,60 M462,232 q22,48 0,96"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE 2.353 – 15.4 -->
+  <section id="sp" class="clip" data-start="2.353" data-duration="13.05">
+    <div class="kz-full" id="spin">
+      <div class="bp-fig">fig. 3 — caminho do alarme</div>
+      <div id="pipe">
+        <div id="pline"></div><div id="pfill"></div>
+        <div class="nd" id="n1" style="left:170px"><svg class="bp" viewBox="0 0 60 60"><path class="sh" d="M16,44 h30 a10,10 0 0 0 0,-20 a14,14 0 0 0 -27,-3 a10,10 0 0 0 -3,23 z" stroke="currentColor"/><path class="sh" d="M24,36 h12" stroke="currentColor"/></svg></div>
+        <div class="nd" id="n2" style="left:410px"><svg class="bp" viewBox="0 0 60 60"><rect class="sh" x="10" y="14" width="40" height="32" rx="10" stroke="currentColor"/><circle cx="30" cy="30" r="6" fill="currentColor"/><path class="sh" d="M30,6 v8" stroke="currentColor"/></svg></div>
+        <div class="nd" id="n3" style="left:650px"><svg class="bp" viewBox="0 0 60 60"><path class="sh" d="M12,14 h36 a6,6 0 0 1 6,6 v18 a6,6 0 0 1 -6,6 h-20 l-10,8 v-8 h-6 a6,6 0 0 1 -6,-6 v-18 a6,6 0 0 1 6,-6 z" stroke="currentColor"/></svg></div>
+        <div class="nd" id="n4" style="left:890px"><svg class="bp" viewBox="0 0 60 60"><rect class="sh" x="16" y="14" width="28" height="32" rx="9" stroke="currentColor"/><path class="sh" d="M22,14 l2,-8 h12 l2,8 M22,46 l2,8 h12 l2,-8" stroke="currentColor"/></svg></div>
+        <div class="nl" style="left:170px">nuvem</div><div class="nl" style="left:410px">IA</div><div class="nl" style="left:650px">zap</div><div class="nl" style="left:890px">pulso</div>
+        <div id="pkt"></div>
+      </div>
+      <div id="capW">
+        <div class="cp bp-body" id="cp1">o bot joga na nuvem</div>
+        <div class="cp bp-body" id="cp2">detecta shiny, mega e boss</div>
+        <div class="cp bp-body" id="cp3">manda no WhatsApp ou Telegram</div>
+        <div class="cp bp-body" id="cp4">e chega no seu <b style="color:#c6ff3d">pulso</b></div>
+        <div class="cp bp-body" id="cp5">um cliente sobre o alarme:</div>
+      </div>
+      <!-- stage 1: cloud machine -->
+      <div class="stage" id="st1">
+        <svg class="bp" viewBox="0 0 790 470" style="position:absolute; left:0; top:0; width:790px; height:470px; color:#7dd3fc">
+          <path class="sh" d="M180,380 h420 a90,90 0 0 0 0,-180 a130,130 0 0 0 -250,-30 a100,100 0 0 0 -170,210 z" stroke="currentColor" pathLength="1"/>
+          <rect class="sh" x="300" y="220" width="190" height="56" rx="10" stroke="currentColor" pathLength="1"/>
+          <rect class="sh" x="300" y="288" width="190" height="56" rx="10" stroke="currentColor" pathLength="1"/>
+          <circle cx="330" cy="248" r="8" fill="#c6ff3d" id="led1"/><circle cx="330" cy="316" r="8" fill="#c6ff3d" id="led2"/>
+          <path class="sh" d="M360,248 h100 M360,316 h100" stroke="currentColor" pathLength="1"/>
+        </svg>
+        <div style="position:absolute; left:0; right:0; top:500px; display:flex; justify-content:center; gap: 22px">
+          <span class="chipB" id="ch1" style="background:#c6ff3d; color:#0b0712">24/7</span>
+          <span class="chipB" id="ch2" style="border: 3px solid #d8b4fe; color:#e8f4ff">PC desligado</span>
+        </div>
+      </div>
+      <!-- stage 2: detection -->
+      <div class="stage" id="st2">
+        <div style="position:absolute; left:0; right:0; top:60px">
+          <div class="evt" id="e1">shinyDetected</div>
+          <div class="evt" id="e2">megaDetected</div>
+          <div class="evt" id="e3">bossDetected</div>
+        </div>
+        <div class="bp-mono" style="position:absolute; left:0; right:0; top:420px; text-align:center; font-size:30px; color:#9cc0e0">nomes reais dos alarmes</div>
+      </div>
+      <!-- stage 3: the real message -->
+      <div class="stage" id="st3">
+        <div class="card2" id="pc3" style="margin-top: 40px"><img src="kit/img/prints/boss-tangrowth-electivire--tangrowth.png" alt="" /><div id="hl3" style="position:absolute; left: 14px; top: 10px; width: 470px; height: 76px; border: 5px solid #c6ff3d; border-radius: 14px; box-shadow: 0 0 22px rgba(198,255,61,.55); opacity:0"></div></div>
+        <div style="text-align:center"><span class="ptag">print real de cliente</span></div>
+      </div>
+      <!-- stage 4: the wrist (drop) -->
+      <div class="stage" id="st4">
+        <div class="card2" id="pc4" style="width: 600px; margin: 10px auto 0"><img src="kit/img/prints/smartwatch-alarm--photo.jpg" alt="" /></div>
+        <div style="text-align:center"><span class="ptag">print real de cliente</span></div>
+      </div>
+      <!-- stage 5: reaction -->
+      <div class="stage" id="st5">
+        <div class="card2" id="pc5" style="margin-top: 70px"><img src="kit/img/prints/trampo-da-hora--zap.png" alt="" /></div>
+        <div style="text-align:center"><span class="ptag">print real de cliente</span></div>
+      </div>
+      <div id="quote" style="opacity:0">“<b>Chega certinho</b>”</div>
+      <div id="diff" style="opacity:0">prints reais de clientes diferentes</div>
+    </div>
+  </section>
+
+  <!-- END 15.294 – 19.412 -->
+  <section id="send" class="clip" data-start="15.294" data-duration="4.118">
+    <div class="kz-end" id="sendin">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>Você prefere</div><div><b>WhatsApp ou Telegram?</b></div></div>
+    </div>
+  </section>
+
+  <!-- loop bridge -->
+  <section id="sb" class="clip" data-start="19.09" data-duration="0.322">
+    <div class="kz-full" id="sbin">
+      <div style="position:absolute; left:110px; right:182px; top:250px; height:540px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center">
+        <div class="bp-display" style="font-size:120px; white-space:nowrap; line-height:1.04">Como o</div>
+        <div class="bp-display" style="font-size:120px; white-space:nowrap; line-height:1.04">alarme</div>
+        <div class="bp-display" style="font-size:120px; white-space:nowrap; line-height:1.04">chega no</div>
+        <div class="bp-display" style="font-size:150px; white-space:nowrap; line-height:1.04; color:#c6ff3d">pulso?</div>
+      </div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 19.412;
+  const b = KZ.beats(102);            // beat 0.588 s, bar 2.353 s
+  const LIME = "#c6ff3d", DONE = "#d8b4fe";
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#paper", { backgroundPosition: "-1px -1px, -1px -1px, 0 0, 0 0, 0 0" }, { backgroundPosition: "-1px -61px, -1px -61px, 0 -30px, 0 -30px, 0 0", duration: D, ease: "none" }, 0);
+
+  /* ---------- S1 hook: the watch draws itself and buzzes ---------- */
+  tl.fromTo("#hookTxt", { scale: 1.06, filter: "blur(4px)" }, { scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, 0);
+  tl.fromTo("#h3", { scale: 1.35, rotation: -4 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(2.4)" }, 0.05);
+  tl.fromTo("#watchArt .sh", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0, duration: 0.5, stagger: 0.07, ease: "power2.out" }, 0);
+  tl.fromTo("#wscr", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.75);
+  tl.set("#vib", { opacity: 1 }, b(2));
+  tl.fromTo("#vib", { scale: 0.9, transformOrigin: "50% 50%" }, { scale: 1.1, duration: 0.09, yoyo: true, repeat: 7, ease: "none" }, b(2));
+  KZ.shake(tl, "#watchArt", b(2), 9, 0.7, 12);
+  tl.set("#vib", { opacity: 0 }, b(2) + 0.75);
+  KZ.punch(tl, "#h3", b(2), 1.08, 0.3);
+  tl.to("#s1in", { y: -140, opacity: 0, duration: 0.22, ease: "power3.in" }, b(4) - 0.2);
+
+  /* ---------- pipeline ---------- */
+  const T0 = b(4);
+  tl.fromTo("#spin", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, T0);
+  tl.fromTo(".nd", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, stagger: 0.07, ease: "back.out(2.4)" }, T0 + 0.05);
+  tl.fromTo("#pfill", { scaleX: 0 }, { scaleX: 0, duration: 0.01 }, T0);
+  const NX = [170, 410, 650, 890], TN = [b(4.5), b(7.5), b(11), b(16)];
+  tl.set("#pkt", { opacity: 1 }, b(4.5) - 0.05);
+  function stage(i, t) {
+    const n = i + 1;
+    for (let j = 1; j <= 5; j++) {
+      tl.set("#cp" + j, { opacity: j === n ? 1 : 0 }, t);
+      tl.set("#st" + j, { opacity: j === n ? 1 : 0 }, t);
+    }
+    tl.fromTo("#cp" + n, { y: 24 }, { y: 0, duration: 0.25, ease: "power3.out", immediateRender: false }, t);
+    tl.fromTo("#st" + n, { y: 40, scale: 0.96 }, { y: 0, scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, t);
+  }
+  TN.forEach(function (t, i) {
+    const n = i + 1;
+    const travel = i === 0 ? 0.01 : (i === 3 ? b(2) : 0.35);
+    tl.to("#pkt", { x: NX[i] - 170, duration: travel, ease: i === 3 ? "power1.in" : "power3.inOut" }, t - travel);
+    tl.to("#pfill", { scaleX: (NX[i] - 170) / 720, duration: travel, ease: i === 3 ? "power1.in" : "power3.inOut" }, t - travel);
+    tl.set("#n" + n, { borderColor: LIME, color: LIME, boxShadow: "0 0 30px rgba(198,255,61,.5)" }, t);
+    KZ.punch(tl, "#n" + n, t, 1.15, 0.3);
+    if (i > 0) tl.set("#n" + i, { borderColor: DONE, color: DONE, boxShadow: "0 0 0 rgba(0,0,0,0)" }, t);
+    stage(i, t);
+  });
+  // stage 1 details
+  tl.fromTo("#st1 .sh", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0, duration: 0.5, stagger: 0.06, ease: "power2.out" }, TN[0]);
+  tl.fromTo(["#led1", "#led2"], { opacity: 1 }, { opacity: 0.2, duration: 0.18, yoyo: true, repeat: 7, ease: "steps(1)" }, TN[0] + 0.5);
+  KZ.pop(tl, "#ch1", TN[0] + 0.5, 0.35);
+  KZ.pop(tl, "#ch2", TN[0] + 0.7, 0.35);
+  // stage 2 details
+  tl.fromTo(["#e1", "#e2", "#e3"], { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, stagger: 0.15, ease: "power3.out" }, TN[1] + 0.1);
+  tl.set("#e3", { borderColor: LIME, color: LIME, boxShadow: "0 0 24px rgba(198,255,61,.45)" }, TN[1] + 0.9);
+  KZ.punch(tl, "#e3", TN[1] + 0.9, 1.06, 0.3);
+  // stage 3 details
+  tl.fromTo("#hl3", { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, TN[2] + 0.5);
+  tl.fromTo("#pc3", { rotation: 0 }, { rotation: -1.2, duration: 0.08, yoyo: true, repeat: 5, ease: "none", immediateRender: false }, TN[2] + 0.1);
+  tl.to("#pc3", { scale: 1.03, duration: 1.8, ease: "sine.inOut" }, TN[2] + 0.6);
+  // build b14→b16: packet crawls to the wrist
+  tl.fromTo("#pkt", { boxShadow: "0 0 26px 8px rgba(198,255,61,.55)" }, { boxShadow: "0 0 40px 16px rgba(198,255,61,.85)", duration: 0.15, yoyo: true, repeat: 7, immediateRender: false }, b(14));
+  // stage 4 = DROP
+  KZ.flash(tl, "#flash", TN[3], 0.6, "#d9f99d");
+  tl.fromTo("#pc4", { scale: 0.8, rotation: -4 }, { scale: 1, rotation: -1, duration: 0.45, ease: "back.out(1.8)", immediateRender: false }, TN[3]);
+  KZ.shake(tl, "#pc4", TN[3] + 0.45, 7, 0.5, 21);
+  tl.to("#pc4", { scale: 1.04, duration: 1.8, ease: "sine.inOut" }, TN[3] + 0.6);
+  // stage 5: reaction (different customer)
+  const T5 = b(20);
+  for (let j = 1; j <= 4; j++) tl.set("#cp" + j, { opacity: 0 }, T5);
+  tl.set("#n4", { borderColor: DONE, color: DONE, boxShadow: "0 0 0 rgba(0,0,0,0)" }, T5);
+  tl.set(["#st4"], { opacity: 0 }, T5);
+  tl.set(["#cp5", "#st5"], { opacity: 1 }, T5);
+  tl.fromTo("#st5", { y: 40 }, { y: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, T5);
+  tl.fromTo("#quote", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, T5 + 0.5);
+  tl.fromTo("#diff", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3 }, T5 + 0.2);
+  tl.to("#quote", { scale: 1.05, duration: 1.8, ease: "sine.inOut" }, T5 + 0.9);
+  tl.to("#spin", { opacity: 0, scale: 0.95, duration: 0.2, ease: "power2.in" }, b(26) - 0.2);
+
+  /* ---------- end card ---------- */
+  const TE = b(26);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, TE + 0.02);
+  KZ.eyePulse(tl, "#eye2", TE + 0.12, 3);
+  KZ.rise(tl, "#endUrl", TE + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", TE + 0.85, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, TE + 0.8);
+  tl.to("#sendin", { opacity: 0, scale: 0.96, duration: 0.16, ease: "power1.in" }, D - 0.36);
+  tl.fromTo("#sbin", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, D - 0.3);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

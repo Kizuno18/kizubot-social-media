@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>102 Como o bot decide o que fazer</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+/* ================= F13 · RAIO-X — "blueprint" system ================= */
+:root {
+  --bp-paper: #0a1530; --bp-line: #7dd3fc; --bp-line2: #bae6fd; --bp-ink: #e8f4ff; --bp-dim: #9cc0e0;
+  --bp-acc: #c6ff3d; --bp-lav: #d8b4fe; --bp-done: #d8b4fe;
+}
+#root { background: var(--bp-paper); }
+.bp-paper { position:absolute; inset:0; background:
+  linear-gradient(rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(90deg, rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  linear-gradient(90deg, rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  radial-gradient(80% 60% at 50% 42%, #14254f 0%, #0a1530 68%, #060d20 100%); }
+.bp-grain { position:absolute; inset:0; opacity:.5; background: radial-gradient(120% 90% at 50% 50%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
+.bp-frame { position:absolute; left: 36px; top: 36px; right: 36px; bottom: 36px; border: 3px solid rgba(186,230,253,.35); }
+.bp-frame::before { content:""; position:absolute; left: 10px; top: 10px; right: 10px; bottom: 10px; border: 1px solid rgba(186,230,253,.18); }
+.bp-tb { position:absolute; left: 490px; top: 1436px; width: 550px; height: 140px; border: 3px solid rgba(186,230,253,.45); background: rgba(10,21,48,.6); display:grid; grid-template-columns: 1fr 120px; grid-template-rows: 1fr 1fr; }
+.bp-tb div { border: 1px solid rgba(186,230,253,.25); display:flex; align-items:center; padding: 0 16px; font: 400 30px "JetBrains Mono", monospace; color: var(--bp-dim); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; overflow:hidden; }
+.bp-tb b { font-weight: 400; color: var(--bp-ink); }
+.bp-fig { position:absolute; left: 100px; top: 232px; font: 400 30px "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--bp-line2); text-transform: uppercase; }
+.bp-display { font-family: "Chakra Petch", sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1.0; letter-spacing: .005em; color: var(--bp-ink); }
+.bp-body { font: 800 58px "Inter", sans-serif; color: var(--bp-ink); line-height: 1.1; }
+.bp-mono { font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .1em; }
+.kz-progress { height: 10px; background: rgba(186,230,253,.08); }
+.kz-progress > div { background: linear-gradient(90deg, #38bdf8, #7dd3fc 60%, #c6ff3d); }
+/* drawing */
+svg.bp { overflow: visible; }
+svg.bp .sh { fill: none; stroke: currentColor; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+svg.bp .int { fill: none; stroke: var(--bp-acc); stroke-width: 3; stroke-dasharray: 9 8; stroke-linecap: round; }
+svg.bp .guide { fill: none; stroke: rgba(186,230,253,.45); stroke-width: 2; stroke-dasharray: 6 8; }
+svg.bp .ld { fill: none; stroke: var(--bp-line2); stroke-width: 3; }
+svg.bp .tagc { fill: #0a1530; stroke: var(--bp-line2); stroke-width: 3; }
+svg.bp .tagt { font: 700 36px "Chakra Petch", sans-serif; fill: var(--bp-ink); text-anchor: middle; dominant-baseline: central; }
+.cap { position:absolute; left: 90px; width: 790px; top: 1150px; height: 246px; border: 3px solid rgba(186,230,253,.5); background: rgba(8,17,40,.92); }
+.cap::after { content:""; position:absolute; right: -3px; top: -3px; width: 26px; height: 26px; border-top: 6px solid var(--bp-acc); border-right: 6px solid var(--bp-acc); }
+.capi { position:absolute; left: 30px; right: 30px; top: 22px; opacity: 0; }
+.capi .hd { display:flex; align-items:center; gap: 18px; font: 400 36px "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--bp-acc); text-transform: uppercase; }
+.capi .hd i { font-style: normal; width: 56px; height: 56px; border-radius: 50%; border: 3px solid var(--bp-acc); display:flex; align-items:center; justify-content:center; font: 700 32px "Chakra Petch", sans-serif; color: var(--bp-acc); }
+.capi .tx { margin-top: 14px; text-wrap: balance; }
+.eye { position:absolute; border-radius:50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+#flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; z-index:70; }
+
+
+/* ================= 102 specifics ================= */
+.bp-paper { background:
+  linear-gradient(rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(90deg, rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  linear-gradient(90deg, rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  radial-gradient(70% 50% at 30% 30%, #172a58 0%, #0a1530 66%, #060d20 100%); }
+#hookTxt { position:absolute; left: 110px; right: 182px; top: 262px; height: 460px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+#hookTxt .bp-display { font-size: 104px; white-space: nowrap; line-height: 1.04; }
+#hookTxt .big { font-size: 170px; color: var(--bp-acc); line-height: .95; }
+#hookArt { position:absolute; left: 290px; top: 820px; width: 500px; height: 520px; color: var(--bp-line); }
+#hookArt svg { width: 500px; height: 520px; overflow: visible; }
+/* list */
+#figL { position:absolute; left: 100px; top: 232px; }
+#dateL { position:absolute; left: 100px; top: 272px; font: 400 30px "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--bp-dim); text-transform: uppercase; }
+#listW { position:absolute; left: 0; top: 0; width: 1080px; height: 1400px; transform-origin: 50% 330px; }
+#head2 { position:absolute; left: 84px; top: 322px; width: 130px; height: 120px; color: var(--bp-line); }
+#head2 svg { width: 130px; height: 120px; overflow: visible; }
+#rail { position:absolute; left: 146px; top: 440px; width: 6px; height: 740px; background: rgba(186,230,253,.25); border-radius: 3px; }
+#railFill { position:absolute; left: 146px; top: 440px; width: 6px; height: 740px; background: var(--bp-acc); border-radius: 3px; transform-origin: 50% 0%; box-shadow: 0 0 14px rgba(198,255,61,.6); }
+#tok { position:absolute; left: 131px; top: 425px; width: 36px; height: 36px; border-radius: 50%; background: var(--bp-acc); box-shadow: 0 0 26px 8px rgba(198,255,61,.55); opacity: 0; }
+.row { position:absolute; left: 112px; width: 768px; display:flex; align-items:center; }
+.row .bd { width: 74px; height: 74px; border-radius: 50%; flex: none; display:flex; align-items:center; justify-content:center; background: #0a1530; border: 4px solid rgba(186,230,253,.6); font: 700 40px "Chakra Petch", sans-serif; color: var(--bp-ink); position: relative; z-index: 2; }
+.row .bx { margin-left: 18px; flex: 1; display:flex; align-items:center; gap: 20px; padding: 0 24px; height: 100%; border: 3px solid rgba(186,230,253,.45); background: rgba(8,17,40,.75); position: relative; }
+.row .bx::before { content:""; position:absolute; left: -21px; top: 50%; width: 18px; height: 3px; background: rgba(186,230,253,.45); }
+.row .ic { width: 64px; height: 64px; flex:none; color: var(--bp-line); }
+.row .ic svg { width: 64px; height: 64px; overflow: visible; }
+.row .lb { font: 800 56px "Inter", sans-serif; color: var(--bp-ink); line-height: 1.04; letter-spacing: -.015em; opacity: 0; }
+/* notes */
+.note { position:absolute; left: 90px; width: 790px; height: 120px; display:flex; align-items:center; gap: 22px; padding: 0 26px; border: 3px dashed rgba(198,255,61,.7); background: rgba(8,17,40,.9); }
+.note svg { width: 64px; height: 64px; flex:none; }
+.note .k { font: 400 30px "JetBrains Mono", monospace; color: var(--bp-acc); letter-spacing: .08em; text-transform: uppercase; }
+.note .t { font: 800 56px "Inter", sans-serif; color: var(--bp-ink); letter-spacing: -.015em; }
+/* close */
+#cls { position:absolute; left: 100px; right: 172px; top: 270px; text-align:center; }
+#cls .bp-display { font-size: 92px; line-height: 1.06; white-space: nowrap; }
+#cls .g { font-size: 130px; }
+#cls .g { color: var(--bp-acc); }
+#mouse { position:absolute; left: 330px; top: 700px; width: 420px; height: 560px; color: var(--bp-line); }
+#mouse svg { width: 420px; height: 560px; overflow: visible; }
+.ask { font: 900 64px "Inter", sans-serif; color: var(--bp-ink); max-width: 820px; line-height: 1.1; }
+.ask b { color: var(--bp-acc); }
+.kz-end .kz-url { color: var(--bp-ink); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="17.885" data-fps="30">
+  <div class="bp-paper" id="paper"></div>
+  <div class="bp-grain"></div>
+  <div class="bp-frame"></div>
+  <div class="bp-tb"><div><b>KizuBot</b>&nbsp;· desenho</div><div>1:1</div><div>Raio-X · fig. 2</div><div><b>2/5</b></div></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- S1 HOOK 0 – 2.45 -->
+  <section id="s1" class="clip" data-start="0" data-duration="2.45">
+    <div class="kz-full" id="s1in">
+      <div id="hookTxt">
+        <div class="bp-display" id="h1">Como o bot</div>
+        <div class="bp-display" id="h2">decide o que</div>
+        <div class="bp-display big" id="h3">fazer</div>
+      </div>
+      <div id="hookArt">
+        <svg class="bp" viewBox="0 0 500 520">
+          <g id="hHead">
+            <line class="sh" x1="250" y1="20" x2="250" y2="70" pathLength="1"/><circle class="sh" cx="250" cy="14" r="12" pathLength="1"/>
+            <rect class="sh" x="120" y="70" width="260" height="210" rx="56" pathLength="1"/>
+            <rect class="sh" x="150" y="140" width="200" height="100" rx="42" pathLength="1"/>
+            <circle class="sh" cx="250" cy="190" r="30" pathLength="1"/>
+            <circle cx="250" cy="190" r="11" fill="#c6ff3d" id="hEye"/>
+          </g>
+          <g id="brandTag" opacity="0"><path class="ld" d="M120,150 L52,96 H-60" /><text x="-64" y="84" text-anchor="end" style="font: 400 34px 'JetBrains Mono', monospace; letter-spacing: .12em; fill: #d8b4fe">KIZUBOT</text></g>
+          <g id="gear1"><circle class="int" cx="190" cy="108" r="22"/></g>
+          <g id="gear2"><circle class="int" cx="310" cy="108" r="22"/></g>
+          <path class="ld" id="br0" d="M250,280 V330" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <path class="ld" id="br1" d="M250,330 C250,380 110,370 90,440" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <path class="ld" id="br2" d="M250,330 V440" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <path class="ld" id="br3" d="M250,330 C250,380 390,370 410,440" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <g id="q1" opacity="0"><circle class="tagc" cx="90" cy="470" r="30"/><text class="tagt" x="90" y="472">?</text></g>
+          <g id="q2" opacity="0"><circle class="tagc" cx="250" cy="470" r="30"/><text class="tagt" x="250" y="472">?</text></g>
+          <g id="q3" opacity="0"><circle class="tagc" cx="410" cy="470" r="30"/><text class="tagt" x="410" y="472">?</text></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- S2 PRIORITY LIST 2.308 – 11.65 -->
+  <section id="s2" class="clip" data-start="2.308" data-duration="9.35">
+    <div class="kz-full" id="s2in">
+      <div class="bp-fig" id="figL">fig. 2 — prioridades do KizuBot</div>
+      <div id="dateL">atualização 21/02/2026</div>
+      <div id="listW">
+        <div id="head2">
+          <svg class="bp" viewBox="0 0 130 120"><line class="sh" x1="65" y1="4" x2="65" y2="20" pathLength="1"/><rect class="sh" x="12" y="20" width="106" height="88" rx="26" pathLength="1"/><rect class="sh" x="26" y="46" width="78" height="40" rx="18" pathLength="1"/><circle cx="65" cy="66" r="9" fill="#c6ff3d" id="h2eye"/></svg>
+        </div>
+        <div id="rail"></div><div id="railFill"></div>
+        <div class="row" id="r1" style="top:458px; height:104px"><div class="bd">1</div><div class="bx"><div class="ic"><svg class="bp" viewBox="0 0 64 64"><path class="sh" d="M20,22 h24 l6,8 v22 a4,4 0 0 1 -4,4 h-28 a4,4 0 0 1 -4,-4 v-22 z M24,22 l4,-10 h8 l4,10" stroke="currentColor"/><circle cx="32" cy="38" r="6" fill="#facc15"/></svg></div><div class="lb">loot</div></div></div>
+        <div class="row" id="r2" style="top:578px; height:104px"><div class="bd">2</div><div class="bx"><div class="ic"><svg class="bp" viewBox="0 0 64 64"><circle class="sh" cx="32" cy="32" r="22" stroke="currentColor"/><circle class="sh" cx="32" cy="32" r="9" stroke="currentColor"/><path class="sh" d="M32,4 v10 M32,50 v10 M4,32 h10 M50,32 h10" stroke="currentColor"/></svg></div><div class="lb">catch</div></div></div>
+        <div class="row" id="r3" style="top:698px; height:104px"><div class="bd">3</div><div class="bx"><div class="ic"><svg class="bp" viewBox="0 0 64 64"><path class="sh" d="M10,56 C14,40 14,28 10,14 M22,56 C26,38 28,24 32,8 M36,56 C38,42 42,30 50,20 M48,56 C50,48 52,42 58,36" stroke="currentColor"/></svg></div><div class="lb">tall grass</div></div></div>
+        <div class="row" id="r4" style="top:818px; height:150px"><div class="bd">4</div><div class="bx"><div class="ic"><svg class="bp" viewBox="0 0 64 64"><path class="sh" d="M14,30 C8,18 18,6 30,10 C34,22 26,30 14,30 Z M14,30 l10,-12" stroke="currentColor"/><rect class="sh" x="34" y="14" width="24" height="12" rx="6" stroke="currentColor"/><path class="sh" d="M12,58 l8,-16 h14 l8,16 z" stroke="currentColor"/><path class="sh" d="M44,58 l6,-12 l8,12 z" stroke="currentColor"/></svg></div><div class="lb">bush, madeira<br />e minério</div></div></div>
+        <div class="row" id="r5" style="top:984px; height:104px"><div class="bd">5</div><div class="bx"><div class="ic"><svg class="bp" viewBox="0 0 64 64"><circle class="sh" cx="32" cy="22" r="16" stroke="currentColor"/><path class="sh" d="M32,38 v20 M24,58 h16 M6,14 l8,4 M6,30 l8,-2 M58,14 l-8,4" stroke="currentColor"/></svg></div><div class="lb">headbutt</div></div></div>
+        <div class="row" id="r6" style="top:1104px; height:104px"><div class="bd">6</div><div class="bx"><div class="ic"><svg class="bp" viewBox="0 0 64 64"><path class="sh" d="M8,54 C20,54 16,34 30,34 S44,12 56,12" stroke="currentColor" stroke-dasharray="4 7"/><circle cx="8" cy="54" r="5" fill="#7dd3fc"/><circle cx="30" cy="34" r="5" fill="#7dd3fc"/><circle cx="56" cy="12" r="5" fill="#c6ff3d"/></svg></div><div class="lb">andar a rota</div></div></div>
+        <div id="tok"></div>
+      </div>
+      <div class="note" id="n1" style="top:1124px; opacity:0"><svg viewBox="0 0 64 64" fill="none" stroke="#c6ff3d" stroke-width="4" stroke-linecap="round"><path d="M8,44 a24,24 0 1 1 48,0"/><path d="M32,44 L46,24"/><circle cx="32" cy="44" r="4" fill="#c6ff3d"/></svg><div><div class="k">nota 1</div><div class="t">detecta a speed do char</div></div></div>
+      <div class="note" id="n2" style="top:1262px; opacity:0"><svg viewBox="0 0 64 64" fill="none" stroke="#c6ff3d" stroke-width="4" stroke-linecap="round"><path d="M12,52 v-6 M24,52 v-14 M36,52 v-24 M48,52 v-34"/></svg><div><div class="k">nota 2</div><div class="t">considera o ping</div></div></div>
+    </div>
+  </section>
+
+  <!-- S3 CLOSE 11.538 – 14.55 -->
+  <section id="s3" class="clip" data-start="11.538" data-duration="3.0">
+    <div class="kz-full" id="s3in">
+      <div class="bp-fig">fig. 3 — o mouse</div>
+      <div id="cls"><div class="bp-display" id="c1">Tudo isso sem</div><div class="bp-display" id="c2">você encostar</div><div class="bp-display g" id="c3">no mouse.</div></div>
+      <div id="mouse">
+        <svg class="bp" viewBox="0 0 420 560">
+          <circle id="keep" cx="210" cy="300" r="190" fill="none" stroke="#c6ff3d" stroke-width="4" stroke-dasharray="14 12" opacity="0"/>
+          <rect class="sh" x="130" y="170" width="160" height="250" rx="80" pathLength="1"/>
+          <path class="sh" d="M210,170 V260 M130,260 H290" pathLength="1"/>
+          <rect class="sh" x="200" y="196" width="20" height="40" rx="10" pathLength="1"/>
+          <path class="sh" d="M210,170 C210,120 260,110 280,70 S330,20 360,30" pathLength="1"/>
+          <path class="guide" d="M100,450 H320 M100,440 v20 M320,440 v20"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- END 14.423 – 17.885 -->
+  <section id="send" class="clip" data-start="14.423" data-duration="3.462">
+    <div class="kz-end" id="sendin">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>Você faria</div><div><b>nessa ordem?</b></div></div>
+    </div>
+  </section>
+
+  <!-- loop bridge -->
+  <section id="sb" class="clip" data-start="17.56" data-duration="0.325">
+    <div class="kz-full" id="sbin">
+      <div style="position:absolute; left:110px; right:182px; top:262px; height:460px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center">
+        <div class="bp-display" style="font-size:104px; white-space:nowrap; line-height:1.04">Como o bot</div>
+        <div class="bp-display" style="font-size:104px; white-space:nowrap; line-height:1.04">decide o que</div>
+        <div class="bp-display" style="font-size:170px; line-height:.95; color:#c6ff3d">fazer</div>
+      </div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 17.885;
+  const b = KZ.beats(104);            // beat 0.577 s, bar 2.308 s
+  const LIME = "#c6ff3d", DONE = "#d8b4fe";
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#paper", { backgroundPosition: "-1px -1px, -1px -1px, 0 0, 0 0, 0 0" }, { backgroundPosition: "59px -1px, 59px -1px, 30px 0, 30px 0, 0 0", duration: D, ease: "none" }, 0);
+
+  /* ---------- S1 hook ---------- */
+  tl.fromTo("#hookTxt", { scale: 1.06, filter: "blur(4px)" }, { scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, 0);
+  tl.fromTo("#h3", { scale: 1.4, y: 20 }, { scale: 1, y: 0, duration: 0.35, ease: "back.out(2.4)" }, 0.05);
+  tl.fromTo("#hookArt .sh", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0, duration: 0.45, stagger: 0.05, ease: "power2.out" }, 0);
+  tl.fromTo("#gear1", { rotation: 0, svgOrigin: "190 108" }, { rotation: 360, svgOrigin: "190 108", duration: 2.4, ease: "none" }, 0);
+  tl.fromTo("#gear2", { rotation: 0, svgOrigin: "310 108" }, { rotation: -360, svgOrigin: "310 108", duration: 2.4, ease: "none" }, 0);
+  tl.fromTo("#br0", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.2, ease: "none" }, b(1));
+  ["#br1", "#br2", "#br3"].forEach(function (s, i) { tl.fromTo(s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, b(1) + 0.2 + i * 0.12); });
+  ["#q1", "#q2", "#q3"].forEach(function (s, i) { tl.fromTo(s, { opacity: 0, scale: 0.3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }, b(2) + i * 0.15); });
+  KZ.punch(tl, "#h3", b(2), 1.08, 0.3);
+  tl.fromTo("#brandTag", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.45);
+  tl.fromTo("#hEye", { scale: 1, svgOrigin: "250 190" }, { scale: 1.5, svgOrigin: "250 190", duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut" }, b(3));
+  tl.to("#s1in", { y: -140, opacity: 0, duration: 0.22, ease: "power3.in" }, b(4) - 0.2);
+
+  /* ---------- S2 list: rows draw in, token decides ---------- */
+  const T2 = b(4);
+  tl.fromTo("#s2in", { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, T2);
+  tl.fromTo("#head2 .sh", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0, duration: 0.35, stagger: 0.05 }, T2);
+  tl.fromTo(".row", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, stagger: 0.06, ease: "power3.out" }, T2 + 0.15);
+  tl.fromTo("#railFill", { scaleY: 0 }, { scaleY: 0, duration: 0.01 }, T2);
+  const TT = [b(6), b(7.5), b(9), b(10.5), b(12), b(13.5)];
+  const TOP = [495, 615, 735, 878, 1021, 1141];   // badge centres (y)
+  tl.set("#tok", { opacity: 1 }, b(5.5));
+  tl.fromTo("#tok", { y: -60 }, { y: 0, duration: 0.25, ease: "power2.in" }, b(5.5));
+  TT.forEach(function (t, i) {
+    const n = i + 1, row = "#r" + n;
+    tl.to("#tok", { y: TOP[i] - 443, duration: 0.3, ease: "power3.inOut" }, t - 0.3);
+    tl.to("#railFill", { scaleY: (TOP[i] - 440) / 740, duration: 0.3, ease: "power3.inOut" }, t - 0.3);
+    tl.set(row + " .bd", { borderColor: LIME, color: "#0b0712", backgroundColor: LIME }, t);
+    tl.set(row + " .bx", { borderColor: LIME }, t);
+    tl.set(row + " .ic", { color: LIME }, t);
+    tl.fromTo(row + " .lb", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.24, ease: "power3.out" }, t);
+    KZ.punch(tl, row, t, 1.03, 0.25);
+    if (i > 0) {
+      const pr = "#r" + i;
+      tl.set(pr + " .bx", { borderColor: "rgba(216,180,254,.55)" }, t);
+      tl.set(pr + " .bd", { backgroundColor: "#0a1530", color: DONE, borderColor: DONE }, t);
+      tl.set(pr + " .ic", { color: DONE }, t);
+    }
+  });
+  // drop: the whole ladder re-runs fast, list lifts, notes land
+  const T3 = b(16);
+  KZ.flash(tl, "#flash", T3, 0.5, "#bae6fd");
+  tl.to("#listW", { scale: 0.8, y: -40, duration: 0.45, ease: "power3.inOut" }, T3);
+  tl.to("#tok", { y: 0, duration: 0.25, ease: "power2.in" }, T3 - 0.6);
+  tl.to("#railFill", { scaleY: 0, duration: 0.25, ease: "power2.in" }, T3 - 0.6);
+  tl.to("#tok", { y: TOP[5] - 443, duration: 0.6, ease: "power1.inOut" }, T3);
+  tl.to("#railFill", { scaleY: 1, duration: 0.6, ease: "power1.inOut" }, T3);
+  tl.fromTo(".row .bx", { boxShadow: "0 0 0 0 rgba(198,255,61,0)" }, { boxShadow: "0 0 24px 2px rgba(198,255,61,.55)", duration: 0.12, stagger: 0.1, yoyo: true, repeat: 1, immediateRender: false }, T3);
+  tl.fromTo("#n1", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.6)" }, T3 + 0.45);
+  tl.fromTo("#n2", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.6)" }, T3 + 1.2);
+  tl.fromTo("#n1 svg path:nth-child(2)", { rotation: -60, svgOrigin: "32 44" }, { rotation: 20, svgOrigin: "32 44", duration: 0.5, ease: "back.out(2)" }, T3 + 0.6);
+  tl.fromTo("#n2 svg path", { opacity: 0.25 }, { opacity: 1, duration: 0.3, ease: "steps(4)" }, T3 + 1.35);
+  tl.to("#s2in", { opacity: 0, x: -160, duration: 0.22, ease: "power3.in" }, b(20) - 0.2);
+
+  /* ---------- S3 close ---------- */
+  const T4 = b(20);
+  tl.fromTo("#s3in", { opacity: 0, x: 160 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, T4);
+  tl.fromTo("#mouse .sh", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0, duration: 0.45, stagger: 0.08, ease: "power2.out" }, T4 + 0.2);
+  tl.fromTo("#keep", { opacity: 0, scale: 0.6, svgOrigin: "210 300" }, { opacity: 1, scale: 1, svgOrigin: "210 300", duration: 0.4, ease: "back.out(2)" }, T4 + 0.9);
+  tl.fromTo("#keep", { rotation: 0, svgOrigin: "210 300" }, { rotation: 60, svgOrigin: "210 300", duration: 2.0, ease: "none", immediateRender: false }, T4 + 0.9);
+  KZ.punch(tl, "#c3", T4 + 0.9, 1.1, 0.3);
+  tl.to("#s3in", { opacity: 0, scale: 0.94, duration: 0.18, ease: "power2.in" }, b(25) - 0.18);
+
+  /* ---------- end card ---------- */
+  const TE = b(25);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, TE + 0.02);
+  KZ.eyePulse(tl, "#eye2", TE + 0.12, 3);
+  KZ.rise(tl, "#endUrl", TE + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", TE + 0.85, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, TE + 0.8);
+  tl.to("#sendin", { opacity: 0, scale: 0.96, duration: 0.16, ease: "power1.in" }, D - 0.36);
+  tl.fromTo("#sbin", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, D - 0.3);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

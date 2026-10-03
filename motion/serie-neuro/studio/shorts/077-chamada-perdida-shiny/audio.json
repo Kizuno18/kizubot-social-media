@@ -1,0 +1,182 @@
+{
+ "duration": 17.31,
+ "style": "phonk",
+ "bpm": 130,
+ "seed": 77,
+ "sections": [
+  {
+   "at": 0.0,
+   "type": "silence"
+  },
+  {
+   "at": 1.846,
+   "type": "break"
+  },
+  {
+   "at": 7.385,
+   "type": "build"
+  },
+  {
+   "at": 9.231,
+   "type": "drop"
+  },
+  {
+   "at": 14.308,
+   "type": "outro"
+  }
+ ],
+ "stops": [
+  {
+   "at": 9.0,
+   "len": 0.231
+  }
+ ],
+ "sfx": [
+  {
+   "t": 0,
+   "name": "motif",
+   "gain": -2
+  },
+  {
+   "t": 0,
+   "name": "impact",
+   "gain": -12
+  },
+  {
+   "t": 0.923,
+   "name": "motif",
+   "gain": -2
+  },
+  {
+   "t": 1.846,
+   "name": "px-error",
+   "gain": -6
+  },
+  {
+   "t": 1.846,
+   "name": "glitch",
+   "gain": -11
+  },
+  {
+   "t": 2.769,
+   "name": "whoosh",
+   "gain": -11
+  },
+  {
+   "t": 3.231,
+   "name": "tick",
+   "gain": -10
+  },
+  {
+   "t": 4.615,
+   "name": "whoosh_down",
+   "gain": -11
+  },
+  {
+   "t": 4.715,
+   "name": "sparkle",
+   "gain": -12
+  },
+  {
+   "t": 4.846,
+   "name": "clock",
+   "gain": -9
+  },
+  {
+   "t": 5.308,
+   "name": "clock",
+   "gain": -9
+  },
+  {
+   "t": 5.769,
+   "name": "clock",
+   "gain": -9
+  },
+  {
+   "t": 6.231,
+   "name": "px-glitch-1",
+   "gain": -10
+  },
+  {
+   "t": 6.462,
+   "name": "impact",
+   "gain": -6
+  },
+  {
+   "t": 6.462,
+   "name": "wrong",
+   "gain": -13
+  },
+  {
+   "t": 7.385,
+   "name": "swoosh_hit",
+   "gain": -8
+  },
+  {
+   "t": 7.585,
+   "name": "motif",
+   "gain": -6
+  },
+  {
+   "t": 7.846,
+   "name": "pop",
+   "gain": -11
+  },
+  {
+   "t": 8.308,
+   "name": "pop",
+   "gain": -11
+  },
+  {
+   "t": 9.231,
+   "name": "alert",
+   "gain": -3
+  },
+  {
+   "t": 9.231,
+   "name": "impact",
+   "gain": -6
+  },
+  {
+   "t": 10.615,
+   "name": "success",
+   "gain": -6
+  },
+  {
+   "t": 11.538,
+   "name": "ding",
+   "gain": -9
+  },
+  {
+   "t": 11.838,
+   "name": "pop",
+   "gain": -11
+  },
+  {
+   "t": 12.462,
+   "name": "whoosh",
+   "gain": -10
+  },
+  {
+   "t": 12.923,
+   "name": "impact",
+   "gain": -9
+  },
+  {
+   "t": 13.385,
+   "name": "px-pop",
+   "gain": -11
+  },
+  {
+   "t": 14.708,
+   "name": "pop",
+   "gain": -12
+  },
+  {
+   "t": 15.058,
+   "name": "px-pop",
+   "gain": -12
+  }
+ ],
+ "logo": 14.308
+}

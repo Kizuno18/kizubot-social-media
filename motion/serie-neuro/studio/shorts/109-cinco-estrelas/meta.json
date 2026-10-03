@@ -1,0 +1,60 @@
+{
+  "id": "109",
+  "slug": "cinco-estrelas",
+  "family": "Prova Real",
+  "title": "Um cliente mandou isso: ⭐⭐⭐⭐⭐",
+  "concept": "One customer's own written review, rebuilt as a Pop Bold scorecard from his verbatim words (his five stars, 'entrega exatamente o que promete', his checked categories) and then proven by the real print, ending on 'enfim, bot maravilhoso'.",
+  "neuro": [
+    "social-proof",
+    "picture-superiority",
+    "commitment-checklist",
+    "variable-reward",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "UM CLIENTE MANDOU ISSO: ⭐⭐⭐⭐⭐",
+  "duration": 15.69,
+  "music": {
+    "style": "phonk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/prints/avaliacao-5-estrelas.png",
+    "kit/img/prints/avaliacao-5-estrelas--renovar.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [],
+  "platforms": {
+    "tiktok": {
+      "caption": "Um cliente mandou isso ⭐⭐⭐⭐⭐ 'O bot, na sua essência, entrega exatamente o que promete.' Print real de cliente. Que nota você daria pro seu farm manual? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#provareal",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Um cliente mandou isso sobre o KizuBot ⭐⭐⭐⭐⭐",
+      "description": "Feedback real de um cliente: 'O bot, na sua essência, entrega exatamente o que promete.' Eficiência, intuitividade e indicação marcadas por ele, e no fim: 'enfim, bot maravilhoso'. Print real de cliente. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Um cliente mandou isso ⭐⭐⭐⭐⭐ Que nota você daria pro seu farm manual? 😂 Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk"
+      ]
+    }
+  },
+  "pinned_comment": "Que nota você daria pro seu farm manual? 😂",
+  "notes": "The stars are the customer's own 'Avaliação Geral' in the print (not a rating system). The scorecard uses verbatim fragments only: header, stars, '… entrega exatamente o que promete.' and the category names Eficiência / Intuitividade / Indicação (full sentences shown highlighted in the print; 'na maior parte do tempo' kept visible). Lines about 'investimento' and 'renovação é garantida' are visible in the print but never quoted or highlighted. Labelled 'trechos do print real de um cliente'. Per ASSETS.md the review's 'Pontos de Atenção' (VNC lag, outdated tutorials) were cropped by the asset editor; the short never claims the review had no criticism (it shows 'trechos' = excerpts)."
+}

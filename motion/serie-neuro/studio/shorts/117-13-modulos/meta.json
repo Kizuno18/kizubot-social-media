@@ -1,0 +1,30 @@
+{
+  "id": "117",
+  "slug": "13-modulos",
+  "family": "Speedrun",
+  "title": "13 módulos em 13 segundos",
+  "concept": "A real-time 13-second countdown flips through KizuBot's 13 modules, one per second (icon + name + 2-3 words), a progress strip fills, the last 3 seconds go red, and at 0:00.0 all 13 tiles collapse into the robot: 'Tudo num bot só.'",
+  "neuro": ["time-pressure", "chunking", "visible-progress", "open-loop-timer", "rewatch-bait", "peak-end", "seamless-loop", "comment-prompt"],
+  "hook": "13 MÓDULOS. 13 SEGUNDOS.",
+  "duration": 18,
+  "music": {"style": "trap", "bpm": 120},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-robot.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": ["13 módulos configuráveis (kizubot.com/llms.txt)", "Actions: 50+ tipos de condição", "Humanização (pausas e ritmo variáveis)", "alarmes no WhatsApp", "pesca no AFK", "combate com IA"],
+  "platforms": {
+    "tiktok": {
+      "caption": "13 módulos em 13 segundos ⏱️ Cavebot, combate, cura, captura, farm, pesca, alarme no zap… tudo num bot só. Qual você mais usaria? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#speedrun", "#farm"]
+    },
+    "youtube": {
+      "title": "13 módulos em 13 segundos: tudo num bot só (PxG)",
+      "description": "Speedrun dos 13 módulos do KizuBot: Cavebot, Combat, Healing, Catch, Farming, Fishing, Alarms, Party, Engine, Actions (50+ condições), Account, Setup Pokémon e Humanização. Tudo num bot só, 100% AFK. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "13 módulos em 13 segundos. ⏱️ Do cavebot à humanização: tudo num bot só. Qual módulo você mais usaria? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#speedrun"]
+    }
+  },
+  "pinned_comment": "Qual módulo você mais usaria? 👇",
+  "notes": "Trap at 120 BPM so each module lands exactly on 1.0 s (2 beats) and the 13 s countdown runs in real time. Module names as on kizubot.com/llms.txt (English product names, 'Humanização' in pt as in the concept). Descriptions for Party ('joga em party'), Engine ('HUD e loot'), Account ('suas configs') and Setup Pokémon ('skills por poke') are taken from the real UI tab documentation in kit/img/ui (understanding only; no UI screenshot is shown). Catch uses a crosshair icon (no ball silhouette, to avoid Pokémon trade dress). Loop seam rebuilds the frame-0 title + timer."
+}

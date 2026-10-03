@@ -1,0 +1,65 @@
+{
+  "id": "059",
+  "slug": "oito-megas",
+  "family": "Espera o Alarme",
+  "title": "Oito alarmes de mega seguidos…",
+  "concept": "Bedside at 00:17: the phone on the nightstand lights the dark room eight times as MEGA badges fill two rows by their real minutes (00:17 and 00:18); the real print shows the eight megaDetected lines, then the twist: the customer's own caption about the drop being a Metal Stone, with a tape-stop, and the closing line 'Mega apareceu? O alarme toca.'",
+  "neuro": [
+    "anticipation",
+    "humor-benign-violation",
+    "expectation-subversion",
+    "precise-number",
+    "real-proof",
+    "self-reference",
+    "comment-prompt"
+  ],
+  "hook": "OITO ALARMES DE MEGA SEGUIDOS…",
+  "duration": 20,
+  "music": {
+    "style": "funk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/prints/mega-scizor-8-alarms--alarms.png",
+    "kit/img/prints/mega-scizor-8-alarms--quote.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Oito alarmes de mega seguidos às 00:17… “Vc pensa Nossa dropei. Quando vai vê, dropo foi Metal Stone kkkkkk” 😂 (print real de cliente) Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mega",
+        "#humor"
+      ]
+    },
+    "youtube": {
+      "title": "Oito alarmes de mega seguidos… e o drop foi Metal Stone 😂",
+      "description": "00:17 e 00:18: oito alarmes megaDetected do KizuBot, um atrás do outro. A legenda do cliente: “Vc pensa Nossa dropei. Quando vai vê, dropo foi Metal Stone kkkkkk”. Print real de cliente. O KizuBot detecta mega, shiny e boss e avisa no celular. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Oito alarmes de mega seguidos… e o drop foi Metal Stone 😂 Print real de cliente. Já passou por isso? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mega"
+      ]
+    }
+  },
+  "pinned_comment": "Já passou por isso? 😂",
+  "notes": "Setting: bedside nightstand at night, the phone's light on the wall flashing 8 times; the 8 MEGA badges are grouped by their real minutes (00:17 ×4, 00:18 ×4) with a generic gem icon (no official Mega symbol). The concept's bonus shiny list (shiny-dex-tentacool-krabby-kingler) was dropped: ASSETS.md gives it a different slug, so it is not confirmed to be the same customer and combining would need 'clientes diferentes'. It was replaced by the closing line 'Mega apareceu? O alarme toca.' The caption quote is shown only via its print crop, highlighted line by line, plus a 'Metal Stone / kkkkkk' stamp (verbatim words). Record-scratch = tape-stop + scratch SFX. Music: funk 130."
+}

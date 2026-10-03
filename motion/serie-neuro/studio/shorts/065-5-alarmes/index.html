@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>065 Os 5 alarmes que todo jogador quer receber</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F05 TOP 5 — "Contagem" system, episode 065: alarms (lime, sonar rings, alarm-code chips) ===== */
+  :root { --acc: #c6ff3d; --acc-rgb: 198, 255, 61; --ink: #f4ffe6; --bg0: #050a06; --gold: #ffd23f; }
+  #root { background: var(--bg0); }
+  .t5-bg { position: absolute; inset: 0; background: radial-gradient(60% 40% at 50% 30%, #11240c 0%, var(--bg0) 75%); }
+  .dots { position: absolute; inset: -100px; background-image: radial-gradient(rgba(var(--acc-rgb), 0.10) 2.5px, transparent 3px); background-size: 40px 40px; }
+  .t5-vig { position: absolute; inset: 0; background: radial-gradient(110% 75% at 50% 45%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%); }
+
+  .t5-hud { position: absolute; left: 120px; top: 230px; width: 760px; height: 60px; display: flex; gap: 16px; z-index: 30; opacity: 0; }
+  .t5-pip { position: relative; flex: 1; height: 60px; border-radius: 30px; border: 3px solid rgba(var(--acc-rgb), 0.5); background: rgba(0, 0, 0, 0.4); overflow: hidden; }
+  .t5-pip .pf { position: absolute; inset: 0; background: var(--acc); opacity: 0; }
+  .t5-pip .pn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: "Anton", sans-serif; font-size: 38px; color: rgba(var(--acc-rgb), 0.8); }
+
+  /* sonar */
+  .sonar { position: absolute; left: 540px; top: 560px; width: 0; height: 0; z-index: 2; }
+  .ring { position: absolute; left: -260px; top: -260px; width: 520px; height: 520px; border-radius: 50%; border: 5px solid rgba(var(--acc-rgb), 0.55); opacity: 0; }
+  .ring.f { background: radial-gradient(circle, rgba(var(--acc-rgb), 0.16), rgba(var(--acc-rgb), 0) 70%); border-width: 3px; }
+
+  /* hook */
+  .t5-hook { position: absolute; left: 90px; right: 90px; top: 300px; height: 600px; text-align: center; }
+  .hA, .hB { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .notif { display: flex; align-items: center; gap: 18px; background: rgba(var(--acc-rgb), 0.12); border: 3px solid rgba(var(--acc-rgb), 0.6); border-radius: 22px;
+    padding: 16px 26px; margin-bottom: 34px; }
+  .notif .bell { width: 54px; height: 54px; }
+  .notif .snd { font: 700 34px "Inter", sans-serif; color: var(--ink); }
+  .notif .snd b { color: var(--acc); }
+  .h1 { font-family: "Anton", sans-serif; font-size: 210px; line-height: 0.98; color: var(--ink); display: block; }
+  .h1 em { font-style: normal; color: var(--acc); }
+  .h3 { font-family: "Anton", sans-serif; font-size: 128px; line-height: 1.06; color: var(--ink); display: block; }
+  .h3 em { font-style: normal; color: var(--acc); }
+
+  /* item */
+  .it { position: absolute; inset: 0; }
+  .bnum { position: absolute; left: 0; right: 0; top: 330px; height: 460px; display: flex; align-items: center; justify-content: center; z-index: 3; }
+  .bnum span { font-family: "Anton", sans-serif; font-size: 400px; line-height: 1; color: var(--acc); display: block; text-shadow: 0 0 80px rgba(var(--acc-rgb), 0.5); }
+  .code { position: absolute; left: 0; right: 0; top: 700px; display: flex; justify-content: center; z-index: 4; }
+  .code .c { display: flex; align-items: center; gap: 18px; background: #0d1a0b; border: 4px solid var(--acc); border-radius: 18px; padding: 12px 30px 14px 22px; box-shadow: 0 0 40px rgba(var(--acc-rgb), 0.25); }
+  .code .c svg { width: 58px; height: 58px; flex: none; }
+  .code .c span { font: 400 74px "JetBrains Mono", monospace; color: var(--acc); letter-spacing: -0.01em; }
+  .sub { position: absolute; left: 110px; right: 200px; top: 860px; text-align: center; font: 900 60px/1.1 "Inter", sans-serif; color: var(--ink); z-index: 4; }
+  .sub b { color: var(--acc); }
+  .card { position: absolute; left: 96px; width: 780px; top: 980px; background: #0e150c; border: 4px solid var(--acc); border-radius: 24px; padding: 12px; z-index: 4;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); }
+  .card .im { position: relative; overflow: hidden; border-radius: 12px; }
+  .card img { display: block; width: 100%; }
+  .tag { position: absolute; left: 22px; top: -30px; z-index: 3; background: var(--acc); color: #0c1a05; font: 800 30px "Inter", sans-serif; letter-spacing: 0.05em; padding: 8px 18px; border-radius: 8px; text-transform: uppercase; }
+  .hl { position: absolute; border: 6px solid var(--gold); border-radius: 12px; opacity: 0; box-shadow: 0 0 24px rgba(255, 210, 63, 0.5); }
+
+  .t5-tension { position: absolute; left: 90px; right: 90px; top: 340px; height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5; }
+  .tt1 { font-family: "Anton", sans-serif; font-size: 124px; line-height: 1.12; color: var(--ink); display: block; }
+  .tt2 { font-family: "Anton", sans-serif; font-size: 170px; line-height: 1.12; color: var(--acc); display: block; }
+
+  .eye { position: absolute; width: 100px; height: 100px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .htag { font: 400 32px "JetBrains Mono", monospace; letter-spacing: 0.06em; color: rgba(198, 255, 61, 0.9); margin-top: 26px; text-transform: uppercase; display: block; }
+  .t5-ask { font: 900 64px/1.12 "Inter", sans-serif; color: var(--ink); max-width: 800px; }
+  .t5-ask b { color: var(--acc); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  #blackout { position: absolute; inset: 0; background: var(--bg0); opacity: 0; pointer-events: none; z-index: 70; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="21.9" data-fps="30">
+  <div class="t5-bg"></div>
+  <div class="dots" id="dots"></div>
+  <div class="sonar" id="sonar">
+    <div class="ring f" id="r0"></div><div class="ring" id="r1"></div><div class="ring" id="r2"></div><div class="ring" id="r3"></div>
+  </div>
+  <div class="t5-vig"></div>
+
+  <div class="t5-hud" id="hud">
+    <div class="t5-pip" id="pip5"><div class="pf"></div><div class="pn">5</div></div>
+    <div class="t5-pip" id="pip4"><div class="pf"></div><div class="pn">4</div></div>
+    <div class="t5-pip" id="pip3"><div class="pf"></div><div class="pn">3</div></div>
+    <div class="t5-pip" id="pip2"><div class="pf"></div><div class="pn">2</div></div>
+    <div class="t5-pip" id="pip1"><div class="pf"></div><div class="pn">1</div></div>
+  </div>
+
+  <!-- HOOK -->
+  <section id="s0" class="clip" data-start="0" data-duration="2.483">
+    <div class="t5-hook">
+      <div class="hA" id="hA">
+        <div class="notif" id="notif">
+          <svg class="bell" viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="snd"><b>KizuBot™</b> | kizubot.com</span>
+        </div>
+        <span class="h1" id="ha1">OS <em>5</em><span style="display:block">ALARMES</span></span>
+      </div>
+      <div class="hB" id="hB"><span class="h3" id="hb1">QUE TODO JOGADOR</span><span class="h3" id="hb2"><em>QUER RECEBER</em></span><span class="htag" id="hbt">prints reais de clientes diferentes</span></div>
+    </div>
+  </section>
+
+  <section id="s5" class="clip" data-start="2.483" data-duration="2.897">
+    <div class="it" id="i5">
+      <div class="bnum" id="n5"><span>5</span></div>
+      <div class="code" id="k5"><div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>dropRare</span></div></div>
+      <div class="sub" id="u5">dropou <b>item raro</b></div>
+      <div class="card" id="c5"><div class="tag">print real de cliente</div><div class="im"><img src="kit/img/prints/drop-sablenite--alarm.png" alt="" /><div class="hl" id="h5" style="left:0.5%; top:4%; width:68%; height:90%"></div></div></div>
+    </div>
+  </section>
+  <section id="s4" class="clip" data-start="5.379" data-duration="2.897">
+    <div class="it" id="i4">
+      <div class="bnum" id="n4"><span>4</span></div>
+      <div class="code" id="k4"><div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>pokemonCaught</span></div></div>
+      <div class="sub" id="u4">o bot <b>capturou</b></div>
+      <div class="card" id="c4"><div class="tag">print real de cliente</div><div class="im"><img src="kit/img/prints/shiny-venusaur--alarm.png" alt="" /><div class="hl" id="h4" style="left:9%; top:52%; width:82%; height:44%"></div></div></div>
+    </div>
+  </section>
+  <section id="s3" class="clip" data-start="8.276" data-duration="2.897">
+    <div class="it" id="i3">
+      <div class="bnum" id="n3"><span>3</span></div>
+      <div class="code" id="k3"><div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>megaDetected</span></div></div>
+      <div class="sub" id="u3"><b>mega</b> na área</div>
+      <div class="card" id="c3"><div class="tag">print real de cliente</div><div class="im" style="height:390px"><img id="sc3" src="kit/img/prints/mega-scizor-8-alarms--alarms.png" alt="" style="position:absolute; left:0; top:-120px" /><div class="hl" id="h3" style="left:18%; top:2%; width:80%; height:96%"></div></div></div>
+    </div>
+  </section>
+  <section id="s2" class="clip" data-start="11.172" data-duration="2.897">
+    <div class="it" id="i2">
+      <div class="bnum" id="n2"><span>2</span></div>
+      <div class="code" id="k2"><div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>bossDetected</span></div></div>
+      <div class="sub" id="u2">boss às <b>02:02</b> da manhã</div>
+      <div class="card" id="c2"><div class="tag">print real de cliente</div><div class="im"><img src="kit/img/prints/boss-rhyperior-2am--alarm.png" alt="" /><div class="hl" id="h2" style="left:7%; top:4%; width:91%; height:44%"></div></div></div>
+    </div>
+  </section>
+
+  <section id="st" class="clip" data-start="14.069" data-duration="0.828">
+    <div class="t5-tension" id="tin"><span class="tt1" id="tt1">E O ALARME</span><span class="tt2" id="tt2">NÚMERO 1…</span></div>
+  </section>
+
+  <section id="s1" class="clip" data-start="14.897" data-duration="3.724">
+    <div class="it" id="i1">
+      <div class="bnum" id="n1"><span style="color:#ffd23f; text-shadow: 0 0 90px rgba(255,210,63,0.6)">1</span></div>
+      <div class="code" id="k1"><div class="c" style="border-color:#ffd23f"><svg viewBox="0 0 24 24" fill="none" stroke="#ffd23f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span style="color:#ffd23f">shinyDetected</span></div></div>
+      <div class="sub" id="u1"><b style="color:#ffd23f">shiny</b> apareceu</div>
+      <div class="card" id="c1" style="left:150px; width:672px; top:960px; border-color:#ffd23f"><div class="tag" style="background:#ffd23f">print real de cliente</div><div class="im"><img src="kit/img/prints/shiny-raichu-7-alarms--alarms.png" alt="" /><div class="hl" id="h1a" style="left:16%; top:15%; width:83%; height:14%"></div><div class="hl" id="h1b" style="left:16%; top:72%; width:83%; height:14%"></div></div></div>
+    </div>
+  </section>
+
+  <section id="se" class="clip" data-start="18.621" data-duration="3.279">
+    <div class="kz-end" id="sein">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="t5-ask" id="endAsk">Qual alarme faria você <b>pular da cama?</b></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+  <div id="blackout"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 21.9;
+  const B = 60 / 145;
+  const b = (n) => n * B;
+  const DARK = "#0c1a05";
+
+  KZ.drift(tl, "#dots", D, 30, 50, 5);
+
+  // sonar ping: rings expand from the centre (radar metaphor, never a slot machine)
+  let pingN = 0;
+  function ping(at, strong) {
+    ["#r1", "#r2", "#r3"].forEach(function (rg, i) {
+      tl.fromTo(rg, { scale: 0.25, opacity: 0.9 }, { scale: strong ? 2.6 : 2.0, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: pingN === 0 }, at + i * 0.16);
+    });
+    tl.fromTo("#r0", { scale: 0.4, opacity: 1 }, { scale: 1.4, opacity: 0, duration: 0.8, ease: "power2.out", immediateRender: pingN === 0 }, at);
+    pingN++;
+  }
+  function pipOn(id, at) {
+    tl.fromTo("#pip" + id + " .pf", { opacity: 0 }, { opacity: 1, duration: 0.18 }, at);
+    tl.to("#pip" + id + " .pn", { color: DARK, duration: 0.12 }, at);
+  }
+  function pipDone(id, at) {
+    tl.to("#pip" + id + " .pf", { opacity: 0.3, duration: 0.2 }, at);
+    tl.to("#pip" + id + " .pn", { color: "#c6ff3d", duration: 0.15 }, at);
+  }
+
+  // ---------- HOOK: the alarm sender line rings on frame 0 ----------
+  tl.fromTo("#notif", { y: -60, scale: 0.9 }, { y: 0, scale: 1, duration: 0.3, ease: "back.out(2)" }, 0);
+  KZ.shake(tl, "#notif", 0.05, 8, 0.4, 2);
+  tl.fromTo("#ha1", { scale: 1.12, opacity: 0.7 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, 0);
+  ping(0.0, false);
+  ping(b(2), false);
+  tl.to("#hA", { scale: 1.05, duration: b(2), ease: "sine.inOut" }, b(1));
+  tl.to("#hA", { y: -60, opacity: 0, duration: 0.14, ease: "power2.in" }, b(3) - 0.14);
+  KZ.slam(tl, "#hb1", b(3), 1.6);
+  tl.fromTo("#hb2", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.4)" }, b(3.75));
+  KZ.rise(tl, "#hbt", b(4.3), 0.3, 20);
+  tl.fromTo("#hud", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, b(4.6));
+  tl.to("#hB", { y: -80, opacity: 0, duration: 0.16, ease: "power2.in" }, b(6) - 0.16);
+
+  function item(id, S, len, o) {
+    ping(S, !!o.strong);
+    tl.fromTo("#n" + id, { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, S);
+    KZ.shake(tl, "#i" + id, S + 0.05, o.shake || 10, 0.22, 50 + id);
+    tl.to("#n" + id, { scale: 0.62, y: -150, duration: 0.4, ease: "power3.inOut" }, S + b(1.2));
+    tl.fromTo("#k" + id, { y: 60, opacity: 0, scale: 0.8 }, { y: 0, opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2)" }, S + b(1.3));
+    tl.fromTo("#u" + id, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.28, ease: "power3.out" }, S + b(1.8));
+    const P = S + b(o.proof || 2.6);
+    tl.fromTo("#c" + id, { y: 700, opacity: 0, rotation: 4 }, { y: 0, opacity: 1, rotation: -1, duration: 0.4, ease: "power4.out" }, P);
+    tl.to("#c" + id, { scale: 1.03, duration: len - (P - S) - 0.6, ease: "sine.inOut" }, P + 0.4);
+    ping(P, false);
+    const E = S + len - 0.2;
+    tl.to("#i" + id, { scale: 0.85, opacity: 0, duration: 0.2, ease: "power3.in" }, E);
+  }
+  const S5 = b(6), S4 = b(13), S3 = b(20), S2 = b(27), ST = b(34), S1 = b(36), SE = b(45);
+  pipOn(5, S5); item(5, S5, b(7), {});
+  tl.fromTo("#h5", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2)" }, S5 + b(3.8));
+  pipDone(5, S4); pipOn(4, S4); item(4, S4, b(7), {});
+  tl.fromTo("#h4", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2)" }, S4 + b(3.8));
+  pipDone(4, S3); pipOn(3, S3); item(3, S3, b(7), {});
+  tl.fromTo("#sc3", { y: 0 }, { y: -200, duration: 1.6, ease: "sine.inOut" }, S3 + b(2.6) + 0.3);
+  tl.fromTo("#h3", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2)" }, S3 + b(3.8));
+  pipDone(3, S2); pipOn(2, S2); item(2, S2, b(7), {});
+  tl.fromTo("#h2", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2)" }, S2 + b(3.8));
+
+  pipDone(2, ST);
+  KZ.slam(tl, "#tt1", ST, 1.5);
+  KZ.slam(tl, "#tt2", ST + b(0.5), 1.3);
+  tl.fromTo("#pip1 .pf", { opacity: 0 }, { opacity: 0.85, duration: 0.07, ease: "none", yoyo: true, repeat: 5, immediateRender: false }, ST + 0.05);
+  tl.to("#tin", { scale: 0.86, opacity: 0.4, duration: 0.12, ease: "power2.in" }, b(35.3));
+
+  tl.to("#pip1 .pf", { opacity: 1, backgroundColor: "#ffd23f", duration: 0.12 }, S1);
+  tl.to("#pip1 .pn", { color: DARK, duration: 0.1 }, S1);
+  KZ.flash(tl, "#flash", S1, 0.85, "#fff6c8");
+  tl.to(".ring", { borderColor: "rgba(255, 210, 63, 0.6)", duration: 0.1 }, S1);
+  item(1, S1, b(9), { strong: true, shake: 20, proof: 3.0 });
+  tl.fromTo("#h1a", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2)" }, S1 + b(4.2));
+  tl.fromTo("#h1b", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2)" }, S1 + b(4.9));
+  ping(S1 + b(5.5), true);
+
+  // END
+  tl.to(["#pip5 .pf", "#pip4 .pf", "#pip3 .pf", "#pip2 .pf", "#pip1 .pf"], { opacity: 1, duration: 0.2, stagger: 0.04 }, SE - 0.1);
+  tl.to(["#pip5 .pn", "#pip4 .pn", "#pip3 .pn", "#pip2 .pn", "#pip1 .pn"], { color: DARK, duration: 0.1, stagger: 0.04 }, SE - 0.1);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, SE + 0.04);
+  KZ.eyePulse(tl, "#eye2", SE + 0.14, 3);
+  KZ.rise(tl, "#endUrl", SE + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", SE + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, SE + 0.6);
+  tl.to("#hud", { opacity: 0, duration: 0.3 }, D - 0.75);
+  tl.fromTo("#blackout", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.in" }, D - 0.4);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>098 Tem dúvida de config? Pergunta pra IA</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+/* ================= F12 · NOVIDADE NO KIZUBOT — "patch notes" system ================= */
+:root {
+  --pn-bg: #07050d; --pn-panel: #120c1d; --pn-panel2: #1b1229;
+  --pn-line: rgba(216,180,254,.24); --pn-ink: #f5f0fa; --pn-dim: #bcb0d2;
+  --pn-lime: #c6ff3d; --pn-vio: #a855f7; --pn-mag: #e879f9;
+  --pn-acc: #ff4d5e;            /* episode accent (096: REC red) */
+}
+#root { background: var(--pn-bg); }
+.pn-bg { position:absolute; inset:0; background:
+  radial-gradient(62% 36% at 10% 6%, rgba(124,58,237,.50) 0%, rgba(124,58,237,0) 70%),
+  radial-gradient(58% 34% at 94% 92%, rgba(232,121,249,.26) 0%, rgba(232,121,249,0) 70%),
+  var(--pn-bg); }
+.pn-dots { position:absolute; inset:-120px; background-image: radial-gradient(rgba(216,180,254,.22) 1.7px, transparent 2.3px); background-size: 36px 36px; opacity:.5; }
+.pn-log { position:absolute; left:22px; top:0; width:44px; height:1920px; overflow:hidden; opacity:.20; }
+.pn-log-in { position:absolute; left:0; top:0; writing-mode: vertical-rl; white-space:nowrap; font: 400 30px "JetBrains Mono", monospace; letter-spacing:.14em; color: var(--pn-lav, #d8b4fe); }
+.kz-progress { height: 12px; background: rgba(255,255,255,.06); }
+.kz-progress > div { background: linear-gradient(90deg, #7c3aed, #e879f9 65%, #c6ff3d); }
+#pnSweep { position:absolute; left:0; top:0; width:1080px; height:8px; opacity:0; z-index:60; pointer-events:none;
+  background: linear-gradient(90deg, rgba(245,240,250,0), #f5f0fa 18%, #f5f0fa 82%, rgba(245,240,250,0));
+  box-shadow: 0 0 34px 10px rgba(216,180,254,.75); }
+#flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; z-index:70; }
+.pn-safe { position:absolute; left:90px; right:120px; top:220px; bottom:520px; }
+.pn-col { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.pn-display { font-family:"Bricolage Grotesque", sans-serif; font-weight:800; text-transform:uppercase; line-height:.9; letter-spacing:-.02em; color: var(--pn-ink); }
+.pn-mono { font-family:"JetBrains Mono", monospace; text-transform:uppercase; letter-spacing:.12em; }
+.pn-body { font: 800 58px "Inter", sans-serif; color: var(--pn-ink); line-height:1.08; letter-spacing:-.01em; }
+.pn-chip { display:inline-flex; align-items:center; gap:16px; padding: 12px 26px 12px 14px; border-radius: 999px;
+  background: rgba(255,255,255,.05); border: 2px solid var(--pn-line); font: 400 30px "JetBrains Mono", monospace; letter-spacing:.08em; color: var(--pn-ink); text-transform: uppercase; white-space:nowrap; }
+.pn-chip img { width: 46px; height: 46px; border-radius: 50%; background:#1b1229; object-fit: cover; }
+.pn-chip .sep { color: var(--pn-mag); }
+.pn-novo { display:inline-block; font: 800 74px "Bricolage Grotesque", sans-serif; color:#0b0712; background: var(--pn-lime);
+  padding: 8px 30px 4px; border-radius: 18px; letter-spacing:.02em; line-height:1;
+  box-shadow: 0 0 0 6px var(--pn-bg), 0 0 0 10px var(--pn-lime), 0 20px 50px rgba(198,255,61,.35); }
+.pn-install { width: 740px; }
+.pn-install-top { display:flex; justify-content:space-between; align-items:baseline; font: 400 34px "JetBrains Mono", monospace; color: var(--pn-dim); text-transform: uppercase; letter-spacing:.08em; margin-bottom: 18px; }
+.pn-install-top b { font-weight:400; color: var(--pn-ink); }
+.pn-bar { position:relative; height: 34px; border-radius: 999px; background: rgba(255,255,255,.07); border: 2px solid var(--pn-line); overflow:hidden; }
+.pn-bar-fill { position:absolute; left:0; top:0; bottom:0; width:100%; transform-origin: 0 50%; border-radius: 999px;
+  background: linear-gradient(90deg, #7c3aed, #a855f7 35%, #e879f9 70%, #f5d0fe); box-shadow: 0 0 24px rgba(232,121,249,.6); }
+.pn-bar-sheen { position:absolute; top:0; bottom:0; width: 160px; left: -200px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.55), rgba(255,255,255,0)); }
+.pn-ok { font: 800 50px "Inter", sans-serif; color: var(--pn-lime); margin-top: 22px; }
+.eye { position:absolute; border-radius:50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+
+
+/* ================= 098 specifics ================= */
+:root { --pn-acc: #f0abfc; }
+.pn-bg { background:
+  radial-gradient(70% 34% at 50% 0%, rgba(124,58,237,.42) 0%, rgba(124,58,237,0) 72%),
+  radial-gradient(50% 30% at 100% 70%, rgba(232,121,249,.20) 0%, rgba(232,121,249,0) 70%),
+  var(--pn-bg); }
+/* hook */
+#hookTxt { position:absolute; left:110px; right:182px; top: 300px; height: 520px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+#hookTxt .pn-display { font-size: 128px; line-height: 1.0; white-space: nowrap; }
+#hookTxt .q { color: var(--pn-lime); }
+.qb { position:absolute; display:flex; align-items:center; justify-content:center; border-radius: 40px 40px 40px 10px; background: rgba(168,85,247,.22); border: 3px solid rgba(216,180,254,.45); font: 800 64px "Bricolage Grotesque", sans-serif; color: var(--pn-lav, #d8b4fe); }
+/* label slot */
+#slot { position:absolute; left: 90px; right: 90px; top: 222px; height: 214px; }
+.lab { position:absolute; left: 0; right: 0; top: 0; height: 214px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.lab .pn-display { font-size: 100px; line-height: 1.0; }
+.lab .pn-display b { color: var(--pn-lime); font-weight: 800; }
+/* chat window */
+#win { position:absolute; left: 100px; top: 462px; width: 780px; height: 920px; border-radius: 42px; background: #120c1d; border: 3px solid rgba(216,180,254,.38); box-shadow: 0 50px 140px rgba(0,0,0,.6), 0 0 0 12px rgba(168,85,247,.08); overflow: hidden; }
+.whead { position:absolute; left:0; right:0; top:0; height: 108px; display:flex; align-items:center; gap: 20px; padding: 0 28px; border-bottom: 2px solid rgba(216,180,254,.18); background: rgba(255,255,255,.03); }
+.av { position:relative; width: 78px; height: 78px; border-radius: 50%; overflow:hidden; background: #241836; border: 3px solid rgba(216,180,254,.5); flex:none; }
+.av img { position:absolute; width: 98px; left: -10px; top: -4px; }
+.av .eye { left: 22px; top: 14px; width: 34px; height: 34px; }
+.wname { font: 800 44px "Inter", sans-serif; color: var(--pn-ink); }
+.wname small { display:block; font: 400 30px "JetBrains Mono", monospace; color: var(--pn-dim); letter-spacing: .06em; margin-top: 2px; }
+.ex { margin-left: auto; padding: 8px 18px; border-radius: 12px; border: 2px dashed rgba(216,180,254,.55); font: 400 30px "JetBrains Mono", monospace; color: var(--pn-dim); text-transform: uppercase; letter-spacing: .1em; }
+#msgs { position:absolute; left:0; right:0; top: 108px; bottom: 0; overflow:hidden; }
+#msgsIn { position:absolute; left:0; right:0; top:0; height: 1400px; }
+.bub { position:absolute; font: 700 56px "Inter", sans-serif; line-height: 1.12; padding: 22px 30px 24px; letter-spacing: -.01em; }
+.bu { right: 28px; max-width: 600px; background: linear-gradient(135deg, #8b3dff, #7c3aed); color: #fff; border-radius: 36px 36px 10px 36px; box-shadow: 0 14px 40px rgba(124,58,237,.35); }
+.ba { left: 28px; width: 690px; background: #f5f0fa; color: #170f24; border-radius: 36px 36px 36px 10px; box-shadow: 0 14px 40px rgba(0,0,0,.35); }
+.typing { position:absolute; left: 28px; padding: 26px 30px; border-radius: 36px 36px 36px 10px; background: #f5f0fa; display:flex; gap: 12px; }
+.typing i { display:block; width: 18px; height: 18px; border-radius: 50%; background: #7c3aed; }
+.chips { display:flex; flex-wrap:wrap; gap: 12px; margin-top: 18px; }
+.chip { padding: 8px 22px 10px; border-radius: 999px; background: #e7dcfa; color: #2e1065; font: 700 46px "Inter", sans-serif; }
+.src { display:inline-flex; align-items:center; gap: 12px; margin-top: 20px; padding: 10px 20px; border-radius: 16px; border: 3px solid #65a30d; background: #ecfccb; color: #1a2e05; font: 400 34px "JetBrains Mono", monospace; letter-spacing: .02em; }
+.src svg { width: 34px; height: 34px; }
+#thread { position:absolute; left: 0; top: 0; width: 780px; height: 812px; overflow: visible; pointer-events:none; }
+#ctx { position:absolute; left: 28px; right: 28px; top: 16px; height: 70px; display:flex; align-items:center; gap: 14px; padding: 0 20px; border-radius: 18px; background: #18200b; border: 3px solid #c6ff3d; box-shadow: 0 10px 30px rgba(7,5,13,.8); font: 400 30px "JetBrains Mono", monospace; color: #c6ff3d; white-space: nowrap; opacity: 0; }
+#ctx b { font-weight: 400; padding: 2px 10px; border-radius: 8px; background: #c6ff3d; color: #0b0712; text-transform: uppercase; letter-spacing: .08em; }
+/* S4 big source */
+#scrim4 { position:absolute; inset:0; background: rgba(7,5,13,.93); }
+#srcBig { position:absolute; left: 0; right: 0; top: 700px; display:flex; justify-content:center; }
+#srcBig .src { font-size: 70px; padding: 22px 40px; border-radius: 28px; gap: 22px; border-width: 5px; box-shadow: 0 0 80px rgba(198,255,61,.45); }
+#srcBig .src svg { width: 70px; height: 70px; }
+#novo4 { position:absolute; left: 600px; top: 600px; }
+#sub4 { position:absolute; left: 90px; width: 790px; top: 930px; text-align:center; }
+.ask { font: 900 62px "Inter", sans-serif; color: var(--pn-ink); max-width: 840px; line-height: 1.1; }
+.ask b { color: var(--pn-lime); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="18.75" data-fps="30">
+  <div class="pn-bg"></div>
+  <div class="pn-dots" id="dots"></div>
+  <div class="pn-log"><div class="pn-log-in" id="logIn">20/04/2026 KIZUAI LEMBRA O CONTEXTO · 20/04/2026 KIZUAI MOSTRA AS FONTES · 20/04/2026 ALARME DE MEGA APRENDE SOZINHO · 05/09/2026 OFFLINE CAM · 05/09/2026 TRANSCRIÇÃO DE VOZ · 23/05/2026 MODOS DE PESCA · 30/03/2026 MODO STREAMER · 25/02/2026 +100 ITENS · 21/02/2026 CAVEBOT MAIS ESPERTO · 20/04/2026 KIZUAI LEMBRA O CONTEXTO · 20/04/2026 KIZUAI MOSTRA AS FONTES ·</div></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- S1 HOOK 0 – 2.143 -->
+  <section id="s1" class="clip" data-start="0" data-duration="2.3">
+    <div class="kz-full" id="s1in">
+      <div class="qb" id="qb1" style="left:120px; top:880px; width:190px; height:150px; font-size:80px">?</div>
+      <div class="qb" id="qb2" style="left:720px; top:960px; width:150px; height:122px; font-size:64px">?</div>
+      <div class="qb" id="qb3" style="left:400px; top:1060px; width:250px; height:190px; font-size:110px; background: rgba(198,255,61,.14); border-color: rgba(198,255,61,.6); color:#c6ff3d">?</div>
+      <div class="qb" id="qb4" style="left:800px; top:236px; width:130px; height:106px; font-size:54px">?</div>
+      <div id="hookTxt">
+        <div class="pn-display" id="h1">Tem dúvida</div>
+        <div class="pn-display" id="h2">de config<span class="q">?</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAT (S2–S5 share one window) 2.143 – 15.2 -->
+  <section id="sc" class="clip" data-start="2.143" data-duration="13.05">
+    <div class="kz-full" id="scin">
+      <div id="slot">
+        <div class="lab" id="lab1"><div class="pn-display">Pergunta pra</div><div class="pn-display"><b>KizuAI</b></div></div>
+        <div class="lab" id="lab3"><div class="pn-display" style="font-size:88px">Lembra o</div><div class="pn-display" style="font-size:88px"><b>contexto</b></div></div>
+      </div>
+      <div id="win">
+        <div class="whead">
+          <div class="av"><img src="kit/img/brand/kizubot-head.png" alt="" /><div class="eye" id="eyeA"></div></div>
+          <div class="wname">KizuAI<small>no painel do KizuBot</small></div>
+          <div class="ex">exemplo</div>
+        </div>
+        <div id="msgs"><div id="msgsIn">
+          <div class="bub bu" id="q1" style="top:34px"><span id="q1t"></span></div>
+          <div class="typing" id="ty1" style="top:236px"><i></i><i></i><i></i></div>
+          <div class="bub ba" id="a1" style="top:236px">
+            <div id="a1t"></div>
+            <div class="chips" id="chips"><span class="chip">padrão</span><span class="chip">visão direta</span><span class="chip">água limpa</span><span class="chip">céu aberto</span><span class="chip">mesmo andar</span><span class="chip">agressivo</span></div>
+            <div class="src" id="src"><svg viewBox="0 0 24 24" fill="none" stroke="#3f6212" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>fonte: docs</div>
+          </div>
+          <div class="bub bu" id="q2" style="top:830px">e os minigames?</div>
+          <div class="typing" id="ty2" style="top:972px"><i></i><i></i><i></i></div>
+          <div class="bub ba" id="a2" style="top:972px; width:auto; max-width:690px">Ficam na aba Farming.</div>
+        </div>
+        <div id="msgFade" style="position:absolute; left:0; right:0; top:0; height:110px; background: linear-gradient(180deg, #120c1d 30%, rgba(18,12,29,0)); opacity:0"></div>
+        <div id="ctx"><b>contexto</b>como eu configuro a pesca?</div>
+        <svg id="thread" viewBox="0 0 780 812"><path id="thr" d="M748,526 H758 Q768,526 768,516 V61 Q768,51 758,51 H748" fill="none" stroke="#c6ff3d" stroke-width="6" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><circle id="thrDot" cx="768" cy="526" r="12" fill="#c6ff3d" opacity="0"/></svg>
+        </div>
+      </div>
+      <div id="chip2" class="pn-chip" style="position:absolute; left:0; right:0; margin:0 auto; width:max-content; top:300px; padding-left:14px"><img src="kit/img/brand/kizubot-head.png" alt="" /><span>atualização <span class="sep">·</span> 20/04/2026</span></div>
+    </div>
+  </section>
+
+  <!-- S4 SOURCES (drop) 8.571 – 10.75 -->
+  <section id="s4" class="clip" data-start="8.571" data-duration="2.72">
+    <div class="kz-full" id="s4in">
+      <div id="scrim4"></div>
+      <div class="lab" style="position:absolute; left:90px; right:90px; top:222px; height:214px"><div class="pn-display" style="font-size:100px; line-height:1">Mostra as</div><div class="pn-display" style="font-size:100px; line-height:1"><b style="color:var(--pn-lime)">fontes</b></div></div>
+      <div id="srcBig"><div class="src" id="srcB"><svg viewBox="0 0 24 24" fill="none" stroke="#3f6212" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>fonte: docs</div></div>
+      <div id="novo4"><div class="pn-novo" id="novoA">NOVO</div></div>
+      <div id="sub4" class="pn-body" style="color:var(--pn-dim)">você vê de onde veio a resposta</div>
+    </div>
+  </section>
+
+  <!-- END 15.0 – 18.75 -->
+  <section id="s7" class="clip" data-start="15.0" data-duration="3.75">
+    <div class="kz-end" id="s7in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>Que pergunta você</div><div>faria pra <b>KizuAI?</b></div></div>
+    </div>
+  </section>
+
+  <!-- loop bridge: the hook returns -->
+  <section id="s8" class="clip" data-start="18.33" data-duration="0.42">
+    <div class="kz-full" id="s8in">
+      <div class="qb" style="left:120px; top:880px; width:190px; height:150px; font-size:80px">?</div>
+      <div class="qb" style="left:720px; top:960px; width:150px; height:122px; font-size:64px">?</div>
+      <div class="qb" style="left:400px; top:1060px; width:250px; height:190px; font-size:110px; background: rgba(198,255,61,.14); border-color: rgba(198,255,61,.6); color:#c6ff3d">?</div>
+      <div id="hookTxt2" style="position:absolute; left:110px; right:182px; top:300px; height:520px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center">
+        <div class="pn-display" style="font-size:128px; line-height:1; white-space:nowrap">Tem dúvida</div>
+        <div class="pn-display" style="font-size:128px; line-height:1; white-space:nowrap">de config<span style="color:#c6ff3d">?</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="pnSweep"></div>
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 18.75;
+  const b = KZ.beats(112);            // beat 0.536 s, bar 2.143 s
+
+  /* ---------- F12 helpers ---------- */
+  function pnSweep(inSel, T, dur) {
+    dur = dur || 0.34;
+    tl.fromTo("#pnSweep", { y: -40, opacity: 1 }, { y: 1940, opacity: 1, duration: dur, ease: "power2.inOut", immediateRender: false }, T);
+    tl.set("#pnSweep", { opacity: 0 }, T + dur);
+    tl.fromTo(inSel, { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: dur, ease: "power2.inOut" }, T);
+  }
+  function pnStamp(sel, T, rot, shakeSel) {
+    tl.fromTo(sel, { scale: 2.8, opacity: 0, rotation: rot - 16 }, { scale: 0.94, opacity: 1, rotation: rot, duration: 0.16, ease: "power3.in" }, T - 0.16);
+    tl.to(sel, { scale: 1, duration: 0.22, ease: "back.out(3)" }, T);
+    if (shakeSel) KZ.shake(tl, shakeSel, T, 12, 0.24, 5);
+  }
+  function dotsLoop(sel, T, n) {
+    tl.fromTo(sel + " i", { y: 0 }, { y: -12, duration: 0.16, stagger: 0.08, ease: "sine.inOut", yoyo: true, repeat: n }, T);
+  }
+
+  /* ---------- ambient ---------- */
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  KZ.drift(tl, "#dots", D, 18, 36, 5);
+  tl.fromTo("#logIn", { y: 0 }, { y: -2100, duration: D, ease: "none" }, 0);
+
+  /* ---------- S1 hook ---------- */
+  tl.fromTo("#hookTxt", { scale: 1.06, filter: "blur(4px)" }, { scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, 0);
+  tl.fromTo("#h2 .q", { rotation: -30, scale: 1.6 }, { rotation: 0, scale: 1, duration: 0.4, ease: "back.out(3)" }, 0.05);
+  ["#qb1", "#qb2", "#qb3", "#qb4"].forEach(function (q, i) {
+    const t0 = [0, 0.3, 0.12, b(2)][i];
+    tl.fromTo(q, { scale: 0.2, opacity: 0, rotation: i % 2 ? 12 : -12 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.3, ease: "back.out(2.5)" }, t0);
+    tl.to(q, { y: -24, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, t0 + 0.3);
+  });
+  KZ.punch(tl, "#h2", b(2), 1.08, 0.3);
+  tl.to("#s1in", { scale: 0.9, opacity: 0, duration: 0.2, ease: "power2.in" }, b(4) - 0.18);
+
+  /* ---------- S2 chat appears ---------- */
+  const T2 = b(4);
+  tl.fromTo("#lab1", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, T2);
+  tl.fromTo("#win", { y: 700, rotation: 3 }, { y: 0, rotation: 0, duration: 0.5, ease: "power4.out" }, T2 + 0.05);
+  KZ.eyePulse(tl, "#eyeA", T2 + 0.45, 2);
+  // question typed
+  tl.fromTo("#q1", { scale: 0.6, opacity: 0, transformOrigin: "100% 100%" }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" }, b(5));
+  KZ.typewriter(tl, "#q1t", "como eu configuro a pesca?", b(5) + 0.05, 30);
+  tl.to("#lab1", { opacity: 0, y: -30, duration: 0.2, ease: "power2.in" }, b(7) - 0.2);
+  KZ.rise(tl, "#chip2", b(7), 0.35, 20);
+  tl.fromTo("#ty1", { scale: 0.5, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, b(7));
+  dotsLoop("#ty1", b(7) + 0.1, 2);
+  tl.to("#ty1", { opacity: 0, duration: 0.08 }, b(8) - 0.05);
+  tl.fromTo("#a1", { scale: 0.7, opacity: 0, transformOrigin: "0% 0%" }, { scale: 1, opacity: 1, duration: 0.28, ease: "back.out(1.8)" }, b(8));
+  KZ.typewriter(tl, "#a1t", "Na aba Fishing, escolha um modo:", b(8) + 0.05, 48);
+  tl.fromTo("#chips .chip", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, stagger: 0.24, ease: "back.out(2.5)" }, b(9.3));
+  tl.fromTo("#src", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "back.out(2)" }, b(12));
+  KZ.punch(tl, "#src", b(13), 1.12, 0.3);
+  KZ.punch(tl, "#src", b(14), 1.12, 0.3);
+  tl.to("#win", { scale: 1.03, duration: 2.2, ease: "sine.inOut" }, b(12));
+
+  /* ---------- S4 sources (drop) ---------- */
+  const T4 = b(16);
+  KZ.flash(tl, "#flash", T4, 0.75);
+  tl.to("#win", { filter: "blur(10px)", duration: 0.2 }, T4);
+  tl.fromTo("#scrim4", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, T4);
+  tl.fromTo("#srcB", { scale: 0.3, opacity: 0, y: 340 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" }, T4);
+  tl.fromTo("#s4in .lab", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, T4 + 0.08);
+  pnStamp("#novoA", T4 + 0.6, 10, "#srcBig");
+  KZ.rise(tl, "#sub4", T4 + 0.45, 0.35, 30);
+  tl.to("#srcB", { scale: 1.05, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, T4 + 0.5);
+  tl.to("#s4in", { opacity: 0, duration: 0.2, ease: "power2.in" }, b(21) - 0.2);
+
+  /* ---------- S5 context ---------- */
+  const T5 = b(21);
+  tl.to("#win", { scale: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, T5 - 0.2);
+  tl.to("#chip2", { opacity: 0, duration: 0.2 }, T5 - 0.2);
+  tl.fromTo("#lab3", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, T5 + 0.05);
+  tl.to("#msgsIn", { y: -360, duration: 0.45, ease: "power3.inOut" }, T5);
+  tl.to("#msgFade", { opacity: 1, duration: 0.3 }, T5 + 0.1);
+  tl.fromTo("#q2", { scale: 0.6, opacity: 0, transformOrigin: "100% 100%" }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" }, b(21.5));
+  // memory thread back to the pinned context
+  tl.fromTo("#thr", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.55, ease: "power2.inOut" }, b(22.5));
+  tl.set("#thrDot", { opacity: 1 }, b(22.5));
+  tl.fromTo("#thrDot", { attr: { cy: 526 } }, { attr: { cy: 51 }, duration: 0.55, ease: "power2.inOut", immediateRender: false }, b(22.5));
+  tl.to("#thrDot", { opacity: 0, duration: 0.2 }, b(22.5) + 0.6);
+  tl.fromTo("#ctx", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.25, ease: "back.out(2)" }, b(22.5) + 0.45);
+  KZ.punch(tl, "#ctx", b(22.5) + 0.72, 1.06, 0.3);
+  tl.fromTo("#ty2", { scale: 0.5, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, b(23.5));
+  dotsLoop("#ty2", b(23.5) + 0.1, 1);
+  tl.to("#ty2", { opacity: 0, duration: 0.08 }, b(24.5) - 0.05);
+  tl.fromTo("#a2", { scale: 0.7, opacity: 0, transformOrigin: "0% 0%" }, { scale: 1, opacity: 1, duration: 0.28, ease: "back.out(1.8)" }, b(24.5));
+  KZ.punch(tl, "#win", b(24.5) + 0.1, 1.02, 0.4);
+  tl.to("#scin", { opacity: 0, scale: 0.94, duration: 0.2, ease: "power2.in" }, b(28) - 0.2);
+
+  /* ---------- end card ---------- */
+  const T7 = b(28);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T7 + 0.02);
+  KZ.eyePulse(tl, "#eye2", T7 + 0.12, 3);
+  KZ.rise(tl, "#endUrl", T7 + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T7 + 0.85, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, T7 + 0.8);
+  tl.to("#s7in", { opacity: 0, scale: 0.96, duration: 0.16, ease: "power1.in" }, D - 0.42);
+  tl.fromTo("#s8in", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, D - 0.3);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

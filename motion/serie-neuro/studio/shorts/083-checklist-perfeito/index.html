@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>083 Checklist perfeito</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/DrawSVGPlugin.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F09 Satisfatório — ep. 083: checklist that ticks itself on the beat (lofi), loops back ===== */
+  :root {
+    --s-ink: #f6f2ff; --s-dim: #9188ab; --s-lime: #c6ff3d; --s-gold: #fcd34d; --s-lav: #d8b4fe; --s-vio: #a855f7;
+    --f-soft: "Fredoka", "Baloo 2", sans-serif;
+  }
+  #root { background: #0b0714; }
+  #bg { position: absolute; inset: 0; background: radial-gradient(80% 50% at 50% 55%, #2a1650 0%, #130a24 55%, #090511 100%); }
+  #halo { position: absolute; left: 90px; top: 520px; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(closest-side, rgba(168, 85, 247, 0.22), rgba(168, 85, 247, 0)); }
+
+  #title { position: absolute; left: 0; right: 0; top: 262px; text-align: center; font: 700 126px/1.04 var(--f-soft); color: var(--s-ink); letter-spacing: -0.01em; }
+  #title .ln { display: block; }
+  #title .acc { color: var(--s-lav); }
+  #bigTick { position: absolute; left: 812px; top: 396px; width: 130px; height: 130px; }
+
+  #card { position: absolute; left: 110px; top: 586px; width: 780px; height: 806px; border-radius: 58px;
+    background: linear-gradient(180deg, #221739 0%, #170f28 100%);
+    box-shadow: 0 50px 120px rgba(0, 0, 0, 0.55), inset 0 2px 0 rgba(255, 255, 255, 0.07), inset 0 -4px 0 rgba(0, 0, 0, 0.3); }
+  #barTrack { position: absolute; left: 44px; right: 44px; top: 38px; height: 16px; border-radius: 8px; background: #2c2244; box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.5); overflow: hidden; }
+  #barFill { position: absolute; inset: 0; border-radius: 8px; background: linear-gradient(90deg, #a855f7, #d8b4fe); transform-origin: 0 50%; }
+  #win { position: absolute; left: 0; right: 0; top: 76px; height: 706px; overflow: hidden; }
+  #rows { position: absolute; left: 0; right: 0; top: 0; }
+  .row { position: absolute; left: 0; right: 0; height: 140px; }
+  .box { position: absolute; left: 40px; top: 34px; width: 72px; height: 72px; border-radius: 50%; background: #2b2142;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.55), inset 0 -2px 0 rgba(255, 255, 255, 0.06), 0 0 0 2px rgba(255, 255, 255, 0.05); }
+  .box .bf { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #c084fc, #7c3aed 70%); opacity: 0; box-shadow: 0 8px 22px rgba(124, 58, 237, 0.55); }
+  .box svg { position: absolute; left: 12px; top: 12px; width: 48px; height: 48px; overflow: visible; }
+  .row .tx { position: absolute; left: 140px; top: 0; height: 140px; display: flex; align-items: center; font: 700 58px/1 var(--f-soft); color: var(--s-dim); white-space: nowrap; letter-spacing: -0.005em; }
+  .row.last .bf { background: radial-gradient(circle at 35% 30%, #fff0a8, #f59e0b 75%); box-shadow: 0 8px 22px rgba(245, 158, 11, 0.5); }
+  .row.last .tx { gap: 18px; }
+  #moon { width: 56px; height: 56px; }
+  .zz { position: absolute; font: 700 40px/1 var(--f-soft); color: var(--s-lav); opacity: 0; }
+  #tag { position: absolute; left: 600px; top: 560px; height: 56px; padding: 0 22px 0 8px; border-radius: 28px; display: flex; align-items: center; gap: 12px;
+    background: linear-gradient(180deg, #8b5cf6, #6d28d9); box-shadow: 0 10px 26px rgba(109, 40, 217, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.25); font: 700 32px/1 var(--f-soft); color: #fff; }
+  #tag .av { width: 42px; height: 42px; border-radius: 50%; overflow: hidden; position: relative; background: #2e1b52; }
+  #tag .av img { position: absolute; left: 0; top: 3px; width: 42px; }
+  #ripple { position: absolute; left: 0; top: 0; width: 780px; height: 806px; border-radius: 58px; border: 4px solid rgba(216, 180, 254, 0.7); opacity: 0; }
+
+  /* end lockup */
+  #lock { position: absolute; inset: 0; }
+  #logoBox { position: absolute; left: 300px; top: 560px; width: 480px; }
+  #logoBox img { display: block; width: 480px; }
+  #eyeEnd { position: absolute; left: 146px; top: 2px; width: 96px; height: 96px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(250, 232, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  #endUrl { position: absolute; left: 0; right: 0; top: 1016px; text-align: center; font: 700 64px/1 var(--f-soft); color: var(--s-ink); }
+  #endAsk { position: absolute; left: 110px; right: 150px; top: 1112px; text-align: center; font: 700 64px/1.12 var(--f-soft); color: var(--s-ink); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="12.14" data-fps="30">
+  <div id="bg"></div>
+  <div id="halo"></div>
+
+  <div id="stage" style="position:absolute; inset:0">
+    <div id="title"><div class="ln">CHECKLIST</div><div class="ln acc">DO FARM.</div></div>
+    <svg id="bigTick" viewBox="0 0 24 24" overflow="visible"><path id="bigTickP" d="M4 12.5l5 5L20 6" fill="none" stroke="#c6ff3d" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div id="card">
+      <div id="barTrack"><div id="barFill"></div></div>
+      <div id="win"><div id="rows"></div></div>
+      <div id="ripple"></div>
+    </div>
+    <div id="tag"><div class="av"><img src="kit/img/brand/kizubot-head.png" alt="" /></div>KizuBot</div>
+  </div>
+
+  <!-- end lockup: 8.571 - 11.429 -->
+  <section id="end" class="clip" data-start="8.571" data-duration="2.858">
+    <div id="lock">
+      <div id="logoBox"><img id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" /><div id="eyeEnd"></div></div>
+      <div id="endUrl">kizubot.com</div>
+      <div id="endAsk">Qual item é o melhor?</div>
+    </div>
+  </section>
+</div>
+<script>
+  gsap.registerPlugin(DrawSVGPlugin);
+  const tl = gsap.timeline({ paused: true });
+  const D = 12.14;
+  const b = KZ.beats(84);               // beat 0.714 s, bar 2.857 s
+  const T_DONE = b(10), T_EC = b(12), T_LOOP = b(16);
+  const ITEMS = ["Caça sozinho", "Captura", "Pesca", "Coleta", "Cura", "Avisa no WhatsApp", "Roda com PC desligado", "Você dormindo"];
+  const PITCH = 140;
+
+  const rowsEl = document.getElementById("rows");
+  const barFill = document.getElementById("barFill");
+  const rows = ITEMS.map(function (txt, i) {
+    const r = document.createElement("div");
+    r.className = "row" + (i === 7 ? " last" : "");
+    r.style.top = (i * PITCH) + "px";
+    let extra = "";
+    if (i === 7) extra = '<svg id="moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="#d8b4fe"/></svg>';
+    r.innerHTML = '<div class="box"><div class="bf"></div><svg viewBox="0 0 24 24"><path d="M5 12.5l4.6 4.6L19 7.4" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>' +
+      '<div class="tx"><span>' + txt + '</span>' + extra + '</div>';
+    rowsEl.appendChild(r);
+    return r;
+  });
+  // zzz bubbles for the last row
+  const zs = [];
+  ["z", "z", "Z"].forEach(function (z, k) {
+    const e = document.createElement("div"); e.className = "zz"; e.textContent = z;
+    e.style.left = (560 + k * 34) + "px"; e.style.top = (7 * PITCH + 18 - k * 14) + "px"; e.style.fontSize = (34 + k * 8) + "px";
+    rowsEl.appendChild(e); zs.push(e);
+  });
+  const TICK = ITEMS.map(function (_, i) { return b(2 + i); });
+
+  // ambient
+  tl.fromTo("#card", { y: 0 }, { y: -8, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+  tl.fromTo("#halo", { scale: 0.96, opacity: 0.85 }, { scale: 1.04, opacity: 1, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0);
+  tl.fromTo("#title", { y: 16 }, { y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo("#bigTickP", { drawSVG: "0%" }, { drawSVG: "0%", duration: 0.01 }, 0);
+  tl.fromTo("#tag", { rotation: -4, y: 0 }, { rotation: 3, y: -6, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+  tl.fromTo(rows[0].querySelector(".box"), { boxShadow: "inset 0 5px 10px rgba(0,0,0,0.55), 0 0 0 0 rgba(216,180,254,0)" }, { boxShadow: "inset 0 5px 10px rgba(0,0,0,0.55), 0 0 0 10px rgba(216,180,254,0.35)", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.1);
+  tl.fromTo("#barFill", { scaleX: 0 }, { scaleX: 0, duration: 0.01 }, 0);
+
+  // ticks on the beat
+  rows.forEach(function (r, i) {
+    const t = TICK[i];
+    const bf = r.querySelector(".bf"), path = r.querySelector(".box path"), tx = r.querySelector(".tx"), box = r.querySelector(".box");
+    if (i >= 5) tl.to(rowsEl, { y: -(i - 4) * PITCH, duration: 0.34, ease: "power2.inOut" }, t - 0.36);
+    tl.fromTo(box, { scale: 1 }, { scale: 0.86, duration: 0.07, ease: "power2.in" }, t - 0.02);
+    tl.to(box, { scale: 1, duration: 0.3, ease: "back.out(3)" }, t + 0.05);
+    tl.fromTo(bf, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(2)" }, t);
+    tl.fromTo(path, { drawSVG: "0%" }, { drawSVG: "100%", duration: 0.26, ease: "power2.out" }, t + 0.04);
+    tl.fromTo(tx, { color: "#9188ab", x: 0 }, { color: i === 7 ? "#fde68a" : "#f6f2ff", x: 6, duration: 0.25, ease: "power2.out" }, t);
+    tl.to(barFill, { scaleX: (i + 1) / 8, duration: 0.3, ease: "power2.inOut" }, t);
+  });
+  zs.forEach(function (z, k) {
+    tl.fromTo(z, { y: 20, opacity: 0 }, { y: -26, opacity: 1, duration: 0.7, ease: "power1.out" }, TICK[7] + 0.15 + k * 0.16);
+  });
+  tl.fromTo("#moon", { rotation: -20, scale: 0.7 }, { rotation: 0, scale: 1, duration: 0.5, ease: "back.out(2)" }, TICK[7]);
+
+  // completion: ripple + big tick on the title
+  tl.fromTo("#ripple", { scale: 1, opacity: 0.9 }, { scale: 1.08, opacity: 0, duration: 0.7, ease: "power2.out", immediateRender: false }, T_DONE);
+  tl.fromTo("#card", { scale: 1 }, { scale: 1.025, duration: 0.15, ease: "power2.out", immediateRender: false }, T_DONE);
+  tl.to("#card", { scale: 1, duration: 0.45, ease: "power2.inOut" }, T_DONE + 0.15);
+  tl.to("#bigTickP", { drawSVG: "100%", duration: 0.35, ease: "power2.out" }, T_DONE + 0.05);
+  tl.fromTo("#bigTick", { scale: 0.7, rotation: -10 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2.5)", immediateRender: false }, T_DONE + 0.05);
+
+  // end lockup
+  tl.to(["#card", "#title", "#bigTick", "#tag"], { opacity: 0.12, scale: 0.94, duration: 0.4, ease: "power2.inOut" }, T_EC - 0.2);
+  tl.fromTo("#endLogo", { scale: 0.4, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.55, ease: "back.out(1.8)" }, T_EC);
+  KZ.eyePulse(tl, "#eyeEnd", T_EC + 0.15, 3);
+  KZ.rise(tl, "#endUrl", T_EC + 0.42, 0.4, 26);
+  KZ.rise(tl, "#endAsk", T_EC + 0.78, 0.45, 26);
+  tl.to("#logoBox", { y: -10, duration: 0.95, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_EC + 0.6);
+  tl.to("#lock", { opacity: 0, scale: 0.96, duration: 0.2, ease: "power2.in" }, T_LOOP - 0.2);
+
+  // loop seam: the list rewinds to frame 0 (untick wave + scroll back to the top)
+  tl.to(["#card", "#title", "#bigTick", "#tag"], { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, T_LOOP - 0.05);
+  tl.to("#bigTickP", { drawSVG: "0%", duration: 0.2, ease: "power2.in" }, T_LOOP);
+  rows.forEach(function (r, i) {
+    const k = 7 - i, t = T_LOOP + 0.05 + k * 0.03;
+    tl.to(r.querySelector(".box path"), { drawSVG: "0%", duration: 0.16, ease: "power2.in" }, t);
+    tl.to(r.querySelector(".bf"), { opacity: 0, scale: 0.6, duration: 0.18, ease: "power2.in" }, t);
+    tl.to(r.querySelector(".tx"), { color: "#9188ab", x: 0, duration: 0.2, ease: "power2.inOut" }, t);
+  });
+  zs.forEach(function (z) { tl.to(z, { opacity: 0, duration: 0.15 }, T_LOOP); });
+  tl.to(rowsEl, { y: 0, duration: 0.42, ease: "power2.inOut" }, T_LOOP + 0.08);
+  tl.to(barFill, { scaleX: 0, duration: 0.42, ease: "power2.inOut" }, T_LOOP + 0.08);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

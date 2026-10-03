@@ -1,0 +1,66 @@
+{
+  "id": "086",
+  "slug": "farmar-ou-dormir",
+  "family": "Você Prefere?",
+  "title": "Você prefere: farmar 8h na mão ou dormir 8h?",
+  "concept": "Boxing fight card: red corner 'farmar 8h na mão' (04:00 clock, clicks overflowing, yawn) vs violet corner 'dormir 8h' (moon, Zzz, a real shiny alarm arriving); the chooser hops, A gets a K.O., B the belt, then 'na real…' the corners slam together: com KizuBot você dorme e farma.",
+  "neuro": [
+    "forced-choice",
+    "contrast-effect",
+    "loss-aversion",
+    "humor",
+    "anticipation-drop",
+    "social-proof",
+    "comment-prompt"
+  ],
+  "hook": "VOCÊ PREFERE? FARMAR 8H NA MÃO OU DORMIR 8H?",
+  "duration": 18.21,
+  "music": {
+    "style": "trap",
+    "bpm": 145
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/prints/shiny-venusaur--alarm.png",
+    "kit/img/prints/shiny-venusaur.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "alarmes no celular e notificações no WhatsApp",
+    "detecção de shinys, megas e bosses"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Você prefere: farmar 8h na mão ou dormir 8h? 🥊 A ou B? Na real, com KizuBot você dorme E farma. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#voceprefere",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Você prefere: farmar 8h na mão ou dormir 8h? #pxg",
+      "description": "Canto vermelho: farmar 8h na mão. Canto roxo: dormir 8h. Na real, com o KizuBot você dorme e o char farma — 100% AFK, com alarme no WhatsApp quando aparece algo bom. Print real de cliente no vídeo. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Você prefere: farmar 8h na mão ou dormir 8h? 🥊 Na real: você dorme e o KizuBot farma. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#voceprefere"
+      ]
+    }
+  },
+  "pinned_comment": "A ou B? 👇",
+  "notes": "No 08:00 clock on side B: the real Venusaur alarm print is at 09:29 and doesn't say the customer was asleep, so the proof line states only what the print shows ('o bot detectou e capturou'). The click counter overflowing to '999+' is an illustrative gag, not a stat. Twist extended to 2.5 s for reading time (18.21 s total)."
+}

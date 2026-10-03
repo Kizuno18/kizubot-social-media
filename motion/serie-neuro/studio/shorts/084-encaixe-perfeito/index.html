@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>084 Encaixe perfeito</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F09 Satisfatório — ep. 084: real prints snap into a perfect grid, carve into the mascot, loop ===== */
+  :root {
+    --s-ink: #f6f2ff; --s-dim: #9188ab; --s-lime: #c6ff3d; --s-gold: #fcd34d; --s-lav: #d8b4fe;
+    --f-soft: "Fredoka", "Baloo 2", sans-serif;
+  }
+  #root { background: #0b0714; }
+  #bg { position: absolute; inset: 0; background: radial-gradient(80% 50% at 50% 50%, #2b1652 0%, #140b26 55%, #090511 100%); }
+  #halo { position: absolute; left: 40px; top: 440px; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(closest-side, rgba(168, 85, 247, 0.26), rgba(168, 85, 247, 0)); }
+
+  #title { position: absolute; left: 0; right: 0; top: 262px; text-align: center; font: 700 128px/1.04 var(--f-soft); color: var(--s-ink); letter-spacing: -0.01em; }
+  #title .ln { display: block; }
+  #title .acc { color: var(--s-lime); }
+  .ptag { position: absolute; left: 0; right: 0; top: 1346px; text-align: center; opacity: 0; }
+  .ptag span { display: inline-block; padding: 8px 20px; border-radius: 999px; background: rgba(8, 6, 16, 0.85); border: 2px solid var(--s-lav);
+    font: 700 32px/1 "Sora", sans-serif; letter-spacing: 0.01em; color: var(--s-lav); }
+
+  #board { position: absolute; left: 159px; top: 560px; width: 762px; height: 762px; }
+  .slot { position: absolute; width: 180px; height: 180px; border-radius: 30px; border: 3px dashed rgba(216, 180, 254, 0.28); background: rgba(255, 255, 255, 0.02); }
+  .layer { position: absolute; inset: 0; }
+  #carve { opacity: 0; -webkit-mask-image: url("kit/img/brand/kizubot-logo.png"); mask-image: url("kit/img/brand/kizubot-logo.png");
+    -webkit-mask-size: 762px 687px; mask-size: 762px 687px; -webkit-mask-position: 0 37px; mask-position: 0 37px; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+  .tile { position: absolute; left: 0; top: 0; width: 180px; height: 180px; border-radius: 30px; overflow: hidden; background: #1d1830;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45), inset 0 0 0 2px rgba(255, 255, 255, 0.08); }
+  .tile img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+  .tile .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font: 700 26px "Sora", sans-serif; color: rgba(255,255,255,.55); }
+  #carve .tile { border-radius: 0; box-shadow: none; }
+  #sweep { position: absolute; top: -120px; left: 0; width: 220px; height: 1000px; background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)); opacity: 0; transform: rotate(18deg); }
+
+  #logoWrap { position: absolute; left: 159px; top: 597px; width: 762px; height: 687px; transform-origin: 50% 0%; }
+  #logoWrap img { display: block; width: 762px; opacity: 0; }
+  #eyeEnd { position: absolute; left: 248px; top: 10px; width: 140px; height: 140px; border-radius: 50%; opacity: 0;
+    background: radial-gradient(circle, rgba(250, 232, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  #endUrl { position: absolute; left: 0; right: 0; top: 1030px; text-align: center; font: 700 64px/1 var(--f-soft); color: var(--s-ink); opacity: 0; }
+  #endAsk { position: absolute; left: 110px; right: 150px; top: 1120px; text-align: center; font: 700 62px/1.12 var(--f-soft); color: var(--s-ink); opacity: 0; }
+  #endAsk .ln { display: block; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="12.14" data-fps="30">
+  <div id="bg"></div>
+  <div id="halo"></div>
+  <div id="title"><div class="ln">ENCAIXE</div><div class="ln acc">PERFEITO.</div></div>
+  <div id="board">
+    <div class="layer" id="slots"></div>
+    <div class="layer" id="tiles"></div>
+    <div class="layer" id="carve"></div>
+    <div class="layer" style="overflow:hidden; border-radius:30px"><div id="sweep"></div></div>
+  </div>
+  <div class="ptag" id="tag"><span>prints reais de clientes diferentes</span></div>
+  <!-- end card: 8.0 - 11.75 (timed so nothing leaks outside its window) -->
+  <section id="end" class="clip" data-start="8.0" data-duration="3.75">
+    <div id="logoWrap"><img id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" /><div id="eyeEnd"></div></div>
+    <div id="endUrl">kizubot.com</div>
+    <div id="endAsk"><div class="ln">Achou algum print</div><div class="ln">que você conhece?</div></div>
+  </section>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 12.14;
+  const b = KZ.beats(126);               // beat 0.476 s
+  const T_DONE = b(12), T_CARVE = b(15), T_LOGO = b(17), T_LOOP = b(24);
+  const P = 194;                          // tile pitch (180 + 14)
+  // 16 thumbnails (placeholders until the safe prints are listed)
+  const SRC = [
+    "kit/img/prints/shiny-cubone--alarm.png", "kit/img/prints/shiny-muk--card.png", "kit/img/prints/drop-sablenite--inventory.png", "kit/img/prints/boss-rhyperior-2am--alarm.png",
+    "kit/img/prints/gym-smartwatch-alarm--watch.jpg", "kit/img/prints/shiny-dratini-new-server--shot.png", "kit/img/prints/shiny-raichu-7-alarms--alarms.png", "kit/img/prints/shiny-feraligatr--card.png",
+    "kit/img/prints/boss-metagross-metal-coat--alarms.png", "kit/img/prints/family-handprints.png", "kit/img/prints/shiny-rapidash--card.png", "kit/img/prints/alarme-12335-itens--alarm.png",
+    "kit/img/prints/beach-while-bot-farms.png", "kit/img/prints/boss-tangrowth-electivire--tangrowth.png", "kit/img/prints/boss-loot-15kk--photo.png", "kit/img/prints/shiny-venusaur--alarm.png"
+  ];
+  const POS = { 9: "50% 22%", 12: "50% 12%", 1: "50% 30%", 7: "50% 30%", 10: "50% 35%" };
+  const COLORS = ["#3b2a6b","#2c4a6b","#5b2a4a","#2a5b4a","#6b5b2a","#4a2a6b","#2a3b6b","#6b2a3b","#3b6b2a","#2a6b6b","#6b3b2a","#4a4a6b","#2a2a6b","#6b2a6b","#3b3b3b","#5b4a2a"];
+  // order of arrival: a spiral-ish path so the grid fills satisfyingly
+  const ORDER = [5, 6, 10, 9, 0, 3, 15, 12, 1, 2, 7, 11, 14, 13, 8, 4];
+  // entry directions (from the nearest edge)
+  function entry(s) {
+    const c = s % 4, r = Math.floor(s / 4);
+    if (r === 0) return { x: 0, y: -900 };
+    if (r === 3) return { x: 0, y: 1100 };
+    return c < 2 ? { x: -900, y: 0 } : { x: 900, y: 0 };
+  }
+  const slots = document.getElementById("slots"), tiles = document.getElementById("tiles"), carve = document.getElementById("carve");
+  for (let s = 0; s < 16; s++) {
+    const d = document.createElement("div"); d.className = "slot"; d.style.left = (s % 4) * P + "px"; d.style.top = Math.floor(s / 4) * P + "px"; slots.appendChild(d);
+  }
+  function makeTile(s, host) {
+    const t = document.createElement("div"); t.className = "tile";
+    t.style.background = COLORS[s];
+    t.innerHTML = SRC[s] ? '<img src="' + SRC[s] + '" alt="" style="object-position:' + (POS[s] || "50% 50%") + '" />' : '<div class="ph">PRINT</div>';
+    host.appendChild(t); return t;
+  }
+  const T = [], C = [];
+  for (let s = 0; s < 16; s++) {
+    T.push(makeTile(s, tiles));
+    const c = makeTile(s, carve); c.style.left = (s % 4) * P + "px"; c.style.top = Math.floor(s / 4) * P + "px"; C.push(c);
+  }
+  // arrival times: 4 on beats, 4 on half-beats, 8 on quarter-beats (accelerating)
+  const AT = [];
+  for (let k = 0; k < 16; k++) AT.push(k < 4 ? b(2 + k) : k < 8 ? b(6 + (k - 4) * 0.5) : b(8 + (k - 8) * 0.25));
+
+  // frame 0: title + empty grid, slots breathing
+  tl.fromTo("#title", { y: 16 }, { y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo("#slots .slot", { scale: 0.94, opacity: 0.6 }, { scale: 1, opacity: 1, duration: 0.45, ease: "sine.inOut", stagger: { each: 0.03, from: "center" }, yoyo: true, repeat: 1 }, 0);
+  tl.fromTo("#halo", { opacity: 0.75 }, { opacity: 1, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0);
+
+  // tiles fly in and snap
+  ORDER.forEach(function (s, k) {
+    const t = T[s], e = entry(s), x = (s % 4) * P, y = Math.floor(s / 4) * P, at = AT[k];
+    const dur = k < 4 ? 0.42 : k < 8 ? 0.34 : 0.26;
+    tl.fromTo(t, { x: x + e.x, y: y + e.y, rotation: (k % 2 ? 14 : -14), scale: 1.12, opacity: 1 }, { x: x, y: y, rotation: 0, scale: 1, duration: dur, ease: "power3.out" }, at - dur + 0.02);
+    tl.fromTo(t, { scale: 1 }, { scale: 0.93, duration: 0.06, ease: "power2.in", immediateRender: false }, at);
+    tl.to(t, { scale: 1, duration: 0.2, ease: "back.out(3)" }, at + 0.06);
+  });
+
+  // complete: sweep + tag
+  tl.fromTo("#sweep", { x: -400, opacity: 1 }, { x: 1100, opacity: 1, duration: 0.8, ease: "power2.inOut" }, T_DONE);
+  tl.fromTo("#board", { scale: 1 }, { scale: 1.03, duration: 0.15, ease: "power2.out", immediateRender: false }, T_DONE);
+  tl.to("#board", { scale: 1, duration: 0.45, ease: "power2.inOut" }, T_DONE + 0.15);
+  tl.fromTo("#tag", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, T_DONE + 0.2);
+
+  // carve: the grid becomes the mascot silhouette
+  tl.fromTo("#carve", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut", immediateRender: false }, T_CARVE);
+  tl.to("#tiles", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, T_CARVE);
+  tl.to("#slots", { opacity: 0, duration: 0.4 }, T_CARVE);
+  tl.to(["#title", "#tag"], { opacity: 0, y: -30, duration: 0.3, ease: "power2.in" }, T_LOGO - 0.3);
+  // real logo + eye: the end card
+  tl.to("#endLogo", { opacity: 1, duration: 0.45, ease: "power2.inOut" }, T_LOGO);
+  tl.to("#carve", { opacity: 0, duration: 0.45, ease: "power2.inOut" }, T_LOGO + 0.1);
+  tl.to(["#logoWrap", "#board"], { scale: 0.68, y: -150, duration: 0.6, ease: "power3.inOut" }, T_LOGO + 0.35);
+  KZ.eyePulse(tl, "#eyeEnd", T_LOGO + 0.25, 3);
+  tl.fromTo("#endUrl", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, T_LOGO + 0.7);
+  tl.fromTo("#endAsk", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out", immediateRender: false }, T_LOGO + 1.0);
+  tl.to("#logoWrap", { y: -162, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_LOGO + 1.0);
+
+  // loop seam: dissolve back to the empty grid + title (frame 0)
+  tl.to(["#endLogo", "#endUrl", "#endAsk", "#eyeEnd"], { opacity: 0, duration: 0.3, ease: "power1.in" }, T_LOOP);
+  tl.to("#board", { scale: 1, y: 0, duration: 0.01 }, T_LOOP + 0.31);
+  tl.set(T, { opacity: 0 }, T_LOOP + 0.31);
+  tl.to("#tiles", { opacity: 1, duration: 0.01 }, T_LOOP + 0.32);
+  tl.to("#slots", { opacity: 1, duration: 0.3, ease: "power2.out" }, T_LOOP + 0.33);
+  tl.to("#title", { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, T_LOOP + 0.33);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

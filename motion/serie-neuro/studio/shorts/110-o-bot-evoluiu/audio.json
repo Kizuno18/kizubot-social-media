@@ -1,0 +1,200 @@
+{
+ "duration": 16.15,
+ "style": "funk",
+ "bpm": 130,
+ "seed": 110,
+ "sections": [
+  {
+   "at": 0.0,
+   "type": "groove",
+   "energy": 0.85
+  },
+  {
+   "at": 4.615,
+   "type": "build"
+  },
+  {
+   "at": 6.231,
+   "type": "drop"
+  },
+  {
+   "at": 10.615,
+   "type": "groove",
+   "energy": 1.0
+  },
+  {
+   "at": 13.385,
+   "type": "outro"
+  }
+ ],
+ "stops": [
+  {
+   "at": 6.03,
+   "len": 0.2,
+   "tape": true
+  }
+ ],
+ "sfx": [
+  {
+   "t": 0.0,
+   "name": "impact",
+   "gain": -5
+  },
+  {
+   "t": 0.0,
+   "name": "pop",
+   "gain": -8
+  },
+  {
+   "t": 0.2,
+   "name": "px-pop",
+   "gain": -11
+  },
+  {
+   "t": 0.462,
+   "name": "levelup",
+   "gain": -11
+  },
+  {
+   "t": 0.923,
+   "name": "coin",
+   "gain": -10
+  },
+  {
+   "t": 1.385,
+   "name": "boom",
+   "gain": -9
+  },
+  {
+   "t": 1.62,
+   "name": "whoosh_fast",
+   "gain": -10
+  },
+  {
+   "t": 1.846,
+   "name": "px-impact-bass-2",
+   "gain": -7
+  },
+  {
+   "t": 2.308,
+   "name": "tick2",
+   "gain": -9
+  },
+  {
+   "t": 2.585,
+   "name": "swoosh_hit",
+   "gain": -9
+  },
+  {
+   "t": 2.677,
+   "name": "tick2",
+   "gain": -9
+  },
+  {
+   "t": 2.95,
+   "name": "fill",
+   "gain": -11
+  },
+  {
+   "t": 4.2,
+   "name": "levelup",
+   "gain": -8
+  },
+  {
+   "t": 4.4,
+   "name": "whoosh_fast",
+   "gain": -10
+  },
+  {
+   "t": 4.75,
+   "name": "swoosh_hit",
+   "gain": -9
+  },
+  {
+   "t": 5.82,
+   "name": "pop2",
+   "gain": -9
+  },
+  {
+   "t": 6.231,
+   "name": "impact",
+   "gain": -4
+  },
+  {
+   "t": 6.25,
+   "name": "swoosh_hit",
+   "gain": -8
+  },
+  {
+   "t": 6.3,
+   "name": "sparkle",
+   "gain": -10
+  },
+  {
+   "t": 6.69,
+   "name": "right",
+   "gain": -9
+  },
+  {
+   "t": 8.1,
+   "name": "whoosh_fast",
+   "gain": -10
+  },
+  {
+   "t": 8.308,
+   "name": "swoosh_hit",
+   "gain": -9
+  },
+  {
+   "t": 8.54,
+   "name": "pop2",
+   "gain": -9
+  },
+  {
+   "t": 8.86,
+   "name": "success",
+   "gain": -9
+  },
+  {
+   "t": 10.4,
+   "name": "whoosh_fast",
+   "gain": -10
+  },
+  {
+   "t": 10.615,
+   "name": "impact",
+   "gain": -5
+  },
+  {
+   "t": 10.665,
+   "name": "counter",
+   "gain": -9
+  },
+  {
+   "t": 11.3,
+   "name": "px-whoosh-short",
+   "gain": -12
+  },
+  {
+   "t": 11.4,
+   "name": "type",
+   "gain": -14
+  },
+  {
+   "t": 11.965,
+   "name": "ding",
+   "gain": -7
+  },
+  {
+   "t": 12.55,
+   "name": "tick2",
+   "gain": -10
+  },
+  {
+   "t": 12.95,
+   "name": "whoosh",
+   "gain": -9
+  }
+ ],
+ "logo": 13.42
+}

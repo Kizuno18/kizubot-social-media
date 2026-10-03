@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>104 Como ele anda sozinho</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/MotionPathPlugin.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+/* ================= F13 · RAIO-X — "blueprint" system ================= */
+:root {
+  --bp-paper: #0a1530; --bp-line: #7dd3fc; --bp-line2: #bae6fd; --bp-ink: #e8f4ff; --bp-dim: #9cc0e0;
+  --bp-acc: #c6ff3d; --bp-lav: #d8b4fe; --bp-done: #d8b4fe;
+}
+#root { background: var(--bp-paper); }
+.bp-paper { position:absolute; inset:0; background:
+  linear-gradient(rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(90deg, rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  linear-gradient(90deg, rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  radial-gradient(80% 60% at 50% 42%, #14254f 0%, #0a1530 68%, #060d20 100%); }
+.bp-grain { position:absolute; inset:0; opacity:.5; background: radial-gradient(120% 90% at 50% 50%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
+.bp-frame { position:absolute; left: 36px; top: 36px; right: 36px; bottom: 36px; border: 3px solid rgba(186,230,253,.35); }
+.bp-frame::before { content:""; position:absolute; left: 10px; top: 10px; right: 10px; bottom: 10px; border: 1px solid rgba(186,230,253,.18); }
+.bp-tb { position:absolute; left: 490px; top: 1436px; width: 550px; height: 140px; border: 3px solid rgba(186,230,253,.45); background: rgba(10,21,48,.6); display:grid; grid-template-columns: 1fr 120px; grid-template-rows: 1fr 1fr; }
+.bp-tb div { border: 1px solid rgba(186,230,253,.25); display:flex; align-items:center; padding: 0 16px; font: 400 30px "JetBrains Mono", monospace; color: var(--bp-dim); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; overflow:hidden; }
+.bp-tb b { font-weight: 400; color: var(--bp-ink); }
+.bp-fig { position:absolute; left: 100px; top: 232px; font: 400 30px "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--bp-line2); text-transform: uppercase; }
+.bp-display { font-family: "Chakra Petch", sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1.0; letter-spacing: .005em; color: var(--bp-ink); }
+.bp-body { font: 800 58px "Inter", sans-serif; color: var(--bp-ink); line-height: 1.1; }
+.bp-mono { font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .1em; }
+.kz-progress { height: 10px; background: rgba(186,230,253,.08); }
+.kz-progress > div { background: linear-gradient(90deg, #38bdf8, #7dd3fc 60%, #c6ff3d); }
+/* drawing */
+svg.bp { overflow: visible; }
+svg.bp .sh { fill: none; stroke: currentColor; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+svg.bp .int { fill: none; stroke: var(--bp-acc); stroke-width: 3; stroke-dasharray: 9 8; stroke-linecap: round; }
+svg.bp .guide { fill: none; stroke: rgba(186,230,253,.45); stroke-width: 2; stroke-dasharray: 6 8; }
+svg.bp .ld { fill: none; stroke: var(--bp-line2); stroke-width: 3; }
+svg.bp .tagc { fill: #0a1530; stroke: var(--bp-line2); stroke-width: 3; }
+svg.bp .tagt { font: 700 36px "Chakra Petch", sans-serif; fill: var(--bp-ink); text-anchor: middle; dominant-baseline: central; }
+.cap { position:absolute; left: 90px; width: 790px; top: 1150px; height: 246px; border: 3px solid rgba(186,230,253,.5); background: rgba(8,17,40,.92); }
+.cap::after { content:""; position:absolute; right: -3px; top: -3px; width: 26px; height: 26px; border-top: 6px solid var(--bp-acc); border-right: 6px solid var(--bp-acc); }
+.capi { position:absolute; left: 30px; right: 30px; top: 22px; opacity: 0; }
+.capi .hd { display:flex; align-items:center; gap: 18px; font: 400 36px "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--bp-acc); text-transform: uppercase; }
+.capi .hd i { font-style: normal; width: 56px; height: 56px; border-radius: 50%; border: 3px solid var(--bp-acc); display:flex; align-items:center; justify-content:center; font: 700 32px "Chakra Petch", sans-serif; color: var(--bp-acc); }
+.capi .tx { margin-top: 14px; text-wrap: balance; }
+.eye { position:absolute; border-radius:50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+#flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; z-index:70; }
+
+
+/* ================= 104 specifics ================= */
+.bp-paper { background:
+  linear-gradient(rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(90deg, rgba(125,211,252,.11) 2px, transparent 2px) -1px -1px / 150px 150px,
+  linear-gradient(rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  linear-gradient(90deg, rgba(125,211,252,.05) 1px, transparent 1px) 0 0 / 30px 30px,
+  radial-gradient(80% 50% at 45% 55%, #142a55 0%, #0a1530 66%, #060d20 100%); }
+#hookTxt { position:absolute; left: 110px; right: 182px; top: 250px; height: 430px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; z-index: 5; }
+#hookTxt .bp-display { font-size: 130px; white-space: nowrap; line-height: 1.02; }
+#hookTxt .g { color: var(--bp-acc); }
+#mapWrap { position:absolute; left: 90px; top: 470px; width: 900px; height: 850px; transform-origin: 450px 425px; }
+#map { position:absolute; inset: 0; width: 900px; height: 850px; overflow: visible; color: var(--bp-line); }
+#map .room { fill: rgba(125,211,252,.04); stroke: currentColor; stroke-width: 4; }
+#map .hatch { fill: none; stroke: rgba(125,211,252,.22); stroke-width: 2; }
+#route { fill: none; stroke: var(--bp-acc); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 2 16; }
+#routeDraw { fill: none; stroke: var(--bp-acc); stroke-width: 6; stroke-linecap: round; }
+#map .wp circle { fill: #0a1530; stroke: var(--bp-acc); stroke-width: 4; }
+#map .wp text { font: 700 28px "Chakra Petch", sans-serif; fill: var(--bp-ink); text-anchor: middle; dominant-baseline: central; }
+#map .metag { font: 400 30px "JetBrains Mono", monospace; fill: #d8b4fe; letter-spacing: .08em; text-anchor: middle; }
+#rec { position:absolute; left: 790px; top: 446px; display:flex; align-items:center; gap: 10px; font: 400 30px "JetBrains Mono", monospace; letter-spacing: .12em; color: #ff6b81; opacity: 0; }
+#rec i { width: 18px; height: 18px; border-radius: 50%; background: #ff4d6d; display:block; box-shadow: 0 0 12px #ff4d6d; }
+.cap { top: 236px; height: 190px; }
+.capi { top: 20px; }
+#vidWin { position:absolute; left: 160px; top: 520px; width: 760px; height: 556px; border-radius: 22px; overflow:hidden; border: 4px solid rgba(186,230,253,.7); box-shadow: 0 0 0 10px rgba(125,211,252,.10), 0 40px 120px rgba(0,0,0,.6); opacity: 0; background: #000; z-index: 6; }
+#vidWin video { position:absolute; left:0; top:0; width: 760px; height: 556px; object-fit: cover; }
+#vidWin .realtag { position:absolute; left: 18px; bottom: 18px; padding: 8px 18px; border-radius: 999px; background: rgba(6,13,32,.88); border: 2px solid #d8b4fe; font: 700 30px "Inter", sans-serif; letter-spacing: .04em; color: #d8b4fe; text-transform: uppercase; }
+#vidWin .corner { position:absolute; width: 60px; height: 60px; border-color: #c6ff3d; border-style: solid; border-width: 0; }
+#cls { position:absolute; left: 110px; right: 182px; top: 300px; height: 420px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+#cls .bp-display { font-size: 120px; line-height: 1.04; white-space: nowrap; }
+#cls .g { color: var(--bp-acc); }
+.ask { font: 900 62px "Inter", sans-serif; color: var(--bp-ink); max-width: 840px; line-height: 1.1; }
+.ask b { color: var(--bp-acc); }
+.kz-end .kz-url { color: var(--bp-ink); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="18.75" data-fps="30">
+  <div class="bp-paper" id="paper"></div>
+  <div class="bp-grain"></div>
+  <div class="bp-frame"></div>
+  <div class="bp-tb"><div><b>KizuBot</b>&nbsp;· desenho</div><div>1:1</div><div>Raio-X · fig. 4</div><div><b>4/5</b></div></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- MAP (0 – 15.1) -->
+  <section id="smap" class="clip" data-start="0" data-duration="15.1">
+    <div class="kz-full" id="smapin">
+      <div class="bp-fig" id="figL" style="opacity:0">fig. 4 — mapa da hunt (vista de cima)</div>
+      <div id="rec"><i id="recDot"></i>rec</div>
+      <div id="mapWrap">
+        <svg id="map" class="bp" viewBox="0 0 900 850">
+          <g id="rooms">
+            <rect class="room" x="90" y="90" width="260" height="220" rx="30" pathLength="1"/>
+            <rect class="room" x="560" y="70" width="280" height="220" rx="30" pathLength="1"/>
+            <rect class="room" x="560" y="540" width="300" height="240" rx="30" pathLength="1"/>
+            <rect class="room" x="100" y="520" width="290" height="240" rx="30" pathLength="1"/>
+            <rect class="room" x="350" y="118" width="210" height="72" rx="10" pathLength="1"/>
+            <rect class="room" x="664" y="290" width="76" height="250" rx="10" pathLength="1"/>
+            <rect class="room" x="390" y="646" width="170" height="76" rx="10" pathLength="1"/>
+            <rect class="room" x="158" y="310" width="76" height="210" rx="10" pathLength="1"/>
+          </g>
+          <g id="hatch" opacity="0">
+            <path class="hatch" d="M20,20 l60,60 M20,80 l60,60 M20,140 l60,60 M420,240 l60,60 M420,300 l60,60 M420,360 l60,60 M420,420 l60,60 M880,320 l-60,60 M880,380 l-60,60 M880,440 l-60,60"/>
+          </g>
+          <path id="route" d="M200,190 C300,150 520,140 690,170 C760,190 720,330 705,420 C690,520 760,620 690,680 C600,720 380,700 250,650 C170,620 190,500 195,420 C200,330 130,230 200,190 Z" opacity="0"/>
+          <path id="routeDraw" d="M200,190 C300,150 520,140 690,170 C760,190 720,330 705,420 C690,520 760,620 690,680 C600,720 380,700 250,650 C170,620 190,500 195,420 C200,330 130,230 200,190 Z" stroke-dasharray="1990 1990" stroke-dashoffset="1990"/>
+          <g id="wps">
+            <g class="wp" id="w1"><circle cx="200" cy="190" r="22"/><text x="200" y="191">1</text></g>
+            <g class="wp" id="w2"><circle cx="440" cy="152" r="22"/><text x="440" y="153">2</text></g>
+            <g class="wp" id="w3"><circle cx="690" cy="170" r="22"/><text x="690" y="171">3</text></g>
+            <g class="wp" id="w4"><circle cx="706" cy="420" r="22"/><text x="706" y="421">4</text></g>
+            <g class="wp" id="w5"><circle cx="690" cy="680" r="22"/><text x="690" y="681">5</text></g>
+            <g class="wp" id="w6"><circle cx="470" cy="694" r="22"/><text x="470" y="695">6</text></g>
+            <g class="wp" id="w7"><circle cx="250" cy="650" r="22"/><text x="250" y="651">7</text></g>
+            <g class="wp" id="w8"><circle cx="195" cy="420" r="22"/><text x="195" y="421">8</text></g>
+          </g>
+          <!-- on-the-way icons -->
+          <g id="icStairs" opacity="0" transform="translate(770 610)"><path d="M-40,30 h20 v-20 h20 v-20 h20 v-20 h20" fill="none" stroke="#c6ff3d" stroke-width="5" stroke-linejoin="round"/><path d="M22,-44 l18,0 l0,18" fill="none" stroke="#c6ff3d" stroke-width="5"/></g>
+          <g id="icLure">
+            <circle class="cr" cx="790" cy="110" r="11" fill="#fda4af" opacity="0"/><circle class="cr" cx="815" cy="215" r="11" fill="#fda4af" opacity="0"/>
+            <circle class="cr" cx="600" cy="250" r="11" fill="#fda4af" opacity="0"/><circle class="cr" cx="760" cy="262" r="11" fill="#fda4af" opacity="0"/>
+            <circle class="cr" cx="620" cy="95" r="11" fill="#fda4af" opacity="0"/>
+          </g>
+          <g id="icLoot" opacity="0" transform="translate(170 700)"><path d="M-24,-12 h48 l8,12 v28 a6,6 0 0 1 -6,6 h-52 a6,6 0 0 1 -6,-6 v-28 z M-16,-12 l6,-14 h20 l6,14" fill="none" stroke="#facc15" stroke-width="5" stroke-linejoin="round"/><circle cx="0" cy="12" r="7" fill="#facc15"/></g>
+          <g id="lblS" opacity="0"><text x="770" y="680" class="metag" style="fill:#c6ff3d">escada</text></g>
+          <g id="lblL" opacity="0"><text x="700" y="60" class="metag" style="fill:#fda4af">lure</text></g>
+          <g id="lblO" opacity="0"><text x="170" y="776" class="metag" style="fill:#facc15">loot</text></g>
+          <!-- the bot marker -->
+          <g id="me"><circle r="34" fill="rgba(198,255,61,.18)" id="meHalo"/><circle r="16" fill="#c6ff3d"/><text y="-30" class="metag">KIZUBOT</text></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOOK TEXT 0 – 2.3 -->
+  <section id="s1" class="clip" data-start="0" data-duration="2.3">
+    <div class="kz-full" id="s1in">
+      <div id="hookTxt"><div class="bp-display" id="h1">Como ele</div><div class="bp-display" id="h1b">anda</div><div class="bp-display g" id="h2">sozinho?</div></div>
+    </div>
+  </section>
+
+  <!-- CAPTIONS 2.143 – 13.5 -->
+  <section id="scap" class="clip" data-start="2.143" data-duration="11.35">
+    <div class="kz-full" id="scapin">
+      <div class="cap" id="cap">
+        <div class="capi" id="c1"><div class="hd"><i>1</i>recorder</div><div class="bp-body tx">grava a rota uma vez</div></div>
+        <div class="capi" id="c2"><div class="hd"><i>2</i>waypoints</div><div class="bp-body tx">a rota vira waypoints</div></div>
+        <div class="capi" id="c3"><div class="hd"><i>3</i>cavebot</div><div class="bp-body tx">o bot repete a rota</div></div>
+        <div class="capi" id="c4"><div class="hd"><i>4</i>no caminho</div><div class="bp-body tx">escada, lure e loot</div></div>
+        <div class="capi" id="c5"><div class="hd"><i>5</i>prova</div><div class="bp-body tx">na hunt de verdade</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- real gameplay window (untimed wrapper, timed video) -->
+  <div id="vidWin">
+    <video id="vg" src="kit/video/rypherior.mp4" muted playsinline data-start="10.714" data-duration="2.679" data-media-start="29.3"></video>
+    <div class="corner" style="left:14px; top:14px; border-left-width:6px; border-top-width:6px"></div>
+    <div class="corner" style="right:14px; top:14px; border-right-width:6px; border-top-width:6px"></div>
+    <div class="realtag">gameplay real</div>
+  </div>
+
+  <!-- CLOSE 13.393 – 15.1 -->
+  <section id="s4" class="clip" data-start="13.393" data-duration="1.7">
+    <div class="kz-full" id="s4in">
+      <div id="cls"><div class="bp-display" id="k1">Grava uma vez.</div><div class="bp-display g" id="k2">Ele repete.</div></div>
+    </div>
+  </section>
+
+  <!-- END 15.0 – 18.75 -->
+  <section id="send" class="clip" data-start="15.0" data-duration="3.75">
+    <div class="kz-end" id="sendin">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>Qual hunt você</div><div><b>gravaria primeiro?</b></div></div>
+    </div>
+  </section>
+
+  <!-- loop bridge -->
+  <section id="sb" class="clip" data-start="18.43" data-duration="0.32">
+    <div class="kz-full" id="sbin">
+      <div style="position:absolute; left:110px; right:182px; top:250px; height:430px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center">
+        <div class="bp-display" style="font-size:130px; white-space:nowrap; line-height:1.02">Como ele</div>
+        <div class="bp-display" style="font-size:130px; white-space:nowrap; line-height:1.02">anda</div>
+        <div class="bp-display" style="font-size:130px; white-space:nowrap; line-height:1.02; color:#c6ff3d">sozinho?</div>
+      </div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  gsap.registerPlugin(MotionPathPlugin);
+  const tl = gsap.timeline({ paused: true });
+  const D = 18.75;
+  const b = KZ.beats(112);            // beat 0.536 s, bar 2.143 s
+  const LIME = "#c6ff3d";
+  const MP = { path: "#route", autoRotate: false };
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#paper", { backgroundPosition: "-1px -1px, -1px -1px, 0 0, 0 0, 0 0" }, { backgroundPosition: "59px 59px, 59px 59px, 30px 30px, 30px 30px, 0 0", duration: D, ease: "none" }, 0);
+
+  /* ---------- hook: the map draws, the marker already walks ---------- */
+  tl.fromTo("#hookTxt", { scale: 1.06, filter: "blur(4px)" }, { scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, 0);
+  tl.fromTo("#h2", { scale: 1.3, x: -20 }, { scale: 1, x: 0, duration: 0.35, ease: "back.out(2.4)" }, 0.05);
+  tl.fromTo("#mapWrap", { scale: 0.76, y: 310, opacity: 0.6 }, { scale: 0.78, y: 300, opacity: 0.6, duration: 2.1, ease: "sine.inOut" }, 0);
+  tl.fromTo("#rooms .room", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0, duration: 0.5, stagger: 0.06, ease: "power2.out" }, 0);
+  tl.set("#route", { opacity: 1 }, 0.4);
+  tl.fromTo("#me", { motionPath: Object.assign({ start: 0, end: 0.001 }, MP) }, { motionPath: Object.assign({ start: 0, end: 0.5 }, MP), duration: 2.1, ease: "none" }, 0);
+  tl.fromTo("#meHalo", { attr: { r: 24 }, opacity: 0.9 }, { attr: { r: 48 }, opacity: 0, duration: 0.6, repeat: 3, ease: "power2.out" }, 0);
+  KZ.punch(tl, "#h2", b(2), 1.08, 0.3);
+  tl.to("#s1in", { y: -120, opacity: 0, duration: 0.22, ease: "power3.in" }, b(4) - 0.2);
+
+  /* ---------- 1: recorder draws the route ---------- */
+  const T1 = b(4);
+  tl.to("#mapWrap", { scale: 1.04, y: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, T1);
+  tl.set("#route", { opacity: 0 }, T1);
+  tl.set("#figL", { opacity: 1 }, T1 + 0.1);
+  tl.fromTo("#hatch", { opacity: 0 }, { opacity: 1, duration: 0.4 }, T1 + 0.2);
+  tl.fromTo("#cap", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T1 + 0.1);
+  function cap(n, t) {
+    for (let j = 1; j <= 5; j++) tl.set("#c" + j, { opacity: j === n ? 1 : 0 }, t);
+    tl.fromTo("#c" + n, { y: 20 }, { y: 0, duration: 0.25, ease: "power3.out", immediateRender: false }, t);
+    KZ.punch(tl, "#cap", t, 1.02, 0.25);
+  }
+  cap(1, T1 + 0.1);
+  tl.set("#rec", { opacity: 1 }, T1 + 0.3);
+  tl.fromTo("#recDot", { opacity: 1 }, { opacity: 0.15, duration: 0.25, yoyo: true, repeat: 9, ease: "steps(1)" }, T1 + 0.3);
+  const REC0 = T1 + 0.45, RECD = b(9) - REC0 - 0.05;
+  tl.fromTo("#routeDraw", { strokeDashoffset: 1990 }, { strokeDashoffset: 0, duration: RECD, ease: "none" }, REC0);
+  tl.to("#me", { motionPath: Object.assign({ start: 0, end: 1 }, MP), duration: RECD, ease: "none", immediateRender: false }, REC0);
+  /* ---------- 2: waypoints pop ---------- */
+  const T2 = b(9);
+  cap(2, T2);
+  tl.set("#rec", { opacity: 0 }, T2);
+  tl.fromTo("#wps .wp", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.25, stagger: 0.12, ease: "back.out(3)" }, T2 + 0.15);
+  tl.to("#routeDraw", { opacity: 0.35, duration: 0.3 }, T2 + 0.15);
+  tl.set("#route", { opacity: 1 }, T2 + 0.15);
+  /* ---------- 3: cavebot repeats (2 fast laps) ---------- */
+  const T3 = b(12);
+  cap(3, T3);
+  tl.to("#me", { motionPath: Object.assign({ start: 0, end: 1 }, MP), duration: 1.0, ease: "power1.inOut", immediateRender: false }, T3 + 0.1);
+  tl.to("#me", { motionPath: Object.assign({ start: 0, end: 1 }, MP), duration: 0.85, ease: "none", immediateRender: false }, T3 + 1.12);
+  tl.fromTo("#route", { strokeDashoffset: 0 }, { strokeDashoffset: -180, duration: 2.1, ease: "none" }, T3);
+  [1, 2, 3, 4, 5, 6, 7, 8].forEach(function (k, i) {
+    tl.fromTo("#w" + k + " circle", { attr: { fill: "#0a1530" } }, { attr: { fill: LIME }, duration: 0.08, yoyo: true, repeat: 1, immediateRender: false }, T3 + 0.1 + i * 0.125);
+  });
+  /* ---------- 4 (drop): stairs, lure, loot on the way ---------- */
+  const T4 = b(16);
+  KZ.flash(tl, "#flash", T4, 0.5, "#bae6fd");
+  cap(4, T4);
+  // marker walks a lap with stops
+  tl.to("#me", { motionPath: Object.assign({ start: 0, end: 0.18 }, MP), duration: 0.35, ease: "power2.out", immediateRender: false }, T4);
+  // lure: creatures gather to the marker near waypoint 3
+  tl.set("#icLure .cr", { opacity: 1 }, T4);
+  tl.fromTo("#icLure .cr", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.2, stagger: 0.05, ease: "back.out(3)" }, T4);
+  tl.set("#lblL", { opacity: 1 }, T4 + 0.1);
+  tl.to("#me", { motionPath: Object.assign({ start: 0.18, end: 0.27 }, MP), duration: 0.4, ease: "power2.inOut", immediateRender: false }, T4 + 0.4);
+  tl.to("#icLure .cr", { attr: { cx: 690, cy: 170 }, duration: 0.45, ease: "power2.in" }, T4 + 0.5);
+  tl.to("#icLure .cr", { opacity: 0, duration: 0.1 }, T4 + 0.95);
+  // stairs near waypoint 5
+  tl.to("#me", { motionPath: Object.assign({ start: 0.27, end: 0.52 }, MP), duration: 0.5, ease: "power2.inOut", immediateRender: false }, T4 + 1.0);
+  tl.fromTo("#icStairs", { opacity: 0, scale: 0.4, svgOrigin: "770 610" }, { opacity: 1, scale: 1, svgOrigin: "770 610", duration: 0.25, ease: "back.out(3)" }, T4 + 1.3);
+  tl.set("#lblS", { opacity: 1 }, T4 + 1.35);
+  // loot near waypoint 7
+  tl.to("#me", { motionPath: Object.assign({ start: 0.52, end: 0.77 }, MP), duration: 0.5, ease: "power2.inOut", immediateRender: false }, T4 + 1.55);
+  tl.fromTo("#icLoot", { opacity: 0, scale: 0.4, svgOrigin: "170 700" }, { opacity: 1, scale: 1, svgOrigin: "170 700", duration: 0.25, ease: "back.out(3)" }, T4 + 1.85);
+  tl.set("#lblO", { opacity: 1 }, T4 + 1.9);
+  tl.to("#me", { motionPath: Object.assign({ start: 0.77, end: 1 }, MP), duration: 0.25, ease: "power1.in", immediateRender: false }, T4 + 1.9);
+  /* ---------- 5: real gameplay ---------- */
+  const T5 = b(20);
+  cap(5, T5);
+  tl.to("#mapWrap", { opacity: 0.25, scale: 0.94, duration: 0.3 }, T5 - 0.1);
+  tl.fromTo("#vidWin", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, T5);
+  tl.to("#vidWin", { scale: 1.03, duration: 2.2, ease: "sine.inOut" }, T5 + 0.4);
+  tl.to("#vidWin", { opacity: 0, scale: 0.9, duration: 0.2, ease: "power2.in" }, b(25) - 0.2);
+  tl.to(["#scapin"], { opacity: 0, duration: 0.2 }, b(25) - 0.2);
+  /* ---------- close ---------- */
+  const T6 = b(25);
+  tl.to("#mapWrap", { opacity: 0.18, duration: 0.3 }, T6);
+  KZ.slam(tl, "#k1", T6, 1.6);
+  tl.fromTo("#k2", { scale: 0.3, opacity: 0, rotation: -5 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.3, ease: "back.out(2.4)" }, T6 + 0.4);
+  tl.to("#me", { motionPath: Object.assign({ start: 0, end: 0.5 }, MP), duration: 1.5, ease: "none", immediateRender: false }, T6);
+  tl.to(["#s4in", "#smapin"], { opacity: 0, scale: 0.94, duration: 0.18, ease: "power2.in" }, b(28) - 0.18);
+
+  /* ---------- end card ---------- */
+  const TE = b(28);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, TE + 0.02);
+  KZ.eyePulse(tl, "#eye2", TE + 0.12, 3);
+  KZ.rise(tl, "#endUrl", TE + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", TE + 0.85, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, TE + 0.8);
+  tl.to("#sendin", { opacity: 0, scale: 0.96, duration: 0.16, ease: "power1.in" }, D - 0.36);
+  tl.fromTo("#sbin", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, D - 0.3);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

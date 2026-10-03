@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>057 7 alarmes em 29 minutos</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F04 · ESPERA O ALARME — ep. 057 (top-down desk) ================= */
+  :root { --f4-ink: #f4f1fb; --f4-dim: #c3bdd3; --f4-lime: #c6ff3d; --f4-gold: #ffd166; }
+  #root { background: #060509; }
+
+  .f4-set { position: absolute; inset: 0; overflow: hidden; }
+  #setCam { position: absolute; inset: -120px; }
+  #desk { position: absolute; inset: 0;
+    background:
+      radial-gradient(60% 40% at 22% 18%, rgba(255, 236, 210, .10), rgba(255, 236, 210, 0) 70%),
+      radial-gradient(110% 70% at 50% 58%, #22202b 0%, #141219 55%, #07060a 100%); }
+  #felt { position: absolute; inset: 0; opacity: .55; mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' seed='9' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .8  0 0 0 0 .8  0 0 0 0 .9  0 0 0 1.2 -0.3'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+    background-size: 300px 300px; }
+  /* keyboard (top-down, out of focus) */
+  #kb { position: absolute; left: -40px; top: 1560px; width: 760px; height: 300px; border-radius: 26px; background: #0d0c12;
+    box-shadow: 0 0 80px rgba(150, 90, 255, .35), 0 30px 60px rgba(0,0,0,.6); transform: rotate(-9deg); filter: blur(5px); }
+  .key { position: absolute; width: 44px; height: 44px; border-radius: 9px; background: #1a1822; box-shadow: 0 0 10px rgba(168, 85, 247, .55), inset 0 -3px 0 rgba(0,0,0,.4); }
+  /* mug (top-down, out of focus) */
+  #mug { position: absolute; left: 860px; top: 1180px; width: 330px; height: 330px; border-radius: 50%; filter: blur(6px);
+    background: radial-gradient(circle, #2a160c 0 52%, #3b2a22 53% 62%, #e9e3dc 63% 72%, #bdb5ad 73% 76%, rgba(0,0,0,0) 77%); }
+  #mugH { position: absolute; left: 760px; top: 1300px; width: 120px; height: 90px; border-radius: 45px; border: 22px solid #d9d2ca; filter: blur(6px); }
+  .f4-topshade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,5,9,.9) 0%, rgba(6,5,9,.62) 30%, rgba(6,5,9,0) 52%); }
+  .f4-vig { position: absolute; inset: 0; background: radial-gradient(105% 72% at 50% 46%, rgba(0,0,0,0) 45%, rgba(0,0,0,.85) 100%); pointer-events: none; }
+  #grain { position: absolute; inset: -240px; opacity: .12; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -0.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 240px 240px; }
+  #roomTint { position: absolute; inset: 0; background: radial-gradient(80% 55% at 50% 40%, rgba(150, 80, 255, .5), rgba(60, 20, 120, .3) 55%, rgba(10, 4, 20, 0) 100%); mix-blend-mode: screen; opacity: 0; }
+  .kz-progress { height: 8px; background: rgba(255,255,255,.06); }
+  .kz-progress > div { background: linear-gradient(90deg, #8b5cf6, var(--f4-lime)); }
+
+  /* phone (flat lay) */
+  #phoneRig { position: absolute; left: 250px; top: 990px; width: 580px; height: 1180px; }
+  #phoneGlow { position: absolute; left: -360px; top: -320px; width: 1300px; height: 1500px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(170, 120, 255, .42), rgba(140, 90, 255, .12) 55%, rgba(140, 90, 255, 0) 100%); mix-blend-mode: screen; }
+  #phoneBuzz { position: absolute; inset: 0; }
+  #phoneRot { position: absolute; inset: 0; transform: rotate(-5deg); }
+  .phone { position: absolute; inset: 0; border-radius: 84px; padding: 16px; background: linear-gradient(150deg, #34343e 0%, #101015 34%, #050507 100%);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.10), inset 0 0 0 7px #060608, 30px 50px 80px rgba(0,0,0,.7); }
+  .screen { position: absolute; inset: 16px; border-radius: 70px; overflow: hidden; background: radial-gradient(130% 70% at 50% 0%, #2c1656 0%, #130a25 50%, #07050c 100%); }
+  .island { position: absolute; top: 36px; left: 50%; width: 38px; margin-left: -19px; height: 38px; border-radius: 50%; background: #000; box-shadow: inset 0 0 0 4px #15151b; }
+  .ls-time { position: absolute; top: 120px; left: 0; right: 0; text-align: center; font: 400 150px "Sora", sans-serif; color: rgba(255,255,255,.94); letter-spacing: -0.04em; line-height: 1; }
+  .card { position: absolute; left: 22px; right: 22px; top: 330px; height: 118px; border-radius: 34px; padding: 18px 22px;
+    background: linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,.12)); border: 2px solid rgba(255,255,255,.15); display: flex; gap: 16px; align-items: center; }
+  .card .ic { width: 70px; height: 70px; border-radius: 18px; overflow: hidden; flex: none; background: radial-gradient(circle at 50% 35%, #4a1a8a, #12081f); }
+  .card .ic img { width: 100%; display: block; }
+  .card .tx { flex: 1; min-width: 0; }
+  .card .ap { font: 800 24px "Inter", sans-serif; color: #fff; white-space: nowrap; }
+  .card .ms { margin-top: 8px; height: 22px; border-radius: 11px; background: rgba(255,255,255,.55); filter: blur(7px); }
+  .buzzRing { position: absolute; left: -40px; top: -40px; width: 660px; height: 1260px; border-radius: 120px; border: 6px solid rgba(198, 255, 61, .8); opacity: 0; }
+
+  /* counter + clock */
+  .hookBox { position: absolute; left: 120px; right: 192px; top: 236px; height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; }
+  .cntWrap { position: relative; width: 600px; height: 430px; }
+  .cnt { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Anton", sans-serif; font-size: 450px; line-height: 1; color: var(--f4-lime);
+    text-shadow: 0 0 70px rgba(198, 255, 61, .35); opacity: 0; font-variant-numeric: tabular-nums; }
+  #k7 { opacity: 1; }
+  .lab { font-family: "Anton", sans-serif; font-size: 128px; line-height: 1.02; color: var(--f4-ink); text-transform: uppercase; }
+  .sub { font-family: "Anton", sans-serif; font-size: 96px; line-height: 1.05; color: var(--f4-ink); text-transform: uppercase; margin-top: 6px; }
+  #clockRow { position: absolute; left: 120px; right: 192px; top: 800px; display: flex; justify-content: center; align-items: center; gap: 20px; opacity: 0; }
+  #clock { font: 700 84px "JetBrains Mono", monospace; color: var(--f4-ink); letter-spacing: -0.02em; }
+  .dot { width: 26px; height: 26px; border-radius: 50%; background: #ff4d4d; box-shadow: 0 0 20px #ff4d4d; }
+  #silence { position: absolute; left: 90px; width: 800px; top: 400px; text-align: center; font-family: "Instrument Serif", serif; font-style: italic; font-size: 104px; line-height: 1.05; color: var(--f4-ink); opacity: 0; }
+
+  /* reveal */
+  #rays { position: absolute; left: 50%; top: 640px; width: 2400px; height: 2400px; margin: -1200px 0 0 -1200px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(210, 255, 120, .12) 0deg 6deg, rgba(210, 255, 120, 0) 6deg 18deg);
+    -webkit-mask-image: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.4) 45%, transparent 75%); mask-image: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.4) 45%, transparent 75%); opacity: 0; }
+  #printWrap { position: absolute; left: 90px; top: 330px; width: 900px; height: 519px; }
+  .f4-print { position: absolute; inset: 0; border-radius: 28px; overflow: hidden; background: #1b1b1f; box-shadow: 0 0 0 3px rgba(198, 255, 61, .5), 0 40px 120px rgba(124, 58, 237, .45); }
+  .f4-print img { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+  .ph-row { position: absolute; left: 11%; right: 6.5%; height: 10.6%; border-radius: 12px; background: #1f5a48; }
+  .f4-tag { position: absolute; left: 90px; top: 262px; padding: 10px 20px; border-radius: 999px; background: rgba(8, 5, 14, .85); border: 2px solid var(--f4-lime);
+    font: 700 30px "JetBrains Mono", monospace; letter-spacing: .08em; color: var(--f4-lime); text-transform: uppercase; }
+  .sweep { position: absolute; left: 0; right: 0; height: 13%; background: linear-gradient(90deg, rgba(198,255,61,0), rgba(198,255,61,.38) 40%, rgba(198,255,61,.0)); opacity: 0; }
+  .gold { position: absolute; left: 1%; right: 1%; height: 13.8%; border-radius: 14px; border: 6px solid var(--f4-gold); box-shadow: 0 0 30px rgba(255, 209, 102, .55); opacity: 0; }
+  .tally { position: absolute; left: 90px; width: 790px; top: 900px; height: 120px; display: flex; justify-content: center; align-items: center; }
+  .tally .n { font-family: "Anton", sans-serif; font-size: 120px; line-height: 1; color: var(--f4-lime); width: 110px; text-align: center; opacity: 0; position: absolute; }
+  .chips { position: absolute; left: 90px; width: 790px; top: 1040px; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .chip { padding: 14px 28px; border-radius: 999px; font: 800 52px "Inter", sans-serif; background: rgba(20, 12, 34, .92); border: 3px solid rgba(216,180,254,.45); color: var(--f4-ink); }
+  .chip b { color: var(--f4-gold); }
+  .spark { position: absolute; left: 0; top: 0; width: 18px; height: 18px; opacity: 0; }
+  #sparkField { position: absolute; left: 540px; top: 590px; width: 0; height: 0; }
+
+  /* reaction */
+  #reactWrap { position: absolute; left: 90px; top: 380px; width: 900px; height: 380px; }
+  .react { position: absolute; inset: 0; border-radius: 28px; overflow: hidden; background: #202024; box-shadow: 0 0 0 3px rgba(216, 180, 254, .55), 0 40px 120px rgba(124, 58, 237, .4); }
+  .react img { position: absolute; left: 0; width: 100%; display: block; }
+  .ph-quote { position: absolute; left: 5%; top: 12%; width: 50%; height: 12%; border-radius: 10px; background: rgba(255,255,255,.4); }
+  .ph-eyes { position: absolute; left: 3%; top: 40%; width: 38%; height: 52%; border-radius: 26px; background: #333; }
+  .rq { position: absolute; left: 90px; width: 790px; top: 840px; text-align: center; }
+  .rq .q { font-family: "Instrument Serif", serif; font-style: italic; font-size: 132px; line-height: 1; color: var(--f4-gold); }
+  .rq .m { font: 700 32px "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--f4-dim); margin-top: 22px; }
+
+  /* line */
+  .big { font-family: "Anton", sans-serif; font-size: 138px; line-height: 1.04; text-transform: uppercase; color: var(--f4-ink); }
+  .lime { color: var(--f4-lime); }
+  .pill { display: inline-block; margin-top: 40px; padding: 16px 32px; border-radius: 999px; font: 800 52px "Inter", sans-serif; background: var(--f4-lime); color: #10140a; }
+
+  .eye { position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+  .ask { font: 900 64px "Inter", sans-serif; color: var(--f4-ink); max-width: 800px; line-height: 1.12; }
+  .ask b { color: var(--f4-lime); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  #hush { position: absolute; inset: 0; background: radial-gradient(60% 42% at 50% 48%, #2a1546 0%, #150d24 70%); opacity: 0; pointer-events: none; z-index: 44; }
+  #blackout { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 45; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="19.9" data-fps="30">
+  <div class="f4-set">
+    <div id="setCam">
+      <div id="desk"></div>
+      <div id="felt"></div>
+      <div id="kb"></div>
+      <div id="mug"></div>
+      <div id="mugH"></div>
+    </div>
+    <div id="revealDim" style="position:absolute; inset:0; background:rgba(6,4,10,.7); opacity:0"></div>
+    <div id="roomTint"></div>
+  </div>
+
+  <!-- STAGE: phone on the desk, 0 - 8.28 -->
+  <section id="stage" class="clip" data-start="0" data-duration="8.27">
+    <div id="stageIn" style="position:absolute; inset:0">
+      <div id="phoneRig">
+        <div id="phoneGlow"></div>
+        <div id="phoneBuzz">
+          <div id="phoneRot">
+            <div class="buzzRing" id="bring"></div>
+            <div class="phone">
+              <div class="screen" id="screen">
+                <div class="ls-time" id="lsTime">16:37</div>
+                <div id="stack"></div>
+              </div>
+              <div class="island"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="f4-topshade"></div>
+
+  <!-- counter + clock: 0 - 8.28 -->
+  <section id="s1" class="clip" data-start="0" data-duration="8.27">
+    <div id="s1in" style="position:absolute; inset:0">
+      <div class="hookBox">
+        <div class="cntWrap" id="cntWrap">
+          <div class="cnt" id="k7">7</div>
+          <div class="cnt" id="c0">0</div><div class="cnt" id="c1">1</div><div class="cnt" id="c2">2</div><div class="cnt" id="c3">3</div>
+          <div class="cnt" id="c4">4</div><div class="cnt" id="c5">5</div><div class="cnt" id="c6">6</div><div class="cnt" id="c7">7</div>
+        </div>
+        <div class="lab" id="lab">alarmes</div>
+        <div class="sub" id="sub">em 29 minutos.</div>
+      </div>
+      <div id="clockRow"><div class="dot" id="dot"></div><div id="clock">16:37</div></div>
+      <div id="silence">13 minutos de silêncio…</div>
+    </div>
+  </section>
+
+  <!-- REVEAL 8.28 - 11.59 -->
+  <section id="s4" class="clip" data-start="8.276" data-duration="3.31">
+    <div id="s4in" style="position:absolute; inset:0">
+      <div id="rays"></div>
+      <div id="printWrap">
+        <div class="f4-print" id="print">
+          <img src="kit/img/prints/shiny-raichu-7-alarms--alarms.png" alt="" />
+        </div>
+        <div class="sweep" id="sw1" style="top:1.6%"></div><div class="sweep" id="sw2" style="top:15.6%"></div><div class="sweep" id="sw3" style="top:29.5%"></div>
+        <div class="sweep" id="sw4" style="top:43.5%"></div><div class="sweep" id="sw5" style="top:57.5%"></div><div class="sweep" id="sw6" style="top:71.3%"></div>
+        <div class="sweep" id="sw7" style="top:85.1%"></div>
+        <div class="gold" id="gd2" style="top:15.2%"></div><div class="gold" id="gd6" style="top:70.9%"></div><div class="gold" id="gd7" style="top:84.7%"></div>
+      </div>
+      <div class="f4-tag" id="tag4">print real de cliente</div>
+      <div id="sparkField"></div>
+      <div class="tally" id="tally">
+        <div class="n" id="t1">1</div><div class="n" id="t2">2</div><div class="n" id="t3">3</div><div class="n" id="t4">4</div><div class="n" id="t5">5</div><div class="n" id="t6">6</div><div class="n" id="t7">7</div>
+      </div>
+      <div class="chips" id="chips">
+        <span class="chip" id="ch1"><b>5</b> alarmes de shiny</span>
+        <span class="chip" id="ch2"><b>1</b> drop raro</span>
+        <span class="chip" id="ch3"><b>1</b> captura</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- REACTION 11.59 - 14.9 -->
+  <section id="s5" class="clip" data-start="11.586" data-duration="3.31">
+    <div id="s5in" style="position:absolute; inset:0">
+      <div id="reactWrap">
+        <div class="react" id="react">
+          <img src="kit/img/prints/shiny-raichu-7-alarms.png" alt="" style="top:-333px" />
+        </div>
+      </div>
+      <div class="f4-tag" id="tag5" style="top:312px">print real de cliente</div>
+      <div class="rq" id="rq">
+        <div class="q">“vou la conferir”</div>
+        <div class="m">16:41 · 4 minutos depois</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINE 14.9 - 16.55 -->
+  <section id="s6" class="clip" data-start="14.897" data-duration="1.66">
+    <div class="kz-safe" id="s6in" style="right:200px; bottom:600px">
+      <div class="big" id="l1" style="font-size:108px">Você não precisa</div>
+      <div class="big lime" id="l2" style="font-size:132px">ficar olhando.</div>
+      <div><span class="pill" id="l3">o celular avisa</span></div>
+    </div>
+  </section>
+
+  <!-- END 16.55 - 19.9 -->
+  <section id="end" class="clip" data-start="16.552" data-duration="3.348">
+    <div class="kz-end" id="endIn" style="padding-right:200px">
+      <div style="position:relative; width:540px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" style="width:540px" />
+        <div class="eye" id="eye" style="left:169px; top:7px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">Qual foi o seu <b>recorde de alarmes?</b></div>
+    </div>
+  </section>
+
+  <div class="f4-vig"></div>
+  <div id="grain"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+  <div id="hush"></div>
+  <div id="blackout"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 19.9;
+  const b = KZ.beats(145);            // beat 0.4138 s, bar 1.655 s
+  const BAR = b(4);
+
+  /* ---------- build-time DOM: keyboard keys + notification cards ---------- */
+  (function () {
+    const kb = document.getElementById("kb");
+    for (let r = 0; r < 5; r++) for (let c = 0; c < 14; c++) {
+      const k = document.createElement("div"); k.className = "key";
+      k.style.left = (22 + c * 52 + (r % 2) * 14) + "px"; k.style.top = (24 + r * 52) + "px"; kb.appendChild(k);
+    }
+    const st = document.getElementById("stack");
+    for (let i = 1; i <= 7; i++) {
+      const c = document.createElement("div"); c.className = "card"; c.id = "card" + i;
+      c.innerHTML = '<div class="ic"><img src="kit/img/brand/kizubot-head.png" alt="" /></div><div class="tx"><div class="ap">KizuBot™ | kizubot.com</div><div class="ms" style="width:' + (62 + (i * 37) % 30) + '%"></div></div>';
+      st.appendChild(c);
+    }
+  })();
+
+  /* ---------- ambient ---------- */
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#setCam", { rotation: -1.2, scale: 1.02 }, { rotation: 1.2, scale: 1.07, duration: D, ease: "sine.inOut" }, 0);
+  tl.fromTo("#grain", { x: 0, y: 0 }, { x: -120, y: 96, duration: D, ease: "steps(" + Math.round(D * 12) + ")" }, 0);
+  tl.fromTo("#phoneRig", { y: 30, rotation: 0 }, { y: -10, rotation: 1.5, duration: 8.2, ease: "sine.inOut" }, 0);
+
+  /* ---------- the real alarm times (minutes after 16:00) mapped to screen time ---------- */
+  const T0 = 1.70, K = 0.2;                     // 16:07 at 1.70 s, 0.2 s per minute
+  const tOf = function (m) { return T0 + (m - 7) * K; };
+  const ALARMS = [8, 16, 21, 23, 36, 36.5, 37]; // 16:08 16:16 16:21 16:23 16:36 16:36 16:37
+  const SLOT = 132;
+
+  /* hook state: all 7 cards stacked (result first), counter 7 */
+  for (let j = 1; j <= 7; j++) {
+    tl.fromTo("#card" + j, { y: (7 - j) * SLOT, opacity: 1, scale: 1 }, { y: -260, opacity: 0, duration: 0.26, ease: "power3.in" }, 1.22 + (7 - j) * 0.035);
+  }
+  function buzz(at, seed, amp) {
+    KZ.shake(tl, "#phoneBuzz", at, amp || 9, 0.3, seed);
+    tl.fromTo("#bring", { scale: 0.97, opacity: 0.85 }, { scale: 1.06, opacity: 0, duration: 0.4, ease: "power2.out", immediateRender: false }, at);
+    tl.fromTo("#screen", { filter: "brightness(1.5)" }, { filter: "brightness(1)", duration: 0.35, ease: "power2.out", immediateRender: false }, at);
+  }
+  buzz(0.0, 3, 11);
+
+  // hook type
+  tl.fromTo("#k7", { scale: 1.5, opacity: 0.55 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0);
+  KZ.slam(tl, "#lab", 0.12, 1.7);
+  KZ.slam(tl, "#sub", b(0.75), 1.7);
+  tl.to("#k7", { scale: 1.05, duration: 0.9, ease: "sine.inOut" }, 0.3);
+
+  // rewind (scratch): counter 7 -> 0, clock 16:37 -> 16:07
+  tl.to("#k7", { opacity: 0, scale: 0.6, rotation: -10, duration: 0.2, ease: "power2.in" }, 1.25);
+  tl.to("#sub", { opacity: 0, y: -30, duration: 0.18, ease: "power2.in" }, 1.25);
+  KZ.shake(tl, "#s1in", 1.25, 10, 0.3, 61);
+  tl.fromTo("#c0", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 0.35, duration: 0.25, ease: "back.out(2)" }, 1.48);
+  tl.fromTo("#clockRow", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 1.42);
+  const clk = { m: 37 };
+  const clockEls = [document.getElementById("clock"), document.getElementById("lsTime")];
+  const setClock = function () { const v = Math.floor(clk.m + 1e-6); const s = "16:" + String(v).padStart(2, "0"); clockEls.forEach(function (e) { e.textContent = s; }); };
+  tl.fromTo(clk, { m: 37 }, { m: 7, duration: 0.4, ease: "power2.inOut", onUpdate: setClock }, 1.25);
+  tl.fromTo(clk, { m: 7 }, { m: 37, duration: (37 - 7) * K, ease: "none", onUpdate: setClock, immediateRender: false }, T0);
+  tl.fromTo("#dot", { opacity: 1 }, { opacity: 0.25, duration: 0.3, ease: "steps(1)", yoyo: true, repeat: 19 }, T0);
+
+  // the 7 alarms, each at its real minute
+  ALARMS.forEach(function (m, i) {
+    const at = tOf(m), n = i + 1;
+    buzz(at, 70 + i, 8 + i);
+    // counter
+    tl.set("#c" + (n - 1), { opacity: 0 }, at);
+    tl.fromTo("#c" + n, { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "power4.out" }, at);
+    KZ.shake(tl, "#cntWrap", at, 6 + i * 2, 0.18, 80 + i);
+    tl.fromTo("#clock", { color: "#c6ff3d" }, { color: "#f4f1fb", duration: 0.4, ease: "power1.out", immediateRender: false }, at);
+    // card n enters the top slot, older cards slide down
+    tl.fromTo("#card" + n, { y: -70, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.22, ease: "power3.out", immediateRender: false }, at);
+    for (let j = 1; j < n; j++) tl.to("#card" + j, { y: (n - j) * SLOT, duration: 0.22, ease: "power3.out" }, at);
+  });
+  tl.to("#lab", { scale: 1.04, duration: 5.5, ease: "sine.inOut" }, 1.9);
+
+  // the 13-minute gap
+  tl.fromTo("#silence", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, tOf(23) + 0.35);
+  tl.to("#silence", { opacity: 0, duration: 0.15, ease: "power2.in" }, tOf(36) - 0.12);
+  tl.to(["#cntWrap", "#lab"], { opacity: 0.0, duration: 0.3, ease: "power2.out" }, tOf(23) + 0.3);
+  tl.to(["#cntWrap", "#lab"], { opacity: 1, duration: 0.1, ease: "none" }, tOf(36) - 0.05);
+  tl.to("#phoneRig", { scale: 1.06, duration: 2.3, ease: "sine.in" }, tOf(23) + 0.3);
+
+  // blackout + silence before the reveal
+  tl.fromTo("#hush", { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none" }, 7.9);
+  tl.set("#hush", { opacity: 0 }, 8.276);
+
+  /* ---------- REVEAL ---------- */
+  const R = 8.276;
+  KZ.flash(tl, "#flash", R, 0.95);
+  tl.fromTo("#roomTint", { opacity: 0 }, { opacity: 0.85, duration: 0.6, ease: "power2.out" }, R);
+  tl.fromTo("#revealDim", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, R);
+  tl.fromTo("#rays", { opacity: 0, rotation: 0, scale: 0.7 }, { opacity: 1, rotation: 30, scale: 1, duration: 3.3, ease: "power1.out" }, R);
+  tl.fromTo("#printWrap", { scale: 1.2, filter: "blur(32px) brightness(2.2)" }, { scale: 1, filter: "blur(0px) brightness(1)", duration: 0.7, ease: "power3.out" }, R);
+  KZ.shake(tl, "#printWrap", R + 0.02, 6, 0.22, 91);
+  KZ.pop(tl, "#tag4", R + 0.35, 0.35);
+  (function () {
+    const field = document.getElementById("sparkField");
+    const cols = ["#ffd166", "#ffffff", "#c6ff3d", "#d8b4fe"];
+    const pr = function (n) { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+    const parts = [];
+    for (let i = 0; i < 24; i++) {
+      const el = document.createElement("div"); el.className = "spark";
+      const s = 9 + pr(i * 3 + 1) * 14; el.style.width = s + "px"; el.style.height = s + "px"; el.style.background = cols[i % 4]; el.style.borderRadius = (i % 2 ? "50%" : "3px");
+      field.appendChild(el);
+      const a = pr(i * 5 + 2) * Math.PI * 2, sp = 380 + pr(i * 7 + 3) * 520;
+      parts.push({ el: el, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 160 });
+    }
+    const dr = { T: 0 }, FL = 1.1;
+    tl.fromTo(dr, { T: 0 }, { T: 1, duration: FL, ease: "none", onUpdate: function () {
+      const t = dr.T * FL, fade = Math.min(1, (1 - dr.T) / 0.35);
+      parts.forEach(function (p) { p.el.style.transform = "translate(" + (p.vx * t) + "px," + (p.vy * t + 350 * t * t) + "px) rotate(" + (200 * t) + "deg)"; p.el.style.opacity = String(dr.T === 0 ? 0 : fade); });
+    } }, R + 0.04);
+  })();
+  // count the lines again: 1..7 (fast, satisfying)
+  for (let i = 1; i <= 7; i++) {
+    const at = R + 0.45 + (i - 1) * 0.15;
+    tl.fromTo("#sw" + i, { opacity: 0, x: -200 }, { opacity: 1, x: 0, duration: 0.12, ease: "power2.out" }, at);
+    tl.to("#sw" + i, { opacity: 0, duration: 0.3, ease: "power2.in" }, at + 0.16);
+    if (i > 1) tl.set("#t" + (i - 1), { opacity: 0 }, at);
+    tl.fromTo("#t" + i, { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.12, ease: "power3.out" }, at);
+  }
+  // the gold ones
+  ["#gd2", "#gd6", "#gd7"].forEach(function (g, i) {
+    tl.fromTo(g, { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, R + b(4) + i * 0.14);
+  });
+  tl.to("#t7", { opacity: 0, duration: 0.15 }, R + b(4) - 0.1);
+  KZ.pop(tl, "#ch1", R + b(4) + 0.1, 0.35);
+  KZ.pop(tl, "#ch2", R + b(4) + 0.3, 0.35);
+  KZ.pop(tl, "#ch3", R + b(4) + 0.5, 0.35);
+  tl.to("#printWrap", { scale: 1.03, duration: 2.0, ease: "sine.inOut" }, R + 1.0);
+  tl.to("#s4in", { opacity: 0, scale: 0.95, duration: 0.18, ease: "power2.in" }, 11.586 - 0.2);
+
+  /* ---------- REACTION ---------- */
+  const Q = 11.586;
+  tl.fromTo("#reactWrap", { y: 120, opacity: 0, rotation: 3 }, { y: 0, opacity: 1, rotation: -1, duration: 0.4, ease: "power3.out" }, Q);
+  KZ.pop(tl, "#tag5", Q + 0.25, 0.3);
+  tl.fromTo("#rq", { scale: 0.6, opacity: 0, rotation: -4 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.4, ease: "back.out(2.2)" }, Q + b(1.5));
+  tl.to("#reactWrap", { y: -16, scale: 1.03, duration: 2.6, ease: "sine.inOut" }, Q + 0.4);
+  tl.to("#s5in", { opacity: 0, y: -40, duration: 0.18, ease: "power2.in" }, 14.897 - 0.2);
+
+  /* ---------- LINE ---------- */
+  const L = 14.897;
+  KZ.slam(tl, "#l1", L, 1.6);
+  KZ.slam(tl, "#l2", L + b(1), 1.8);
+  KZ.pop(tl, "#l3", L + b(2), 0.35);
+  tl.to("#s6in", { opacity: 0, scale: 0.94, duration: 0.16, ease: "power2.in" }, 16.552 - 0.18);
+
+  /* ---------- END ---------- */
+  const E = 16.552;
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, E + 0.04);
+  KZ.eyePulse(tl, "#eye", E + 0.14, 3);
+  KZ.rise(tl, "#endUrl", E + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", E + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, E + 0.6);
+  tl.fromTo("#blackout", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.in", immediateRender: false }, D - 0.4);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

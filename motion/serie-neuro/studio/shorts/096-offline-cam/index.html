@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>096 Agora dá pra assistir sua hunt depois</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/MorphSVGPlugin.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+/* ================= F12 · NOVIDADE NO KIZUBOT — "patch notes" system ================= */
+:root {
+  --pn-bg: #07050d; --pn-panel: #120c1d; --pn-panel2: #1b1229;
+  --pn-line: rgba(216,180,254,.24); --pn-ink: #f5f0fa; --pn-dim: #bcb0d2;
+  --pn-lime: #c6ff3d; --pn-vio: #a855f7; --pn-mag: #e879f9;
+  --pn-acc: #ff4d5e;            /* episode accent (096: REC red) */
+}
+#root { background: var(--pn-bg); }
+.pn-bg { position:absolute; inset:0; background:
+  radial-gradient(62% 36% at 10% 6%, rgba(124,58,237,.50) 0%, rgba(124,58,237,0) 70%),
+  radial-gradient(58% 34% at 94% 92%, rgba(232,121,249,.26) 0%, rgba(232,121,249,0) 70%),
+  var(--pn-bg); }
+.pn-dots { position:absolute; inset:-120px; background-image: radial-gradient(rgba(216,180,254,.22) 1.7px, transparent 2.3px); background-size: 36px 36px; opacity:.5; }
+.pn-log { position:absolute; left:22px; top:0; width:44px; height:1920px; overflow:hidden; opacity:.20; }
+.pn-log-in { position:absolute; left:0; top:0; writing-mode: vertical-rl; white-space:nowrap; font: 400 30px "JetBrains Mono", monospace; letter-spacing:.14em; color: var(--pn-lav, #d8b4fe); }
+.kz-progress { height: 12px; background: rgba(255,255,255,.06); }
+.kz-progress > div { background: linear-gradient(90deg, #7c3aed, #e879f9 65%, #c6ff3d); }
+#pnSweep { position:absolute; left:0; top:0; width:1080px; height:8px; opacity:0; z-index:60; pointer-events:none;
+  background: linear-gradient(90deg, rgba(245,240,250,0), #f5f0fa 18%, #f5f0fa 82%, rgba(245,240,250,0));
+  box-shadow: 0 0 34px 10px rgba(216,180,254,.75); }
+#flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; z-index:70; }
+.pn-safe { position:absolute; left:90px; right:120px; top:220px; bottom:520px; }
+.pn-col { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.pn-display { font-family:"Bricolage Grotesque", sans-serif; font-weight:800; text-transform:uppercase; line-height:.9; letter-spacing:-.02em; color: var(--pn-ink); }
+.pn-mono { font-family:"JetBrains Mono", monospace; text-transform:uppercase; letter-spacing:.12em; }
+.pn-body { font: 800 58px "Inter", sans-serif; color: var(--pn-ink); line-height:1.08; letter-spacing:-.01em; }
+.pn-chip { display:inline-flex; align-items:center; gap:16px; padding: 12px 26px 12px 14px; border-radius: 999px;
+  background: rgba(255,255,255,.05); border: 2px solid var(--pn-line); font: 400 30px "JetBrains Mono", monospace; letter-spacing:.08em; color: var(--pn-ink); text-transform: uppercase; white-space:nowrap; }
+.pn-chip img { width: 46px; height: 46px; border-radius: 50%; background:#1b1229; object-fit: cover; }
+.pn-chip .sep { color: var(--pn-mag); }
+.pn-novo { display:inline-block; font: 800 74px "Bricolage Grotesque", sans-serif; color:#0b0712; background: var(--pn-lime);
+  padding: 8px 30px 4px; border-radius: 18px; letter-spacing:.02em; line-height:1;
+  box-shadow: 0 0 0 6px var(--pn-bg), 0 0 0 10px var(--pn-lime), 0 20px 50px rgba(198,255,61,.35); }
+.pn-install { width: 740px; }
+.pn-install-top { display:flex; justify-content:space-between; align-items:baseline; font: 400 34px "JetBrains Mono", monospace; color: var(--pn-dim); text-transform: uppercase; letter-spacing:.08em; margin-bottom: 18px; }
+.pn-install-top b { font-weight:400; color: var(--pn-ink); }
+.pn-bar { position:relative; height: 34px; border-radius: 999px; background: rgba(255,255,255,.07); border: 2px solid var(--pn-line); overflow:hidden; }
+.pn-bar-fill { position:absolute; left:0; top:0; bottom:0; width:100%; transform-origin: 0 50%; border-radius: 999px;
+  background: linear-gradient(90deg, #7c3aed, #a855f7 35%, #e879f9 70%, #f5d0fe); box-shadow: 0 0 24px rgba(232,121,249,.6); }
+.pn-bar-sheen { position:absolute; top:0; bottom:0; width: 160px; left: -200px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.55), rgba(255,255,255,0)); }
+.pn-ok { font: 800 50px "Inter", sans-serif; color: var(--pn-lime); margin-top: 22px; }
+.eye { position:absolute; border-radius:50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+
+/* ================= 096 specifics ================= */
+.vf { position:absolute; width: 96px; height: 96px; border-color: rgba(245,240,250,.85); border-style: solid; border-width: 0; }
+.vf.tl { left: 96px; top: 236px; border-left-width: 8px; border-top-width: 8px; border-top-left-radius: 18px; }
+.vf.tr { left: 888px; top: 236px; border-right-width: 8px; border-top-width: 8px; border-top-right-radius: 18px; }
+.vf.bl { left: 96px; top: 1300px; border-left-width: 8px; border-bottom-width: 8px; border-bottom-left-radius: 18px; }
+.vf.br { left: 888px; top: 1300px; border-right-width: 8px; border-bottom-width: 8px; border-bottom-right-radius: 18px; }
+.rec { position:absolute; left: 140px; top: 262px; display:flex; align-items:center; gap:14px; font: 400 36px "JetBrains Mono", monospace; letter-spacing:.12em; color: var(--pn-ink); }
+.rec i { display:block; width: 26px; height: 26px; border-radius: 50%; background: var(--pn-acc); box-shadow: 0 0 18px var(--pn-acc); }
+.tc { position:absolute; right: 152px; top: 262px; font: 400 36px "JetBrains Mono", monospace; letter-spacing:.06em; color: var(--pn-ink); font-variant-numeric: tabular-nums; }
+#hookTxt { position:absolute; left:120px; right:192px; top: 340px; height: 440px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+#hookTxt .pn-display { font-size: 150px; }
+#hookTxt .hl { color: var(--pn-lime); }
+#novo1 { position:absolute; left: 0; right: 72px; top: 812px; display:flex; justify-content:center; }
+#recWrap { position:absolute; left: 400px; top: 930px; width: 280px; height: 280px; }
+#recWrap svg { position:absolute; inset:0; width:280px; height:280px; overflow: visible; }
+#recRing { position:absolute; left:0; top:0; width: 280px; height: 280px; border-radius:50%; border: 6px solid var(--pn-acc); opacity:.0; }
+
+#s2 .pn-chip { margin-top: 30px; }
+#s2 .ttl { font-size: 186px; }
+#s2 .sub { font: 800 58px "Inter", sans-serif; color: var(--pn-dim); margin-top: 34px; }
+#s2 .pn-install { margin-top: 150px; margin-right: 60px; }
+
+/* stepper */
+#stage { position:absolute; left:120px; right:120px; top: 330px; height: 500px; }
+.keys { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap: 34px; }
+.pn-key { display:flex; align-items:center; justify-content:center; height: 220px; min-width: 230px; padding: 0 44px; border-radius: 36px;
+  background: linear-gradient(180deg, #30254a, #1c1530); border: 3px solid rgba(216,180,254,.4);
+  box-shadow: 0 18px 0 #0d0916, 0 30px 60px rgba(0,0,0,.55); font: 800 110px "Bricolage Grotesque", sans-serif; color: var(--pn-ink); }
+.plus { font: 800 110px "Bricolage Grotesque", sans-serif; color: var(--pn-mag); }
+.win { position:absolute; left: 70px; right: 70px; top: 40px; height: 420px; border-radius: 28px; background: var(--pn-panel); border: 3px solid rgba(216,180,254,.4); box-shadow: 0 30px 80px rgba(0,0,0,.6); overflow:hidden; }
+.win-bar { height: 58px; display:flex; align-items:center; gap: 12px; padding: 0 22px; background: rgba(255,255,255,.05); border-bottom: 2px solid var(--pn-line); }
+.win-bar i { width: 18px; height: 18px; border-radius: 50%; background: #4a3d63; display:block; }
+.win-bar span { margin-left: 14px; font: 400 30px "JetBrains Mono", monospace; letter-spacing:.1em; color: var(--pn-dim); text-transform: uppercase; }
+.srow { display:flex; align-items:center; gap: 22px; margin: 22px 24px 0; padding: 18px 22px; border-radius: 20px; background: rgba(255,255,255,.04); border: 2px solid rgba(216,180,254,.14); }
+.srow .ic { width: 64px; height: 64px; border-radius: 16px; background: #2a1f3f; display:flex; align-items:center; justify-content:center; flex:none; }
+.srow .ic svg { width: 34px; height: 34px; }
+.srow .bars { flex:1; }
+.srow .bars i { display:block; height: 16px; border-radius: 8px; background: rgba(216,180,254,.28); }
+.srow .bars i + i { margin-top: 12px; width: 55%; background: rgba(216,180,254,.14); }
+.srow .dl { width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--pn-lime); display:flex; align-items:center; justify-content:center; flex:none; }
+.srow .dl svg { width: 34px; height: 34px; }
+.srow.hot { border-color: rgba(198,255,61,.6); background: rgba(198,255,61,.06); }
+.mini { position:relative; height: 12px; margin-top: 12px; border-radius: 6px; background: rgba(255,255,255,.08); overflow:hidden; }
+.mini b { position:absolute; inset:0; transform-origin: 0 50%; background: var(--pn-lime); border-radius: 6px; }
+.client { position:absolute; left: 30px; right: 30px; top: 0; height: 500px; border-radius: 28px; background: #0d0a14; border: 3px solid rgba(216,180,254,.45); overflow:hidden; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+.client .scr { position:absolute; left: 0; right: 0; top: 58px; bottom: 0; background:
+  linear-gradient(135deg, rgba(124,58,237,.30), rgba(232,121,249,.10)), repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 2px, transparent 2px 6px); }
+.client .playb { position:absolute; left: 50%; top: 55%; width: 170px; height: 170px; margin: -85px 0 0 -85px; border-radius: 50%; background: var(--pn-lime); display:flex; align-items:center; justify-content:center; box-shadow: 0 0 60px rgba(198,255,61,.5); }
+.client .playb svg { width: 80px; height: 80px; margin-left: 12px; }
+#steps { position:absolute; left: 110px; width: 770px; top: 900px; }
+.pn-step { display:flex; align-items:center; gap: 28px; height: 128px; padding: 0 28px; margin-bottom: 16px; border-radius: 26px; background: rgba(255,255,255,.04); border: 2px solid rgba(216,180,254,.16); }
+.pn-step .n { width: 76px; height: 76px; border-radius: 50%; flex:none; display:flex; align-items:center; justify-content:center; font: 800 44px "Bricolage Grotesque", sans-serif; color: #0b0712; background: var(--pn-lime); }
+.pn-step .t { font: 800 58px "Inter", sans-serif; color: var(--pn-ink); white-space: nowrap; letter-spacing: -.015em; }
+
+/* player */
+#s4 .head { position:absolute; left: 90px; right: 90px; top: 236px; text-align:center; font: 800 58px "Inter", sans-serif; color: var(--pn-ink); }
+#s4 .head b { color: var(--pn-lime); }
+#playerWin { position:absolute; left: 160px; top: 330px; width: 760px; height: 556px; border-radius: 30px; overflow:hidden; opacity: 0; z-index: 20;
+  background:#000; border: 4px solid rgba(216,180,254,.6); box-shadow: 0 0 0 10px rgba(168,85,247,.16), 0 40px 120px rgba(124,58,237,.45); }
+#playerWin video, #playerWin .ph { position:absolute; left:0; top:0; width: 760px; height: 556px; object-fit: cover; }
+#playerWin .ph { background: linear-gradient(135deg, #3b2a12, #6b4a22 40%, #2c2a33); }
+.spd-big { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font: 800 300px "Bricolage Grotesque", sans-serif; color: #fff; text-shadow: 0 0 50px rgba(168,85,247,.9), 0 8px 0 rgba(0,0,0,.4); opacity:0; }
+.streaks { position:absolute; inset:0; opacity:0; background: repeating-linear-gradient(90deg, rgba(255,255,255,0) 0 60px, rgba(255,255,255,.18) 60px 64px, rgba(255,255,255,0) 64px 150px); mix-blend-mode: screen; }
+.hud { position:absolute; right: 22px; top: 22px; display:flex; gap: 12px; }
+.hud span { display:flex; align-items:center; gap: 10px; padding: 10px 16px; border-radius: 14px; background: rgba(7,5,13,.82); border: 2px solid rgba(198,255,61,.7); font: 400 30px "JetBrains Mono", monospace; letter-spacing:.08em; color: var(--pn-lime); }
+.hud em { display:flex; gap: 4px; align-items:flex-end; height: 26px; }
+.hud em i { display:block; width: 7px; background: var(--pn-lime); border-radius: 2px; }
+.realtag { position:absolute; left: 20px; bottom: 20px; padding: 10px 18px; border-radius: 999px; background: rgba(7,5,13,.85); border: 2px solid #d8b4fe; font: 700 30px "Inter", sans-serif; letter-spacing:.04em; color: #d8b4fe; text-transform: uppercase; }
+#pills { position:absolute; left: 194px; top: 936px; display:flex; gap: 24px; }
+.pill { width: 150px; height: 104px; border-radius: 26px; display:flex; align-items:center; justify-content:center; font: 800 64px "Bricolage Grotesque", sans-serif; color: var(--pn-dim); background: rgba(255,255,255,.05); border: 3px solid rgba(216,180,254,.25); }
+.pill-hi { position:absolute; left: 0; top: 0; width: 150px; height: 104px; border-radius: 26px; background: var(--pn-lime); box-shadow: 0 0 40px rgba(198,255,61,.45); }
+#pillsWrap { position:absolute; left: 194px; top: 936px; width: 672px; height: 104px; }
+#pillsWrap .pill-hi, #pillsWrap #pills { left: 0; top: 0; }
+.pill.on { color: #0b0712; }
+#cap { position:absolute; left: 90px; width: 790px; top: 1100px; height: 200px; }
+#cap > div { position:absolute; left:0; right:0; top:0; text-align:center; }
+
+/* 170 */
+#rows { position:absolute; left: 150px; right: 150px; top: 0; }
+.prow { display:flex; gap: 30px; align-items:baseline; padding: 20px 0; border-bottom: 2px dashed rgba(216,180,254,.18); font: 400 34px "JetBrains Mono", monospace; color: var(--pn-dim); letter-spacing: .04em; }
+.prow b { font-weight: 400; color: var(--pn-mag); }
+.scrim { position:absolute; left: 0; right: 0; top: 200px; height: 1000px; background: radial-gradient(56% 50% at 50% 50%, rgba(7,5,13,.97) 45%, rgba(7,5,13,0) 100%); }
+#big { font-size: 330px; line-height: .85; background: linear-gradient(180deg, #ffffff 0%, #f5d0fe 45%, #c084fc 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 40px rgba(168,85,247,.55)); font-variant-numeric: tabular-nums; }
+
+/* end */
+.ask { font: 900 62px "Inter", sans-serif; color: var(--pn-ink); max-width: 800px; line-height: 1.1; }
+.ask b { color: var(--pn-lime); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="20.4" data-fps="30">
+  <!-- untimed layers -->
+  <div class="pn-bg"></div>
+  <div class="pn-dots" id="dots"></div>
+  <div class="pn-log"><div class="pn-log-in" id="logIn">05/09/2026 OFFLINE CAM · 05/09/2026 PAINEL NOVO · 03/07/2026 MODO COMPACTO · 23/05/2026 MODOS DE PESCA · 20/04/2026 KIZUAI · 30/03/2026 MODO STREAMER · 25/02/2026 +100 ITENS · 21/02/2026 CAVEBOT MAIS ESPERTO · 01/12/2025 VNC NO PAINEL · 05/11/2025 ALARMES ILIMITADOS · 10/10/2025 CATCH ALL · 28/08/2025 ALARMES NO TELEGRAM · 07/08/2025 20 SHINIES NOVOS · 05/09/2026 OFFLINE CAM · 05/09/2026 PAINEL NOVO · 03/07/2026 MODO COMPACTO · 23/05/2026 MODOS DE PESCA · 20/04/2026 KIZUAI · 30/03/2026 MODO STREAMER · 25/02/2026 +100 ITENS ·</div></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- S1 HOOK 0 – 2.60 -->
+  <section id="s1" class="clip" data-start="0" data-duration="2.6">
+    <div class="kz-full" id="s1in">
+      <div class="vf tl"></div><div class="vf tr"></div><div class="vf bl"></div><div class="vf br"></div>
+      <div class="rec" id="recLbl"><i id="recDotS"></i><span style="position:relative; display:inline-block; width:110px; height:44px"><span id="recWord" style="position:absolute; left:0; top:0">REC</span><span id="playWord" style="position:absolute; left:0; top:0; opacity:0; color:#c6ff3d">PLAY</span></span></div>
+      <div class="tc" id="tc">00:00:00:00</div>
+      <div id="hookTxt">
+        <div class="pn-display" id="h1">Assista</div>
+        <div class="pn-display" id="h2">sua hunt</div>
+        <div class="pn-display hl" id="h3">depois.</div>
+      </div>
+      <div id="novo1"><div class="pn-novo" id="novoA">NOVO</div></div>
+      <div id="recWrap">
+        <div id="recRing"></div>
+        <svg viewBox="0 0 280 280"><path id="recShape" fill="#ff4d5e" d="M140,30 C200.75,30 250,79.25 250,140 C250,200.75 200.75,250 140,250 C79.25,250 30,200.75 30,140 C30,79.25 79.25,30 140,30 Z"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- S2 INSTALL 2.308 – 4.80 -->
+  <section id="s2" class="clip" data-start="2.308" data-duration="2.49">
+    <div class="pn-safe" id="s2in">
+      <div class="pn-col">
+        <div class="pn-chip" id="chip2"><img src="kit/img/brand/kizubot-head.png" alt="" /><span>KizuBot <span class="sep">·</span> atualização <span class="sep">·</span> 05/09/2026</span></div>
+        <div id="ttl" style="margin-top:70px"><div class="pn-display ttl" style="margin-top:0">Offline</div><div class="pn-display ttl" style="margin-top:0">Cam</div></div>
+        <div class="sub" id="sub2">gravações das suas hunts</div>
+        <div class="pn-install" id="ins">
+          <div class="pn-install-top"><span style="position:relative; display:inline-block; width:420px; height:44px"><span id="insLbl" style="position:absolute; left:0; top:0">instalando…</span><span id="insOk" style="position:absolute; left:0; top:0; opacity:0; color:#c6ff3d">✓ instalado</span></span><b id="insPct">0%</b></div>
+          <div class="pn-bar"><div class="pn-bar-fill" id="insFill"></div><div class="pn-bar-sheen" id="insSheen"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 STEPPER 4.615 – 9.35 -->
+  <section id="s3" class="clip" data-start="4.615" data-duration="4.735">
+    <div class="kz-full" id="s3in">
+      <div class="pn-chip" id="chip3" style="position:absolute; left:0; right:0; margin: 0 auto; width: max-content; top: 236px; padding-left: 26px">como usar <span class="sep">·</span> 3 passos</div>
+      <div id="stage">
+        <div class="keys" id="keys">
+          <div class="pn-key" id="kAlt">ALT</div>
+          <div class="plus" id="kPlus">+</div>
+          <div class="pn-key" id="kG">G</div>
+        </div>
+        <div class="win" id="win">
+          <div class="win-bar"><i></i><i></i><i></i><span>sessões gravadas</span></div>
+          <div class="srow" id="r1"><div class="ic"><svg viewBox="0 0 24 24" fill="#d8b4fe"><path d="M8 5v14l11-7z"/></svg></div><div class="bars"><i></i><div class="mini"><b id="mini1"></b></div></div><div class="dl" id="dl1"><svg viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></div></div>
+          <div class="srow" id="r2"><div class="ic"><svg viewBox="0 0 24 24" fill="#d8b4fe"><path d="M8 5v14l11-7z"/></svg></div><div class="bars"><i></i><i></i></div><div class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></div></div>
+          <div class="srow" id="r3"><div class="ic"><svg viewBox="0 0 24 24" fill="#d8b4fe"><path d="M8 5v14l11-7z"/></svg></div><div class="bars"><i></i><i></i></div><div class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></div></div>
+        </div>
+        <div class="client" id="client">
+          <div class="win-bar"><i></i><i></i><i></i><span>cliente do jogo</span></div>
+          <div class="scr"></div>
+          <div class="playb" id="playb"><svg viewBox="0 0 24 24" fill="#0b0712"><path d="M6 4v16l14-8z"/></svg></div>
+        </div>
+      </div>
+      <div id="steps">
+        <div class="pn-step" id="st1"><div class="n">1</div><div class="t">Alt + G abre a lista</div></div>
+        <div class="pn-step" id="st2"><div class="n">2</div><div class="t">Baixa a sessão</div></div>
+        <div class="pn-step" id="st3"><div class="n">3</div><div class="t">Assiste no jogo</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 PLAYER CHROME 9.231 – 13.95 -->
+  <section id="s4" class="clip" data-start="9.231" data-duration="4.72">
+    <div class="kz-full" id="s4in">
+      <div class="head" id="head4">Escolhe a <b>velocidade</b></div>
+      <div id="pillsWrap">
+        <div class="pill-hi" id="pillHi"></div>
+        <div id="pills" style="position:absolute; display:flex; gap:24px">
+          <div class="pill" id="p1">1x</div><div class="pill" id="p2">2x</div><div class="pill" id="p4">4x</div><div class="pill" id="p8">8x</div>
+        </div>
+      </div>
+      <div id="cap">
+        <div class="pn-body" id="capA">antes de dar o play</div>
+        <div class="pn-body" id="capB">mostra até o <b style="color:var(--pn-lime)">fps</b> e o <b style="color:var(--pn-lime)">ping</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- player window (untimed wrapper, timed videos inside) -->
+  <div id="playerWin">
+    <video id="v1" src="kit/video/rypherior.mp4" muted playsinline data-start="9.231" data-duration="1.154" data-media-start="12.0" data-playback-rate="1"></video>
+    <video id="v2" src="kit/video/rypherior.mp4" muted playsinline data-start="10.385" data-duration="1.154" data-media-start="13.154" data-playback-rate="2"></video>
+    <video id="v3" src="kit/video/rypherior.mp4" muted playsinline data-start="11.538" data-duration="1.154" data-media-start="15.462" data-playback-rate="4"></video>
+    <video id="v4" src="kit/video/rypherior.mp4" muted playsinline data-start="12.692" data-duration="1.154" data-media-start="20.077" data-playback-rate="8"></video>
+    <div class="streaks" id="streaks"></div>
+    <div class="spd-big" id="sb1">1x</div><div class="spd-big" id="sb2">2x</div><div class="spd-big" id="sb4">4x</div><div class="spd-big" id="sb8">8x</div>
+    <div class="hud" id="hud"><span id="hudF">FPS <em><i style="height:10px"></i><i style="height:16px"></i><i style="height:22px"></i><i style="height:26px"></i></em></span><span id="hudP">PING <em><i style="height:10px"></i><i style="height:16px"></i><i style="height:22px"></i><i style="height:26px"></i></em></span></div>
+    <div class="realtag" id="realTag">gameplay real do KizuBot</div>
+  </div>
+
+  <!-- S5 +170 13.846 – 16.25 -->
+  <section id="s5" class="clip" data-start="13.846" data-duration="3.0">
+    <div class="kz-full" id="s5in">
+      <div id="rows" style="opacity:.32">
+        <div class="prow"><b>05/09/2026</b> Offline Cam</div>
+        <div class="prow"><b>05/09/2026</b> Painel novo</div>
+        <div class="prow"><b>03/07/2026</b> Modo compacto</div>
+        <div class="prow"><b>23/05/2026</b> Modos de pesca</div>
+        <div class="prow"><b>20/04/2026</b> KizuAI</div>
+        <div class="prow"><b>15/04/2026</b> Busca na Pokédex</div>
+        <div class="prow"><b>30/03/2026</b> Modo streamer</div>
+        <div class="prow"><b>25/02/2026</b> +100 itens novos</div>
+        <div class="prow"><b>21/02/2026</b> Cavebot mais esperto</div>
+        <div class="prow"><b>01/12/2025</b> VNC no painel</div>
+        <div class="prow"><b>05/11/2025</b> Alarmes ilimitados</div>
+        <div class="prow"><b>23/10/2025</b> Preço NPC dos itens</div>
+        <div class="prow"><b>10/10/2025</b> Catch all</div>
+        <div class="prow"><b>28/08/2025</b> Alarmes no Telegram</div>
+        <div class="prow"><b>07/08/2025</b> 20 shinies novos</div>
+        <div class="prow"><b>15/02/2025</b> Recursos das profissões</div>
+      </div>
+      <div class="scrim"></div>
+      <div class="pn-safe"><div class="pn-col" style="justify-content:center; padding-bottom: 120px">
+        <div class="pn-body" id="m1" style="font-size:64px">mais de</div>
+        <div class="pn-display" id="big">170</div>
+        <div class="pn-display" id="m2" style="font-size:104px; margin-top: 18px">atualizações</div>
+        <div class="pn-body" id="m3" style="font-size:60px; margin-top: 22px; color: var(--pn-lime)">desde 2024</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- S6 END CARD 16.154 – 20 -->
+  <section id="s6" class="clip" data-start="16.731" data-duration="3.669">
+    <div class="kz-end" id="s6in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>Você assistiria</div><div>em <b>1x ou 8x?</b></div></div>
+    </div>
+  </section>
+
+  <!-- loop bridge: viewfinder returns -->
+  <section id="s7" class="clip" data-start="19.95" data-duration="0.45">
+    <div class="kz-full" id="s7in">
+      <div class="vf tl"></div><div class="vf tr"></div><div class="vf bl"></div><div class="vf br"></div>
+    </div>
+  </section>
+
+  <div id="pnSweep"></div>
+  <div id="flash"></div>
+</div>
+<script>
+  gsap.registerPlugin(MorphSVGPlugin);
+  const tl = gsap.timeline({ paused: true });
+  const D = 20.4;
+  const b = KZ.beats(104);            // beat 0.577 s, bar 2.308 s
+
+  /* ---------- F12 helpers ---------- */
+  function pnSweep(inSel, T, dur) {
+    dur = dur || 0.34;
+    tl.fromTo("#pnSweep", { y: -40, opacity: 1 }, { y: 1940, opacity: 1, duration: dur, ease: "power2.inOut", immediateRender: false }, T);
+    tl.set("#pnSweep", { opacity: 0 }, T + dur);
+    tl.fromTo(inSel, { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: dur, ease: "power2.inOut" }, T);
+  }
+  function pnStamp(sel, T, rot, shakeSel) {
+    tl.fromTo(sel, { scale: 2.8, opacity: 0, rotation: rot - 16 }, { scale: 0.94, opacity: 1, rotation: rot, duration: 0.16, ease: "power3.in" }, T - 0.16);
+    tl.to(sel, { scale: 1, duration: 0.22, ease: "back.out(3)" }, T);
+    if (shakeSel) KZ.shake(tl, shakeSel, T, 12, 0.24, 5);
+  }
+  function pnInstall(fill, pct, sheen, T, dur) {
+    tl.fromTo(fill, { scaleX: 0 }, { scaleX: 1, duration: dur, ease: "power3.out" }, T);
+    KZ.countUp(tl, pct, 0, 100, T, dur, "int", "power3.out", "%");
+    tl.fromTo(sheen, { x: 0 }, { x: 1100, duration: 0.9, ease: "power1.inOut", repeat: 1 }, T);
+  }
+
+  /* ---------- ambient ---------- */
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  KZ.drift(tl, "#dots", D, 18, 36, 5);
+  tl.fromTo("#logIn", { y: 0 }, { y: -2200, duration: D, ease: "none" }, 0);
+
+  /* ---------- S1 hook ---------- */
+  tl.fromTo("#hookTxt", { scale: 1.07, filter: "blur(4px)" }, { scale: 1, filter: "blur(0px)", duration: 0.34, ease: "power3.out" }, 0);
+  tl.fromTo("#h1", { y: -18 }, { y: 0, duration: 0.34, ease: "power3.out" }, 0);
+  tl.fromTo("#h3", { y: 18 }, { y: 0, duration: 0.34, ease: "power3.out" }, 0);
+  tl.fromTo(".vf", { scale: 1.12 }, { scale: 1, duration: 0.3, ease: "power3.out" }, 0);
+  KZ.punch(tl, "#h3", b(1), 1.12, 0.35);
+  // timecode runs while "recording"
+  const tco = { f: 0 };
+  tl.to(tco, { f: 2.6 * 30, duration: 2.6, ease: "none", onUpdate: function () {
+    const f = Math.floor(tco.f), s = Math.floor(f / 30), ff = f % 30;
+    document.getElementById("tc").textContent = "00:00:" + String(s).padStart(2, "0") + ":" + String(ff).padStart(2, "0");
+  } }, 0);
+  // REC dot breathes, blinks
+  tl.fromTo("#recShape", { scale: 0.86, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.29, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+  tl.fromTo("#recDotS", { opacity: 1 }, { opacity: 0.15, duration: 0.29, ease: "steps(1)", yoyo: true, repeat: 3 }, 0);
+  tl.fromTo("#recRing", { scale: 0.8, opacity: 0.8 }, { scale: 1.5, opacity: 0, duration: 0.55, ease: "power2.out", repeat: 1 }, 0.0);
+  // b2: REC becomes PLAY
+  tl.to("#recShape", { morphSVG: "M95,52 L224,140 L95,228 Z", fill: "#c6ff3d", duration: 0.3, ease: "back.out(1.6)" }, b(2));
+  tl.fromTo("#recRing", { scale: 0.8, opacity: 1, borderColor: "#c6ff3d" }, { scale: 1.7, opacity: 0, duration: 0.6, ease: "power2.out", immediateRender: false }, b(2));
+  tl.set("#recWord", { opacity: 0 }, b(2));
+  tl.set("#playWord", { opacity: 1 }, b(2));
+  tl.set("#recDotS", { backgroundColor: "#c6ff3d", boxShadow: "0 0 18px #c6ff3d", opacity: 1 }, b(2));
+  // b3: NOVO stamp
+  pnStamp("#novoA", b(3), -6, "#s1in");
+  tl.to("#recWrap", { y: -12, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, b(2.3));
+
+  /* ---------- S2 install (refresh sweep in) ---------- */
+  pnSweep("#s2in", b(4));
+  KZ.rise(tl, "#chip2", b(4) + 0.1, 0.35, 30);
+  tl.fromTo("#ttl", { scale: 1.5, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.32, ease: "power4.out" }, b(4.5));
+  KZ.rise(tl, "#sub2", b(5), 0.35, 30);
+  KZ.rise(tl, "#ins", b(5.2), 0.3, 40);
+  pnInstall("#insFill", "#insPct", "#insSheen", b(5.3), 0.95);
+  tl.set("#insLbl", { opacity: 0 }, b(5.3) + 0.97);
+  tl.set("#insOk", { opacity: 1 }, b(5.3) + 0.97);
+  KZ.punch(tl, "#ins", b(5.3) + 0.97, 1.05, 0.3);
+  tl.to("#ttl", { scale: 1.04, duration: 1.2, ease: "sine.inOut" }, b(5));
+  tl.to("#s2in", { y: -260, opacity: 0, duration: 0.22, ease: "power3.in" }, b(8) - 0.2);
+
+  /* ---------- S3 stepper ---------- */
+  const T3 = b(8);
+  tl.fromTo("#s3in", { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: "power3.out" }, T3);
+  // step 1: keys
+  tl.fromTo("#st1", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T3 + 0.1);
+  tl.fromTo("#keys", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, T3 + 0.05);
+  tl.fromTo("#kAlt", { y: 0 }, { y: 16, duration: 0.07, ease: "power2.in" }, T3 + 0.36);
+  tl.to("#kAlt", { y: 0, duration: 0.18, ease: "power2.out" }, T3 + 0.62);
+  tl.fromTo("#kG", { y: 0 }, { y: 16, duration: 0.07, ease: "power2.in" }, T3 + 0.55);
+  tl.to("#kG", { y: 0, duration: 0.18, ease: "power2.out" }, T3 + 0.66);
+  tl.to("#keys", { scale: 0.55, y: -180, opacity: 0, duration: 0.25, ease: "power3.in" }, T3 + 0.82);
+  tl.fromTo("#win", { scaleY: 0.05, opacity: 0, transformOrigin: "50% 0%" }, { scaleY: 1, opacity: 1, duration: 0.3, ease: "power3.out" }, T3 + 0.9);
+  tl.fromTo(["#r1", "#r2", "#r3"], { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, stagger: 0.08, ease: "power3.out" }, T3 + 1.0);
+  // step 2: download
+  const T3b = b(10.5);
+  tl.to("#st1", { opacity: 0.45, duration: 0.2 }, T3b);
+  tl.fromTo("#st2", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T3b);
+  tl.set("#r1", { borderColor: "rgba(198,255,61,.7)", backgroundColor: "rgba(198,255,61,.07)" }, T3b + 0.1);
+  tl.fromTo("#mini1", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power2.inOut" }, T3b + 0.2);
+  KZ.punch(tl, "#dl1", T3b + 0.15, 1.3, 0.3);
+  tl.fromTo("#dl1 svg", { y: -6 }, { y: 6, duration: 0.16, ease: "sine.inOut", yoyo: true, repeat: 5 }, T3b + 0.15);
+  tl.fromTo("#win", { y: 0 }, { y: -10, duration: 1.2, ease: "sine.inOut", immediateRender: false }, T3b);
+  // step 3: client
+  const T3c = b(13);
+  tl.to("#st2", { opacity: 0.45, duration: 0.2 }, T3c);
+  tl.fromTo("#st3", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T3c);
+  tl.to("#win", { scale: 0.85, opacity: 0, duration: 0.2, ease: "power2.in" }, T3c - 0.05);
+  tl.fromTo("#client", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: "back.out(1.8)" }, T3c + 0.05);
+  tl.fromTo("#playb", { scale: 1 }, { scale: 1.12, duration: 0.29, ease: "sine.inOut", yoyo: true, repeat: 3 }, T3c + 0.4);
+  tl.to("#client", { scale: 1.06, duration: 0.25, ease: "power2.in" }, b(16) - 0.25);
+  tl.to(["#steps", "#chip3"], { opacity: 0, y: 40, duration: 0.2, ease: "power2.in" }, b(16) - 0.22);
+
+  /* ---------- S4 player (drop) ---------- */
+  const T4 = b(16);
+  KZ.flash(tl, "#flash", T4, 0.85);
+  tl.fromTo("#playerWin", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, T4);
+  KZ.rise(tl, "#head4", T4 + 0.1, 0.3, 30);
+  tl.fromTo("#pillsWrap", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, T4 + 0.15);
+  KZ.rise(tl, "#capA", T4 + 0.3, 0.3, 30);
+  KZ.rise(tl, "#realTag", T4 + 0.5, 0.3, 20);
+  const pills = ["#p1", "#p2", "#p4", "#p8"], bigs = ["#sb1", "#sb2", "#sb4", "#sb8"];
+  pills.forEach(function (p, i) {
+    const t = T4 + i * b(2);
+    if (i > 0) tl.to("#pillHi", { x: i * 174, duration: 0.18, ease: "power3.out" }, t);
+    tl.set(p, { color: "#0b0712" }, t);
+    if (i > 0) tl.set(pills[i - 1], { color: "#bcb0d2" }, t);
+    KZ.punch(tl, p, t, 1.14, 0.3);
+    tl.fromTo(bigs[i], { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.16, ease: "back.out(2.5)" }, t + 0.02);
+    tl.to(bigs[i], { scale: 1.25, opacity: 0, duration: 0.4, ease: "power2.in" }, t + 0.42);
+  });
+  // speed streaks grow with speed
+  tl.fromTo("#streaks", { opacity: 0, x: 0 }, { opacity: 0.35, x: -300, duration: b(2), ease: "none" }, T4 + 2 * b(2));
+  tl.to("#streaks", { opacity: 0.8, x: -900, duration: b(2), ease: "none" }, T4 + 3 * b(2));
+  // fps / ping
+  const T4b = T4 + b(4.5);
+  tl.to("#capA", { opacity: 0, y: -30, duration: 0.18, ease: "power2.in" }, T4b - 0.2);
+  KZ.rise(tl, "#capB", T4b, 0.32, 30);
+  tl.fromTo("#hud", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2)" }, T4b);
+  tl.fromTo("#hudF em i", { scaleY: 0.3, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.14, stagger: 0.05, ease: "power2.out", yoyo: true, repeat: 5 }, T4b + 0.2);
+  tl.fromTo("#hudP em i", { scaleY: 0.3, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.14, stagger: 0.05, ease: "power2.out", yoyo: true, repeat: 5 }, T4b + 0.3);
+  tl.to("#playerWin", { opacity: 0, scale: 0.9, duration: 0.2, ease: "power2.in" }, b(24) - 0.2);
+
+  /* ---------- S5 +170 (refresh sweep in) ---------- */
+  const T5 = b(24);
+  pnSweep("#s5in", T5);
+  tl.fromTo("#rows", { y: 700 }, { y: -1700, duration: 3.0, ease: "none" }, T5);
+  KZ.rise(tl, "#m1", T5 + 0.08, 0.3, 30);
+  tl.fromTo("#big", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, T5 + 0.15);
+  KZ.countUp(tl, "#big", 0, 170, T5 + 0.15, 0.9, "int", "power2.out");
+  KZ.punch(tl, "#big", T5 + 1.06, 1.1, 0.4);
+  KZ.rise(tl, "#m2", T5 + 0.5, 0.3, 30);
+  KZ.rise(tl, "#m3", T5 + 1.1, 0.3, 30);
+  tl.to("#big", { scale: 1.05, duration: 1.0, ease: "sine.inOut" }, T5 + 1.6);
+  tl.to("#s5in", { scale: 0.88, opacity: 0, duration: 0.22, ease: "power2.in" }, b(29) - 0.2);
+
+  /* ---------- S6 end card ---------- */
+  const T6 = b(29);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T6 + 0.02);
+  KZ.eyePulse(tl, "#eye2", T6 + 0.12, 3);
+  KZ.rise(tl, "#endUrl", T6 + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T6 + 0.85, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, T6 + 0.8);
+  tl.to("#s6in", { opacity: 0, duration: 0.3, ease: "power1.in" }, D - 0.42);
+  tl.fromTo("#s7in", { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, 19.96);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

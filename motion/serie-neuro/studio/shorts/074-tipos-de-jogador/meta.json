@@ -1,0 +1,64 @@
+{
+  "id": "074",
+  "slug": "tipos-de-jogador",
+  "family": "Só Quem Joga PxG Entende",
+  "title": "Os 4 tipos de jogador de PxG",
+  "concept": "Police-lineup classification meme: four silhouettes, then type cards with joke meters (tendinite MAX, sorte 0%, bateria 1%), a spotlight build on number 4, and the drop reveals the real customer at the beach ('Enquanto bot moie / Eu tô na praia kkkk' with two real Earth Stone alarms); the end card asks which number you are.",
+  "neuro": [
+    "in-group-identity",
+    "self-reference",
+    "open-loop",
+    "benign-violation-humor",
+    "social-proof",
+    "comment-prompt"
+  ],
+  "hook": "OS 4 TIPOS DE JOGADOR DE PXG:",
+  "duration": 17.54,
+  "music": {
+    "style": "phonk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/beach-while-bot-farms--photo.jpg",
+    "kit/img/prints/beach-while-bot-farms--alarms.png",
+    "kit/img/prints/beach-while-bot-farms--quote.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Os 4 tipos de jogador de PxG 👇 1) farma mato na mão 2) perde shiny por 1 segundo 3) esquece de dormir 4) tá na praia. Qual número é você? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#meme",
+        "#tiposdejogador"
+      ]
+    },
+    "youtube": {
+      "title": "Os 4 tipos de jogador de PxG (o 4 tá na praia) 🏖️",
+      "description": "Os 4 tipos de jogador de PxG: o que farma mato na mão, o que perde shiny por 1 segundo, o que esquece de dormir e o que tá na praia enquanto o bot farma (print real de cliente: \"Enquanto bot moie / Eu tô na praia kkkk\"). kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Os 4 tipos de jogador de PxG. O número 4 tá na praia 🏖️ Qual número é você? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#memes"
+      ]
+    }
+  },
+  "pinned_comment": "Qual número é você? 👇",
+  "notes": "Lineup format. Type 2 ('perde shiny por 1 segundo') is an illustrated gag instead of the sh-muk twist, so the same print isn't reused in 091; the only print is beach-while-bot-farms (photo with strangers pixelated + 2 real Earth Stone alarms + 'Enquanto bot moie / Eu tô na praia kkkk'), all from one customer. Meters (tendinite MAX, sorte 0%, bateria 1%) are obvious jokes, not statistics. End card asks 'Qual número é você?' with 1-2-3-4 chips."
+}

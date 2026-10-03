@@ -1,0 +1,155 @@
+{
+ "duration": 14.29,
+ "style": "lofi",
+ "bpm": 84,
+ "seed": 78,
+ "sections": [
+  {
+   "at": 0.0,
+   "type": "silence"
+  },
+  {
+   "at": 1.429,
+   "type": "groove",
+   "energy": 0.6
+  },
+  {
+   "at": 4.286,
+   "type": "drop",
+   "energy": 0.8
+  },
+  {
+   "at": 11.429,
+   "type": "outro"
+  }
+ ],
+ "stops": [
+  {
+   "at": 4.0,
+   "len": 0.27
+  }
+ ],
+ "sfx": [
+  {
+   "t": 0,
+   "name": "motif",
+   "gain": -3
+  },
+  {
+   "t": 0,
+   "name": "px-pop",
+   "gain": -8
+  },
+  {
+   "t": 1.359,
+   "name": "px-click",
+   "gain": -6
+  },
+  {
+   "t": 1.607,
+   "name": "px-click-soft",
+   "gain": -13
+  },
+  {
+   "t": 2.657,
+   "name": "whoosh",
+   "gain": -13
+  },
+  {
+   "t": 2.857,
+   "name": "px-click-soft",
+   "gain": -13
+  },
+  {
+   "t": 4.286,
+   "name": "alert",
+   "gain": -4
+  },
+  {
+   "t": 4.286,
+   "name": "whoosh",
+   "gain": -12
+  },
+  {
+   "t": 4.436,
+   "name": "counter",
+   "gain": -9
+  },
+  {
+   "t": 5.186,
+   "name": "counter",
+   "gain": -12
+  },
+  {
+   "t": 5.936,
+   "name": "ding",
+   "gain": -10
+  },
+  {
+   "t": 6.07,
+   "name": "tick",
+   "gain": -11
+  },
+  {
+   "t": 6.427,
+   "name": "tick",
+   "gain": -11
+  },
+  {
+   "t": 6.784,
+   "name": "tick",
+   "gain": -11
+  },
+  {
+   "t": 7.141,
+   "name": "tick",
+   "gain": -11
+  },
+  {
+   "t": 7.499,
+   "name": "tick",
+   "gain": -11
+  },
+  {
+   "t": 7.856,
+   "name": "tick",
+   "gain": -11
+  },
+  {
+   "t": 8.213,
+   "name": "tick",
+   "gain": -11
+  },
+  {
+   "t": 8.571,
+   "name": "pop",
+   "gain": -9
+  },
+  {
+   "t": 8.621,
+   "name": "px-ping",
+   "gain": -13
+  },
+  {
+   "t": 10.0,
+   "name": "swoosh_hit",
+   "gain": -8
+  },
+  {
+   "t": 10.536,
+   "name": "impact",
+   "gain": -10
+  },
+  {
+   "t": 11.829,
+   "name": "pop",
+   "gain": -12
+  },
+  {
+   "t": 12.179,
+   "name": "px-pop",
+   "gain": -12
+  }
+ ],
+ "logo": 11.429
+}

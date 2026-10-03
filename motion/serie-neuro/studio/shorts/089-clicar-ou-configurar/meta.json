@@ -1,0 +1,65 @@
+{
+  "id": "089",
+  "slug": "clicar-ou-configurar",
+  "family": "Você Prefere?",
+  "title": "Você prefere: clicar 8 mil vezes ou configurar uma?",
+  "concept": "Vending machine: A1 'clicar 8 mil vezes' (a click counter overheats and sells out: ESGOTADO) vs B2 'configurar uma vez' (one click on Salvar); B2 drops into the tray, then 'na real…': configura uma vez, ele repete sozinho — proved by a real HUD print with 8.434 collected loots.",
+  "neuro": [
+    "forced-choice",
+    "contrast-effect",
+    "effort-heuristic",
+    "humor",
+    "precise-number",
+    "social-proof",
+    "comment-prompt"
+  ],
+  "hook": "VOCÊ PREFERE? CLICAR 8 MIL VEZES OU CONFIGURAR UMA?",
+  "duration": 18.21,
+  "music": {
+    "style": "trap",
+    "bpm": 145
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/prints/hud-8434-loots--hud.png",
+    "kit/img/prints/hud-8434-loots--quote.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "real HUD number: collectedLoots 8434"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Você prefere: clicar 8 mil vezes ou configurar uma vez? 🖱️ A1 ou B2? Print real: 8.434 loots no automático. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#voceprefere",
+        "#farm"
+      ]
+    },
+    "youtube": {
+      "title": "Você prefere: clicar 8 mil vezes ou configurar uma? #pxg",
+      "description": "A1: clicar 8 mil vezes. B2: configurar uma vez. Com o KizuBot você configura uma vez e ele repete sozinho — no print real do cliente, 8.434 loots coletados no automático. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Você prefere: clicar 8 mil vezes ou configurar uma? 🖱️ Configura uma vez, ele repete sozinho. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#voceprefere"
+      ]
+    }
+  },
+  "pinned_comment": "Quantos cliques você dá numa hunt? 🖱️",
+  "notes": "The HUD is the OLD in-game HUD, so it is labelled 'interface antiga' per ASSETS.md. '8.434 loots desde cedo' = the HUD counter (collectedLoots: 8434) + the customer's caption 'Bagui tá rodando desde cedo hj' (shown verbatim). Twist softened from 'ele repete pra sempre' to 'ele repete sozinho' (no absolute promise). '8 mil vezes' in the hook is a rounded, illustrative link to the real 8.434."
+}

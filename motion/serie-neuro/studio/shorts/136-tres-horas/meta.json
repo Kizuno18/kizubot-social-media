@@ -1,0 +1,66 @@
+{
+  "id": "136",
+  "slug": "tres-horas",
+  "family": "Plot Twist",
+  "title": "3 horas de hunt. Ele mandou uma foto... e uma legenda",
+  "concept": "A real customer message told as a film: inside a 2.39:1 letterbox, '3 horas de hunt', 13:15 he sends a photo, 'repara no Pokémon Center'; then the bars open and the caption lands as evidence: 'Pega esse doublé smeargle 7 ai / 3h de hunt' = two Smeargle 7.",
+  "neuro": [
+    "narrative-transport",
+    "curiosity-gap",
+    "schema-violation",
+    "precise-number",
+    "social-proof",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "3 HORAS DE HUNT.",
+  "duration": 16.5,
+  "music": {
+    "style": "epic",
+    "bpm": 96,
+    "note": "intro strings, break, build under the zoom, silence, drop as the letterbox opens"
+  },
+  "assets": [
+    "kit/img/prints/smeargle-7-em-3h.png",
+    "kit/img/prints/smeargle-7-em-3h--quote.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "uso com PC desligado"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "3 horas de hunt 🎬 Ele mandou uma foto do Pokémon Center e só uma legenda: \"Pega esse doublé smeargle 7 ai\". Print real de cliente. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#smeargle",
+        "#plottwist"
+      ]
+    },
+    "youtube": {
+      "title": "3 horas de hunt... e ele voltou com DOIS Smeargle 7",
+      "description": "Uma história real em 3 capítulos, contada a partir de um print real de cliente: uma foto do Pokémon Center e a legenda \"Pega esse doublé smeargle 7 ai / 3h de hunt\". O KizuBot caça 100% AFK, com o PC desligado. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#smeargle"
+      ]
+    },
+    "instagram": {
+      "caption": "3 horas de hunt. Dois Smeargle 7. 🎬 (print real de cliente: \"Pega esse doublé smeargle 7 ai / 3h de hunt\") Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#smeargle"
+      ]
+    }
+  },
+  "pinned_comment": "O que você faria em 3 horas fora? ⏳",
+  "notes": "Deviation for truth: the concept's hook 'Ele saiu por 3 horas' / 'Deixou o char numa hunt. Fechou a porta.' adds facts the print doesn't state (it only says '3h de hunt'). Rewritten as literal chapters: '3 HORAS DE HUNT.' / 'Capítulo 1 — 13:15: Ele mandou uma foto.' / 'Capítulo 2 — O detalhe: Repara no Pokémon Center.' / twist = the caption crop, verbatim, underlined. 'DOIS Smeargle 7' reads 'doublé' as two, as in the concept. Source named smeargle-7-em-3h.png; used the asset editor's smeargle-7-em-3h.png crops (one print, so tag is singular). Sharp print shots in the letterbox carry a 'print real de cliente' tag; the 756 px crops are shown smaller than full width as ASSETS.md asks."
+}

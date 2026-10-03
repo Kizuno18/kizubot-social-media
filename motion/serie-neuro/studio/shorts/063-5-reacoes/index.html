@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>063 As 5 reações mais insanas dos clientes</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F05 TOP 5 — "Contagem" system, episode 063: reactions (magenta, speech bubbles, liquid-fill numerals) ===== */
+  :root { --acc: #ff5fd8; --acc-rgb: 255, 95, 216; --deep: #a91e92; --ink: #fff4fc; --bg0: #0f040d; --gold: #ffd23f; }
+  #root { background: var(--bg0); }
+  .t5-bg { position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 40%, #3a0b33 0%, var(--bg0) 72%); }
+  .floaters { position: absolute; inset: 0; overflow: hidden; }
+  .fb { position: absolute; border: 4px solid rgba(var(--acc-rgb), 0.16); border-radius: 40px; }
+  .t5-vig { position: absolute; inset: 0; background: radial-gradient(110% 75% at 50% 45%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.75) 100%); }
+
+  /* HUD: five speech-bubble pips */
+  .t5-hud { position: absolute; left: 120px; top: 230px; width: 760px; height: 80px; display: flex; gap: 22px; z-index: 30; }
+  .t5-pip { position: relative; flex: 1; height: 64px; border: 4px solid rgba(var(--acc-rgb), 0.5); border-radius: 18px; background: rgba(0, 0, 0, 0.4); }
+  .t5-pip::after { content: ""; position: absolute; left: 22px; bottom: -16px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 14px solid rgba(var(--acc-rgb), 0.5); }
+  .t5-pip .pf { position: absolute; inset: 0; border-radius: 13px; background: var(--acc); opacity: 0; }
+  .t5-pip .pn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Anton", sans-serif; font-size: 42px; color: rgba(var(--acc-rgb), 0.75); }
+
+  /* hook */
+  .t5-hook { position: absolute; left: 90px; right: 90px; top: 300px; height: 580px; }
+  .hA, .hB { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .h1 { font-family: "Anton", sans-serif; font-size: 168px; line-height: 1.04; color: var(--ink); display: block; }
+  .h1 em { font-style: normal; color: var(--acc); }
+  .h2 { font-family: "Anton", sans-serif; font-size: 136px; line-height: 1.08; display: block; color: var(--bg0); background: var(--acc); padding: 0 30px; border-radius: 18px; margin-top: 14px; }
+  .h3 { font-family: "Anton", sans-serif; font-size: 150px; line-height: 1.06; color: var(--ink); display: block; }
+  .h3.brand { color: #d8b4fe; }
+  .htag { font: 400 32px "JetBrains Mono", monospace; letter-spacing: 0.06em; color: rgba(var(--acc-rgb), 0.9); margin-top: 24px; text-transform: uppercase; display: block; }
+
+  /* item */
+  .it { position: absolute; inset: 0; }
+  .row1 { position: absolute; left: 110px; top: 312px; height: 300px; display: flex; align-items: flex-end; gap: 30px; }
+  .bnum { position: relative; font-family: "Anton", sans-serif; font-size: 330px; line-height: 0.86; display: block; }
+  .bnum .o { display: block; color: transparent; -webkit-text-stroke: 7px var(--acc); }
+  .bnum .fl { position: absolute; left: 0; top: 0; display: block; color: var(--acc); clip-path: inset(100% 0% 0% 0%); text-shadow: 0 0 70px rgba(var(--acc-rgb), 0.45); }
+  .lab { display: flex; flex-direction: column; gap: 14px; padding-bottom: 18px; }
+  .lab .k { font: 400 32px "JetBrains Mono", monospace; letter-spacing: 0.14em; color: rgba(var(--acc-rgb), 0.95); text-transform: uppercase; display: block; }
+  .lab .chip { display: inline-block; font: 800 30px "Inter", sans-serif; color: var(--bg0); background: var(--ink); padding: 8px 16px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .bubwrap { position: absolute; left: 100px; right: 120px; top: 610px; height: 250px; display: flex; align-items: center; }
+  .bub { position: relative; display: block; background: var(--deep); color: #fff; border-radius: 42px; padding: 24px 40px 30px; font: 900 76px/1.1 "Inter", sans-serif;
+    letter-spacing: -0.015em; box-shadow: 0 20px 60px rgba(var(--acc-rgb), 0.28); transform-origin: 10% 100%; }
+  .bub .tl { position: absolute; left: 46px; bottom: -30px; width: 60px; height: 40px; }
+  .bub .l { display: block; }
+  .card { position: absolute; left: 96px; width: 780px; top: 880px; background: #1a0c17; border: 4px solid var(--acc); border-radius: 26px; padding: 14px; overflow: visible;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); }
+  .card .im { position: relative; overflow: hidden; border-radius: 14px; }
+  .card img { display: block; width: 100%; }
+  .tag { position: absolute; left: 22px; top: -30px; z-index: 3; background: var(--acc); color: var(--bg0); font: 800 30px "Inter", sans-serif; letter-spacing: 0.05em;
+    padding: 8px 18px; border-radius: 8px; text-transform: uppercase; }
+  .hl { position: absolute; border: 6px solid var(--gold); border-radius: 14px; opacity: 0; box-shadow: 0 0 24px rgba(255, 210, 63, 0.5); }
+
+  /* tension */
+  .t5-tension { position: absolute; left: 90px; right: 90px; top: 320px; height: 520px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .tt1 { font-family: "Anton", sans-serif; font-size: 130px; line-height: 1.12; color: var(--ink); display: block; }
+  .tt2 { font-family: "Anton", sans-serif; font-size: 164px; line-height: 1.12; color: var(--acc); display: block; }
+  .burst { position: absolute; left: 540px; top: 560px; width: 0; height: 0; }
+  .ray { position: absolute; left: -6px; top: -560px; width: 12px; height: 380px; background: linear-gradient(180deg, rgba(var(--acc-rgb), 0), rgba(var(--acc-rgb), 0.5)); transform-origin: 6px 560px; border-radius: 6px; opacity: 0; }
+
+  .eye { position: absolute; width: 100px; height: 100px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .t5-ask { font: 900 70px/1.1 "Inter", sans-serif; color: var(--ink); max-width: 800px; }
+  .t5-ask b { color: var(--acc); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  #blackout { position: absolute; inset: 0; background: var(--bg0); opacity: 0; pointer-events: none; z-index: 70; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="21.9" data-fps="30">
+  <div class="t5-bg"></div>
+  <div class="floaters" id="floaters"></div>
+  <div class="t5-vig"></div>
+
+  <div class="t5-hud" id="hud">
+    <div class="t5-pip" id="pip5"><div class="pf"></div><div class="pn">5</div></div>
+    <div class="t5-pip" id="pip4"><div class="pf"></div><div class="pn">4</div></div>
+    <div class="t5-pip" id="pip3"><div class="pf"></div><div class="pn">3</div></div>
+    <div class="t5-pip" id="pip2"><div class="pf"></div><div class="pn">2</div></div>
+    <div class="t5-pip" id="pip1"><div class="pf"></div><div class="pn">1</div></div>
+  </div>
+
+  <!-- HOOK -->
+  <section id="s0" class="clip" data-start="0" data-duration="2.483">
+    <div class="t5-hook">
+      <div class="hA" id="hA"><span class="h1" id="ha1">AS <em>5</em> REAÇÕES</span><span class="h2" id="ha2">MAIS INSANAS</span></div>
+      <div class="hB" id="hB"><span class="h3" id="hb1">DOS CLIENTES</span><span class="h3 brand" id="hb2">DO KIZUBOT</span><span class="htag" id="hbt">prints reais de clientes diferentes</span></div>
+    </div>
+  </section>
+
+  <!-- items -->
+  <section id="s5" class="clip" data-start="2.483" data-duration="2.897">
+    <div class="it" id="i5">
+      <div class="row1"><span class="bnum" id="n5"><span class="o">5</span><span class="fl">5</span></span><span class="lab" id="lb5"><span class="k">reação</span><span class="chip">print real</span></span></div>
+      <div class="bubwrap"><div class="bub" id="b5"><span class="l">“o bot tá um monstro”</span><svg class="tl" viewBox="0 0 60 40"><polygon points="0,0 60,0 4,40" fill="#a91e92"/></svg></div></div>
+      <div class="card" id="c5"><div class="tag">print real de cliente</div><div class="im"><img src="kit/img/prints/bot-ta-um-monstro--quote.png" alt="" /><div class="hl" id="h5" style="left:1%; top:33%; width:58%; height:31%"></div></div></div>
+    </div>
+  </section>
+  <section id="s4" class="clip" data-start="5.379" data-duration="2.897">
+    <div class="it" id="i4">
+      <div class="row1"><span class="bnum" id="n4"><span class="o">4</span><span class="fl">4</span></span><span class="lab" id="lb4"><span class="k">reação</span><span class="chip">print real</span></span></div>
+      <div class="bubwrap"><div class="bub" id="b4"><span class="l">“Bot joga muito kkk”</span><svg class="tl" viewBox="0 0 60 40"><polygon points="0,0 60,0 4,40" fill="#a91e92"/></svg></div></div>
+      <div class="card" id="c4"><div class="tag">print real de cliente</div><div class="im"><img src="kit/img/prints/bot-joga-muito--alertas.png" alt="" /><div class="hl" id="h4" style="left:0.5%; top:1%; width:47%; height:22%"></div></div></div>
+    </div>
+  </section>
+  <section id="s3" class="clip" data-start="8.276" data-duration="2.897">
+    <div class="it" id="i3">
+      <div class="row1"><span class="bnum" id="n3"><span class="o">3</span><span class="fl">3</span></span><span class="lab" id="lb3"><span class="k">reação</span><span class="chip">print real</span></span></div>
+      <div class="bubwrap"><div class="bub" id="b3" style="font-size:70px"><span class="l">“esse bot</span><span class="l">é a perfeiçã ocara”</span><svg class="tl" viewBox="0 0 60 40"><polygon points="0,0 60,0 4,40" fill="#a91e92"/></svg></div></div>
+      <div class="card" id="c3" style="left:200px; width:556px"><div class="tag">print real de cliente</div><div class="im"><img src="kit/img/prints/bot-e-a-perfeicao--quote.png" alt="" /><div class="hl" id="h3" style="left:1%; top:1%; width:96%; height:49%"></div></div></div>
+    </div>
+  </section>
+  <section id="s2" class="clip" data-start="11.172" data-duration="2.897">
+    <div class="it" id="i2">
+      <div class="row1"><span class="bnum" id="n2"><span class="o">2</span><span class="fl">2</span></span><span class="lab" id="lb2"><span class="k">reação</span><span class="chip">print real</span></span></div>
+      <div class="bubwrap"><div class="bub" id="b2" style="font-size:56px; letter-spacing:-0.02em; padding: 22px 34px 26px"><span class="l">“Mas esse bot é um roubo”</span><span class="l">“Faz tudo a desgrama”</span><svg class="tl" viewBox="0 0 60 40"><polygon points="0,0 60,0 4,40" fill="#a91e92"/></svg></div></div>
+      <div class="card" id="c2" style="left:150px; width:672px"><div class="tag">print real de cliente</div><div class="im"><img src="kit/img/prints/bot-e-um-roubo--roubo.png" alt="" /><div class="hl" id="h2" style="left:1%; top:2%; width:96%; height:94%"></div></div></div>
+    </div>
+  </section>
+
+  <section id="st" class="clip" data-start="14.069" data-duration="0.828">
+    <div class="t5-tension" id="tin"><span class="tt1" id="tt1">E A REAÇÃO</span><span class="tt2" id="tt2">NÚMERO 1…</span></div>
+  </section>
+
+  <section id="s1" class="clip" data-start="14.897" data-duration="3.724">
+    <div class="it" id="i1">
+      <div class="burst" id="burst"></div>
+      <div class="row1"><span class="bnum" id="n1"><span class="o">1</span><span class="fl">1</span></span><span class="lab" id="lb1"><span class="k">reação</span><span class="chip">print real</span></span></div>
+      <div class="bubwrap" style="top:600px; height:270px"><div class="bub" id="b1" style="font-size:66px"><span class="l">“eu quero mt ter comprado isso antes”</span><svg class="tl" viewBox="0 0 60 40"><polygon points="0,0 60,0 4,40" fill="#a91e92"/></svg></div></div>
+      <div class="bub" id="b1b" style="position:absolute; left:560px; top:500px; font-size:84px; background: var(--gold); color:#1a0c17; padding: 14px 34px 20px; transform-origin: 50% 100%; opacity:0">“queria*”</div>
+      <div class="card" id="c1"><div class="tag">print real de cliente</div><div class="im"><img src="kit/img/prints/queria-ter-comprado-antes--quote.png" alt="" /><div class="hl" id="h1" style="left:0.5%; top:50%; width:98%; height:49%"></div></div></div>
+    </div>
+  </section>
+
+  <section id="se" class="clip" data-start="18.621" data-duration="3.279">
+    <div class="kz-end" id="sein">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="t5-ask" id="endAsk">Qual foi <b>a melhor?</b></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+  <div id="blackout"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 21.9;
+  const B = 60 / 145;                 // trap 145
+  const b = (n) => n * B;
+  const DARK = "#0f040d", DIM = "rgba(255, 95, 216, 0.75)";
+
+  // floating bubble outlines (deterministic), drifting up for the whole video
+  const host = document.getElementById("floaters");
+  const r = KZ.rng(63);
+  for (let i = 0; i < 9; i++) {
+    const el = document.createElement("div");
+    el.className = "fb";
+    const w = 160 + r() * 260, h = w * (0.45 + r() * 0.2);
+    el.style.width = w + "px"; el.style.height = h + "px";
+    el.style.left = (r() * 1080 - w / 2) + "px"; el.style.top = (200 + r() * 1700) + "px";
+    host.appendChild(el);
+    tl.fromTo(el, { y: 0, rotation: (r() - 0.5) * 16 }, { y: -(500 + r() * 500), rotation: (r() - 0.5) * 16, duration: D, ease: "none" }, 0);
+  }
+
+  function pipOn(id, at) {
+    tl.fromTo("#pip" + id + " .pf", { opacity: 0 }, { opacity: 1, duration: 0.18 }, at);
+    tl.to("#pip" + id + " .pn", { color: DARK, duration: 0.12 }, at);
+  }
+  function pipDone(id, at) {
+    tl.to("#pip" + id + " .pf", { opacity: 0.32, duration: 0.2 }, at);
+    tl.to("#pip" + id + " .pn", { color: "#ff5fd8", duration: 0.15 }, at);
+  }
+
+  // ---------- HOOK ----------
+  tl.fromTo("#ha1", { scale: 1.06 }, { scale: 1, duration: 0.3, ease: "power4.out" }, 0);
+  tl.fromTo("#ha2", { scale: 0.3, rotation: -8, opacity: 0 }, { scale: 1, rotation: -3, opacity: 1, duration: 0.32, ease: "back.out(2.4)" }, 0.12);
+  KZ.shake(tl, "#hA", 0.3, 10, 0.22, 6);
+  tl.to("#hA", { scale: 1.05, duration: b(1.5), ease: "sine.inOut" }, b(1));
+  tl.to("#hA", { x: -1100, duration: 0.18, ease: "power3.in" }, b(3) - 0.18);
+  tl.fromTo("#hb1", { x: 1100 }, { x: 0, duration: 0.24, ease: "power4.out" }, b(3));
+  tl.fromTo("#hb2", { x: 1100 }, { x: 0, duration: 0.24, ease: "power4.out" }, b(3.5));
+  KZ.rise(tl, "#hbt", b(4.2), 0.3, 20);
+  tl.fromTo("#hud", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, b(4.6));
+  tl.to("#hB", { x: -1100, duration: 0.18, ease: "power3.in" }, b(6) - 0.18);
+
+  // ---------- items: numeral fills like liquid, the quote pops, then the proof ----------
+  function item(id, S, len, o) {
+    tl.fromTo("#n" + id, { scale: 1.8, opacity: 0, x: -40 }, { scale: 1, opacity: 1, x: 0, duration: 0.28, ease: "power4.out" }, S);
+    tl.fromTo("#n" + id + " .fl", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.55, ease: "power2.inOut" }, S + 0.1);
+    tl.fromTo("#lb" + id, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.28, ease: "power3.out" }, S + 0.15);
+    KZ.shake(tl, "#i" + id, S + 0.05, o.shake || 10, 0.22, 30 + id);
+    tl.fromTo("#b" + id, { scale: 0.2, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: -1.5, duration: 0.4, ease: "back.out(2.2)" }, S + b(0.75));
+    tl.to("#b" + id, { scale: 1.04, duration: b(2), ease: "sine.inOut" }, S + b(0.75) + 0.4);
+    const P = S + b(o.proof || 2.5);
+    tl.fromTo("#c" + id, { y: 900, opacity: 0, rotation: 5 }, { y: 0, opacity: 1, rotation: -1, duration: 0.42, ease: "power4.out" }, P);
+    tl.fromTo("#h" + id, { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2)" }, P + b(1.1));
+    const E = S + len - 0.2;
+    tl.to("#i" + id, { x: -1100, duration: 0.2, ease: "power3.in" }, E);
+  }
+  const S5 = b(6), S4 = b(13), S3 = b(20), S2 = b(27), ST = b(34), S1 = b(36), SE = b(45);
+  pipOn(5, S5); item(5, S5, b(7), {});
+  pipDone(5, S4); pipOn(4, S4); item(4, S4, b(7), {});
+  pipDone(4, S3); pipOn(3, S3); item(3, S3, b(7), {});
+  pipDone(3, S2); pipOn(2, S2); item(2, S2, b(7), {});
+
+  // tension
+  pipDone(2, ST);
+  KZ.slam(tl, "#tt1", ST, 1.5);
+  KZ.slam(tl, "#tt2", ST + b(0.5), 1.3);
+  tl.fromTo("#pip1 .pf", { opacity: 0 }, { opacity: 0.85, duration: 0.07, ease: "none", yoyo: true, repeat: 5, immediateRender: false }, ST + 0.05);
+  tl.to("#tin", { scale: 1.06, duration: 0.3, ease: "sine.inOut" }, ST + b(1));
+  tl.to("#tin", { scale: 0.86, opacity: 0.4, duration: 0.12, ease: "power2.in" }, b(35.3));
+
+  // #1: rays burst, the quote, then the self-correction "queria*"
+  tl.to("#pip1 .pf", { opacity: 1, duration: 0.12 }, S1);
+  tl.to("#pip1 .pn", { color: DARK, duration: 0.1 }, S1);
+  KZ.flash(tl, "#flash", S1, 0.85, "#ffd6f6");
+  const burst = document.getElementById("burst");
+  for (let i = 0; i < 16; i++) {
+    const ray = document.createElement("div");
+    ray.className = "ray"; burst.appendChild(ray);
+    tl.fromTo(ray, { rotation: i * 22.5, scaleY: 0.2, opacity: 0 }, { rotation: i * 22.5 + 12, scaleY: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, S1 + 0.02);
+    tl.to(ray, { opacity: 0, duration: 0.6, ease: "power1.in" }, S1 + 0.9);
+  }
+  item(1, S1, b(9), { shake: 20, proof: 3.4 });
+  tl.fromTo("#b1b", { scale: 0.2, opacity: 0, rotation: 14 }, { scale: 1, opacity: 1, rotation: 6, duration: 0.4, ease: "back.out(3)" }, S1 + b(2.2));
+  KZ.shake(tl, "#b1b", S1 + b(2.2) + 0.3, 8, 0.2, 77);
+
+  // END
+  tl.to(["#pip5 .pf", "#pip4 .pf", "#pip3 .pf", "#pip2 .pf", "#pip1 .pf"], { opacity: 1, duration: 0.2, stagger: 0.04 }, SE - 0.1);
+  tl.to(["#pip5 .pn", "#pip4 .pn", "#pip3 .pn", "#pip2 .pn", "#pip1 .pn"], { color: DARK, duration: 0.1, stagger: 0.04 }, SE - 0.1);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, SE + 0.04);
+  KZ.eyePulse(tl, "#eye2", SE + 0.14, 3);
+  KZ.rise(tl, "#endUrl", SE + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", SE + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, SE + 0.6);
+  tl.to("#hud", { opacity: 0, duration: 0.3 }, D - 0.75);
+  tl.fromTo("#blackout", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.in" }, D - 0.4);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

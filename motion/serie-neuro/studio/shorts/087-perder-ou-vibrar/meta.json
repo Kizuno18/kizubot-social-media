@@ -1,0 +1,65 @@
+{
+  "id": "087",
+  "slug": "perder-ou-vibrar",
+  "family": "Você Prefere?",
+  "title": "Você prefere: perder o shiny ou sentir o relógio vibrar?",
+  "concept": "Arcade fighter-select screen: P1 'perder o shiny' (the sparkle pixel-dissolves: você tava longe…) vs P2 'sentir o relógio vibrar' (a real smartwatch alarm); P1 gets GAME OVER, P2 is selected, then 'na real…': com KizuBot o alarme chega até no relógio.",
+  "neuro": [
+    "forced-choice",
+    "contrast-effect",
+    "loss-aversion",
+    "nostalgia",
+    "pavlovian-sound",
+    "social-proof",
+    "comment-prompt"
+  ],
+  "hook": "VOCÊ PREFERE? PERDER O SHINY OU SENTIR O RELÓGIO VIBRAR?",
+  "duration": 18.21,
+  "music": {
+    "style": "trap",
+    "bpm": 145
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/smartwatch-alarm--watch.jpg",
+    "kit/img/prints/smartwatch-alarm--photo.jpg"
+  ],
+  "claims": [
+    "alarmes no celular e notificações no WhatsApp",
+    "detecção de shinys, megas e bosses"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Você prefere: perder o shiny ou sentir o relógio vibrar? 🎮 P1 ou P2? Com KizuBot o alarme chega até no relógio. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#voceprefere"
+      ]
+    },
+    "youtube": {
+      "title": "Você prefere: perder o shiny ou sentir o relógio vibrar? #pxg",
+      "description": "P1: perder o shiny porque você tava longe. P2: sentir o relógio vibrar. O KizuBot detecta shiny, mega e boss e manda alarme no celular — chega até no relógio. Print real de cliente no vídeo. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    },
+    "instagram": {
+      "caption": "Você prefere: perder o shiny ou sentir o relógio vibrar? 🎮 O alarme do KizuBot chega até no relógio. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Já perdeu um shiny por estar longe? 😭",
+  "notes": "Arcade skin built as a fighter-select screen (P1/P2, GAME OVER/SELECIONADO) so it differs from short #12's 8-bit HUD. The watch alarm is the concept-listed Darkness Stone drop, not presented as a shiny alarm. Twist line from the concept: 'com KizuBot o alarme chega até no relógio'."
+}

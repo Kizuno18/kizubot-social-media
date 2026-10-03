@@ -1,0 +1,67 @@
+{
+  "id": "112",
+  "slug": "lenda-do-char",
+  "family": "Terror no PxG",
+  "title": "A lenda do char que nunca dorme",
+  "concept": "Creepypasta on a cursed CRT: a lone char walks a dotted cavebot route on a night map ('Dizem que ele caça 24h por dia… Nem às 4h da manhã. Nem no Natal.'); the camera dives into the screen, the char gets a purple selection ring, a glowing KizuBot eye and the nameplate 'seu char': 'É o SEU char.' Proof: a real customer HUD photo, 'Bagui tá rodando desde cedo hj' at 00:40.",
+  "neuro": [
+    "arousal-suspense",
+    "self-reference",
+    "benign-violation",
+    "seasonality",
+    "precise-number",
+    "social-proof",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "O CHAR QUE NUNCA DORME.",
+  "duration": 19.45,
+  "music": {
+    "style": "trap",
+    "bpm": 145,
+    "note": "trap break = dark pad + bell melody (music box) for the legend, tape-stop, trap drop on 'É o seu char'"
+  },
+  "assets": [
+    "kit/img/prints/hud-8434-loots--hud.png",
+    "kit/img/prints/hud-8434-loots--quote.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "runs 24/7 on virtual machines (\"24h na nuvem\")",
+    "uso com PC desligado"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "A lenda do char que nunca dorme 👁️ Dizem que ele caça 24h por dia. Nem às 4h. Nem no Natal. Spoiler: pode ser o seu. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#halloween",
+        "#lenda"
+      ]
+    },
+    "youtube": {
+      "title": "A lenda do char que nunca dorme (pode ser o seu)",
+      "description": "Dizem que existe um char que caça 24h por dia. Ninguém nunca viu ele parar. Nem às 4h da manhã. Nem no Natal. É o seu char com o KizuBot: roda 24h na nuvem, com o PC desligado. Print real de cliente (HUD antigo do bot): \"Bagui tá rodando desde cedo hj\". kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#halloween"
+      ]
+    },
+    "instagram": {
+      "caption": "A lenda do char que nunca dorme 👁️ Nem às 4h. Nem no Natal. É o seu char, com o KizuBot rodando 24h na nuvem. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#halloween"
+      ]
+    }
+  },
+  "pinned_comment": "Você já viu esse char? 👁️",
+  "notes": "Hook shortened from 'A LENDA DO CHAR QUE NUNCA DORME.' (7 words) to 'O CHAR QUE NUNCA DORME.' to respect ≤6 words per hook card; 'Dizem que existe um char que caça 24 horas por dia' trimmed to 'Dizem que ele caça 24h por dia.' for reading time. The proof photo shows the OLD in-game HUD, so it is labelled 'HUD antigo do bot' and never presented as the current panel; '8.434 loots coletados' is the HUD's own collectedLoots value. Source named hud-8434-loots.png; used the asset editor's hud-8434-loots crops. The night map, char and nameplate are illustrations. Per ASSETS.md the old HUD is labelled 'interface antiga do bot' and the zoom/stat uses collectedLoots (as the catalog recommends)."
+}

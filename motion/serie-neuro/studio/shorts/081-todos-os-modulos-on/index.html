@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>081 Todos os módulos: ON</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F09 Satisfatório — visual system: soft tactile clay UI on dark violet, buttery motion, seamless loop ===== */
+  :root {
+    --s-ink: #f6f2ff; --s-dim: #8c82a6; --s-lime: #c6ff3d; --s-lime-2: #9be22d; --s-gold: #fcd34d; --s-lav: #d8b4fe;
+    --s-track: #241a37; --s-panel: #1a1229;
+    --f-soft: "Fredoka", "Baloo 2", sans-serif;
+  }
+  #root { background: #0c0716; }
+  #bg { position: absolute; inset: 0; background: radial-gradient(85% 55% at 50% 48%, #2b1652 0%, #140b26 55%, #0a0613 100%); }
+  #floor { position: absolute; left: -200px; right: -200px; top: 1180px; height: 900px; border-radius: 50%; background: radial-gradient(closest-side, rgba(168, 85, 247, 0.22), rgba(168, 85, 247, 0)); }
+
+  #title { position: absolute; left: 0; right: 0; top: 262px; text-align: center; font: 700 108px/1.08 var(--f-soft); color: var(--s-ink); letter-spacing: -0.01em; }
+  #title .ln { display: block; }
+  #title .row2 { display: flex; justify-content: center; align-items: center; gap: 26px; margin-right: 40px; }
+  /* master pill switch */
+  #pill { position: relative; width: 196px; height: 100px; border-radius: 50px; background: var(--s-track); flex: none;
+    box-shadow: inset 0 6px 14px rgba(0, 0, 0, 0.6), inset 0 -2px 0 rgba(255, 255, 255, 0.05), 0 2px 0 rgba(255, 255, 255, 0.06); }
+  #pillFill { position: absolute; inset: 0; border-radius: 50px; background: linear-gradient(180deg, #e2ff8a, #a3e635); opacity: 0; box-shadow: 0 0 40px rgba(198, 255, 61, 0.55); }
+  #pillKnob { position: absolute; left: 8px; top: 8px; width: 84px; height: 84px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #ddd7ee 60%, #b8afcf);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5), inset 0 -4px 6px rgba(0, 0, 0, 0.12); }
+  #pOff, #pOn { position: absolute; top: 0; height: 100px; display: flex; align-items: center; font: 700 40px/1 var(--f-soft); }
+  #pOff { right: 26px; color: #7d7396; }
+  #pOn { left: 30px; color: #1b2606; opacity: 0; }
+
+  #panel { position: absolute; left: 104px; top: 556px; width: 812px; height: 846px; border-radius: 58px;
+    background: linear-gradient(180deg, #211638 0%, #170f27 100%);
+    box-shadow: 0 50px 120px rgba(0, 0, 0, 0.55), inset 0 2px 0 rgba(255, 255, 255, 0.07), inset 0 -4px 0 rgba(0, 0, 0, 0.3); overflow: hidden; }
+  #pHead { position: absolute; left: 40px; right: 40px; top: 30px; height: 62px; display: flex; align-items: center; gap: 16px; }
+  #pHead .av { width: 58px; height: 58px; border-radius: 50%; overflow: hidden; position: relative; background: #2e1b52; flex: none; }
+  #pHead .av img { position: absolute; left: 0; top: 4px; width: 58px; }
+  #pHead .nm { font: 700 34px/1 var(--f-soft); color: var(--s-lav); }
+  #cnt { margin-left: auto; font: 700 38px/1 var(--f-soft); color: var(--s-ink); font-variant-numeric: tabular-nums; }
+  #cnt small { color: var(--s-dim); font-size: 38px; }
+  #pSep { position: absolute; left: 40px; right: 40px; top: 112px; height: 2px; background: rgba(255, 255, 255, 0.06); }
+
+  .cell { position: absolute; width: 372px; height: 90px; border-radius: 28px; background: rgba(255, 255, 255, 0.035);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), inset 0 -2px 0 rgba(0, 0, 0, 0.25); }
+  .cell .lab { position: absolute; left: 132px; top: 0; height: 90px; display: flex; align-items: center; font: 700 33px/1 var(--f-soft); color: var(--s-dim); letter-spacing: -0.01em; white-space: nowrap; }
+  .sw { position: absolute; left: 18px; top: 17px; width: 104px; height: 56px; border-radius: 28px; background: #33284d;
+    box-shadow: inset 0 4px 9px rgba(0, 0, 0, 0.55), inset 0 -2px 0 rgba(255, 255, 255, 0.06), 0 0 0 2px rgba(255, 255, 255, 0.05); }
+  .sw .fill { position: absolute; inset: 0; border-radius: 28px; background: linear-gradient(180deg, #e2ff8a, #a3e635); opacity: 0; }
+  .sw .glow { position: absolute; left: -26px; top: -26px; right: -26px; bottom: -26px; border-radius: 60px; background: radial-gradient(closest-side, rgba(198, 255, 61, 0.42), rgba(198, 255, 61, 0)); opacity: 0; }
+  .sw .knob { position: absolute; left: 6px; top: 6px; width: 44px; height: 44px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #ddd7ee 60%, #b8afcf);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5), inset 0 -3px 5px rgba(0, 0, 0, 0.12); }
+  .cell.master { background: rgba(251, 191, 36, 0.08); box-shadow: inset 0 0 0 2px rgba(251, 191, 36, 0.35); }
+  .cell.master .lab { color: var(--s-gold); font-size: 38px; }
+  .cell.master .fill { background: linear-gradient(180deg, #fff0a8, #fbbf24); }
+  .cell.master .glow { background: radial-gradient(closest-side, rgba(251, 191, 36, 0.55), rgba(251, 191, 36, 0)); }
+  #sweep { position: absolute; top: -200px; left: 0; width: 260px; height: 1300px; background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(216, 180, 254, 0.28), rgba(255, 255, 255, 0)); opacity: 0; }
+
+  /* end lockup */
+  #lock { position: absolute; inset: 0; }
+  #logoBox { position: absolute; left: 300px; top: 548px; width: 480px; }
+  #logoBox img { display: block; width: 480px; }
+  #eyeEnd { position: absolute; left: 146px; top: 2px; width: 96px; height: 96px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(250, 232, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  #endUrl { position: absolute; left: 0; right: 0; top: 1004px; text-align: center; font: 700 64px/1 var(--f-soft); color: var(--s-ink); }
+  #endAsk { position: absolute; left: 120px; right: 160px; top: 1100px; text-align: center; font: 700 64px/1.12 var(--f-soft); color: var(--s-ink); }
+  #endAsk .ln { display: block; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="13.3" data-fps="30">
+  <div id="bg"></div>
+  <div id="floor"></div>
+
+  <!-- the whole loop lives in one untimed stage so the last frame can return to frame 0 -->
+  <div id="stage" style="position:absolute; inset:0">
+    <div id="title">
+      <div class="ln">TODOS OS</div>
+      <div class="ln row2"><span>MÓDULOS:</span>
+        <div id="pill"><div id="pillFill"></div><div id="pOff">OFF</div><div id="pOn">ON</div><div id="pillKnob"></div></div>
+      </div>
+    </div>
+    <div id="panel">
+      <div id="pHead"><div class="av"><img src="kit/img/brand/kizubot-head.png" alt="" /></div><div class="nm">KizuBot</div><div id="cnt"><span id="cntN">0</span><small>/13</small></div></div>
+      <div id="pSep"></div>
+      <div id="grid"></div>
+      <div id="sweep"></div>
+    </div>
+  </div>
+
+  <!-- end lockup over the dimmed panel: 9.677 - 12.581 -->
+  <section id="end" class="clip" data-start="9.677" data-duration="2.904">
+    <div id="lock">
+      <div id="logoBox"><img id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" /><div id="eyeEnd"></div></div>
+      <div id="endUrl">kizubot.com</div>
+      <div id="endAsk"><div class="ln">Qual você ligaria</div><div class="ln">primeiro?</div></div>
+    </div>
+  </section>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 13.3;
+  const b = KZ.beats(124);              // beat 0.4839 s
+  const T_ON = b(16), T_EC = b(20), T_LOOP = b(26);
+  const NAMES = ["Cavebot", "Combat", "Healing", "Catch", "Farming", "Fishing", "Alarms", "Party", "Engine", "Actions", "Account", "Setup Pokémon", "Humanização"];
+
+  // build the 2 x 7 grid (zigzag order = the wave runs down the panel)
+  const grid = document.getElementById("grid");
+  const cells = [];
+  for (let i = 0; i < 14; i++) {
+    const col = i % 2, row = Math.floor(i / 2);
+    const c = document.createElement("div");
+    c.className = "cell" + (i === 13 ? " master" : "");
+    c.style.left = (26 + col * 388) + "px";
+    c.style.top = (128 + row * 102) + "px";
+    c.innerHTML = '<div class="lab">' + (i === 13 ? "100% AFK" : NAMES[i]) + '</div><div class="sw"><div class="glow"></div><div class="fill"></div><div class="knob"></div></div>';
+    grid.appendChild(c);
+    cells.push(c);
+  }
+  const FLIP = cells.map(function (c, i) { return i < 13 ? b(2 + i) : T_ON; });
+
+  function flipOn(c, t, big) {
+    const knob = c.querySelector(".knob"), fill = c.querySelector(".fill"), glow = c.querySelector(".glow"), lab = c.querySelector(".lab");
+    tl.fromTo(knob, { x: 0 }, { x: 48, duration: 0.3, ease: "power3.inOut" }, t);
+    tl.fromTo(knob, { scaleX: 1 }, { scaleX: 1.28, duration: 0.14, ease: "power2.out" }, t);
+    tl.to(knob, { scaleX: 1, duration: 0.18, ease: "power2.inOut" }, t + 0.14);
+    tl.fromTo(fill, { opacity: 0 }, { opacity: 1, duration: 0.24, ease: "power2.inOut" }, t + 0.05);
+    tl.fromTo(glow, { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power2.out" }, t + 0.08);
+    tl.to(glow, { opacity: big ? 0.8 : 0.35, duration: 0.5, ease: "power2.inOut" }, t + 0.22);
+    tl.fromTo(lab, { color: big ? "#fcd34d" : "#8c82a6" }, { color: big ? "#fff3bf" : "#f6f2ff", duration: 0.22, ease: "power2.out" }, t + 0.06);
+    tl.fromTo(c, { scale: 1 }, { scale: big ? 1.12 : 1.05, duration: 0.12, ease: "power2.out" }, t);
+    tl.to(c, { scale: 1, duration: 0.35, ease: "power2.inOut" }, t + 0.12);
+  }
+  function flipOff(c, t, big) {
+    const knob = c.querySelector(".knob"), fill = c.querySelector(".fill"), glow = c.querySelector(".glow"), lab = c.querySelector(".lab");
+    tl.to(knob, { x: 0, duration: 0.24, ease: "power3.inOut" }, t);
+    tl.to(fill, { opacity: 0, duration: 0.2, ease: "power2.inOut" }, t + 0.02);
+    tl.to(glow, { opacity: 0, duration: 0.18, ease: "power2.in" }, t);
+    tl.to(lab, { color: big ? "#fcd34d" : "#8c82a6", duration: 0.2, ease: "power2.inOut" }, t);
+  }
+
+  // ambient: the stage floats so no frame is frozen
+  tl.fromTo("#panel", { y: 0 }, { y: -8, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+  tl.fromTo("#floor", { opacity: 0.8 }, { opacity: 1, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0);
+  // frame 0: hook already readable; anticipation ring on the first switch
+  tl.fromTo("#title", { y: 18, opacity: 0.85 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo(cells[0].querySelector(".sw"), { boxShadow: "0 0 0 0 rgba(198,255,61,0)" }, { boxShadow: "0 0 0 8px rgba(198,255,61,0.35)", duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.1);
+
+  // the cascade, one switch per beat
+  for (let i = 0; i < 13; i++) flipOn(cells[i], FLIP[i], false);
+
+  // master: 100% AFK + pill ON + glow sweep (after a beat of silence in the music)
+  flipOn(cells[13], T_ON, true);
+  tl.fromTo("#pillKnob", { x: 0 }, { x: 96, duration: 0.34, ease: "power3.inOut" }, T_ON);
+  tl.fromTo("#pillKnob", { scaleX: 1 }, { scaleX: 1.25, duration: 0.15, ease: "power2.out" }, T_ON);
+  tl.to("#pillKnob", { scaleX: 1, duration: 0.2, ease: "power2.inOut" }, T_ON + 0.15);
+  tl.fromTo("#pillFill", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.inOut" }, T_ON + 0.06);
+  tl.fromTo("#pOff", { opacity: 1 }, { opacity: 0, duration: 0.12 }, T_ON);
+  tl.fromTo("#pOn", { opacity: 0 }, { opacity: 1, duration: 0.2 }, T_ON + 0.14);
+  tl.fromTo("#pill", { scale: 1 }, { scale: 1.12, duration: 0.14, ease: "power2.out" }, T_ON);
+  tl.to("#pill", { scale: 1, duration: 0.4, ease: "power2.inOut" }, T_ON + 0.14);
+  tl.fromTo("#sweep", { x: -400, opacity: 1 }, { x: 1000, opacity: 1, duration: 0.85, ease: "power2.inOut" }, T_ON + 0.05);
+  tl.fromTo("#panel", { boxShadow: "0 50px 120px rgba(0,0,0,0.55), inset 0 2px 0 rgba(255,255,255,0.07), inset 0 -4px 0 rgba(0,0,0,0.3)" },
+    { boxShadow: "0 50px 160px rgba(198,255,61,0.30), inset 0 2px 0 rgba(255,255,255,0.12), inset 0 -4px 0 rgba(0,0,0,0.3)", duration: 0.5, ease: "power2.out" }, T_ON + 0.1);
+
+  // end lockup: dim the panel, bring in logo (+ eye), url, ask
+  tl.to(["#panel", "#title"], { opacity: 0.12, scale: 0.94, duration: 0.4, ease: "power2.inOut" }, T_EC - 0.2);
+  tl.fromTo("#endLogo", { scale: 0.4, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.55, ease: "back.out(1.8)" }, T_EC);
+  KZ.eyePulse(tl, "#eyeEnd", T_EC + 0.15, 3);
+  KZ.rise(tl, "#endUrl", T_EC + 0.42, 0.4, 26);
+  KZ.rise(tl, "#endAsk", T_EC + 0.78, 0.45, 26);
+  tl.to("#logoBox", { y: -10, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_EC + 0.6);
+  tl.to("#lock", { opacity: 0, scale: 0.96, duration: 0.2, ease: "power2.in" }, T_LOOP - 0.2);
+
+  // loop seam: the panel returns and every switch flips OFF in one wave -> frame 0
+  tl.to(["#panel", "#title"], { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, T_LOOP - 0.05);
+  tl.to("#panel", { boxShadow: "0 50px 120px rgba(0,0,0,0.55), inset 0 2px 0 rgba(255,255,255,0.07), inset 0 -4px 0 rgba(0,0,0,0.3)", duration: 0.3 }, T_LOOP);
+  for (let i = 13; i >= 0; i--) flipOff(cells[i], T_LOOP + 0.06 + (13 - i) * 0.018, i === 13);
+  tl.to("#pillKnob", { x: 0, duration: 0.26, ease: "power3.inOut" }, T_LOOP + 0.06);
+  tl.to("#pillFill", { opacity: 0, duration: 0.2 }, T_LOOP + 0.08);
+  tl.to("#pOn", { opacity: 0, duration: 0.12 }, T_LOOP + 0.06);
+  tl.to("#pOff", { opacity: 1, duration: 0.2 }, T_LOOP + 0.16);
+
+  // counter: number of switches ON (pure function of time)
+  (function () {
+    const n = document.getElementById("cntN"); const o = { t: 0 };
+    tl.fromTo(o, { t: 0 }, { t: D, duration: D, ease: "none", onUpdate: function () {
+      let k = 0;
+      for (let i = 0; i < 13; i++) if (o.t >= FLIP[i] + 0.1) k++;
+      if (o.t >= T_LOOP + 0.1) k = 0;
+      n.textContent = String(k);
+    } }, 0);
+  })();
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>132 A rotina de um char que nunca dorme</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F19 "O Dia de Quem Usa" vlog system (shared by 131-135) ================= */
+  .layer { position: absolute; inset: 0; }
+  .vf { position: absolute; inset: 0; z-index: 40; pointer-events: none; }
+  .vf svg { position: absolute; inset: 0; }
+  .rec { position: absolute; left: 110px; top: 232px; display: flex; align-items: center; gap: 14px; font: 700 40px "Space Grotesk", sans-serif; color: #fff; letter-spacing: 0.06em; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45); }
+  .rec i { width: 26px; height: 26px; border-radius: 50%; background: #ff2d2d; box-shadow: 0 0 14px #ff2d2d; }
+  .tc { position: absolute; right: 120px; top: 236px; font: 500 36px "Space Grotesk", sans-serif; color: #fff; letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45); font-variant-numeric: tabular-nums; }
+  .stamp { position: absolute; left: 90px; right: 120px; top: 300px; text-align: center; font: 700 230px/0.95 "Space Grotesk", sans-serif; letter-spacing: -0.04em; color: #fff; text-shadow: 0 10px 40px rgba(10, 5, 30, 0.45); font-variant-numeric: tabular-nums; }
+  .note { position: absolute; font: 700 88px/1 "Caveat", cursive; color: #fde047; text-shadow: 0 3px 14px rgba(10, 5, 30, 0.6); white-space: nowrap; }
+  .act { position: absolute; left: 90px; right: 160px; top: 1110px; display: flex; justify-content: center; }
+  .act span { font: 700 104px/1 "Space Grotesk", sans-serif; letter-spacing: -0.03em; color: #fff; background: rgba(12, 8, 28, 0.62); padding: 14px 34px 22px; border-radius: 26px; white-space: nowrap; }
+  .ico { position: absolute; left: 410px; top: 670px; width: 260px; height: 260px; overflow: visible; }
+  .shot { position: absolute; border-radius: 26px; overflow: hidden; background: #111; border: 6px solid #fff; box-shadow: 0 40px 90px rgba(10, 5, 30, 0.5); }
+  .shot .zoom { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+  .shot .zoom img { display: block; width: 100%; }
+  .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(45deg, #2a2d33 0 24px, #212328 24px 48px); font: 700 30px "JetBrains Mono", monospace; color: #8a8f99; }
+  .label { position: absolute; font: 800 30px "Inter", sans-serif; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(15, 10, 25, 0.78); padding: 10px 18px; border-radius: 10px; z-index: 41; }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .ask { font: 700 92px/1.05 "Caveat", cursive; color: #fff; text-align: center; }
+  .ask b { color: #d8b4fe; font-weight: 700; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  .kz-progress > div { background: linear-gradient(90deg, #ff2d2d, #fde047); }
+
+  /* ================= 132: the sun/moon dial ================= */
+  #bg { background: #1e1b4b; }
+  #bgGrad { background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 45%, rgba(0, 0, 0, 0.25) 100%); }
+  #dial { position: absolute; left: 240px; top: 500px; width: 600px; height: 600px; }
+  #sun { position: absolute; left: 245px; top: -5px; width: 110px; height: 110px; border-radius: 50%; background: radial-gradient(circle, #fffbe6 0%, #fde68a 55%, #fbbf24 100%); box-shadow: 0 0 60px 16px rgba(253, 224, 71, 0.6); }
+  #moon { position: absolute; left: 255px; top: 505px; width: 90px; height: 90px; border-radius: 50%; background: #f1f5f9; box-shadow: 0 0 40px 10px rgba(226, 232, 240, 0.55), inset -18px -6px 0 #cbd5e1; }
+  #ticks { position: absolute; inset: 0; }
+  #ground { position: absolute; left: 0; bottom: 0; width: 1080px; height: 640px; }
+  #nightTint { background: #0b0712; opacity: 0; }
+  #stars { position: absolute; inset: 0; opacity: 0; }
+  #stars i { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #fff; }
+  #pull { position: absolute; left: 90px; right: 120px; top: 300px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  #pull div { font: 800 72px/1.12 "Inter", sans-serif; color: #fff; letter-spacing: -0.02em; white-space: nowrap; text-shadow: 0 6px 24px rgba(10, 5, 30, 0.5); }
+  #pull div b { color: #fde047; font-weight: 800; }
+  #nunca { position: absolute; left: 230px; top: 980px; font: 400 150px/1 "Archivo Black", sans-serif; color: #ef4444; border: 12px solid #ef4444; border-radius: 22px; padding: 6px 30px 16px; background: rgba(255, 255, 255, 0.92); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="17.6" data-fps="30">
+
+  <!-- ===== untimed: sky colour + the 24 h dial + hills ===== -->
+  <div class="layer" id="world">
+    <div class="layer" id="bg"></div>
+    <div class="layer" id="bgGrad"></div>
+    <div class="layer" id="nightTint"></div>
+    <div id="stars"></div>
+    <div id="dial">
+      <svg id="ticks" viewBox="0 0 600 600"></svg>
+      <div id="sun"></div>
+      <div id="moon"></div>
+    </div>
+    <svg id="ground" viewBox="0 0 1080 640">
+      <path d="M0 640 L0 210 C160 150 300 170 430 220 C560 270 700 190 860 170 C960 160 1030 180 1080 200 L1080 640 Z" fill="#1d5c3a"/>
+      <path d="M0 640 L0 330 C200 280 380 300 560 340 C740 380 900 320 1080 300 L1080 640 Z" fill="#14462c"/>
+      <path d="M0 640 L0 440 C240 410 520 430 760 460 C900 478 1000 470 1080 460 L1080 640 Z" fill="#0d3320"/>
+    </svg>
+    <div class="layer" id="groundTint" style="background:#0b0712; opacity:0"></div>
+  </div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- ===== S0 hook: 0 - 1.6 ===== -->
+  <section id="s0" class="clip" data-start="0" data-duration="1.6">
+    <div style="position:absolute; left:90px; right:120px; top:330px; display:flex; flex-direction:column; align-items:center; text-align:center" id="hk">
+      <div id="k1" style="display:flex; flex-direction:column; align-items:center">
+        <div style="font:700 128px/1 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#fff; text-shadow:0 8px 34px rgba(10,5,30,0.6)">A ROTINA DE</div>
+        <div style="margin-top:14px; font:700 128px/1 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#fde047; text-shadow:0 8px 34px rgba(10,5,30,0.6)">UM CHAR</div>
+      </div>
+      <div id="k2" style="position:absolute; top:0; left:0; right:0; display:flex; flex-direction:column; align-items:center">
+        <div style="font:700 128px/1 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#fff; text-shadow:0 8px 34px rgba(10,5,30,0.6)">QUE NUNCA</div>
+        <div id="k2b" style="margin-top:14px; font:700 150px/1 'Space Grotesk',sans-serif; letter-spacing:-0.02em; color:#fff; background:#7c3aed; padding:6px 34px 18px; border-radius:24px; box-shadow:0 18px 50px rgba(76,29,149,0.5)">DORME</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S1 06:00 hunting: 1.6 - 3.2 ===== -->
+  <section id="s1" class="clip" data-start="1.6" data-duration="1.6">
+    <div class="stamp" id="st1">06:00</div>
+    <svg class="ico" id="i1" viewBox="0 0 300 300"><g transform="rotate(-35 150 150)"><rect x="138" y="20" width="24" height="190" rx="6" fill="#e2e8f0"/><path d="M138 20 L150 0 L162 20 Z" fill="#e2e8f0"/><rect x="96" y="206" width="108" height="20" rx="8" fill="#fbbf24"/><rect x="140" y="226" width="20" height="52" rx="6" fill="#7c4a24"/><circle cx="150" cy="284" r="13" fill="#fbbf24"/></g></svg>
+    <div class="act" id="a1"><span>caçando</span></div>
+    <div class="note" id="n1" style="left:330px; top:1236px" data-rot="-6">nem dormiu</div>
+  </section>
+
+  <!-- ===== S2 11:00 fishing: 3.2 - 4.8 ===== -->
+  <section id="s2" class="clip" data-start="3.2" data-duration="1.6">
+    <div class="stamp" id="st2">11:00</div>
+    <svg class="ico" id="i2" viewBox="0 0 300 300"><path d="M40 270 L230 30" stroke="#7c4a24" stroke-width="16" stroke-linecap="round"/><path d="M230 30 C260 90 255 160 250 200" stroke="#f8fafc" stroke-width="4" fill="none"/><circle cx="250" cy="215" r="18" fill="#ef4444"/><path d="M232 215 L268 215" stroke="#fff" stroke-width="6"/><circle cx="80" cy="222" r="20" fill="#334155"/><path d="M180 260 C210 245 240 245 270 260 C240 275 210 275 180 260 Z" fill="#38bdf8" opacity="0.8"/></svg>
+    <div class="act" id="a2"><span>pescando</span></div>
+    <div class="note" id="n2" style="left:390px; top:1236px" data-rot="-5">de boa</div>
+  </section>
+
+  <!-- ===== S3 15:00 farming: 4.8 - 6.4 ===== -->
+  <section id="s3" class="clip" data-start="4.8" data-duration="1.6">
+    <div class="stamp" id="st3">15:00</div>
+    <svg class="ico" id="i3" viewBox="0 0 300 300"><path d="M150 280 C150 200 150 140 150 90" stroke="#166534" stroke-width="14" stroke-linecap="round"/><path d="M150 180 C90 170 50 120 60 60 C120 70 150 120 150 180 Z" fill="#22c55e"/><path d="M150 150 C210 140 250 90 240 30 C180 40 150 90 150 150 Z" fill="#4ade80"/><path d="M150 230 C100 230 70 200 66 160 C110 160 145 190 150 230 Z" fill="#16a34a"/></svg>
+    <div class="act" id="a3"><span>coletando mato</span></div>
+    <div class="note" id="n3" style="left:350px; top:1236px" data-rot="-5">sem parar</div>
+  </section>
+
+  <!-- ===== S4 03:00 catching: 6.4 - 8.0 ===== -->
+  <section id="s4" class="clip" data-start="6.4" data-duration="1.6">
+    <div class="stamp" id="st4">03:00</div>
+    <svg class="ico" id="i4" viewBox="0 0 300 300"><path d="M150 10 L182 118 L290 150 L182 182 L150 290 L118 182 L10 150 L118 118 Z" fill="#fde047"/><path d="M240 40 L250 72 L282 82 L250 92 L240 124 L230 92 L198 82 L230 72 Z" fill="#fff7ae"/></svg>
+    <div class="act" id="a4"><span>capturando</span></div>
+    <div class="note" id="n4" style="left:230px; top:1236px" data-rot="-3">até de madrugada</div>
+  </section>
+
+  <!-- ===== S5 coffee break? never: 8.0 - 9.6 ===== -->
+  <section id="s5" class="clip" data-start="8.0" data-duration="1.6">
+    <div class="note" id="q5" style="left:250px; top:400px; color:#fff; font-size:110px" data-rot="-4">pausa pro café?</div>
+    <svg class="ico" id="i5" viewBox="0 0 300 300" style="top:640px"><path d="M60 110 L220 110 L205 260 C200 280 80 280 75 260 Z" fill="#f8fafc"/><path d="M220 140 C270 140 270 210 215 210" stroke="#f8fafc" stroke-width="20" fill="none"/><path d="M110 90 C95 65 125 50 110 25 M160 90 C145 65 175 50 160 25" stroke="#e2e8f0" stroke-width="10" fill="none" stroke-linecap="round"/><rect x="60" y="104" width="160" height="22" rx="8" fill="#7c4a24"/></svg>
+    <div id="nunca">NUNCA.</div>
+  </section>
+
+  <section id="pill" class="clip" data-start="1.6" data-duration="8.0">
+    <div id="onPill" style="position:absolute; left:110px; top:1342px; display:flex; align-items:center; gap:14px; font:700 36px 'Space Grotesk',sans-serif; color:#fff; letter-spacing:0.06em; background:rgba(12,8,28,0.7); padding:12px 22px; border-radius:14px"><i id="onDot" style="display:block; width:22px; height:22px; border-radius:50%; background:#c6ff3d; box-shadow:0 0 12px #c6ff3d"></i>KIZUBOT ON</div>
+  </section>
+
+  <!-- ===== S6 the real print (drop): 9.6 - 12.8 ===== -->
+  <section id="s6" class="clip" data-start="9.6" data-duration="3.2">
+    <div class="layer" id="s6in">
+      <div id="pull"><div id="p1">“Bagui tá rodando</div><div id="p2"><b>desde cedo hj</b>”</div></div>
+      <div class="label" id="lab6" style="left:220px; top:486px">print real de cliente</div>
+      <div class="shot" id="sh6q" style="left:220px; top:548px; width:640px; height:153px"><div class="zoom"><img src="kit/img/prints/hud-8434-loots--quote.png" alt="" /></div></div>
+      <div class="shot" id="sh6" style="left:240px; top:730px; width:600px; height:500px"><div class="zoom" style="top:-505px; height:auto"><img src="kit/img/prints/hud-8434-loots--hud.png" alt="" /></div>
+        <svg viewBox="0 0 600 500" preserveAspectRatio="none" style="position:absolute; inset:0; width:100%; height:100%">
+          <rect id="hh1" x="36" y="25" width="408" height="48" rx="10" fill="none" stroke="#fde047" stroke-width="6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <rect id="hh2" x="28" y="397" width="516" height="50" rx="10" fill="none" stroke="#fde047" stroke-width="6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+        </svg>
+      </div>
+      <div class="label" id="lab6b" style="left:240px; top:1244px; background:rgba(60,60,70,0.85)">interface antiga</div>
+    </div>
+  </section>
+
+  <!-- ===== S7 payoff: 12.8 - 14.4 ===== -->
+  <section id="s7" class="clip" data-start="12.8" data-duration="1.6">
+    <div style="position:absolute; left:90px; right:120px; top:420px; display:flex; flex-direction:column; align-items:center; text-align:center" id="pay">
+      <div id="y1" style="font:400 88px/1.05 'Archivo Black',sans-serif; color:#fff; text-shadow:0 8px 30px rgba(10,5,30,0.55)">Ele nunca dorme.</div>
+      <div id="y2" style="margin-top:26px; font:400 118px/1 'Archivo Black',sans-serif; color:#0b0712; background:#fde047; padding:10px 34px 20px; border-radius:24px">Você pode.</div>
+    </div>
+  </section>
+
+  <!-- ===== S8 end card: 14.4 - 17.6 ===== -->
+  <section id="s8" class="clip" data-start="14.4" data-duration="3.2">
+    <div class="kz-end" id="s8in">
+      <div style="position:relative; width:560px" id="logoBox">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">Seu char tem <b>rotina?</b></div>
+    </div>
+  </section>
+
+  <!-- ===== untimed: camcorder viewfinder ===== -->
+  <div class="vf" id="vf">
+    <svg width="1080" height="1920" viewBox="0 0 1080 1920">
+      <g stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.9">
+        <path d="M70 280 L70 200 L150 200"/><path d="M930 200 L1010 200 L1010 280"/>
+        <path d="M70 1640 L70 1720 L150 1720"/><path d="M930 1720 L1010 1720 L1010 1640"/>
+      </g>
+    </svg>
+    <div class="rec"><i id="recDot"></i>REC</div>
+    <div class="tc" id="tc">00:00:00</div>
+  </div>
+  <div id="flash"></div>
+</div>
+<script>
+  (function () {
+    const NS = "http://www.w3.org/2000/svg";
+    const t = document.getElementById("ticks");
+    for (let i = 0; i < 24; i++) {
+      const a = i / 24 * Math.PI * 2;
+      const l = document.createElementNS(NS, "line");
+      const r1 = 262, r2 = i % 6 === 0 ? 226 : 244;
+      l.setAttribute("x1", (300 + Math.sin(a) * r1).toFixed(1)); l.setAttribute("y1", (300 - Math.cos(a) * r1).toFixed(1));
+      l.setAttribute("x2", (300 + Math.sin(a) * r2).toFixed(1)); l.setAttribute("y2", (300 - Math.cos(a) * r2).toFixed(1));
+      l.setAttribute("stroke", "rgba(255,255,255,0.45)"); l.setAttribute("stroke-width", i % 6 === 0 ? 7 : 4); l.setAttribute("stroke-linecap", "round");
+      t.appendChild(l);
+    }
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("cx", 300); c.setAttribute("cy", 300); c.setAttribute("r", 250); c.setAttribute("fill", "rgba(10,6,30,0.28)");
+    c.setAttribute("stroke", "rgba(255,255,255,0.5)"); c.setAttribute("stroke-width", 6);
+    t.insertBefore(c, t.firstChild);
+    const r = KZ.rng(132);
+    const st = document.getElementById("stars");
+    for (let i = 0; i < 44; i++) {
+      const s = document.createElement("i");
+      s.style.left = (r() * 1080) + "px"; s.style.top = (r() * 1300) + "px"; s.style.opacity = (0.3 + r() * 0.7).toFixed(2);
+      st.appendChild(s);
+    }
+  })();
+
+  const tl = gsap.timeline({ paused: true });
+  const D = 17.6;
+  const b = KZ.beats(150);                  // beat 0.4 s, bar 1.6 s
+  const S = [0, 1.6, 3.2, 4.8, 6.4, 8.0, 9.6, 12.8, 14.4];
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  (function () {
+    const el = document.getElementById("tc"); const o = { v: 0 };
+    tl.to(o, { v: D, duration: D, ease: "none", onUpdate: function () { el.textContent = "00:00:" + String(Math.floor(o.v)).padStart(2, "0"); } }, 0);
+  })();
+  tl.fromTo("#recDot", { opacity: 1 }, { opacity: 0.15, duration: 0.5, ease: "steps(1)", yoyo: true, repeat: 34 }, 0);
+
+  // ---------- the dial turns through the day: sun angle = (hour - 12) * 15 deg ----------
+  tl.fromTo("#dial", { rotation: -112 }, { rotation: -100, duration: S[1], ease: "none" }, 0);
+  const hours = [[S[1], -90], [S[2], -15], [S[3], 45], [S[4], 225], [S[6], 262]];
+  hours.forEach(function (h) { tl.to("#dial", { rotation: h[1], duration: 0.55, ease: "power3.inOut" }, h[0] - 0.12); });
+  tl.to("#dial", { rotation: 300, duration: D - S[6] - 0.6, ease: "none" }, S[6] + 0.45);
+  const cols = [[0, "#2b1d5c"], [S[1], "#f0907a"], [S[2], "#2fa9ee"], [S[3], "#4f8fe0"], [S[4], "#140f33"], [S[6], "#1b1440"]];
+  cols.forEach(function (c, i) {
+    if (i === 0) tl.set("#bg", { backgroundColor: c[1] }, 0);
+    else tl.to("#bg", { backgroundColor: c[1], duration: 0.45, ease: "power1.inOut" }, c[0] - 0.1);
+  });
+  tl.fromTo(["#nightTint", "#groundTint"], { opacity: 0.45 }, { opacity: 0.0, duration: 0.45 }, S[1] - 0.1);
+  tl.to(["#nightTint", "#groundTint"], { opacity: 0.55, duration: 0.45 }, S[4] - 0.1);
+  tl.fromTo("#stars", { opacity: 0.6 }, { opacity: 0, duration: 0.4 }, S[1] - 0.1);
+  tl.to("#stars", { opacity: 1, duration: 0.4 }, S[4] - 0.1);
+
+  // ---------- S0 hook ----------
+  tl.fromTo("#k1", { scale: 1.1, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, 0);
+  tl.to("#k1", { y: -50, opacity: 0, duration: 0.12, ease: "power2.in" }, b(2) - 0.12);
+  tl.fromTo("#k2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.26, ease: "power3.out" }, b(2));
+  tl.fromTo("#k2b", { scale: 0.3, rotation: -8 }, { scale: 1, rotation: -2, duration: 0.34, ease: "back.out(2.6)" }, b(2) + 0.12);
+  tl.to("#hk", { y: -60, opacity: 0, duration: 0.14, ease: "power2.in" }, S[1] - 0.14);
+
+  // ---------- routine scenes ----------
+  function stampIn(sel, t) { tl.fromTo(sel, { rotationX: -90, opacity: 0, y: -30, transformPerspective: 800 }, { rotationX: 0, opacity: 1, y: 0, duration: 0.3, ease: "back.out(1.8)" }, t); }
+  function icoIn(sel, t) { tl.fromTo(sel, { scale: 0.3, opacity: 0, rotation: -25 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.34, ease: "back.out(2.4)" }, t); tl.to(sel, { y: -16, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, t + 0.35); }
+  function actIn(sel, t) { tl.fromTo(sel, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.28, ease: "power3.out" }, t); }
+  function noteIn(sel, t) { const r = Number(document.querySelector(sel).dataset.rot || 0); tl.fromTo(sel, { opacity: 0, scale: 0.6, rotation: r - 8 }, { opacity: 1, scale: 1, rotation: r, duration: 0.28, ease: "back.out(2.2)" }, t); }
+  function out(sels, t) { tl.to(sels, { opacity: 0, y: -40, duration: 0.14, ease: "power2.in" }, t - 0.14); }
+  [["1", S[1]], ["2", S[2]], ["3", S[3]], ["4", S[4]]].forEach(function (s) {
+    const n = s[0], t0 = s[1];
+    stampIn("#st" + n, t0);
+    icoIn("#i" + n, t0 + 0.06);
+    actIn("#a" + n, t0 + 0.2);
+    noteIn("#n" + n, t0 + 0.75);
+    out(["#st" + n, "#i" + n, "#a" + n, "#n" + n], t0 + 1.6);
+  });
+
+  tl.fromTo("#onPill", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, S[1] + 0.3);
+  tl.fromTo("#onDot", { opacity: 1 }, { opacity: 0.3, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 18 }, S[1]);
+  tl.to("#onPill", { opacity: 0, duration: 0.15 }, S[6] - 0.15);
+
+  // ---------- S5 the joke ----------
+  tl.fromTo("#q5", { opacity: 0, scale: 0.6, rotation: -10 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.3, ease: "back.out(2.2)" }, S[5]);
+  icoIn("#i5", S[5] + 0.12);
+  tl.fromTo("#nunca", { scale: 2.6, opacity: 0, rotation: -18 }, { scale: 1, opacity: 1, rotation: -8, duration: 0.22, ease: "power4.out" }, S[5] + 0.8);
+  KZ.shake(tl, "#s5", S[5] + 0.85, 14, 0.3, 21);
+  out(["#q5", "#i5", "#nunca"], S[6]);
+
+  // ---------- S6 proof on the drop ----------
+  KZ.flash(tl, "#flash", S[6], 0.7);
+  tl.to(["#nightTint", "#groundTint"], { opacity: 0.7, duration: 0.2 }, S[6]);
+  tl.to("#dial", { opacity: 0.25, duration: 0.2 }, S[6]);
+  tl.fromTo("#p1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, S[6]);
+  tl.fromTo("#p2", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: "back.out(2.5)" }, S[6] + 0.2);
+  tl.fromTo("#sh6q", { y: 200, opacity: 0, rotation: -3 }, { y: 0, opacity: 1, rotation: -1, duration: 0.4, ease: "power4.out" }, S[6] + 0.3);
+  tl.fromTo("#lab6", { scale: 2, opacity: 0, rotation: 10 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.24, ease: "power4.out" }, S[6] + 0.5);
+  tl.fromTo("#sh6", { y: 300, opacity: 0, rotation: 4 }, { y: 0, opacity: 1, rotation: 1, duration: 0.4, ease: "power4.out" }, S[6] + 0.7);
+  tl.fromTo("#lab6b", { opacity: 0 }, { opacity: 1, duration: 0.25 }, S[6] + 0.95);
+  tl.to("#hh1", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, S[6] + 1.3);
+  tl.to("#hh2", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, S[6] + 1.7);
+  tl.to(["#sh6", "#sh6q"], { y: -10, duration: 1.6, ease: "sine.inOut" }, S[6] + 1.2);
+  tl.to("#s6in", { opacity: 0, scale: 0.94, duration: 0.16, ease: "power2.in" }, S[7] - 0.16);
+
+  // ---------- S7 payoff ----------
+  tl.to(["#nightTint", "#groundTint"], { opacity: 0.35, duration: 0.3 }, S[7]);
+  tl.to("#dial", { opacity: 0.5, duration: 0.3 }, S[7]);
+  tl.fromTo("#y1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, S[7]);
+  tl.fromTo("#y2", { scale: 2, opacity: 0, rotation: 6 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.26, ease: "power4.out" }, S[7] + b(1.5));
+  KZ.shake(tl, "#pay", S[7] + b(1.5) + 0.05, 10, 0.24, 22);
+  tl.to("#pay", { opacity: 0, scale: 0.92, duration: 0.15, ease: "power2.in" }, S[8] - 0.15);
+
+  // ---------- S8 end card + sonic logo ----------
+  tl.to(["#nightTint", "#groundTint"], { opacity: 0.85, duration: 0.3 }, S[8]);
+  tl.to("#dial", { opacity: 0, duration: 0.3 }, S[8]);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, S[8] + 0.05);
+  KZ.eyePulse(tl, "#eye2", S[8] + 0.15, 3);
+  KZ.rise(tl, "#endUrl", S[8] + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", S[8] + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, S[8] + 0.6);
+  tl.to("#s8in", { opacity: 0, duration: 0.38, ease: "power1.in" }, D - 0.45);
+  tl.to(["#nightTint", "#groundTint"], { opacity: 0.45, duration: 0.38 }, D - 0.45);
+  tl.to("#dial", { opacity: 1, duration: 0.38 }, D - 0.45);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

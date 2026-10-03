@@ -1,0 +1,64 @@
+{
+  "id": "130",
+  "slug": "ache-a-mega",
+  "family": "Ache o Shiny",
+  "title": "Ache a mega",
+  "concept": "Sky-paper puzzle: 7×9 dragons where the 'mega' wears a tiny glowing stone, a 4-second dial timer, a radar scan line locks onto it; then 'Uma mega aparece… O KizuBot detecta.' with the real 'Olha o que o kizu me presenteou' print and the Barbaracite tooltip.",
+  "neuro": [
+    "participation",
+    "von-restorff",
+    "radar-metaphor",
+    "time-pressure",
+    "rewatch-loop",
+    "real-proof",
+    "comment-prompt"
+  ],
+  "hook": "ACHE A MEGA.",
+  "duration": 16.5,
+  "music": {
+    "style": "chiptune",
+    "bpm": 120
+  },
+  "assets": [
+    "kit/img/prints/mega-stone-barbaracite.png",
+    "kit/img/prints/mega-stone-barbaracite--card.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Ache a mega 🐲 Dica: olha a pedra. Uma mega aparece… o KizuBot detecta. “Olha o que o kizu me presenteou” (print real de cliente). Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mega",
+        "#desafio"
+      ]
+    },
+    "youtube": {
+      "title": "Ache a mega em 4 segundos 🐲",
+      "description": "Desafio: ache a mega no meio dos dragões. Uma mega aparece e o KizuBot detecta (detecção de megas, shinys e bosses). No final, print real de cliente: “Olha o que o kizu me presenteou”, com a Barbaracite. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Ache a mega 🐲 Pegou de primeira? Uma mega aparece, o KizuBot detecta. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mega"
+      ]
+    }
+  },
+  "pinned_comment": "Pegou de primeira? ⚡",
+  "notes": "The 'mega' is marked by a tiny glowing generic gem sticker (no official Mega symbol); a radar scan line finds it. Proof uses the Barbaracite print ('Olha o que o kizu me presenteou' + tooltip crop), shown small because ASSETS.md marks it as a small/soft source. Line changed from 'Uma mega aparece. O alarme toca.' to 'Uma mega aparece… O KizuBot detecta.' because this print shows the result, not an alarm. Music: chiptune 120."
+}

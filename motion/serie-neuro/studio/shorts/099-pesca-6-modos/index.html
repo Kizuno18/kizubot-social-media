@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>099 A pesca do KizuBot ganhou 6 modos</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+/* ================= F12 · NOVIDADE NO KIZUBOT — "patch notes" system ================= */
+:root {
+  --pn-bg: #07050d; --pn-panel: #120c1d; --pn-panel2: #1b1229;
+  --pn-line: rgba(216,180,254,.24); --pn-ink: #f5f0fa; --pn-dim: #bcb0d2;
+  --pn-lime: #c6ff3d; --pn-vio: #a855f7; --pn-mag: #e879f9;
+  --pn-acc: #ff4d5e;            /* episode accent (096: REC red) */
+}
+#root { background: var(--pn-bg); }
+.pn-bg { position:absolute; inset:0; background:
+  radial-gradient(62% 36% at 10% 6%, rgba(124,58,237,.50) 0%, rgba(124,58,237,0) 70%),
+  radial-gradient(58% 34% at 94% 92%, rgba(232,121,249,.26) 0%, rgba(232,121,249,0) 70%),
+  var(--pn-bg); }
+.pn-dots { position:absolute; inset:-120px; background-image: radial-gradient(rgba(216,180,254,.22) 1.7px, transparent 2.3px); background-size: 36px 36px; opacity:.5; }
+.pn-log { position:absolute; left:22px; top:0; width:44px; height:1920px; overflow:hidden; opacity:.20; }
+.pn-log-in { position:absolute; left:0; top:0; writing-mode: vertical-rl; white-space:nowrap; font: 400 30px "JetBrains Mono", monospace; letter-spacing:.14em; color: var(--pn-lav, #d8b4fe); }
+.kz-progress { height: 12px; background: rgba(255,255,255,.06); }
+.kz-progress > div { background: linear-gradient(90deg, #7c3aed, #e879f9 65%, #c6ff3d); }
+#pnSweep { position:absolute; left:0; top:0; width:1080px; height:8px; opacity:0; z-index:60; pointer-events:none;
+  background: linear-gradient(90deg, rgba(245,240,250,0), #f5f0fa 18%, #f5f0fa 82%, rgba(245,240,250,0));
+  box-shadow: 0 0 34px 10px rgba(216,180,254,.75); }
+#flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; z-index:70; }
+.pn-safe { position:absolute; left:90px; right:120px; top:220px; bottom:520px; }
+.pn-col { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.pn-display { font-family:"Bricolage Grotesque", sans-serif; font-weight:800; text-transform:uppercase; line-height:.9; letter-spacing:-.02em; color: var(--pn-ink); }
+.pn-mono { font-family:"JetBrains Mono", monospace; text-transform:uppercase; letter-spacing:.12em; }
+.pn-body { font: 800 58px "Inter", sans-serif; color: var(--pn-ink); line-height:1.08; letter-spacing:-.01em; }
+.pn-chip { display:inline-flex; align-items:center; gap:16px; padding: 12px 26px 12px 14px; border-radius: 999px;
+  background: rgba(255,255,255,.05); border: 2px solid var(--pn-line); font: 400 30px "JetBrains Mono", monospace; letter-spacing:.08em; color: var(--pn-ink); text-transform: uppercase; white-space:nowrap; }
+.pn-chip img { width: 46px; height: 46px; border-radius: 50%; background:#1b1229; object-fit: cover; }
+.pn-chip .sep { color: var(--pn-mag); }
+.pn-novo { display:inline-block; font: 800 74px "Bricolage Grotesque", sans-serif; color:#0b0712; background: var(--pn-lime);
+  padding: 8px 30px 4px; border-radius: 18px; letter-spacing:.02em; line-height:1;
+  box-shadow: 0 0 0 6px var(--pn-bg), 0 0 0 10px var(--pn-lime), 0 20px 50px rgba(198,255,61,.35); }
+.pn-install { width: 740px; }
+.pn-install-top { display:flex; justify-content:space-between; align-items:baseline; font: 400 34px "JetBrains Mono", monospace; color: var(--pn-dim); text-transform: uppercase; letter-spacing:.08em; margin-bottom: 18px; }
+.pn-install-top b { font-weight:400; color: var(--pn-ink); }
+.pn-bar { position:relative; height: 34px; border-radius: 999px; background: rgba(255,255,255,.07); border: 2px solid var(--pn-line); overflow:hidden; }
+.pn-bar-fill { position:absolute; left:0; top:0; bottom:0; width:100%; transform-origin: 0 50%; border-radius: 999px;
+  background: linear-gradient(90deg, #7c3aed, #a855f7 35%, #e879f9 70%, #f5d0fe); box-shadow: 0 0 24px rgba(232,121,249,.6); }
+.pn-bar-sheen { position:absolute; top:0; bottom:0; width: 160px; left: -200px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.55), rgba(255,255,255,0)); }
+.pn-ok { font: 800 50px "Inter", sans-serif; color: var(--pn-lime); margin-top: 22px; }
+.eye { position:absolute; border-radius:50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+
+
+/* ================= 099 specifics ================= */
+:root { --pn-acc: #5eead4; --sea: #2dd4bf; }
+.pn-bg { background:
+  radial-gradient(70% 36% at 50% 4%, rgba(124,58,237,.40) 0%, rgba(124,58,237,0) 72%),
+  radial-gradient(80% 30% at 50% 78%, rgba(20,184,166,.20) 0%, rgba(20,184,166,0) 70%),
+  var(--pn-bg); }
+#water { position:absolute; left:0; top:1150px; width:1080px; height:770px; overflow:hidden; }
+#water .wl { position:absolute; left:0; top:0; width:2160px; height:780px; }
+#water svg { display:block; width:2160px; height:780px; }
+/* hook */
+#hookTxt { position:absolute; left:110px; right:182px; top: 288px; height: 540px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+#hookTxt .a { font-size: 136px; line-height: .98; white-space: nowrap; }
+#hookTxt .c { display:flex; align-items:baseline; justify-content:center; gap: 22px; margin-top: 4px; }
+#hookTxt .c b { font: 800 270px "Bricolage Grotesque", sans-serif; line-height: .86; color: var(--pn-lime); display:inline-block; }
+#hookTxt .c span { font-size: 150px; line-height: .98; }
+#rig { position:absolute; left: 860px; top: 0; width: 120px; height: 1240px; }
+#line { position:absolute; left: 58px; top: 0; width: 3px; height: 1110px; background: linear-gradient(180deg, rgba(245,240,250,.0), rgba(245,240,250,.8)); transform-origin: 50% 0%; }
+#bob { position:absolute; left: 14px; top: 1090px; width: 92px; height: 132px; }
+.ringw { position:absolute; left: 860px; top: 1186px; width: 120px; height: 36px; border-radius: 50%; border: 4px solid rgba(94,234,212,.8); opacity: 0; }
+#novo1 { position:absolute; left: 0; right: 72px; top: 846px; display:flex; justify-content:center; }
+/* dial */
+#chipD { position:absolute; left:0; right:0; margin: 0 auto; width: max-content; top: 236px; }
+#cnt { position:absolute; left: 0; right: 0; top: 322px; text-align:center; font: 400 36px "JetBrains Mono", monospace; letter-spacing: .2em; color: var(--pn-dim); }
+#cnt b { font-weight: 400; color: var(--pn-lime); }
+#dial { position:absolute; left: 260px; top: 380px; width: 560px; height: 560px; }
+#dial svg.marks { position:absolute; inset:0; width:560px; height:560px; overflow: visible; }
+#knob { position:absolute; left: 80px; top: 80px; width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle at 38% 30%, #3a2d55 0%, #1d1530 55%, #120c1d 100%);
+  box-shadow: 0 30px 80px rgba(0,0,0,.6), inset 0 0 0 4px rgba(216,180,254,.35), inset 0 -18px 40px rgba(0,0,0,.45); }
+#grip { position:absolute; inset: 14px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, rgba(216,180,254,.20) 0deg 4deg, rgba(0,0,0,0) 4deg 15deg);
+  -webkit-mask: radial-gradient(circle, transparent 66%, #000 67%); mask: radial-gradient(circle, transparent 66%, #000 67%); }
+#ptr { position:absolute; left: 192px; top: 18px; width: 16px; height: 110px; border-radius: 8px; background: var(--pn-lime); box-shadow: 0 0 24px rgba(198,255,61,.7); }
+#knobRot { position:absolute; inset:0; }
+.ico { position:absolute; left: 120px; top: 120px; width: 160px; height: 160px; opacity: 0; }
+.ico svg { width: 160px; height: 160px; }
+#mname { position:absolute; left: 90px; width: 790px; top: 962px; height: 130px; }
+.mn { position:absolute; left:0; right:0; top:0; text-align:center; font-size: 116px; opacity: 0; white-space: nowrap; }
+#pips { position:absolute; left: 0; width: 970px; top: 1112px; display:flex; justify-content:center; gap: 18px; }
+#pips i { display:block; width: 46px; height: 14px; border-radius: 7px; background: rgba(216,180,254,.22); }
+/* drop */
+#afk { position:absolute; left:110px; right:182px; top: 300px; height: 520px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+#afk .pn-display { font-size: 210px; line-height: .95; }
+#afk .g { color: var(--pn-lime); }
+#bob2 { position:absolute; left: 470px; top: 1040px; width: 140px; height: 200px; }
+#bang { position:absolute; left: 600px; top: 900px; font: 800 140px "Bricolage Grotesque", sans-serif; color: var(--pn-lime); }
+.drop { position:absolute; width: 18px; height: 18px; border-radius: 50%; background: #99f6e4; left: 531px; top: 1110px; opacity: 0; }
+/* minigames */
+#mgT { position:absolute; left: 90px; right: 90px; top: 250px; text-align:center; }
+#mgT .pn-display { font-size: 150px; }
+#mgT .pn-body { color: var(--pn-lime); font-size: 66px; margin-top: 10px; }
+#mg { position:absolute; left: 100px; width: 800px; top: 590px; display:flex; flex-wrap:wrap; justify-content:center; gap: 30px 30px; }
+.mgt { width: 236px; text-align:center; }
+.mgt .box { width: 236px; height: 214px; border-radius: 34px; background: rgba(255,255,255,.05); border: 3px solid rgba(216,180,254,.3); display:flex; align-items:center; justify-content:center; }
+.mgt .box svg { width: 128px; height: 128px; }
+.mgt span { display:block; margin-top: 12px; font: 400 34px "JetBrains Mono", monospace; letter-spacing: .06em; color: var(--pn-ink); text-transform: uppercase; }
+/* fisgada */
+#fgT { position:absolute; left: 90px; right: 90px; top: 280px; text-align:center; }
+#fgT .k { font: 800 66px "Inter", sans-serif; color: var(--pn-dim); }
+#fgT .pn-display { font-size: 190px; line-height: 1; }
+#fgT .g { font: 800 66px "Inter", sans-serif; color: var(--pn-lime); margin-top: 14px; }
+#sld { position:absolute; left: 150px; width: 700px; top: 930px; height: 120px; }
+#sld .tr { position:absolute; left: 0; right: 0; top: 50px; height: 20px; border-radius: 10px; background: rgba(255,255,255,.08); border: 2px solid rgba(216,180,254,.25); }
+#sld .fl { position:absolute; left: 0; top: 50px; width: 700px; height: 20px; border-radius: 10px; background: linear-gradient(90deg, #0f766e, #2dd4bf, #c6ff3d); transform-origin: 0 50%; }
+#sld .kb { position:absolute; left: -45px; top: 15px; width: 90px; height: 90px; border-radius: 50%; background: #f5f0fa; box-shadow: 0 10px 30px rgba(0,0,0,.5); display:flex; align-items:center; justify-content:center; }
+#sld .kb svg { width: 50px; height: 50px; }
+#sld .tk { position:absolute; top: 86px; width: 4px; height: 24px; background: rgba(216,180,254,.35); }
+.ask { font: 900 64px "Inter", sans-serif; color: var(--pn-ink); max-width: 820px; line-height: 1.1; }
+.ask b { color: var(--pn-lime); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="18" data-fps="30">
+  <div class="pn-bg"></div>
+  <div class="pn-dots" id="dots"></div>
+  <div class="pn-log"><div class="pn-log-in" id="logIn">23/05/2026 MODOS DE PESCA · 23/05/2026 MINIGAMES MAIS CONFIÁVEIS · 23/05/2026 GASTOS MANUAIS NAS ESTATÍSTICAS · 23/05/2026 WHATSAPP MAIS ESTÁVEL · 23/05/2026 MENOS ALARMES DUPLICADOS · 20/04/2026 KIZUAI · 05/09/2026 OFFLINE CAM · 23/05/2026 MODOS DE PESCA · 23/05/2026 MINIGAMES MAIS CONFIÁVEIS ·</div></div>
+  <div id="water">
+    <div class="wl" id="wl1"><svg viewBox="0 0 2160 780"><path fill="rgba(94,234,212,.20)" d="M0,40 Q135,18 270,40 T540,40 T810,40 T1080,40 T1350,40 T1620,40 T1890,40 T2160,40 V780 H0 Z"/></svg></div>
+    <div class="wl" id="wl2"><svg viewBox="0 0 2160 780"><path fill="rgba(20,184,166,.34)" d="M0,72 Q135,46 270,72 T540,72 T810,72 T1080,72 T1350,72 T1620,72 T1890,72 T2160,72 V780 H0 Z"/></svg></div>
+    <div class="wl" id="wl3"><svg viewBox="0 0 2160 780"><defs><linearGradient id="deep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d4a52"/><stop offset=".5" stop-color="#082a33"/><stop offset="1" stop-color="#07050d"/></linearGradient></defs><path fill="url(#deep)" d="M0,112 Q135,94 270,112 T540,112 T810,112 T1080,112 T1350,112 T1620,112 T1890,112 T2160,112 V780 H0 Z"/></svg></div>
+  </div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- S1 HOOK 0 – 2.0 -->
+  <section id="s1" class="clip" data-start="0" data-duration="2.15">
+    <div class="kz-full" id="s1in">
+      <div id="rig">
+        <div id="line"></div>
+        <svg id="bob" viewBox="0 0 92 132"><rect x="42" y="0" width="8" height="40" rx="4" fill="#f5f0fa"/><path d="M6,76 A40,40 0 0 1 86,76 Z" fill="#e879f9"/><path d="M6,76 A40,40 0 0 0 86,76 Z" fill="#f5f0fa"/><rect x="6" y="72" width="80" height="8" fill="#0b0712"/></svg>
+      </div>
+      <div class="ringw" id="rw1"></div><div class="ringw" id="rw2"></div>
+      <div id="hookTxt">
+        <div class="pn-display a" id="h1">A pesca</div>
+        <div class="pn-display a" id="h2">ganhou</div>
+        <div class="c" id="h3"><b>6</b><span class="pn-display">modos.</span></div>
+      </div>
+      <div id="novo1"><div class="pn-novo" id="novoA">NOVO</div></div>
+    </div>
+  </section>
+
+  <!-- S2 DIAL 2.0 – 8.5 -->
+  <section id="s2" class="clip" data-start="2.0" data-duration="6.05">
+    <div class="kz-full" id="s2in">
+      <div class="pn-chip" id="chipD"><img src="kit/img/brand/kizubot-head.png" alt="" /><span>KizuBot <span class="sep">·</span> atualização <span class="sep">·</span> 23/05/2026</span></div>
+      <div id="cnt">MODO <b id="cntN">1</b>/6</div>
+      <div id="dial">
+        <svg class="marks" viewBox="0 0 560 560">
+          <g fill="none" stroke="rgba(216,180,254,.35)" stroke-width="4"><circle cx="280" cy="280" r="250"/></g>
+          <g id="dets" fill="#d8b4fe"></g>
+        </svg>
+        <div id="knob">
+          <div id="knobRot"><div id="grip"></div><div id="ptr"></div></div>
+          <div class="ico" id="i1"><svg viewBox="0 0 24 24" fill="none" stroke="#f5f0fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v5"/><path d="M5.5 13a6.5 6.5 0 0 1 13 0z" fill="#e879f9" stroke="#e879f9"/><path d="M5.5 13a6.5 6.5 0 0 0 13 0z"/></svg></div>
+          <div class="ico" id="i2"><svg viewBox="0 0 24 24" fill="none" stroke="#f5f0fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3.2" fill="#c6ff3d" stroke="#c6ff3d"/></svg></div>
+          <div class="ico" id="i3"><svg viewBox="0 0 24 24" fill="none" stroke="#f5f0fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6 6.8 6 11a6 6 0 0 1-12 0c0-4.2 6-11 6-11z" fill="rgba(94,234,212,.35)"/><path d="M19.5 3.5v3M18 5h3"/></svg></div>
+          <div class="ico" id="i4"><svg viewBox="0 0 24 24" fill="none" stroke="#f5f0fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3.5" fill="#facc15" stroke="#facc15"/><path d="M9 2.5v1.2M9 14.3v1.2M2.5 9h1.2M14.3 9h1.2M4.4 4.4l.9.9M12.7 12.7l.9.9M4.4 13.6l.9-.9"/><path d="M11.5 20h7a3.5 3.5 0 0 0 0-7 4.5 4.5 0 0 0-8.4 1.3A3 3 0 0 0 11.5 20z" fill="#120c1d"/></svg></div>
+          <div class="ico" id="i5"><svg viewBox="0 0 24 24" fill="none" stroke="#f5f0fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5z" opacity=".45"/><path d="M3 12l9 4.5 9-4.5" stroke="#c6ff3d" stroke-width="2.4"/><path d="M3 16.5l9 4.5 9-4.5" opacity=".45"/></svg></div>
+          <div class="ico" id="i6"><svg viewBox="0 0 24 24" fill="#c6ff3d" stroke="#c6ff3d" stroke-width="1.2" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+        </div>
+      </div>
+      <div id="mname">
+        <div class="pn-display mn" id="n1">padrão</div>
+        <div class="pn-display mn" id="n2">visão direta</div>
+        <div class="pn-display mn" id="n3">água limpa</div>
+        <div class="pn-display mn" id="n4">céu aberto</div>
+        <div class="pn-display mn" id="n5">mesmo andar</div>
+        <div class="pn-display mn" id="n6" style="color:#c6ff3d">agressivo</div>
+      </div>
+      <div id="pips"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <!-- S3 DROP 8.5 – 10.5 -->
+  <section id="s3" class="clip" data-start="8.0" data-duration="2.1">
+    <div class="kz-full" id="s3in">
+      <div id="afk"><div class="pn-display" id="a1">Pesca</div><div class="pn-display g" id="a2">no AFK</div></div>
+      <svg id="bob2" viewBox="0 0 92 132"><rect x="42" y="0" width="8" height="40" rx="4" fill="#f5f0fa"/><path d="M6,76 A40,40 0 0 1 86,76 Z" fill="#e879f9"/><path d="M6,76 A40,40 0 0 0 86,76 Z" fill="#f5f0fa"/><rect x="6" y="72" width="80" height="8" fill="#0b0712"/></svg>
+      <div id="bang">!</div>
+      <div id="drops"></div>
+    </div>
+  </section>
+
+  <!-- S4 MINIGAMES 10.5 – 13.0 -->
+  <section id="s4" class="clip" data-start="10.0" data-duration="2.6">
+    <div class="kz-full" id="s4in">
+      <div id="mgT"><div class="pn-display" id="mg1">Minigames</div><div class="pn-body" id="mg2">mais confiáveis</div></div>
+      <div id="mg">
+        <div class="mgt"><div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#5eead4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v10a4 4 0 0 1-8 0v-1"/><path d="M6 12l-2-2"/><circle cx="14" cy="3" r="1.2" fill="#5eead4"/></svg></div><span>pesca</span></div>
+        <div class="mgt"><div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#e879f9" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="11" height="15" rx="2" transform="rotate(-8 8.5 12.5)"/><rect x="10" y="4" width="11" height="15" rx="2" transform="rotate(8 15.5 11.5)" fill="#120c1d"/></svg></div><span>cards</span></div>
+        <div class="mgt"><div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v3a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6z"/><path d="M2 11h20M9 7c0-1 1-1.5 1-2.5M13 7c0-1 1-1.5 1-2.5"/></svg></div><span>cook</span></div>
+        <div class="mgt"><div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg></div><span>music</span></div>
+        <div class="mgt"><div class="box"><svg viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.4" fill="#e879f9"/><circle cx="12" cy="7" r="2.4" fill="#5eead4"/><circle cx="18" cy="7" r="2.4" fill="#facc15"/><circle cx="6" cy="15" r="2.4" fill="none" stroke="#d8b4fe" stroke-width="1.5"/><circle cx="12" cy="15" r="2.4" fill="#c6ff3d"/><circle cx="18" cy="15" r="2.4" fill="none" stroke="#d8b4fe" stroke-width="1.5"/></svg></div><span>mastermind</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 FISGADA 13.0 – 15.0 -->
+  <section id="s5" class="clip" data-start="12.5" data-duration="2.1">
+    <div class="kz-full" id="s5in">
+      <div id="fgT"><div class="k" id="f1">tempo da</div><div class="pn-display" id="f2">fisgada</div><div class="g" id="f3">configurável</div></div>
+      <div id="sld"><div class="tr"></div><div class="fl" id="sfl"></div>
+        <div class="tk" style="left:0"></div><div class="tk" style="left:174px"></div><div class="tk" style="left:348px"></div><div class="tk" style="left:522px"></div><div class="tk" style="left:696px"></div>
+        <div class="kb" id="skb"><svg viewBox="0 0 24 24" fill="none" stroke="#0b0712" stroke-width="2.4" stroke-linecap="round"><path d="M14 3v10a4 4 0 0 1-8 0v-1"/><path d="M6 12l-2-2"/></svg></div></div>
+    </div>
+  </section>
+
+  <!-- S6 END 15.0 – 18.5 -->
+  <section id="s6" class="clip" data-start="14.5" data-duration="3.5">
+    <div class="kz-end" id="s6in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>Qual <b>modo</b></div><div>você usaria?</div></div>
+    </div>
+  </section>
+
+  <!-- loop bridge -->
+  <section id="s7" class="clip" data-start="17.66" data-duration="0.34">
+    <div class="kz-full" id="s7in">
+      <div style="position:absolute; left:110px; right:182px; top:288px; height:540px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center">
+        <div class="pn-display" style="font-size:136px; line-height:.98; white-space:nowrap">A pesca</div>
+        <div class="pn-display" style="font-size:136px; line-height:.98; white-space:nowrap">ganhou</div>
+        <div style="display:flex; align-items:baseline; justify-content:center; gap:22px; margin-top:4px"><b style="font: 800 270px 'Bricolage Grotesque', sans-serif; line-height:.86; color:#c6ff3d">6</b><span class="pn-display" style="font-size:150px; line-height:.98">modos.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="pnSweep"></div>
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 18.0;
+  const b = KZ.beats(120);            // beat 0.5 s, bar 2 s
+
+  /* ---------- F12 helpers ---------- */
+  function pnSweep(inSel, T, dur) {
+    dur = dur || 0.34;
+    tl.fromTo("#pnSweep", { y: -40, opacity: 1 }, { y: 1940, opacity: 1, duration: dur, ease: "power2.inOut", immediateRender: false }, T);
+    tl.set("#pnSweep", { opacity: 0 }, T + dur);
+    tl.fromTo(inSel, { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: dur, ease: "power2.inOut" }, T);
+  }
+  function pnStamp(sel, T, rot, shakeSel) {
+    tl.fromTo(sel, { scale: 2.8, opacity: 0, rotation: rot - 16 }, { scale: 0.94, opacity: 1, rotation: rot, duration: 0.16, ease: "power3.in" }, T - 0.16);
+    tl.to(sel, { scale: 1, duration: 0.22, ease: "back.out(3)" }, T);
+    if (shakeSel) KZ.shake(tl, shakeSel, T, 12, 0.24, 5);
+  }
+
+  /* detent marks + numbers around the dial (built once, deterministic) */
+  (function () {
+    const g = document.getElementById("dets");
+    for (let i = 0; i < 6; i++) {
+      const a = (-150 + i * 60) * Math.PI / 180;
+      const x = 280 + Math.sin(a) * 250, y = 280 - Math.cos(a) * 250;
+      const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      c.setAttribute("cx", x.toFixed(1)); c.setAttribute("cy", y.toFixed(1)); c.setAttribute("r", "13"); c.setAttribute("id", "dt" + (i + 1));
+      g.appendChild(c);
+    }
+  })();
+
+  /* ---------- ambient ---------- */
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  KZ.drift(tl, "#dots", D, 18, 30, 5);
+  tl.fromTo("#logIn", { y: 0 }, { y: -2000, duration: D, ease: "none" }, 0);
+  tl.fromTo("#wl1", { x: 0 }, { x: -540, duration: 4, ease: "none", repeat: 4 }, 0);
+  tl.fromTo("#wl2", { x: -540 }, { x: 0, duration: 3, ease: "none", repeat: 6 }, 0);
+  tl.fromTo("#wl3", { x: 0 }, { x: -540, duration: 2.2, ease: "none", repeat: 8 }, 0);
+
+  /* ---------- S1 hook ---------- */
+  tl.fromTo("#hookTxt", { scale: 1.06, filter: "blur(4px)" }, { scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, 0);
+  tl.fromTo("#h3 b", { scale: 1.8, rotation: -14 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(3)" }, 0.05);
+  tl.fromTo("#line", { scaleY: 0.55 }, { scaleY: 1, duration: 0.35, ease: "power2.in" }, 0);
+  tl.fromTo("#bob", { y: -560 }, { y: 0, duration: 0.35, ease: "power2.in" }, 0);
+  tl.fromTo("#bob", { y: 0 }, { y: 18, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 0.36);
+  tl.fromTo("#rw1", { scale: 0.3, opacity: 1 }, { scale: 2.4, opacity: 0, duration: 0.8, ease: "power2.out" }, 0.35);
+  tl.fromTo("#rw2", { scale: 0.3, opacity: 1 }, { scale: 2.4, opacity: 0, duration: 0.8, ease: "power2.out" }, 0.6);
+  KZ.punch(tl, "#h3", b(2), 1.08, 0.3);
+  pnStamp("#novoA", b(3), 9, "#hookTxt");
+  tl.to("#s1in", { y: -120, opacity: 0, duration: 0.2, ease: "power2.in" }, 2.0 - 0.18);
+
+  /* ---------- S2 dial ---------- */
+  const T2 = 2.0;
+  tl.fromTo("#s2in", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: "power3.out" }, T2);
+  tl.fromTo("#knob", { rotation: -40, scale: 0.8 }, { rotation: 0, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, T2);
+  const MT = [2.0, 3.0, 4.0, 5.0, 6.0, 7.0];
+  tl.set("#knobRot", { rotation: -150 }, 0);
+  MT.forEach(function (t, i) {
+    const n = i + 1;
+    if (i > 0) tl.to("#knobRot", { rotation: -150 + i * 60, duration: 0.18, ease: "back.out(3)" }, t - 0.02);
+    for (let j = 1; j <= 6; j++) tl.set(["#n" + j, "#i" + j], { opacity: j === n ? 1 : 0 }, t);
+    tl.fromTo("#n" + n, { y: 40, scale: 1.25 }, { y: 0, scale: 1, duration: 0.24, ease: "power4.out", immediateRender: false }, t);
+    tl.fromTo("#i" + n, { scale: 0.5, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.3, ease: "back.out(2.4)", immediateRender: false }, t);
+    tl.set("#cntN", { innerText: String(n) }, t);
+    tl.set("#pips i:nth-child(" + n + ")", { backgroundColor: "#c6ff3d" }, t);
+    tl.set("#dt" + n, { attr: { fill: "#c6ff3d", r: 17 } }, t);
+    KZ.punch(tl, "#dial", t, 1.03, 0.25);
+  });
+  tl.to("#dial", { scale: 1.08, duration: 0.85, ease: "power2.in" }, 7.1);
+  tl.to("#s2in", { opacity: 0, duration: 0.12 }, 8.0 - 0.1);
+
+  /* ---------- S3 drop: pesca no AFK ---------- */
+  const T3 = 8.0;
+  KZ.flash(tl, "#flash", T3, 0.8, "#99f6e4");
+  KZ.slam(tl, "#a1", T3, 1.8);
+  tl.fromTo("#a2", { scale: 0.3, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.32, ease: "back.out(2.4)" }, T3 + 0.25);
+  KZ.shake(tl, "#afk", T3 + 0.25, 10, 0.25, 4);
+  tl.fromTo("#bob2", { y: -500 }, { y: 0, duration: 0.3, ease: "power2.in" }, T3);
+  tl.to("#bob2", { y: 60, duration: 0.12, ease: "power3.in" }, T3 + 0.7);
+  tl.to("#bob2", { y: 0, duration: 0.4, ease: "back.out(2)" }, T3 + 0.82);
+  tl.fromTo("#bang", { scale: 0, opacity: 0, rotation: -20 }, { scale: 1, opacity: 1, rotation: 8, duration: 0.25, ease: "back.out(3)" }, T3 + 0.7);
+  // droplets
+  (function () {
+    const host = document.getElementById("drops"), r = KZ.rng(99);
+    for (let i = 0; i < 22; i++) {
+      const d = document.createElement("div"); d.className = "drop"; d.id = "dp" + i; host.appendChild(d);
+      const ang = (-160 + r() * 140) * Math.PI / 180, sp = 180 + r() * 260;
+      const dx = Math.cos(ang) * sp, dy = Math.sin(ang) * sp;
+      tl.fromTo(d, { x: 0, y: 0, opacity: 1, scale: 0.6 + r() * 0.8 }, { x: dx, y: dy, opacity: 0, duration: 0.7 + r() * 0.3, ease: "power2.out" }, T3 + 0.3);
+      tl.to(d, { y: dy + 160, duration: 0.5, ease: "power2.in" }, T3 + 0.3 + 0.55);
+    }
+  })();
+  tl.to("#afk", { scale: 1.04, duration: 1.2, ease: "sine.inOut" }, T3 + 0.6);
+  tl.to("#s3in", { scale: 0.9, opacity: 0, duration: 0.18, ease: "power2.in" }, 10.0 - 0.18);
+
+  /* ---------- S4 minigames (sweep) ---------- */
+  const T4 = 10.0;
+  pnSweep("#s4in", T4);
+  tl.to("#water", { opacity: 0.35, duration: 0.4 }, T4);
+  KZ.rise(tl, "#mg1", T4 + 0.08, 0.3, 40);
+  KZ.rise(tl, "#mg2", T4 + 0.3, 0.3, 30);
+  tl.fromTo("#mg .mgt", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, stagger: 0.16, ease: "back.out(2.2)" }, T4 + 0.45);
+  tl.fromTo("#mg .box", { borderColor: "rgba(198,255,61,1)" }, { borderColor: "rgba(216,180,254,.3)", duration: 0.5, stagger: 0.16, immediateRender: false }, T4 + 0.6);
+  tl.to("#s4in", { y: -200, opacity: 0, duration: 0.2, ease: "power3.in" }, 12.5 - 0.2);
+
+  /* ---------- S5 fisgada ---------- */
+  const T5 = 12.5;
+  tl.fromTo("#s5in", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T5);
+  KZ.rise(tl, "#f3", T5 + 0.35, 0.3, 24);
+  tl.fromTo("#sfl", { scaleX: 0 }, { scaleX: 0.78, duration: 0.5, ease: "power3.out" }, T5 + 0.4);
+  tl.fromTo("#skb", { x: 0 }, { x: 546, duration: 0.5, ease: "power3.out" }, T5 + 0.4);
+  tl.to("#sfl", { scaleX: 0.42, duration: 0.4, ease: "power2.inOut" }, T5 + 1.0);
+  tl.to("#skb", { x: 294, duration: 0.4, ease: "power2.inOut" }, T5 + 1.0);
+  tl.to("#sfl", { scaleX: 0.6, duration: 0.3, ease: "back.out(2)" }, T5 + 1.5);
+  tl.to("#skb", { x: 420, duration: 0.3, ease: "back.out(2)" }, T5 + 1.5);
+  tl.to("#water", { opacity: 0, duration: 0.3 }, 14.5 - 0.3);
+  tl.to("#s5in", { scale: 0.9, opacity: 0, duration: 0.18, ease: "power2.in" }, 14.5 - 0.18);
+
+  /* ---------- S6 end ---------- */
+  const T6 = 14.5;
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T6 + 0.02);
+  KZ.eyePulse(tl, "#eye2", T6 + 0.12, 3);
+  KZ.rise(tl, "#endUrl", T6 + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T6 + 0.85, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, T6 + 0.8);
+  tl.to("#s6in", { opacity: 0, scale: 0.96, duration: 0.16, ease: "power1.in" }, D - 0.36);
+  tl.to("#water", { opacity: 1, duration: 0.25 }, D - 0.3);
+  tl.fromTo("#s7in", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, D - 0.26);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

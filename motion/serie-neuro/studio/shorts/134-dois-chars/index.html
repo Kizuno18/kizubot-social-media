@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>134 Ele upa dois chars ao mesmo tempo</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F19 "O Dia de Quem Usa" vlog system (shared by 131-135) ================= */
+  .layer { position: absolute; inset: 0; }
+  .rec { position: absolute; display: flex; align-items: center; gap: 12px; font: 700 34px "Space Grotesk", sans-serif; color: #fff; letter-spacing: 0.06em; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45); }
+  .rec i { width: 22px; height: 22px; border-radius: 50%; background: #ff2d2d; box-shadow: 0 0 12px #ff2d2d; }
+  .tc { position: absolute; font: 500 32px "Space Grotesk", sans-serif; color: #fff; letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45); font-variant-numeric: tabular-nums; }
+  .note { position: absolute; font: 700 88px/1 "Caveat", cursive; color: #fde047; text-shadow: 0 3px 14px rgba(10, 5, 30, 0.6); white-space: nowrap; }
+  .shot { position: absolute; border-radius: 26px; overflow: hidden; background: #111; border: 6px solid #fff; box-shadow: 0 40px 90px rgba(10, 5, 30, 0.5); }
+  .shot .zoom { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+  .shot .zoom img { display: block; width: 100%; }
+  .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(45deg, #2a2d33 0 24px, #212328 24px 48px); font: 700 30px "JetBrains Mono", monospace; color: #8a8f99; }
+  .label { position: absolute; font: 800 30px "Inter", sans-serif; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(15, 10, 25, 0.8); padding: 10px 18px; border-radius: 10px; z-index: 41; }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .ask { font: 700 92px/1.02 "Caveat", cursive; color: #fff; text-align: center; }
+  .ask b { color: #d8b4fe; font-weight: 700; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  .kz-progress > div { background: linear-gradient(90deg, #38bdf8, #a855f7); }
+
+  /* ================= 134: dual-cam split (top = you, bottom = the bot) ================= */
+  #top { position: absolute; left: 0; top: 0; width: 1080px; height: 960px; background: linear-gradient(180deg, #0b1b3f 0%, #12306b 100%); overflow: hidden; }
+  #bot { position: absolute; left: 0; top: 960px; width: 1080px; height: 960px; background: linear-gradient(180deg, #2e1065 0%, #12071f 100%); overflow: hidden; }
+  #divider { position: absolute; left: 0; top: 954px; width: 1080px; height: 12px; background: #fff; box-shadow: 0 0 30px rgba(255, 255, 255, 0.5); }
+  .cam { position: absolute; font: 700 30px "Space Grotesk", sans-serif; color: rgba(255, 255, 255, 0.85); letter-spacing: 0.08em; }
+  .who { position: absolute; display: flex; align-items: center; gap: 16px; }
+  .who b { font: 700 64px/1 "Space Grotesk", sans-serif; color: #fff; letter-spacing: -0.02em; }
+  .who span { font: 800 34px "Inter", sans-serif; color: #0b1020; background: #38bdf8; padding: 6px 16px 8px; border-radius: 10px; }
+  .who span.p { background: #c084fc; }
+  .xp { position: absolute; left: 150px; width: 730px; height: 46px; border-radius: 23px; background: rgba(255, 255, 255, 0.14); border: 4px solid rgba(255, 255, 255, 0.5); overflow: hidden; }
+  .xp i { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; border-radius: 20px; transform-origin: 0 50%; }
+  .xpl { position: absolute; font: 800 32px "Inter", sans-serif; color: #fff; letter-spacing: 0.06em; }
+  .lvl { position: absolute; font: 400 64px/1 "Archivo Black", sans-serif; color: #0b1020; background: #fde047; padding: 10px 26px 14px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); opacity: 0; }
+  #x2 { position: absolute; left: 440px; top: 880px; width: 200px; height: 160px; display: flex; align-items: center; justify-content: center; font: 400 96px/1 "Archivo Black", sans-serif; color: #0b1020; background: #fde047; border-radius: 30px; box-shadow: 0 0 0 10px #0b1020, 0 20px 50px rgba(0, 0, 0, 0.5); opacity: 0; z-index: 30; }
+  #dim { background: #07040f; opacity: 0; }
+  .pull { position: absolute; left: 90px; right: 120px; top: 290px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .pull div { font: 800 60px/1.15 "Inter", sans-serif; color: #fff; letter-spacing: -0.02em; white-space: nowrap; }
+  .pull div b { color: #fde047; font-weight: 800; }
+  .pay { position: absolute; left: 90px; right: 120px; display: flex; justify-content: center; }
+  .pay div { font: 700 112px/1 "Space Grotesk", sans-serif; letter-spacing: -0.03em; color: #fff; white-space: nowrap; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.45); }
+  .pay div b { font-weight: 700; padding: 0 16px 10px; border-radius: 18px; }
+  #endTint { background: radial-gradient(70% 45% at 50% 40%, rgba(59, 20, 112, 0.94) 0%, rgba(11, 7, 18, 0.97) 70%); opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="20" data-fps="30">
+
+  <!-- ===== untimed: two camera feeds ===== -->
+  <div class="layer" id="world">
+    <div id="top">
+      <svg width="1080" height="960" viewBox="0 0 1080 960" style="position:absolute; inset:0">
+        <rect x="290" y="420" width="500" height="300" rx="20" fill="#05070f"/>
+        <rect x="306" y="436" width="468" height="268" rx="10" fill="#14532d"/>
+        <path d="M306 640 C400 610 520 650 620 620 C700 600 740 610 774 600 L774 704 L306 704 Z" fill="#166534"/>
+        <circle cx="430" cy="560" r="16" fill="#fde047"/><circle cx="600" cy="590" r="14" fill="#f87171"/><circle cx="520" cy="520" r="12" fill="#93c5fd"/>
+        <rect x="520" y="720" width="40" height="70" fill="#05070f"/><rect x="450" y="786" width="180" height="16" rx="6" fill="#05070f"/>
+        <rect x="250" y="830" width="440" height="70" rx="14" fill="#1e293b"/>
+        <g fill="#334155"><rect x="270" y="846" width="400" height="12" rx="4"/><rect x="270" y="868" width="400" height="12" rx="4"/></g>
+        <rect x="740" y="830" width="64" height="96" rx="32" fill="#1e293b"/>
+      </svg>
+      <div class="rec" style="left:110px; top:232px"><i class="rdot"></i>CAM 1</div>
+      <div class="tc" style="right:120px; top:236px" id="tc1">00:00:00</div>
+      <div class="who" id="whoT" style="left:150px; top:300px"><b>VOCÊ</b><span>main</span></div>
+      <div class="note" id="nT" style="left:640px; top:300px">você joga</div>
+      <div class="xpl" style="left:150px; top:745px">XP MAIN</div>
+      <div class="xp" id="xpT" style="top:790px"><i id="xpTi" style="background: linear-gradient(90deg, #38bdf8, #a5f3fc)"></i></div>
+      <div class="lvl" id="lvT" style="left:560px; top:670px">LEVEL UP!</div>
+    </div>
+    <div id="bot">
+      <svg width="1080" height="960" viewBox="0 0 1080 960" style="position:absolute; inset:0">
+        <path d="M300 300 C300 230 360 190 420 200 C450 140 560 120 620 180 C690 160 770 210 770 280 C820 290 850 330 840 380 C830 420 800 440 760 440 L330 440 C280 440 240 410 240 370 C240 330 270 300 300 300 Z" fill="#ffffff" opacity="0.95"/>
+      </svg>
+      <img src="kit/img/brand/kizubot-head.png" alt="" style="position:absolute; left:440px; top:190px; width:200px"/>
+      <div class="eye" id="eyeB" style="left:502px; top:219px; width:80px; height:80px"></div>
+      <div class="rec" style="left:110px; top:30px"><i class="rdot"></i>CAM 2</div>
+      <div class="tc" style="right:120px; top:34px" id="tc2">00:00:00</div>
+      <div class="who" id="whoB" style="left:150px; top:500px"><b>KIZUBOT</b><span class="p">alt</span></div>
+      <div class="note" id="nB" style="left:560px; top:490px">o bot farma</div>
+      <div class="xpl" style="left:150px; top:615px">XP ALT · NA NUVEM</div>
+      <div class="xp" id="xpB" style="top:660px"><i id="xpBi" style="background: linear-gradient(90deg, #a855f7, #f0abfc)"></i></div>
+      <div class="lvl" id="lvB" style="left:560px; top:540px">LEVEL UP!</div>
+    </div>
+    <div id="divider"></div>
+    <div id="x2">2x</div>
+    <div class="layer" id="dim"></div>
+  </div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- ===== S0 hook: 0 - 1.846 ===== -->
+  <section id="s0" class="clip" data-start="0" data-duration="1.846">
+    <div style="position:absolute; left:90px; right:120px; top:330px; display:flex; flex-direction:column; align-items:center; text-align:center; z-index:30" id="hk">
+      <div id="k1" style="display:flex; flex-direction:column; align-items:center">
+        <div style="font:700 128px/1 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#fff; text-shadow:0 8px 34px rgba(0,0,0,0.6)">ELE UPA DOIS</div>
+        <div style="margin-top:16px; font:700 150px/1 'Space Grotesk',sans-serif; letter-spacing:-0.02em; color:#0b1020; background:#fde047; padding:6px 34px 18px; border-radius:24px">CHARS</div>
+      </div>
+      <div id="k2" style="position:absolute; top:0; left:0; right:0; display:flex; flex-direction:column; align-items:center">
+        <div style="font:700 128px/1 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#fff; text-shadow:0 8px 34px rgba(0,0,0,0.6)">AO MESMO</div>
+        <div style="margin-top:16px; font:700 150px/1 'Space Grotesk',sans-serif; letter-spacing:-0.02em; color:#fff; background:#7c3aed; padding:6px 34px 18px; border-radius:24px">TEMPO</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3 build: 5.538 - 7.385 ===== -->
+  <section id="s3" class="clip" data-start="5.538" data-duration="1.847">
+    <div style="position:absolute; left:90px; right:120px; top:560px; text-align:center; z-index:30" id="bld">
+      <div style="font:700 120px/1.05 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#fff; text-shadow:0 8px 34px rgba(0,0,0,0.6)">Quem usa,</div>
+      <div style="font:700 120px/1.05 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#fde047; text-shadow:0 8px 34px rgba(0,0,0,0.6)">conta:</div>
+    </div>
+  </section>
+
+  <!-- ===== S4 quote 1 (drop): 7.385 - 11.077 ===== -->
+  <section id="s4" class="clip" data-start="7.385" data-duration="3.692">
+    <div class="layer" id="s4in">
+      <div class="pull" id="pq1"><div>“Eu na academia <b>upando</b></div><div><b>o char principal</b> e o bot</div><div><b>upando a segundaria</b>”</div></div>
+      <div class="label" id="lab4" style="left:100px; top:560px">print real de cliente</div>
+      <div class="shot" id="sh4" style="left:100px; top:630px; width:780px; height:342px"><div class="zoom"><img src="kit/img/prints/gym-main-char-bot-alt--quote.png" alt="" /></div></div>
+    </div>
+  </section>
+
+  <!-- ===== S5 quote 2: 11.077 - 14.769 ===== -->
+  <section id="s5" class="clip" data-start="11.077" data-duration="3.692">
+    <div class="layer" id="s5in">
+      <div class="pull" id="pq2"><div>“Tá <b>farmando automático</b></div><div>pra mim enquanto eu fico</div><div><b>na main jogando de boa</b>”</div></div>
+      <div class="label" id="lab5" style="left:100px; top:560px">prints reais de clientes diferentes</div>
+      <div class="shot" id="sh5" style="left:100px; top:630px; width:780px; height:395px"><div class="zoom"><img src="kit/img/prints/absurdo-os-recursos--thread.png" alt="" /></div><svg viewBox="0 0 780 395" preserveAspectRatio="none" style="position:absolute; inset:0; width:100%; height:100%"><rect id="mh" x="4" y="124" width="772" height="40" rx="10" fill="none" stroke="#fde047" stroke-width="6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div>
+    </div>
+  </section>
+
+  <!-- ===== S6 payoff: 14.769 - 16.615 ===== -->
+  <section id="s6" class="clip" data-start="14.769" data-duration="1.846">
+    <div class="pay" id="pyT" style="top:560px"><div>Main: <b style="background:#38bdf8; color:#0b1020">você.</b></div></div>
+    <div class="pay" id="pyB" style="top:1080px"><div>Alt: <b style="background:#a855f7">KizuBot.</b></div></div>
+  </section>
+
+  <!-- ===== S7 end card: 16.615 - 20 ===== -->
+  <section id="s7" class="clip" data-start="16.615" data-duration="3.385">
+    <div class="layer" id="endTint"></div>
+    <div class="kz-end" id="s7in">
+      <div style="position:relative; width:560px" id="logoBox">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>Main ou alt:</div><div><b>qual fica no bot?</b></div></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 20;
+  const b = KZ.beats(130);                   // beat 0.4615 s, bar 1.846 s
+  const S = [0, b(4), b(8), b(12), b(16), b(24), b(32), b(36)];
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  (function () {
+    const a = document.getElementById("tc1"), c = document.getElementById("tc2"); const o = { v: 0 };
+    tl.to(o, { v: D, duration: D, ease: "none", onUpdate: function () { const t = "00:00:" + String(Math.floor(o.v)).padStart(2, "0"); a.textContent = t; c.textContent = t; } }, 0);
+  })();
+  tl.fromTo(".rdot", { opacity: 1 }, { opacity: 0.15, duration: 0.5, ease: "steps(1)", yoyo: true, repeat: 39 }, 0);
+
+  // ---------- ambient: both feeds breathe, XP bars fill ----------
+  tl.fromTo("#xpTi", { scaleX: 0.08 }, { scaleX: 1, duration: S[2] - 0.2, ease: "power1.in" }, 0);
+  tl.fromTo("#xpBi", { scaleX: 0.12 }, { scaleX: 1, duration: S[2] - 0.2, ease: "power1.in" }, 0);
+  KZ.eyePulse(tl, "#eyeB", 0.4, 3);
+  tl.fromTo("#top svg", { scale: 1.06 }, { scale: 1, duration: D, ease: "none" }, 0);
+  tl.fromTo("#bot svg", { y: 0 }, { y: -20, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 8 }, 0);
+
+  // ---------- S0 hook ----------
+  tl.fromTo("#k1", { scale: 1.1, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, 0);
+  tl.to("#k1", { y: -50, opacity: 0, duration: 0.12, ease: "power2.in" }, b(2) - 0.12);
+  tl.fromTo("#k2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.26, ease: "power3.out" }, b(2));
+  tl.to("#hk", { y: -60, opacity: 0, duration: 0.14, ease: "power2.in" }, S[1] - 0.14);
+  tl.fromTo("#dim", { opacity: 0.45 }, { opacity: 0, duration: 0.3 }, S[1] - 0.15);
+
+  // ---------- S1 the two feeds ----------
+  tl.fromTo("#whoT", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, S[1]);
+  tl.fromTo("#whoB", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, S[1] + b(1));
+  tl.fromTo("#nT", { opacity: 0, scale: 0.6, rotation: -14 }, { opacity: 1, scale: 1, rotation: -6, duration: 0.28, ease: "back.out(2.2)" }, S[1] + b(0.5));
+  tl.fromTo("#nB", { opacity: 0, scale: 0.6, rotation: -14 }, { opacity: 1, scale: 1, rotation: -6, duration: 0.28, ease: "back.out(2.2)" }, S[1] + b(1.5));
+  // ---------- S2 level up together ----------
+  tl.to(["#nT", "#nB"], { opacity: 0, scale: 0.8, duration: 0.15, ease: "power2.in" }, S[2] - 0.15);
+  tl.fromTo("#lvT", { scale: 0.3, opacity: 0, rotation: -12 }, { scale: 1, opacity: 1, rotation: -4, duration: 0.3, ease: "back.out(3)" }, S[2]);
+  tl.fromTo("#lvB", { scale: 0.3, opacity: 0, rotation: -12 }, { scale: 1, opacity: 1, rotation: -4, duration: 0.3, ease: "back.out(3)" }, S[2]);
+  KZ.flash(tl, "#flash", S[2], 0.5);
+  tl.fromTo("#x2", { scale: 3, opacity: 0, rotation: 20 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.3, ease: "power4.out" }, S[2] + b(1));
+  KZ.shake(tl, "#world", S[2] + b(1) + 0.05, 12, 0.3, 31);
+  tl.to(["#lvT", "#lvB"], { scale: 1.08, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, S[2] + 0.35);
+  // ---------- S3 build ----------
+  tl.to("#dim", { opacity: 0.55, duration: 0.25 }, S[3]);
+  tl.to("#x2", { scale: 0.6, opacity: 0, duration: 0.2, ease: "power2.in" }, S[3]);
+  tl.fromTo("#bld", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: "back.out(2)" }, S[3] + 0.05);
+  KZ.punch(tl, "#bld", S[3] + b(2), 1.06, 0.3);
+  KZ.punch(tl, "#bld", S[3] + b(3), 1.1, 0.25);
+  tl.to("#bld", { scale: 0.6, opacity: 0, duration: 0.14, ease: "power2.in" }, S[4] - 0.14);
+
+  // ---------- S4 / S5 the real quotes ----------
+  KZ.flash(tl, "#flash", S[4], 0.75);
+  tl.to("#dim", { opacity: 0.86, duration: 0.05 }, S[4]);
+  function quote(pull, shot, lab, t0) {
+    tl.fromTo(pull + " div", { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.32, ease: "power3.out", stagger: b(0.75) }, t0);
+    tl.fromTo(shot, { y: 240, opacity: 0, rotation: 3 }, { y: 0, opacity: 1, rotation: -1, duration: 0.4, ease: "power4.out" }, t0 + b(2.6));
+    tl.fromTo(lab, { scale: 2, opacity: 0, rotation: 10 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.24, ease: "power4.out" }, t0 + b(2.6) + 0.25);
+    tl.to(shot, { y: -12, rotation: 0, duration: 1.8, ease: "sine.inOut" }, t0 + b(2.6) + 0.45);
+  }
+  quote("#pq1", "#sh4", "#lab4", S[4] + 0.05);
+  tl.to("#s4in", { x: -1100, duration: 0.22, ease: "power3.in" }, S[5] - 0.22);
+  quote("#pq2", "#sh5", "#lab5", S[5]);
+  tl.to("#mh", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, S[5] + b(2.6) + 0.6);
+  tl.to("#s5in", { scale: 0.94, opacity: 0, duration: 0.18, ease: "power2.in" }, S[6] - 0.18);
+
+  // ---------- S6 payoff on the split ----------
+  tl.to("#dim", { opacity: 0.3, duration: 0.3 }, S[6]);
+  tl.fromTo("#pyT", { x: -200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power4.out" }, S[6]);
+  tl.fromTo("#pyB", { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power4.out" }, S[6] + b(1));
+  KZ.shake(tl, "#s6", S[6] + b(1) + 0.05, 10, 0.24, 32);
+  tl.to(["#pyT", "#pyB"], { opacity: 0, scale: 0.9, duration: 0.15, ease: "power2.in" }, S[7] - 0.15);
+
+  // ---------- S7 end card + sonic logo ----------
+  tl.to("#endTint", { opacity: 1, duration: 0.3, ease: "power2.out" }, S[7]);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, S[7] + 0.05);
+  KZ.eyePulse(tl, "#eye2", S[7] + 0.15, 3);
+  KZ.rise(tl, "#endUrl", S[7] + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", S[7] + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, S[7] + 0.6);
+  tl.to(["#s7in", "#endTint"], { opacity: 0, duration: 0.38, ease: "power1.in" }, D - 0.45);
+  tl.to("#dim", { opacity: 0, duration: 0.38 }, D - 0.45);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

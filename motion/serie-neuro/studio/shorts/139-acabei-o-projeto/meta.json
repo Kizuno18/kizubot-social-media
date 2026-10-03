@@ -1,0 +1,66 @@
+{
+  "id": "139",
+  "slug": "acabei-o-projeto",
+  "family": "Plot Twist",
+  "title": "Ele disse: \"acabei o projeto\". Que projeto?",
+  "concept": "A real support chat told as a film in three chapters inside a 2.39:1 letterbox: 'Acabei o projeto', 47 minutes later 'qual projeto?', 15 minutes of silence, then the bars open and the answer lands as an evidence photo: 'Shiny tangela / E outros dois shinys eu peguei' = the project was 3 shinies.",
+  "neuro": [
+    "narrative-transport",
+    "curiosity-gap",
+    "zeigarnik-open-loop",
+    "schema-violation",
+    "social-proof",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "ELE DISSE: \"ACABEI O PROJETO.\"",
+  "duration": 17.333,
+  "music": {
+    "style": "epic",
+    "bpm": 90,
+    "note": "muffled strings intro, break, build under the wait, silence, drop as the letterbox opens"
+  },
+  "assets": [
+    "kit/img/prints/acabei-o-projeto.png",
+    "kit/img/prints/acabei-o-projeto--quote.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Ele disse: \"acabei o projeto\" 🎬 47 minutos depois: \"qual projeto?\". 15 minutos de silêncio. A resposta: shiny tangela e mais dois shinys. Print real de cliente. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#plottwist"
+      ]
+    },
+    "youtube": {
+      "title": "Ele disse \"acabei o projeto\"... o projeto eram 3 shinies",
+      "description": "Uma história real em 3 capítulos, contada a partir de um print real de cliente: \"Acabei o projeto kkk\" / \"qual projeto?\" / \"Shiny tangela\" / \"E outros dois shinys eu peguei então acabou kkkk\". O KizuBot detecta shinys, megas e bosses e farma 100% AFK. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    },
+    "instagram": {
+      "caption": "Ele disse: \"acabei o projeto\". O projeto? Shiny tangela e mais dois shinys 🎬 (print real de cliente) Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Qual é o seu projeto no PxG? 🎯",
+  "notes": "Concept said the support asked 'Que projeto?'; the print literally says 'qual projeto?', which is what is shown (print crop, verbatim). '47 minutos' and '15 minutos' are arithmetic on the print's visible timestamps (20:16 -> 21:03 -> 21:18). Hook quote trims 'kkk' from 'Acabei o projeto kkk'. '3 shinies' = shiny tangela + 'outros dois shinys'. No claim about how they were caught beyond 'Cliente KizuBot'. Source named in the concept as acabei-o-projeto.png; used the asset editor's acabei-o-projeto.png crops. Hook quote is trimmed without added punctuation ('“Acabei o projeto”'); the band crop of the chat carries a 'print real de cliente' tag."
+}

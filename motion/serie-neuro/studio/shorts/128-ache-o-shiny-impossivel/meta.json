@@ -1,0 +1,66 @@
+{
+  "id": "128",
+  "slug": "ache-o-shiny-impossivel",
+  "family": "Ache o Shiny",
+  "title": "Nível impossível",
+  "concept": "The impossible level: lavender paper and a hazard-stripe board, 9×13 bobbing mixed animals with one fox shifted only 25° in the bottom-right corner, a 4-second timer, a spotlight that sweeps to the corner; then the proof that matters: a real Shiny Muk card and the customer's 'pena que n vi piscar' / 'tava afk'.",
+  "neuro": [
+    "participation",
+    "challenge",
+    "von-restorff",
+    "rewatch-loop",
+    "effort-contrast",
+    "real-proof",
+    "status-identity",
+    "comment-prompt"
+  ],
+  "hook": "NÍVEL IMPOSSÍVEL.",
+  "duration": 18,
+  "music": {
+    "style": "chiptune",
+    "bpm": 180
+  },
+  "assets": [
+    "kit/img/prints/shiny-muk--card.png",
+    "kit/img/prints/shiny-muk--quote.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Nível impossível: ache o shiny 🦊 No olho é quase impossível. O KizuBot detecta sozinho, até com você AFK (print real de cliente). Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#desafio",
+        "#shiny"
+      ]
+    },
+    "youtube": {
+      "title": "Nível impossível: ache o shiny (só pausando) 🦊",
+      "description": "Desafio nível impossível: 117 bichos, 1 shiny com a cor quase igual. No olho é quase impossível; o KizuBot detecta shiny sozinho. No final, print real de cliente: Shiny Muk e “pena que n vi piscar / tava afk”. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Nível impossível 🦊 Achou sem pausar? O KizuBot detecta sozinho, até com você AFK. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#desafio"
+      ]
+    }
+  },
+  "pinned_comment": "Se achou sem pausar, você é lenda 🏆",
+  "notes": "Hazard-stripe board on lavender paper; 117 bobbing emoji of 6 species; the shiny is a fox with only a 25° hue shift in the bottom-right corner (checked on a paused frame: findable when compared with the other foxes). Answer via a spotlight sweep. Concept line 'Ninguém acha isso com os olhos. A IA acha.' softened to 'No olho, é quase impossível. O KizuBot detecta sozinho.' ('IA' kept out of the headline per BRIEF). Proof: Shiny Muk card + 'pena que n vi piscar' / 'tava afk' (verbatim, same print). Music: chiptune 180."
+}

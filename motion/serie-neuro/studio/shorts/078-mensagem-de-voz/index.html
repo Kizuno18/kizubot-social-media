@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>078 Mensagem de voz do seu bot</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F08 Ligação Recebida — ep. 078: voice note from your bot (indigo chat + gold numbers), lofi ===== */
+  :root {
+    --c-ink: #f7f5ff; --c-sub: #a8a3c7; --c-lav: #d8b4fe; --c-gold: #fbbf24; --c-lime: #c6ff3d; --c-bub: #2a2350;
+    --f-ui: "Sora", "Inter", sans-serif; --f-cap: "Bricolage Grotesque", "Inter", sans-serif;
+  }
+  #root { background: #0a0918; }
+  #wall { position: absolute; inset: 0; background: linear-gradient(180deg, #121034 0%, #0c0b22 55%, #07060f 100%); }
+  #dots { position: absolute; inset: -60px; background-image: radial-gradient(rgba(216, 180, 254, 0.1) 2px, transparent 2.5px); background-size: 46px 46px; }
+  #glow { position: absolute; left: -200px; top: 300px; width: 1480px; height: 1200px; border-radius: 50%; background: radial-gradient(closest-side, rgba(124, 58, 237, 0.28), rgba(124, 58, 237, 0)); }
+  #vio { position: absolute; inset: 0; opacity: 0; background: radial-gradient(90% 55% at 50% 40%, #3b1470 0%, #0f0819 62%, #06040c 100%); }
+
+  #hk1, #hk2 { position: absolute; left: 0; right: 0; text-align: center; font: 800 126px/1 var(--f-cap); letter-spacing: -0.02em; }
+  #hk1 { top: 262px; color: var(--c-ink); }
+  #hk2 { top: 392px; color: var(--c-lav); }
+
+  /* voice note bubble (generic chat design) */
+  #vn { position: absolute; left: 100px; top: 560px; width: 820px; height: 210px; transform-origin: 0% 0%; }
+  #vnB { position: absolute; inset: 0; border-radius: 44px 44px 44px 14px; background: linear-gradient(180deg, #332b63, #261f4d);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.08); }
+  #vnAv { position: absolute; left: 26px; top: 42px; width: 126px; height: 126px; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 50% 38%, #4a2788 0%, #1a1030 75%); border: 4px solid rgba(255, 255, 255, 0.2); }
+  #vnAv img { position: absolute; left: 0; top: 12px; width: 126px; }
+  #vnEye { position: absolute; left: 48px; top: 37px; width: 36px; height: 36px; border-radius: 50%; background: radial-gradient(circle, rgba(250, 232, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  #vnName { position: absolute; left: 176px; top: 30px; font: 700 36px/1 var(--f-ui); color: var(--c-lav); }
+  #vnPlay { position: absolute; left: 176px; top: 86px; width: 88px; height: 88px; border-radius: 50%; background: var(--c-ink); display: flex; align-items: center; justify-content: center; }
+  #vnPlay svg { position: absolute; width: 40px; height: 40px; }
+  #icPause { opacity: 0; }
+  #wave { position: absolute; left: 290px; top: 98px; width: 470px; height: 64px; }
+  #wave i { position: absolute; bottom: 0; width: 7px; border-radius: 4px; background: #6f6799; display: block; }
+  #wave i.on { background: var(--c-lav); }
+  #vnTime { position: absolute; right: 40px; top: 30px; font: 700 34px/1 var(--f-ui); color: var(--c-sub); font-variant-numeric: tabular-nums; }
+  #phead { position: absolute; left: 286px; top: 88px; width: 20px; height: 20px; border-radius: 50%; background: var(--c-lav); box-shadow: 0 0 14px rgba(216, 180, 254, 0.8); }
+
+  .cap { position: absolute; left: 100px; right: 140px; top: 830px; font: 800 96px/1.08 var(--f-cap); color: var(--c-ink); letter-spacing: -0.015em; }
+  .cap .ln { display: block; }
+  .cap .w { display: inline-block; }
+  .cap .qm { color: var(--c-sub); }
+  #trans { position: absolute; left: 104px; top: 850px; font: 700 34px/1 var(--f-ui); color: var(--c-sub); letter-spacing: 0.04em; }
+  #trans i { font-style: normal; display: inline-block; }
+
+  /* proof */
+  .ptag { position: absolute; left: 0; right: 0; text-align: center; }
+  .ptag span { display: inline-block; padding: 9px 22px; border-radius: 999px; background: rgba(8, 6, 16, 0.85); border: 2px solid var(--c-lav);
+    font: 700 30px/1 var(--f-ui); letter-spacing: 0.04em; color: var(--c-lav); text-transform: uppercase; }
+  #hero { position: absolute; left: 0; right: 0; top: 404px; text-align: center; }
+  #heroN { font: 800 164px/1 var(--f-cap); color: var(--c-gold); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; text-shadow: 0 0 50px rgba(251, 191, 36, 0.35); }
+  #heroL { font: 700 46px/1 var(--f-ui); color: var(--c-ink); margin-top: 8px; }
+  #print { position: absolute; left: 260px; top: 676px; width: 560px; height: 555px; border-radius: 26px; overflow: hidden; background: #1b1b22; box-shadow: 0 34px 90px rgba(0, 0, 0, 0.6); }
+  #print img { display: block; width: 100%; }
+  .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font: 700 30px var(--f-ui); color: #6b7280; background: repeating-linear-gradient(45deg, #1d1f26 0 20px, #24262e 20px 40px); }
+  #hl { position: absolute; left: 8px; top: 0; width: 544px; height: 44px; border-radius: 10px; background: rgba(251, 191, 36, 0.22); border: 3px solid rgba(251, 191, 36, 0.85); opacity: 0; }
+  #qhl { position: absolute; left: 6px; top: 466px; width: 290px; height: 82px; border-radius: 18px; border: 5px solid var(--c-lime); box-shadow: 0 0 26px rgba(198, 255, 61, 0.55); opacity: 0; }
+
+  #fin1, #fin2 { position: absolute; left: 0; right: 0; text-align: center; font: 800 124px/1.04 var(--f-cap); letter-spacing: -0.02em; }
+  #fin1 { top: 560px; color: var(--c-ink); }
+  #fin2 { top: 690px; color: var(--c-lime); }
+
+  /* end card */
+  #endWrap { position: absolute; inset: 0; }
+  #logoBox { position: absolute; left: 240px; top: 350px; width: 600px; }
+  #logoBox img { display: block; width: 600px; }
+  #eyeEnd { position: absolute; left: 186px; top: 4px; width: 116px; height: 116px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(250, 232, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  #endUrl { position: absolute; left: 0; right: 0; top: 928px; text-align: center; font: 700 66px/1 var(--f-ui); color: var(--c-ink); }
+  #endAsk { position: absolute; left: 110px; right: 110px; top: 1030px; text-align: center; font: 800 70px/1.08 var(--f-cap); color: var(--c-ink); }
+  #endAsk .ln { display: block; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="14.29" data-fps="30">
+  <div id="wall"></div>
+  <div id="dots"></div>
+  <div id="glow"></div>
+  <div id="vio"></div>
+
+  <!-- persistent voice note (untimed) -->
+  <div id="vn">
+    <div id="vnB"></div>
+    <div id="vnAv"><img src="kit/img/brand/kizubot-head.png" alt="" /><div id="vnEye"></div></div>
+    <div id="vnName">KizuBot</div>
+    <div id="vnPlay">
+      <svg id="icPlay" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="#1c1838"/></svg>
+      <svg id="icPause" viewBox="0 0 24 24"><rect x="6.5" y="5" width="4" height="14" rx="1" fill="#1c1838"/><rect x="13.5" y="5" width="4" height="14" rx="1" fill="#1c1838"/></svg>
+    </div>
+    <div id="wave"></div>
+    <div id="phead"></div>
+    <div id="vnTime">0:12</div>
+  </div>
+
+  <!-- S1 hook + transcription (0 - 4.286) -->
+  <section id="s1" class="clip" data-start="0" data-duration="4.286">
+    <div id="hk1">MENSAGEM</div>
+    <div id="hk2">DE VOZ:</div>
+    <div id="trans"><span>transcrevendo</span><i id="td1">.</i><i id="td2">.</i><i id="td3">.</i></div>
+    <div class="cap" id="t1"><div class="ln"><span class="qm">“</span>Fala, chefe.</div></div>
+    <div class="cap" id="t2"><div class="ln">Relatório</div><div class="ln">da <span style="color:var(--c-gold)">hunt:</span><span class="qm">”</span></div></div>
+  </section>
+
+  <!-- S2 the real loot alarm (4.286 - 10.0) -->
+  <section id="s2" class="clip" data-start="4.286" data-duration="5.714">
+    <div id="s2in" style="position:absolute; inset:0">
+      <div id="hero"><div id="heroN">0</div><div id="heroL">itens dropados</div></div>
+      <div class="ptag" id="tag2" style="top:624px"><span>print real de cliente</span></div>
+      <div id="print"><img src="kit/img/prints/alarme-12335-itens--alarm.png" alt="" /><div id="hl"></div><div id="qhl"></div></div>
+    </div>
+  </section>
+
+  <!-- S3 (10.0 - 11.429) -->
+  <section id="s3" class="clip" data-start="10" data-duration="1.429">
+    <div id="s3in" style="position:absolute; inset:0">
+      <div id="fin1">Relatório</div>
+      <div id="fin2">direto no zap.</div>
+    </div>
+  </section>
+
+  <!-- S4 end card (11.429 - 14.29) -->
+  <section id="s4" class="clip" data-start="11.429" data-duration="2.861">
+    <div id="endWrap">
+      <div id="logoBox"><img id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" /><div id="eyeEnd"></div></div>
+      <div id="endUrl">kizubot.com</div>
+      <div id="endAsk"><div class="ln">Que relatório</div><div class="ln">você queria</div><div class="ln"><span style="color:var(--c-gold)">receber?</span></div></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 14.29;
+  const b = KZ.beats(84);               // beat 0.714 s, bar 2.857 s
+  const T_PLAY = b(2), T_T1 = b(2.25), T_T2 = b(4), T_PR = b(6), T_QC = b(12), T_FIN = b(14), T_EC = b(16);
+  const LINES0 = 6.07, LSTEP = b(0.5);  // highlight sweep across the 7 report lines
+
+  function splitCap(capEl) {
+    const words = [];
+    capEl.querySelectorAll(".ln").forEach(function (ln) {
+      const nodes = Array.prototype.slice.call(ln.childNodes); ln.textContent = "";
+      nodes.forEach(function (nd) {
+        if (nd.nodeType === 3) {
+          nd.textContent.split(/(\s+)/).forEach(function (tok) {
+            if (!tok) return;
+            if (/^\s+$/.test(tok)) { ln.appendChild(document.createTextNode(" ")); return; }
+            const s = document.createElement("span"); s.className = "w"; s.textContent = tok; ln.appendChild(s); words.push(s);
+          });
+        } else { nd.classList.add("w"); ln.appendChild(nd); words.push(nd); }
+      });
+    });
+    return words;
+  }
+  function say(sel, at, gap, exitAt) {
+    splitCap(document.querySelector(sel)).forEach(function (w, i) {
+      tl.fromTo(w, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.22, ease: "power3.out" }, at + i * gap);
+    });
+    if (exitAt) tl.to(sel, { opacity: 0, y: -30, duration: 0.16, ease: "power2.in" }, exitAt);
+  }
+
+  // waveform bars (deterministic heights)
+  const wave = document.getElementById("wave"); const bars = []; const r = KZ.rng(78);
+  for (let i = 0; i < 40; i++) {
+    const e = document.createElement("i");
+    const h = 14 + Math.round(Math.abs(Math.sin(i * 0.55) * 0.6 + r() * 0.5) * 50);
+    e.style.left = (i * 11.8).toFixed(1) + "px"; e.style.height = Math.min(64, h) + "px";
+    wave.appendChild(e); bars.push(e);
+  }
+
+  // ambient
+  KZ.drift(tl, "#dots", D, 30, 40, 7);
+  tl.fromTo("#glow", { opacity: 0.8, scale: 0.97 }, { opacity: 1, scale: 1.03, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0);
+
+  // ---------- S1 hook: voice note arrives (frame 0 readable) ----------
+  tl.fromTo("#hk1", { y: 20 }, { y: 0, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo("#hk2", { y: 30 }, { y: 0, duration: 0.45, ease: "power3.out" }, 0);
+  tl.fromTo("#vn", { scale: 0.92, y: 40 }, { scale: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, 0);
+  KZ.eyePulse(tl, "#vnEye", 0.1, 2);
+  tl.fromTo("#vnPlay", { scale: 1 }, { scale: 1.1, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.1);
+  // press play
+  tl.to("#vnPlay", { scale: 0.84, duration: 0.07, ease: "power2.in" }, T_PLAY - 0.07);
+  tl.to("#vnPlay", { scale: 1, duration: 0.25, ease: "back.out(3)" }, T_PLAY);
+  tl.fromTo("#icPlay", { opacity: 1 }, { opacity: 0, duration: 0.08 }, T_PLAY);
+  tl.fromTo("#icPause", { opacity: 0 }, { opacity: 1, duration: 0.08 }, T_PLAY);
+  tl.to(["#hk1", "#hk2"], { opacity: 0.0, y: -40, duration: 0.25, ease: "power2.in" }, T_T2 - 0.2);
+  ["#td1", "#td2", "#td3"].forEach(function (d, i) { tl.fromTo(d, { opacity: 0.15 }, { opacity: 1, duration: 0.18, ease: "none", yoyo: true, repeat: 3 }, 0.1 + i * 0.14); });
+  tl.fromTo("#trans", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.2);
+  tl.to("#trans", { opacity: 0, duration: 0.15 }, T_T1 - 0.1);
+  say("#t1", T_T1, 0.16, T_T2 - 0.16);
+  say("#t2", T_T2, 0.18, null);
+  tl.to("#vn", { y: -320, scale: 0.72, duration: 0.4, ease: "power3.inOut" }, T_T2 - 0.2);
+  tl.to("#t2", { y: -380, duration: 0.4, ease: "power3.inOut" }, T_T2 - 0.2);
+  tl.to("#t2", { opacity: 0, duration: 0.16, ease: "power2.in" }, T_PR - 0.16);
+
+  // ---------- S2 the real alarm (with the KizuBot alert sound) ----------
+  KZ.flash(tl, "#flash", T_PR, 0.45);
+  tl.fromTo("#print", { y: 140, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "expo.out" }, T_PR);
+  KZ.rise(tl, "#tag2", T_PR + 0.15, 0.3, 16);
+  KZ.rise(tl, "#hero", T_PR + 0.05, 0.3, 30);
+  KZ.countUp(tl, "#heroN", 0, 12335, T_PR + 0.15, 1.5, "int", "power2.out");
+  tl.fromTo("#heroN", { scale: 1 }, { scale: 1.12, duration: 0.12, ease: "power3.out", immediateRender: false }, T_PR + 1.65);
+  tl.to("#heroN", { scale: 1, duration: 0.35, ease: "power2.out" }, T_PR + 1.77);
+  // line-by-line highlight down the report (7 lines)
+  const LY = [114, 161, 210, 258, 307, 356, 404];   // line tops inside the 560 px print
+  tl.fromTo("#hl", { opacity: 0, y: LY[0] }, { opacity: 1, y: LY[0], duration: 0.12 }, LINES0);
+  for (let i = 1; i < 7; i++) tl.to("#hl", { y: LY[i], duration: 0.16, ease: "power2.inOut" }, LINES0 + i * LSTEP);
+  tl.to("#hl", { opacity: 0, duration: 0.2 }, LINES0 + 7 * LSTEP);
+  tl.fromTo("#qhl", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.5)" }, T_QC);
+  tl.to("#print", { scale: 1.06, duration: 1.2, ease: "power2.inOut" }, T_QC);
+  tl.to("#s2in", { opacity: 0, y: -40, duration: 0.18, ease: "power2.in" }, T_FIN - 0.18);
+  tl.to("#vn", { opacity: 0, y: -400, duration: 0.25, ease: "power2.in" }, T_FIN - 0.25);
+
+  // ---------- S3 payoff ----------
+  KZ.slam(tl, "#fin1", T_FIN, 1.6);
+  KZ.slam(tl, "#fin2", T_FIN + b(0.75), 1.6);
+  tl.to("#s3in", { opacity: 0, scale: 0.94, duration: 0.18, ease: "power2.in" }, T_EC - 0.18);
+
+  // ---------- S4 end card ----------
+  tl.to("#vio", { opacity: 1, duration: 0.4, ease: "power2.out" }, T_EC - 0.1);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T_EC);
+  KZ.eyePulse(tl, "#eyeEnd", T_EC + 0.1, 3);
+  KZ.rise(tl, "#endUrl", T_EC + 0.4, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T_EC + 0.75, 0.4, 30);
+  tl.to("#logoBox", { y: -14, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_EC + 0.6);
+  // loop seam: fade back to the chat wallpaper of frame 0
+  tl.to("#endWrap", { opacity: 0, duration: 0.3, ease: "power1.in" }, D - 0.34);
+  tl.to("#vio", { opacity: 0, duration: 0.3, ease: "power1.in" }, D - 0.34);
+  tl.to("#vn", { opacity: 1, y: 40, scale: 0.92, duration: 0.3, ease: "power2.out" }, D - 0.34);
+
+  // voice-note playback (pure function of time): playhead, played bars, elapsed time
+  (function () {
+    const ph = document.getElementById("phead"), tm = document.getElementById("vnTime"); const o = { t: 0 };
+    tl.fromTo(o, { t: 0 }, { t: D, duration: D, ease: "none", onUpdate: function () {
+      const e = Math.max(0, Math.min(o.t, T_EC) - T_PLAY);
+      const p = Math.min(1, e / 12);
+      ph.style.transform = "translateX(" + (p * 464).toFixed(1) + "px)";
+      const k = Math.floor(p * 40);
+      for (let i = 0; i < 40; i++) bars[i].className = i < k ? "on" : "";
+      tm.textContent = o.t < T_PLAY ? "0:12" : "0:" + String(Math.floor(e)).padStart(2, "0");
+    } }, 0);
+  })();
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "id": "138",
+  "slug": "ele-esqueceu",
+  "family": "Plot Twist",
+  "title": "Ele esqueceu o que tinha pego (tava lá o bixão)",
+  "concept": "A sepia memory film: an ordinary day, a beam of light and dust; 'uns dias depois… ele foi ver o CP'; the letterbox opens on the evidence table: 'fui ver no cp uns dias dps / tava la o bixao', then 'qe peguei o venu? / até esqueci' — the forgotten catch was a shiny Venusaur.",
+  "neuro": ["narrative-transport", "curiosity-gap", "benign-violation", "schema-violation", "social-proof", "peak-end", "comment-prompt"],
+  "hook": "ELE ESQUECEU O QUE TINHA PEGO.",
+  "duration": 18.4,
+  "music": {"style": "epic", "bpm": 100, "note": "epic in C: intro, break under the light beam, build under 'uns dias depois', silence, drop on the evidence"},
+  "assets": ["kit/img/prints/shiny-venusaur-cp--punchline.png", "kit/img/prints/shiny-venusaur-cp--quote.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": ["detecção de shinys, megas e bosses", "100% AFK"],
+  "platforms": {
+    "tiktok": {
+      "caption": "Ele esqueceu o que tinha pego 😂 Uns dias depois foi ver o CP... \"tava la o bixao\". Um shiny Venusaur. Print real de cliente. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#shiny", "#plottwist"]
+    },
+    "youtube": {
+      "title": "Ele esqueceu que tinha pego um shiny Venusaur",
+      "description": "Print real de cliente: \"qe peguei o venu? / até esqueci\" ... \"fui ver no cp uns dias dps / tava la o bixao\". O KizuBot detecta shinys, megas e bosses e farma 100% AFK, com o PC desligado. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot", "#shiny"]
+    },
+    "instagram": {
+      "caption": "Ele esqueceu o que tinha pego. Uns dias depois, no CP: um shiny Venusaur 😂 (print real de cliente) Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#shiny"]
+    }
+  },
+  "pinned_comment": "Você esqueceria um shiny? 😂",
+  "notes": "Concept's 'Abriu o PC dias depois…' changed to the literal 'Uns dias depois… ele foi ver o CP.' (print: 'fui ver no cp uns dias dps'); 'abrir o PC' also contradicts the cloud/PC-off product. Skipped the '700kk' value crop as advised. 'Shiny Venusaur' per the asset catalog description of this print ('customer found the shiny days later in the CP'); the print itself says 'venu'. Order: punchline crop first (the twist), then the 'até esqueci' crop (the reason) — both verbatim, each labelled with its own timestamp."
+}

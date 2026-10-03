@@ -1,0 +1,171 @@
+{
+ "duration": 16,
+ "style": "chiptune",
+ "bpm": 150,
+ "seed": 126,
+ "sections": [
+  {
+   "at": 0.0,
+   "type": "groove"
+  },
+  {
+   "at": 1.6,
+   "type": "build"
+  },
+  {
+   "at": 4.6,
+   "type": "groove"
+  },
+  {
+   "at": 6.4,
+   "type": "build"
+  },
+  {
+   "at": 8.0,
+   "type": "drop"
+  },
+  {
+   "at": 12.8,
+   "type": "outro"
+  }
+ ],
+ "stops": [
+  {
+   "at": 7.6,
+   "len": 0.4
+  }
+ ],
+ "sfx": [
+  {
+   "t": 0.0,
+   "name": "impact",
+   "gain": -7
+  },
+  {
+   "t": 0.0,
+   "name": "coin",
+   "gain": -9
+  },
+  {
+   "t": 0.16,
+   "name": "pop",
+   "gain": -10
+  },
+  {
+   "t": 0.6,
+   "name": "pop2",
+   "gain": -10
+  },
+  {
+   "t": 1.0,
+   "name": "pop2",
+   "gain": -10
+  },
+  {
+   "t": 1.6,
+   "name": "clock",
+   "gain": -5
+  },
+  {
+   "t": 1.6,
+   "name": "tick2",
+   "gain": -11
+  },
+  {
+   "t": 2.6,
+   "name": "clock",
+   "gain": -5
+  },
+  {
+   "t": 2.6,
+   "name": "tick2",
+   "gain": -11
+  },
+  {
+   "t": 3.6,
+   "name": "clock",
+   "gain": -4
+  },
+  {
+   "t": 3.6,
+   "name": "tick2",
+   "gain": -10
+  },
+  {
+   "t": 4.6,
+   "name": "wrong",
+   "gain": -9
+  },
+  {
+   "t": 5.15,
+   "name": "sparkle",
+   "gain": -7
+  },
+  {
+   "t": 5.22,
+   "name": "right",
+   "gain": -7
+  },
+  {
+   "t": 5.5,
+   "name": "pop",
+   "gain": -10
+  },
+  {
+   "t": 6.25,
+   "name": "whoosh",
+   "gain": -11
+  },
+  {
+   "t": 6.45,
+   "name": "snap",
+   "gain": -9
+  },
+  {
+   "t": 8.0,
+   "name": "impact",
+   "gain": -5
+  },
+  {
+   "t": 8.0,
+   "name": "alert",
+   "gain": -4
+  },
+  {
+   "t": 8.5,
+   "name": "pop",
+   "gain": -12
+  },
+  {
+   "t": 8.8,
+   "name": "tick",
+   "gain": -9
+  },
+  {
+   "t": 10.0,
+   "name": "pop",
+   "gain": -11
+  },
+  {
+   "t": 10.14,
+   "name": "pop",
+   "gain": -11
+  },
+  {
+   "t": 10.28,
+   "name": "pop",
+   "gain": -11
+  },
+  {
+   "t": 10.42,
+   "name": "pop",
+   "gain": -11
+  },
+  {
+   "t": 12.6,
+   "name": "whoosh",
+   "gain": -11
+  }
+ ],
+ "logo": 12.84
+}

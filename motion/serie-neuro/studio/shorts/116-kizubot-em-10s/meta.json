@@ -1,0 +1,68 @@
+{
+  "id": "116",
+  "slug": "kizubot-em-10s",
+  "family": "Speedrun",
+  "title": "KizuBot em 10 segundos",
+  "concept": "A speedrun HUD explains KizuBot against a real-time clock: configura o bot → grava a rota → desliga o PC → vai dormir → the shiny alarm stops the timer at 0:09.9 → WR!, with an honest fine print that real setup takes longer and support helps.",
+  "neuro": [
+    "time-pressure",
+    "open-loop-timer",
+    "chunking",
+    "anticipation",
+    "peak-end",
+    "seamless-loop",
+    "challenge-question",
+    "brand-sound"
+  ],
+  "hook": "KIZUBOT EM 10 SEGUNDOS. VALENDO!",
+  "duration": 16.8,
+  "music": {
+    "style": "chiptune",
+    "bpm": 150
+  },
+  "assets": [
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "uso com PC desligado",
+    "alarmes no celular e notificações no WhatsApp",
+    "detecção de shinys",
+    "cavebot com gravação de rota (13 módulos, llms.txt)",
+    "o suporte te ajuda a configurar"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "KizuBot em 10 segundos. Valendo! ⏱️ Configura, grava a rota, desliga o PC, vai dormir… e o alarme de shiny chega no zap. WR? 😎 Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#speedrun",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "KizuBot em 10 segundos (speedrun Any%)",
+      "description": "Speedrun da explicação: configura o bot, grava a rota do cavebot, desliga o PC, vai dormir e o alarme de shiny chega no WhatsApp. Na vida real configurar leva mais que 10 segundos — o suporte te ajuda. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#speedrun"
+      ]
+    },
+    "instagram": {
+      "caption": "KizuBot em 10 segundos. ⏱️ Configura, grava a rota, desliga o PC, vai dormir — e o alarme de shiny chega no zap. Consegue bater esse tempo? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#speedrun"
+      ]
+    }
+  },
+  "pinned_comment": "Bate esse tempo aí 😎 Qual seria o seu primeiro split?",
+  "notes": "F16 visual system designed here (speed streaks + HUD glass, Teko display, Rajdhani labels, JetBrains Mono timer; lime = split done, gold = record). Timer runs in real time (GO at 1.2 s, stops at 9.9 s run time on the alarm). Split names shortened to fit the HUD: 'Liga e desliga o PC' -> 'Desliga o PC'; 'Alarme de shiny no WhatsApp' -> 'Alarme no zap' with a star tile and a '✨ Shiny detectado!' notification (illustrative, labelled 'exemplo'; the optional shiny-cubone print was not used because ASSETS.md was not published yet). Added fine print '*configurar leva mais que 10s. O suporte te ajuda.' so the speedrun joke never reads as a setup-time claim. No deltas vs an invented PB: split times are this run's real timer values. Loop seam: the last 0.4 s rebuilds the frame-0 title + '3'. Known minor issue (render budget used, 3/3): the end-card ask 'Consegue bater esse tempo?' measures x 135–903 at y≈1120–1170, 23 px past the x ≤ 880 rail guide; later shorts cap the ask at 720 px on two lines."
+}

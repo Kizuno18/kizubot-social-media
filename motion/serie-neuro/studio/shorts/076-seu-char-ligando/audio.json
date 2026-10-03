@@ -1,0 +1,172 @@
+{
+ "duration": 18.87,
+ "style": "house",
+ "bpm": 124,
+ "seed": 76,
+ "sections": [
+  {
+   "at": 0.0,
+   "type": "silence"
+  },
+  {
+   "at": 1.935,
+   "type": "groove",
+   "energy": 0.85
+  },
+  {
+   "at": 7.742,
+   "type": "build"
+  },
+  {
+   "at": 9.677,
+   "type": "drop"
+  },
+  {
+   "at": 14.516,
+   "type": "break"
+  },
+  {
+   "at": 15.968,
+   "type": "outro"
+  }
+ ],
+ "stops": [
+  {
+   "at": 9.44,
+   "len": 0.237
+  },
+  {
+   "at": 14.516,
+   "len": 0.45,
+   "tape": true
+  }
+ ],
+ "sfx": [
+  {
+   "t": 0.0,
+   "name": "motif",
+   "gain": -2
+  },
+  {
+   "t": 0.968,
+   "name": "motif",
+   "gain": -2
+  },
+  {
+   "t": 1.62,
+   "name": "px-click",
+   "gain": -7
+  },
+  {
+   "t": 1.74,
+   "name": "whoosh_fast",
+   "gain": -10
+  },
+  {
+   "t": 1.935,
+   "name": "switch",
+   "gain": -6
+  },
+  {
+   "t": 2.419,
+   "name": "px-click-soft",
+   "gain": -11
+  },
+  {
+   "t": 4.355,
+   "name": "px-click-soft",
+   "gain": -11
+  },
+  {
+   "t": 5.806,
+   "name": "pop",
+   "gain": -12
+  },
+  {
+   "t": 7.742,
+   "name": "whoosh",
+   "gain": -11
+  },
+  {
+   "t": 8.226,
+   "name": "tick",
+   "gain": -10
+  },
+  {
+   "t": 8.71,
+   "name": "alert",
+   "gain": -3
+  },
+  {
+   "t": 8.71,
+   "name": "sparkle",
+   "gain": -13
+  },
+  {
+   "t": 9.677,
+   "name": "impact",
+   "gain": -5
+  },
+  {
+   "t": 9.7,
+   "name": "px-sparkle",
+   "gain": -9
+  },
+  {
+   "t": 9.93,
+   "name": "px-ping",
+   "gain": -12
+  },
+  {
+   "t": 10.3,
+   "name": "pop",
+   "gain": -13
+  },
+  {
+   "t": 12.581,
+   "name": "whoosh_down",
+   "gain": -11
+  },
+  {
+   "t": 14.3,
+   "name": "px-click",
+   "gain": -7
+  },
+  {
+   "t": 14.52,
+   "name": "tick2",
+   "gain": -8
+  },
+  {
+   "t": 14.72,
+   "name": "swoosh_hit",
+   "gain": -9
+  },
+  {
+   "t": 14.74,
+   "name": "tick2",
+   "gain": -8
+  },
+  {
+   "t": 15.2,
+   "name": "pop",
+   "gain": -11
+  },
+  {
+   "t": 15.68,
+   "name": "px-pop",
+   "gain": -12
+  },
+  {
+   "t": 16.37,
+   "name": "pop",
+   "gain": -12
+  },
+  {
+   "t": 16.72,
+   "name": "px-pop",
+   "gain": -12
+  }
+ ],
+ "logo": 15.968
+}

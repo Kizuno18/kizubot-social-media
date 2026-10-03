@@ -1,0 +1,34 @@
+{
+  "id": "096",
+  "slug": "offline-cam",
+  "family": "Novidade no KizuBot",
+  "title": "Agora dá pra assistir sua hunt depois",
+  "concept": "Patch-notes episode on the 05/09/2026 Offline Cam: a REC viewfinder turns into PLAY, the update installs, a 3-step wizard (Alt+G opens the list → download the session → watch inside the game client), then real KizuBot gameplay in a replay window whose speed selector really plays the clip at 1x, 2x, 4x and 8x, with fps/ping chips; closes on more than 170 updates since 2024.",
+  "neuro": ["novelty", "curiosity-gap", "visible-progress", "anticipation-drop", "picture-superiority", "authority", "loop", "comment-prompt"],
+  "hook": "ASSISTA SUA HUNT DEPOIS.",
+  "duration": 20.4,
+  "music": {"style": "synthwave", "bpm": 104},
+  "assets": ["kit/video/rypherior.mp4", "kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": [
+    "Offline Cam: gravações offline das hunts; Alt+G abre a lista; baixa as sessões e assiste dentro do cliente do jogo — changelog 05/09/2026",
+    "velocidades 1x, 2x, 4x e 8x escolhidas antes de dar play; mostra fps e ping da sessão — changelog 05/09/2026",
+    "mais de 170 atualizações desde 2024 (177 entradas no changelog)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Agora dá pra assistir sua hunt depois 🎥 Offline Cam do KizuBot: Alt+G abre a lista, baixa a sessão e assiste dentro do jogo em 1x, 2x, 4x ou 8x. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#afk", "#hunt"]
+    },
+    "youtube": {
+      "title": "Agora dá pra assistir sua hunt depois (Offline Cam do KizuBot)",
+      "description": "Novidade no KizuBot (atualização de 05/09/2026): Offline Cam. Alt+G abre a lista de sessões gravadas, você baixa e assiste dentro do cliente do jogo, em 1x, 2x, 4x ou 8x, com fps e ping da sessão. Gameplay real do KizuBot no vídeo. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Agora dá pra assistir sua hunt depois 🎥 Offline Cam do KizuBot: baixa a sessão e assiste no jogo em 1x, 2x, 4x ou 8x. Em que velocidade você assistiria? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#hunt"]
+    }
+  },
+  "pinned_comment": "Em que velocidade você assistiria: 1x ou 8x? ⏩",
+  "notes": "Hook shortened from 'AGORA DÁ PRA ASSISTIR SUA HUNT DEPOIS.' (7 words) to 'ASSISTA SUA HUNT DEPOIS.' (4) to respect ≤6 words per hook card. The concept's separate beats (Alt+G / baixa / assiste no cliente) became one 3-step wizard; 'assiste no cliente do jogo' shortened to 'Assiste no jogo' to stay ≥56 px. The replay uses the real clip kit/video/rypherior.mp4 (ASSETS: originals are safe, kept muted) as 4 consecutive segments with data-playback-rate 1/2/4/8 and continuous data-media-start, so the footage genuinely speeds up. FPS/PING chips show signal bars, no invented values. The session list and game-client window are generic illustrations (no text, not screenshots). Audio master trimmed with \"lufs\": -14.7 because the AAC true peak was -0.8 dBFS at -14 LUFS. Loop bridge: viewfinder corners return."
+}

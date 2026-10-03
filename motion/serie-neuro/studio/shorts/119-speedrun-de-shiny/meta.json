@@ -1,0 +1,67 @@
+{
+  "id": "119",
+  "slug": "speedrun-de-shiny",
+  "family": "Speedrun",
+  "title": "Speedrun de shiny: mesmo minuto",
+  "concept": "Shiny Any% · AFK: a radar scans, the real alarm 'shinyDetected ~ --> shiny Cubone' lands at 16:42, a capture ring fills and 'pokemonCaught ~ I've caught cubone' lands at 16:42 too: detected and caught in the same minute; then the real print (with the customer's 'cantou big') as proof of the run.",
+  "neuro": [
+    "anticipation",
+    "variable-reward",
+    "precise-numbers",
+    "social-proof",
+    "time-pressure",
+    "peak-end",
+    "seamless-loop",
+    "comment-prompt"
+  ],
+  "hook": "SPEEDRUN DE SHINY: NOVO RECORDE.",
+  "duration": 14.6,
+  "music": {
+    "style": "trap",
+    "bpm": 145
+  },
+  "assets": [
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/shiny-cubone.png"
+  ],
+  "claims": [
+    "detecção de shinys",
+    "alarmes no celular e notificações no WhatsApp",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Speedrun de shiny: detectado às 16:42, capturado às 16:42. Mesmo minuto, 100% AFK ✨ Print real de cliente. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#speedrun"
+      ]
+    },
+    "youtube": {
+      "title": "Speedrun de shiny: detectado e capturado no mesmo minuto",
+      "description": "O alarme do KizuBot chegou no WhatsApp: shinyDetected ~ shiny Cubone às 16:42. E às 16:42 mesmo: pokemonCaught ~ I've caught cubone. Detecção de shiny e captura automática, 100% AFK. Print real de cliente. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    },
+    "instagram": {
+      "caption": "Speedrun de shiny: 16:42 → 16:42. Detectado e capturado no mesmo minuto ✨ Qual shiny você quer no próximo run? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Qual shiny você quer no próximo run? ✨",
+  "notes": "Both split times come from the print (16:42 and 16:42); no seconds or deltas were invented ('+0 min' is the difference of the two real timestamps). The alarm lines are typed verbatim (JetBrains Mono ligatures disabled so '-->' stays three characters). 'cantou big' is shown inside the print only, not explained. The radar/capture ring is an illustration of 'detecção de shiny'. The typed capture line trims the leading '- ' (after the redacted nick) of '- pokemonCaught ~ I've caught cubone' (trim only, per ASSETS.md); shiny-cubone.png is a 3× upscale, so it is shown at 700 px, below full width."
+}

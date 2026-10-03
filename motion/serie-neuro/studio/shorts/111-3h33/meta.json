@@ -1,0 +1,35 @@
+{
+  "id": "111",
+  "slug": "3h33",
+  "family": "Terror no PxG",
+  "title": "3:33 da manhã. O celular acende sozinho.",
+  "concept": "Horror-VHS micro-story: a red LED clock at 3:33, the phone lights up by itself with a pixelated message, silence, and the jump scare is a KizuBot shiny alarm; then a real customer print proves the shiny is real.",
+  "neuro": ["arousal-suspense", "curiosity-gap", "pattern-interrupt", "benign-violation", "seasonality", "social-proof", "peak-end", "loop"],
+  "hook": "3:33 DA MANHÃ.",
+  "duration": 20.3,
+  "music": {"style": "phonk", "bpm": 130, "note": "dark pad break (horror) -> tape-stop silence -> phonk drop on the twist"},
+  "assets": [
+    "kit/img/prints/shiny-dratini-new-server--shot.png",
+    "kit/img/prints/shiny-dratini-new-server--quote.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": ["alarmes no celular e notificações no WhatsApp", "detecção de shinys, megas e bosses", "uso com PC desligado"],
+  "platforms": {
+    "tiktok": {
+      "caption": "3:33 da manhã. O celular acende sozinho. Uma mensagem... 👻 Era o alarme do KizuBot: shiny detectado. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#halloween", "#shiny"]
+    },
+    "youtube": {
+      "title": "3:33 da manhã. O celular acende sozinho... (era um SHINY)",
+      "description": "Você acorda com um barulho. O celular acende sozinho. Uma mensagem... era o alarme do KizuBot avisando um shiny. A cena é ficção; o shiny do print é real (print real de cliente). O KizuBot farma 100% AFK, com o PC desligado, e avisa no celular e no WhatsApp quando aparece shiny, mega ou boss. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot", "#halloween"]
+    },
+    "instagram": {
+      "caption": "3:33 da manhã. O celular acende sozinho... 👻 Calma: era o KizuBot avisando um shiny. Dorme tranquilo, ele tá acordado. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#halloween"]
+    }
+  },
+  "pinned_comment": "Que horas o seu celular já te assustou? 👻",
+  "notes": "Deviation: the concept revealed the real print as if it were the 3:33 message, but the print's own timestamps read 11:38/11:39. To stay truthful, the scare reveals an illustrated KizuBot alarm (labelled 'exemplo de alarme do KizuBot', sender format 'KizuBot™ | kizubot.com' as in the real alarms) and the real print follows under the line 'A cena é ficção. O shiny, não.' with the 'print real de cliente' tag. Concept's last line kept: 'Dorme tranquilo. O KizuBot tá acordado.' Music: kzaudio has one style per track, so the tension bed is phonk's no-drums break + heartbeat/clock-style SFX, with a tape-stop silence before the phonk drop."
+}

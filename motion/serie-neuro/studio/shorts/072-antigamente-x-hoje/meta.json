@@ -1,0 +1,63 @@
+{
+  "id": "072",
+  "slug": "antigamente-x-hoje",
+  "family": "Só Quem Joga PxG Entende",
+  "title": "Antigamente no PxG x hoje",
+  "concept": "Nostalgia split: a sepia 12 fps CRT TV shows the old grind (farmar mato na mão, perder shiny por 1 segundo, dormir na cadeira), the TV powers off and the screen snaps to crisp purple 'HOJE' (PC desligado, alarme no WhatsApp, char farmando enquanto você dorme), then a veteran customer's real line about the bot getting easier ('mamão com açúcar'), ending on the same TV with the logo.",
+  "neuro": [
+    "nostalgia",
+    "in-group-identity",
+    "contrast",
+    "social-proof",
+    "loop",
+    "comment-prompt"
+  ],
+  "hook": "ANTIGAMENTE NO PXG:",
+  "duration": 19.38,
+  "music": {
+    "style": "phonk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/mamao-com-acucar--mamao.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "uso com PC desligado",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Antigamente no PxG: farmar mato na mão, perder shiny por 1 segundo, dormir na cadeira 👴 Hoje: PC desligado e alarme no WhatsApp. Desde quando você joga PxG? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#nostalgia",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Antigamente no PxG x hoje 👴 (quem é das antigas entende)",
+      "description": "Antigamente no PxG: farmar mato na mão, perder shiny por 1 segundo e dormir na cadeira. Hoje: PC desligado, alarme no WhatsApp e o char farmando enquanto você dorme. Print real de cliente das antigas: \"Hoje pra essa galera nova ficou mamão com açúcar\". kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Antigamente no PxG x hoje 👴 Quem é das antigas lembra. Desde quando você joga PxG? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#nostalgia"
+      ]
+    }
+  },
+  "pinned_comment": "Desde quando você joga PxG? 👴",
+  "notes": "The concept used the veteran quote ('No começo não tinha / Nois ralava') as the punchline of 'Antigamente no PxG', but in the print (mamao-com-acucar, sender [cliente] per ASSETS.md) he talks about the KizuBot panel's early days. To keep it truthful the quote comes after HOJE, framed 'QUEM USA DESDE O COMEÇO:' and tagged 'print real de cliente · sobre o painel'. Item 1 is 'farmar mato na mão' (dropped 'até 4h' to avoid repeating 071). Old era = sepia 12 fps CRT TV with a generic login box (no game logo); the end card returns on the same TV for the loop."
+}

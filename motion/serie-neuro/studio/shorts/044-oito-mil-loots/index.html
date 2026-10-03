@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>044 8.434 loots desde cedo</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F01 "A Conta" v2 system (shared with 042-045) ===== */
+  :root { --loss: #ff4a4a; --gain: #c6ff3d; --paper: #f2e9d8; --paper-ink: #1d1526; --ink-purple: #6d28d9; }
+  .full { position: absolute; inset: 0; }
+  #bg { position: absolute; inset: 0; background: radial-gradient(95% 60% at 50% 0%, #1d1030 0%, #0b0712 62%); }
+  #dots { position: absolute; inset: -140px; background-image: radial-gradient(rgba(216, 180, 254, 0.22) 2.2px, transparent 2.8px); background-size: 46px 46px; opacity: 0.5; }
+  .glow { position: absolute; inset: 0; pointer-events: none; }
+  #glowP { background: radial-gradient(62% 40% at 50% 40%, rgba(124, 58, 237, 0.5) 0%, rgba(124, 58, 237, 0) 70%); opacity: 0.65; }
+  #glowR { background: radial-gradient(75% 48% at 50% 55%, rgba(239, 68, 68, 0.5) 0%, rgba(239, 68, 68, 0) 72%); opacity: 0; }
+  #glowL { background: radial-gradient(60% 40% at 50% 38%, rgba(198, 255, 61, 0.26) 0%, rgba(198, 255, 61, 0) 70%); opacity: 0; }
+  .kz-progress { height: 9px; }
+  .kz-progress > div { background: linear-gradient(90deg, var(--loss), #f59e0b 45%, var(--gain)); }
+  .an { font-family: "Anton", sans-serif; text-transform: uppercase; line-height: 0.9; color: var(--kz-ink); }
+  .lav { color: var(--kz-lav); }
+  .lime { color: var(--gain); }
+  .red { color: var(--loss); }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; opacity: 0.35; }
+  #bug { position: absolute; left: 90px; top: 236px; display: flex; align-items: center; gap: 12px; padding: 7px 22px 7px 10px; border-radius: 999px; background: rgba(11, 7, 18, 0.78); border: 2px solid rgba(216, 180, 254, 0.3); }
+  #bug .hd { position: relative; width: 48px; height: 46px; }
+  #bug .hd img { width: 48px; display: block; }
+  #bug .t { font: 400 30px "JetBrains Mono", monospace; letter-spacing: 0.2em; color: var(--kz-lav); }
+  #bug .t b { font-weight: 400; color: var(--loss); }
+  .line { position: absolute; left: 120px; width: 768px; text-align: center; white-space: nowrap; }
+
+  /* S1 hook */
+  #n1 { top: 300px; font-size: 300px; color: #fff; text-shadow: 0 0 60px rgba(198, 255, 61, 0.35); }
+  #n2 { top: 574px; font-size: 104px; color: var(--kz-lav); letter-spacing: 0.04em; }
+  #n3 { top: 700px; font-size: 100px; }
+  #n4 { top: 800px; font-size: 100px; color: var(--loss); }
+  #cursor { position: absolute; left: 716px; top: 806px; width: 92px; height: 92px; }
+  .zz { position: absolute; font: 700 44px "Space Grotesk", sans-serif; color: var(--kz-lav); opacity: 0; }
+
+  /* S2 proof window */
+  .win { position: absolute; left: 140px; width: 760px; top: 304px; height: 600px; border-radius: 30px; overflow: hidden; border: 4px solid rgba(245, 240, 250, 0.85); background: #0e0a16; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); }
+  #shot { position: absolute; left: 0; top: 0; width: 1080px; height: 1747px; transform-origin: 0 0; }
+  #shot img { display: block; width: 1080px; }
+  .hlbox { position: absolute; left: 30px; width: 700px; top: 258px; height: 84px; border-radius: 16px; border: 5px solid var(--gain); box-shadow: 0 0 26px rgba(198, 255, 61, 0.7); opacity: 0; }
+  .wtag { position: absolute; left: 0; right: 0; top: 860px; display: flex; justify-content: center; }
+  .wtag span { font: 700 30px "Space Grotesk", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--kz-lav); padding: 7px 20px; border: 2px solid var(--kz-lav); border-radius: 999px; background: rgba(11, 7, 18, 0.85); }
+  .lrow { position: absolute; left: 120px; width: 760px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 6px; border-bottom: 2px dashed rgba(216, 180, 254, 0.2); }
+  .lrow .k { font: 700 56px "Space Grotesk", sans-serif; color: var(--kz-ink); }
+  .lrow .k small { font: 400 30px "JetBrains Mono", monospace; color: var(--kz-lav); margin-left: 12px; }
+  .lrow .v { font: 400 90px "Anton", sans-serif; color: #fff; line-height: 1; }
+  #rule { position: absolute; left: 120px; width: 760px; top: 1262px; height: 5px; border-radius: 3px; background: var(--kz-ink); transform-origin: 0 50%; }
+  .lsum { position: absolute; left: 120px; width: 760px; top: 1272px; display: flex; justify-content: space-between; align-items: center; }
+  .lsum .k { font: 700 56px "Space Grotesk", sans-serif; color: var(--gain); }
+  .lsum .v { font: 400 110px "Anton", sans-serif; color: var(--gain); line-height: 1; }
+
+  /* S3 quote */
+  .qcard { position: absolute; left: 140px; width: 760px; top: 640px; border-radius: 26px; overflow: hidden; border: 4px solid rgba(245, 240, 250, 0.85); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); background: #15101f; }
+  .qcard img { display: block; width: 100%; }
+  #qk { top: 420px; font-size: 96px; }
+  #qtag { position: absolute; left: 0; right: 0; top: 900px; display: flex; justify-content: center; }
+  #qtag span { font: 700 30px "Space Grotesk", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--kz-lav); padding: 7px 20px; border: 2px solid var(--kz-lav); border-radius: 999px; background: rgba(11, 7, 18, 0.85); }
+
+  /* S4 tally counter */
+  #t1 { top: 300px; font-size: 120px; }
+  #t2 { top: 420px; font-size: 100px; color: var(--loss); }
+  .tally { position: absolute; left: 290px; width: 440px; top: 720px; height: 330px; }
+  .tbody { position: absolute; left: 0; top: 70px; width: 440px; height: 260px; border-radius: 120px 120px 60px 60px; background: linear-gradient(180deg, #f6eedf, #d9cdb8); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), inset 0 -10px 0 rgba(0, 0, 0, 0.12); }
+  .twin { position: absolute; left: 50px; top: 150px; width: 340px; height: 110px; border-radius: 18px; background: #1d1526; display: flex; align-items: center; justify-content: center; gap: 6px; }
+  #tdig { font: 400 84px "JetBrains Mono", monospace; color: #fff; letter-spacing: 0.06em; }
+  .tbtn { position: absolute; left: 170px; top: 6px; width: 100px; height: 84px; border-radius: 22px 22px 8px 8px; background: linear-gradient(180deg, #b9ad98, #8f846f); }
+  .tring { position: absolute; left: 370px; top: 120px; width: 120px; height: 120px; border-radius: 50%; border: 14px solid #c9bda8; }
+  #finger { position: absolute; left: 150px; top: -128px; font-size: 140px; line-height: 1; }
+  #faltam { top: 1090px; font: 700 64px "Space Grotesk", sans-serif; color: var(--loss); }
+  .drop { position: absolute; font-size: 54px; opacity: 0; }
+
+  /* S5 drop */
+  #d1 { top: 300px; font-size: 230px; color: var(--gain); text-shadow: 0 0 70px rgba(198, 255, 61, 0.45); }
+  #d2 { top: 518px; font-size: 110px; color: var(--kz-lav); }
+  #d3 { top: 632px; font-size: 120px; }
+  .chips { position: absolute; left: 120px; width: 768px; top: 790px; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .chip { display: inline-flex; align-items: center; gap: 12px; padding: 14px 28px; border-radius: 999px; font: 700 56px "Space Grotesk", sans-serif; }
+  .chip.lime { background: var(--gain); color: #111; }
+  .chip.pur { background: var(--kz-violet-2); color: #fff; }
+  #robotWrap { position: absolute; left: 190px; top: 1010px; width: 640px; }
+  #robotWrap img { width: 640px; display: block; }
+
+  .kz-end .kz-url { font: 700 66px "Space Grotesk", sans-serif; }
+  .ask { font: 700 62px "Space Grotesk", sans-serif; color: var(--kz-ink); max-width: 720px; line-height: 1.1; }
+  .ask b { display: block; color: var(--gain); font-weight: 700; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="16.2" data-fps="30">
+  <div id="bg"></div>
+  <div id="dots"></div>
+  <div class="glow" id="glowP"></div>
+  <div class="glow" id="glowR"></div>
+  <div class="glow" id="glowL"></div>
+  <div class="kz-vignette"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <div id="bugLayer" class="full" style="pointer-events:none; z-index:30">
+    <div id="bug"><div class="hd"><img src="kit/img/brand/kizubot-head.png" alt="" /><i class="eye" id="bugEye" style="left:12px; top:4px; width:26px; height:26px"></i></div><span class="t">A <b>CONTA</b></span></div>
+  </div>
+
+  <!-- S1 hook: 0 - 1.714 -->
+  <section id="s1" class="clip" data-start="0" data-duration="1.714">
+    <div id="s1in" class="full">
+      <div class="an line" id="n1">0</div>
+      <div class="an line" id="n2">loots.</div>
+      <div class="an line" id="n3">Ninguém encostou</div>
+      <div class="an line" id="n4" style="text-align:left; left:290px">no mouse.</div>
+      <svg id="cursor" viewBox="0 0 24 24"><path d="M4 2l15 9.5-6.6 1.4 3.8 7.4-2.8 1.4-3.8-7.4L4 19z" fill="#f5f0fa" stroke="#0b0712" stroke-width="1.2" stroke-linejoin="round"/></svg>
+      <div class="zz" id="z1" style="left:800px; top:784px">z</div><div class="zz" id="z2" style="left:830px; top:744px; font-size:54px">z</div><div class="zz" id="z3" style="left:864px; top:696px; font-size:66px">Z</div>
+    </div>
+  </section>
+
+  <!-- S2 the real HUD, line by line: 1.714 - 5.571 -->
+  <section id="s2" class="clip" data-start="1.714" data-duration="3.857">
+    <div id="s2in" class="full">
+      <div class="win kz-card" id="win"><div id="shot"><img src="kit/img/prints/hud-8434-loots.png" alt="" /></div><div class="hlbox" id="hl"></div></div>
+      <div class="wtag"><span class="kz-print-tag" id="wtag">print real de cliente · interface antiga</span></div>
+      <div class="lrow" id="r1" style="top:930px"><span class="k">loots coletados</span><span class="v" id="v1">0</span></div>
+      <div class="lrow" id="r2" style="top:1040px"><span class="k">andadas</span><span class="v" id="v2">0</span></div>
+      <div class="lrow" id="r3" style="top:1150px"><span class="k">cliques no mapa</span><span class="v" id="v3">0</span></div>
+      <div id="rule"></div>
+      <div class="lsum" id="r4"><span class="k">= ações do bot</span><span class="v" id="v4">0</span></div>
+    </div>
+  </section>
+
+  <!-- S3 the caption: 5.571 - 7.714 -->
+  <section id="s3" class="clip" data-start="5.571" data-duration="2.143">
+    <div id="s3in" class="full">
+      <div class="an line" id="qk">E a legenda?</div>
+      <div class="qcard kz-card" id="qcard"><img src="kit/img/prints/hud-8434-loots--quote.png" alt="" /></div>
+      <div id="qtag"><span class="kz-print-tag">print real de cliente</span></div>
+    </div>
+  </section>
+
+  <!-- S4 re-hook + build: 7.714 - 9.429 -->
+  <section id="s4" class="clip" data-start="7.714" data-duration="1.715">
+    <div id="s4in" class="full">
+      <div id="shk4" class="full">
+        <div class="an line" id="t1">Agora imagina</div>
+        <div class="an line" id="t2">fazer isso na mão.</div>
+        <div class="tally" id="tally">
+          <div class="tbtn" id="tbtn"></div>
+          <div class="tring"></div>
+          <div class="tbody"></div>
+          <div class="twin"><span id="tdig">00000</span></div>
+          <div id="finger">👇</div>
+        </div>
+        <div class="line" id="faltam">faltam 14.344</div>
+        <div class="drop" id="dr1" style="left:250px; top:760px">💦</div>
+        <div class="drop" id="dr2" style="left:750px; top:730px">💦</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 drop: 9.429 - 12.857 -->
+  <section id="s5" class="clip" data-start="9.429" data-duration="3.428">
+    <div id="s5in" class="full">
+      <div class="an line" id="d1">14.344</div>
+      <div class="an line" id="d2">ações.</div>
+      <div class="an line" id="d3">Todas do bot.</div>
+      <div class="chips"><span class="chip lime" id="c1">100% AFK</span><span class="chip pur" id="c2">anda sozinho</span><span class="chip pur" id="c3">coleta sozinho</span></div>
+      <div id="robotWrap"><img src="kit/img/brand/kizubot-robot.png" alt="" /><div class="eye" id="eye5" style="left:222px; top:26px; width:84px; height:84px"></div></div>
+    </div>
+  </section>
+
+  <!-- S6 end card: 12.857 - 16.2 -->
+  <section id="s6" class="clip" data-start="12.857" data-duration="3.343">
+    <div class="kz-end" id="s6in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye6" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">Quantos cliques <b>você aguenta?</b></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 16.2;
+  const b = KZ.beats(140);            // beat = 0.4286 s
+
+  function glint(eye, at, times, first) {
+    if (first) tl.set(eye, { opacity: 0.35, scale: 1 }, 0);
+    for (var i = 0; i < times; i++) {
+      tl.fromTo(eye, { opacity: 0.2, scale: 0.8 }, { opacity: 1, scale: 1.3, duration: 0.18, ease: "power2.out", immediateRender: false }, at + i * 0.45);
+      tl.to(eye, { opacity: 0.35, scale: 1, duration: 0.25, ease: "power2.in" }, at + i * 0.45 + 0.18);
+    }
+  }
+  // camera targets inside the print (1080x1747): line centre y, scale
+  function cam(y, s) { return { x: 380 - 240 * s, y: 300 - y * s, scale: s }; }
+
+  // ---- untimed ----
+  tl.fromTo("#prog", { scaleX: 0 }, { scaleX: 1, duration: D - 0.05, ease: "power1.out" }, 0);
+  KZ.drift(tl, "#dots", D, 26, 40, 4.4);
+  tl.fromTo("#bug", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, b(4) + 0.1);
+  glint("#bugEye", 2.2, 1, true);
+  glint("#bugEye", 6.4, 1, false);
+  tl.to("#bug", { x: -60, opacity: 0, duration: 0.2, ease: "power2.in" }, 12.6);
+
+  // ---- S1 hook: 8.434 counts up under a cursor that never moves ----
+  tl.fromTo("#n1", { scale: 1.12 }, { scale: 1, duration: 0.3, ease: "power3.out" }, 0);
+  KZ.countUp(tl, "#n1", 0, 8434, 0, 0.85, "int", "power2.out");
+  tl.fromTo("#n2", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 0.04);
+  tl.fromTo("#n3", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 0.1);
+  tl.fromTo("#n4", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 0.18);
+  tl.fromTo("#cursor", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2.5)" }, 0.24);
+  KZ.punch(tl, "#n1", 0.86, 1.08, 0.3);
+  ["#z1", "#z2", "#z3"].forEach(function (z, i) { tl.fromTo(z, { y: 20, opacity: 0 }, { y: -20, opacity: 1, duration: 0.5, ease: "power1.out" }, 0.7 + i * 0.18); });
+  tl.to("#s1in", { scale: 0.92, opacity: 0, duration: 0.16, ease: "power2.in" }, b(4) - 0.17);
+
+  // ---- S2 the real HUD, line by line (each line its own counter) ----
+  tl.fromTo("#win", { y: 120, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, b(4));
+  tl.fromTo("#shot", cam(873, 0.4), Object.assign(cam(990, 1.6), { duration: 0.5, ease: "power3.inOut" }), b(4) + 0.05);
+  KZ.pop(tl, "#wtag", b(4) + 0.2, 0.3);
+  tl.fromTo("#hl", { opacity: 0, scale: 1.1 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, b(5) + 0.15);
+  KZ.rise(tl, "#r1", b(5), 0.3, 24);
+  KZ.countUp(tl, "#v1", 0, 8434, b(5) + 0.1, 0.6, "int", "power2.out");
+  tl.to("#shot", Object.assign(cam(695, 1.6), { duration: 0.42, ease: "power3.inOut" }), b(7.5) - 0.1);
+  tl.fromTo("#hl", { scale: 1.1 }, { scale: 1, duration: 0.2, ease: "back.out(2)", immediateRender: false }, b(7.5) + 0.25);
+  KZ.rise(tl, "#r2", b(7.5), 0.3, 24);
+  KZ.countUp(tl, "#v2", 0, 4774, b(7.5) + 0.1, 0.55, "int", "power2.out");
+  tl.to("#shot", Object.assign(cam(740, 1.6), { duration: 0.32, ease: "power3.inOut" }), b(9.5) - 0.1);
+  tl.fromTo("#hl", { scale: 1.1 }, { scale: 1, duration: 0.2, ease: "back.out(2)", immediateRender: false }, b(9.5) + 0.2);
+  KZ.rise(tl, "#r3", b(9.5), 0.3, 24);
+  KZ.countUp(tl, "#v3", 0, 1136, b(9.5) + 0.1, 0.5, "int", "power2.out");
+  tl.fromTo("#rule", { scaleX: 0 }, { scaleX: 1, duration: 0.25, ease: "power3.out" }, b(11.5));
+  KZ.rise(tl, "#r4", b(11.5) + 0.05, 0.25, 20);
+  KZ.countUp(tl, "#v4", 0, 14344, b(11.5) + 0.1, 0.45, "int", "power2.in");
+  KZ.punch(tl, "#v4", b(12.5), 1.14, 0.3);
+  tl.to("#s2in", { opacity: 0, y: -60, duration: 0.17, ease: "power2.in" }, b(13) - 0.18);
+
+  // ---- S3 the caption from the same print ----
+  KZ.slam(tl, "#qk", b(13), 1.5);
+  tl.fromTo("#qcard", { y: 120, rotation: 3, opacity: 0 }, { y: 0, rotation: -1, opacity: 1, duration: 0.4, ease: "power3.out" }, b(13) + 0.1);
+  KZ.pop(tl, "#qtag span", b(14), 0.3);
+  tl.to("#qcard", { scale: 1.04, duration: 1.6, ease: "sine.inOut" }, b(14));
+  tl.to("#s3in", { opacity: 0, scale: 0.94, duration: 0.16, ease: "power2.in" }, b(18) - 0.17);
+
+  // ---- S4 "na mão": the tally barely moves ----
+  tl.fromTo("#glowR", { opacity: 0 }, { opacity: 0.8, duration: 0.3 }, b(18));
+  KZ.slam(tl, "#t1", b(18), 1.6);
+  KZ.slam(tl, "#t2", b(19), 1.6);
+  tl.fromTo("#tally", { y: 260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, b(18) + 0.1);
+  KZ.rise(tl, "#faltam", b(19) + 0.1, 0.25, 20);
+  (function () {
+    var dig = document.getElementById("tdig"), fal = document.getElementById("faltam"), o = { n: 0 };
+    tl.to(o, { n: 23, duration: 1.15, ease: "none", onUpdate: function () { var n = Math.round(o.n); dig.textContent = String(n).padStart(5, "0"); fal.textContent = "faltam " + (14344 - n).toLocaleString("pt-BR"); } }, b(19) + 0.1);
+    for (var i = 0; i < 12; i++) {
+      tl.fromTo("#finger", { y: 0 }, { y: 46, duration: 0.045, ease: "power2.in", yoyo: true, repeat: 1, immediateRender: false }, b(19) + 0.1 + i * 0.096);
+      tl.fromTo("#tbtn", { y: 0 }, { y: 18, duration: 0.045, ease: "power2.in", yoyo: true, repeat: 1, immediateRender: false }, b(19) + 0.12 + i * 0.096);
+    }
+  })();
+  tl.set(["#finger", "#tbtn"], { y: 0 }, 0);
+  tl.fromTo("#dr1", { y: 0, opacity: 0 }, { y: 70, opacity: 1, duration: 0.5, ease: "power1.in" }, b(20));
+  tl.fromTo("#dr2", { y: 0, opacity: 0 }, { y: 70, opacity: 1, duration: 0.5, ease: "power1.in" }, b(20.6));
+  KZ.shake(tl, "#shk4", 8.75, 7, 0.55, 3);
+
+  // ---- S5 drop: 14.344 actions, all by the bot ----
+  KZ.flash(tl, "#flash", b(22), 0.85, "#efffcf");
+  tl.to("#glowR", { opacity: 0, duration: 0.2 }, b(22));
+  tl.fromTo("#glowL", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none" }, b(22));
+  tl.to("#glowL", { opacity: 0.5, duration: 1.2, ease: "power2.out" }, b(22) + 0.3);
+  tl.fromTo("#d1", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, b(22));
+  KZ.shake(tl, "#s5in", b(22) + 0.03, 14, 0.3, 8);
+  KZ.slam(tl, "#d2", b(22.5), 1.5);
+  KZ.slam(tl, "#d3", b(23), 1.6);
+  ["#c1", "#c2", "#c3"].forEach(function (c, i) { KZ.pop(tl, c, b(24) + i * b(0.75), 0.35); });
+  tl.fromTo("#robotWrap", { y: 520, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power4.out" }, b(24.5));
+  glint("#eye5", b(25.5), 2, true);
+  tl.to("#d1", { scale: 1.05, duration: 1.6, ease: "sine.inOut" }, b(23));
+  tl.to("#s5in", { opacity: 0, scale: 0.94, duration: 0.18, ease: "power2.in" }, b(30) - 0.19);
+  tl.to("#glowL", { opacity: 0, duration: 0.3 }, b(30) - 0.2);
+
+  // ---- S6 end card ----
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, b(30) + 0.04);
+  glint("#eye6", b(30) + 0.14, 2, true);
+  KZ.rise(tl, "#endUrl", b(31), 0.35, 30);
+  KZ.rise(tl, "#endAsk", b(32), 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, b(32));
+  tl.to("#s6in", { opacity: 0, duration: 0.3, ease: "power1.in" }, D - 0.33);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

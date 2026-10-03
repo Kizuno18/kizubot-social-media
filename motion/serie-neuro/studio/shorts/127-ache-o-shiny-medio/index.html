@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>127 Nível 2: ache o shiny</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  @font-face { font-family: "Noto Color Emoji"; src: local("Noto Color Emoji"); }
+  /* ================= F18 · ACHE O SHINY — ep. 127 (level 2, mint) ================= */
+  :root { --f18-paper: #e3f6ea; --f18-dot: #bfe5cd; --f18-ink: #0f1a14; --f18-acc: #ff6b4a; --f18-mark: #9ff0c0; --f18-gold: #ffcf33; --f18-lime: #c6ff3d; }
+  #root { background: var(--f18-paper); }
+  .f18-paper { position: absolute; inset: 0; background: var(--f18-paper); }
+  #dots { position: absolute; inset: -80px; background-image: radial-gradient(circle, var(--f18-dot) 3.4px, rgba(0,0,0,0) 3.8px); background-size: 34px 34px; transform: rotate(45deg); }
+  .f18-vig { position: absolute; inset: 0; background: radial-gradient(110% 75% at 50% 45%, rgba(255,255,255,0) 55%, rgba(20, 80, 50, .14) 100%); pointer-events: none; }
+  #night { position: absolute; inset: 0; background: radial-gradient(90% 60% at 50% 30%, #1a2350 0%, #0b1030 55%, #050816 100%); opacity: 0; }
+  .star { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #fff; opacity: 0; }
+  #dark { position: absolute; inset: 0; background: radial-gradient(90% 60% at 50% 42%, #3b1470 0%, #140a22 60%, #0b0712 100%); opacity: 0; }
+  #darkGrid { position: absolute; inset: -200px; opacity: 0;
+    background-image: linear-gradient(rgba(168, 85, 247, .14) 2px, transparent 2px), linear-gradient(90deg, rgba(168, 85, 247, .14) 2px, transparent 2px); background-size: 90px 90px; }
+  .kz-progress { height: 10px; background: rgba(15, 26, 20, .12); }
+  .kz-progress > div { background: linear-gradient(90deg, #ff6b4a, #ffcf33); }
+
+  .f18-title { position: absolute; left: 100px; width: 780px; top: 222px; text-align: center; }
+  .lvl { display: inline-block; padding: 4px 22px; border-radius: 14px; background: var(--f18-ink); color: var(--f18-mark); font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 46px; letter-spacing: .02em; transform: rotate(-3deg); }
+  .t1 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 104px; line-height: 1.02; color: var(--f18-ink); letter-spacing: -0.03em; text-transform: uppercase; margin-top: 6px; position: relative; z-index: 1; }
+  .mk { position: relative; display: inline-block; padding: 0 14px; }
+  .mk::before { content: ""; position: absolute; left: 0; right: 0; top: 18%; bottom: 8%; background: var(--f18-mark); border-radius: 12px; z-index: -1; transform: rotate(2deg); }
+  .swap { position: relative; height: 66px; margin-top: 2px; }
+  .swap > * { position: absolute; left: 0; right: 0; top: 0; display: flex; justify-content: center; }
+  .pill { display: inline-flex; white-space: nowrap; align-items: center; padding: 8px 30px; border-radius: 999px; background: var(--f18-ink); color: var(--f18-mark);
+    font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 44px; text-transform: uppercase; opacity: 0; }
+  .pill i { display: inline-block; width: 12px; height: 34px; background: currentColor; border-radius: 4px; box-shadow: 22px 0 0 currentColor; margin-right: 40px; }
+  .pill.acc { background: var(--f18-acc); color: #fff; }
+
+  /* segmented 5-second fuse */
+  #tbar { position: absolute; left: 100px; top: 480px; width: 690px; height: 40px; display: flex; gap: 8px; }
+  .seg { flex: 1; border-radius: 10px; background: var(--f18-acc); border: 5px solid var(--f18-ink); transform-origin: 50% 50%; }
+  #timer { position: absolute; left: 794px; top: 440px; width: 116px; height: 116px; }
+  .tm-bg { position: absolute; inset: 0; border-radius: 30px; background: var(--f18-acc); border: 6px solid var(--f18-ink); box-shadow: 0 8px 0 var(--f18-ink); transform: rotate(6deg); }
+  .tm-n { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 74px; color: #fff; opacity: 0; }
+  #tm5 { opacity: 1; }
+
+  /* board */
+  #boardWrap { position: absolute; left: 100px; top: 540px; width: 780px; height: 858px; perspective: 1600px; }
+  #boardTilt { position: absolute; inset: 0; transform-style: preserve-3d; }
+  .board { position: absolute; inset: 0; border-radius: 36px; background: #fbfffc; border: 7px solid var(--f18-ink); box-shadow: 0 16px 0 var(--f18-ink); }
+  .grid { position: absolute; left: 24px; top: 24px; right: 24px; bottom: 24px; display: grid; }
+  .cell { display: flex; align-items: center; justify-content: center; position: relative; }
+  .emo { display: block; line-height: 1; font-family: "Noto Color Emoji", sans-serif; will-change: transform; }
+  .shiny .emo { filter: hue-rotate(50deg) saturate(1.25) brightness(1.03); }
+  .xmark { position: absolute; left: 50%; top: 50%; width: 90px; height: 90px; margin: -45px 0 0 -45px; opacity: 0; overflow: visible; }
+  .xmark path { fill: none; stroke: var(--f18-acc); stroke-width: 12; stroke-linecap: round; }
+  /* magnifier */
+  #lensPos { position: absolute; left: 0; top: 0; width: 280px; height: 280px; }
+  #lens { position: absolute; inset: 0; opacity: 0; }
+  .lensClip { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; background: #fbfffc; }
+  #lensGrid { position: absolute; left: 0; top: 0; width: 732px; height: 810px; display: grid; transform-origin: 0 0; }
+  .lensRim { position: absolute; inset: -10px; border-radius: 50%; border: 12px solid var(--f18-ink); box-shadow: inset 0 0 0 5px rgba(255,255,255,.7), 0 10px 0 rgba(15,26,20,.35); }
+  .lensHandle { position: absolute; left: 230px; top: 236px; width: 34px; height: 150px; border-radius: 17px; background: var(--f18-ink); transform: rotate(-45deg); transform-origin: 50% 0; }
+  #circ { position: absolute; overflow: visible; pointer-events: none; }
+  #circ path { fill: none; stroke: var(--f18-acc); stroke-width: 10; stroke-linecap: round; }
+  #timeUp { position: absolute; left: 100px; width: 780px; top: 800px; text-align: center; text-transform: uppercase; font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 190px; color: var(--f18-acc);
+    -webkit-text-stroke: 8px var(--f18-ink); paint-order: stroke fill; opacity: 0; letter-spacing: -0.03em; }
+  #coord { position: absolute; left: 100px; width: 780px; top: 1300px; text-align: center; opacity: 0; }
+  #coord span { display: inline-block; padding: 14px 34px; border-radius: 999px; background: var(--f18-ink); color: var(--f18-lime); font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 56px; }
+  .spark { position: absolute; left: 0; top: 0; width: 20px; height: 20px; opacity: 0; }
+  #sparkField { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+
+  /* night + product */
+  .nt { position: absolute; left: 90px; width: 790px; top: 520px; text-align: center; font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 104px; line-height: 1.06; color: #fff; text-transform: uppercase; letter-spacing: -0.02em; }
+  .nt em { font-style: normal; color: var(--f18-gold); }
+  #moon { position: absolute; left: 430px; top: 270px; width: 200px; height: 200px; border-radius: 50%; box-shadow: -34px 18px 0 0 #ffe9a8; }
+  .pv2 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 108px; line-height: 1.04; color: #fff; text-transform: uppercase; letter-spacing: -0.02em; }
+  .pv2 em { font-style: normal; color: var(--f18-lime); }
+  .pvs { font: 800 56px "Inter", sans-serif; color: #d8b4fe; margin-top: 6px; }
+  #pvB { position: absolute; left: 90px; width: 790px; top: 250px; text-align: center; }
+  #printWrap { position: absolute; left: 90px; top: 690px; width: 900px; height: 300px; }
+  .f18-print { position: absolute; inset: 0; border-radius: 28px; overflow: hidden; background: #1c1c20; box-shadow: 0 0 0 4px var(--f18-lime), 0 30px 90px rgba(124, 58, 237, .5); }
+  .f18-print img { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+  .ph-row { position: absolute; left: 11%; right: 6.5%; height: 26%; border-radius: 12px; background: #1f5a48; }
+  .tag { position: absolute; left: 90px; top: 1020px; padding: 10px 20px; border-radius: 999px; background: rgba(8, 5, 14, .85); border: 2px solid var(--f18-lime);
+    font: 700 30px "JetBrains Mono", monospace; letter-spacing: .08em; color: var(--f18-lime); text-transform: uppercase; }
+  .hlp { position: absolute; border-radius: 16px; border: 7px solid var(--f18-gold); box-shadow: 0 0 30px rgba(255, 207, 51, .6); opacity: 0; }
+  .claim { position: absolute; left: 90px; width: 790px; top: 1100px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .claim span { padding: 12px 26px; border-radius: 999px; font: 800 48px "Inter", sans-serif; background: #fff; color: #120a1c; opacity: 0; }
+  .claim span.l { background: var(--f18-lime); }
+
+  .eye { position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+  .ask { font: 900 64px "Inter", sans-serif; color: #f5f0fa; max-width: 800px; line-height: 1.12; }
+  .ask b { color: var(--f18-lime); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  #blackout { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 45; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="18" data-fps="30">
+  <div class="f18-paper"></div>
+  <div id="dots"></div>
+  <div class="f18-vig"></div>
+  <div id="night"></div>
+  <div id="stars"></div>
+  <div id="dark"></div>
+  <div id="darkGrid"></div>
+
+  <!-- PUZZLE 0 - 8.5 -->
+  <section id="pz" class="clip" data-start="0" data-duration="9">
+    <div id="pzIn" style="position:absolute; inset:0">
+      <div class="f18-title" id="title">
+        <div><span class="lvl" id="lvl">NÍVEL 2</span></div>
+        <div class="t1" id="tA">Ache o <span class="mk">shiny</span></div>
+        <div class="swap">
+          <div><span class="pill" id="pause"><i></i>pausa e procura!</span></div>
+          <div><span class="pill acc" id="hint">dica: é a cor</span></div>
+        </div>
+      </div>
+      <div id="tbar"><div class="seg" id="g1"></div><div class="seg" id="g2"></div><div class="seg" id="g3"></div><div class="seg" id="g4"></div><div class="seg" id="g5"></div></div>
+      <div id="timer"><div class="tm-bg"></div><div class="tm-n" id="tm5">5</div><div class="tm-n" id="tm4">4</div><div class="tm-n" id="tm3">3</div><div class="tm-n" id="tm2">2</div><div class="tm-n" id="tm1">1</div><div class="tm-n" id="tm0">0</div></div>
+      <div id="boardWrap">
+        <div id="boardTilt">
+          <div class="board"></div>
+          <div class="grid" id="grid"></div>
+          <svg id="circ" viewBox="0 0 200 200"><path id="circPath" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M 34 108 C 24 52, 88 20, 134 32 C 180 46, 190 106, 156 148 C 126 186, 56 182, 36 138 C 26 114, 38 84, 60 66" /></svg>
+          <div id="sparkField"></div>
+          <div id="lensPos"><div id="lens"><div class="lensHandle"></div><div class="lensClip"><div id="lensGrid"></div></div><div class="lensRim"></div></div></div>
+        </div>
+      </div>
+      <div id="timeUp">tempo!</div>
+      <div id="coord"><span>linha 7 · coluna 6</span></div>
+    </div>
+  </section>
+
+  <!-- NIGHT pivot 8.5 - 10.5 -->
+  <section id="nt" class="clip" data-start="9" data-duration="2.5">
+    <div id="ntIn" style="position:absolute; inset:0">
+      <div id="moon"></div>
+      <div class="nt" id="ntT"><div>E se ele aparecer</div><div><em>às 3h da manhã?</em></div></div>
+    </div>
+  </section>
+
+  <!-- PRODUCT 10.5 - 14.0 -->
+  <section id="pr" class="clip" data-start="11.5" data-duration="3.5">
+    <div id="prIn" style="position:absolute; inset:0">
+      <div id="pvB"><div class="pv2">O KizuBot</div><div class="pv2" style="font-size:150px"><em>avisa.</em></div><div class="pvs">a qualquer hora</div></div>
+      <div id="printWrap">
+        <div class="f18-print" id="print">
+          <img src="kit/img/prints/shiny-raichu-7-alarms--alarms.png" alt="" />
+        </div>
+        <div class="hlp" id="hlp" style="left:1.5%; top:25.4%; width:97%; height:25%"></div>
+      </div>
+      <div class="tag" id="tag">print real de cliente</div>
+      <div class="claim"><span class="l" id="c1">100% AFK</span><span id="c2">alarme no WhatsApp</span></div>
+    </div>
+  </section>
+
+  <!-- END 14.0 - 17.0 -->
+  <section id="end" class="clip" data-start="15" data-duration="3">
+    <div class="kz-end" id="endIn" style="padding-right:200px">
+      <div style="position:relative; width:540px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" style="width:540px" />
+        <div class="eye" id="eye" style="left:169px; top:7px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">Em que <b>linha e coluna</b> tava?</div>
+    </div>
+  </section>
+
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+  <div id="blackout"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 18;
+  const b = KZ.beats(120);            // beat 0.5 s, bar 2 s
+
+  /* ---------- puzzle config ---------- */
+  const COLS = 7, ROWS = 10, EMO = "\u{1F98E}", SH = { r: 6, c: 5 };           // linha 7, coluna 6
+  const DECOYS = [{ r: 2, c: 1, s: 0.84 }, { r: 8, c: 2, s: 1.14 }];           // size tricks, not shinies
+  const GW = 780 - 48, GH = 858 - 48, CW = GW / COLS, CH = GH / ROWS, FS = Math.floor(Math.min(CW, CH) * 0.8);
+  const LZ = 1.9, LR = 140;                                                     // lens zoom + radius
+  function fill(g, withIds) {
+    g.style.gridTemplateColumns = "repeat(" + COLS + ", 1fr)"; g.style.gridTemplateRows = "repeat(" + ROWS + ", 1fr)";
+    for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+      const cell = document.createElement("div");
+      cell.className = "cell" + (r === SH.r && c === SH.c ? " shiny" : "");
+      if (withIds) cell.id = "c" + r + "_" + c;
+      const e = document.createElement("span"); e.className = "emo"; e.textContent = EMO; e.style.fontSize = FS + "px";
+      DECOYS.forEach(function (d) { if (d.r === r && d.c === c) { e.style.fontSize = Math.round(FS * d.s) + "px"; if (withIds) cell.classList.add("decoy"); } });
+      cell.appendChild(e);
+      if (withIds && DECOYS.some(function (d) { return d.r === r && d.c === c; })) {
+        cell.insertAdjacentHTML("beforeend", '<svg class="xmark" viewBox="0 0 90 90"><path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M 14 14 L 76 76 M 76 14 L 14 76" /></svg>');
+      }
+      g.appendChild(cell);
+    }
+  }
+  fill(document.getElementById("grid"), true);
+  fill(document.getElementById("lensGrid"), false);
+  const SX = 24 + (SH.c + 0.5) * CW, SY = 24 + (SH.r + 0.5) * CH;           // shiny centre (board coords)
+  (function () {
+    const R = Math.min(CW, CH) * 1.0;
+    const c = document.getElementById("circ");
+    c.style.left = (SX - R) + "px"; c.style.top = (SY - R) + "px"; c.style.width = 2 * R + "px"; c.style.height = 2 * R + "px";
+    const sf = document.getElementById("sparkField"); sf.style.left = SX + "px"; sf.style.top = SY + "px";
+    const st = document.getElementById("stars"); st.style.position = "absolute"; st.style.inset = "0";
+    for (let i = 0; i < 26; i++) {
+      const s = document.createElement("div"); s.className = "star"; s.id = "st" + i;
+      const x = (Math.sin(i * 91.7) * 0.5 + 0.5) * 1040 + 20, y = (Math.sin(i * 37.3 + 2) * 0.5 + 0.5) * 1300 + 80;
+      s.style.left = x + "px"; s.style.top = y + "px"; st.appendChild(s);
+    }
+  })();
+  // magnifier: lens at (x,y) in board coords shows the grid zoomed LZx around that point
+  const lensEl = document.getElementById("lensPos"), lensGrid = document.getElementById("lensGrid");
+  const lp = { x: 140, y: 140 };
+  function placeLens() {
+    lensEl.style.transform = "translate(" + (lp.x - LR) + "px," + (lp.y - LR) + "px)";
+    lensGrid.style.transform = "translate(" + (LR - (lp.x - 24) * LZ) + "px," + (LR - (lp.y - 24) * LZ) + "px) scale(" + LZ + ")";
+  }
+  placeLens();
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#dots", { x: 0, y: 0 }, { x: 40, y: 40, duration: D, ease: "none" }, 0);
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+    tl.fromTo("#c" + r + "_" + c + " .emo", { rotation: -4 }, { rotation: 4, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 11 }, ((r * 3 + c * 5) % 8) * 0.0625);
+  }
+
+  /* ---------- hook ---------- */
+  tl.fromTo("#boardTilt", { rotationX: 28, y: 60 }, { rotationX: 0, y: 0, duration: 0.5, ease: "back.out(1.6)" }, 0);
+  tl.fromTo("#lvl", { scale: 1.4, opacity: 0.6, rotation: -12 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.3, ease: "back.out(2.5)" }, 0);
+  tl.fromTo("#tA", { scale: 1.25, opacity: 0.6 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0.08);
+  tl.fromTo("#timer", { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2.4)" }, b(2));
+  tl.fromTo(".seg", { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "back.out(3)", stagger: 0.05 }, b(2));
+  tl.fromTo("#pause", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.4)" }, b(3));
+
+  /* ---------- 5-second countdown (1.5 -> 6.5), one tick per second on the beat ---------- */
+  const T0 = 1.5;
+  for (let k = 1; k <= 5; k++) {
+    const at = T0 + k;
+    tl.to("#g" + (6 - k), { scaleY: 0, opacity: 0.25, duration: 0.18, ease: "power2.in" }, at - 0.18);
+    tl.set("#tm" + (6 - k), { opacity: 0 }, at);
+    tl.fromTo("#tm" + (5 - k), { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, at);
+    KZ.shake(tl, "#timer", at, 5, 0.18, 40 + k);
+  }
+  // re-hook at the halfway point: a hint
+  tl.to("#pause", { scale: 0.5, opacity: 0, duration: 0.15, ease: "power2.in" }, 4.5 - 0.15);
+  tl.fromTo("#hint", { scale: 0.5, opacity: 0, rotation: -4 }, { scale: 1, opacity: 1, rotation: 2, duration: 0.3, ease: "back.out(2.4)" }, 4.5);
+  tl.to(".decoy .emo", { scale: 1.12, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 3 }, 4.6);
+
+  /* ---------- time's up: decoys crossed out, magnifier finds the shiny ---------- */
+  const A = 6.5;
+  tl.to("#hint", { scale: 0.5, opacity: 0, duration: 0.15, ease: "power2.in" }, A - 0.1);
+  tl.fromTo("#timeUp", { scale: 2, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: -4, duration: 0.22, ease: "power4.out" }, A);
+  tl.to("#timeUp", { scale: 0.6, opacity: 0, duration: 0.15, ease: "power2.in" }, A + 0.35);
+  tl.set(".xmark", { opacity: 1 }, A + 0.3);
+  tl.to(".xmark path", { attr: { "stroke-dashoffset": 0 }, duration: 0.24, ease: "power2.out", stagger: 0.1 }, A + 0.3);
+  tl.to(".cell:not(.shiny):not(.decoy) .emo", { opacity: 0.14, duration: 0.3, ease: "power2.out" }, A + 0.55);
+  tl.to(".decoy .emo", { opacity: 0.3, duration: 0.3, ease: "power2.out" }, A + 0.55);
+  tl.fromTo("#lens", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(2)" }, A + 0.55);
+  tl.fromTo(lp, { x: 140, y: 140 }, { x: SX, y: SY, duration: 0.6, ease: "power3.inOut", onUpdate: placeLens }, A + 0.6);
+  (function () {
+    const field = document.getElementById("sparkField");
+    const cols = ["#ffcf33", "#ff6b4a", "#7cc8ff", "#c6ff3d"];
+    const pr = function (n) { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+    const parts = [];
+    for (let i = 0; i < 18; i++) {
+      const el = document.createElement("div"); el.className = "spark";
+      const s = 12 + pr(i * 3 + 1) * 14; el.style.width = s + "px"; el.style.height = s + "px"; el.style.background = cols[i % 4];
+      el.style.borderRadius = (i % 3 === 0 ? "50%" : "4px"); el.style.border = "3px solid #0f1a14"; field.appendChild(el);
+      const a = pr(i * 5 + 2) * Math.PI * 2, sp = 320 + pr(i * 7 + 3) * 360;
+      parts.push({ el: el, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 120 });
+    }
+    const dr = { T: 0 }, FL = 0.9;
+    tl.fromTo(dr, { T: 0 }, { T: 1, duration: FL, ease: "none", onUpdate: function () {
+      const t = dr.T * FL, fade = Math.min(1, (1 - dr.T) / 0.3);
+      parts.forEach(function (p) { p.el.style.transform = "translate(" + (p.vx * t) + "px," + (p.vy * t + 420 * t * t) + "px) rotate(" + (260 * t) + "deg)"; p.el.style.opacity = String(dr.T === 0 ? 0 : fade); });
+    } }, A + 1.2);
+  })();
+  tl.fromTo("#coord", { y: 30, opacity: 0, scale: 0.8 }, { y: 0, opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2.4)" }, A + 1.25);
+  tl.to("#lens", { scale: 1.06, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, A + 1.25);
+  tl.to("#pzIn", { y: 300, opacity: 0, duration: 0.3, ease: "power3.in" }, 9 - 0.3);
+
+  /* ---------- night pivot ---------- */
+  const N = 9.0;
+  tl.fromTo("#night", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, N - 0.25);
+  for (let i = 0; i < 26; i++) tl.fromTo("#st" + i, { opacity: 0, scale: 0.3 }, { opacity: 0.85, scale: 1, duration: 0.3, ease: "power2.out" }, N + (i % 9) * 0.06);
+  tl.fromTo("#moon", { y: -60, opacity: 0, rotation: -20 }, { y: 0, opacity: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, N);
+  KZ.slam(tl, "#ntT", N + 0.1, 1.5);
+  tl.to("#ntT", { scale: 1.05, duration: 2.0, ease: "sine.in" }, N + 0.4);
+
+  /* ---------- product (KizuBot) ---------- */
+  const R = 11.5;
+  KZ.flash(tl, "#flash", R, 0.85);
+  tl.fromTo("#dark", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, R);
+  tl.fromTo("#darkGrid", { opacity: 0, x: 0, y: 0 }, { opacity: 0.6, x: 30, y: 60, duration: 6.5, ease: "none" }, R);
+  KZ.slam(tl, "#pvB", R, 1.6);
+  tl.fromTo("#printWrap", { y: 120, scale: 0.9, filter: "blur(16px)" }, { y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }, R + 0.15);
+  KZ.pop(tl, "#tag", R + 0.5, 0.3);
+  tl.fromTo("#hlp", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, R + b(1.5));
+  KZ.pop(tl, "#c1", R + b(3), 0.32);
+  KZ.pop(tl, "#c2", R + b(3) + 0.15, 0.32);
+  tl.to("#printWrap", { scale: 1.03, duration: 2.6, ease: "sine.inOut" }, R + 0.7);
+  tl.to("#prIn", { opacity: 0, scale: 0.95, duration: 0.18, ease: "power2.in" }, 15 - 0.2);
+  tl.to(["#night", "#stars"], { opacity: 0, duration: 0.2 }, R + 0.2);
+
+  /* ---------- END ---------- */
+  const E = 15;
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, E + 0.04);
+  KZ.eyePulse(tl, "#eye", E + 0.14, 3);
+  KZ.rise(tl, "#endUrl", E + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", E + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, E + 0.6);
+  tl.fromTo("#blackout", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.in", immediateRender: false }, D - 0.4);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

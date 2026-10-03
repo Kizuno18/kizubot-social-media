@@ -1,0 +1,30 @@
+{
+  "id": "085",
+  "slug": "inventario-organizado",
+  "family": "Satisfatório",
+  "title": "Inventário se arrumando sozinho",
+  "concept": "A shuffled 6×5 bag of generic loot icons sorts itself row by row on the beat (misplaced items swap places in arcs, counter 5/30 → 30/30) into rainbow rows, lands on 'Farm 100% AFK: tudo no lugar.', and after the lockup scatters back into the exact starting mess for a seamless loop.",
+  "neuro": ["sensory-reward", "closure", "visible-progress", "order-from-chaos", "seamless-loop", "identity-question"],
+  "hook": "INVENTÁRIO SE ARRUMANDO SOZINHO…",
+  "duration": 14.33,
+  "music": {"style": "lofi", "bpm": 90},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": ["100% AFK"],
+  "platforms": {
+    "tiktok": {
+      "caption": "Inventário se arrumando sozinho… 😌 Farm 100% AFK: tudo no lugar. Sua bag é assim? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#satisfatorio", "#oddlysatisfying"]
+    },
+    "youtube": {
+      "title": "Inventário se arrumando sozinho 😌 (satisfatório)",
+      "description": "Uma bag bagunçada se organizando sozinha, linha por linha, no ritmo. Farm 100% AFK com KizuBot para PokeXGames: tudo no lugar. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Inventário se arrumando sozinho 😌 Farm 100% AFK, tudo no lugar. Sua bag é assim? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#satisfying"]
+    }
+  },
+  "pinned_comment": "Seu inventário é organizado assim? 😂",
+  "notes": "Hook shortened from 'INVENTÁRIO SE ORGANIZANDO SOZINHO' to 'INVENTÁRIO SE ARRUMANDO SOZINHO…' so every line stays ≥100 px inside the hook band. Caption changed from 'Assim é o farm com KizuBot: tudo no lugar.' to 'Farm 100% AFK: TUDO NO LUGAR.' so the short never implies KizuBot has an inventory-sorting feature (the sort is a visual metaphor; the only claim is the approved '100% AFK'); brand cue moved to a KizuBot chip in the bag header. Icons are generic CSS/SVG (gem, coin, leaf, drop, berry) — no game sprites or ball designs. Counter counts visible icons in their row, not a statistic. Rubric: hook 8, re-hooks 8, clarity 8, craft 9, truth 9, sound 8, brand 8, CTA 8, loop 9, distinct 9 = 8.4."
+}

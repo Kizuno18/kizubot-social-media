@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>088 Você prefere: sábado no PC ou na praia?</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F10 · VOCÊ PREFERE? — duel grammar (copy per episode) ================= */
+  :root { --gold: #ffd23f; --ink2: #10131c; --sea: #10b5c9; --sun: #ffb43a; --seamY: 860px; }
+  #root { background: #070910; }
+  .full { position: absolute; inset: 0; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  .kz-progress > div { background: linear-gradient(90deg, var(--sun), #ffe7a8); }
+  .panel { position: absolute; left: 0; right: 0; overflow: hidden; }
+  #pA { top: 0; height: var(--seamY); }
+  #pB { top: var(--seamY); bottom: 0; }
+  .pin { position: absolute; inset: 0; }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .ptag { display: inline-block; padding: 10px 24px; border-radius: 999px; background: rgba(0, 0, 0, 0.62); border: 3px solid var(--sun); font: 800 30px "Inter", sans-serif; letter-spacing: 0.08em; color: #fff; text-transform: uppercase; }
+  .ph-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; font: 700 28px "Inter", sans-serif; color: #8d8796; background: repeating-linear-gradient(45deg, #221d29 0 24px, #1c1822 24px 48px); }
+  #pillW { position: absolute; left: 0; right: 0; top: 232px; display: flex; justify-content: center; z-index: 7; }
+  .pill { display: inline-block; padding: 12px 36px 14px; border-radius: 999px; background: #fff; border: 5px solid var(--ink2); font-family: "Archivo Black", sans-serif; font-size: 60px; line-height: 1.15; color: var(--ink2); text-transform: uppercase; box-shadow: 0 10px 0 rgba(0, 0, 0, 0.45); }
+  .pill b { color: #e2552b; font-weight: 400; }
+  #realBand { position: absolute; left: -60px; right: -60px; top: calc(var(--seamY) - 95px); height: 190px; background: var(--ink2); border-top: 8px solid var(--sun); border-bottom: 8px solid var(--sun); display: flex; align-items: center; justify-content: center; z-index: 9; }
+  #realBand span { font-family: "Archivo Black", sans-serif; font-size: 120px; line-height: 1.15; color: #fff; text-transform: uppercase; }
+  #realBand b { color: var(--sun); font-weight: 400; }
+
+  /* ================= 088 skin: dark room vs beach postcard ================= */
+  #pA .bgfx { position: absolute; inset: 0; background: radial-gradient(70% 60% at 62% 55%, #1b2a4a 0%, #0b1120 55%, #04060b 100%); }
+  #clockA { position: absolute; left: 96px; top: 362px; width: 196px; height: 92px; border-radius: 16px; background: #05070c; border: 4px solid #232c40; display: flex; align-items: center; justify-content: center; }
+  #clockA span { font-family: "Orbitron", sans-serif; font-weight: 700; font-size: 50px; color: #ff5b4a; text-shadow: 0 0 14px rgba(255, 91, 74, 0.8); }
+  #blinds { position: absolute; left: 96px; top: 484px; width: 196px; height: 270px; background: #0a0f1b; border: 6px solid #232c40; overflow: hidden; }
+  .slat { position: absolute; left: 0; right: 0; height: 16px; background: linear-gradient(90deg, #ffd27a, #fff1c4); box-shadow: 0 0 18px rgba(255, 210, 122, 0.8); }
+  #sunbeam { position: absolute; left: 280px; top: 470px; width: 700px; height: 320px; background: repeating-linear-gradient(180deg, rgba(255, 210, 122, 0.16) 0 16px, rgba(255, 210, 122, 0) 16px 40px); transform-origin: 0 50%; clip-path: polygon(0 0, 100% 18%, 100% 82%, 0 100%); }
+  #mon { position: absolute; left: 318px; top: 350px; width: 620px; height: 380px; border-radius: 26px; background: #0f1422; box-shadow: 0 0 0 5px #000, 0 0 90px rgba(80, 140, 255, 0.45); }
+  #scr { position: absolute; left: 18px; right: 18px; top: 18px; bottom: 18px; border-radius: 12px; overflow: hidden; background: radial-gradient(90% 90% at 50% 40%, #4f8dff 0%, #1d3e8f 60%, #0b1a42 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  #scr div { font-family: "Archivo Black", sans-serif; font-size: 112px; line-height: 1.04; color: #fff; text-transform: uppercase; text-shadow: 0 0 24px rgba(160, 200, 255, 0.9); }
+  #scrOff { position: absolute; inset: 0; background: #020306; opacity: 0; }
+  #monStand { position: absolute; left: 588px; top: 728px; width: 80px; height: 70px; background: linear-gradient(90deg, #1a2030, #0b0e16); }
+  #monFoot { position: absolute; left: 520px; top: 790px; width: 216px; height: 22px; border-radius: 12px; background: #1a2030; }
+  /* B: postcard */
+  #pB .bgfx { position: absolute; inset: 0; background: linear-gradient(180deg, #ffe7c2 0%, #ffd29a 100%); }
+  #card { position: absolute; left: 70px; top: 912px; width: 840px; height: 500px; border-radius: 18px; background: #fff7e8; padding: 18px; box-shadow: 0 20px 50px rgba(80, 40, 0, 0.35); }
+  #cardIn { position: absolute; left: 18px; right: 18px; top: 18px; bottom: 18px; border-radius: 10px; overflow: hidden; background: linear-gradient(180deg, #7fd3ff 0%, #b6ecff 52%, var(--sea) 52%, #0a8fa3 70%, #f3d39a 70%, #e9c07c 100%); }
+  #sun { position: absolute; right: 70px; top: 40px; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, #fff3b0 0%, var(--sun) 60%, #ff8a1f 100%); box-shadow: 0 0 60px rgba(255, 180, 58, 0.8); }
+  #rays { position: absolute; right: -55px; top: -85px; width: 400px; height: 400px; background: repeating-conic-gradient(rgba(255, 220, 120, 0.35) 0 8deg, rgba(255, 220, 120, 0) 8deg 22deg); border-radius: 50%; opacity: 0.8; }
+  .wave { position: absolute; left: -40px; right: -40px; height: 16px; border-radius: 8px; background: rgba(255, 255, 255, 0.55); }
+  #ouna { position: absolute; left: 40px; top: 6px; font-family: "Caveat", cursive; font-weight: 700; font-size: 100px; line-height: 1; color: #fff; text-shadow: 0 4px 0 rgba(0, 60, 90, 0.5); }
+  #praia { position: absolute; left: 34px; top: 100px; font-family: "Archivo Black", sans-serif; font-size: 180px; line-height: 1.02; text-transform: uppercase;
+    background: linear-gradient(180deg, #ffe066 0%, #ff9a3c 45%, #ff4f6d 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 7px #fff; filter: drop-shadow(8px 10px 0 rgba(0, 50, 80, 0.55)); }
+  #stamp { position: absolute; right: 26px; top: 26px; width: 116px; height: 138px; background: #fff; border: 4px dashed #7c3aed; padding: 7px; transform: rotate(6deg); }
+  #stamp div { width: 100%; height: 100%; background: linear-gradient(160deg, #a855f7, #4c1d95); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  #stamp img { width: 92px; }
+  #qtW { position: absolute; left: 104px; top: 1238px; width: 480px; height: 150px; z-index: 4; }
+  .qt { position: absolute; inset: 0; border-radius: 12px; overflow: hidden; background: #1b1424; border: 6px solid #fff; box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35); }
+  .qt img { position: absolute; left: 0; top: 0; width: 100%; }
+  .tape { position: absolute; width: 120px; height: 40px; background: rgba(255, 245, 200, 0.85); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); }
+  #qtTag { position: absolute; left: 512px; top: 36px; }
+  #qtTag .ptag { display: block; text-align: center; line-height: 1.15; padding: 8px 18px; border-radius: 18px; }
+  #qtTag .ptag div { white-space: nowrap; }
+  /* seam + VS postmark */
+  #seam { position: absolute; left: -40px; right: -40px; top: calc(var(--seamY) - 6px); height: 12px; background: repeating-linear-gradient(90deg, #e2552b 0 40px, #fff 40px 80px, #1d6fd8 80px 120px, #fff 120px 160px); z-index: 3; }
+  #vsW { position: absolute; left: 440px; top: calc(var(--seamY) - 100px); width: 200px; height: 200px; z-index: 6; }
+  .vs { position: absolute; inset: 0; border-radius: 50%; background: #fff7e8; border: 8px solid var(--ink2); box-shadow: inset 0 0 0 10px #fff7e8, inset 0 0 0 16px var(--ink2), 0 14px 30px rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; }
+  .vs span { font-family: "Archivo Black", sans-serif; font-size: 86px; color: var(--ink2); }
+  #sel { position: absolute; left: 60px; width: 960px; top: 330px; height: 500px; border-radius: 30px; border: 9px solid var(--sun); box-shadow: 0 0 34px rgba(255, 180, 58, 0.75); opacity: 0; z-index: 5; }
+  #post { position: absolute; left: 292px; top: 920px; width: 470px; height: 96px; z-index: 6; }
+  #postIn { position: absolute; inset: 0; border-radius: 18px; border: 8px solid #e2552b; display: flex; align-items: center; justify-content: center; gap: 14px; color: #e2552b; font-family: "Archivo Black", sans-serif; font-size: 54px; line-height: 1; text-transform: uppercase; background: rgba(255, 247, 232, 0.9); box-shadow: 0 0 0 4px rgba(255, 247, 232, 0.9); }
+  .conf { position: absolute; width: 18px; height: 28px; border-radius: 4px; opacity: 0; }
+  /* twist */
+  #twBg { position: absolute; inset: 0; background: radial-gradient(80% 50% at 50% 42%, #4c1d95 0%, #1d0b3a 55%, #070910 100%); }
+  #twTxt { position: absolute; left: 90px; right: 120px; top: 360px; display: flex; flex-direction: column; align-items: center; }
+  #twTxt div { font-family: "Archivo Black", sans-serif; line-height: 1.08; text-transform: uppercase; white-space: nowrap; }
+  #tw1 { font-size: 96px; color: #fff; }
+  #tw2 { font-size: 96px; color: var(--kz-lav); margin-top: 18px; }
+  #tw3 { font-size: 120px; color: var(--sun); }
+  #twHead { position: absolute; left: 440px; top: 1000px; width: 200px; }
+  #twHead img { width: 200px; display: block; }
+  /* proof */
+  #prTag { position: absolute; left: 0; right: 0; top: 250px; display: flex; justify-content: center; }
+  #prW { position: absolute; left: 120px; width: 820px; top: 330px; height: 470px; }
+  #prAl { position: absolute; left: 120px; width: 820px; top: 818px; height: 213px; border-radius: 20px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); }
+  #prAl img { position: absolute; left: 0; top: 0; width: 100%; }
+  .prCard { position: absolute; inset: 0; border-radius: 30px; overflow: hidden; background: #1b1424; border: 6px solid #fff; box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55); }
+  .prCard img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+  #prLine { position: absolute; left: 96px; width: 784px; top: 1070px; text-align: center; font: 900 60px "Inter", sans-serif; line-height: 1.14; color: #fff; }
+  #prLine b { color: var(--sun); }
+  /* end */
+  #endBg { position: absolute; inset: 0; background: radial-gradient(70% 40% at 50% 40%, #3b1470 0%, #070910 72%); }
+  .ask { font: 900 64px "Inter", sans-serif; color: #fff; line-height: 1.14; text-align: center; }
+  .ask b { color: var(--sun); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="18.21" data-fps="30">
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- DUEL -->
+  <section id="sDuel" class="clip" data-start="0" data-duration="9.1">
+    <div class="full" id="duel">
+      <div class="panel" id="pA"><div class="pin" id="pAin">
+        <div class="bgfx"></div>
+        <div id="sunbeam"></div>
+        <div id="clockA"><span id="clkT">14:00</span></div>
+        <div id="blinds"><div class="slat" style="top:20px"></div><div class="slat" style="top:60px"></div><div class="slat" style="top:100px"></div><div class="slat" style="top:140px"></div><div class="slat" style="top:180px"></div><div class="slat" style="top:220px"></div></div>
+        <div id="monStand"></div><div id="monFoot"></div>
+        <div id="mon"><div id="scr"><div id="a1">Sábado</div><div id="a2">no PC</div><div id="scrOff"></div></div></div>
+      </div></div>
+      <div class="panel" id="pB"><div class="pin" id="pBin"><div class="bgfx"></div></div></div>
+      <div id="card"><div id="cardIn">
+        <div id="rays"></div><div id="sun"></div>
+        <div class="wave" id="w1" style="top:268px"></div><div class="wave" id="w2" style="top:300px"></div>
+        <div id="ouna">ou na</div>
+        <div id="praia">praia?</div>
+        <div id="stamp"><div><img src="kit/img/brand/kizubot-head.png" alt="" /></div></div>
+      </div></div>
+      <div id="qtW"><div class="qt" id="qt"><img src="kit/img/prints/beach-while-bot-farms--quote.png" alt="" /></div><div class="tape" style="left:-30px; top:-14px; transform:rotate(-14deg)"></div><div class="tape" style="right:-30px; top:-14px; transform:rotate(12deg)"></div><div id="qtTag"><div class="ptag" style="background:#10131c"><div>print real</div><div>de cliente</div></div></div></div>
+      <div id="seam"></div>
+      <div id="vsW"><div class="vs" id="vs"><span>VS</span></div></div>
+      <div id="sel"></div>
+      <div id="post"><div id="postIn">B ganhou!</div></div>
+      <div id="confB"></div>
+      <div id="realBand"><span id="realT">Na real<b>…</b></span></div>
+      <div id="pillW"><div class="pill" id="pill">Você <b>prefere?</b></div></div>
+    </div>
+  </section>
+
+  <!-- TWIST -->
+  <section id="sTwist" class="clip" data-start="9.1" data-duration="2.49">
+    <div id="twBg"></div>
+    <div class="full" id="twIn">
+      <div id="twTxt"><div id="tw1">o char farma.</div><div id="tw2">você vai</div><div id="tw3">pra praia.</div></div>
+      <div id="twHead"><img src="kit/img/brand/kizubot-head.png" alt="" /><div class="eye" id="eyeT" style="left:43px; top:16px; width:120px; height:120px"></div></div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section id="sProof" class="clip" data-start="11.59" data-duration="3.31">
+    <div class="full" style="background: radial-gradient(80% 50% at 50% 40%, #3b1470 0%, #140a26 60%, #070910 100%)"></div>
+    <div class="full" id="prIn">
+      <div id="prTag"><span class="ptag" id="prTagIn">print real de cliente</span></div>
+      <div id="prW"><div class="prCard" id="prCard"><img src="kit/img/prints/beach-while-bot-farms--photo.jpg" alt="" /></div></div>
+      <div id="prAl"><img src="kit/img/prints/beach-while-bot-farms--alarms.png" alt="" /></div>
+      <div id="prLine">o bot farmando, <b>ele na praia</b></div>
+    </div>
+  </section>
+
+  <!-- END CARD -->
+  <section id="sEnd" class="clip" data-start="14.9" data-duration="3.31">
+    <div id="endBg"></div>
+    <div id="brA" style="position:absolute; left:0; right:0; top:0; height:860px; background:radial-gradient(70% 60% at 62% 55%, #1b2a4a 0%, #0b1120 55%, #04060b 100%); z-index:20"></div>
+    <div id="brB" style="position:absolute; left:0; right:0; top:860px; bottom:0; background:linear-gradient(180deg, #ffe7c2 0%, #ffd29a 100%); z-index:20"></div>
+    <div class="kz-end" id="endIn">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>E o seu sábado:</div><div><b>praia</b> ou PC?</div></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  function confetti(tl, sel, at, seed, n, cx, cy, colors) {
+    const c = document.querySelector(sel); const r = KZ.rng(seed);
+    for (let i = 0; i < n; i++) {
+      const d = document.createElement("div"); d.className = "conf";
+      d.style.left = cx + "px"; d.style.top = cy + "px"; d.style.background = colors[i % colors.length];
+      c.appendChild(d);
+      const ang = -Math.PI / 2 + (r() - 0.5) * 2.4, sp = 380 + r() * 420, dur = 0.9 + r() * 0.5;
+      tl.fromTo(d, { opacity: 0 }, { opacity: 1, duration: 0.02 }, at);
+      tl.fromTo(d, { x: 0, y: 0, rotation: 0 }, { x: Math.cos(ang) * sp, y: Math.sin(ang) * sp + 520, rotation: (r() - 0.5) * 900, duration: dur, ease: "power1.out" }, at);
+      tl.to(d, { opacity: 0, duration: 0.3 }, at + dur - 0.3);
+    }
+  }
+  const tl = gsap.timeline({ paused: true });
+  const D = 18.21;
+  const b = KZ.beats(145);
+  const T_A = b(4), T_B = b(8), T_CH = b(12), T_WIN = b(16), T_REAL = b(20), T_TW = b(22), T_PR = b(28), T_END = b(36);
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#rays", { rotation: 0 }, { rotation: 90, duration: T_TW, ease: "none" }, 0);
+  tl.fromTo("#w1", { x: -30 }, { x: 30, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0);
+  tl.fromTo("#w2", { x: 30 }, { x: -30, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 8 }, 0);
+
+  /* HOOK */
+  tl.fromTo("#duel", { scale: 1.1 }, { scale: 1, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo("#pill", { scale: 1.6, opacity: 0.4 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0);
+  tl.fromTo("#mon", { y: -80, opacity: 0.6 }, { y: 0, opacity: 1, duration: 0.26, ease: "power4.out" }, 0);
+  tl.fromTo("#card", { y: 120, rotation: 4, opacity: 0.6 }, { y: 0, rotation: -2, opacity: 1, duration: 0.3, ease: "back.out(1.6)" }, 0.06);
+  tl.fromTo("#praia", { scale: 1.3 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 0.12);
+  tl.fromTo("#seam", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power3.out" }, 0);
+  tl.fromTo("#vs", { scale: 2.4, rotation: -30, opacity: 0 }, { scale: 1, rotation: -8, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 0.16);
+  tl.to("#card", { rotation: -1, y: -6, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.5);
+
+  /* A: the whole Saturday passes in front of the PC */
+  const ck = document.querySelector("#clkT"), ho = { h: 14 };
+  tl.fromTo(ho, { h: 14 }, { h: 23, duration: 1.4, ease: "power1.in", onUpdate: function () { ck.textContent = String(Math.floor(ho.h)).padStart(2, "0") + ":00"; } }, T_A);
+  tl.to("#sunbeam", { opacity: 0, scaleX: 0.6, duration: 1.4, ease: "power1.in" }, T_A);
+  tl.to(".slat", { opacity: 0.15, duration: 1.4, ease: "power1.in" }, T_A);
+  tl.to("#pAin .bgfx", { filter: "brightness(0.7)", duration: 1.4 }, T_A);
+  KZ.punch(tl, "#mon", T_A + 1.45, 1.04, 0.3);
+
+  /* B: real print taped to the postcard */
+  tl.fromTo("#qtW", { y: 260, rotation: 8, opacity: 0 }, { y: 0, rotation: -2, opacity: 1, duration: 0.38, ease: "back.out(1.7)" }, T_B);
+  tl.fromTo("#sun", { scale: 1 }, { scale: 1.12, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, T_B);
+
+  /* CHOOSER */
+  const POS_B = 900 - 330;
+  tl.fromTo("#sel", { opacity: 0, y: 0 }, { opacity: 1, y: 0, duration: 0.05 }, T_CH);
+  [[b(13), POS_B], [b(14), 0], [b(14.5), POS_B], [b(15), 0]].forEach(function (p) { tl.to("#sel", { y: p[1], duration: 0.1, ease: "power3.out" }, p[0]); });
+
+  /* B WINS */
+  tl.to("#sel", { y: POS_B, duration: 0.1, ease: "power3.out" }, T_WIN - 0.1);
+  tl.to("#sel", { opacity: 0, duration: 0.3 }, T_WIN + 0.5);
+  KZ.flash(tl, "#flash", T_WIN, 0.4, "#fff3c4");
+  KZ.shake(tl, "#duel", T_WIN, 9, 0.24, 8);
+  tl.to("#scrOff", { opacity: 0.92, duration: 0.12, ease: "steps(2)" }, T_WIN);
+  tl.to("#pAin", { filter: "grayscale(0.7) brightness(0.6)", duration: 0.25 }, T_WIN);
+  tl.fromTo("#postIn", { scale: 2.4, opacity: 0, rotation: 6 }, { scale: 1, opacity: 1, rotation: -4, duration: 0.14, ease: "power3.in" }, T_WIN - 0.04);
+  tl.to("#rays", { scale: 1.6, opacity: 1, duration: 0.4, ease: "power2.out" }, T_WIN);
+  confetti(tl, "#confB", T_WIN + 0.05, 88, 26, 500, 1220, ["#ffd23f", "#10b5c9", "#ffffff", "#ff4f6d"]);
+
+  /* NA REAL… */
+  tl.to(["#post"], { opacity: 0, duration: 0.12 }, T_REAL - 0.1);
+  tl.to("#vsW", { scale: 0, duration: 0.14, ease: "power3.in" }, T_REAL - 0.12);
+  tl.to("#pill", { scale: 0.001, opacity: 0, duration: 0.12 }, T_REAL - 0.1);
+  tl.to("#pAin", { filter: "grayscale(0) brightness(1)", duration: 0.25 }, T_REAL);
+  tl.to("#scrOff", { opacity: 0, duration: 0.1 }, T_REAL);
+  tl.fromTo("#realBand", { scaleX: 0, rotation: -4 }, { scaleX: 1, rotation: -4, duration: 0.16, ease: "power3.out" }, T_REAL);
+  tl.fromTo("#realT", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, T_REAL + 0.06);
+  tl.to("#realBand", { scaleY: 0, duration: 0.18, ease: "power3.in" }, T_TW - 0.2);
+  tl.to("#pA", { y: 240, duration: 0.3, ease: "power3.in" }, T_TW - 0.32);
+  tl.to(["#pB", "#card", "#qtW"], { y: -240, duration: 0.3, ease: "power3.in" }, T_TW - 0.32);
+
+  /* TWIST */
+  KZ.flash(tl, "#flash", T_TW, 0.6, "#ffd29a");
+  KZ.slam(tl, "#tw1", T_TW, 1.8);
+  KZ.slam(tl, "#tw2", b(23.2), 1.8);
+  KZ.slam(tl, "#tw3", b(24), 2.2);
+  tl.fromTo("#twHead", { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(1.8)" }, b(25));
+  KZ.eyePulse(tl, "#eyeT", b(25.6), 2);
+  tl.to("#twIn", { opacity: 0, duration: 0.18, ease: "power2.in" }, T_PR - 0.18);
+
+  /* PROOF */
+  KZ.pop(tl, "#prTagIn", T_PR + 0.05, 0.3);
+  tl.fromTo("#prW", { scale: 0.6, opacity: 0, rotation: -4 }, { scale: 1, opacity: 1, rotation: -1, duration: 0.4, ease: "back.out(1.7)" }, T_PR);
+  tl.fromTo("#prAl", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(1.6)" }, T_PR + 0.45);
+  KZ.rise(tl, "#prLine", b(29.5), 0.35, 40);
+  tl.to("#prW", { scale: 1.03, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_PR + 0.5);
+  tl.to("#prIn", { scale: 0.94, opacity: 0, duration: 0.2, ease: "power2.in" }, T_END - 0.2);
+
+  /* END CARD */
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T_END + 0.02);
+  KZ.eyePulse(tl, "#eye2", T_END + 0.12, 2);
+  KZ.rise(tl, "#endUrl", T_END + 0.32, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T_END + 0.6, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_END + 0.6);
+  KZ.eyePulse(tl, "#eye2", T_END + 1.9, 1);
+  tl.to("#endIn", { scale: 0.92, opacity: 0, duration: 0.22, ease: "power2.in" }, D - 0.3);
+  // loop bridge: the two corners close back in, so the replay lands on the split hook
+  tl.fromTo("#brA", { yPercent: -100 }, { yPercent: 0, duration: 0.3, ease: "power3.in" }, D - 0.32);
+  tl.fromTo("#brB", { yPercent: 100 }, { yPercent: 0, duration: 0.3, ease: "power3.in" }, D - 0.32);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

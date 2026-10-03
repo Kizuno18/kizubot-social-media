@@ -1,0 +1,151 @@
+{
+ "duration": 13.3,
+ "style": "house",
+ "bpm": 124,
+ "seed": 81,
+ "sections": [
+  {
+   "at": 0.0,
+   "type": "groove",
+   "energy": 0.55
+  },
+  {
+   "at": 7.742,
+   "type": "drop",
+   "energy": 0.75
+  },
+  {
+   "at": 9.677,
+   "type": "outro"
+  }
+ ],
+ "stops": [
+  {
+   "at": 7.258,
+   "len": 0.44
+  }
+ ],
+ "sfx": [
+  {
+   "t": 0.0,
+   "name": "px-click-soft",
+   "gain": -8
+  },
+  {
+   "t": 0.968,
+   "name": "switch",
+   "gain": -6
+  },
+  {
+   "t": 1.452,
+   "name": "switch",
+   "gain": -7.5
+  },
+  {
+   "t": 1.935,
+   "name": "switch",
+   "gain": -6
+  },
+  {
+   "t": 2.419,
+   "name": "switch",
+   "gain": -7.5
+  },
+  {
+   "t": 2.903,
+   "name": "switch",
+   "gain": -6
+  },
+  {
+   "t": 3.387,
+   "name": "switch",
+   "gain": -7.5
+  },
+  {
+   "t": 3.871,
+   "name": "switch",
+   "gain": -6
+  },
+  {
+   "t": 4.355,
+   "name": "switch",
+   "gain": -7.5
+  },
+  {
+   "t": 4.839,
+   "name": "switch",
+   "gain": -6
+  },
+  {
+   "t": 5.323,
+   "name": "switch",
+   "gain": -7.5
+  },
+  {
+   "t": 5.806,
+   "name": "switch",
+   "gain": -6
+  },
+  {
+   "t": 6.29,
+   "name": "switch",
+   "gain": -7.5
+  },
+  {
+   "t": 6.774,
+   "name": "switch",
+   "gain": -6
+  },
+  {
+   "t": 7.742,
+   "name": "success",
+   "gain": -4
+  },
+  {
+   "t": 7.742,
+   "name": "sparkle",
+   "gain": -11
+  },
+  {
+   "t": 7.8,
+   "name": "px-whoosh",
+   "gain": -13
+  },
+  {
+   "t": 10.1,
+   "name": "pop",
+   "gain": -12
+  },
+  {
+   "t": 10.46,
+   "name": "px-pop",
+   "gain": -12
+  },
+  {
+   "t": 12.38,
+   "name": "whoosh_down",
+   "gain": -12
+  },
+  {
+   "t": 12.64,
+   "name": "px-whoosh-short",
+   "gain": -12
+  },
+  {
+   "t": 12.64,
+   "name": "switch",
+   "gain": -6
+  },
+  {
+   "t": 12.72,
+   "name": "switch",
+   "gain": -9
+  },
+  {
+   "t": 12.8,
+   "name": "switch",
+   "gain": -12
+  }
+ ],
+ "logo": 9.677
+}

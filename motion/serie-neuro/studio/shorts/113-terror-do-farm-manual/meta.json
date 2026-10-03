@@ -1,0 +1,30 @@
+{
+  "id": "113",
+  "slug": "terror-do-farm-manual",
+  "family": "Terror no PxG",
+  "title": "O verdadeiro terror do PxG",
+  "concept": "Horror-trailer parody: VHS title cards ('8 horas.' 'Clicando.' 'Sozinho.' 'O sono vem.' 'O shiny... foge.') sell the movie FARM MANUAL, 'em breve no seu PC', until a record scratch flips it to color and funk: 'Ou não.' KizuBot is 100% AFK with the PC off.",
+  "neuro": ["arousal-suspense", "benign-violation", "pattern-interrupt", "loss-aversion", "seasonality", "in-group-humor", "peak-end", "comment-prompt"],
+  "hook": "O VERDADEIRO TERROR DO PXG.",
+  "duration": 19.4,
+  "music": {"style": "funk", "bpm": 130, "note": "silent trailer bed carried by braams/booms/clock/heartbeat SFX, record scratch, funk carioca drop on 'Ou não.'"},
+  "assets": ["kit/img/brand/kizubot-robot.png", "kit/img/brand/kizubot-wordmark.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": ["100% AFK", "uso com PC desligado"],
+  "platforms": {
+    "tiktok": {
+      "caption": "O verdadeiro terror do PxG: 8 horas clicando, sozinho, o sono vem... e o shiny foge 😱 FARM MANUAL, em breve no seu PC. Ou não. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#halloween", "#afk"]
+    },
+    "youtube": {
+      "title": "O verdadeiro terror do PxG (FARM MANUAL, em breve no seu PC)",
+      "description": "8 horas. Clicando. Sozinho. O sono vem. O shiny foge. O verdadeiro terror do PxG tem nome: farm manual. Ou não: o KizuBot farma 100% AFK, com o PC desligado, e você acompanha tudo pelo celular. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot", "#halloween"]
+    },
+    "instagram": {
+      "caption": "O verdadeiro terror do PxG 😱 8 horas clicando, sozinho, e o shiny foge. Ou não: PC desligado, farm ligado. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#halloween"]
+    }
+  },
+  "pinned_comment": "Qual o seu pior pesadelo no PxG? 😱",
+  "notes": "Kept every beat and line of the concept. Added the series' early brand cue (a purple eye glinting in the dark during 'sozinho.' with a quiet KizuBot motif) and the slogan 'PC desligado, farm ligado.' from NEURO.md. Music: kzaudio has one style per track, so the horror trailer runs on a silent bed carried by braams, booms, clock ticks and heartbeats, and funk carioca drops on the record scratch. Grain was coarsened after render 1 (29.7 MB -> 15.1 MB)."
+}

@@ -1,0 +1,63 @@
+{
+  "id": "090",
+  "slug": "um-ou-dois-chars",
+  "family": "Você Prefere?",
+  "title": "Você prefere: upar um char ou dois ao mesmo tempo?",
+  "concept": "Cara ou coroa: one XP bar for 'upar um char' vs two bars rising for 'dois ao mesmo tempo'; the coin keeps landing on B (de novo!), then 'na real…': com KizuBot dá pra upar os dois — with a real customer quote about the gym, the main and the bot leveling the second char.",
+  "neuro": [
+    "forced-choice",
+    "contrast-effect",
+    "humor",
+    "social-proof",
+    "aspiration",
+    "comment-prompt"
+  ],
+  "hook": "VOCÊ PREFERE? UPAR UM CHAR OU DOIS AO MESMO TEMPO?",
+  "duration": 18.21,
+  "music": {
+    "style": "trap",
+    "bpm": 145
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/prints/gym-main-char-bot-alt.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "roda na nuvem 24/7 (llms.txt)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Você prefere: upar um char ou dois ao mesmo tempo? 🪙 A moeda já escolheu… Print real de cliente: ele na academia e o bot upando a segundaria. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#voceprefere",
+        "#upar"
+      ]
+    },
+    "youtube": {
+      "title": "Você prefere: upar um char ou dois ao mesmo tempo? #pxg",
+      "description": "Upar um char ou dois ao mesmo tempo? Com o KizuBot rodando na nuvem, dá pra deixar um char upando enquanto você cuida do outro. Print real de cliente no vídeo. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Você prefere: upar um char ou dois ao mesmo tempo? 🪙 Na real, dá os dois. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#voceprefere"
+      ]
+    }
+  },
+  "pinned_comment": "Você deixaria qual char no bot? 👀",
+  "notes": "The coin flip is a rigged joke (always lands on B), not a game of chance with stakes. Proof shows the bottom of gym-main-char-bot-alt with the verbatim quote ('segundaria' kept as written). Fredoka font used because the kit's Poppins files are Git LFS stubs."
+}

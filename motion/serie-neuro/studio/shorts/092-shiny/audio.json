@@ -1,0 +1,130 @@
+{
+  "duration": 20,
+  "style": "lofi",
+  "bpm": 84,
+  "seed": 92,
+  "sections": [
+    {
+      "at": 0.0,
+      "type": "intro"
+    },
+    {
+      "at": 2.86,
+      "type": "groove",
+      "energy": 0.8
+    },
+    {
+      "at": 8.57,
+      "type": "drop",
+      "energy": 0.9
+    },
+    {
+      "at": 12.14,
+      "type": "groove",
+      "energy": 0.85
+    },
+    {
+      "at": 17.14,
+      "type": "outro"
+    }
+  ],
+  "stops": [],
+  "sfx": [
+    {
+      "t": 0.0,
+      "name": "snap",
+      "gain": -6
+    },
+    {
+      "t": 0.0,
+      "name": "kick",
+      "gain": -10
+    },
+    {
+      "t": 0.3,
+      "name": "px-sparkle",
+      "gain": -12
+    },
+    {
+      "t": 0.62,
+      "name": "type",
+      "gain": -12
+    },
+    {
+      "t": 1.43,
+      "name": "motif",
+      "gain": -15
+    },
+    {
+      "t": 2.86,
+      "name": "chime",
+      "gain": -10
+    },
+    {
+      "t": 4.65,
+      "name": "px-whoosh-short",
+      "gain": -16
+    },
+    {
+      "t": 5.0,
+      "name": "chime",
+      "gain": -10
+    },
+    {
+      "t": 6.15,
+      "name": "snap",
+      "gain": -8
+    },
+    {
+      "t": 6.9,
+      "name": "px-key-press",
+      "gain": -12
+    },
+    {
+      "t": 8.2,
+      "name": "px-whoosh-short",
+      "gain": -16
+    },
+    {
+      "t": 8.57,
+      "name": "chime",
+      "gain": -9
+    },
+    {
+      "t": 9.77,
+      "name": "snap",
+      "gain": -8
+    },
+    {
+      "t": 12.14,
+      "name": "px-key-press",
+      "gain": -10
+    },
+    {
+      "t": 12.54,
+      "name": "alert",
+      "gain": -7
+    },
+    {
+      "t": 12.6,
+      "name": "sparkle",
+      "gain": -12
+    },
+    {
+      "t": 13.04,
+      "name": "snap",
+      "gain": -10
+    },
+    {
+      "t": 16.43,
+      "name": "px-whoosh",
+      "gain": -9
+    },
+    {
+      "t": 19.5,
+      "name": "chime",
+      "gain": -16
+    }
+  ],
+  "logo": 17.18
+}

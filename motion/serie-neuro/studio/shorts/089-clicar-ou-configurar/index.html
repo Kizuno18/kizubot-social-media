@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>089 Você prefere: clicar 8 mil vezes ou configurar uma?</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F10 · VOCÊ PREFERE? — duel grammar (copy per episode) ================= */
+  :root { --gold: #ffd23f; --ink2: #0d1218; --red: #ff4a3d; --vio: #a26bff; --mint: #3df2b0; --seamY: 750px; }
+  #root { background: #081014; }
+  .full { position: absolute; inset: 0; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  .kz-progress > div { background: linear-gradient(90deg, var(--mint), #c9ffe9); }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .ptag { display: inline-block; padding: 10px 24px; border-radius: 999px; background: rgba(0, 0, 0, 0.62); border: 3px solid var(--mint); font: 800 30px "Inter", sans-serif; letter-spacing: 0.08em; color: #fff; text-transform: uppercase; }
+  .ph-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; font: 700 28px "Inter", sans-serif; color: #8d8796; background: repeating-linear-gradient(45deg, #221d29 0 24px, #1c1822 24px 48px); }
+  #realBand { position: absolute; left: -60px; right: -60px; top: calc(var(--seamY) - 95px); height: 190px; background: var(--ink2); border-top: 8px solid var(--mint); border-bottom: 8px solid var(--mint); display: flex; align-items: center; justify-content: center; z-index: 9; }
+  #realBand span { font-family: "Archivo Black", sans-serif; font-size: 120px; line-height: 1.15; color: #fff; text-transform: uppercase; }
+  #realBand b { color: var(--mint); font-weight: 400; }
+
+  /* ================= 089 skin: vending machine ================= */
+  #wall { position: absolute; inset: 0; background: radial-gradient(80% 60% at 50% 40%, #12323a 0%, #081418 60%, #04090b 100%); }
+  #mach { position: absolute; left: 46px; top: 196px; width: 988px; height: 1400px; border-radius: 44px; background: linear-gradient(90deg, #26343f 0%, #3a4b58 8%, #1c262e 30%, #141c22 100%); box-shadow: 0 0 0 6px #0a0f13, 0 40px 90px rgba(0, 0, 0, 0.6); }
+  #marq { position: absolute; left: 96px; width: 764px; top: 222px; height: 110px; border-radius: 22px; background: linear-gradient(180deg, #0b1f24, #061215); border: 4px solid #2a3a44; display: flex; align-items: center; justify-content: center; }
+  #marq span { font-family: "Archivo Black", sans-serif; font-size: 60px; line-height: 1.1; color: #fff; text-transform: uppercase; text-shadow: 0 0 18px rgba(61, 242, 176, 0.9), 0 0 2px #fff; }
+  #marq b { color: var(--mint); font-weight: 400; }
+  #win { position: absolute; left: 96px; width: 764px; top: 350px; height: 800px; border-radius: 22px; background: linear-gradient(180deg, #0d2026 0%, #081418 100%); border: 6px solid #2f414c; overflow: hidden; }
+  #glare { position: absolute; left: -400px; top: -100px; width: 260px; height: 1100px; background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0)); transform-origin: 50% 50%; }
+  .shelf { position: absolute; left: 0; right: 0; height: 18px; background: linear-gradient(180deg, #6b7f8c, #2d3a43); }
+  .prod { position: absolute; left: 22px; width: 720px; height: 330px; }
+  #prodA { top: 388px; }
+  #prodB { top: 786px; }
+  .ico { position: absolute; left: 0; top: 40px; width: 190px; height: 230px; border-radius: 26px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 -12px 0 rgba(0, 0, 0, 0.25), 0 14px 26px rgba(0, 0, 0, 0.45); }
+  #prodA .ico { background: linear-gradient(160deg, #ff7a5c, #b8231a); }
+  #prodB .ico { background: linear-gradient(160deg, #b892ff, #5a24c9); }
+  .ico svg { width: 120px; height: 120px; }
+  .lab { position: absolute; left: 216px; top: 30px; display: flex; flex-direction: column; }
+  .lab div { font-family: "Anton", sans-serif; font-size: 112px; line-height: 1.02; color: #fff; text-transform: uppercase; text-shadow: 0 6px 0 rgba(0, 0, 0, 0.4); white-space: nowrap; }
+  .tag { position: absolute; left: 0; top: 282px; padding: 4px 18px; border-radius: 10px; font-family: "Archivo Black", sans-serif; font-size: 40px; color: #fff; }
+  .tag.a { background: var(--red); }
+  .tag.b { background: var(--vio); }
+  #ctr { position: absolute; left: 216px; top: 262px; padding: 4px 20px; border-radius: 12px; background: #000; font: 900 54px "Inter", sans-serif; color: var(--red); font-variant-numeric: tabular-nums; opacity: 0; }
+  .plus { position: absolute; font: 900 40px "Inter", sans-serif; color: #fff; opacity: 0; }
+  #saveBtn { position: absolute; left: 470px; top: 262px; padding: 8px 26px; border-radius: 14px; background: var(--mint); font-family: "Archivo Black", sans-serif; font-size: 46px; color: #06221a; opacity: 0; }
+  #cur { position: absolute; left: 640px; top: 300px; width: 70px; height: 90px; opacity: 0; }
+  #okB { position: absolute; left: 470px; top: 262px; padding: 8px 26px; border-radius: 14px; background: #fff; font-family: "Archivo Black", sans-serif; font-size: 46px; color: #06221a; opacity: 0; }
+  #keys { position: absolute; left: 884px; top: 380px; width: 120px; display: flex; flex-direction: column; gap: 16px; }
+  .key { height: 86px; border-radius: 16px; background: #0b1216; border: 4px solid #33454f; display: flex; align-items: center; justify-content: center; font-family: "Archivo Black", sans-serif; font-size: 40px; color: #8aa0ad; }
+  #keyA, #keyB { position: relative; }
+  .key .lit { position: absolute; inset: -4px; border-radius: 16px; opacity: 0; }
+  #keyA .lit { background: var(--red); box-shadow: 0 0 24px var(--red); }
+  #keyB .lit { background: var(--vio); box-shadow: 0 0 24px var(--vio); }
+  .key .lit span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #fff; }
+  #slot { position: absolute; left: 904px; top: 760px; width: 80px; height: 120px; border-radius: 12px; background: #05090b; border: 4px solid #33454f; }
+  #tray { position: absolute; left: 96px; width: 764px; top: 1180px; height: 230px; border-radius: 22px; background: #040709; border: 6px solid #2f414c; overflow: hidden; }
+  #flap { position: absolute; left: 0; right: 0; top: 0; height: 70px; background: linear-gradient(180deg, #24323b, #111a20); transform-origin: 50% 0; }
+  .glowF { position: absolute; left: 96px; width: 764px; height: 380px; border-radius: 22px; border: 10px solid var(--red); box-shadow: 0 0 34px var(--red); opacity: 0; z-index: 5; }
+  #frA { top: 372px; }
+  #frB { top: 768px; border-color: var(--vio); box-shadow: 0 0 34px var(--vio); }
+  #vsW { position: absolute; left: 640px; top: calc(var(--seamY) - 80px); width: 160px; height: 160px; z-index: 6; }
+  .vs { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff6c8 0%, var(--gold) 45%, #b8860b 100%); border: 6px solid var(--ink2); box-shadow: inset 0 0 0 8px rgba(255, 255, 255, 0.35), 0 12px 26px rgba(0, 0, 0, 0.55); display: flex; align-items: center; justify-content: center; }
+  .vs span { font-family: "Anton", sans-serif; font-size: 78px; color: var(--ink2); }
+  #esg { position: absolute; left: 96px; width: 764px; top: 470px; display: flex; justify-content: center; z-index: 7; }
+  #esg span { display: inline-block; padding: 6px 34px 4px; background: var(--red); border: 8px solid #fff; font-family: "Anton", sans-serif; font-size: 120px; line-height: 1.1; color: #fff; box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5); }
+  /* twist */
+  #twBg { position: absolute; inset: 0; background: radial-gradient(80% 50% at 50% 42%, #4c1d95 0%, #1d0b3a 55%, #081014 100%); }
+  #twTxt { position: absolute; left: 90px; right: 120px; top: 360px; display: flex; flex-direction: column; align-items: center; }
+  #twTxt div { font-family: "Archivo Black", sans-serif; font-size: 100px; line-height: 1.08; text-transform: uppercase; white-space: nowrap; color: #fff; }
+  #tw2, #tw4 { color: var(--mint) !important; }
+  #tw3 { margin-top: 30px; }
+  #twHead { position: absolute; left: 440px; top: 1010px; width: 200px; }
+  #twHead img { width: 200px; display: block; }
+  /* proof */
+  #prTag { position: absolute; left: 0; right: 0; top: 250px; display: flex; justify-content: center; }
+  #prW { position: absolute; left: 130px; width: 820px; top: 330px; height: 420px; }
+  #hudHl { position: absolute; left: 62px; width: 676px; top: 192px; height: 78px; border: 6px solid var(--mint); border-radius: 14px; box-shadow: 0 0 26px rgba(61, 242, 176, 0.65); opacity: 0; }
+  #oldUi { position: absolute; right: 16px; top: 14px; padding: 6px 14px; border-radius: 10px; background: rgba(0, 0, 0, 0.75); font: 800 30px "Inter", sans-serif; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; }
+  #prQt { position: absolute; left: 130px; width: 820px; top: 772px; height: 197px; border-radius: 18px; overflow: hidden; border: 5px solid #fff; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5); }
+  #prQt img { position: absolute; left: 0; top: 0; width: 100%; }
+  .prCard { position: absolute; inset: 0; border-radius: 30px; overflow: hidden; background: #1b1424; border: 6px solid #fff; box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55); }
+  .prCard img { position: absolute; left: 0; top: -1045px; width: 100%; }
+  #prNum { position: absolute; left: 96px; width: 784px; top: 1000px; display: flex; flex-direction: column; align-items: center; }
+  #prNum b { font-family: "Anton", sans-serif; font-size: 190px; line-height: 1; color: var(--mint); text-shadow: 0 0 40px rgba(61, 242, 176, 0.4); font-variant-numeric: tabular-nums; }
+  #prNum span { font: 900 58px "Inter", sans-serif; color: #fff; }
+  /* end */
+  #endBg { position: absolute; inset: 0; background: radial-gradient(70% 40% at 50% 40%, #3b1470 0%, #081014 72%); }
+  .ask { font: 900 64px "Inter", sans-serif; color: #fff; line-height: 1.14; text-align: center; }
+  .ask b { color: var(--mint); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="18.21" data-fps="30">
+  <div id="wall"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- DUEL -->
+  <section id="sDuel" class="clip" data-start="0" data-duration="9.1">
+    <div class="full" id="duel">
+      <div id="mach"></div>
+      <div id="marq"><span id="marqT">Você <b>prefere?</b></span></div>
+      <div id="win"><div id="glare"></div><div class="shelf" style="top:380px"></div><div class="shelf" style="top:776px"></div></div>
+      <div id="tray"><div id="flap"></div></div>
+      <div class="prod" id="prodA" style="left:118px">
+        <div class="ico" id="icoA"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="6" /><path d="M12 3v6" /></svg></div>
+        <div class="lab"><div id="a1">Clicar</div><div id="a2">8 mil vezes</div></div>
+        <span class="tag a">A1</span>
+        <div id="ctr">0</div>
+        <div class="plus" id="pl1" style="left:560px; top:250px">+1</div><div class="plus" id="pl2" style="left:620px; top:280px">+1</div><div class="plus" id="pl3" style="left:680px; top:240px">+1</div>
+      </div>
+      <div class="prod" id="prodB" style="left:118px">
+        <div class="ico" id="icoB"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg></div>
+        <div class="lab"><div id="b1">Configurar</div><div id="b2">uma vez?</div></div>
+        <span class="tag b">B2</span>
+        <div id="saveBtn">SALVAR</div><div id="okB">✓ SALVO</div>
+        <svg id="cur" viewBox="0 0 24 30"><path d="M3 2l17 15-8 1 5 9-4 2-5-9-5 6z" fill="#fff" stroke="#000" stroke-width="1.6" stroke-linejoin="round" /></svg>
+      </div>
+      <div id="keys">
+        <div class="key" id="keyA">A1<div class="lit"><span>A1</span></div></div>
+        <div class="key" id="keyB">B2<div class="lit"><span>B2</span></div></div>
+        <div class="key">C3</div>
+      </div>
+      <div id="slot"></div>
+      <div class="glowF" id="frA"></div><div class="glowF" id="frB"></div>
+      <div id="vsW"><div class="vs" id="vs"><span>VS</span></div></div>
+      <div id="esg"><span id="esgT">ESGOTADO</span></div>
+      <div id="realBand"><span id="realT">Na real<b>…</b></span></div>
+    </div>
+  </section>
+
+  <!-- TWIST -->
+  <section id="sTwist" class="clip" data-start="9.1" data-duration="2.49">
+    <div id="twBg"></div>
+    <div class="full" id="twIn">
+      <div id="twTxt"><div id="tw1">Configura</div><div id="tw2">uma vez.</div><div id="tw3">Ele repete</div><div id="tw4">sozinho.</div></div>
+      <div id="twHead"><img src="kit/img/brand/kizubot-head.png" alt="" /><div class="eye" id="eyeT" style="left:43px; top:16px; width:120px; height:120px"></div></div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section id="sProof" class="clip" data-start="11.59" data-duration="3.31">
+    <div class="full" style="background: radial-gradient(80% 50% at 50% 40%, #3b1470 0%, #140a26 60%, #081014 100%)"></div>
+    <div class="full" id="prIn">
+      <div id="prTag"><span class="ptag" id="prTagIn">print real de cliente</span></div>
+      <div id="prW"><div class="prCard" id="prCard"><img src="kit/img/prints/hud-8434-loots--hud.png" alt="" /><div id="hudHl"></div><span id="oldUi">interface antiga</span></div></div>
+      <div id="prQt"><img src="kit/img/prints/hud-8434-loots--quote.png" alt="" /></div>
+      <div id="prNum"><b id="prN">0</b><span>loots desde cedo</span></div>
+    </div>
+  </section>
+
+  <!-- END CARD -->
+  <section id="sEnd" class="clip" data-start="14.9" data-duration="3.31">
+    <div id="endBg"></div>
+    <div id="brA" style="position:absolute; left:0; right:0; top:0; height:750px; background:linear-gradient(90deg, #26343f 0%, #3a4b58 8%, #1c262e 30%, #141c22 100%); z-index:20"></div>
+    <div id="brB" style="position:absolute; left:0; right:0; top:750px; bottom:0; background:linear-gradient(90deg, #1c262e 0%, #26343f 10%, #141c22 40%, #0b1013 100%); z-index:20"></div>
+    <div class="kz-end" id="endIn">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>Quantos cliques você</div><div>dá numa <b>hunt</b>?</div></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 18.21;
+  const b = KZ.beats(145);
+  const T_A = b(4), T_B = b(8), T_CH = b(12), T_WIN = b(16), T_REAL = b(20), T_TW = b(22), T_PR = b(28), T_END = b(36);
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#glare", { x: 0, rotation: 18 }, { x: 1300, rotation: 18, duration: 2.6, ease: "power1.inOut", repeat: 2, repeatDelay: 0.6 }, 0.2);
+
+  /* HOOK */
+  tl.fromTo("#duel", { scale: 1.1 }, { scale: 1, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo("#marqT", { opacity: 0.3 }, { opacity: 1, duration: 0.18, ease: "steps(3)" }, 0);
+  tl.fromTo("#prodA", { y: -60, opacity: 0.55 }, { y: 0, opacity: 1, duration: 0.26, ease: "power4.out" }, 0);
+  tl.fromTo("#prodB", { y: 60, opacity: 0.55 }, { y: 0, opacity: 1, duration: 0.26, ease: "power4.out" }, 0.08);
+  tl.fromTo("#vs", { scale: 2.4, rotation: -200, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.34, ease: "back.out(1.8)" }, 0.14);
+  tl.to("#vs", { rotationY: 360, duration: 1.2, ease: "power1.inOut", repeat: 2, repeatDelay: 0.5 }, 0.8);
+
+  /* A: the click counter explodes */
+  tl.fromTo("#ctr", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, T_A);
+  const cEl = document.querySelector("#ctr"), co = { v: 0 };
+  tl.fromTo(co, { v: 0 }, { v: 8000, duration: 1.3, ease: "power2.in", onUpdate: function () { cEl.textContent = KZ.fmt(co.v, "int"); } }, T_A + 0.1);
+  KZ.shake(tl, "#icoA", T_A + 0.2, 7, 1.2, 41);
+  ["#pl1", "#pl2", "#pl3"].forEach(function (p, i) {
+    for (let k = 0; k < 3; k++) {
+      const t = T_A + 0.2 + i * 0.11 + k * 0.38;
+      if (k === 0) tl.fromTo(p, { y: 0, opacity: 0 }, { y: -60, opacity: 1, duration: 0.18, ease: "power2.out" }, t);
+      else tl.fromTo(p, { y: 0, opacity: 1 }, { y: -60, opacity: 1, duration: 0.18, ease: "power2.out", immediateRender: false }, t);
+      tl.to(p, { opacity: 0, duration: 0.12 }, t + 0.18);
+    }
+  });
+  tl.to("#ctr", { color: "#ffffff", backgroundColor: "#ff4a3d", duration: 0.1 }, T_A + 1.4);
+  KZ.punch(tl, "#ctr", T_A + 1.4, 1.2, 0.3);
+
+  /* B: one click on SALVAR */
+  tl.fromTo("#saveBtn", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(2.5)" }, T_B);
+  tl.fromTo("#cur", { opacity: 0, x: 140, y: 120 }, { opacity: 1, x: 0, y: 0, duration: 0.35, ease: "power3.out" }, T_B + 0.1);
+  tl.to("#cur", { scale: 0.85, duration: 0.06 }, b(9));
+  tl.to("#cur", { scale: 1, duration: 0.12 }, b(9) + 0.06);
+  tl.to("#saveBtn", { scale: 0.9, duration: 0.06 }, b(9));
+  tl.to("#saveBtn", { opacity: 0, duration: 0.08 }, b(9) + 0.08);
+  tl.fromTo("#okB", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }, b(9) + 0.06);
+  tl.to("#cur", { opacity: 0, duration: 0.2 }, b(10.5));
+
+  /* CHOOSER: keypad + shelf glow alternate */
+  [[T_CH, "A"], [b(13), "B"], [b(14), "A"], [b(14.5), "B"], [b(15), "A"]].forEach(function (p, i, arr) {
+    const nxt = (arr[i + 1] ? arr[i + 1][0] : T_WIN) - 0.02;
+    tl.to("#fr" + p[1], { opacity: 1, duration: 0.04 }, p[0]);
+    tl.to("#key" + p[1] + " .lit", { opacity: 1, duration: 0.04 }, p[0]);
+    tl.to("#fr" + p[1], { opacity: 0, duration: 0.04 }, nxt);
+    tl.to("#key" + p[1] + " .lit", { opacity: 0, duration: 0.04 }, nxt);
+  });
+
+  /* B WINS: B2 pressed, product B drops into the tray; A is "ESGOTADO" */
+  tl.to("#frB", { opacity: 1, duration: 0.04 }, T_WIN);
+  tl.to("#keyB .lit", { opacity: 1, duration: 0.04 }, T_WIN);
+  tl.to("#keyB", { scale: 0.88, duration: 0.06 }, T_WIN);
+  tl.to("#keyB", { scale: 1, duration: 0.2 }, T_WIN + 0.08);
+  KZ.flash(tl, "#flash", T_WIN, 0.35, "#e9dcff");
+  tl.to("#frB", { opacity: 0, duration: 0.2 }, T_WIN + 0.2);
+  tl.to("#prodB", { x: 137, y: 406, scale: 0.62, transformOrigin: "0% 0%", duration: 0.45, ease: "bounce.out" }, T_WIN + 0.15);
+  tl.to("#flap", { opacity: 0, duration: 0.1 }, T_WIN + 0.15);
+  KZ.shake(tl, "#duel", T_WIN + 0.5, 7, 0.2, 9);
+  tl.to("#prodA", { filter: "grayscale(0.85) brightness(0.55)", duration: 0.2 }, T_WIN);
+  tl.fromTo("#esgT", { scale: 2.4, opacity: 0, rotation: 4 }, { scale: 1, opacity: 1, rotation: -9, duration: 0.14, ease: "power3.in" }, b(17) - 0.14);
+
+  /* NA REAL… */
+  tl.to("#esg", { opacity: 0, duration: 0.12 }, T_REAL - 0.1);
+  tl.to("#vsW", { scale: 0, duration: 0.14, ease: "power3.in" }, T_REAL - 0.12);
+  tl.to("#prodA", { filter: "grayscale(0) brightness(1)", duration: 0.2 }, T_REAL);
+  tl.fromTo("#realBand", { scaleX: 0, rotation: -4 }, { scaleX: 1, rotation: -4, duration: 0.16, ease: "power3.out" }, T_REAL);
+  tl.fromTo("#realT", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, T_REAL + 0.06);
+  tl.to("#realBand", { scaleY: 0, duration: 0.18, ease: "power3.in" }, T_TW - 0.2);
+  tl.to("#duel", { scale: 1.6, opacity: 0, duration: 0.3, ease: "power3.in" }, T_TW - 0.3);
+
+  /* TWIST */
+  KZ.flash(tl, "#flash", T_TW, 0.6, "#3df2b0");
+  KZ.slam(tl, "#tw1", T_TW, 1.8);
+  KZ.slam(tl, "#tw2", b(22.5), 1.8);
+  KZ.slam(tl, "#tw3", b(23.5), 1.8);
+  KZ.slam(tl, "#tw4", b(24), 2.2);
+  tl.fromTo("#twHead", { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(1.8)" }, b(25));
+  KZ.eyePulse(tl, "#eyeT", b(25.6), 2);
+  tl.to("#twIn", { opacity: 0, duration: 0.18, ease: "power2.in" }, T_PR - 0.18);
+
+  /* PROOF: the real HUD — 8.434 loots */
+  KZ.pop(tl, "#prTagIn", T_PR + 0.05, 0.3);
+  tl.fromTo("#prW", { scale: 0.6, opacity: 0, rotation: -4 }, { scale: 1, opacity: 1, rotation: -1, duration: 0.4, ease: "back.out(1.7)" }, T_PR);
+  tl.fromTo("#hudHl", { opacity: 0, scaleX: 0.2 }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "power2.out" }, T_PR + 0.45);
+  tl.fromTo("#prQt", { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: "back.out(1.6)" }, T_PR + 0.7);
+  tl.fromTo("#prNum", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, b(29));
+  KZ.countUp(tl, "#prN", 0, 8434, b(29), 1.0, "int", "power2.out");
+  KZ.punch(tl, "#prN", b(29) + 1.02, 1.12, 0.3);
+  tl.to("#prW", { scale: 1.03, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_PR + 0.5);
+  tl.to("#prIn", { scale: 0.94, opacity: 0, duration: 0.2, ease: "power2.in" }, T_END - 0.2);
+
+  /* END CARD */
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T_END + 0.02);
+  KZ.eyePulse(tl, "#eye2", T_END + 0.12, 2);
+  KZ.rise(tl, "#endUrl", T_END + 0.32, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T_END + 0.6, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, T_END + 0.6);
+  KZ.eyePulse(tl, "#eye2", T_END + 1.9, 1);
+  tl.to("#endIn", { scale: 0.92, opacity: 0, duration: 0.22, ease: "power2.in" }, D - 0.3);
+  // loop bridge: the two corners close back in, so the replay lands on the split hook
+  tl.fromTo("#brA", { yPercent: -100 }, { yPercent: 0, duration: 0.3, ease: "power3.in" }, D - 0.32);
+  tl.fromTo("#brB", { yPercent: 100 }, { yPercent: 0, duration: 0.3, ease: "power3.in" }, D - 0.32);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

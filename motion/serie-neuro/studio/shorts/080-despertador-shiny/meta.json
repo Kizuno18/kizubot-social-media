@@ -1,0 +1,60 @@
+{
+  "id": "080",
+  "slug": "despertador-shiny",
+  "family": "Ligação Recebida",
+  "title": "Despertador: 03:00 — SHINY",
+  "concept": "A 3 a.m. alarm clock labelled SHINY rings with the KizuBot motif; the snooze button teases 'SONECA?' and gets pressed — 'Não precisa: ele já capturou.' — then a real customer print (Shiny Muk card + 'pena que n vi piscar / tava afk') lands the punchline: 'Ele tava AFK. O bot não.'",
+  "neuro": [
+    "pattern-interrupt",
+    "sonic-branding",
+    "humor",
+    "social-proof",
+    "anticipation-drop",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "03:00 — SHINY",
+  "duration": 14.48,
+  "music": {
+    "style": "trap",
+    "bpm": 145
+  },
+  "assets": [],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Despertador 03:00: SHINY ⏰ Soneca? Não precisa: ele já capturou. Print real: 'pena que n vi piscar… tava afk'. Ele tava AFK. O bot não. Você levantaria às 3h por um shiny? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Despertador 03:00: SHINY ⏰ (ele tava AFK, o bot não)",
+      "description": "Levantar às 3h pra caçar shiny? Não precisa. Print real de cliente: Shiny Muk na conta e 'tava afk'. O KizuBot detecta e captura shiny 100% AFK. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Despertador 03:00: SHINY ⏰ Ele tava AFK. O bot não. Você levantaria às 3h por um shiny? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Você levantaria às 3h por um shiny? ⏰",
+  "notes": ""
+}

@@ -1,0 +1,64 @@
+{
+  "id": "120",
+  "slug": "30-dias-em-15s",
+  "family": "Speedrun",
+  "title": "30 dias de farm em 15 segundos",
+  "concept": "A speedrun timer runs for the whole video and lands on 0:15.0 on the last frame; a split-flap day counter accelerates from DIA 01 to DIA 30 while one uniform bar per farmed day fills a chart, then RESULTADO DO RUN reveals a real customer print, '600kkzin pra conta' → 600KK no primeiro mês dele.",
+  "neuro": [
+    "time-pressure",
+    "visible-progress",
+    "acceleration",
+    "social-proof",
+    "precise-numbers",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "30 DIAS DE FARM EM 15 SEGUNDOS.",
+  "duration": 15,
+  "music": {
+    "style": "chiptune",
+    "bpm": 150
+  },
+  "assets": [
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/primeiro-mes-600kk--600kk.png"
+  ],
+  "claims": [
+    "roda 24/7 (farmando todo dia)",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "30 dias de farm em 15 segundos ⏱️ Resultado real de um cliente no primeiro mês: 600kk pra conta. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#farm",
+        "#speedrun"
+      ]
+    },
+    "youtube": {
+      "title": "30 dias de farm em 15 segundos (resultado real: 600kk)",
+      "description": "Um mês de farm passando em 15 segundos e o resultado real de um cliente no primeiro mês: 600kkzin pra conta. Print real de cliente; resultados variam. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "30 dias de farm em 15 segundos. ⏱️ No primeiro mês dele: 600kk pra conta (print real de cliente). Qual seria o seu resultado em 30 dias? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#farm"
+      ]
+    }
+  },
+  "pinned_comment": "Qual seria o seu resultado em 30 dias? 👀",
+  "notes": "The day chart is illustrative: every bar has the same height (one bar = one day farmed), no values. 600kk is in-game currency from the real print and is captioned 'no primeiro mês dele' (from the same print's first line). Per coordinator/ASSETS.md the full print is not shown because its first line names the legacy plan 'vip2'; the focus crop primeiro-mes-600kk--600kk.png ('600kkzin pra conta') is used instead, so the honest third line ('poderia ter feito mais, perdi tempo aprendendo') is not on screen. The run timer is 15.0 s over 14.85 s of animation so the final frame reads 0:15.0. No loop seam (the end frame is the 0:15.0 payoff)."
+}

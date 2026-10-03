@@ -1,0 +1,35 @@
+{
+  "id": "099",
+  "slug": "pesca-6-modos",
+  "family": "Novidade no KizuBot",
+  "title": "A pesca do KizuBot ganhou 6 modos",
+  "concept": "Patch-notes episode on the 23/05/2026 fishing update: a rotary selector clicks through the six real fishing modes one per beat (1/6 → 6/6), drops into 'Pesca no AFK', then the reliability update for minigames and the configurable hook timing.",
+  "neuro": ["novelty", "visible-progress", "curiosity-gap", "anticipation-drop", "satisfying-micro-motion", "authority", "loop", "comment-prompt"],
+  "hook": "A PESCA GANHOU 6 MODOS.",
+  "duration": 18.0,
+  "music": {"style": "house", "bpm": 120},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": [
+    "modos de pesca: padrão, visão direta, água limpa, céu aberto, mesmo andar, agressivo — changelog 23/05/2026",
+    "minigames (pesca, cards, cook, music, mastermind) mais confiáveis — changelog 23/05/2026",
+    "tempo da fisgada configurável (módulo Fishing: modes, hook timing — 13 módulos configuráveis)",
+    "pesca no AFK (100% AFK)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "A pesca do KizuBot ganhou 6 modos 🎣 padrão, visão direta, água limpa, céu aberto, mesmo andar e agressivo. E os minigames ficaram mais confiáveis. Pesca no AFK. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#pesca", "#afk"]
+    },
+    "youtube": {
+      "title": "A pesca do KizuBot ganhou 6 modos 🎣 (pesca no AFK)",
+      "description": "Novidade no KizuBot (atualização de 23/05/2026): 6 modos de pesca — padrão, visão direta, água limpa, céu aberto, mesmo andar e agressivo — e minigames (pesca, cards, cook, music, mastermind) mais confiáveis. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "A pesca do KizuBot ganhou 6 modos 🎣 Padrão, visão direta, água limpa, céu aberto, mesmo andar e agressivo — pesca no AFK. Qual você usaria? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#pesca"]
+    }
+  },
+  "pinned_comment": "Qual modo você usaria? 🎣",
+  "notes": "Hook shortened from 'A PESCA DO KIZUBOT GANHOU 6 MODOS.' (7 words) to 'A PESCA GANHOU 6 MODOS.' (5); KizuBot appears in the update chip at 2.0 s. The concept's spinning 'mode wheel' was replaced with a rotary selector switch that steps deliberately through the modes (NEURO forbids roulette/slot-like visuals). 'delay da fisgada humanizado' replaced by 'tempo da fisgada configurável': BRIEF lists hook timing as a Fishing-module setting but does not state that it is humanized. Mode icons are decorative readings of the mode names, not claims about behaviour. Loop bridge returns to the hook frame."
+}

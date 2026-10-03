@@ -1,0 +1,64 @@
+{
+  "id": "073",
+  "slug": "so-mais-uma-hunt",
+  "family": "Só Quem Joga PxG Entende",
+  "title": "\"Só mais uma hunt.\"",
+  "concept": "Expectativa x Realidade: 'só mais uma hunt' at 22:00 turns into a clock spinning to 05:30 under a pile of 'SÓ MAIS UMA' stickers and a zombie at the 06:00 alarm; 'Ou... você vai dormir e o char continua' splits into VOCÊ (asleep) / SEU CHAR (a generic pixel char farming, KizuBot rodando), then a real customer line about enjoying family time while the bot hunts.",
+  "neuro": [
+    "in-group-identity",
+    "benign-violation-humor",
+    "contrast",
+    "future-pacing",
+    "social-proof",
+    "comment-prompt"
+  ],
+  "hook": "“SÓ MAIS UMA HUNT.”",
+  "duration": 19.38,
+  "music": {
+    "style": "funk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/prints/family-handprints--photo.jpg",
+    "kit/img/prints/family-handprints--quote.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "uso com PC desligado"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "\"Só mais uma hunt.\" 22h... 5h30 🧟 Ou você vai dormir e o char continua. Que horas foi sua última hunt? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#meme",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "\"Só mais uma hunt.\" (expectativa x realidade no PxG) 🧟",
+      "description": "Expectativa: só mais uma hunt e dormir às 22h30. Realidade: 5h30 da manhã e o despertador tocando. Ou você vai dormir e o char continua: 100% AFK, com o PC desligado. Print real de cliente: curtindo a família enquanto o bot caça. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "\"Só mais uma hunt.\" Expectativa: 22h30. Realidade: 5h30 🧟 Que horas foi sua última hunt? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#memes"
+      ]
+    }
+  },
+  "pinned_comment": "Que horas você já foi dormir por causa do PxG? 🕔",
+  "notes": "Expectativa x Realidade kept; the time-lapse is an analog clock spinning 22:00->05:30 plus a pile of 'SÓ MAIS UMA' stickers (distinct from 071's LED clock). Added a VOCÊ / SEU CHAR split with a generic pixel-art char (no game art) and a 'KizuBot rodando' badge. Print: family-handprints (photo + verbatim caption) instead of aproveitando-com-a-familia / absurdo-os-recursos, because it carries the 'life while the bot hunts' payoff best (ASSETS.md: emotional peak). On-screen ask shortened to 'Que horas foi sua última hunt?'; the pinned comment keeps the concept's question."
+}

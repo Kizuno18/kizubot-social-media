@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>136 3 horas de hunt</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ============ F20 PLOT TWIST — cinematic letterbox system (shared by 136-140) ============ */
+  :root { --cn-bg: #050403; --cn-gold: #d6b26e; --cn-ink: #f3ead8; --cn-warm: #ffb36b; --cn-cool: #dbe8ff; }
+  #root { background: var(--cn-bg); }
+  .cn-world { position: absolute; inset: 0; }
+  #barT, #barB { position: absolute; left: 0; right: 0; background: #000; z-index: 20; }
+  #barT { top: 0; height: 520px; box-shadow: 0 2px 0 rgba(214, 178, 110, 0.18); }
+  #barB { top: 972px; height: 948px; box-shadow: 0 -2px 0 rgba(214, 178, 110, 0.18); }
+  .cn-chap { position: absolute; left: 90px; right: 90px; top: 438px; z-index: 22; text-align: center; font: 700 34px "Cinzel", serif; letter-spacing: 0.32em; color: var(--cn-gold); text-transform: uppercase; }
+  .cn-sub { position: absolute; left: 90px; right: 200px; top: 1010px; z-index: 22; text-align: center; font: 700 64px "Cormorant Garamond", serif; color: var(--cn-ink); line-height: 1.12; }
+  .cn-title { font-family: "Cinzel", serif; font-weight: 700; color: var(--cn-ink); text-transform: uppercase; line-height: 1.08; text-align: center; letter-spacing: 0.02em;
+    text-shadow: 0 0 40px rgba(255, 190, 110, 0.25), 0 4px 0 rgba(0, 0, 0, 0.5); }
+  .cn-gold { color: var(--cn-gold); }
+  #grade { position: absolute; left: 0; right: 0; top: 520px; height: 452px; z-index: 15; pointer-events: none; mix-blend-mode: soft-light;
+    background: linear-gradient(180deg, rgba(255, 160, 70, 0.55), rgba(255, 120, 40, 0.35)); }
+  #grain { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.05; mix-blend-mode: screen; pointer-events: none; z-index: 30; }
+  #leak { position: absolute; left: -400px; top: 420px; width: 900px; height: 650px; z-index: 16; opacity: 0; pointer-events: none; mix-blend-mode: screen;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 150, 60, 0.75) 0%, rgba(255, 90, 30, 0.25) 40%, rgba(255, 60, 0, 0) 70%); }
+  .bokeh { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255, 196, 120, 0.35) 0%, rgba(255, 196, 120, 0.12) 55%, rgba(255, 196, 120, 0) 72%); }
+  /* evidence table */
+  #table { position: absolute; inset: 0; background:
+      radial-gradient(55% 34% at 50% 44%, rgba(225, 235, 255, 0.20) 0%, rgba(225, 235, 255, 0.06) 45%, rgba(0, 0, 0, 0) 75%),
+      repeating-linear-gradient(93deg, rgba(0, 0, 0, 0.16) 0 3px, rgba(0, 0, 0, 0) 3px 13px),
+      repeating-linear-gradient(87deg, rgba(255, 220, 180, 0.035) 0 2px, rgba(0, 0, 0, 0) 2px 29px),
+      linear-gradient(180deg, #2b1b11 0%, #1c110a 55%, #120a05 100%); }
+  #tableVig { position: absolute; inset: 0; background: radial-gradient(70% 55% at 50% 45%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 100%); }
+  .evid { position: absolute; background: #f4f1ea; padding: 16px 16px 58px 16px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 0 4px 10px rgba(0, 0, 0, 0.5); }
+  .evid img { display: block; width: 100%; }
+  .evid .cap { position: absolute; left: 22px; bottom: 12px; font: 700 30px "Cormorant Garamond", serif; color: #3b2a1a; letter-spacing: 0.04em; }
+  .clip-svg { position: absolute; width: 60px; height: 130px; }
+  .etag { position: absolute; padding: 12px 22px 12px 34px; background: #e8d6a8; color: #3a2814; font: 700 30px "Cinzel", serif; letter-spacing: 0.08em; text-transform: uppercase;
+    clip-path: polygon(16px 0, 100% 0, 100% 100%, 16px 100%, 0 50%); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  .kz-progress { z-index: 50; background: rgba(255, 255, 255, 0.05); }
+  .kz-progress > div { background: linear-gradient(90deg, #8a6a32, #d6b26e); }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .cn-chip { display: inline-block; padding: 14px 26px; border-radius: 999px; font: 800 40px "Inter", sans-serif; background: rgba(214, 178, 110, 0.14); border: 2px solid rgba(214, 178, 110, 0.7); color: #f3ead8; }
+  #endBg { position: absolute; inset: 0; background: radial-gradient(60% 40% at 50% 40%, rgba(91, 33, 182, 0.55) 0%, rgba(8, 4, 16, 0) 75%), #07050c; }
+  .ask { font: 900 62px "Inter", sans-serif; color: var(--kz-ink); max-width: 700px; line-height: 1.12; }
+  .ask b { color: var(--cn-gold); }
+
+  /* ============ 136 specifics: teal-and-amber grade, photo pan ============ */
+  #grade { background: linear-gradient(180deg, rgba(255, 170, 80, 0.55), rgba(40, 120, 140, 0.35)); }
+  #hookBg { position: absolute; left: 0; right: 0; top: 520px; height: 452px; overflow: hidden; }
+  #hookBg img { position: absolute; left: -40px; top: -300px; width: 1160px; filter: blur(16px) brightness(0.4) saturate(0.6); }
+  #h1 { position: absolute; left: 90px; right: 90px; top: 556px; font-size: 176px; line-height: 1.0; }
+  #h2 { position: absolute; left: 90px; right: 90px; top: 752px; font-size: 150px; line-height: 1.0; color: var(--cn-gold); }
+  #pan { position: absolute; left: 0; right: 0; top: 520px; height: 452px; overflow: hidden; }
+  #panImg { position: absolute; left: 0; top: 0; width: 1080px; height: 1229px; overflow: hidden; transform-origin: 545px 560px; }
+  #panImg img { position: absolute; left: 0; top: 0; width: 1080px; }
+  /* evidence */
+  #ev1 { left: 110px; top: 560px; width: 560px; transform-origin: 280px 340px; }
+  #ev1 .ph { width: 528px; height: 600px; overflow: hidden; }
+  #ev1 .ph img { width: 528px; }
+  #ev2 { left: 240px; top: 990px; width: 732px; transform-origin: 366px 140px; }
+  #evTag { left: 470px; top: 540px; z-index: 4; white-space: nowrap; }
+  #ul { position: absolute; left: 240px; top: 990px; width: 732px; height: 300px; pointer-events: none; transform-origin: 366px 140px; }
+  #t1 { position: absolute; left: 90px; right: 90px; top: 250px; font-size: 150px; color: var(--cn-gold); text-shadow: 0 0 50px rgba(214, 178, 110, 0.5), 0 4px 0 rgba(0, 0, 0, 0.5); }
+  #t2 { position: absolute; left: 90px; right: 90px; top: 410px; font-size: 120px; }
+  #chips { position: absolute; left: 90px; right: 200px; top: 1318px; display: flex; gap: 16px; justify-content: center; }
+  .spark { position: absolute; width: 40px; height: 40px; left: 0; top: 0; }
+  .cn-ptag { position: absolute; right: 200px; top: 540px; z-index: 18; padding: 8px 18px; border-radius: 999px; background: rgba(5, 4, 3, 0.82); border: 2px solid var(--cn-gold); font: 800 30px "Inter", sans-serif; letter-spacing: 0.06em; color: var(--cn-gold); text-transform: uppercase; opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="16.5" data-fps="30">
+
+  <section id="s1" class="clip" data-start="0" data-duration="2.5">
+    <div id="s1in" class="cn-world">
+      <div id="hookBg"><img src="kit/img/prints/smeargle-7-em-3h.png" alt="" /></div>
+      <div id="bk1"></div>
+      <div class="cn-title" id="h1">3 horas</div>
+      <div class="cn-title" id="h2">de hunt.</div>
+    </div>
+  </section>
+  <section id="s2" class="clip" data-start="2.5" data-duration="5.0">
+    <div id="s2in" class="cn-world">
+      <div id="pan"><div id="panImg"><img src="kit/img/prints/smeargle-7-em-3h.png" alt="" /></div></div>
+    </div>
+  </section>
+
+  <section id="s4" class="clip" data-start="7.5" data-duration="5.0">
+    <div id="table"></div><div id="tableVig"></div>
+    <div id="s4in" class="cn-world">
+      <div class="evid" id="ev1"><div class="ph"><img src="kit/img/prints/smeargle-7-em-3h.png" alt="" /></div><div class="cap">13:15 — a foto</div></div>
+      <div class="evid" id="ev2"><img src="kit/img/prints/smeargle-7-em-3h--quote.png" alt="" /><div class="cap">13:15 — a legenda</div></div>
+      <div class="etag" id="evTag">print real de cliente</div>
+      <svg id="ul" viewBox="0 0 732 300">
+        <path id="ul1" d="M150 86 C260 92 380 82 470 88" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#d6b26e" stroke-width="8" stroke-linecap="round"/>
+        <path id="ul2" d="M30 190 C90 196 160 186 214 192" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#d6b26e" stroke-width="8" stroke-linecap="round"/>
+      </svg>
+      <div class="cn-title" id="t1">Dois</div>
+      <div class="cn-title" id="t2">Smeargle 7.</div>
+      <div id="chips"><span class="cn-chip" id="c1">caça 100% AFK</span><span class="cn-chip" id="c2">PC desligado</span></div>
+    </div>
+  </section>
+
+  <section id="s6" class="clip" data-start="12.5" data-duration="4.0">
+    <div id="endBg"></div>
+    <div class="kz-end" id="s6in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye6" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk" style="max-width:560px">O que você faria <b>em 3 horas?</b></div>
+    </div>
+  </section>
+
+  <div class="cn-ptag" id="bandTag">print real de cliente</div>
+  <div id="grade"></div>
+  <div id="leak"></div>
+  <div id="barT"></div>
+  <div id="barB"></div>
+  <div class="cn-chap" id="chap0">KizuBot apresenta</div>
+  <div class="cn-chap" id="cred" style="top:1012px; right:200px; letter-spacing:0.18em; opacity:0">baseado em um print real</div>
+  <div class="cn-chap" id="chap1" style="opacity:0">Capítulo 1 — 13:15</div>
+  <div class="cn-chap" id="chap2" style="opacity:0">Capítulo 2 — O detalhe</div>
+  <div class="cn-sub" id="sub1" style="opacity:0">Ele mandou uma foto.</div>
+  <div class="cn-sub" id="sub2" style="opacity:0">Repara no Pokémon Center.</div>
+  <canvas id="grain" width="90" height="320"></canvas>
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 16.5;
+  const b = KZ.beats(96);            // beat = 0.625 s, bar = 2.5 s
+
+  /* ---------- F20 cinematic helpers (inline, shared by 136-140) ---------- */
+  const CN = {};
+  CN.hash = function (n) { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+  // film grain on a quantized clock (pure function of time)
+  CN.grain = function (tl, canvas, D, fps) {
+    const ctx = canvas.getContext("2d"), W = canvas.width, H = canvas.height, img = ctx.createImageData(W, H);
+    let last = -1;
+    const draw = function (k) {
+      const r = KZ.rng(7000 + k * 13), d = img.data;
+      for (let i = 0; i < d.length; i += 4) { const v = r() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
+      ctx.putImageData(img, 0, 0);
+    };
+    const o = { t: 0 };
+    tl.fromTo(o, { t: 0 }, { t: D, duration: D, ease: "none", onUpdate: function () { const k = Math.floor(o.t * (fps || 8)); if (k !== last) { last = k; draw(k); } } }, 0);
+    draw(0);
+  };
+  // chapter label: fade/track in, fade out
+  CN.chap = function (tl, el, at, out) {
+    tl.fromTo(el, { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, at);
+    if (out) tl.to(el, { opacity: 0, duration: 0.2, ease: "power2.in" }, out - 0.2);
+  };
+  // subtitle line
+  CN.sub = function (tl, el, at, out) {
+    tl.fromTo(el, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, at);
+    if (out) tl.to(el, { opacity: 0, duration: 0.18, ease: "power2.in" }, out - 0.18);
+  };
+  // anamorphic light leak sweeping across the band
+  CN.leak = function (tl, at, seed) {
+    tl.fromTo("#leak", { x: 0, opacity: 0 }, { x: 1100, opacity: 1, duration: 0.5, ease: "power1.inOut", immediateRender: false }, at);
+    tl.to("#leak", { opacity: 0, duration: 0.25, ease: "power1.in" }, at + 0.4);
+  };
+  // the letterbox opens to full frame (the twist)
+  CN.open = function (tl, at, dur) {
+    tl.to("#barT", { y: -540, duration: dur || 0.45, ease: "power3.inOut" }, at);
+    tl.to("#barB", { y: 960, duration: dur || 0.45, ease: "power3.inOut" }, at);
+    tl.to("#grade", { opacity: 0, duration: 0.3, ease: "power2.out" }, at);
+  };
+  // the letterbox closes again (loop bridge)
+  CN.close = function (tl, at, dur) {
+    tl.to("#barT", { y: 0, duration: dur || 0.4, ease: "power3.inOut" }, at);
+    tl.to("#barB", { y: 0, duration: dur || 0.4, ease: "power3.inOut" }, at);
+  };
+  // drifting bokeh inside a container (deterministic)
+  CN.bokeh = function (tl, box, n, D, seed, x0, y0, w, h) {
+    const r = KZ.rng(seed);
+    for (let i = 0; i < n; i++) {
+      const d = document.createElement("div"), s = 60 + r() * 160;
+      d.className = "bokeh"; d.style.width = s + "px"; d.style.height = s + "px";
+      d.style.left = (x0 + r() * w) + "px"; d.style.top = (y0 + r() * h) + "px"; d.style.opacity = (0.35 + r() * 0.65).toFixed(2);
+      box.appendChild(d);
+      tl.fromTo(d, { x: -30 - r() * 40 }, { x: 30 + r() * 40, duration: D, ease: "none" }, 0);
+    }
+  };
+  // hand-drawn underline (SVG stroke draw) — path must have pathLength="1"
+  CN.draw = function (tl, path, at, dur) {
+    tl.fromTo(path, { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: dur || 0.4, ease: "power2.inOut" }, at);
+  };
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  CN.grain(tl, document.getElementById("grain"), D, 8);
+  CN.bokeh(tl, document.getElementById("bk1"), 7, 2.5, 136, 0, 520, 1080, 400);
+
+  /* hook */
+  tl.fromTo("#hookBg img", { y: 0, scale: 1.05 }, { y: -60, scale: 1.0, duration: 2.5, ease: "none" }, 0);
+  tl.fromTo("#h1", { opacity: 0, scale: 1.25, scale: 1.06 }, { opacity: 1, scale: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 0.0);
+  tl.fromTo("#h2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.22);
+  tl.fromTo("#s1in", { scale: 1.0 }, { scale: 1.05, duration: 2.5, ease: "none" }, 0);
+  CN.chap(tl, "#chap0", 0.0, 2.5);
+  tl.fromTo("#cred", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 0.5);
+  tl.to("#cred", { opacity: 0, duration: 0.2 }, 2.300);
+  CN.leak(tl, 2.28, 1);
+
+  /* chapter 1: the photo (rack focus + pan) */
+  const C1 = 2.5;
+  CN.chap(tl, "#chap1", C1, 5.0);
+  CN.sub(tl, "#sub1", C1 + 0.2, 5.0);
+  tl.fromTo("#panImg img", { filter: "blur(14px)" }, { filter: "blur(0px)", duration: 0.7, ease: "power2.out" }, C1);
+  tl.fromTo("#panImg", { y: -40 }, { y: -350, duration: 2.5, ease: "sine.inOut" }, C1);
+  CN.leak(tl, 4.78, 2);
+  /* chapter 2: the detail (zoom on the Pokémon Center grid) */
+  const C2 = 5.0;
+  CN.chap(tl, "#chap2", C2, 7.5);
+  CN.sub(tl, "#sub2", C2 + 0.2, 7.45);
+  tl.fromTo("#panImg", { scale: 1.0 }, { scale: 1.55, duration: 2.1, ease: "power2.inOut", immediateRender: false }, C2);
+  tl.to("#panImg", { y: -330, duration: 2.1, ease: "power2.inOut" }, C2);
+
+  /* twist: the bars open, the evidence lands */
+  const TW = 7.5;
+  CN.open(tl, TW, 0.45);
+  KZ.flash(tl, "#flash", TW, 0.5, "#e8f0ff");
+  tl.fromTo("#ev1", { y: -1000, rotation: -14 }, { y: 0, rotation: -5, duration: 0.38, ease: "power3.in" }, TW);
+  tl.fromTo("#ev2", { y: 900, rotation: 10 }, { y: 0, rotation: 2.5, duration: 0.4, ease: "power3.in" }, TW + 0.2);
+  tl.fromTo("#ul", { y: 900, rotation: 10 }, { y: 0, rotation: 2.5, duration: 0.4, ease: "power3.in" }, TW + 0.2);
+  KZ.shake(tl, "#s4in", TW + 0.38, 8, 0.2, 5);
+  KZ.shake(tl, "#s4in", TW + 0.6, 10, 0.25, 6);
+  tl.fromTo("#evTag", { opacity: 0, x: 60, rotation: 8 }, { opacity: 1, x: 0, rotation: 3, duration: 0.35, ease: "back.out(2)" }, TW + 0.9);
+  CN.draw(tl, "#ul1", 8.9, 0.4);
+  CN.draw(tl, "#ul2", 9.35, 0.3);
+  /* verdict */
+  const T5 = 10.0;
+  tl.fromTo("#t1", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, T5);
+  tl.fromTo("#t2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, T5 + 0.3);
+  KZ.flash(tl, "#flash", T5, 0.22, "#ffe9b0");
+  (function () {
+    const box = document.getElementById("s4in"), r = KZ.rng(136);
+    for (let i = 0; i < 16; i++) {
+      const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      s.setAttribute("viewBox", "0 0 40 40"); s.setAttribute("class", "spark");
+      s.innerHTML = '<path d="M20 0 L24 16 L40 20 L24 24 L20 40 L16 24 L0 20 L16 16 Z" fill="#e9cf8f"/>';
+      box.appendChild(s);
+      const a = r() * Math.PI * 2, dd = 200 + r() * 260;
+      tl.fromTo(s, { x: 520, y: 330, scale: 0, opacity: 1 }, { x: 520 + Math.cos(a) * dd, y: 330 + Math.sin(a) * dd * 0.55, scale: 0.4 + r() * 0.8, rotation: r() * 180, duration: 1.0, ease: "power3.out" }, T5 + 0.02);
+      tl.to(s, { opacity: 0, duration: 0.3 }, T5 + 0.8 + r() * 0.3);
+    }
+  })();
+  KZ.pop(tl, "#c1", 11.2, 0.35);
+  KZ.pop(tl, "#c2", 11.4, 0.35);
+  tl.to("#s4in", { opacity: 0, duration: 0.15, ease: "power2.in" }, 12.5 - 0.15);
+
+  /* end card */
+  const TE = 12.5;
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, TE);
+  KZ.eyePulse(tl, "#eye6", TE + 0.1, 2);
+  KZ.rise(tl, "#endUrl", TE + 0.46, 0.35, 30);
+  KZ.rise(tl, "#endAsk", TE + 0.92, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, TE + 0.9);
+  CN.close(tl, D - 0.5, 0.42);
+
+  tl.fromTo("#bandTag", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 2.800);
+  tl.to("#bandTag", { opacity: 0, duration: 0.15 }, 7.350);
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

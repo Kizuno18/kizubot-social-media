@@ -1,0 +1,65 @@
+{
+  "id": "077",
+  "slug": "chamada-perdida-shiny",
+  "family": "Ligação Recebida",
+  "title": "1 chamada perdida: SHINY",
+  "concept": "A missed-call notification from 'SHINY' opens a loss-framed hypothetical (without an alarm the shiny despawns while a red timer drains: '…tarde demais.'), then the world turns KizuBot violet and a real customer alarm shows the shiny detected and caught at the same minute, 16:42 — 'Nem precisou atender.'",
+  "neuro": [
+    "pattern-interrupt",
+    "loss-aversion",
+    "contrast",
+    "social-proof",
+    "precise-number",
+    "anticipation-drop",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "SHINY — 1 CHAMADA PERDIDA.",
+  "duration": 17.31,
+  "music": {
+    "style": "phonk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/prints/shiny-cubone--alarm.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "1 chamada perdida: SHINY 😭 Sem alarme, você descobre tarde demais. Com KizuBot o zap avisa na hora — print real: detectou e capturou às 16:42. Já perdeu algum shiny assim? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "1 chamada perdida: SHINY (com KizuBot nem precisa atender)",
+      "description": "Sem alarme, o shiny some antes de você ver. Com o KizuBot, o alarme chega no WhatsApp na hora: shiny detectado às 16:42 e capturado às 16:42 (print real de cliente). kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "1 chamada perdida: SHINY 😭 Com KizuBot o alarme chega no WhatsApp na hora — e ele ainda captura. Já perdeu algum shiny assim? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Já perdeu algum shiny assim? 😭",
+  "notes": "Hook ordered like a real notification ('SHINY' as the caller, then '1 chamada perdida.') instead of '1 CHAMADA PERDIDA: SHINY.'. The despawn scene is an abstract illustration (generic gold star on a tile with a draining timer), clearly hypothetical. Turn line changed from 'Com KizuBot, ele te chama na hora:' to 'Com KizuBot, o zap avisa na hora:' because alarms arrive on WhatsApp/Telegram, not as calls. The two alarm bubbles are the same print (shiny-cubone--alarm) split at the gap between bubbles; redaction pills untouched; labels 'SHINY DETECTADO'/'CAPTURADO' translate the bubble text and both 16:42 stamps are highlighted. Added the payoff 'Nem precisou atender.' + chip 'alarme no WhatsApp'. Rubric: hook 9, re-hooks 9, clarity 9, craft 8, truth 9, sound 9, brand 8, CTA 9, loop 8, distinct 9 = 8.7."
+}

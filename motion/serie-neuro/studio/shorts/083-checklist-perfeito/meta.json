@@ -1,0 +1,30 @@
+{
+  "id": "083",
+  "slug": "checklist-perfeito",
+  "family": "Satisfatório",
+  "title": "Checklist do farm (perfeito)",
+  "concept": "A soft clay checklist ticks itself one item per lofi beat (DrawSVG ticks, progress bar, smooth list scroll) from 'Caça sozinho' to the punchline 'Você dormindo', then rewinds to frame 1 for a seamless loop.",
+  "neuro": ["sensory-reward", "closure", "visible-progress", "humor", "seamless-loop", "comment-prompt"],
+  "hook": "CHECKLIST DO FARM.",
+  "duration": 12.14,
+  "music": {"style": "lofi", "bpm": 84},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": ["100% AFK", "uso com PC desligado", "alarmes no celular e notificações no WhatsApp"],
+  "platforms": {
+    "tiktok": {
+      "caption": "Checklist do farm ✅ Caça sozinho, captura, pesca, coleta, cura, avisa no WhatsApp, roda com PC desligado… e você dormindo 😴 Qual item é o melhor? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#satisfatorio", "#afk"]
+    },
+    "youtube": {
+      "title": "Checklist do farm perfeito ✅ (o último é o melhor)",
+      "description": "O checklist do farm com KizuBot: caça sozinho, captura, pesca, coleta, cura, avisa no WhatsApp, roda com o PC desligado — e você dormindo. Automação 100% AFK para PokeXGames. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Checklist do farm ✅ O último item é o melhor 😴 Qual você escolheria? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#satisfying"]
+    }
+  },
+  "pinned_comment": "Qual item é o melhor? ✅",
+  "notes": "Concept said 'the list folds into a tiny card that becomes frame 1'; implemented as a rewind (untick wave + scroll back to the top), which matches frame 0 exactly. To respect ≤14 words per screen, the 8 items scroll in a 5-row window (max 13 words visible incl. title). Added a small 'KizuBot' tag on the card for an early brand cue. Rubric: hook 8, re-hooks 8, clarity 9, craft 8, truth 9, sound 8, brand 8, CTA 8, loop 9, distinct 8 = 8.3."
+}

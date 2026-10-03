@@ -1,0 +1,66 @@
+{
+  "id": "053",
+  "slug": "dificil-configurar",
+  "family": "Mito ou Verdade?",
+  "title": "Mito ou verdade: é difícil de configurar?",
+  "concept": "Game-show quiz on the 'too hard to set up' objection: MITO stamp, then three real quotes from different customers slap on as stickers, followed by the new guided path for beginners and support that helps you configure.",
+  "neuro": [
+    "curiosity-gap",
+    "commitment-guess",
+    "objection-handling",
+    "social-proof",
+    "ikea-effect",
+    "anticipation-drop"
+  ],
+  "hook": "MITO OU VERDADE? É DIFÍCIL DE CONFIGURAR?",
+  "duration": 21.15,
+  "music": {
+    "style": "gameshow",
+    "bpm": 122
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/prints/facil-configurar.png",
+    "kit/img/prints/parece-que-sei-programar--programar.png",
+    "kit/img/prints/mamao-com-acucar--mamao.png",
+    "kit/img/prints/suporte-ajusta-sua-config--config.png"
+  ],
+  "claims": [
+    "painel com caminho guiado para iniciantes (changelog 2026-09-05)",
+    "o suporte te ajuda a configurar"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Mito ou verdade: bot é difícil de configurar? ⚙️ Chuta antes do carimbo! Prints reais de clientes diferentes + o caminho guiado do painel novo. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mitoouverdade",
+        "#bot"
+      ]
+    },
+    "youtube": {
+      "title": "Mito ou verdade: é difícil configurar o bot? #pxg",
+      "description": "É difícil de configurar? MITO, segundo os próprios clientes (prints reais de clientes diferentes). O painel novo do KizuBot tem caminho guiado para iniciante e o suporte te ajuda a configurar. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Mito ou verdade: é difícil de configurar? ⚙️ Três clientes respondem (prints reais) + caminho guiado pra iniciante e suporte que ajuda. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mitoouverdade"
+      ]
+    }
+  },
+  "pinned_comment": "Já desistiu de algum bot por ser difícil? 😅",
+  "notes": "Three prints from different customers, labelled 'prints reais de clientes diferentes'; quotes verbatim, only trimmed ('parabéns pelo trampo' cut from facil-configurar; 'Achei intuitivo' not used, for reading time). Support proof = suporte-ajusta-sua-config--config, the owner's own words, so it is tagged 'print real' per ASSETS.md. 'Caminho guiado pra iniciante' (new panel, changelog 2026-09-05) drawn as icons, not a screenshot."
+}

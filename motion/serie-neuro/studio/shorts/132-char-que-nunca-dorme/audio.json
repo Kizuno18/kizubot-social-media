@@ -1,0 +1,202 @@
+{
+  "duration": 17.6,
+  "style": "chiptune",
+  "bpm": 150,
+  "seed": 132,
+  "sections": [
+    {
+      "at": 0.0,
+      "type": "groove",
+      "energy": 0.8
+    },
+    {
+      "at": 8.0,
+      "type": "build"
+    },
+    {
+      "at": 9.6,
+      "type": "drop"
+    },
+    {
+      "at": 12.8,
+      "type": "groove"
+    },
+    {
+      "at": 14.4,
+      "type": "outro"
+    }
+  ],
+  "stops": [
+    {
+      "at": 8.8,
+      "len": 0.32
+    },
+    {
+      "at": 9.42,
+      "len": 0.16
+    }
+  ],
+  "sfx": [
+    {
+      "t": 0.0,
+      "name": "impact",
+      "gain": -10
+    },
+    {
+      "t": 0.0,
+      "name": "shutter",
+      "gain": -7
+    },
+    {
+      "t": 0.8,
+      "name": "pop",
+      "gain": -8
+    },
+    {
+      "t": 0.92,
+      "name": "coin",
+      "gain": -10
+    },
+    {
+      "t": 1.6,
+      "name": "shutter",
+      "gain": -5
+    },
+    {
+      "t": 1.66,
+      "name": "swoosh_hit",
+      "gain": -10
+    },
+    {
+      "t": 2.35,
+      "name": "pop",
+      "gain": -10
+    },
+    {
+      "t": 3.2,
+      "name": "shutter",
+      "gain": -5
+    },
+    {
+      "t": 3.26,
+      "name": "swoosh_hit",
+      "gain": -10
+    },
+    {
+      "t": 3.95,
+      "name": "pop",
+      "gain": -10
+    },
+    {
+      "t": 4.8,
+      "name": "shutter",
+      "gain": -5
+    },
+    {
+      "t": 4.86,
+      "name": "swoosh_hit",
+      "gain": -10
+    },
+    {
+      "t": 5.55,
+      "name": "pop",
+      "gain": -10
+    },
+    {
+      "t": 6.4,
+      "name": "shutter",
+      "gain": -5
+    },
+    {
+      "t": 6.46,
+      "name": "sparkle",
+      "gain": -10
+    },
+    {
+      "t": 7.15,
+      "name": "pop",
+      "gain": -10
+    },
+    {
+      "t": 8.0,
+      "name": "pop2",
+      "gain": -8
+    },
+    {
+      "t": 8.12,
+      "name": "whoosh",
+      "gain": -12
+    },
+    {
+      "t": 8.8,
+      "name": "scratch",
+      "gain": -10
+    },
+    {
+      "t": 8.8,
+      "name": "impact",
+      "gain": -9
+    },
+    {
+      "t": 9.6,
+      "name": "impact",
+      "gain": -7
+    },
+    {
+      "t": 9.6,
+      "name": "levelup",
+      "gain": -12
+    },
+    {
+      "t": 9.9,
+      "name": "whoosh",
+      "gain": -11
+    },
+    {
+      "t": 10.1,
+      "name": "shutter",
+      "gain": -9
+    },
+    {
+      "t": 10.3,
+      "name": "whoosh",
+      "gain": -12
+    },
+    {
+      "t": 10.9,
+      "name": "tick",
+      "gain": -9
+    },
+    {
+      "t": 11.3,
+      "name": "tick",
+      "gain": -9
+    },
+    {
+      "t": 12.66,
+      "name": "whoosh_fast",
+      "gain": -11
+    },
+    {
+      "t": 12.8,
+      "name": "pop",
+      "gain": -9
+    },
+    {
+      "t": 13.4,
+      "name": "impact",
+      "gain": -9
+    },
+    {
+      "t": 14.3,
+      "name": "whoosh_down",
+      "gain": -11
+    },
+    {
+      "t": 17.15,
+      "name": "whoosh_down",
+      "gain": -14
+    }
+  ],
+  "logo": 14.45
+}

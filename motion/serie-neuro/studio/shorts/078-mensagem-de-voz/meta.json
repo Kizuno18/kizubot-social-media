@@ -1,0 +1,64 @@
+{
+  "id": "078",
+  "slug": "mensagem-de-voz",
+  "family": "Ligação Recebida",
+  "title": "Mensagem de voz do seu bot",
+  "concept": "A voice note from 'KizuBot' plays with live transcription ('Fala, chefe. Relatório da hunt:'), the KizuBot alert sounds and a real customer loot alarm appears — 12.335 items counted up and highlighted line by line — with the customer's 'Que chique kk'; payoff 'Relatório direto no zap.'",
+  "neuro": [
+    "pattern-interrupt",
+    "sonic-branding",
+    "curiosity-gap",
+    "social-proof",
+    "precise-number",
+    "visible-progress",
+    "comment-prompt"
+  ],
+  "hook": "MENSAGEM DE VOZ: KIZUBOT (0:12)",
+  "duration": 14.29,
+  "music": {
+    "style": "lofi",
+    "bpm": 84
+  },
+  "assets": [
+    "kit/img/prints/alarme-12335-itens--alarm.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "alarmes no celular e notificações no WhatsApp",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Mensagem de voz do seu bot 🎧 Relatório da hunt: 12.335 itens dropados (alarme real de cliente). Direto no zap. Que relatório você queria receber? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#loot",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Mensagem de voz do seu bot: 12.335 itens no relatório",
+      "description": "Alarme real de cliente no WhatsApp: Total dropped items 12.335 — Screw 11.616, Electric Box 542 e mais. O KizuBot farma 100% AFK e manda o relatório direto no zap. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Mensagem de voz do seu bot 🎧 12.335 itens no relatório da hunt, direto no zap. Que relatório você queria receber? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#loot"
+      ]
+    }
+  },
+  "pinned_comment": "Que relatório você queria acordar recebendo? 📩",
+  "notes": "Truth fixes vs the concept: the real alarm is stamped 16:16, so 'Relatório da noite… Bom dia.' became 'Relatório da hunt:' and the ending became 'Relatório direto no zap.' (no night/morning implied). The voice note is an obvious skit (KizuBot does not send audio); the proof is the real text alarm alarme-12335-itens--alarm (tagged 'print real de cliente', shown below its 660 px soft source width), with the hero counter 0→12.335 ('itens dropados' = 'Total dropped items') and a line-by-line highlight over the print; 'Que chique kk' is the customer's own reply in the same crop. End-card question wrapped to 3 lines to stay inside x≤880. Rubric: hook 8, re-hooks 9, clarity 8, craft 8, truth 9, sound 9, brand 9, CTA 8, loop 8, distinct 9 = 8.5."
+}

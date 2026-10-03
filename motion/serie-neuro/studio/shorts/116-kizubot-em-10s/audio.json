@@ -1,0 +1,43 @@
+{
+  "duration": 16.8, "style": "chiptune", "bpm": 150, "seed": 116,
+  "sections": [
+    {"at": 0.0, "type": "intro"},
+    {"at": 1.2, "type": "drop"},
+    {"at": 8.0, "type": "build"},
+    {"at": 11.1, "type": "break"},
+    {"at": 12.0, "type": "drop"},
+    {"at": 13.6, "type": "outro"}
+  ],
+  "stops": [{"at": 10.72, "len": 0.38, "tape": false}],
+  "sfx": [
+    {"t": 0.0, "name": "impact", "gain": -6},
+    {"t": 0.0, "name": "tick2", "gain": -6},
+    {"t": 0.12, "name": "pop2", "gain": -10},
+    {"t": 0.4, "name": "tick2", "gain": -6},
+    {"t": 0.8, "name": "tick2", "gain": -6},
+    {"t": 1.2, "name": "levelup", "gain": -6},
+    {"t": 1.2, "name": "whoosh_fast", "gain": -10},
+    {"t": 1.36, "name": "pop", "gain": -11},
+    {"t": 3.2, "name": "coin", "gain": -7},
+    {"t": 4.8, "name": "coin", "gain": -7},
+    {"t": 6.4, "name": "coin", "gain": -7},
+    {"t": 8.0, "name": "coin", "gain": -7},
+    {"t": 8.1, "name": "whoosh_down", "gain": -13},
+    {"t": 9.0, "name": "sparkle", "gain": -15},
+    {"t": 9.8, "name": "sparkle", "gain": -15},
+    {"t": 10.48, "name": "sparkle", "gain": -14},
+    {"t": 11.08, "name": "alert", "gain": -4},
+    {"t": 11.26, "name": "pop", "gain": -12},
+    {"t": 12.0, "name": "impact", "gain": -5},
+    {"t": 12.0, "name": "star", "gain": -7},
+    {"t": 12.02, "name": "sparkle", "gain": -9},
+    {"t": 12.4, "name": "snap", "gain": -10},
+    {"t": 12.62, "name": "pop", "gain": -12},
+    {"t": 13.42, "name": "whoosh_fast", "gain": -11},
+    {"t": 14.0, "name": "pop", "gain": -10},
+    {"t": 14.4, "name": "ding", "gain": -9},
+    {"t": 16.4, "name": "whoosh_fast", "gain": -14},
+    {"t": 16.56, "name": "tick2", "gain": -8}
+  ],
+  "logo": 13.64
+}

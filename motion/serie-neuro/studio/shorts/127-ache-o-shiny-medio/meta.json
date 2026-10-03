@@ -1,0 +1,66 @@
+{
+  "id": "127",
+  "slug": "ache-o-shiny-medio",
+  "family": "Ache o Shiny",
+  "title": "Nível 2: ache o shiny",
+  "concept": "Level 2 on mint paper: 7×10 lizards, a 50° hue-shifted shiny and two size decoys, a 5-second segmented timer with a halfway hint, the decoys get crossed out and a magnifier finds the shiny; then night falls ('E se ele aparecer às 3h da manhã?') and KizuBot answers with a real shiny alarm.",
+  "neuro": [
+    "participation",
+    "von-restorff",
+    "decoy-effect",
+    "time-pressure",
+    "rewatch-loop",
+    "loss-aversion",
+    "real-proof",
+    "comment-prompt"
+  ],
+  "hook": "NÍVEL 2: ACHE O SHINY.",
+  "duration": 18,
+  "music": {
+    "style": "chiptune",
+    "bpm": 120
+  },
+  "assets": [
+    "kit/img/prints/shiny-raichu-7-alarms--alarms.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "alarmes no celular e notificações no WhatsApp",
+    "detecção de shinys, megas e bosses"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Nível 2: ache o shiny 🦎 Cuidado com a pegadinha! E se ele aparecer às 3h da manhã? O KizuBot avisa. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#desafio",
+        "#shiny"
+      ]
+    },
+    "youtube": {
+      "title": "Nível 2: ache o shiny (tem pegadinha) 🦎",
+      "description": "Desafio nível 2: 70 lagartos, 1 shiny e 2 pegadinhas. E se o shiny aparecer às 3h da manhã? O KizuBot avisa no seu WhatsApp, a qualquer hora, 100% AFK (print real de cliente). kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Nível 2: ache o shiny 🦎 Em que linha e coluna tava? E às 3h da manhã, quem avisa? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#desafio"
+      ]
+    }
+  },
+  "pinned_comment": "Em que linha e coluna tava? 👀",
+  "notes": "Timer is 5 s (segmented) with a halfway hint 'dica: é a cor' as a re-hook; the two size decoys are crossed out as a 'pegadinha' before a magnifier finds the shiny. 'E se ele aparecer às 3h da manhã?' is hypothetical; the answer shows a real alarm row (16:16, its real time stays visible) under 'O KizuBot avisa. a qualquer hora'. Music: chiptune at 120 BPM so each timer second lands on the beat."
+}

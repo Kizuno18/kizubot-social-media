@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>120 30 dias de farm em 15 segundos</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F16 "Speedrun" system (shared with 116-120) ===== */
+  :root { --gold: #ffc93c; --gold2: #ffe08a; --lime: #c6ff3d; --hud: rgba(18, 12, 30, 0.86); --hudline: rgba(168, 85, 247, 0.45); --red: #ff4a4a; }
+  body { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+  .full { position: absolute; inset: 0; }
+  #bg { position: absolute; inset: 0; background: radial-gradient(80% 50% at 50% 34%, #1d0f30 0%, #07060c 70%); }
+  #streakWrap { position: absolute; inset: 0; overflow: hidden; }
+  #streaks { position: absolute; left: -400px; top: -200px; width: 1900px; height: 2400px; transform: rotate(24deg); opacity: 0.5;
+    background-image: repeating-linear-gradient(90deg, rgba(168, 85, 247, 0) 0 110px, rgba(168, 85, 247, 0.15) 110px 116px, rgba(168, 85, 247, 0) 116px 280px, rgba(255, 201, 60, 0.07) 280px 284px); }
+  #glowG { position: absolute; inset: 0; background: radial-gradient(60% 40% at 50% 48%, rgba(255, 201, 60, 0.32) 0%, rgba(255, 201, 60, 0) 70%); opacity: 0; }
+  .kz-scan { opacity: 0.35; }
+  .kz-progress { height: 8px; }
+  .kz-progress > div { background: linear-gradient(90deg, var(--kz-violet), var(--gold)); }
+  .tk { font-family: "Teko", sans-serif; font-weight: 700; text-transform: uppercase; line-height: 0.86; color: var(--kz-ink); }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; opacity: 0.35; }
+  .chiprow { position: absolute; left: 120px; width: 760px; top: 238px; display: flex; align-items: center; justify-content: space-between; }
+  .cat { display: flex; align-items: center; gap: 12px; padding: 6px 20px 6px 8px; border-radius: 12px; background: var(--hud); border: 2px solid var(--hudline); font: 700 40px "Rajdhani", sans-serif; letter-spacing: 0.06em; color: var(--kz-ink); }
+  .cat .hd { position: relative; width: 50px; height: 48px; }
+  .cat .hd img { width: 50px; display: block; }
+  .cat b { padding: 2px 12px; border-radius: 8px; background: var(--gold); color: #1a1205; font-weight: 700; }
+  .tpill { display: flex; align-items: center; gap: 12px; padding: 6px 18px; border-radius: 12px; background: var(--hud); border: 2px solid var(--hudline); }
+  .tpill i { width: 16px; height: 16px; border-radius: 50%; background: var(--red); box-shadow: 0 0 12px rgba(255, 74, 74, 0.9); }
+  #timer { font: 400 46px "JetBrains Mono", monospace; color: #fff; line-height: 1; }
+
+  /* S1 */
+  #h1 { position: absolute; left: 120px; width: 768px; top: 312px; text-align: center; font-size: 196px; white-space: nowrap; }
+  #h2 { position: absolute; left: 120px; width: 768px; top: 478px; text-align: center; font-size: 196px; white-space: nowrap; }
+  #h3 { position: absolute; left: 120px; width: 768px; top: 648px; text-align: center; font-size: 112px; white-space: nowrap; color: var(--gold); text-shadow: 0 0 50px rgba(255, 201, 60, 0.4); }
+
+  /* S2 run */
+  #hdr { position: absolute; left: 120px; width: 768px; top: 320px; text-align: center; font-size: 96px; white-space: nowrap; }
+  .counter { position: absolute; left: 254px; width: 500px; top: 430px; height: 330px; border-radius: 34px; background: var(--hud); border: 3px solid var(--hudline); box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(124, 58, 237, 0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; perspective: 800px; }
+  .counter .dl { font: 700 60px "Rajdhani", sans-serif; letter-spacing: 0.2em; color: var(--kz-lav); line-height: 1; }
+  #day { font-family: "Teko", sans-serif; font-weight: 700; font-size: 280px; line-height: 0.8; color: #fff; padding-top: 18px; }
+  .counter .mid { position: absolute; left: 0; right: 0; top: 196px; height: 3px; background: rgba(0, 0, 0, 0.55); }
+  #cap { position: absolute; left: 120px; width: 768px; top: 790px; text-align: center; font: 700 60px "Rajdhani", sans-serif; color: var(--kz-lav); }
+  .chart { position: absolute; left: 131px; width: 745px; top: 890px; height: 230px; display: flex; gap: 5px; align-items: flex-end; border-bottom: 3px solid rgba(216, 180, 254, 0.3); }
+  .chart i { display: block; width: 20px; height: 222px; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, #d8b4fe, #8b5cf6 60%, #6d28d9); box-shadow: 0 0 14px rgba(168, 85, 247, 0.55); transform-origin: 50% 100%; }
+  .axis { position: absolute; left: 131px; width: 745px; top: 1134px; height: 40px; font: 400 30px "JetBrains Mono", monospace; color: rgba(216, 180, 254, 0.7); }
+  .axis span { position: absolute; transform: translateX(-50%); }
+
+  /* S3 result */
+  #res { position: absolute; left: 120px; width: 768px; top: 330px; text-align: center; font-size: 100px; white-space: nowrap; color: var(--gold); }
+  .pframe { position: absolute; left: 160px; width: 700px; top: 500px; border-radius: 24px; overflow: hidden; border: 4px solid rgba(245, 240, 250, 0.9); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); background: #15101f; }
+  .pframe img { display: block; width: 100%; }
+  .hl { position: absolute; border-radius: 14px; border: 5px solid var(--gold); box-shadow: 0 0 24px rgba(255, 201, 60, 0.7); }
+  #k600 { position: absolute; left: 120px; width: 768px; top: 690px; text-align: center; font-size: 240px; color: var(--gold); text-shadow: 0 0 70px rgba(255, 201, 60, 0.5); white-space: nowrap; }
+  #kcap { position: absolute; left: 120px; width: 768px; top: 912px; text-align: center; font: 700 60px "Rajdhani", sans-serif; color: #fff; }
+  .ptag { position: absolute; left: 0; right: 0; top: 1004px; display: flex; justify-content: center; }
+  .ptag span { font: 700 32px "Rajdhani", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--kz-lav); padding: 8px 22px; border: 2px solid var(--kz-lav); border-radius: 999px; background: rgba(11, 7, 18, 0.8); }
+  .px { position: absolute; left: 0; top: 0; width: 16px; height: 16px; opacity: 0; }
+
+  .kz-end .kz-url { font: 700 70px "Rajdhani", sans-serif; letter-spacing: 0.02em; }
+  .ask { font: 700 66px "Rajdhani", sans-serif; color: var(--kz-ink); max-width: 720px; line-height: 1.05; }
+  .ask b { display: block; color: var(--gold); font-weight: 700; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="15" data-fps="30">
+  <div id="bg"></div>
+  <div id="streakWrap"><div id="streaks"></div></div>
+  <div id="glowG"></div>
+  <div class="kz-scan"></div>
+  <div class="kz-vignette"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <div id="chipLayer" class="full" style="pointer-events:none; z-index:20">
+    <div class="chiprow" id="chiprow">
+      <div class="cat"><span class="hd"><img src="kit/img/brand/kizubot-head.png" alt="" /><i class="eye" id="catEye" style="left:13px; top:5px; width:26px; height:26px"></i></span>KIZUBOT% <b>30 DIAS</b></div>
+      <div class="tpill" id="tpill"><i id="recDot"></i><span id="timer">0:00.0</span></div>
+    </div>
+  </div>
+
+  <!-- S1 hook: 0 - 1.2 -->
+  <section id="s1" class="clip" data-start="0" data-duration="1.2">
+    <div id="s1in" class="full">
+      <div class="tk" id="h1">30 dias</div>
+      <div class="tk" id="h2">de farm</div>
+      <div class="tk" id="h3">em 15 segundos.</div>
+    </div>
+  </section>
+
+  <!-- S2 the calendar run: 1.2 - 6.4 -->
+  <section id="s2" class="clip" data-start="1.2" data-duration="5.2">
+    <div id="s2in" class="full">
+      <div class="tk" id="hdr">30 dias de farm</div>
+      <div class="counter" id="counter"><div class="dl">DIA</div><div id="day">01</div><div class="mid"></div></div>
+      <div id="cap">farmando todo dia</div>
+      <div class="chart" id="chart"></div>
+      <div class="axis"><span style="left:10px">1</span><span style="left:235px">10</span><span style="left:485px">20</span><span style="left:735px">30</span></div>
+    </div>
+  </section>
+
+  <!-- S3 result: 6.4 - 12.0 -->
+  <section id="s3" class="clip" data-start="6.4" data-duration="5.6">
+    <div id="s3in" class="full">
+      <div id="pxs"></div>
+      <div class="tk" id="res">Resultado do run</div>
+      <div class="pframe kz-card" id="pframe"><img src="kit/img/prints/primeiro-mes-600kk--600kk.png" alt="" /></div>
+      <div class="tk" id="k600">600kk</div>
+      <div id="kcap">no primeiro mês dele</div>
+      <div class="ptag"><span class="kz-print-tag" id="ptag">print real de cliente</span></div>
+    </div>
+  </section>
+
+  <!-- S4 end card: 12.0 - 15.0 -->
+  <section id="s4" class="clip" data-start="12.0" data-duration="3.0">
+    <div class="kz-end" id="s4in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye4" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">Qual seria o seu resultado <b>em 30 dias?</b></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  (function () {
+    var h = "";
+    for (var i = 0; i < 30; i++) h += '<i id="bar' + (i + 1) + '"></i>';
+    document.getElementById("chart").innerHTML = h;
+    var p = "", cols = ["#ffc93c", "#ffe08a", "#c6ff3d", "#c084fc", "#ffffff"];
+    for (var k = 0; k < 36; k++) p += '<i class="px" style="background:' + cols[k % 5] + '"></i>';
+    document.getElementById("pxs").innerHTML = p;
+  })();
+
+  const tl = gsap.timeline({ paused: true });
+  const D = 15;
+  const b = KZ.beats(150);            // beat = 0.4 s
+
+  function glint(eye, at, times, first) {
+    if (first) tl.set(eye, { opacity: 0.35, scale: 1 }, 0);
+    for (var i = 0; i < times; i++) {
+      tl.fromTo(eye, { opacity: 0.2, scale: 0.8 }, { opacity: 1, scale: 1.3, duration: 0.18, ease: "power2.out", immediateRender: false }, at + i * 0.45);
+      tl.to(eye, { opacity: 0.35, scale: 1, duration: 0.25, ease: "power2.in" }, at + i * 0.45 + 0.18);
+    }
+  }
+  function fmtT(t) {
+    var d = Math.floor(t * 10 + 1e-6), s = Math.floor(d / 10), m = Math.floor(s / 60);
+    return m + ":" + String(s % 60).padStart(2, "0") + "." + (d % 10);
+  }
+  function setText(el, at, val) { tl.to({ v: 0 }, { v: 1, duration: 0.01, onUpdate: function () { el.textContent = val; } }, at); }
+  function dayT(d) { return d <= 4 ? b(3 + (d - 1)) : d <= 12 ? 2.4 + (d - 4) * 0.2 : 4.0 + (d - 12) * 0.1; }
+
+  // ---- untimed: the run timer covers the whole video and lands on 0:15.0 ----
+  tl.fromTo("#prog", { scaleX: 0 }, { scaleX: 1, duration: D - 0.05, ease: "power1.out" }, 0);
+  tl.fromTo("#streaks", { x: 0 }, { x: -280, duration: D, ease: "none" }, 0);
+  tl.fromTo("#chiprow", { y: -12, opacity: 1 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 0);
+  glint("#catEye", 0.6, 1, true);
+  glint("#catEye", 5.9, 1, false);
+  tl.fromTo("#recDot", { opacity: 1 }, { opacity: 0.25, duration: 0.4, ease: "none", repeat: 36, yoyo: true }, 0);
+  (function () {
+    var el = document.getElementById("timer"), o = { t: 0 };
+    tl.to(o, { t: 15, duration: 14.85, ease: "none", onUpdate: function () { el.textContent = fmtT(o.t); } }, 0);
+  })();
+  tl.set("#timer", { color: "#ffffff" }, 0);
+  tl.to("#timer", { color: "#ffc93c", duration: 0.08 }, 14.84);
+  tl.fromTo("#tpill", { scale: 1 }, { scale: 1.15, duration: 0.1, ease: "power3.out" }, 14.84);
+
+  // ---- S1 hook ----
+  tl.fromTo("#h1", { y: -14, scale: 1.03 }, { y: 0, scale: 1, duration: 0.22, ease: "power4.out" }, 0);
+  tl.fromTo("#h2", { y: 30, scale: 1.03 }, { y: 0, scale: 1, duration: 0.22, ease: "power4.out" }, 0.03);
+  tl.fromTo("#h3", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "power4.out" }, 0.12);
+  KZ.punch(tl, "#h3", b(2), 1.08, 0.25);
+  tl.to(["#h1", "#h2", "#h3"], { y: -60, opacity: 0, duration: 0.14, ease: "power2.in" }, b(3) - 0.15);
+
+  // ---- S2 the calendar run (accelerating) ----
+  KZ.slam(tl, "#hdr", b(3), 1.4);
+  tl.fromTo("#counter", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, b(3) - 0.02);
+  KZ.rise(tl, "#cap", b(3) + 0.15, 0.3, 20);
+  tl.fromTo(".axis", { opacity: 0 }, { opacity: 1, duration: 0.3 }, b(3) + 0.2);
+  tl.set("#day", { rotationX: 0, scale: 1 }, 0);
+  for (var d = 1; d <= 30; d++) {
+    var t = dayT(d);
+    setText(document.getElementById("day"), t, String(d).padStart(2, "0"));
+    tl.fromTo("#bar" + d, { scaleY: 0 }, { scaleY: 1, duration: d <= 12 ? 0.2 : 0.12, ease: "power2.out" }, t);
+    if (d <= 12) tl.fromTo("#day", { rotationX: -70 }, { rotationX: 0, duration: 0.16, ease: "power2.out", immediateRender: false }, t);
+    else tl.fromTo("#day", { scale: 1.06 }, { scale: 1, duration: 0.08, ease: "none", immediateRender: false }, t);
+  }
+  tl.fromTo("#day", { color: "#ffffff" }, { color: "#c6ff3d", duration: 0.1, ease: "none", immediateRender: false }, dayT(30));
+  tl.fromTo("#counter", { borderColor: "rgba(168,85,247,0.45)" }, { borderColor: "#c6ff3d", duration: 0.1, ease: "none", immediateRender: false }, dayT(30));
+  KZ.punch(tl, "#counter", dayT(30), 1.08, 0.3);
+  setText(document.getElementById("cap"), dayT(30), "30/30 ✓");
+  tl.fromTo("#cap", { color: "#d8b4fe" }, { color: "#c6ff3d", duration: 0.1, ease: "none", immediateRender: false }, dayT(30));
+  tl.fromTo("#s2in", { scale: 1 }, { scale: 1.04, duration: 0.4, ease: "power1.in" }, 6.0);
+  tl.to("#s2in", { opacity: 0, duration: 0.1, ease: "none" }, b(16) - 0.11);
+
+  // ---- S3 result: the real print, then 600kk ----
+  KZ.flash(tl, "#flash", b(16), 0.8, "#fff4c9");
+  tl.fromTo("#glowG", { opacity: 0 }, { opacity: 0.6, duration: 0.25, ease: "none" }, b(16));
+  KZ.slam(tl, "#res", b(16), 1.6);
+  tl.fromTo("#pframe", { y: 160, rotation: 3, opacity: 0, scale: 0.9 }, { y: 0, rotation: -1, opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, b(17));
+  tl.fromTo("#pframe", { boxShadow: "0 0 0px rgba(255,201,60,0)" }, { boxShadow: "0 0 50px rgba(255,201,60,0.8)", duration: 0.3, ease: "power2.out" }, b(19));
+  KZ.punch(tl, "#pframe", b(19), 1.06, 0.3);
+  tl.fromTo("#k600", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, b(21));
+  tl.to("#glowG", { opacity: 1, duration: 0.15 }, b(21));
+  tl.to("#glowG", { opacity: 0.45, duration: 1.2, ease: "power2.out" }, b(21) + 0.2);
+  KZ.shake(tl, "#s3in", b(21) + 0.03, 16, 0.32, 6);
+  KZ.rise(tl, "#kcap", b(22), 0.3, 20);
+  KZ.pop(tl, "#ptag", b(22.5), 0.3);
+  tl.to("#k600", { scale: 1.05, duration: 1.4, ease: "sine.inOut" }, b(22));
+  KZ.punch(tl, "#k600", b(26), 1.1, 0.35);
+  (function () {
+    var ps = document.querySelectorAll("#pxs .px"), o = { T: 0 }, F = 1.4, G = 2200, r = KZ.rng(120), P = [];
+    ps.forEach(function () { var a = -Math.PI / 2 + (r() - 0.5) * 2.6, sp = 850 + r() * 850; P.push({ vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, spin: (r() - 0.5) * 900, s: 0.7 + r() * 0.9 }); });
+    tl.to(o, { T: 1, duration: F, ease: "none", onUpdate: function () {
+      var t = o.T * F;
+      ps.forEach(function (p, i) {
+        var q = P[i], x = 540 + q.vx * t, y = 800 + q.vy * t + 0.5 * G * t * t;
+        p.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) rotate(" + (q.spin * t).toFixed(1) + "deg) scale(" + q.s + ")";
+        p.style.opacity = o.T <= 0 ? 0 : String(Math.max(0, 1 - Math.max(0, o.T - 0.7) / 0.3));
+      });
+    } }, b(21) + 0.02);
+  })();
+  tl.to("#glowG", { opacity: 0, duration: 0.3 }, b(30) - 0.3);
+  tl.to("#s3in", { opacity: 0, scale: 0.94, duration: 0.17, ease: "power2.in" }, b(30) - 0.18);
+
+  // ---- S4 end card (timer keeps running to 0:15.0) ----
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, b(30) + 0.04);
+  glint("#eye4", b(30) + 0.14, 2, true);
+  KZ.rise(tl, "#endUrl", b(31), 0.35, 30);
+  KZ.rise(tl, "#endAsk", b(32), 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, b(32));
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

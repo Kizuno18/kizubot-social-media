@@ -1,0 +1,30 @@
+{
+  "id": "137",
+  "slug": "dois-meses",
+  "family": "Plot Twist",
+  "title": "Ele farmou por 2 meses. O que ele fez com 1.5kkk?",
+  "concept": "Film in two chapters: a calendar fills 60 days ('2 meses de KizuBot'), the balance lands at 1.5kkk, 'E o que ele fez com isso?'; then the letterbox opens on the evidence table: the real print plus a verbatim transcript, 'Com os 1.5kkk montei rotação ice pb full com Tm burst' = the whole rotation.",
+  "neuro": ["narrative-transport", "curiosity-gap", "anchoring", "satisfying-progress", "social-proof", "peak-end", "comment-prompt"],
+  "hook": "ELE FARMOU POR 2 MESES.",
+  "duration": 18.0,
+  "music": {"style": "epic", "bpm": 84, "note": "slower epic: intro, break under the calendar, build under '1.5kkk', silence, drop on the evidence"},
+  "assets": ["kit/img/prints/2-meses-1-5kkk.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": ["100% AFK", "uso com PC desligado"],
+  "platforms": {
+    "tiktok": {
+      "caption": "Ele farmou por 2 meses 🎬 No fim: 1.5kkk. E o que ele fez com isso? \"Com os 1.5kkk montei rotação ice pb full com Tm burst\" (print real de cliente). Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#rotacao", "#plottwist"]
+    },
+    "youtube": {
+      "title": "Ele farmou por 2 meses... e montou a rotação inteira",
+      "description": "Print real de cliente: \"2 meses de Kizu, farmei 1.5kkk / Com os 1.5kkk montei rotação ice pb full com Tm burst\". O KizuBot farma 100% AFK, com o PC desligado, e você acompanha pelo celular. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Ele farmou por 2 meses e montou a rotação inteira 🎬 (print real de cliente) Que rotação você montaria? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#rotacao"]
+    }
+  },
+  "pinned_comment": "Que rotação você montaria? ❄️",
+  "notes": "Concept setup lines 'Sem pressa.' / 'Deixou o bot trabalhar.' aren't in the print, so they became the literal '2 meses de KizuBot.' (print: '2 meses de Kizu'), 'No fim do segundo mês: 1.5kkk' and 'E o que ele fez com isso?'. The source print's text is small, so the twist pairs the print with a typeset transcript of the key line, verbatim. 1.5kkk is in-game currency from the print (no real money). Source named 2-meses-1-5kkk.png; used the asset editor's 2-meses-1-5kkk.png."
+}

@@ -1,0 +1,51 @@
+/* KizuBot motion kit: every font is OFL/Apache (Google Fonts) or from the starter kit (OFL). */
+@font-face { font-family: "Archivo Black"; src: url("/kit/fonts/ArchivoBlack-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Bricolage Grotesque"; src: url("/kit/fonts/BricolageGrotesque-800.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: block; }
+@font-face { font-family: "Inter"; src: url("/kit/fonts/inter-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Inter"; src: url("/kit/fonts/inter-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: block; }
+@font-face { font-family: "Inter"; src: url("/kit/fonts/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: block; }
+@font-face { font-family: "Inter"; src: url("/kit/fonts/inter-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Inter"; src: url("/kit/fonts/inter-latin-800-normal.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: block; }
+@font-face { font-family: "Inter"; src: url("/kit/fonts/inter-latin-900-normal.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: block; }
+@font-face { font-family: "Inter"; src: url("/kit/fonts/inter-latin-500-italic.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: block; }
+@font-face { font-family: "Inter"; src: url("/kit/fonts/inter-latin-600-italic.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: block; }
+@font-face { font-family: "Instrument Serif"; src: url("/kit/fonts/InstrumentSerif-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Instrument Serif"; src: url("/kit/fonts/InstrumentSerif-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: block; }
+@font-face { font-family: "JetBrains Mono"; src: url("/kit/fonts/JetBrainsMono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Space Grotesk"; src: url("/kit/fonts/space-grotesk-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Space Grotesk"; src: url("/kit/fonts/SpaceGrotesk-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: block; }
+@font-face { font-family: "Space Grotesk"; src: url("/kit/fonts/SpaceGrotesk-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Anton"; src: url("/kit/fonts/anton-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Poppins"; src: url("/kit/fonts/Poppins-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Poppins"; src: url("/kit/fonts/Poppins-ExtraBold.ttf") format("truetype"); font-weight: 800; font-style: normal; font-display: block; }
+@font-face { font-family: "Audiowide"; src: url("/kit/fonts/audiowide-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Baloo 2"; src: url("/kit/fonts/baloo-2-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Baloo 2"; src: url("/kit/fonts/baloo-2-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Bangers"; src: url("/kit/fonts/bangers-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Bodoni Moda"; src: url("/kit/fonts/bodoni-moda-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Bodoni Moda"; src: url("/kit/fonts/bodoni-moda-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Caveat"; src: url("/kit/fonts/caveat-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Caveat"; src: url("/kit/fonts/caveat-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Chakra Petch"; src: url("/kit/fonts/chakra-petch-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: block; }
+@font-face { font-family: "Chakra Petch"; src: url("/kit/fonts/chakra-petch-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Cinzel"; src: url("/kit/fonts/cinzel-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Cinzel"; src: url("/kit/fonts/cinzel-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Cormorant Garamond"; src: url("/kit/fonts/cormorant-garamond-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Cormorant Garamond"; src: url("/kit/fonts/cormorant-garamond-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Creepster"; src: url("/kit/fonts/creepster-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Fredoka"; src: url("/kit/fonts/fredoka-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Fredoka"; src: url("/kit/fonts/fredoka-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Monoton"; src: url("/kit/fonts/monoton-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Orbitron"; src: url("/kit/fonts/orbitron-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Orbitron"; src: url("/kit/fonts/orbitron-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Permanent Marker"; src: url("/kit/fonts/permanent-marker-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Press Start 2P"; src: url("/kit/fonts/press-start-2p-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Rajdhani"; src: url("/kit/fonts/rajdhani-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: block; }
+@font-face { font-family: "Rajdhani"; src: url("/kit/fonts/rajdhani-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Saira Stencil One"; src: url("/kit/fonts/saira-stencil-one-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Sora"; src: url("/kit/fonts/sora-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Sora"; src: url("/kit/fonts/sora-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Special Elite"; src: url("/kit/fonts/special-elite-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Teko"; src: url("/kit/fonts/teko-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Teko"; src: url("/kit/fonts/teko-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "VT323"; src: url("/kit/fonts/vt323-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }

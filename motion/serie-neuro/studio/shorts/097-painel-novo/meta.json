@@ -1,0 +1,36 @@
+{
+  "id": "097",
+  "slug": "painel-novo",
+  "family": "Novidade no KizuBot",
+  "title": "O painel do KizuBot mudou",
+  "concept": "Patch-notes episode on the 05/09/2026 new panel: a brand-styled panel illustration reskins on the beat (guiado → slim → compacto → tema terminal with the real '> KIZUBOT_SYSTEM.INIT()' line), 12 redone screens flip in, the Home key toggles the bot ON/OFF on the drop, the phone panel gets bigger buttons, and a real customer print about new settings closes before the end card.",
+  "neuro": ["novelty", "authority", "visible-progress", "anticipation-drop", "satisfying-micro-motion", "social-proof", "loop", "comment-prompt"],
+  "hook": "O PAINEL DO KIZUBOT MUDOU.",
+  "duration": 21.29,
+  "music": {"style": "house", "bpm": 124},
+  "assets": ["kit/img/prints/configuracoes-novas-espetacular.png", "kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": [
+    "12 telas de configuração refeitas com explicações mais claras — changelog 05/09/2026",
+    "caminho guiado pra iniciantes; estilos guiado e slim; modos padrão e compacto; tema terminal — changelog 05/09/2026",
+    "tecla Home liga e desliga o bot — changelog 05/09/2026",
+    "painel no celular com botões maiores — changelog 05/09/2026",
+    "print real de cliente: \"as configuracoes novas ficaram dahora demais\" (verbatim)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "O painel do KizuBot mudou 🎨 12 telas refeitas, estilo guiado pra quem tá começando, slim, compacto, tema terminal, tecla Home liga e desliga o bot e botões maiores no celular. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#afk", "#novidade"]
+    },
+    "youtube": {
+      "title": "O painel do KizuBot mudou: guiado, slim, compacto e terminal",
+      "description": "Novidade no KizuBot (atualização de 05/09/2026): as 12 telas de configuração foram refeitas com explicações mais claras, caminho guiado pra iniciantes, estilos guiado e slim, modos padrão e compacto, tema terminal, tecla Home pra ligar/desligar o bot e botões maiores no celular. O painel no vídeo é uma ilustração. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "O painel do KizuBot mudou 🎨 Guiado, slim, compacto ou tema terminal — e a tecla Home liga e desliga o bot. Qual estilo você usaria? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#novidade"]
+    }
+  },
+  "pinned_comment": "Qual estilo você usaria? 🎨",
+  "notes": "The panel is a generic brand-styled illustration labelled 'ilustração' (BRIEF: site panel screenshots are old UI). Concept print configuracoes-novas-espetacular.png maps to ASSETS slug configuracoes-novas-espetacular.png; the print is about new combat settings (targets after revive, moves after the 2nd creature), not provably about the 05/09/2026 redesign, so it is shown in full (context visible), tagged 'print real de cliente', quoted verbatim, and never captioned as a reaction to the new panel. 'caminho guiado pra quem tá começando' became the label 'estilo guiado' + caption 'pra quem tá começando'. Hook card kept at 5 words. Loop bridge returns to the hook."
+}

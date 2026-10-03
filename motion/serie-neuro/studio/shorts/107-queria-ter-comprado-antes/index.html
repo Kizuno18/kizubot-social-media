@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>107 Queria ter comprado antes</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F14 PROVA REAL — "Pop Bold" system, episode 107 (dominant = pink, lime quote blocks, marker correction) ===== */
+  :root { --dom: #ff4fd8; --lime: #c6ff3d; --purple: #8a3cff; --ink: #111111; --paper: #ffffff; }
+  #root { background: var(--dom); }
+  .pb-bg { position: absolute; inset: 0; background: var(--dom); }
+  .pb-dots { position: absolute; inset: -200px; background-image: radial-gradient(rgba(17, 17, 17, 0.14) 3px, transparent 3.5px); background-size: 34px 34px; }
+  .pb-blob { position: absolute; border: 5px solid var(--ink); }
+  .pb-chip { display: inline-block; background: var(--ink); color: var(--lime); font: 800 34px "Bricolage Grotesque", sans-serif; letter-spacing: 0.06em;
+    padding: 12px 24px 14px; border-radius: 14px; text-transform: uppercase; }
+  .pb-sticker { position: absolute; display: block; }
+  .pb-sticker svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .pb-sticker .lbl { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center;
+    font: 800 30px/1.0 "Bricolage Grotesque", sans-serif; color: #fff; text-transform: uppercase; }
+
+  /* hook */
+  .pb-hook { position: absolute; left: 90px; right: 90px; top: 280px; height: 640px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; }
+  .hk-a { font: 800 140px/1.05 "Bricolage Grotesque", sans-serif; color: var(--ink); display: block; letter-spacing: -0.02em; }
+  .hk-b { position: relative; display: block; font: 800 176px/1.08 "Bricolage Grotesque", sans-serif; color: #fff; background: var(--purple); border: 6px solid var(--ink);
+    border-radius: 24px; box-shadow: 12px 12px 0 var(--ink); padding: 0 40px 10px; letter-spacing: -0.03em; }
+  .hk-c { font: 800 104px/1.08 "Bricolage Grotesque", sans-serif; color: var(--ink); display: block; letter-spacing: -0.02em; margin-top: 18px; }
+
+  /* quote blocks */
+  .qzone { position: absolute; left: 90px; right: 120px; top: 250px; height: 320px; }
+  .q { position: absolute; left: 0; top: 0; display: block; background: var(--lime); color: var(--ink); border: 5px solid var(--ink); border-radius: 26px; box-shadow: 12px 12px 0 var(--ink);
+    padding: 22px 32px 26px; font: 800 70px/1.12 "Bricolage Grotesque", sans-serif; letter-spacing: -0.02em; opacity: 0; max-width: 880px; }
+  .q .tail { position: absolute; left: 70px; bottom: -34px; width: 50px; height: 34px; }
+  .strike { position: relative; display: inline-block; }
+  .strike .ln { position: absolute; left: -4px; right: -4px; top: 52%; height: 9px; background: #e8132b; border-radius: 4px; transform-origin: 0 50%; }
+  .fix { position: absolute; left: -6px; top: -78px; font: 400 84px/1 "Permanent Marker", "Caveat", cursive; color: #4b0fb8; white-space: nowrap; transform-origin: 0 100%;
+    -webkit-text-stroke: 8px #fff; paint-order: stroke fill; }
+  .mk { background-image: linear-gradient(transparent 60%, #fff 60%, #fff 92%, transparent 92%); background-repeat: no-repeat; background-size: 0% 100%; }
+  .mk2 { background-image: linear-gradient(transparent 60%, var(--lime) 60%, var(--lime) 92%, transparent 92%); background-repeat: no-repeat; background-size: 0% 100%; }
+
+  /* cards */
+  .pb-card { position: absolute; left: 96px; width: 780px; background: var(--paper); border: 5px solid var(--ink); border-radius: 30px; box-shadow: 14px 14px 0 var(--ink); padding: 14px; }
+  .vp { position: relative; overflow: hidden; border-radius: 18px; background: #161717; }
+  .vp img { display: block; width: 100%; }
+  .hlb { position: absolute; border: 6px solid var(--lime); border-radius: 12px; box-shadow: 0 0 0 4px var(--ink); transform-origin: 0% 50%; opacity: 0; }
+  .tab { position: absolute; left: 30px; top: -28px; background: var(--ink); color: #fff; font: 800 30px "Bricolage Grotesque", sans-serif; letter-spacing: 0.05em;
+    padding: 8px 20px 10px; border-radius: 12px; text-transform: uppercase; z-index: 3; white-space: nowrap; }
+  .rehook { position: absolute; left: 90px; right: 90px; top: 520px; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .rh { font: 800 150px/1.06 "Bricolage Grotesque", sans-serif; color: var(--ink); display: block; letter-spacing: -0.03em; opacity: 0; }
+  .rh2 { font: 800 150px/1.06 "Bricolage Grotesque", sans-serif; color: #fff; background: var(--ink); padding: 0 30px 10px; border-radius: 20px; display: block; letter-spacing: -0.03em; opacity: 0; }
+
+  .peak { position: absolute; left: 90px; right: 120px; top: 330px; height: 900px; }
+
+  .claim { position: absolute; left: 96px; display: inline-block; background: #111; color: #c6ff3d; font: 800 56px/1 "Bricolage Grotesque", sans-serif; padding: 14px 26px 18px; border-radius: 16px; letter-spacing: -0.01em; opacity: 0; white-space: nowrap; }
+  /* end card */
+  .pb-end-bg { position: absolute; inset: 0; background: var(--ink); }
+  .pb-end-dots { position: absolute; inset: -100px; background-image: radial-gradient(rgba(255, 79, 216, 0.14) 3px, transparent 3.5px); background-size: 34px 34px; }
+  .eye { position: absolute; width: 100px; height: 100px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .pb-ask { font: 800 70px/1.1 "Bricolage Grotesque", sans-serif; color: #fff; max-width: 820px; }
+  .pb-ask b { color: var(--dom); }
+  .pb-url { font: 800 64px "Bricolage Grotesque", sans-serif; color: #fff; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  #wipe { position: absolute; left: 540px; top: 960px; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--ink); z-index: 40; opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="15.69" data-fps="30">
+  <div class="pb-bg"></div>
+  <div class="pb-dots" id="dots"></div>
+  <div class="pb-blob" id="blobA" style="left:-150px; top:1300px; width:380px; height:380px; border-radius:50%; background: var(--lime);"></div>
+  <div class="pb-blob" id="blobB" style="right:-90px; top:150px; width:240px; height:240px; border-radius:40px; background: var(--purple);"></div>
+
+  <!-- HOOK 0 – b4 -->
+  <section id="s0" class="clip" data-start="0" data-duration="1.846">
+    <div class="pb-hook" id="hk">
+      <span class="pb-chip" id="bug" style="margin-bottom: 18px">Prova real</span>
+      <span class="hk-a" id="hka">ELE</span>
+      <span class="hk-b" id="hkb">QUERIA*</span>
+      <span class="hk-c" id="hkc">TER COMPRADO ANTES.</span>
+    </div>
+  </section>
+
+  <!-- PRINT A b4 – b13 -->
+  <section id="s1" class="clip" data-start="1.846" data-duration="4.154">
+    <div class="qzone">
+      <div class="q" id="qa" style="top:70px">“eu <span class="strike" id="stq">quero<span class="ln" id="stl"></span><span class="fix" id="fix">queria*</span></span> mt ter comprado isso antes”<svg class="tail" viewBox="0 0 50 34"><polygon points="0,0 50,0 6,34" fill="#c6ff3d" stroke="#111" stroke-width="5" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="pb-card" id="cardA" style="top:640px">
+      <div class="tab">print real de cliente</div>
+      <div class="vp"><img src="kit/img/prints/queria-ter-comprado-antes--quote.png" alt="" />
+        <div class="hlb" id="ha1" style="left:1%; top:1%; width:30%; height:14%"></div>
+        <div class="hlb" id="ha2" style="left:1%; top:17%; width:90%; height:20%"></div>
+        <div class="hlb" id="ha3" style="left:1%; top:45%; width:98%; height:23%"></div>
+        <div class="hlb" id="ha4" style="left:1%; top:76%; width:28%; height:20%"></div>
+      </div>
+      <div class="pb-sticker" id="stA" style="right:-50px; top:-74px; width:180px; height:180px;">
+        <svg viewBox="-50 -50 100 100"><polygon id="starA" fill="#8a3cff" stroke="#111" stroke-width="3.5" stroke-linejoin="round" points=""/></svg>
+        <div class="lbl"><span style="display:block">print<span style="display:block">real</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RE-HOOK b13 – b15 -->
+  <section id="s2" class="clip" data-start="6" data-duration="0.923">
+    <div class="rehook"><span class="rh" id="rh1">E NÃO FOI</span><span class="rh2" id="rh2">SÓ ELE.</span></div>
+  </section>
+
+  <!-- PRINT B b15 – b22 -->
+  <section id="s3" class="clip" data-start="6.923" data-duration="3.231">
+    <div class="qzone">
+      <div class="q" id="qb" style="top:70px; background:#fff">“como não peguei esse BOT antes?”<svg class="tail" viewBox="0 0 50 34"><polygon points="0,0 50,0 6,34" fill="#fff" stroke="#111" stroke-width="5" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="pb-card" id="cardB" style="top:700px">
+      <div class="tab">prints reais de clientes diferentes</div>
+      <div class="vp" style="height:214px; background:#3b1730"><div id="pbz" style="position:absolute; left:0; top:0; width:1113px"><img src="kit/img/prints/mato-sem-player-q-paz.png" alt="" style="width:1113px" />
+        <div class="hlb" id="hb1" style="left:0.5%; top:33%; width:9%; height:24%"></div>
+        <div class="hlb" id="hb2" style="left:0.5%; top:60%; width:37%; height:28%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEAK b22 – b28 : the same word, twice -->
+  <section id="s4" class="clip" data-start="10.154" data-duration="2.769">
+    <div class="peak">
+      <div class="q" id="pa" style="top:40px; font-size:64px">“eu <span class="strike">quero<span class="ln" style="transform:none"></span><span class="fix" style="font-size:66px; top:-62px">queria*</span></span> mt ter comprado isso <span class="mk" id="pk1">antes</span>”</div>
+      <div class="q" id="pb" style="top:420px; font-size:64px; background:#fff">“como não peguei esse BOT <span class="mk2" id="pk2">antes</span>?”</div>
+      <div class="pb-chip" id="pchip" style="position:absolute; left:0; top:700px; opacity:0">prints reais de clientes diferentes</div>
+    </div>
+    <div class="claim" id="claim" style="top:1150px">o bot farma 100% AFK</div>
+  </section>
+
+  <!-- END b28 – D -->
+  <section id="se" class="clip" data-start="12.923" data-duration="2.767">
+    <div class="pb-end-bg"></div>
+    <div class="pb-end-dots" id="edots"></div>
+    <div class="kz-end" id="sein">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px"></div>
+      </div>
+      <div class="pb-url" id="endUrl">kizubot.com</div>
+      <div class="pb-ask" id="endAsk">Quanto tempo você perdeu <b>farmando na mão?</b></div>
+    </div>
+  </section>
+
+  <div id="wipe"></div>
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 15.69;
+  const B = 60 / 130;
+  const b = (n) => n * B;
+
+  function starPts(n, r1, r2) {
+    const p = [];
+    for (let i = 0; i < n * 2; i++) { const r = i % 2 ? r2 : r1, a = (Math.PI * i) / n - Math.PI / 2; p.push((Math.cos(a) * r).toFixed(2) + "," + (Math.sin(a) * r).toFixed(2)); }
+    return p.join(" ");
+  }
+  document.getElementById("starA").setAttribute("points", starPts(14, 48, 36));
+
+  KZ.drift(tl, "#dots", D, 30, 40, 4.6);
+  tl.fromTo("#blobA", { rotation: 0 }, { rotation: 50, duration: D, ease: "sine.inOut" }, 0);
+  tl.fromTo("#blobB", { rotation: 8, y: 0 }, { rotation: -8, y: 50, duration: b(4), ease: "sine.inOut", yoyo: true, repeat: Math.floor(D / b(4)) - 1 }, 0);
+
+  function hl(id, at) { tl.fromTo(id, { scaleX: 0, opacity: 1 }, { scaleX: 1, opacity: 1, duration: 0.3, ease: "power2.out" }, at); }
+  function mark(id, at) { tl.fromTo(id, { backgroundSize: "0% 100%" }, { backgroundSize: "100% 100%", duration: 0.4, ease: "power2.out" }, at); }
+  function qIn(id, at) { tl.fromTo(id, { scale: 0.6, opacity: 0, rotation: -5 }, { scale: 1, opacity: 1, rotation: -1.5, duration: 0.36, ease: "back.out(2.2)" }, at); }
+
+  // ---------- HOOK ----------
+  tl.fromTo("#hkb", { scale: 1.05, rotation: -5 }, { scale: 1, rotation: -3, duration: 0.3, ease: "power4.out" }, 0);
+  tl.fromTo("#hka", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "power3.out" }, 0.04);
+  tl.fromTo("#hkc", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.24, ease: "power3.out" }, 0.14);
+  tl.fromTo("#bug", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 0.2);
+  KZ.shake(tl, "#hk", b(1), 10, 0.22, 4);
+  tl.to("#hk", { scale: 1.04, duration: b(2.4), ease: "sine.inOut" }, b(1.2));
+  tl.to("#hk", { y: -900, duration: 0.24, ease: "power3.in" }, b(4) - 0.24);
+
+  // ---------- PRINT A ----------
+  const A = b(4);
+  tl.fromTo("#cardA", { y: 1200, rotation: -9 }, { y: 0, rotation: -1.5, duration: 0.45, ease: "power4.out" }, A);
+  tl.fromTo("#stA", { scale: 0, rotation: -120 }, { scale: 1, rotation: 0, duration: 0.42, ease: "back.out(2.2)" }, A + b(0.8));
+  tl.to("#stA", { rotation: 80, duration: 4, ease: "none" }, A + b(0.8) + 0.42);
+  hl("#ha1", b(5)); hl("#ha2", b(5.5));
+  hl("#ha3", b(6.5));
+  qIn("#qa", b(6.5));
+  tl.to("#cardA", { scale: 1.04, duration: b(3), ease: "sine.inOut" }, b(6.5));
+  // the self-correction: queria*
+  hl("#ha4", b(9));
+  tl.fromTo("#stl", { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "power2.out" }, b(9.2));
+  tl.fromTo("#fix", { scale: 0, rotation: -12, opacity: 0 }, { scale: 1, rotation: -6, opacity: 1, duration: 0.36, ease: "back.out(3)" }, b(9.5));
+  KZ.shake(tl, "#qa", b(9.5) + 0.25, 8, 0.2, 21);
+  tl.to(["#qa", "#cardA"], { x: -1100, duration: 0.22, ease: "power3.in" }, b(13) - 0.22);
+
+  // ---------- RE-HOOK ----------
+  tl.fromTo("#rh1", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, b(13));
+  tl.fromTo("#rh2", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.3, ease: "back.out(2.4)" }, b(13.6));
+  tl.to(["#rh1", "#rh2"], { y: -60, opacity: 0, duration: 0.14, ease: "power2.in" }, b(15) - 0.14);
+
+  // ---------- PRINT B ----------
+  const Bs = b(15);
+  tl.fromTo("#cardB", { y: 1200, rotation: 8 }, { y: 0, rotation: 1.5, duration: 0.45, ease: "power4.out" }, Bs);
+  hl("#hb1", b(16.2));
+  hl("#hb2", b(16.8));
+  qIn("#qb", b(16.8));
+  tl.fromTo("#pbz", { x: 0, scale: 1 }, { x: -10, scale: 1.04, duration: 2.2, ease: "sine.inOut" }, b(16));
+  tl.to(["#qb", "#cardB"], { y: -80, opacity: 0, duration: 0.2, ease: "power2.in" }, b(22) - 0.2);
+
+  // ---------- PEAK: the same word, twice ----------
+  const P = b(22);
+  tl.fromTo("#pa", { x: -900, rotation: -6 }, { x: 0, rotation: -1.5, opacity: 1, duration: 0.36, ease: "power4.out" }, P);
+  tl.fromTo("#pb", { x: 900, rotation: 6 }, { x: 0, rotation: 1.5, opacity: 1, duration: 0.36, ease: "power4.out" }, P + b(0.5));
+  mark("#pk1", b(23.3));
+  mark("#pk2", b(23.8));
+  tl.fromTo("#pchip", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, b(24.4));
+  tl.to(["#pa", "#pb"], { scale: 1.04, duration: b(3), ease: "sine.inOut" }, b(24));
+  tl.fromTo("#claim", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: "back.out(2)" }, b(25.2));
+  tl.fromTo("#wipe", { scale: 0, opacity: 1 }, { scale: 460, opacity: 1, duration: 0.42, ease: "power3.in" }, b(28) - 0.42);
+  tl.to("#wipe", { opacity: 0, duration: 0.01 }, b(28) + 0.02);
+
+  // ---------- END ----------
+  const E = b(28);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, E + 0.04);
+  KZ.eyePulse(tl, "#eye2", E + 0.14, 3);
+  KZ.rise(tl, "#endUrl", E + 0.42, 0.35, 30);
+  KZ.rise(tl, "#endAsk", E + 0.75, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, E + 0.6);
+  KZ.drift(tl, "#edots", D, 20, 30, 3);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

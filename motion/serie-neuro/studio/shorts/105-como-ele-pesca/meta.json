@@ -1,0 +1,35 @@
+{
+  "id": "105",
+  "slug": "como-ele-pesca",
+  "family": "Raio-X",
+  "title": "Como o KizuBot pesca",
+  "concept": "Blueprint FIG. 5: a fishing rod traces itself on drafting paper and five numbered callouts walk through the cycle — the reel picks one of the 6 real fishing modes, the bobber waits, the bite (music drop) and the pull at the moment of the bite, the minigame gets solved, and the cycle repeats on its own — closing on 'Pesca no AFK.'",
+  "neuro": ["curiosity-gap", "picture-superiority", "competence", "visible-progress", "anticipation-drop", "humor", "loop", "comment-prompt"],
+  "hook": "COMO O KIZUBOT PESCA.",
+  "duration": 19.2,
+  "music": {"style": "synthwave", "bpm": 100},
+  "assets": ["kit/img/brand/kizubot-logo.png"],
+  "claims": [
+    "modos de pesca: padrão, visão direta, água limpa, céu aberto, mesmo andar, agressivo — changelog 23/05/2026",
+    "módulo Fishing: modos e tempo da fisgada (hook timing)",
+    "minigames (incl. pesca) mais confiáveis — changelog 23/05/2026",
+    "pesca no AFK (100% AFK)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Como o KizuBot pesca? 🎣 Escolhe o modo, espera a fisgada, puxa na hora certa da fisgada, resolve o minigame e repete sozinho. Pesca no AFK. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#pesca", "#afk"]
+    },
+    "youtube": {
+      "title": "Como o KizuBot pesca? (raio-x da pesca no AFK) 🎣",
+      "description": "Raio-X da pesca do KizuBot: escolhe um dos 6 modos (padrão, visão direta, água limpa, céu aberto, mesmo andar, agressivo), espera a fisgada, puxa na hora da fisgada, resolve o minigame e repete sozinho. Pesca no AFK. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Como o KizuBot pesca? 🎣 Modo, espera, fisgada, minigame e repete — sozinho. Pesca no AFK. Pesca na mão: paciência ou sofrimento? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#pesca"]
+    }
+  },
+  "pinned_comment": "Pesca na mão: paciência ou sofrimento? 🎣",
+  "notes": "Hook changed from 'COMO ELE PESCA.' to 'COMO O KIZUBOT PESCA.' after the first render: 'ele' was ambiguous for cold viewers and the only early brand cue was the decorative title block. Step 3 reworded from 'puxa no tempo certo, com delay humanizado' to 'puxa na hora da fisgada': BRIEF documents hook timing as a Fishing setting and humanization in general, but not a humanized fishing delay. Step 4 says 'resolve o minigame' (the pesca minigame is in the 23/05/2026 reliability update); step 5 'e repete sozinho'. Music drop on the bite. Loop bridge returns to the hook."
+}

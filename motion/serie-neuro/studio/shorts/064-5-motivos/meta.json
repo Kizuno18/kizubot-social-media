@@ -1,0 +1,65 @@
+{
+  "id": "064",
+  "slug": "5-motivos",
+  "family": "Top 5",
+  "title": "5 motivos pra parar de farmar na mão",
+  "concept": "A loss list rendered as an RPG HP bar ('SUA VIDA') that takes damage with every reason to stop farming by hand (sono, trabalho, família, o shiny do banheiro) until #1, the shiny that blinked while the customer was AFK, where the real print flips it: the KizuBot caught the Shiny Muk anyway and the bar refills in lime.",
+  "neuro": [
+    "loss-aversion",
+    "open-loop",
+    "humor",
+    "self-reference",
+    "visible-progress",
+    "contrast",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "5 MOTIVOS PRA PARAR DE FARMAR NA MÃO.",
+  "duration": 19.35,
+  "music": {
+    "style": "house",
+    "bpm": 124
+  },
+  "assets": [
+    "kit/img/prints/shiny-muk--card.png",
+    "kit/img/prints/shiny-muk--quote.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "detecção de shinys, megas e bosses"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "5 motivos pra parar de farmar na mão 😵 O #1 dói: o shiny que piscou com você AFK. Mas o KizuBot pegou (print real de cliente). Qual motivo é o seu? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk",
+        "#farm"
+      ]
+    },
+    "youtube": {
+      "title": "5 motivos pra parar de farmar na mão 😵",
+      "description": "Seu sono, seu trabalho, sua família, o shiny do banheiro... e o #1: o shiny que piscou enquanto você tava AFK. No print real, o cliente não viu piscar, mas o KizuBot pegou o Shiny Muk. Farm 100% AFK com detecção de shiny. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "5 motivos pra parar de farmar na mão 😵 O #1 é o shiny que pisca quando você tá AFK. Qual motivo é o seu? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk"
+      ]
+    }
+  },
+  "pinned_comment": "Qual motivo é o seu? 👇",
+  "notes": "#2 label shortened to 'O SHINY DO BANHEIRO' with subtitle 'nasce justo quando você levanta' (humor, no statistic). #1 label 'O SHINY QUE PISCOU COM VOCÊ AFK' (concept: 'o shiny que pisca enquanto você tá AFK'). The HP bar percentages are a game-HUD joke, not data. Twist line 'MAS O KIZUBOT PEGOU.' over the real Shiny Muk card + quote ('pena que n vi piscar' / 'tava afk')."
+}

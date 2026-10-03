@@ -1,0 +1,196 @@
+{
+ "duration": 18,
+ "style": "chiptune",
+ "bpm": 180,
+ "seed": 128,
+ "sections": [
+  {
+   "at": 0.0,
+   "type": "groove"
+  },
+  {
+   "at": 1.333,
+   "type": "build"
+  },
+  {
+   "at": 5.333,
+   "type": "groove",
+   "energy": 0.8
+  },
+  {
+   "at": 8.0,
+   "type": "build"
+  },
+  {
+   "at": 9.333,
+   "type": "drop"
+  },
+  {
+   "at": 14.667,
+   "type": "outro"
+  }
+ ],
+ "stops": [
+  {
+   "at": 5.033,
+   "len": 0.3
+  },
+  {
+   "at": 9.0,
+   "len": 0.333
+  }
+ ],
+ "sfx": [
+  {
+   "t": 0.0,
+   "name": "impact",
+   "gain": -6
+  },
+  {
+   "t": 0.0,
+   "name": "glitch",
+   "gain": -13
+  },
+  {
+   "t": 0.12,
+   "name": "pop2",
+   "gain": -10
+  },
+  {
+   "t": 0.667,
+   "name": "pop",
+   "gain": -10
+  },
+  {
+   "t": 0.667,
+   "name": "whoosh_fast",
+   "gain": -13
+  },
+  {
+   "t": 1.333,
+   "name": "clock",
+   "gain": -5
+  },
+  {
+   "t": 1.333,
+   "name": "tick2",
+   "gain": -11
+  },
+  {
+   "t": 2.333,
+   "name": "clock",
+   "gain": -5
+  },
+  {
+   "t": 2.333,
+   "name": "tick2",
+   "gain": -11
+  },
+  {
+   "t": 3.333,
+   "name": "clock",
+   "gain": -5
+  },
+  {
+   "t": 3.333,
+   "name": "tick2",
+   "gain": -11
+  },
+  {
+   "t": 3.333,
+   "name": "glitch",
+   "gain": -15
+  },
+  {
+   "t": 4.333,
+   "name": "clock",
+   "gain": -5
+  },
+  {
+   "t": 4.333,
+   "name": "tick2",
+   "gain": -11
+  },
+  {
+   "t": 5.333,
+   "name": "wrong",
+   "gain": -9
+  },
+  {
+   "t": 5.85,
+   "name": "whoosh_down",
+   "gain": -11
+  },
+  {
+   "t": 5.95,
+   "name": "riser_short",
+   "gain": -12
+  },
+  {
+   "t": 6.733,
+   "name": "sparkle",
+   "gain": -6
+  },
+  {
+   "t": 6.78,
+   "name": "right",
+   "gain": -7
+  },
+  {
+   "t": 6.833,
+   "name": "pop",
+   "gain": -10
+  },
+  {
+   "t": 7.8,
+   "name": "whoosh_fast",
+   "gain": -12
+  },
+  {
+   "t": 8.0,
+   "name": "snap",
+   "gain": -8
+  },
+  {
+   "t": 9.333,
+   "name": "impact",
+   "gain": -5
+  },
+  {
+   "t": 9.333,
+   "name": "alert",
+   "gain": -4
+  },
+  {
+   "t": 9.55,
+   "name": "whoosh",
+   "gain": -12
+  },
+  {
+   "t": 9.833,
+   "name": "pop",
+   "gain": -12
+  },
+  {
+   "t": 11.0,
+   "name": "swoosh_hit",
+   "gain": -9
+  },
+  {
+   "t": 12.0,
+   "name": "pop2",
+   "gain": -8
+  },
+  {
+   "t": 12.04,
+   "name": "px-sparkle",
+   "gain": -13
+  },
+  {
+   "t": 14.5,
+   "name": "whoosh",
+   "gain": -11
+  }
+ ],
+ "logo": 14.707
+}

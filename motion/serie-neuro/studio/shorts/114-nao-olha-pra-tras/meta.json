@@ -1,0 +1,67 @@
+{
+  "id": "114",
+  "slug": "nao-olha-pra-tras",
+  "family": "Terror no PxG",
+  "title": "Não olha pra trás (alguém está jogando no seu lugar)",
+  "concept": "Meta-horror in a cold corridor 'behind you': while you watch this video, someone is playing in your place; footsteps, a silhouette with robot ears approaches and its single purple eye lights up; the scare is the KizuBot robot waving: 'relaxa, sou eu: tô farmando pra você', proven by a real gameplay clip.",
+  "neuro": [
+    "self-reference",
+    "arousal-suspense",
+    "benign-violation",
+    "pattern-interrupt",
+    "seasonality",
+    "picture-superiority",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "NÃO OLHA PRA TRÁS.",
+  "duration": 17.714,
+  "music": {
+    "style": "lofi",
+    "bpm": 84,
+    "note": "silent horror bed (footsteps, heartbeat, braam) -> lofi 'relaxa' groove on the reveal"
+  },
+  "assets": [
+    "kit/video/tangrowth.mp4",
+    "kit/img/brand/kizubot-robot.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "uso com PC desligado"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Não olha pra trás 👀 Enquanto você assiste esse vídeo, alguém está jogando no seu lugar... relaxa, é o KizuBot farmando pra você. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#halloween",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Não olha pra trás... alguém está jogando no seu lugar",
+      "description": "Enquanto você assiste esse vídeo, alguém está jogando no seu lugar. Relaxa: é o KizuBot farmando pra você, 100% AFK e com o PC desligado (gameplay real no vídeo). kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#halloween"
+      ]
+    },
+    "instagram": {
+      "caption": "Não olha pra trás 👀 Alguém está jogando no seu lugar... relaxa, é o KizuBot: 100% AFK, PC desligado. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#halloween"
+      ]
+    }
+  },
+  "pinned_comment": "Olhou pra trás? Confessa 😂",
+  "notes": "Kept all concept lines ('Enquanto você assiste esse vídeo…', 'alguém está jogando no seu lugar.', 'relaxa, sou eu: tô farmando pra você.'). The 'waving robot' is the official robot art rocking side to side plus a 👋 sticker (no new mascot art). Footsteps are synthesized kicks. On-screen ask is a genuine question ('Você olhou pra trás?'); the 'Confessa' joke stays in the pinned comment. Clip: kit/video/tangrowth.mp4 (ASSETS.md: originals are safe, no -safe version needed), segment 0.2–3.1 s (the catalog's 'best hook' explosion), muted, shown in a window card zoomed 1.16× to crop the screen-recorder 'X' overlay at the top."
+}

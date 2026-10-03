@@ -1,0 +1,61 @@
+{
+  "id": "094",
+  "slug": "hunt",
+  "family": "Dicionário PxG",
+  "title": "Dicionário PxG: Hunt",
+  "concept": "Dictionary entry for HUNT: caçada; 'só mais uma', dita às 3h da manhã; com cavebot, a rota que você grava uma vez e o bot repete sozinho (an etched waypoint route draws itself), with a real customer usage example ('Não morri faz uns 7 dias').",
+  "neuro": [
+    "in-group-identity",
+    "incongruity-humor",
+    "processing-fluency",
+    "competence",
+    "social-proof",
+    "comment-prompt"
+  ],
+  "hook": "HUNT",
+  "duration": 20,
+  "music": {
+    "style": "lofi",
+    "bpm": 84
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/nao-morri-faz-7-dias--quote.png"
+  ],
+  "claims": [
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Dicionário PxG: HUNT 📖 1. caçada 2. \"só mais uma\", dita às 3h da manhã 3. com cavebot: a rota que você grava uma vez e o bot repete sozinho. Qual a sua hunt favorita? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#hunt",
+        "#dicionario"
+      ]
+    },
+    "youtube": {
+      "title": "Dicionário PxG: Hunt (\"só mais uma\", às 3h da manhã) 📖",
+      "description": "HUNT, s.f. 1. Caçada. 2. No PxG: \"só mais uma\", dita às 3h da manhã. 3. Com cavebot: a rota que você grava uma vez e o bot repete sozinho. Ex.: \"Não morri faz uns 7 dias\" / \"Huntei Mawile, sableye e claydol\" (print real de cliente). kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Dicionário PxG: HUNT 📖 \"Só mais uma\", dita às 3h da manhã. Qual a sua hunt favorita? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#hunt"
+      ]
+    }
+  },
+  "pinned_comment": "Qual sua hunt favorita? 🗺️",
+  "notes": "Definition 2 quotes the series line 'Só mais uma' (our joke, not a customer quote). Example typesets 'Huntei Mawile, / sableye e claydol' (the customer's own use of 'huntei') next to nao-morri-faz-7-dias--quote. Definition 3 shows an etched waypoint route that draws itself (illustration, not UI)."
+}

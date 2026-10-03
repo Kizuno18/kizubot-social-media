@@ -1,0 +1,68 @@
+{
+  "id": "062",
+  "slug": "5-funcoes-escondidas",
+  "family": "Top 5",
+  "title": "5 funções do KizuBot que quase ninguém conhece",
+  "concept": "A declassified-file countdown of five lesser-known KizuBot features (streamer mode, replying to PMs from Telegram, Offline Cam replays at up to 8x, KizuAI with sources, alarms on the smartwatch), each unredacted on the beat, with real customer prints for #4 and #1 and labelled illustrations for the rest.",
+  "neuro": [
+    "open-loop",
+    "curiosity-gap",
+    "novelty",
+    "visible-progress",
+    "authority",
+    "picture-superiority",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "5 FUNÇÕES QUE QUASE NINGUÉM CONHECE (DO KIZUBOT).",
+  "duration": 21.29,
+  "music": {
+    "style": "house",
+    "bpm": 124
+  },
+  "assets": [
+    "kit/img/prints/responder-pm-pelo-telegram.png",
+    "kit/img/prints/smartwatch-alarm--watch.jpg",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "alarmes no celular e notificações no WhatsApp",
+    "modo streamer (changelog 2026-03-30)",
+    "Offline Cam 1x/2x/4x/8x (changelog 2026-09-05)",
+    "KizuAI mostra as fontes (changelog 2026-04-20)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "5 funções do KizuBot que quase ninguém conhece 👀 A #1 vai no pulso ⌚ Qual dessas você não conhecia? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk",
+        "#top5"
+      ]
+    },
+    "youtube": {
+      "title": "5 funções do KizuBot que quase ninguém conhece 👀",
+      "description": "Modo streamer que esconde os nicks, responder PM pelo Telegram, Offline Cam pra rever a hunt em até 8x, KizuAI que mostra as fontes e o alarme que chega até no relógio (print real de cliente). Tudo 100% AFK. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "5 funções do KizuBot que quase ninguém conhece 👀 A #1 chega até no relógio ⌚ Qual dessas você não conhecia? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk"
+      ]
+    }
+  },
+  "pinned_comment": "Qual dessas você não conhecia? 👀",
+  "notes": "Hook rewritten as '5 FUNÇÕES QUE QUASE NINGUÉM CONHECE' + 'DO KIZUBOT' card (≤ 6 words each). #5 streamer mode described as 'esconde os nicks na tela' (research brief: masks nicks). #4 quote trimmed verbatim to 'nem imagino como fizeram isso'; print pans across the real line. #5/#3/#2 use brand-styled illustrations clearly tagged 'ilustração' (no panel screenshots). #1 uses the smartwatch photo (smartwatch-alarm--watch.jpg, source smartwatch-alarm.jpg). #4 and #1 come from different customers: #1's tag reads 'print real de outro cliente'. The Telegram strip is shown at 1.5x and panned (1080x150 source)."
+}

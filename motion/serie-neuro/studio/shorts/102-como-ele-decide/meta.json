@@ -1,0 +1,34 @@
+{
+  "id": "102",
+  "slug": "como-ele-decide",
+  "family": "Raio-X",
+  "title": "Como o bot decide o que fazer",
+  "concept": "Blueprint decision ladder from the 21/02/2026 changelog: a decision token drops from the robot's eye down a rail and lights each priority in order (loot → catch → tall grass → bush, madeira e minério → headbutt → andar a rota), then two engineering notes land (detects the char's speed, considers ping) and the close: all of it without touching the mouse.",
+  "neuro": ["curiosity-gap", "visible-progress", "competence", "picture-superiority", "anticipation-drop", "loop", "comment-prompt"],
+  "hook": "COMO O BOT DECIDE O QUE FAZER",
+  "duration": 17.885,
+  "music": {"style": "synthwave", "bpm": 104},
+  "assets": ["kit/img/brand/kizubot-logo.png"],
+  "claims": [
+    "prioridades do cavebot: Loot > Catch > Tall Grass > bush/madeira/minério > headbutt > andar — changelog 21/02/2026",
+    "a IA detecta a speed do char e considera o ping — changelog 21/02/2026",
+    "100% AFK (sem encostar no mouse)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Como o bot decide o que fazer? 🤔 A ordem do KizuBot: loot, catch, tall grass, bush/madeira/minério, headbutt e só depois anda a rota. E ainda detecta a speed do char e considera o ping. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#cavebot", "#afk"]
+    },
+    "youtube": {
+      "title": "Como o KizuBot decide o que fazer (raio-x das prioridades)",
+      "description": "Raio-X do cavebot do KizuBot (atualização de 21/02/2026): prioridades Loot > Catch > Tall Grass > bush/madeira/minério > headbutt > andar a rota. A IA detecta a speed do char e considera o ping. Tudo isso sem você encostar no mouse. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Como o bot decide o que fazer? 🤔 Loot, catch, tall grass, bush/madeira/minério, headbutt e só depois andar a rota. Você faria nessa ordem? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#cavebot"]
+    }
+  },
+  "pinned_comment": "Você faria nessa ordem? 🤔",
+  "notes": "Hook kept as the concept's wording, shown as 'COMO O BOT / DECIDE O QUE / FAZER' (Chakra Petch is wide). A blueprint 'KIZUBOT' annotation on the line-art head appears at 0.45 s for an early brand cue (added after the first render scored brand < 8). Row 4 written 'bush, madeira e minério' (two lines) to stay ≥ 56 px. Pixabay 'px-pop' near the drop replaced by 'pop' because its transient pushed the AAC true peak to -0.5 dBFS. Loop bridge returns to the hook."
+}

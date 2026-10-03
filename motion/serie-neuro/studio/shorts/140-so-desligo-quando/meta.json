@@ -1,0 +1,63 @@
+{
+  "id": "140",
+  "slug": "so-desligo-quando",
+  "family": "Plot Twist",
+  "title": "\"Só desligo o bot quando eu pegar esse Pokémon\"",
+  "concept": "Open-ending film: the customer's real promise in two quote cards, his 14:02 photo of the ball counters, day and night passing ('O bot? Ligado até pegar.'), the letterbox opens on the promise as evidence ('O bot não cansa. Ele também não.'), then the bars close on 'Continua…' / 'Será que ele pegou?' — without inventing the outcome.",
+  "neuro": [
+    "narrative-transport",
+    "zeigarnik-open-loop",
+    "commitment",
+    "identity",
+    "social-proof",
+    "comment-prompt"
+  ],
+  "hook": "\"SÓ DESLIGO O BOT… QUANDO EU PEGAR ESSE POKÉMON.\"",
+  "duration": 17.75,
+  "music": {
+    "style": "tension",
+    "bpm": 96,
+    "note": "suspense bed (clock, drone, heartbeat) with a tension drop that never resolves; open ending"
+  },
+  "assets": [
+    "kit/img/prints/so-desligo-quando-pegar.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "runs 24/7 on virtual machines (\"24h na nuvem\")",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "\"Só desligo o bot quando eu pegar esse Pokémon\" 🔥 Print real de cliente. O bot não cansa. Ele também não. Será que ele pegou? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#projeto",
+        "#plottwist"
+      ]
+    },
+    "youtube": {
+      "title": "\"Só desligo o bot quando eu pegar esse Pokémon\" (continua...)",
+      "description": "Print real de cliente: \"Só desligo o bot quando eu pegar esse Pokémon\". O KizuBot roda 24h na nuvem, 100% AFK, até o projeto acabar. Será que ele pegou? kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "\"Só desligo o bot quando eu pegar esse Pokémon\" 🔥 (print real de cliente) O bot não cansa. Ele também não. E você, desligaria? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#projeto"
+      ]
+    }
+  },
+  "pinned_comment": "Qual pokémon faria você deixar o bot ligado até pegar? 🔥",
+  "notes": "The concept paired this line with an inventory of '10K' ball stacks ('ele se preparou'), but the asset catalog flags that inventory photo (backpack-pilhas-10k) as possibly a DIFFERENT customer, so only this print is used: its own photo of ball counters ('14:02. Ele mandou uma foto.'). The 9-word hook line is split into two quote cards (4 + 5 words) to respect ≤6 words per card. Outcome not invented: the film ends on 'Continua…' / 'Será que ele pegou?' and the ask 'E você? Desligaria?'. Source named backpack-pilhas-10k.png; used the asset editor's so-desligo-quando-pegar.png. Quote cards are split with an ellipsis and no added punctuation; the band photo carries a 'print real de cliente' tag."
+}

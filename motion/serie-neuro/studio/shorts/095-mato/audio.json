@@ -1,0 +1,135 @@
+{
+  "duration": 22.86,
+  "style": "lofi",
+  "bpm": 84,
+  "seed": 95,
+  "sections": [
+    {
+      "at": 0.0,
+      "type": "intro"
+    },
+    {
+      "at": 2.86,
+      "type": "groove",
+      "energy": 0.8
+    },
+    {
+      "at": 8.57,
+      "type": "drop",
+      "energy": 0.9
+    },
+    {
+      "at": 13.57,
+      "type": "groove",
+      "energy": 0.8
+    },
+    {
+      "at": 20.0,
+      "type": "outro"
+    }
+  ],
+  "stops": [],
+  "sfx": [
+    {
+      "t": 0.0,
+      "name": "snap",
+      "gain": -6
+    },
+    {
+      "t": 0.0,
+      "name": "kick",
+      "gain": -10
+    },
+    {
+      "t": 0.62,
+      "name": "type",
+      "gain": -12
+    },
+    {
+      "t": 1.43,
+      "name": "motif",
+      "gain": -15
+    },
+    {
+      "t": 2.86,
+      "name": "chime",
+      "gain": -10
+    },
+    {
+      "t": 3.3,
+      "name": "px-whoosh-short",
+      "gain": -17
+    },
+    {
+      "t": 4.65,
+      "name": "px-whoosh-short",
+      "gain": -16
+    },
+    {
+      "t": 5.0,
+      "name": "chime",
+      "gain": -10
+    },
+    {
+      "t": 6.15,
+      "name": "snap",
+      "gain": -8
+    },
+    {
+      "t": 8.2,
+      "name": "px-whoosh-short",
+      "gain": -16
+    },
+    {
+      "t": 8.57,
+      "name": "chime",
+      "gain": -9
+    },
+    {
+      "t": 9.77,
+      "name": "snap",
+      "gain": -8
+    },
+    {
+      "t": 13.57,
+      "name": "px-key-press",
+      "gain": -10
+    },
+    {
+      "t": 13.87,
+      "name": "type",
+      "gain": -13
+    },
+    {
+      "t": 14.77,
+      "name": "snap",
+      "gain": -9
+    },
+    {
+      "t": 16.43,
+      "name": "px-key-press",
+      "gain": -10
+    },
+    {
+      "t": 16.53,
+      "name": "type",
+      "gain": -13
+    },
+    {
+      "t": 16.93,
+      "name": "snap",
+      "gain": -9
+    },
+    {
+      "t": 19.29,
+      "name": "px-whoosh",
+      "gain": -9
+    },
+    {
+      "t": 22.4,
+      "name": "chime",
+      "gain": -16
+    }
+  ],
+  "logo": 20.04
+}

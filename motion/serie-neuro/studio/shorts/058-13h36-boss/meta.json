@@ -1,0 +1,66 @@
+{
+  "id": "058",
+  "slug": "13h36-boss",
+  "family": "Espera o Alarme",
+  "title": "13:36. Alarme de boss.",
+  "concept": "A smartwatch on a shadowed wrist buzzes red at 13:36: 'bossDetected' is readable but the boss is blurred; a game-style boss HP bar drains hit by hit, silence, then the real print reveals boss Metagross plus three rare drops in the same minute and the group's reaction 'carai' / 'estourou'.",
+  "neuro": [
+    "anticipation",
+    "curiosity-gap",
+    "variable-reward",
+    "precise-number",
+    "real-proof",
+    "emotional-contagion",
+    "game-ui-familiarity",
+    "comment-prompt"
+  ],
+  "hook": "13:36. ALARME DE BOSS.",
+  "duration": 19,
+  "music": {
+    "style": "epic",
+    "bpm": 90
+  },
+  "assets": [
+    "kit/img/prints/boss-metagross-metal-coat--alarms.png",
+    "kit/img/prints/boss-metagross-metal-coat.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "13:36. Alarme de boss. Qual boss? E o drop? 💥 Boss Metagross + Tech Ball, Ironhard Backpack e Metal Coat, tudo às 13:36 (print real de cliente). Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#boss",
+        "#drop"
+      ]
+    },
+    "youtube": {
+      "title": "13:36. Alarme de boss… e o drop estourou (print real)",
+      "description": "13:36: o alarme do KizuBot avisa: bossDetected. Era o boss Metagross, com 3 drops raros no mesmo minuto (Tech Ball, Ironhard Backpack, Metal Coat). Print real de cliente. O KizuBot detecta boss, shiny e mega e avisa na hora. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "13:36. Alarme de boss. ⌚ Boss Metagross e 3 drops raros no mesmo minuto (print real de cliente). O alarme toca na hora. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#boss"
+      ]
+    }
+  },
+  "pinned_comment": "Já estourou um boss assim? 💥",
+  "notes": "Setting: smartwatch on a forearm (generic CSS mock; 'bossDetected' readable, boss name blurred). The 'boss-health-bar tension meter' drains hit by hit (stylised game UI, not a claim). Reveal uses the ASSETS focus crop of the 4 alarm rows (bigger text) and then a crop of the same print with the reactions; per ASSETS.md the 'carai' / 'estourou' reaction is from another group member, so it is shown verbatim without attributing it to the customer. Music: epic 90 (trailer) instead of tension→phonk."
+}

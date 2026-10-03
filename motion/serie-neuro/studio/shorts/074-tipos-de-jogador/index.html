@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>074 Os 4 tipos de jogador de PxG</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F07 "MEME CRU" system (shared by 071-075) ===== */
+  :root { --m-black: #0b0b0c; --m-white: #ffffff; --m-yellow: #ffe14d; --m-red: #ff3b30; }
+  #root { background: var(--m-black); }
+  #bg { position: absolute; inset: -120px; background: radial-gradient(circle, rgba(255,255,255,0.07) 2px, transparent 2.6px) 0 0 / 34px 34px, var(--m-black); }
+  .m-prog { background: rgba(255,255,255,0.12); }
+  .m-prog > div { background: var(--m-white); }
+  .m-frame { position: absolute; left: 54px; top: 236px; width: 972px; height: 1190px; border: 12px solid var(--m-white); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.7); }
+  .m-cap { position: absolute; left: 0; right: 0; text-align: center; font-family: "Anton", sans-serif; text-transform: uppercase;
+    color: #fff; line-height: 1.08; letter-spacing: 0.01em; -webkit-text-stroke: 15px #000; paint-order: stroke fill; filter: drop-shadow(0 8px 0 rgba(0,0,0,0.35)); }
+  .m-cap span { display: block; }
+  .m-cap .y { color: var(--m-yellow); display: inline; }
+  .m-wm { position: absolute; left: 22px; bottom: 16px; font: 700 30px "Inter", sans-serif; color: rgba(255,255,255,0.72); }
+  .m-stk { position: absolute; display: block; white-space: nowrap; font-family: "Bangers", sans-serif; color: var(--m-yellow); -webkit-text-stroke: 11px #000; paint-order: stroke fill; letter-spacing: 0.03em; filter: drop-shadow(4px 4px 0 #000); }
+  .m-emoji { position: absolute; display: block; line-height: 1; filter: drop-shadow(6px 0 0 #fff) drop-shadow(-6px 0 0 #fff) drop-shadow(0 6px 0 #fff) drop-shadow(0 -6px 0 #fff) drop-shadow(6px 8px 0 rgba(0,0,0,0.5)); }
+  .m-tag { position: absolute; display: inline-block; padding: 8px 18px; background: #000; color: #fff; font: 800 30px "Inter", sans-serif; letter-spacing: 0.03em; text-transform: uppercase; border: 4px solid #fff; z-index: 5; }
+  .m-print { position: absolute; border: 6px solid #000; outline: 6px solid #fff; background: #1e1f22; box-shadow: 14px 16px 0 rgba(0,0,0,0.55); }
+  .m-print img { display: block; width: 100%; }
+  .m-ph { display: flex; align-items: center; justify-content: center; font: 800 36px "Inter", sans-serif; color: #888; border: 4px dashed #666; text-align: center; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  #fade { position: absolute; inset: 0; background: var(--m-black); opacity: 0; pointer-events: none; z-index: 45; }
+  .player svg { width: 100%; height: 100%; overflow: visible; }
+
+  /* ===== 074 lineup + type cards ===== */
+  .wall { position: absolute; inset: 0; background: linear-gradient(180deg, #3a4150 0%, #2a2f3a 100%); }
+  .hline { position: absolute; left: 0; right: 0; height: 4px; background: rgba(255,255,255,0.35); }
+  .hlab { position: absolute; left: 14px; font: 700 30px "JetBrains Mono", monospace; color: rgba(255,255,255,0.6); }
+  .sil { position: absolute; width: 230px; height: 245px; filter: brightness(0); }
+  .plac { position: absolute; width: 130px; height: 96px; background: #fff; border: 6px solid #000; display: flex; align-items: center; justify-content: center; font: 400 76px "Anton", sans-serif; color: #000; }
+  .spot { position: absolute; width: 560px; height: 900px; background: radial-gradient(closest-side, rgba(255, 250, 220, 0.55), rgba(255, 250, 220, 0)); mix-blend-mode: screen; }
+  .num { position: absolute; left: 24px; top: 24px; width: 156px; height: 156px; border-radius: 50%; background: var(--m-yellow); border: 9px solid #000; display: flex; align-items: center; justify-content: center;
+    font: 400 112px/1 "Anton", sans-serif; color: #000; box-shadow: 8px 8px 0 #000; z-index: 3; }
+  .tbg1 { position: absolute; inset: 0; background: radial-gradient(70% 50% at 50% 60%, #2d4a2a 0%, #142212 100%); }
+  .tbg2 { position: absolute; inset: 0; background: radial-gradient(70% 50% at 50% 60%, #2b2d58 0%, #12132a 100%); }
+  .tbg3 { position: absolute; inset: 0; background: radial-gradient(70% 50% at 50% 60%, #4a2a2a 0%, #1f1010 100%); }
+  .meter { position: absolute; left: 40px; right: 120px; top: 960px; }
+  .meter .lab { font: 900 44px "Inter", sans-serif; color: #fff; letter-spacing: 0.04em; text-transform: uppercase; -webkit-text-stroke: 8px #000; paint-order: stroke fill; }
+  .meter .bar { margin-top: 10px; height: 58px; background: #fff; border: 7px solid #000; box-shadow: 7px 7px 0 #000; position: relative; overflow: hidden; }
+  .meter .fill { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, #ff3b30 0 26px, #d92a20 26px 52px); transform-origin: 0 50%; }
+  .meter .max { position: absolute; right: 14px; top: -2px; font: 400 52px/58px "Anton", sans-serif; color: #fff; -webkit-text-stroke: 8px #000; paint-order: stroke fill; }
+  .mouse { position: absolute; width: 200px; height: 280px; }
+  .mouse svg { width: 100%; height: 100%; overflow: visible; }
+  .batt { position: absolute; width: 230px; height: 110px; border: 9px solid #fff; border-radius: 18px; }
+  .batt::after { content: ""; position: absolute; right: -30px; top: 28px; width: 18px; height: 36px; background: #fff; border-radius: 0 6px 6px 0; }
+  .batt i { position: absolute; left: 8px; top: 8px; bottom: 8px; width: 22px; background: var(--m-red); border-radius: 6px; display: block; }
+  .batt b { position: absolute; left: 0; right: 0; top: 116px; text-align: center; font: 400 60px "Anton", sans-serif; color: var(--m-red); -webkit-text-stroke: 8px #000; paint-order: stroke fill; }
+  /* beach */
+  .sunny { position: absolute; inset: 0; background: linear-gradient(180deg, #78c6ff 0%, #bfe6ff 45%, #f6dfa8 60%, #efcf8a 100%); }
+  .sun { position: absolute; right: 60px; top: 90px; width: 160px; height: 160px; border-radius: 50%; background: #fff3a0; box-shadow: 0 0 80px 30px rgba(255, 238, 140, 0.8); }
+  .polar { position: absolute; background: #fff; padding: 16px 16px 64px; box-shadow: 14px 16px 0 rgba(0,0,0,0.35); border: 4px solid #000; }
+  .polar img { display: block; width: 100%; }
+  .kchip { position: absolute; left: 560px; top: 562px; padding: 8px 20px 10px; background: #7c3aed; color: #fff; border: 6px solid #000; box-shadow: 6px 6px 0 #000; font: 900 44px "Inter", sans-serif; z-index: 6; }
+  /* end card */
+  .endbg { position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 38%, #3b1470 0%, rgba(11, 7, 18, 0) 70%), #0b0712; }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .endwrap { position: absolute; left: 90px; right: 200px; top: 260px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .endlogo { position: relative; width: 500px; margin-left: 110px; }
+  .endlogo img { width: 100%; display: block; }
+  .endurl { margin-top: 20px; font: 900 64px "Inter", sans-serif; color: #fff; letter-spacing: -0.01em; }
+  .endask { margin-top: 30px; font: 400 96px "Anton", sans-serif; color: #fff; text-transform: uppercase; line-height: 1.06; -webkit-text-stroke: 12px #000; paint-order: stroke fill; }
+  .endask span { display: block; }
+  .endask .y { color: var(--m-yellow); }
+  .pick { margin-top: 30px; display: flex; gap: 22px; }
+  .pick span { width: 116px; height: 116px; display: flex; align-items: center; justify-content: center; background: #fff; border: 7px solid #000; box-shadow: 7px 7px 0 #000; font: 400 76px "Anton", sans-serif; color: #000; }
+  .pick span.k { background: var(--kz-lime); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="17.54" data-fps="30">
+  <div id="bg"></div>
+  <div class="kz-progress m-prog"><div id="prog"></div></div>
+
+  <!-- S1 hook lineup: 0 - 1.85 -->
+  <section id="s1" class="clip" data-start="0" data-duration="1.85">
+    <div id="s1in" style="position:absolute; inset:0">
+      <div class="m-frame" id="fr1">
+        <div class="wall"></div>
+        <div class="hline" style="top:640px"></div><div class="hlab" style="top:596px">1,90</div>
+        <div class="hline" style="top:760px"></div><div class="hlab" style="top:716px">1,70</div>
+        <div class="hline" style="top:880px"></div><div class="hlab" style="top:836px">1,50</div>
+        <div class="hline" style="top:1000px"></div><div class="hlab" style="top:956px">1,30</div>
+        <div class="player sil" id="si1" style="left:20px; top:700px"></div>
+        <div class="player sil" id="si2" style="left:250px; top:700px"></div>
+        <div class="player sil" id="si3" style="left:480px; top:700px"></div>
+        <div class="player sil" id="si4" style="left:710px; top:700px"></div>
+        <div class="plac" id="pl1" style="left:70px; top:960px">1</div>
+        <div class="plac" id="pl2" style="left:300px; top:960px">2</div>
+        <div class="plac" id="pl3" style="left:530px; top:960px">3</div>
+        <div class="plac" id="pl4" style="left:760px; top:960px">4</div>
+        <div class="m-cap" id="capA" style="top:40px; font-size:136px"><span>Os 4 tipos</span><span>de jogador</span><span class="y" style="display:block">de PxG:</span></div>
+        <div class="m-wm">@kizubotpxg</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S2 type 1: 1.85 - 3.69 -->
+  <section id="s2" class="clip" data-start="1.85" data-duration="1.84">
+    <div id="s2in" style="position:absolute; inset:0">
+      <div class="m-frame" id="fr2">
+        <div class="tbg1"></div>
+        <div class="player" id="pA" style="position:absolute; left:220px; top:500px; width:460px; height:490px"></div>
+        <div class="mouse" id="mouse" style="left:680px; top:660px"></div>
+        <div class="m-stk" id="ckA" style="left:640px; top:560px; font-size:76px">CLICK</div>
+        <div class="m-cap" style="top:200px; font-size:118px"><span>O que farma</span><span>mato <span class="y">na mão</span></span></div>
+        <div class="num">1</div>
+        <div class="meter"><div class="lab">Tendinite</div><div class="bar"><div class="fill" id="fA"></div><div class="max" id="mA">MAX</div></div></div>
+        <div class="m-wm">@kizubotpxg</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 type 2: 3.69 - 5.54 -->
+  <section id="s3" class="clip" data-start="3.69" data-duration="1.85">
+    <div id="s3in" style="position:absolute; inset:0">
+      <div class="m-frame" id="fr3">
+        <div class="tbg2"></div>
+        <div class="player" id="pB" style="position:absolute; left:220px; top:500px; width:460px; height:490px"></div>
+        <div class="m-emoji" id="spB" style="left:690px; top:540px; font-size:150px; opacity:0">✨</div>
+        <div class="m-emoji" id="cryB" style="left:660px; top:560px; font-size:150px; opacity:0">😭</div>
+        <div class="m-cap" style="top:200px; font-size:104px"><span>O que perde shiny</span><span>por <span class="y">1 segundo</span></span></div>
+        <div class="num">2</div>
+        <div class="meter"><div class="lab">Sorte</div><div class="bar"><div class="fill" id="fB" style="background: repeating-linear-gradient(45deg, #9aa0a6 0 26px, #80868b 26px 52px)"></div><div class="max" id="mB" style="color:#fff">0%</div></div></div>
+        <div class="m-wm">@kizubotpxg</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 type 3: 5.54 - 7.38 -->
+  <section id="s4" class="clip" data-start="5.54" data-duration="1.84">
+    <div id="s4in" style="position:absolute; inset:0">
+      <div class="m-frame" id="fr4">
+        <div class="tbg3"></div>
+        <div class="player" id="pC" style="position:absolute; left:220px; top:500px; width:460px; height:490px"></div>
+        <div class="batt" id="batt" style="left:670px; top:620px"><i id="bi"></i><b>1%</b></div>
+        <div class="m-emoji" id="cf1" style="left:40px; top:860px; font-size:110px; opacity:0">☕</div>
+        <div class="m-emoji" id="cf2" style="left:60px; top:740px; font-size:110px; opacity:0">☕</div>
+        <div class="m-emoji" id="cf3" style="left:40px; top:620px; font-size:110px; opacity:0">☕</div>
+        <div class="m-cap" style="top:200px; font-size:118px"><span>O que esquece</span><span>de <span class="y">dormir</span></span></div>
+        <div class="num">3</div>
+        <div class="m-wm">@kizubotpxg</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 build: the 4th one: 7.38 - 9.23 -->
+  <section id="s5" class="clip" data-start="7.38" data-duration="1.85">
+    <div id="s5in" style="position:absolute; inset:0">
+      <div class="m-frame" id="fr5">
+        <div class="wall" style="filter: brightness(0.45)"></div>
+        <div class="player sil" style="left:20px; top:700px; opacity:0.25"></div>
+        <div class="player sil" style="left:250px; top:700px; opacity:0.25"></div>
+        <div class="player sil" style="left:480px; top:700px; opacity:0.25"></div>
+        <div class="spot" id="spot" style="left:545px; top:300px"></div>
+        <div class="player sil" id="si4b" style="left:710px; top:700px"></div>
+        <div class="plac" style="left:760px; top:960px">4</div>
+        <div class="m-stk" id="qm" style="left:760px; top:520px; font-size:170px; opacity:0">?</div>
+        <div class="m-cap" id="capE" style="top:60px; font-size:140px"><span>E o</span><span>número 4…</span></div>
+        <div class="m-wm">@kizubotpxg</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 type 4: the beach (real print), the drop: 9.23 - 14.77 -->
+  <section id="s6" class="clip" data-start="9.23" data-duration="5.54">
+    <div id="s6in" style="position:absolute; inset:0">
+      <div class="m-frame" id="fr6">
+        <div class="sunny"></div>
+        <div class="sun"></div>
+        <div class="m-cap" id="capB" style="top:40px; font-size:122px"><span>O que tá</span><span class="y" style="display:block">na praia</span></div>
+        <div class="num" style="background: var(--kz-lime)">4</div>
+      </div>
+      <div class="polar" id="photo" style="left:96px; top:600px; width:400px">
+        <img src="kit/img/prints/beach-while-bot-farms--photo.jpg" alt="" />
+      </div>
+      <div class="m-print" id="alm" style="left:300px; top:880px; width:640px">
+        <img src="kit/img/prints/beach-while-bot-farms--alarms.png" alt="" />
+      </div>
+      <div class="m-print" id="quo" style="left:240px; top:1090px; width:660px">
+        <img src="kit/img/prints/beach-while-bot-farms--quote.png" alt="" />
+      </div>
+      <div class="m-tag" id="tag6" style="left:530px; top:650px;">print real de cliente</div>
+      <div class="kchip" id="kc6">com KizuBot</div>
+    </div>
+  </section>
+
+  <!-- S7 end card: 14.77 - 17.54 -->
+  <section id="s7" class="clip" data-start="14.77" data-duration="2.77">
+    <div class="endbg"></div>
+    <div class="endwrap" id="s7in">
+      <div class="endlogo" id="endLogo">
+        <img src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:156px; top:5px; width:94px; height:94px"></div>
+      </div>
+      <div class="endurl" id="endUrl">kizubot.com</div>
+      <div class="endask" id="endAsk"><span>Qual número</span><span class="y">é você?</span></div>
+      <div class="pick" id="pick"><span id="k1">1</span><span id="k2">2</span><span id="k3">3</span><span id="k4" class="k">4</span></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+  <div id="fade"></div>
+</div>
+<script>
+  function playerSVG(id) {
+    const skin = "#e9b48c";
+    return '<svg viewBox="0 0 600 640" xmlns="http://www.w3.org/2000/svg">' +
+      '<defs><clipPath id="' + id + 'cL"><ellipse cx="235" cy="300" rx="50" ry="40"/></clipPath><clipPath id="' + id + 'cR"><ellipse cx="365" cy="300" rx="50" ry="40"/></clipPath></defs>' +
+      '<path d="M40 640 Q60 500 190 470 L410 470 Q540 500 560 640 Z" fill="#2b3150" stroke="#000" stroke-width="9" stroke-linejoin="round"/>' +
+      '<path d="M252 420 L252 482 Q300 506 348 482 L348 420 Z" fill="#d79c74" stroke="#000" stroke-width="9" stroke-linejoin="round"/>' +
+      '<ellipse cx="300" cy="290" rx="160" ry="180" fill="' + skin + '" stroke="#000" stroke-width="9"/>' +
+      '<path d="M140 268 Q118 130 214 100 L216 46 L258 84 L298 18 L330 80 L388 38 L390 104 Q478 128 462 268 Q440 188 395 174 Q350 206 305 170 Q254 206 214 171 Q170 196 140 268 Z" fill="#221d2b" stroke="#000" stroke-width="9" stroke-linejoin="round"/>' +
+      '<g class="bags" opacity="0.25" stroke="#6b3f78" stroke-linecap="round" fill="none"><path d="M190 344 Q235 374 280 344" stroke-width="10"/><path d="M320 344 Q365 374 410 344" stroke-width="10"/><path d="M200 364 Q235 386 270 364" stroke-width="7" opacity="0.7"/><path d="M330 364 Q365 386 400 364" stroke-width="7" opacity="0.7"/></g>' +
+      '<ellipse cx="235" cy="300" rx="50" ry="40" fill="#fff" stroke="#000" stroke-width="7"/><ellipse cx="365" cy="300" rx="50" ry="40" fill="#fff" stroke="#000" stroke-width="7"/>' +
+      '<g class="pupils"><circle cx="240" cy="306" r="13" fill="#000"/><circle cx="360" cy="306" r="13" fill="#000"/></g>' +
+      '<g clip-path="url(#' + id + 'cL)"><path class="lid" d="M175 110 L295 110 L295 262 Q235 282 175 262 Z" fill="' + skin + '" stroke="#000" stroke-width="7"/></g>' +
+      '<g clip-path="url(#' + id + 'cR)"><path class="lid" d="M305 110 L425 110 L425 262 Q365 282 305 262 Z" fill="' + skin + '" stroke="#000" stroke-width="7"/></g>' +
+      '<path d="M300 318 Q288 360 298 372 Q309 377 318 368" stroke="#000" stroke-width="6" fill="none" stroke-linecap="round"/>' +
+      '<path class="mouth1" d="M262 412 Q300 420 338 410" stroke="#000" stroke-width="8" fill="none" stroke-linecap="round"/>' +
+      '<path class="mouth2" opacity="0" d="M262 424 Q300 396 338 424" stroke="#000" stroke-width="8" fill="none" stroke-linecap="round"/>' +
+      '<path class="tear" opacity="0" d="M392 330 Q404 360 398 372 Q390 380 382 372 Q378 360 392 330 Z" fill="#8fdcff" stroke="#000" stroke-width="4"/>' +
+      '<path d="M136 286 Q138 76 300 68 Q462 76 464 286" stroke="#15151a" stroke-width="24" fill="none"/>' +
+      '<rect x="108" y="242" width="54" height="100" rx="20" fill="#1c1c24" stroke="#000" stroke-width="7"/><rect x="438" y="242" width="54" height="100" rx="20" fill="#1c1c24" stroke="#000" stroke-width="7"/>' +
+    '</svg>';
+  }
+  document.querySelectorAll(".player").forEach(function (el, i) { el.innerHTML = playerSVG("pp" + i); });
+  document.getElementById("mouse").innerHTML = '<svg viewBox="0 0 200 280"><rect x="20" y="20" width="160" height="240" rx="80" fill="#e8e8ee" stroke="#000" stroke-width="10"/><line x1="100" y1="20" x2="100" y2="120" stroke="#000" stroke-width="8"/><path d="M20 120 H180" stroke="#000" stroke-width="8"/><rect id="lbtn" x="24" y="24" width="72" height="92" rx="40" fill="#ff3b30" opacity="0"/>' +
+    '<g stroke="#fff" stroke-width="9" stroke-linecap="round"><path d="M-10 10 L-40 -20"/><path d="M-20 60 L-60 56"/><path d="M40 -10 L30 -50"/></g></svg>';
+
+  const tl = gsap.timeline({ paused: true });
+  const D = 17.54;
+  const b = KZ.beats(130);
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  KZ.drift(tl, "#bg", D, 30, 40, 4.4);
+
+  // ---------- S1 hook: lineup ----------
+  tl.fromTo("#capA", { scale: 1.12 }, { scale: 1, duration: 0.22, ease: "power4.out" }, 0);
+  tl.fromTo("#fr1", { rotation: -2, scale: 1.04 }, { rotation: -0.6, scale: 1, duration: 0.5, ease: "power3.out" }, 0);
+  ["#si1", "#si2", "#si3", "#si4"].forEach(function (s, i) {
+    tl.fromTo(s, { y: 300 }, { y: 0, duration: 0.3, ease: "back.out(1.6)" }, 0.05 + i * 0.1);
+    tl.fromTo("#pl" + (i + 1), { scale: 0, rotation: -20 }, { scale: 1, rotation: [-4, 3, -2, 5][i], duration: 0.25, ease: "back.out(3)" }, b(1) + i * b(0.5));
+  });
+  tl.to("#s1in", { x: -1100, duration: 0.18, ease: "power3.in" }, 1.85 - 0.18);
+
+  // ---------- type cards (shared motion) ----------
+  function cardIn(fr, t) {
+    tl.fromTo(fr, { x: 1100, rotation: 6 }, { x: 0, rotation: [-0.8, 0.8][Math.round(t) % 2], duration: 0.26, ease: "power3.out" }, t);
+    tl.fromTo(fr + " .num", { scale: 0, rotation: -40 }, { scale: 1, rotation: -8, duration: 0.3, ease: "back.out(2.6)" }, t + 0.18);
+  }
+  // 1: farms by hand
+  const T2 = 1.85;
+  cardIn("#fr2", T2);
+  tl.set("#pA .lid", { y: 24 }, 0);
+  tl.fromTo("#fA", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power2.in" }, T2 + 0.5);
+  tl.fromTo("#mA", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(3)" }, T2 + 1.4);
+  for (let i = 0; i < 6; i++) tl.fromTo("#lbtn", { opacity: 0.9 }, { opacity: 0, duration: 0.12, ease: "none", immediateRender: false }, T2 + 0.35 + i * 0.23);
+  tl.fromTo("#ckA", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(3)" }, T2 + 0.4);
+  KZ.shake(tl, "#mouse", T2 + 0.35, 6, 1.3, 3);
+  tl.to("#s2in", { x: -1100, duration: 0.18, ease: "power3.in" }, 3.69 - 0.18);
+  // 2: loses the shiny for 1 second
+  const T3 = 3.69;
+  cardIn("#fr3", T3);
+  tl.fromTo("#spB", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(3)" }, T3 + 0.35);
+  tl.to("#pB .lid", { y: 75, duration: 0.08 }, T3 + 0.75);
+  tl.set("#spB", { opacity: 0 }, T3 + 0.83);
+  tl.to("#pB .lid", { y: -8, duration: 0.08 }, T3 + 1.0);
+  tl.set("#pB .mouth1", { opacity: 0 }, T3 + 1.08);
+  tl.set("#pB .mouth2", { opacity: 1 }, T3 + 1.08);
+  tl.set("#pB .tear", { opacity: 1 }, T3 + 1.08);
+  tl.fromTo("#cryB", { opacity: 0, scale: 0.3, rotation: -20 }, { opacity: 1, scale: 1, rotation: 8, duration: 0.25, ease: "back.out(3)" }, T3 + 1.1);
+  tl.fromTo("#fB", { scaleX: 0.85 }, { scaleX: 0.02, duration: 0.3, ease: "power3.in" }, T3 + 1.08);
+  tl.to("#s3in", { x: -1100, duration: 0.18, ease: "power3.in" }, 5.54 - 0.18);
+  // 3: forgets to sleep
+  const T4 = 5.54;
+  cardIn("#fr4", T4);
+  tl.set("#pC .lid", { y: 40 }, 0);
+  tl.set("#pC .bags", { opacity: 1 }, 0);
+  ["#cf1", "#cf2", "#cf3"].forEach(function (c, i) { tl.fromTo(c, { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, T4 + 0.35 + i * b(1)); });
+  tl.fromTo("#bi", { opacity: 1 }, { opacity: 0.1, duration: 0.15, ease: "steps(1)", yoyo: true, repeat: 7 }, T4 + 0.3);
+  tl.to("#s4in", { scale: 0.9, opacity: 0, duration: 0.16, ease: "power2.in" }, 7.38 - 0.16);
+
+  // ---------- S5 build: who's number 4? ----------
+  const T5 = 7.38;
+  tl.fromTo("#fr5", { scale: 1.08, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power3.out" }, T5);
+  KZ.slam(tl, "#capE", T5 + 0.1, 1.5);
+  tl.fromTo("#spot", { opacity: 0, scaleY: 0.2, transformOrigin: "50% 0%" }, { opacity: 1, scaleY: 1, duration: 0.4, ease: "power3.out" }, T5 + b(1));
+  tl.fromTo("#qm", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }, T5 + b(2));
+  KZ.shake(tl, "#si4b", T5 + b(2.5), 8, 0.8, 6);
+  tl.to("#fr5", { scale: 1.12, duration: 0.9, ease: "power2.in" }, T5 + b(2));
+
+  // ---------- S6 type 4: the beach (drop) ----------
+  const T6 = 9.23;
+  KZ.flash(tl, "#flash", T6, 0.9);
+  tl.fromTo("#fr6", { scale: 1.2, opacity: 0 }, { scale: 1, opacity: 1, rotation: 0.6, duration: 0.3, ease: "expo.out" }, T6);
+  tl.fromTo("#fr6 .num", { scale: 0, rotation: -40 }, { scale: 1, rotation: -8, duration: 0.3, ease: "back.out(2.6)" }, T6 + 0.15);
+  KZ.slam(tl, "#capB", T6 + 0.05, 1.5);
+  tl.fromTo("#photo", { y: 700, rotation: -14 }, { y: 0, rotation: -4, duration: 0.5, ease: "back.out(1.3)" }, T6 + 0.25);
+  tl.fromTo("#kc6", { scale: 0.3, opacity: 0, rotation: -10 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.3, ease: "back.out(2.6)" }, T6 + 0.55);
+  tl.fromTo("#tag6", { scale: 0.3, opacity: 0, rotation: 3 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)", rotation: 3 }, T6 + 0.75);
+  tl.fromTo("#alm", { x: 800, rotation: 8 }, { x: 0, rotation: 2, duration: 0.4, ease: "power3.out" }, T6 + b(3));
+  tl.fromTo("#quo", { scale: 0.3, opacity: 0, rotation: -10 }, { scale: 1, opacity: 1, rotation: -1.5, duration: 0.4, ease: "back.out(2)" }, T6 + b(6));
+  KZ.shake(tl, "#quo", T6 + b(6) + 0.3, 8, 0.25, 9);
+  tl.to("#s6in", { opacity: 0, scale: 0.94, duration: 0.18, ease: "power2.in" }, 14.77 - 0.18);
+
+  // ---------- S7 end card ----------
+  const T7 = 14.77;
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T7 + 0.04);
+  KZ.eyePulse(tl, "#eye2", T7 + 0.13, 3);
+  KZ.rise(tl, "#endUrl", T7 + 0.4, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T7 + 0.7, 0.4, 40);
+  ["#k1", "#k2", "#k3", "#k4"].forEach(function (k, i) { tl.fromTo(k, { scale: 0, rotation: -20 }, { scale: 1, rotation: [-4, 3, -3, 5][i], duration: 0.25, ease: "back.out(3)" }, T7 + 1.0 + i * 0.12); });
+  KZ.punch(tl, "#k4", T7 + 1.9, 1.2);
+  tl.fromTo("#fade", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.in" }, D - 0.34);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

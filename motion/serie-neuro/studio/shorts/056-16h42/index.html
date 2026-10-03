@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>056 16:42. O celular vibrou.</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F04 · ESPERA O ALARME — series system ================= */
+  :root {
+    --f4-ink: #f7f2ea;
+    --f4-dim: #c9bfd6;
+    --f4-lime: #c6ff3d;
+    --f4-gold: #ffd166;
+    --f4-glow: #b98cff;
+  }
+  #root { background: #050307; }
+
+  /* set (untimed): surface + light + grain */
+  .f4-set { position: absolute; inset: 0; overflow: hidden; }
+  #setCam { position: absolute; inset: 0; }
+  #table {
+    position: absolute; inset: -180px;
+    background:
+      repeating-linear-gradient(97deg, rgba(0,0,0,0) 0 11px, rgba(0,0,0,.20) 11px 13px, rgba(0,0,0,0) 13px 31px, rgba(255,214,170,.035) 31px 33px),
+      repeating-linear-gradient(97deg, rgba(0,0,0,0) 0 262px, rgba(0,0,0,.62) 262px 266px, rgba(255,205,160,.07) 266px 270px),
+      radial-gradient(120% 70% at 50% 62%, #3d2417 0%, #1e120b 55%, #0a0604 100%);
+  }
+  #woodNoise {
+    position: absolute; inset: -180px; opacity: .5; mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='900'><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='0.0025 0.05' numOctaves='4' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.62  0 0 0 0 0.40  0 0 0 0 0.24  0 0 0 1.3 -0.35'/></filter><rect width='100%' height='100%' filter='url(%23w)'/></svg>");
+    background-size: 900px 900px;
+  }
+  #blinds {
+    position: absolute; inset: -420px;
+    background: repeating-linear-gradient(-26deg, rgba(255,178,98,0) 0px, rgba(255,178,98,0) 44px, rgba(255,186,112,.24) 72px, rgba(255,186,112,.24) 120px, rgba(255,178,98,0) 146px);
+    -webkit-mask-image: radial-gradient(48% 34% at 40% 50%, #000 0%, rgba(0,0,0,.55) 48%, transparent 82%);
+            mask-image: radial-gradient(48% 34% at 40% 50%, #000 0%, rgba(0,0,0,.55) 48%, transparent 82%);
+    mix-blend-mode: screen;
+  }
+  #roomTint { position: absolute; inset: 0; background: radial-gradient(80% 55% at 50% 40%, rgba(150, 80, 255, .55), rgba(60, 20, 120, .35) 55%, rgba(10, 4, 20, 0) 100%); mix-blend-mode: screen; opacity: 0; }
+  .f4-topshade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,3,7,.88) 0%, rgba(5,3,7,.6) 26%, rgba(5,3,7,0) 52%); }
+  .f4-vig { position: absolute; inset: 0; background: radial-gradient(105% 72% at 50% 46%, rgba(0,0,0,0) 42%, rgba(0,0,0,.86) 100%); pointer-events: none; }
+  #grain {
+    position: absolute; inset: -240px; opacity: .13; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -0.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 240px 240px;
+  }
+  .kz-progress { height: 8px; background: rgba(255,255,255,.06); }
+  .kz-progress > div { background: linear-gradient(90deg, #8b5cf6, var(--f4-lime)); }
+
+  /* phone (generic, drawn in CSS) */
+  #phoneRig { position: absolute; left: 250px; top: 860px; width: 580px; height: 1200px; perspective: 1700px; }
+  #tableGlow { position: absolute; left: -330px; top: -260px; width: 1240px; height: 1500px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(185,140,255,.50), rgba(150,100,255,.16) 52%, rgba(150,100,255,0) 100%); mix-blend-mode: screen; }
+  #phoneBuzz { position: absolute; inset: 0; }
+  #phoneTilt { position: absolute; inset: 0; transform-style: preserve-3d; }
+  .phone { position: absolute; inset: 0; border-radius: 82px; padding: 16px;
+    background: linear-gradient(150deg, #34343e 0%, #101015 34%, #050507 100%);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.10), inset 0 0 0 7px #060608, 0 60px 90px rgba(0,0,0,.65); }
+  .screen { position: absolute; inset: 16px; border-radius: 68px; overflow: hidden;
+    background: radial-gradient(130% 80% at 50% 0%, #34185f 0%, #150b28 48%, #07050c 100%); }
+  .island { position: absolute; top: 36px; left: 50%; width: 38px; margin-left: -19px; height: 38px; border-radius: 50%; background: #000; box-shadow: inset 0 0 0 4px #15151b; }
+  .ls-time { position: absolute; top: 150px; left: 0; right: 0; text-align: center; font: 400 168px "Sora", sans-serif; color: rgba(255,255,255,.94); letter-spacing: -0.04em; line-height: 1; }
+  .ls-sub { position: absolute; top: 340px; left: 0; right: 0; text-align: center; font: 600 30px "Inter", sans-serif; color: rgba(255,255,255,.62); letter-spacing: .02em; }
+  .notif { position: absolute; left: 26px; right: 26px; top: 470px; height: 236px; border-radius: 44px; padding: 26px 28px;
+    background: linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,.12)); border: 2px solid rgba(255,255,255,.16); }
+  .n-head { display: flex; align-items: center; gap: 16px; }
+  .n-icon { width: 64px; height: 64px; border-radius: 18px; overflow: hidden; flex: none; background: radial-gradient(circle at 50% 35%, #4a1a8a, #12081f); }
+  .n-icon img { width: 100%; display: block; }
+  .n-app { font: 800 27px "Inter", sans-serif; color: #fff; letter-spacing: .01em; white-space: nowrap; }
+  .n-msg { margin-top: 20px; font: 600 36px "Inter", sans-serif; color: #fff; line-height: 1.18; filter: blur(11px); }
+  .n-ring { position: absolute; inset: -10px; width: calc(100% + 20px); height: calc(100% + 20px); overflow: visible; }
+  .n-ring rect { fill: none; stroke: var(--f4-lime); stroke-width: 8; stroke-linecap: round; }
+  .buzzArc { position: absolute; border: 6px solid rgba(220, 200, 255, .75); border-radius: 110px; opacity: 0; }
+
+  /* type */
+  .f4-stamp { font-family: "Anton", sans-serif; font-size: 300px; line-height: 1; color: var(--f4-ink); letter-spacing: .01em; text-shadow: 0 0 50px rgba(255, 190, 120, .28); }
+  .f4-hook { font-family: "Anton", sans-serif; font-size: 136px; line-height: 1.04; text-transform: uppercase; color: var(--f4-ink); }
+  .f4-whisper { font-family: "Instrument Serif", serif; font-style: italic; font-size: 116px; line-height: 1.04; color: var(--f4-ink); }
+  .f4-mono { font-family: "JetBrains Mono", monospace; font-size: 30px; letter-spacing: .16em; text-transform: uppercase; color: var(--f4-dim); }
+  .f4-lime { color: var(--f4-lime); }
+  .f4-gold { color: var(--f4-gold); }
+  .blk { display: block; }
+
+  /* countdown */
+  .cd { position: absolute; left: 120px; right: 192px; top: 570px; height: 420px; display: flex; align-items: center; justify-content: center; }
+  .cd-n { position: absolute; font-family: "Anton", sans-serif; font-size: 420px; line-height: 1; color: var(--f4-ink); opacity: 0; text-shadow: 0 0 60px rgba(198, 255, 61, .35); }
+
+  /* reveal */
+  #rays { position: absolute; left: 50%; top: 640px; width: 2400px; height: 2400px; margin: -1200px 0 0 -1200px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(210, 180, 255, .16) 0deg 7deg, rgba(210, 180, 255, 0) 7deg 20deg);
+    -webkit-mask-image: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.4) 45%, transparent 75%);
+            mask-image: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.4) 45%, transparent 75%); opacity: 0; }
+  #printWrap { position: absolute; left: 90px; top: 410px; width: 900px; height: 447px; }
+  .f4-print { position: absolute; inset: 0; border-radius: 30px; overflow: hidden; background: #1b1b1f;
+    box-shadow: 0 0 0 3px rgba(216, 180, 254, .55), 0 40px 120px rgba(124, 58, 237, .45); }
+  .f4-print img { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+  .ph-bubble { position: absolute; left: 4.8%; right: 3.6%; border-radius: 16px; background: #1f4d3c; }
+  .ph-line { position: absolute; height: 22px; border-radius: 11px; background: rgba(255,255,255,.35); }
+  .f4-tag { position: absolute; left: 90px; top: 340px; display: inline-block; padding: 10px 20px; border-radius: 999px; background: rgba(8, 5, 14, .85); border: 2px solid var(--f4-lime);
+    font: 700 30px "JetBrains Mono", monospace; letter-spacing: .08em; color: var(--f4-lime); text-transform: uppercase; }
+  .hl { position: absolute; overflow: visible; }
+  .hl rect { fill: none; stroke: var(--f4-lime); stroke-width: 7; }
+  .cap { position: absolute; left: 90px; width: 790px; top: 930px; text-align: center; }
+  .cap-t { font-family: "Anton", sans-serif; font-size: 170px; line-height: 1; color: var(--f4-lime); font-variant-numeric: tabular-nums; }
+  .cap-l { font-family: "Anton", sans-serif; font-size: 104px; line-height: 1.05; color: var(--f4-ink); text-transform: uppercase; }
+  .quote { font-family: "Instrument Serif", serif; font-style: italic; font-size: 150px; line-height: 1; color: var(--f4-gold); }
+  .spark { position: absolute; left: 0; top: 0; width: 18px; height: 18px; opacity: 0; transform: rotate(45deg); }
+  #sparkField { position: absolute; left: 540px; top: 630px; width: 0; height: 0; }
+
+  /* same minute */
+  .chiprow { position: absolute; left: 90px; width: 790px; top: 1010px; height: 190px; }
+  .tchip { position: absolute; top: 0; width: 380px; height: 190px; border-radius: 34px; background: rgba(20, 12, 34, .92); border: 3px solid rgba(216, 180, 254, .4);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+  .tchip .k { font: 700 30px "JetBrains Mono", monospace; color: var(--f4-dim); letter-spacing: .02em; }
+  .tchip .v { font-family: "Anton", sans-serif; font-size: 104px; line-height: 1; color: var(--f4-ink); }
+  .tchip.one { left: 205px; width: 380px; border-color: var(--f4-lime); box-shadow: 0 0 60px rgba(198, 255, 61, .35); opacity: 0; }
+  .tchip.one .v { color: var(--f4-lime); }
+
+  /* slogan chips */
+  .pills { display: flex; gap: 18px; justify-content: center; margin-top: 46px; }
+  .pill { padding: 14px 34px; border-radius: 999px; font: 800 58px "Inter", sans-serif; color: #120a1c; background: var(--f4-gold); }
+  .pill.v { background: #b98cff; }
+  .pill.r { background: #ff6b6b; }
+  .claim { margin-top: 30px; font: 700 38px "Inter", sans-serif; color: var(--f4-dim); }
+
+  /* end card */
+  .eye { position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+  .ask { font: 900 64px "Inter", sans-serif; color: var(--f4-ink); max-width: 800px; line-height: 1.12; }
+  .ask b { color: var(--f4-lime); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  #hush { position: absolute; inset: 0; background: radial-gradient(60% 42% at 50% 48%, #2a1546 0%, #150d24 70%); opacity: 0; pointer-events: none; z-index: 44; }
+  #blackout { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 45; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="20.5" data-fps="30">
+  <!-- untimed set -->
+  <div class="f4-set">
+    <div id="setCam">
+      <div id="table"></div>
+      <div id="woodNoise"></div>
+      <div id="blinds"></div>
+    </div>
+    <div id="roomTint"></div>
+  </div>
+
+  <!-- STAGE: phone on the table (0 - 7.5) -->
+  <section id="stage" class="clip" data-start="0" data-duration="7.5">
+    <div id="stageIn" style="position:absolute; inset:0">
+      <div id="phoneRig">
+        <div id="tableGlow"></div>
+        <div id="phoneBuzz">
+          <div id="phoneTilt">
+            <div class="buzzArc" id="arc1" style="left:-34px; top:-34px; width:648px; height:1268px"></div>
+            <div class="buzzArc" id="arc2" style="left:-70px; top:-70px; width:720px; height:1340px; border-radius:140px"></div>
+            <div class="phone">
+              <div class="screen" id="screen">
+                <div class="ls-time" id="lsTime">16:42</div>
+                <div class="ls-sub" id="lsSub">bloqueado</div>
+                <div class="notif" id="notif">
+                  <div class="n-head">
+                    <div class="n-icon"><img src="kit/img/brand/kizubot-head.png" alt="" /></div>
+                    <div class="n-app">KizuBot™ | kizubot.com</div>
+                  </div>
+                  <div class="n-msg" id="nmsg">shinyDetected ~ --&gt; shiny Cubone</div>
+                  <svg class="n-ring" viewBox="0 0 516 256" preserveAspectRatio="none"><rect id="ring" x="4" y="4" width="508" height="248" rx="48" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0" opacity="0" /></svg>
+                </div>
+              </div>
+              <div class="island"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="f4-topshade"></div>
+
+  <!-- S1 hook (0 - 2.5) -->
+  <section id="s1" class="clip" data-start="0" data-duration="2.5">
+    <div class="kz-hook-band" id="s1in" style="top:250px; height:640px">
+      <div class="f4-stamp" id="stamp">16:42.</div>
+      <div class="f4-hook blk" id="h1a">O celular</div>
+      <div class="f4-hook f4-lime blk" id="h1b">vibrou.</div>
+    </div>
+  </section>
+
+  <!-- S2 (2.5 - 5.0) -->
+  <section id="s2" class="clip" data-start="2.5" data-duration="2.5">
+    <div class="kz-hook-band" id="s2in" style="top:250px; height:340px; left:90px; right:120px">
+      <div class="f4-whisper blk" id="w1">Era só mais uma</div>
+      <div class="f4-whisper blk" id="w2">notificação…</div>
+    </div>
+  </section>
+
+  <!-- S3 countdown (5.0 - 7.5) -->
+  <section id="s3" class="clip" data-start="5" data-duration="2.5">
+    <div id="s3in" style="position:absolute; inset:0">
+      <div class="kz-hook-band" style="top:230px; height:330px">
+        <div class="f4-hook blk" id="g1">Adivinha</div>
+        <div class="f4-hook f4-lime blk" id="g2">o que era?</div>
+      </div>
+      <div class="cd">
+        <div class="cd-n" id="n3">3</div>
+        <div class="cd-n" id="n2">2</div>
+        <div class="cd-n" id="n1">1</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 reveal (7.5 - 12.5) -->
+  <section id="s4" class="clip" data-start="7.5" data-duration="5">
+    <div id="s4in" style="position:absolute; inset:0">
+      <div id="rays"></div>
+      <div id="cam4" style="position:absolute; inset:0">
+        <div id="printWrap">
+          <div class="f4-print" id="print">
+            <img src="kit/img/prints/shiny-cubone.png" alt="" />
+          </div>
+          <svg class="hl" id="hl1" style="left:30px; top:24px; width:850px; height:180px" viewBox="0 0 850 180"><rect x="3.5" y="3.5" width="843" height="173" rx="22" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" /></svg>
+          <svg class="hl" id="hl2" style="left:30px; top:190px; width:850px; height:172px" viewBox="0 0 850 172"><rect x="3.5" y="3.5" width="843" height="165" rx="22" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" /></svg>
+          <svg class="hl" id="hl3" style="left:8px; top:374px; width:200px; height:66px" viewBox="0 0 200 66"><rect x="3.5" y="3.5" width="193" height="59" rx="18" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="stroke: var(--f4-gold)" /></svg>
+        </div>
+        <div class="f4-tag" id="tag4">print real de cliente</div>
+      </div>
+      <div id="sparkField"></div>
+      <div class="cap" id="capA">
+        <div class="cap-t">16:42</div>
+        <div class="cap-l">shiny detectado</div>
+      </div>
+      <div class="cap" id="capB">
+        <div class="cap-t">16:42</div>
+        <div class="cap-l">capturado</div>
+      </div>
+      <div class="cap" id="capC" style="top:960px">
+        <div class="quote">“cantou big”</div>
+        <div class="f4-mono" style="margin-top:22px">a reação, 10 min depois</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 same minute (12.5 - 15.0) -->
+  <section id="s5" class="clip" data-start="12.5" data-duration="2.5">
+    <div id="s5in" style="position:absolute; inset:0">
+      <div class="kz-hook-band" style="top:300px; height:560px">
+        <div class="f4-hook blk" id="m1" style="font-size:118px">Detectado</div>
+        <div class="f4-hook blk" id="m2" style="font-size:118px">e capturado</div>
+        <div class="f4-hook f4-lime blk" id="m3" style="font-size:150px">no mesmo minuto.</div>
+      </div>
+      <div class="chiprow">
+        <div class="tchip" id="tc1" style="left:0"><div class="k">shinyDetected</div><div class="v">16:42</div></div>
+        <div class="tchip" id="tc2" style="left:410px"><div class="k">pokemonCaught</div><div class="v">16:42</div></div>
+        <div class="tchip one" id="tc3"><div class="k">os dois</div><div class="v">16:42</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 slogan (15.0 - 17.5) -->
+  <section id="s6" class="clip" data-start="15" data-duration="2.5">
+    <div class="kz-safe" id="s6in" style="right:200px; bottom:600px">
+      <div class="f4-hook blk" id="z1">Shiny apareceu?</div>
+      <div class="f4-hook f4-lime blk" id="z2">O zap avisou.</div>
+      <div class="pills" id="pills">
+        <span class="pill" id="p1">shiny</span>
+        <span class="pill v" id="p2">mega</span>
+        <span class="pill r" id="p3">boss</span>
+      </div>
+      <div class="claim" id="claim">detecção automática + alarme no WhatsApp</div>
+    </div>
+  </section>
+
+  <!-- END card (17.5 - 20.5) -->
+  <section id="end" class="clip" data-start="17.5" data-duration="3">
+    <div class="kz-end" id="endIn" style="padding-right:200px">
+      <div style="position:relative; width:540px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" style="width:540px" />
+        <div class="eye" id="eye" style="left:169px; top:7px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">Qual shiny você queria que <b>cantasse aí?</b></div>
+    </div>
+  </section>
+
+  <div class="f4-vig"></div>
+  <div id="grain"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+  <div id="hush"></div>
+  <div id="blackout"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 20.5;
+  const b = KZ.beats(96);            // beat 0.625 s, bar 2.5 s
+
+  /* ---------- ambient (every frame moves) ---------- */
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#setCam", { x: -14, y: 0, scale: 1.04 }, { x: 14, y: -24, scale: 1.09, duration: D, ease: "sine.inOut" }, 0);
+  tl.fromTo("#blinds", { x: -40, opacity: 0.85 }, { x: 40, opacity: 1, duration: D, ease: "none" }, 0);
+  tl.fromTo("#grain", { x: 0, y: 0 }, { x: -120, y: 96, duration: D, ease: "steps(" + Math.round(D * 12) + ")" }, 0);
+
+  /* ---------- phone buzz helper ---------- */
+  function buzz(at, seed) {
+    KZ.shake(tl, "#phoneBuzz", at, 10, 0.36, seed);
+    tl.fromTo("#arc1", { scale: 0.96, opacity: 0.8 }, { scale: 1.07, opacity: 0, duration: 0.42, ease: "power2.out", immediateRender: false }, at);
+    tl.fromTo("#arc2", { scale: 0.96, opacity: 0.55 }, { scale: 1.1, opacity: 0, duration: 0.52, ease: "power2.out", immediateRender: false }, at + 0.06);
+    tl.fromTo("#screen", { filter: "brightness(1.45)" }, { filter: "brightness(1)", duration: 0.4, ease: "power2.out", immediateRender: false }, at);
+  }
+
+  /* ---------- STAGE camera ---------- */
+  tl.fromTo("#phoneTilt", { rotationX: 50, rotationZ: -10 }, { rotationX: 24, rotationZ: -4, duration: 0.9, ease: "power3.inOut" }, 2.45);
+  tl.to("#phoneTilt", { rotationX: 6, rotationZ: 0, duration: 0.7, ease: "power3.inOut" }, 4.9);
+  tl.fromTo("#phoneRig", { x: 0, y: 40, scale: 1 }, { x: 0, y: 0, scale: 1.02, duration: 2.4, ease: "sine.inOut" }, 0);
+  tl.to("#phoneRig", { x: -10, y: -160, scale: 1.22, duration: 0.9, ease: "power3.inOut" }, 2.45);
+  tl.to("#phoneRig", { y: -190, scale: 1.27, duration: 1.4, ease: "sine.inOut" }, 3.35);
+  tl.to(["#lsTime", "#lsSub"], { opacity: 0, duration: 0.3, ease: "power2.in" }, 4.9);
+  tl.to("#phoneRig", { x: -10, y: -170, scale: 1.42, duration: 0.7, ease: "power3.inOut" }, 4.9);
+  tl.to("#phoneRig", { y: -190, scale: 1.48, duration: 1.5, ease: "sine.in" }, 5.6);
+
+  buzz(0.0, 3); buzz(b(1), 5); buzz(b(2), 8); buzz(b(3), 11);
+  buzz(b(5.5), 13);                                  // the preview lights up again on "notificação…"
+
+  /* ---------- S1 hook ---------- */
+  tl.fromTo("#stamp", { scale: 1.28, opacity: 0.6 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0);
+  KZ.slam(tl, "#h1a", 0.1, 1.7);
+  KZ.slam(tl, "#h1b", 0.2, 1.9);
+  KZ.shake(tl, "#h1b", b(1), 7, 0.3, 21);
+  KZ.shake(tl, "#h1b", b(2), 7, 0.3, 22);
+  KZ.shake(tl, "#h1b", b(3), 7, 0.3, 23);
+  tl.to("#stamp", { scale: 1.05, duration: 2.0, ease: "sine.inOut" }, 0.3);
+  tl.to("#s1in", { y: -60, opacity: 0, duration: 0.2, ease: "power2.in" }, 2.5 - 0.22);
+
+  /* ---------- S2 ---------- */
+  tl.fromTo("#w1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 2.55);
+  tl.fromTo("#w2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 2.85);
+  tl.to("#s2in", { scale: 1.04, duration: 2.0, ease: "sine.inOut" }, 2.9);
+  tl.to("#s2in", { opacity: 0, y: -40, duration: 0.18, ease: "power2.in" }, 5.0 - 0.2);
+
+  /* ---------- S3 countdown ---------- */
+  KZ.slam(tl, "#g1", 5.0, 1.8);
+  KZ.slam(tl, "#g2", 5.0 + 0.16, 1.8);
+  tl.set("#ring", { opacity: 1 }, 5.3);
+  [["#n3", b(8.5), 0.667], ["#n2", b(9.5), 0.333], ["#n1", b(10.5), 0.0]].forEach(function (c, i) {
+    tl.fromTo(c[0], { scale: 2.1, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "power4.out" }, c[1]);
+    tl.to(c[0], { scale: 0.86, opacity: 0, duration: 0.14, ease: "power2.in" }, c[1] + 0.47);
+    tl.to("#ring", { attr: { "stroke-dashoffset": 1 - c[2] }, duration: 0.5, ease: "power2.inOut" }, c[1]);
+    tl.fromTo("#notif", { scale: 1.06 }, { scale: 1, duration: 0.45, ease: "power2.out", immediateRender: false }, c[1]);
+    tl.fromTo("#tableGlow", { opacity: 1 }, { opacity: 0.55, duration: 0.5, ease: "power2.out", immediateRender: false }, c[1]);
+    KZ.shake(tl, "#s3in", c[1], 5 + i * 3, 0.2, 31 + i);
+  });
+
+  /* blackout + silence before the reveal */
+  tl.fromTo("#hush", { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none" }, 7.1);
+  tl.set("#hush", { opacity: 0 }, 7.5);
+
+  /* ---------- S4 reveal (the drop) ---------- */
+  KZ.flash(tl, "#flash", 7.5, 0.95);
+  tl.fromTo("#roomTint", { opacity: 0 }, { opacity: 0.9, duration: 0.6, ease: "power2.out" }, 7.5);
+  tl.fromTo("#rays", { opacity: 0, rotation: 0, scale: 0.7 }, { opacity: 1, rotation: 40, scale: 1, duration: 5, ease: "power1.out" }, 7.5);
+  tl.fromTo("#printWrap", { scale: 1.22, filter: "blur(34px) brightness(2.2)" }, { scale: 1, filter: "blur(0px) brightness(1)", duration: 0.75, ease: "power3.out" }, 7.5);
+  KZ.shake(tl, "#cam4", 7.52, 6, 0.22, 41);
+  KZ.pop(tl, "#tag4", 7.95, 0.35);
+
+  // sparkle burst (deterministic ballistic particles)
+  (function () {
+    const field = document.getElementById("sparkField");
+    const cols = ["#ffd166", "#ffffff", "#d8b4fe", "#c6ff3d"];
+    const parts = [];
+    const pr = function (n) { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+    for (let i = 0; i < 26; i++) {
+      const el = document.createElement("div");
+      el.className = "spark";
+      const s = 10 + pr(i * 3 + 1) * 16;
+      el.style.width = s + "px"; el.style.height = s + "px"; el.style.background = cols[i % cols.length];
+      field.appendChild(el);
+      const a = pr(i * 5 + 2) * Math.PI * 2, sp = 420 + pr(i * 7 + 3) * 520;
+      parts.push({ el: el, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 180 });
+    }
+    const dr = { T: 0 }, FL = 1.1;
+    tl.fromTo(dr, { T: 0 }, { T: 1, duration: FL, ease: "none", onUpdate: function () {
+      const t = dr.T * FL, fade = Math.min(1, (1 - dr.T) / 0.35);
+      parts.forEach(function (p) {
+        p.el.style.transform = "translate(" + (p.vx * t) + "px," + (p.vy * t + 0.5 * 700 * t * t) + "px) rotate(" + (45 + 200 * t) + "deg)";
+        p.el.style.opacity = String(dr.T === 0 ? 0 : fade);
+      });
+    } }, 7.55);
+  })();
+
+  // read the print: line 1, line 2, the reaction
+  tl.to("#hl1 rect", { attr: { "stroke-dashoffset": 0 }, duration: 0.45, ease: "power2.inOut" }, b(13));
+  tl.fromTo("#capA", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, b(13) + 0.05);
+  tl.to("#cam4", { y: 70, scale: 1.04, duration: 1.0, ease: "power2.inOut" }, b(13));
+  tl.to("#capA", { opacity: 0, y: -30, duration: 0.15, ease: "power2.in" }, b(15) - 0.15);
+  tl.to("#hl1 rect", { opacity: 0.25, duration: 0.2 }, b(15));
+  tl.to("#hl2 rect", { attr: { "stroke-dashoffset": 0 }, duration: 0.45, ease: "power2.inOut" }, b(15));
+  tl.fromTo("#capB", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, b(15) + 0.05);
+  tl.to("#cam4", { y: -10, scale: 1.04, duration: 1.0, ease: "power2.inOut" }, b(15));
+  tl.to("#capB", { opacity: 0, y: -30, duration: 0.15, ease: "power2.in" }, b(17) - 0.15);
+  tl.to(["#hl2 rect"], { opacity: 0.25, duration: 0.2 }, b(17));
+  tl.to("#hl3 rect", { attr: { "stroke-dashoffset": 0 }, duration: 0.4, ease: "power2.inOut" }, b(17));
+  tl.fromTo("#capC", { scale: 0.6, opacity: 0, rotation: -4 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.4, ease: "back.out(2.2)" }, b(17) + 0.05);
+  tl.to("#cam4", { y: -60, scale: 1.0, duration: 1.2, ease: "power2.inOut" }, b(17));
+  tl.to("#s4in", { opacity: 0, scale: 0.94, duration: 0.2, ease: "power2.in" }, 12.5 - 0.22);
+
+  /* ---------- S5 same minute ---------- */
+  KZ.slam(tl, "#m1", 12.5, 1.6);
+  KZ.slam(tl, "#m2", 12.5 + 0.18, 1.6);
+  tl.fromTo("#tc1", { x: -500, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 12.6);
+  tl.fromTo("#tc2", { x: 500, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 12.6);
+  tl.to("#tc1", { x: 205, duration: 0.35, ease: "power3.in" }, b(21));
+  tl.to("#tc2", { x: -205, duration: 0.35, ease: "power3.in" }, b(21));
+  tl.set(["#tc1", "#tc2"], { opacity: 0 }, b(21) + 0.35);
+  tl.fromTo("#tc3", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.5)" }, b(21) + 0.33);
+  KZ.slam(tl, "#m3", b(21) + 0.33, 1.8);
+  KZ.shake(tl, "#s5in", b(21) + 0.36, 8, 0.25, 51);
+  tl.to("#s5in", { opacity: 0, y: -40, duration: 0.18, ease: "power2.in" }, 15 - 0.2);
+
+  /* ---------- S6 slogan ---------- */
+  KZ.slam(tl, "#z1", 15.0, 1.6);
+  KZ.slam(tl, "#z2", 15.0 + b(1), 1.8);
+  KZ.pop(tl, "#p1", 15.0 + b(2), 0.35);
+  KZ.pop(tl, "#p2", 15.0 + b(2) + 0.15, 0.35);
+  KZ.pop(tl, "#p3", 15.0 + b(2) + 0.3, 0.35);
+  KZ.rise(tl, "#claim", 15.0 + b(3), 0.35, 24);
+  tl.to("#s6in", { opacity: 0, scale: 0.94, duration: 0.18, ease: "power2.in" }, 17.5 - 0.2);
+
+  /* ---------- END card ---------- */
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, 17.55);
+  KZ.eyePulse(tl, "#eye", 17.65, 3);
+  KZ.rise(tl, "#endUrl", 17.95, 0.35, 30);
+  KZ.rise(tl, "#endAsk", 18.3, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 18.1);
+  tl.fromTo("#blackout", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.in", immediateRender: false }, D - 0.4);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

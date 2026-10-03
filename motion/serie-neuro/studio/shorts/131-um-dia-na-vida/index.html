@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>131 Um dia na vida de quem usa KizuBot</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F19 "O Dia de Quem Usa" vlog system (shared by 131-135) ================= */
+  .layer { position: absolute; inset: 0; }
+  .sky { position: absolute; inset: 0; opacity: 0; }
+  .vf { position: absolute; inset: 0; z-index: 40; pointer-events: none; }
+  .vf svg { position: absolute; inset: 0; }
+  .rec { position: absolute; left: 110px; top: 232px; display: flex; align-items: center; gap: 14px; font: 700 40px "Space Grotesk", sans-serif; color: #fff; letter-spacing: 0.06em; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45); }
+  .rec i { width: 26px; height: 26px; border-radius: 50%; background: #ff2d2d; box-shadow: 0 0 14px #ff2d2d; }
+  .tc { position: absolute; right: 120px; top: 236px; font: 500 36px "Space Grotesk", sans-serif; color: #fff; letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45); font-variant-numeric: tabular-nums; }
+  .stamp { position: absolute; left: 90px; right: 120px; top: 300px; text-align: center; font: 700 250px/0.95 "Space Grotesk", sans-serif; letter-spacing: -0.04em; color: #fff; text-shadow: 0 10px 40px rgba(20, 10, 40, 0.35); font-variant-numeric: tabular-nums; }
+  .note { position: absolute; font: 700 84px/1 "Caveat", cursive; color: #fff; text-shadow: 0 3px 14px rgba(20, 10, 40, 0.5); white-space: nowrap; }
+  .note.y { color: #fde047; }
+  .lite .stamp { color: #1f1633; text-shadow: 0 6px 30px rgba(255, 255, 255, 0.6); }
+  .lite .note { color: #1f1633; text-shadow: 0 2px 12px rgba(255, 255, 255, 0.7); }
+  .lite .note.y { color: #6d28d9; }
+  .lite .arrow path { stroke: #1f1633; filter: none; }
+  .arrow { position: absolute; overflow: visible; }
+  .arrow path { fill: none; stroke: #fff; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 2px 6px rgba(20, 10, 40, 0.45)); }
+  .shot { position: absolute; border-radius: 26px; overflow: hidden; background: #111; border: 6px solid #fff; box-shadow: 0 40px 90px rgba(20, 10, 40, 0.45); }
+  .shot .zoom { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+  .shot .zoom img { display: block; width: 100%; }
+  .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(45deg, #2a2d33 0 24px, #212328 24px 48px); font: 700 30px "JetBrains Mono", monospace; color: #8a8f99; }
+  .label { position: absolute; left: 110px; top: 1300px; font: 800 30px "Inter", sans-serif; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(15, 10, 25, 0.72); padding: 10px 18px; border-radius: 10px; z-index: 41; }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .ask { font: 700 84px/1.05 "Caveat", cursive; color: #fff; text-align: center; }
+  .ask b { color: #d8b4fe; font-weight: 700; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  .kz-progress > div { background: linear-gradient(90deg, #ff2d2d, #fde047); }
+
+  /* ================= 131 ================= */
+  #skyDawn { background: linear-gradient(180deg, #fdba8c 0%, #f9a8d4 48%, #c4b5fd 100%); opacity: 1; }
+  #skyMorn { background: linear-gradient(180deg, #60c5f5 0%, #bae6fd 62%, #fef3c7 100%); }
+  #skyNoon { background: linear-gradient(180deg, #38bdf8 0%, #e0f2fe 70%, #ffffff 100%); }
+  #skyDusk { background: linear-gradient(180deg, #4c1d95 0%, #c2410c 52%, #fbbf24 100%); }
+  #skyEve { background: linear-gradient(180deg, #1e1b4b 0%, #5b21b6 60%, #db2777 100%); }
+  #skyNight { background: linear-gradient(180deg, #07050f 0%, #1e1b4b 62%, #312e81 100%); }
+  #sun { position: absolute; left: 0; top: 0; width: 200px; height: 200px; margin: -100px 0 0 -100px; border-radius: 50%; background: radial-gradient(circle, #fffbe6 0%, #fde68a 55%, #fbbf24 100%); box-shadow: 0 0 80px 20px rgba(253, 224, 71, 0.55); }
+  #moon { position: absolute; left: 0; top: 0; width: 150px; height: 150px; margin: -75px 0 0 -75px; border-radius: 50%; background: #f1f5f9; box-shadow: 0 0 60px 10px rgba(226, 232, 240, 0.45), inset -30px -10px 0 #cbd5e1; opacity: 0; }
+  #stars { position: absolute; inset: 0; opacity: 0; }
+  #stars i { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #fff; }
+  #city { position: absolute; left: 0; bottom: 0; width: 1080px; height: 560px; }
+  #cityTint { position: absolute; left: 0; bottom: 0; width: 1080px; height: 560px; background: #0b0712; opacity: 0.25; }
+  #lights { position: absolute; left: 0; bottom: 0; width: 1080px; height: 560px; opacity: 0; }
+  #ring { position: absolute; left: 190px; top: 560px; width: 700px; height: 700px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="22" data-fps="30">
+
+  <!-- ===== untimed: the sky that turns with the hours + the city ===== -->
+  <div class="layer" id="world">
+    <div class="sky" id="skyDawn"></div>
+    <div class="sky" id="skyMorn"></div>
+    <div class="sky" id="skyNoon"></div>
+    <div class="sky" id="skyDusk"></div>
+    <div class="sky" id="skyEve"></div>
+    <div class="sky" id="skyNight"></div>
+    <div id="stars"></div>
+    <div id="sun"></div>
+    <div id="moon"></div>
+    <svg id="city" viewBox="0 0 1080 560">
+      <path d="M0 560 L0 300 L70 300 L70 240 L150 240 L150 330 L210 330 L210 180 L300 180 L300 280 L360 280 L360 220 L430 220 L430 120 L520 120 L520 260 L590 260 L590 200 L680 200 L680 300 L740 300 L740 160 L830 160 L830 250 L900 250 L900 210 L980 210 L980 290 L1080 290 L1080 560 Z" fill="#2a1f45"/>
+      <path d="M0 560 L0 400 L120 400 L120 360 L260 360 L260 420 L380 420 L380 380 L560 380 L560 430 L700 430 L700 370 L860 370 L860 410 L1080 410 L1080 560 Z" fill="#1c1533"/>
+    </svg>
+    <svg id="lights" viewBox="0 0 1080 560"></svg>
+    <div id="cityTint"></div>
+  </div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- ===== S0 hook: 0 - 2.5 ===== -->
+  <section id="s0" class="clip" data-start="0" data-duration="2.5">
+    <div class="layer" id="s0in">
+      <div style="position:absolute; left:90px; right:120px; top:330px; display:flex; flex-direction:column; align-items:center; text-align:center">
+        <div id="t1" style="font:700 168px/1 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#fff; text-shadow:0 8px 34px rgba(60,20,80,0.6)">UM DIA</div>
+        <div id="t1b" style="font:700 168px/1 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#fff; text-shadow:0 8px 34px rgba(60,20,80,0.6)">NA VIDA</div>
+        <div id="t2" style="position:absolute; top:0; left:0; right:0; font:700 120px/1 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#fff; text-shadow:0 8px 30px rgba(60,20,80,0.35)">DE QUEM USA</div>
+        <div id="t3" style="position:absolute; top:150px; font:700 132px/1 'Space Grotesk',sans-serif; letter-spacing:-0.02em; color:#fff; background:#7c3aed; padding:8px 34px 18px; border-radius:24px; box-shadow:0 18px 50px rgba(76,29,149,0.5)">KIZUBOT</div>
+      </div>
+      <div class="note" id="t4" style="left:600px; top:850px; transform-origin:0 50%">07:00, partiu</div>
+    </div>
+  </section>
+
+  <!-- ===== S1 07:00 wake up: 2.5 - 4.375 ===== -->
+  <section id="s1" class="clip" data-start="2.5" data-duration="1.875">
+    <div class="stamp" id="st1">07:00</div>
+    <svg id="clock" style="position:absolute; left:340px; top:620px; width:400px; height:400px; overflow:visible" viewBox="0 0 400 400">
+      <circle cx="110" cy="70" r="46" fill="#ef4444"/><circle cx="290" cy="70" r="46" fill="#ef4444"/>
+      <circle cx="200" cy="215" r="150" fill="#fff" stroke="#ef4444" stroke-width="22"/>
+      <path d="M200 215 L200 120 M200 215 L265 245" stroke="#1f1633" stroke-width="16" stroke-linecap="round"/>
+      <circle cx="200" cy="215" r="14" fill="#1f1633"/>
+      <path d="M110 360 L80 395 M290 360 L320 395" stroke="#ef4444" stroke-width="18" stroke-linecap="round"/>
+    </svg>
+    <div class="note" id="n1" style="left:110px; top:1080px">o char? já tava farmando</div>
+  </section>
+
+  <!-- ===== S2 09:29 shiny: 4.375 - 6.875 ===== -->
+  <section id="s2" class="clip lite" data-start="4.375" data-duration="2.5">
+    <div class="stamp" id="st2">09:29</div>
+    <div class="shot" id="sh2" style="left:110px; top:640px; width:840px; height:225px"><div class="zoom"><img src="kit/img/prints/shiny-venusaur--alarm.png" alt="" /></div></div>
+    <svg class="arrow" style="left:600px; top:880px; width:200px; height:170px" viewBox="0 0 200 170"><path id="a2" d="M150 160 C170 100 140 50 70 22 M70 22 L120 18 M70 22 L96 64" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>
+    <div class="note y" id="n2" style="left:130px; top:1060px">shiny capturado sozinho</div>
+  </section>
+
+  <!-- ===== S3 12:30 lunch: 6.875 - 8.75 ===== -->
+  <section id="s3" class="clip lite" data-start="6.875" data-duration="1.875">
+    <div class="stamp" id="st3">12:30</div>
+    <svg id="plate" style="position:absolute; left:290px; top:640px; width:500px; height:400px; overflow:visible" viewBox="0 0 500 400">
+      <path d="M40 210 L40 360 M20 210 L20 270 Q 40 300 60 270 L60 210" stroke="#64748b" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <path d="M460 210 L460 360 M460 210 C500 240 490 300 460 300" stroke="#64748b" stroke-width="14" fill="#64748b" stroke-linecap="round"/>
+      <ellipse cx="250" cy="290" rx="170" ry="100" fill="#ffffff" stroke="#cbd5e1" stroke-width="8"/>
+      <ellipse cx="250" cy="282" rx="120" ry="66" fill="#f8fafc"/>
+      <path d="M180 280 C200 230 300 230 320 280 Z" fill="#f59e0b"/><circle cx="215" cy="300" r="26" fill="#22c55e"/><circle cx="290" cy="302" r="22" fill="#ef4444"/>
+      <path id="steam1" d="M210 190 C190 160 230 140 210 110" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path id="steam2" d="M290 190 C270 160 310 140 290 110" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.8"/>
+    </svg>
+    <div class="note" id="n3" style="left:300px; top:1070px; font-size:92px">almoço em paz</div>
+    <div class="note y" id="n3b" style="left:330px; top:1170px; font-size:72px">(o bot no farm)</div>
+  </section>
+
+  <!-- ===== S4 19:19 movie / shiny card (drop): 8.75 - 11.25 ===== -->
+  <section id="s4" class="clip" data-start="8.75" data-duration="2.5">
+    <div class="stamp" id="st4">19:19</div>
+    <div class="shot" id="sh4" style="left:250px; top:570px; width:580px; height:615px"><div class="zoom"><img src="kit/img/prints/shiny-feraligatr--card.png" alt="" /></div></div>
+    <div class="note y" id="n4" style="left:120px; top:1196px; font-size:92px">no meio do filme</div>
+  </section>
+
+  <!-- ===== S5 20:29 gym / watch: 11.25 - 13.75 ===== -->
+  <section id="s5" class="clip" data-start="11.25" data-duration="2.5">
+    <div class="stamp" id="st5">20:29</div>
+    <div class="shot" id="sh5" style="left:290px; top:570px; width:500px; height:525px"><div class="zoom"><img src="kit/img/prints/gym-smartwatch-alarm--watch.jpg" alt="" /></div></div>
+    <div class="note y" id="n5" style="left:150px; top:1120px; font-size:92px">no meio do treino</div>
+  </section>
+
+  <!-- ===== S6 02:02 boss in bed: 13.75 - 16.25 ===== -->
+  <section id="s6" class="clip" data-start="13.75" data-duration="2.5">
+    <div class="stamp" id="st6">02:02</div>
+    <div class="shot" id="sh6" style="left:110px; top:640px; width:840px; height:196px"><div class="zoom"><img src="kit/img/prints/boss-rhyperior-2am--alarm.png" alt="" /></div></div>
+    <div class="shot" id="sh6b" style="left:110px; top:860px; width:780px; height:110px"><div class="zoom"><img src="kit/img/prints/boss-rhyperior-2am--quote.png" alt="" /></div></div>
+    <div class="note y" id="n6" style="left:150px; top:1010px; font-size:92px">e ele deitado</div>
+  </section>
+
+  <!-- label for the composite day -->
+  <section id="lab" class="clip" data-start="4.375" data-duration="11.875">
+    <div class="label" id="labTxt">prints reais de clientes diferentes</div>
+  </section>
+
+  <!-- ===== S7 the 24 h ring: 16.25 - 18.75 ===== -->
+  <section id="s7" class="clip" data-start="16.25" data-duration="2.5">
+    <svg id="ring" viewBox="0 0 700 700">
+      <circle cx="350" cy="350" r="290" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="46"/>
+      <circle id="ringArc" cx="350" cy="350" r="290" fill="none" stroke="#a855f7" stroke-width="46" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" transform="rotate(-90 350 350)" style="filter: drop-shadow(0 0 22px rgba(168,85,247,0.85))"/>
+      <g id="ringDots"></g>
+      <text id="ring24" x="350" y="400" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="180" fill="#ffffff">24h</text>
+    </svg>
+    <div style="position:absolute; left:90px; right:120px; top:1300px; text-align:center" id="ringCap"><span style="font:700 84px/1 'Caveat',cursive; color:#fff">e o char farmou </span><span style="font:700 84px/1 'Caveat',cursive; color:#d8b4fe">o dia todo</span></div>
+  </section>
+
+  <!-- ===== S8 end card: 18.75 - 22 ===== -->
+  <section id="s8" class="clip" data-start="18.75" data-duration="3.25">
+    <div class="kz-end" id="s8in">
+      <div style="position:relative; width:560px" id="logoBox">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">Como seria <b>o seu dia?</b></div>
+    </div>
+  </section>
+
+  <!-- ===== untimed: the camcorder viewfinder ===== -->
+  <div class="vf" id="vf">
+    <svg width="1080" height="1920" viewBox="0 0 1080 1920">
+      <g stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.9">
+        <path d="M70 280 L70 200 L150 200"/><path d="M930 200 L1010 200 L1010 280"/>
+        <path d="M70 1640 L70 1720 L150 1720"/><path d="M930 1720 L1010 1720 L1010 1640"/>
+      </g>
+      <g stroke="#fff" stroke-width="4" opacity="0.5"><path d="M520 960 L560 960 M540 940 L540 980"/></g>
+    </svg>
+    <div class="rec"><i id="recDot"></i>REC</div>
+    <div class="tc" id="tc">00:00:00</div>
+  </div>
+  <div id="flash"></div>
+</div>
+<script>
+  (function () {
+    const r = KZ.rng(131);
+    const st = document.getElementById("stars");
+    for (let i = 0; i < 40; i++) {
+      const s = document.createElement("i");
+      s.style.left = (r() * 1080) + "px"; s.style.top = (r() * 1250) + "px";
+      s.style.opacity = (0.3 + r() * 0.7).toFixed(2);
+      st.appendChild(s);
+    }
+    const NS = "http://www.w3.org/2000/svg";
+    const L = document.getElementById("lights");
+    for (let i = 0; i < 46; i++) {
+      const w = document.createElementNS(NS, "rect");
+      w.setAttribute("x", (20 + r() * 1030).toFixed(0)); w.setAttribute("y", (190 + r() * 330).toFixed(0));
+      w.setAttribute("width", 16); w.setAttribute("height", 22); w.setAttribute("rx", 2);
+      w.setAttribute("fill", r() > 0.3 ? "#fde68a" : "#c4b5fd");
+      L.appendChild(w);
+    }
+    // hour dots on the 24 h ring (real print times + the illustrated ones)
+    const dots = document.getElementById("ringDots");
+    [[7, 0], [9, 29], [12, 30], [19, 19], [20, 29], [2, 2]].forEach(function (hm) {
+      const a = ((hm[0] + hm[1] / 60) / 24) * Math.PI * 2 - Math.PI / 2;
+      const c = document.createElementNS(NS, "circle");
+      c.setAttribute("cx", (350 + Math.cos(a) * 290).toFixed(1)); c.setAttribute("cy", (350 + Math.sin(a) * 290).toFixed(1));
+      c.setAttribute("r", 16); c.setAttribute("fill", "#fde047"); c.setAttribute("class", "rdot");
+      dots.appendChild(c);
+    });
+  })();
+
+  const tl = gsap.timeline({ paused: true });
+  const D = 22;
+  const b = KZ.beats(96);                    // beat 0.625 s, bar 2.5 s
+  const S = [0, 2.5, 4.375, 6.875, 8.75, 11.25, 13.75, 16.25, 18.75];
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  // camcorder timecode + blinking REC dot
+  (function () {
+    const el = document.getElementById("tc"); const o = { v: 0 };
+    tl.to(o, { v: D, duration: D, ease: "none", onUpdate: function () { const s = Math.floor(o.v); el.textContent = "00:00:" + String(s).padStart(2, "0"); } }, 0);
+  })();
+  tl.fromTo("#recDot", { opacity: 1 }, { opacity: 0.15, duration: 0.5, ease: "steps(1)", yoyo: true, repeat: 43 }, 0);
+
+  // ---------- the day passes: sky, sun, moon, city lights ----------
+  function skyTo(id, t) { tl.to(id, { opacity: 1, duration: 0.35, ease: "power1.inOut" }, t - 0.05); }
+  skyTo("#skyMorn", S[2]); skyTo("#skyNoon", S[3]); skyTo("#skyDusk", S[4]); skyTo("#skyEve", S[5]); skyTo("#skyNight", S[6]);
+  tl.fromTo("#sun", { x: 160, y: 1330 }, { x: 200, y: 1160, duration: S[2] - 0.12, ease: "sine.out" }, 0);
+  tl.to("#sun", { x: 330, y: 760, duration: 0.6, ease: "power2.inOut" }, S[2] - 0.1);
+  tl.to("#sun", { x: 880, y: 650, duration: 0.6, ease: "power2.inOut" }, S[3] - 0.1);
+  tl.to("#sun", { x: 900, y: 1230, duration: 0.6, ease: "power2.inOut" }, S[4] - 0.1);
+  tl.to("#sun", { x: 980, y: 1600, duration: 0.6, ease: "power2.in" }, S[5] - 0.1);
+  tl.to("#moon", { opacity: 1, x: 200, y: 700, duration: 0.6, ease: "power2.out" }, S[5]);
+  tl.set("#moon", { x: 120, y: 1300 }, 0);
+  tl.to("#moon", { x: 850, y: 1130, duration: 0.6, ease: "power2.inOut" }, S[6] - 0.1);
+  tl.to("#stars", { opacity: 0.6, duration: 0.5 }, S[5]);
+  tl.to("#stars", { opacity: 1, duration: 0.5 }, S[6]);
+  tl.to("#lights", { opacity: 0.7, duration: 0.4 }, S[4]);
+  tl.to("#lights", { opacity: 1, duration: 0.4 }, S[5]);
+  tl.to("#cityTint", { opacity: 0.0, duration: 0.4 }, S[3]);
+  tl.to("#cityTint", { opacity: 0.35, duration: 0.4 }, S[4]);
+  tl.to("#cityTint", { opacity: 0.55, duration: 0.4 }, S[6]);
+
+  // ---------- S0 hook ----------
+  tl.fromTo("#t1", { scale: 1.12, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 0);
+  tl.fromTo("#t1b", { scale: 1.12, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 0);
+  tl.to(["#t1", "#t1b"], { y: -50, opacity: 0, duration: 0.14, ease: "power2.in" }, b(1.75) - 0.14);
+  tl.fromTo("#t2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, b(1.75));
+  tl.fromTo("#t3", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.36, ease: "back.out(2.6)" }, b(1.75) + 0.16);
+  tl.fromTo("#t4", { opacity: 0, x: -30, rotation: -6 }, { opacity: 1, x: 0, rotation: -6, duration: 0.3, ease: "power2.out" }, b(2.4));
+  tl.to("#s0in", { y: -80, opacity: 0, duration: 0.18, ease: "power2.in" }, S[1] - 0.18);
+
+  // ---------- scene helper: stamp flip + content ----------
+  function stampIn(sel, t) {
+    tl.fromTo(sel, { rotationX: -90, opacity: 0, y: -30, transformPerspective: 800 }, { rotationX: 0, opacity: 1, y: 0, duration: 0.32, ease: "back.out(1.8)" }, t);
+  }
+  function noteIn(sel, t, rot) {
+    tl.fromTo(sel, { opacity: 0, scale: 0.7, rotation: rot - 6 }, { opacity: 1, scale: 1, rotation: rot, duration: 0.3, ease: "back.out(2.2)" }, t);
+  }
+  function shotIn(sel, t, rot, fromY) {
+    tl.fromTo(sel, { y: fromY || 260, opacity: 0, rotation: rot * 3 }, { y: 0, opacity: 1, rotation: rot, duration: 0.38, ease: "power4.out" }, t);
+    tl.to(sel, { y: -14, duration: 1.6, ease: "sine.inOut" }, t + 0.4);
+  }
+  function out(sel, t) { tl.to(sel, { opacity: 0, y: -40, duration: 0.15, ease: "power2.in" }, t - 0.15); }
+
+  // S1 07:00
+  stampIn("#st1", S[1]);
+  tl.fromTo("#clock", { scale: 0.4, opacity: 0, rotation: -20 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.35, ease: "back.out(2.4)" }, S[1] + 0.08);
+  KZ.shake(tl, "#clock", S[1] + 0.45, 10, 0.5, 13);
+  noteIn("#n1", b(5), -3);
+  out(["#st1", "#clock", "#n1"], S[2]);
+  // S2 09:29
+  stampIn("#st2", S[2]);
+  shotIn("#sh2", S[2] + 0.1, -1.5);
+  tl.to("#a2", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, S[2] + 0.75);
+  noteIn("#n2", S[2] + 0.9, -2);
+  tl.fromTo("#labTxt", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, S[2] + 0.5);
+  out(["#st2", "#sh2", "#n2"], S[3]);
+  // S3 12:30
+  stampIn("#st3", S[3]);
+  tl.fromTo("#plate", { scale: 0.5, opacity: 0, y: 60 }, { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, S[3] + 0.08);
+  tl.fromTo(["#steam1", "#steam2"], { y: 0, opacity: 0.8 }, { y: -30, opacity: 0.2, duration: 0.8, ease: "sine.out", stagger: 0.2, repeat: 1 }, S[3] + 0.3);
+  noteIn("#n3", S[3] + 0.45, -3);
+  noteIn("#n3b", S[3] + 0.8, -3);
+  out(["#st3", "#plate", "#n3", "#n3b"], S[4]);
+  // S4 19:19 (drop)
+  KZ.flash(tl, "#flash", S[4], 0.6, "#ffe7c2");
+  stampIn("#st4", S[4]);
+  shotIn("#sh4", S[4] + 0.05, 2, 320);
+  noteIn("#n4", S[4] + 0.7, -4);
+  out(["#st4", "#sh4", "#n4"], S[5]);
+  // S5 20:29
+  stampIn("#st5", S[5]);
+  shotIn("#sh5", S[5] + 0.05, -2, 320);
+  noteIn("#n5", S[5] + 0.7, -3);
+  out(["#st5", "#sh5", "#n5"], S[6]);
+  // S6 02:02
+  stampIn("#st6", S[6]);
+  shotIn("#sh6", S[6] + 0.05, -1);
+  shotIn("#sh6b", S[6] + 0.45, 1, 200);
+  noteIn("#n6", S[6] + 0.95, -3);
+  out(["#st6", "#sh6", "#sh6b", "#n6"], S[7]);
+  tl.to("#labTxt", { opacity: 0, duration: 0.15 }, S[7] - 0.15);
+
+  // ---------- S7 the 24 h ring (peak) ----------
+  tl.to("#moon", { x: 905, y: 430, duration: 0.5, ease: "power2.inOut" }, S[7] - 0.1);
+  tl.to("#cityTint", { opacity: 0.8, duration: 0.4 }, S[7]);
+  tl.fromTo("#ring", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, S[7]);
+  tl.to("#ringArc", { strokeDashoffset: 0, duration: 1.3, ease: "power2.inOut" }, S[7] + 0.25);
+  tl.fromTo(".rdot", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.25, ease: "back.out(3)", stagger: 0.18 }, S[7] + 0.35);
+  tl.fromTo("#ring24", { scale: 0.6, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, S[7] + 0.3);
+  tl.fromTo("#ringCap", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, S[7] + 1.2);
+  tl.to("#ring", { scale: 0.85, opacity: 0, duration: 0.18, ease: "power2.in" }, S[8] - 0.18);
+  tl.to("#ringCap", { opacity: 0, duration: 0.15 }, S[8] - 0.15);
+
+  // ---------- S8 end card + sonic logo ----------
+  tl.to("#cityTint", { opacity: 0.9, duration: 0.3 }, S[8]);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, S[8] + 0.05);
+  KZ.eyePulse(tl, "#eye2", S[8] + 0.15, 3);
+  KZ.rise(tl, "#endUrl", S[8] + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", S[8] + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, S[8] + 0.6);
+  // loop seam: night fades back to the dawn of frame 0
+  tl.to(["#s8in"], { opacity: 0, duration: 0.38, ease: "power1.in" }, D - 0.45);
+  tl.to(["#skyMorn", "#skyNoon", "#skyDusk", "#skyEve", "#skyNight", "#stars", "#lights", "#moon"], { opacity: 0, duration: 0.4, ease: "power1.inOut" }, D - 0.45);
+  tl.to("#cityTint", { opacity: 0.25, duration: 0.4 }, D - 0.45);
+  tl.to("#sun", { x: 160, y: 1330, duration: 0.4, ease: "power1.out" }, D - 0.45);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

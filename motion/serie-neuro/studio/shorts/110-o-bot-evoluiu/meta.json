@@ -1,0 +1,64 @@
+{
+  "id": "110",
+  "slug": "o-bot-evoluiu",
+  "family": "Prova Real",
+  "title": "\"O bot evoluiu muito.\" — prova real",
+  "concept": "Evolution told by customers: 'O bot evoluiu muito.' / 'está mais fluído, está muito top.', a before/after split of one customer ('no início era hardcore' → 'Hoje em dia eu achei tranquilo'), 'Bot tá cada dia melhor, parabéns', and an authority close counting to 'mais de 170 atualizações desde 2024' over real changelog entries.",
+  "neuro": [
+    "social-proof",
+    "before-after-contrast",
+    "authority",
+    "visible-progress",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "“O BOT EVOLUIU MUITO.”",
+  "duration": 16.15,
+  "music": {
+    "style": "funk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/prints/bot-evoluiu-muito.png",
+    "kit/img/prints/antes-hardcore-hoje-tranquilo--painel.png",
+    "kit/img/prints/antes-hardcore-hoje-tranquilo--hoje.png",
+    "kit/img/prints/bot-cada-dia-melhor--quote.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "mais de 170 atualizações desde 2024 (changelog)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "'O bot evoluiu muito.' 🚀 No início era hardcore, hoje é tranquilo. Mais de 170 atualizações desde 2024. Prints reais de clientes diferentes. Qual atualização você mais curtiu? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#provareal",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "\"O bot evoluiu muito.\" Mais de 170 atualizações desde 2024",
+      "description": "Prints reais de clientes diferentes: 'O bot evoluiu muito.' / 'Não se trapa mais, está mais fluído, está muito top.' / 'no início era hardcore' / 'Hoje em dia eu achei tranquilo' / 'Bot tá cada dia melhor, parabéns'. Changelog público com mais de 170 atualizações desde 2024. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "'O bot evoluiu muito.' 🚀 Mais de 170 atualizações desde 2024. Qual atualização você mais curtiu? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk"
+      ]
+    }
+  },
+  "pinned_comment": "Qual atualização você mais curtiu?",
+  "notes": "bot-evoluiu-muito print is shown as two crops in order (line 'O bot evoluiu muito.' and line 'Não se trapa mais, está mais fluído, está muito top.'); the line in between ('O principal bug não acontece mais, q era se matar') is left out on purpose (self-harm keyword risk and possible GM-protection context). Typeset quote trimmed to 'está mais fluído, está muito top.'. antes-hardcore-hoje-tranquilo is shown as a before/after of the same conversation (14:24 then 14:25). Changelog ticker uses real entries from BRIEF (2025-08 Telegram, 2025-10 catch all, 2026-02 cavebot, 2026-04 KizuAI fontes, 2026-05 pesca, 2026-09 Offline Cam); counter stops at '170+'."
+}

@@ -1,0 +1,58 @@
+{
+  "id": "079",
+  "slug": "videochamada",
+  "family": "Ligação Recebida",
+  "title": "Videochamada com a sua hunt",
+  "concept": "An incoming video call from 'SUA HUNT' (blurred real gameplay behind it); slide to answer and the beat drops into a live-call layout with the robot as the self-view tile: 'Quer ver ao vivo? Dá pra acompanhar pelo celular.' — push-in 'Olha ele lá.' on real KizuBot gameplay, then the self-view hands off to the end card.",
+  "neuro": [
+    "pattern-interrupt",
+    "sonic-branding",
+    "self-reference",
+    "picture-superiority",
+    "anticipation-drop",
+    "comment-prompt"
+  ],
+  "hook": "VIDEOCHAMADA: SUA HUNT.",
+  "duration": 13.15,
+  "music": {
+    "style": "funk",
+    "bpm": 130
+  },
+  "assets": [],
+  "claims": [
+    "acesso pelo celular"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Videochamada com a sua hunt 📹 Dá pra acompanhar pelo celular. Gameplay real do KizuBot. Você ficaria assistindo? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#hunt",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Videochamada: sua hunt pelo celular 📹",
+      "description": "Quer ver sua hunt? Com o KizuBot dá pra acompanhar tudo pelo celular. Gameplay real do KizuBot no PokeXGames. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Videochamada: sua hunt 📹 Dá pra acompanhar pelo celular. Você ficaria assistindo? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#hunt"
+      ]
+    }
+  },
+  "pinned_comment": "Você ficaria assistindo a hunt? 👀",
+  "notes": ""
+}

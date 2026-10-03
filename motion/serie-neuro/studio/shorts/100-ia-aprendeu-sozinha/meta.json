@@ -1,0 +1,35 @@
+{
+  "id": "100",
+  "slug": "ia-aprendeu-sozinha",
+  "family": "Novidade no KizuBot",
+  "title": "O alarme de mega aprendeu sozinho",
+  "concept": "A neural constellation forms behind the hook; the camera dives into one node where a scanner studies a mega's body on the ground until it 'APRENDEU.' (20/04/2026), then flies to two more nodes (+100 items recognised, stats per species) and pulls out as the network fills with 170 dots: more than 170 updates since 2024.",
+  "neuro": ["schema-violation", "curiosity-gap", "anticipation-drop", "novelty", "authority", "picture-superiority", "loop", "comment-prompt"],
+  "hook": "O ALARME DE MEGA APRENDEU SOZINHO.",
+  "duration": 20,
+  "music": {"style": "synthwave", "bpm": 108},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": [
+    "o alarme de mega aprende sozinho o visual da mega a partir do corpo no chão — changelog 20/04/2026",
+    "a IA aprendeu a reconhecer +100 itens novos — changelog 25/02/2026",
+    "estatísticas da sessão mostram megas, shinies e bosses por espécie — changelog 05/09/2026",
+    "mais de 170 atualizações desde 2024 (177 entradas no changelog, out/2024–set/2026)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "O alarme de mega do KizuBot aprendeu sozinho 🧠 Ele aprende o visual da mega olhando o corpo no chão. E a IA não para: +100 itens novos, estatísticas por espécie... mais de 170 atualizações desde 2024. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#mega", "#ia"]
+    },
+    "youtube": {
+      "title": "O alarme de mega do KizuBot aprendeu sozinho 🧠",
+      "description": "Novidade no KizuBot: desde 20/04/2026 o alarme de mega aprende sozinho o visual da mega olhando o corpo no chão. A IA também aprendeu +100 itens novos (25/02/2026) e as estatísticas mostram megas, shinies e bosses por espécie (05/09/2026). Mais de 170 atualizações desde 2024. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "O alarme de mega do KizuBot aprendeu sozinho 🧠 Ele olha o corpo da mega no chão e aprende o visual. Mais de 170 atualizações desde 2024. O que a IA devia aprender agora? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#mega"]
+    }
+  },
+  "pinned_comment": "O que você queria que a IA aprendesse agora? 🧠",
+  "notes": "Hook changed from 'A IA APRENDEU SOZINHA.' to 'O ALARME DE MEGA APRENDEU SOZINHO.' (6 words): NEURO lists 'IA' as a headline to avoid, and of the three facts only the mega alarm literally learns by itself (the +100 items are 'the AI learned to recognise'; the per-species stats are a statistics feature), so the hook claims only what is true and opens a 'COMO?' curiosity gap paid off at the drop (7.2 s ≈ 36%). Fact order changed accordingly (mega alarm first, then +100 items, then stats). The body on the ground is a generic cartoon silhouette, not Pokémon art. The stats card shows category names only (no numbers). Audio master trimmed with \"lufs\": -14.6 because the first render's AAC true peak was -0.7 dBFS (see report: shared limiter ceiling). Loop bridge returns to the hook frame."
+}

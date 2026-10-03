@@ -1,0 +1,29 @@
+{
+  "id": "041",
+  "slug": "a-conta",
+  "family": "A Conta",
+  "title": "A conta que ninguém faz",
+  "concept": "Loss-aversion calculator: 8 h of sleep a day becomes 120 days a year with the char standing still, then KizuBot turns that time into farm for less than R$ 9 a day.",
+  "neuro": ["loss-aversion", "anchoring", "self-reference", "pattern-interrupt", "peak-end", "comment-prompt"],
+  "hook": "VOCÊ DORME 8H POR DIA.",
+  "duration": 20,
+  "music": {"style": "phonk", "bpm": 130},
+  "assets": ["kit/img/brand/kizubot-robot.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": ["100% AFK", "uso com PC desligado", "detecção de shinys, megas e bosses", "alarmes no celular e notificações no WhatsApp", "planos a partir de R$ 250/mês"],
+  "platforms": {
+    "tiktok": {
+      "caption": "Você dorme 8h por dia. Seu char também. Faz a conta: são 120 dias parado por ano 😴 E se esse tempo virasse farm? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#afk", "#farm"]
+    },
+    "youtube": {
+      "title": "Você dorme 8h por dia. Seu char também. (a conta assusta)",
+      "description": "8h por dia x 30 dias x 12 meses = 120 dias com o char parado por ano. O KizuBot caça, captura, pesca e te avisa no WhatsApp enquanto você dorme — 100% AFK, com o PC desligado. Planos a partir de R$ 250/mês (menos de R$ 9 por dia). kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Você dorme 8h por dia. Seu char também. 😴 São 120 dias parado por ano. O KizuBot transforma esse tempo em farm, 100% AFK. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#afkfarm"]
+    }
+  },
+  "pinned_comment": "Quantas horas você dorme por noite? 👇"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "042",
+  "slug": "seu-expediente",
+  "family": "A Conta",
+  "title": "Seu char trabalha menos que você",
+  "concept": "A month calendar does the math: 8h of work × 22 days + 8h of sleep × 30 days = 416h of 720h (58% of the month) with the char standing still, then a purple sweep turns all 720h into farm and the char gets its own punch card: 24h por dia, 100% AFK, PC desligado, acesso pelo celular.",
+  "neuro": ["loss-aversion", "anchoring", "self-reference", "pattern-interrupt", "benign-violation-humor", "peak-end", "bookend-loop", "comment-prompt"],
+  "hook": "SEU CHAR TRABALHA MENOS QUE VOCÊ.",
+  "duration": 19,
+  "music": {"style": "trap", "bpm": 145},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": ["100% AFK", "uso com PC desligado", "acesso pelo celular", "roda 24/7 em máquinas virtuais (24h por dia, 30 dias)"],
+  "math": "8h × 22 = 176h; 8h × 30 = 240h; 176 + 240 = 416h; 416 / 720 = 57,8% ≈ 58%; 24h × 30 = 720h",
+  "platforms": {
+    "tiktok": {
+      "caption": "Seu char trabalha menos que você 😅 8h de trabalho × 22 dias + 8h de sono × 30 = 416h parado. É 58% do mês! Com o KizuBot ele farma 24h por dia, 100% AFK, com o PC desligado. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#afk", "#farm"]
+    },
+    "youtube": {
+      "title": "Seu char trabalha menos que você (58% do mês parado)",
+      "description": "8h de trabalho × 22 dias + 8h de sono × 30 dias = 416h com o char parado: 58% do mês. Com o KizuBot ele farma 24h por dia, 30 dias, 100% AFK e com o PC desligado — e você acompanha tudo pelo celular. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Seu char trabalha menos que você. 😅 São 416h parado por mês — 58% do mês. Com o KizuBot ele farma 24h por dia, 100% AFK, com o PC desligado. Qual sua profissão? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#afkfarm"]
+    }
+  },
+  "pinned_comment": "Seu char trabalha mais ou menos que você? 😅",
+  "notes": "F01 v2 visual system (dotted ledger + red/purple mood light, Anton + Space Grotesk, cream paper props) designed here for 042-045, distinct from 041's grid + calculator card. Added a 'cartão de ponto' bookend (hook = your card 08:00-12:00/13:00-17:00 = 8h; S5 = the char's card with the claims). Month drawn as a 7-column calendar starting on a Monday so it has exactly 22 weekdays. '58%' slams in fully formed after the tape stop (the 416h total is the count-up). '24h por dia' rests on 'runs 24/7 on virtual machines' (kizubot.com/llms.txt). Optional hud-8434-loots.png proof not used (ASSETS.md was not published yet; brand-only episode)."
+}

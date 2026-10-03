@@ -1,0 +1,64 @@
+{
+  "id": "126",
+  "slug": "ache-o-shiny-facil",
+  "family": "Ache o Shiny",
+  "title": "Ache o shiny em 3 segundos",
+  "concept": "Puzzle-book find-the-shiny: a 5×7 grid of caterpillar emoji where one is a hue-shifted 'shiny', an exact 3-second fuse timer, the answer circled in marker, then lights-off into KizuBot: 'Você teve que procurar. O KizuBot detecta sozinho.' with a real shiny alarm print.",
+  "neuro": [
+    "participation",
+    "von-restorff",
+    "time-pressure",
+    "rewatch-loop",
+    "effort-contrast",
+    "real-proof",
+    "comment-prompt"
+  ],
+  "hook": "ACHE O SHINY EM 3 SEGUNDOS.",
+  "duration": 16,
+  "music": {
+    "style": "chiptune",
+    "bpm": 150
+  },
+  "assets": [
+    "kit/img/prints/shiny-cubone--alarm.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Ache o shiny em 3 segundos ⏱️ Pausa e procura! Você teve que procurar… o KizuBot detecta sozinho e avisa no zap. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#desafio",
+        "#shiny"
+      ]
+    },
+    "youtube": {
+      "title": "Ache o shiny em 3 segundos ⏱️ (nível 1)",
+      "description": "Desafio: ache o shiny no meio dos outros em 3 segundos. Você teve que procurar; o KizuBot detecta shiny, mega e boss sozinho e avisa no seu WhatsApp (print real de cliente no final). kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Ache o shiny em 3 segundos ⏱️ Achou em quantos? O KizuBot detecta sozinho. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#desafio"
+      ]
+    }
+  },
+  "pinned_comment": "Achou em quantos segundos? ⏱️",
+  "notes": "F18 look is a bright puzzle-book (paper, ink outlines, hard shadows) to contrast with the dark feed and F04. The timer is an exact 3-second fuse (ticks land on the 8th-note grid at 150 BPM). Concept line 'Você levou 3 segundos' (presumes the viewer's time) changed to 'Você teve que procurar. O KizuBot detecta sozinho.' Nothing ever covers a grid cell (timer and pills sit above the board). Emoji are Noto Color Emoji with a CSS hue-rotate shiny."
+}

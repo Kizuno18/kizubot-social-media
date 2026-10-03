@@ -1,0 +1,35 @@
+{
+  "id": "104",
+  "slug": "como-ele-anda",
+  "family": "Raio-X",
+  "title": "Como ele anda sozinho",
+  "concept": "Blueprint FIG. 4: a top-down hunt map; the KizuBot marker records the route once (REC), the route becomes numbered waypoints, the cavebot repeats it in fast laps, and on the drop it handles the lure, the stairs and the loot on the way — then real gameplay of the character walking off alone, and the close 'Grava uma vez. Ele repete.'",
+  "neuro": ["curiosity-gap", "picture-superiority", "visible-progress", "competence", "anticipation-drop", "satisfying-micro-motion", "loop", "comment-prompt"],
+  "hook": "COMO ELE ANDA SOZINHO?",
+  "duration": 18.75,
+  "music": {"style": "synthwave", "bpm": 112},
+  "assets": ["kit/video/rypherior.mp4", "kit/img/brand/kizubot-logo.png"],
+  "claims": [
+    "cavebot: rotas por waypoints com recorder (grava a rota)",
+    "o cavebot repete a rota sozinho (100% AFK)",
+    "combate com lure e loot; escadas no cavebot (changelog 21/02/2026: escadas corrigidas)",
+    "gameplay real do KizuBot (kit/video/rypherior.mp4, 29.3–32.0 s: o char segue sozinho pro próximo ponto)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Como o KizuBot anda sozinho? 🗺️ Você grava a rota uma vez, ela vira waypoints e o cavebot repete — com lure, escada e loot no caminho. Gameplay real no final. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#cavebot", "#afk"]
+    },
+    "youtube": {
+      "title": "Como o KizuBot anda sozinho? (raio-x do cavebot) 🗺️",
+      "description": "Raio-X do cavebot do KizuBot: você grava a rota uma vez com o recorder, ela vira waypoints e o bot repete a rota sozinho, resolvendo lure, escada e loot no caminho. Gameplay real do KizuBot no vídeo. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Como o KizuBot anda sozinho? 🗺️ Grava uma vez. Ele repete. Qual hunt você gravaria primeiro? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#cavebot"]
+    }
+  },
+  "pinned_comment": "Qual hunt você gravaria primeiro? 🗺️",
+  "notes": "Hook kept as the concept's idea but set as a question, 'COMO ELE ANDA SOZINHO?', in 3 lines; the bot marker on the map is labelled 'KIZUBOT' from frame 0 as the early brand cue. Caption 1 trimmed to 'grava a rota uma vez' and the proof caption to 'na hunt de verdade' (the clip itself carries the 'gameplay real' tag) to stay one line at ≥56 px. The map, rooms and icons are a generic illustration; lure creatures are plain dots (no creature art). Real clip: rypherior.mp4 from 29.3 s (ASSETS: originals safe, muted; nothing on screen says 'boss', so no boss label). Route draw uses the path's real length (1990 px) because pathLength-normalized dash offsets snapped in this renderer. Loop bridge returns to the hook."
+}

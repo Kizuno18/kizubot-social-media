@@ -1,0 +1,134 @@
+{
+  "duration": 18.4,
+  "style": "lofi",
+  "bpm": 84,
+  "seed": 133,
+  "sections": [
+    {
+      "at": 0.0,
+      "type": "groove",
+      "energy": 0.7
+    },
+    {
+      "at": 6.429,
+      "type": "drop"
+    },
+    {
+      "at": 12.143,
+      "type": "break"
+    },
+    {
+      "at": 15.0,
+      "type": "outro"
+    }
+  ],
+  "stops": [],
+  "sfx": [
+    {
+      "t": 0.0,
+      "name": "impact",
+      "gain": -9
+    },
+    {
+      "t": 0.0,
+      "name": "shutter",
+      "gain": -7
+    },
+    {
+      "t": 0.16,
+      "name": "swoosh_hit",
+      "gain": -12
+    },
+    {
+      "t": 2.857,
+      "name": "shutter",
+      "gain": -6
+    },
+    {
+      "t": 2.95,
+      "name": "whoosh",
+      "gain": -13
+    },
+    {
+      "t": 3.46,
+      "name": "pop",
+      "gain": -12
+    },
+    {
+      "t": 3.571,
+      "name": "chime",
+      "gain": -12
+    },
+    {
+      "t": 4.57,
+      "name": "whoosh",
+      "gain": -13
+    },
+    {
+      "t": 6.429,
+      "name": "shutter",
+      "gain": -6
+    },
+    {
+      "t": 6.68,
+      "name": "pop",
+      "gain": -11
+    },
+    {
+      "t": 7.21,
+      "name": "pop",
+      "gain": -11
+    },
+    {
+      "t": 8.29,
+      "name": "whoosh",
+      "gain": -12
+    },
+    {
+      "t": 8.5,
+      "name": "shutter",
+      "gain": -10
+    },
+    {
+      "t": 10.0,
+      "name": "swoosh_hit",
+      "gain": -10
+    },
+    {
+      "t": 10.45,
+      "name": "sparkle",
+      "gain": -12
+    },
+    {
+      "t": 10.5,
+      "name": "pop",
+      "gain": -10
+    },
+    {
+      "t": 11.21,
+      "name": "pop",
+      "gain": -10
+    },
+    {
+      "t": 12.143,
+      "name": "chime",
+      "gain": -9
+    },
+    {
+      "t": 13.214,
+      "name": "ding",
+      "gain": -10
+    },
+    {
+      "t": 14.85,
+      "name": "whoosh_down",
+      "gain": -12
+    },
+    {
+      "t": 17.95,
+      "name": "whoosh_down",
+      "gain": -14
+    }
+  ],
+  "logo": 15.05
+}

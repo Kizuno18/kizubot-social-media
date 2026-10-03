@@ -1,0 +1,61 @@
+{
+  "id": "093",
+  "slug": "farm",
+  "family": "Dicionário PxG",
+  "title": "Dicionário PxG: Farm",
+  "concept": "Dictionary entry for FARM: coletar recursos repetidamente; pop., sinônimo de tendinite (with an etched mouse clicking); o que o KizuBot faz enquanto você dorme, with a real customer usage example ('Bagui tá rodando desde cedo hj').",
+  "neuro": [
+    "in-group-identity",
+    "incongruity-humor",
+    "processing-fluency",
+    "benign-violation-humor",
+    "social-proof",
+    "comment-prompt"
+  ],
+  "hook": "FARM",
+  "duration": 20,
+  "music": {
+    "style": "lofi",
+    "bpm": 84
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/hud-8434-loots--quote.png"
+  ],
+  "claims": [
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Dicionário PxG: FARM 📖 1. coletar recursos repetidamente 2. sinônimo de tendinite 3. o que o KizuBot faz enquanto você dorme. Farmar na mão: amor ou ódio? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#farm",
+        "#dicionario"
+      ]
+    },
+    "youtube": {
+      "title": "Dicionário PxG: Farm (sinônimo de tendinite) 📖",
+      "description": "FARM, s.m.; farmar, v.t.d. 1. Coletar recursos repetidamente. 2. pop. Sinônimo de tendinite. 3. O que o KizuBot faz enquanto você dorme (100% AFK). Ex.: \"Bagui tá rodando desde cedo hj\" (print real de cliente). kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Dicionário PxG: FARM 📖 pop. sinônimo de tendinite. Farmar na mão: amor ou ódio? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#farm"
+      ]
+    }
+  },
+  "pinned_comment": "Farmar na mão: amor ou ódio? 😂",
+  "notes": "Definition 2 uses the dictionary label 'pop.' Example = 'Bagui tá rodando desde cedo hj' typeset verbatim + hud-8434-loots--quote (caption crop only: the old HUD photo isn't shown, per ASSETS.md old-UI rule). Etched mouse illustration on definition 2."
+}

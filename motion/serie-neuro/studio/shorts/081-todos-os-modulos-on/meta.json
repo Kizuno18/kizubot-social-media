@@ -1,0 +1,30 @@
+{
+  "id": "081",
+  "slug": "todos-os-modulos-on",
+  "family": "Satisfatório",
+  "title": "Todos os módulos: ON",
+  "concept": "Oddly-satisfying loop: KizuBot's 13 real modules flip ON one per beat on a soft clay panel (counter 0/13 → 13/13), the master switch lights up 100% AFK, and after the end lockup every switch flips OFF in one wave back to frame 1.",
+  "neuro": ["sensory-reward", "closure", "visible-progress", "anticipation", "seamless-loop", "comment-prompt"],
+  "hook": "TODOS OS MÓDULOS: OFF → ON",
+  "duration": 13.3,
+  "music": {"style": "house", "bpm": 124},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": ["100% AFK", "13 configurable modules (kizubot.com/llms.txt)"],
+  "platforms": {
+    "tiktok": {
+      "caption": "Todos os módulos do KizuBot: ON ✅ Cavebot, Combat, Healing, Catch, Farming, Fishing, Alarms… 13 módulos e o seu char 100% AFK. Qual você ligaria primeiro? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#satisfatorio", "#afk"]
+    },
+    "youtube": {
+      "title": "Todos os módulos: ON (13 módulos, 100% AFK) #satisfatorio",
+      "description": "Os 13 módulos do KizuBot ligando um por batida: Cavebot, Combat, Healing, Catch, Farming, Fishing, Alarms, Party, Engine, Actions, Account, Setup Pokémon e Humanização. Tudo ligado = seu char 100% AFK no PokeXGames. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Todos os módulos: ON ✅ 13 módulos ligando no ritmo e o seu char 100% AFK. Qual você ligaria primeiro? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#satisfying"]
+    }
+  },
+  "pinned_comment": "Assistiu quantas vezes? 🔁 E qual módulo você ligaria primeiro?",
+  "notes": "Hook reads 'TODOS OS MÓDULOS:' with a master pill switch showing OFF (flips to ON at the payoff), so the hook phrase completes itself. On-screen ask changed from the concept's 'Assistiu quantas vezes?' (kept in the pinned comment) to a genuine content question 'Qual você ligaria primeiro?'. Panel is a stylized brand illustration of module switches, not a screenshot. Labels are non-essential UI labels at 34-38 px (≥30 px). Rubric: hook 8, re-hooks 8, clarity 8, craft 9, truth 9, sound 8, brand 9, CTA 8, loop 9, distinct 8 = 8.4."
+}

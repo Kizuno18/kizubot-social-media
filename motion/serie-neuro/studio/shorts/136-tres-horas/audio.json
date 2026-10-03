@@ -1,0 +1,167 @@
+{
+  "duration": 16.5,
+  "style": "epic",
+  "bpm": 96,
+  "seed": 136,
+  "sections": [
+    {
+      "at": 0.0,
+      "type": "intro"
+    },
+    {
+      "at": 2.5,
+      "type": "break"
+    },
+    {
+      "at": 5.0,
+      "type": "build"
+    },
+    {
+      "at": 7.5,
+      "type": "drop"
+    },
+    {
+      "at": 12.5,
+      "type": "outro"
+    }
+  ],
+  "stops": [
+    {
+      "at": 7.1,
+      "len": 0.4
+    }
+  ],
+  "sfx": [
+    {
+      "t": 0.0,
+      "name": "impact",
+      "gain": -6
+    },
+    {
+      "t": 0.0,
+      "name": "braam",
+      "gain": -8
+    },
+    {
+      "t": 0.22,
+      "name": "px-whoosh-cinematic",
+      "gain": -13
+    },
+    {
+      "t": 0.45,
+      "name": "motif",
+      "gain": -16
+    },
+    {
+      "t": 2.28,
+      "name": "whoosh",
+      "gain": -14
+    },
+    {
+      "t": 2.5,
+      "name": "shutter",
+      "gain": -8
+    },
+    {
+      "t": 2.7,
+      "name": "tick",
+      "gain": -11
+    },
+    {
+      "t": 4.78,
+      "name": "whoosh",
+      "gain": -14
+    },
+    {
+      "t": 5.0,
+      "name": "shutter",
+      "gain": -8
+    },
+    {
+      "t": 5.2,
+      "name": "tick",
+      "gain": -11
+    },
+    {
+      "t": 7.5,
+      "name": "impact",
+      "gain": -4
+    },
+    {
+      "t": 7.5,
+      "name": "whoosh_down",
+      "gain": -10
+    },
+    {
+      "t": 7.88,
+      "name": "boom",
+      "gain": -9
+    },
+    {
+      "t": 7.88,
+      "name": "snap",
+      "gain": -10
+    },
+    {
+      "t": 8.1,
+      "name": "snap",
+      "gain": -9
+    },
+    {
+      "t": 8.4,
+      "name": "pop",
+      "gain": -11
+    },
+    {
+      "t": 8.9,
+      "name": "whoosh_fast",
+      "gain": -15
+    },
+    {
+      "t": 9.35,
+      "name": "whoosh_fast",
+      "gain": -15
+    },
+    {
+      "t": 10.0,
+      "name": "chime",
+      "gain": -9
+    },
+    {
+      "t": 10.0,
+      "name": "sparkle",
+      "gain": -10
+    },
+    {
+      "t": 10.3,
+      "name": "tick",
+      "gain": -9
+    },
+    {
+      "t": 11.2,
+      "name": "pop",
+      "gain": -10
+    },
+    {
+      "t": 11.4,
+      "name": "pop",
+      "gain": -10
+    },
+    {
+      "t": 12.96,
+      "name": "tick",
+      "gain": -9
+    },
+    {
+      "t": 13.42,
+      "name": "pop",
+      "gain": -10
+    },
+    {
+      "t": 16.0,
+      "name": "whoosh_down",
+      "gain": -14
+    }
+  ],
+  "logo": 12.5
+}

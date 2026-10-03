@@ -1,0 +1,68 @@
+{
+  "id": "044",
+  "slug": "oito-mil-loots",
+  "family": "A Conta",
+  "title": "8.434 loots desde cedo",
+  "concept": "8.434 counts up under a mouse cursor that never moves; a camera then zooms line by line into the real HUD print (collectedLoots 8434, walkTimes 4774, mapClickTimes 1136) while a ledger adds them up to 14.344 ações do bot, the customer's caption 'Bagui tá rodando desde cedo hj' follows, a hand tally counter shows what 'na mão' looks like (00023, faltam 14.321) and the drop lands '14.344 ações. Todas do bot.'",
+  "neuro": [
+    "precise-numbers",
+    "social-proof",
+    "loss-aversion",
+    "benign-violation-humor",
+    "anchoring",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "8.434 LOOTS. NINGUÉM ENCOSTOU NO MOUSE.",
+  "duration": 16.2,
+  "music": {
+    "style": "trap",
+    "bpm": 140
+  },
+  "assets": [
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-robot.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/hud-8434-loots.png",
+    "kit/img/prints/hud-8434-loots--quote.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "cavebot (anda sozinho)",
+    "farming / coleta automática"
+  ],
+  "math": "8.434 + 4.774 + 1.136 = 14.344",
+  "platforms": {
+    "tiktok": {
+      "caption": "8.434 loots desde cedo e ninguém encostou no mouse 🖱️ Somando o HUD: 14.344 ações, todas do bot. Agora imagina fazer na mão 😂 Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk",
+        "#farm"
+      ]
+    },
+    "youtube": {
+      "title": "8.434 loots desde cedo. Ninguém encostou no mouse.",
+      "description": "HUD real de cliente: collectedLoots 8434, walkTimes 4774, mapClickTimes 1136 — 14.344 ações do bot desde cedo. Cavebot anda sozinho, farming coleta sozinho, 100% AFK. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "8.434 loots. Ninguém encostou no mouse. 🖱️ No HUD real de um cliente: 14.344 ações, todas do bot. Quantos cliques você aguenta? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afkfarm"
+      ]
+    }
+  },
+  "pinned_comment": "Quantos cliques você aguenta antes da tendinite? 😂",
+  "notes": "HUD variable names translated as labels: collectedLoots → loots coletados, walkTimes → andadas, mapClickTimes → cliques no mapa; the sum (14.344 'ações do bot') is arithmetic on the three real counters. The tally counter is an illustrated joke (00023 / faltam 14.321 = 14.344 - 23). Drop line uses the approved '100% AFK' rather than claiming anything about the customer's own clicks. Per ASSETS.md the HUD in hud-8434-loots is an OLD UI, so its tag reads 'print real de cliente · interface antiga'; the camera zooms only on collectedLoots / walkTimes / mapClickTimes (killedPokemons 5 / totalShiny 0 are only visible in the 0.4 s overview)."
+}

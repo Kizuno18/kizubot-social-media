@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>112 O char que nunca dorme</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ============ F15 TERROR NO PXG — horror VHS system (shared by 111-115) ============ */
+  :root {
+    --hz-bg: #060203; --hz-red: #ff2a2a; --hz-blood: #8a0b10; --hz-bone: #efe6d8; --hz-dim: #7a6a64;
+    --hz-gold: #ffd25a; --hz-cool: #dfe9ff;
+  }
+  #root { background: var(--hz-bg); }
+  .hz-bg-red { position: absolute; inset: 0; background:
+      radial-gradient(60% 38% at 50% 40%, rgba(120, 8, 14, 0.55) 0%, rgba(40, 3, 6, 0.35) 45%, rgba(6, 2, 3, 0) 75%),
+      linear-gradient(180deg, #0d0405 0%, #060203 60%, #040102 100%); }
+  .hz-bg-violet { position: absolute; inset: 0; opacity: 0; background:
+      radial-gradient(65% 42% at 50% 42%, rgba(91, 33, 182, 0.55) 0%, rgba(40, 12, 80, 0.35) 45%, rgba(8, 4, 16, 0) 78%),
+      linear-gradient(180deg, #0e0818 0%, #08050f 100%); }
+  #grain { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.06; mix-blend-mode: screen; pointer-events: none; z-index: 30; }
+  .hz-scan { position: absolute; inset: 0; pointer-events: none; z-index: 31;
+    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0 2px, rgba(0, 0, 0, 0) 2px 5px); }
+  #track { position: absolute; left: -40px; right: -40px; top: 0; height: 150px; z-index: 32; pointer-events: none; opacity: 0; mix-blend-mode: screen;
+    background:
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.10) 0 1px, rgba(255, 255, 255, 0) 1px 4px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(220, 220, 255, 0.16) 42%, rgba(255, 255, 255, 0.30) 50%, rgba(220, 220, 255, 0.16) 58%, rgba(255, 255, 255, 0) 100%); }
+  #flick { position: absolute; inset: 0; background: #000; opacity: 0; z-index: 33; pointer-events: none; }
+  .hz-vig { position: absolute; inset: -60px; z-index: 29; pointer-events: none;
+    background: radial-gradient(75% 60% at 50% 46%, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.78) 100%); }
+  .hz-osd { position: absolute; z-index: 34; font-family: "VT323", monospace; font-size: 60px; color: #f2f2f2; letter-spacing: 0.04em;
+    text-shadow: -3px 0 rgba(255, 30, 60, 0.75), 3px 0 rgba(40, 220, 255, 0.6); }
+  .kz-progress { background: rgba(255, 255, 255, 0.06); }
+  .kz-progress > div { background: linear-gradient(90deg, #8a0b10, #ff2a2a); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  #blackout { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 45; }
+
+  .hz-title { font-family: "Creepster", cursive; color: var(--hz-bone); line-height: 1.12; letter-spacing: 0.02em;
+    text-shadow: 0 0 30px rgba(255, 30, 30, 0.35), 0 6px 0 rgba(0, 0, 0, 0.6); }
+  .hz-narr { font-family: "Special Elite", monospace; color: var(--hz-bone); font-size: 66px; line-height: 1.22; text-align: center;
+    text-shadow: 0 0 18px rgba(0, 0, 0, 0.9), 0 0 2px rgba(0, 0, 0, 1); }
+  .hz-caret { display: inline-block; color: var(--hz-red); margin-left: 4px; }
+  .gl { display: grid; }
+  .gl > * { grid-area: 1 / 1; }
+  .gl .gr, .gl .gc { opacity: 0; mix-blend-mode: screen; }
+  .gl .gr { color: #ff1f3d !important; }
+  .gl .gc { color: #23e0ff !important; }
+  .gl .gb { position: relative; z-index: 2; }
+
+  .spark { position: absolute; width: 40px; height: 40px; left: 0; top: 0; }
+
+  /* ============ 112 specifics: the cursed CRT ============ */
+  #root { background: #050307; }
+  #roomBg { position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 52%, rgba(40, 70, 90, 0.35) 0%, rgba(10, 14, 20, 0.2) 50%, rgba(5, 3, 7, 0) 80%), linear-gradient(180deg, #08060b, #050307); }
+  #crt { position: absolute; left: 90px; top: 450px; width: 900px; height: 700px; border-radius: 70px; transform-origin: 450px 350px;
+    background: linear-gradient(180deg, #1d1922 0%, #120f16 100%); box-shadow: 0 0 0 4px #24202b, 0 50px 120px rgba(0, 0, 0, 0.85), 0 0 160px rgba(80, 160, 190, 0.18); }
+  #screen { position: absolute; left: 50px; top: 46px; width: 800px; height: 600px; border-radius: 50px / 40px; overflow: hidden; background: #071512; box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.9); }
+  #map { position: absolute; left: -100px; top: -100px; width: 1000px; height: 800px; transform-origin: 500px 400px; }
+  #mapSvg { position: absolute; inset: 0; width: 1000px; height: 800px; }
+  #char { position: absolute; left: 0; top: 0; width: 44px; height: 64px; }
+  #lantern { position: absolute; left: -58px; top: -38px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 214, 150, 0.42) 0%, rgba(255, 190, 110, 0.14) 45%, rgba(255, 190, 110, 0) 70%); }
+  #ring { position: absolute; left: -18px; top: 46px; width: 80px; height: 30px; border-radius: 50%; border: 4px solid #c084fc; box-shadow: 0 0 14px rgba(192, 132, 252, 0.9); opacity: 0; }
+  #plate { position: absolute; left: -58px; top: -42px; width: 160px; text-align: center; font: 800 20px "Inter", sans-serif; color: #f3e8ff; background: rgba(76, 29, 149, 0.92); border: 2px solid #c084fc; border-radius: 10px; padding: 3px 0; opacity: 0; }
+  #charEye { position: absolute; left: 17px; top: 9px; width: 10px; height: 10px; z-index: 2; border-radius: 50%; background: #f3e8ff; box-shadow: 0 0 10px 4px rgba(192, 132, 252, 0.95), 0 0 30px 10px rgba(168, 85, 247, 0.6); opacity: 0; }
+  #scrScan { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0 2px, rgba(0, 0, 0, 0) 2px 4px); pointer-events: none; }
+  #scrGlow { position: absolute; inset: 0; background: radial-gradient(80% 70% at 50% 50%, rgba(160, 255, 220, 0.10) 0%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.55) 100%); pointer-events: none; }
+  #scrHud { position: absolute; right: 34px; top: 22px; font: 400 52px "VT323", monospace; color: #d8ffe9; text-shadow: 0 0 10px rgba(120, 255, 190, 0.7); }
+  #led { position: absolute; left: 418px; top: 664px; width: 64px; height: 12px; border-radius: 6px; background: #ff3b3b; box-shadow: 0 0 16px rgba(255, 50, 50, 0.9); }
+  .narrBox2 { position: absolute; left: 110px; right: 110px; top: 250px; height: 190px; display: flex; align-items: center; justify-content: center; }
+  .narrBox2 .hz-narr { position: absolute; left: 0; right: 0; font-size: 64px; }
+  #hk1 { position: absolute; left: 90px; right: 90px; top: 220px; text-align: center; font-size: 150px; }
+  #hk2 { position: absolute; left: 90px; right: 200px; top: 1185px; text-align: center; font-size: 140px; color: var(--hz-red); text-shadow: 0 0 40px rgba(255, 30, 30, 0.55), 0 6px 0 rgba(0, 0, 0, 0.6); }
+  /* twist */
+  #bigChar { position: absolute; left: 290px; top: 330px; width: 500px; height: 700px; transform-origin: 250px 700px; }
+  #bigEye { position: absolute; left: 230px; top: 150px; width: 40px; height: 40px; border-radius: 50%; background: #fbf5ff; box-shadow: 0 0 30px 12px rgba(192, 132, 252, 0.95), 0 0 120px 40px rgba(168, 85, 247, 0.6); }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  #tw1 { position: absolute; left: 90px; right: 90px; top: 300px; text-align: center; font: 400 96px "Archivo Black", sans-serif; text-transform: uppercase; color: #fff; line-height: 1.0; white-space: nowrap; }
+  #tw1 b { color: var(--hz-gold); font-weight: 400; }
+  #twChips { position: absolute; left: 90px; right: 200px; top: 1200px; display: flex; gap: 16px; justify-content: center; }
+  .hz-chip { display: inline-block; padding: 14px 26px; border-radius: 999px; font: 800 40px "Inter", sans-serif; background: rgba(168, 85, 247, 0.22); border: 3px solid rgba(216, 180, 254, 0.7); color: #fff; }
+  .hz-chip.lime { background: var(--kz-lime); border-color: var(--kz-lime); color: #111; }
+  /* proof */
+  #hudWrap { position: absolute; left: 100px; top: 300px; width: 420px; }
+  #hudCard { width: 420px; border-radius: 24px; overflow: hidden; box-shadow: 0 0 0 3px rgba(216, 180, 254, 0.5), 0 30px 80px rgba(0, 0, 0, 0.7); }
+  #hudCard img { display: block; width: 100%; }
+  #ptag { position: absolute; left: 18px; top: -26px; z-index: 3; white-space: nowrap; }
+  .hz-tag { display: inline-block; padding: 10px 22px; border-radius: 999px; background: #0b0712; border: 2px solid var(--kz-lav); font: 800 30px "Inter", sans-serif; letter-spacing: 0.06em; color: var(--kz-lav); text-transform: uppercase; }
+  #hudOld { position: absolute; left: 100px; width: 420px; top: 1100px; text-align: center; font: 600 30px "Inter", sans-serif; color: rgba(216, 180, 254, 0.8); }
+  #stat { position: absolute; left: 550px; width: 330px; top: 470px; text-align: center; }
+  #statN { font: 400 96px "Archivo Black", sans-serif; color: var(--hz-gold); line-height: 1; text-shadow: 0 0 40px rgba(255, 200, 60, 0.45); }
+  #statL { font: 800 40px "Inter", sans-serif; color: #fff; margin-top: 10px; }
+  #statS { font: 600 30px "Inter", sans-serif; color: rgba(216, 180, 254, 0.85); margin-top: 8px; }
+  #qWrap { position: absolute; left: 100px; top: 1150px; width: 780px; }
+  #qCard { width: 780px; border-radius: 22px; overflow: hidden; box-shadow: 0 0 0 3px rgba(255, 210, 90, 0.7), 0 0 60px rgba(255, 200, 60, 0.3); }
+  #qCard img { display: block; width: 100%; }
+  /* end */
+  #endBg { position: absolute; inset: 0; background: radial-gradient(60% 40% at 50% 40%, rgba(91, 33, 182, 0.6) 0%, rgba(8, 4, 16, 0) 75%), #08050f; }
+  .ask { font: 900 62px "Inter", sans-serif; color: var(--kz-ink); max-width: 700px; line-height: 1.12; }
+  .ask b { color: var(--hz-gold); }
+  #pumpkin { position: absolute; left: 92px; top: 800px; width: 150px; height: 140px; }
+  #loopCrt { position: absolute; inset: 0; opacity: 0; z-index: 46; pointer-events: none; background: radial-gradient(45% 20% at 50% 41%, rgba(60, 120, 120, 0.35), rgba(5, 3, 7, 0) 70%), #050307; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="19.45" data-fps="30">
+  <div id="roomBg"></div>
+  <div class="hz-bg-violet" id="bgViolet"></div>
+
+  <!-- the cursed CRT (hook + legend): 0 - 9.931 -->
+  <section id="w" class="clip" data-start="0" data-duration="12.414">
+    <div id="crt">
+      <div id="screen">
+        <div id="map">
+          <svg id="mapSvg" viewBox="0 0 1000 800"></svg>
+          <div id="char">
+            <div id="lantern"></div><div id="ring"></div>
+            <svg viewBox="0 0 44 64" width="44" height="64" style="position:relative"><circle cx="22" cy="14" r="11" fill="#030806"/><path d="M8 30 C8 24 14 22 22 22 C30 22 36 24 36 30 L38 52 L28 52 L27 64 L17 64 L16 52 L6 52 Z" fill="#030806"/></svg>
+            <div id="charEye"></div>
+            <div id="plate">seu char</div>
+          </div>
+        </div>
+        <div id="scrScan"></div>
+        <div id="scrGlow"></div>
+        <div id="scrHud">23:58</div>
+      </div>
+      <div id="led"></div>
+    </div>
+    <div class="hz-title" id="hk1">O char que</div>
+    <div class="hz-title" id="hk2">nunca dorme.</div>
+    <div class="narrBox2">
+      <div class="hz-narr" id="n1w" style="opacity:0"><span id="n1"></span><span class="hz-caret">_</span></div>
+      <div class="hz-narr" id="n2w" style="opacity:0"><span id="n2"></span><span class="hz-caret">_</span></div>
+      <div class="hz-narr" id="n3w" style="opacity:0"><span id="n3"></span><span class="hz-caret">_</span></div>
+      <div class="hz-narr" id="n4w" style="opacity:0"><span id="n4"></span><span class="hz-caret">_</span></div>
+    </div>
+  </section>
+
+  <!-- twist text: 9.931 - 12.414 -->
+  <section id="s5" class="clip" data-start="9.931" data-duration="2.483">
+    <div id="s5in" class="kz-full">
+      <div id="tw1">É o <b>seu</b> char.</div>
+      <div id="twChips"><span class="hz-chip lime" id="ch1">24h na nuvem</span><span class="hz-chip" id="ch2">PC desligado</span></div>
+    </div>
+  </section>
+
+  <!-- proof: 12.414 - 15.724 -->
+  <section id="s6" class="clip" data-start="12.414" data-duration="3.31">
+    <div id="s6in" class="kz-full">
+      <div id="hudWrap"><div id="ptag" class="hz-tag">print real de cliente</div><div id="hudCard"><img src="kit/img/prints/hud-8434-loots--hud.png" alt="" /></div></div>
+      <div id="hudOld">interface antiga do bot</div>
+      <div id="stat"><div id="statN">8.434</div><div id="statL">loots coletados</div><div id="statS">(collectedLoots)</div></div>
+      <div id="qWrap"><div id="qCard"><img src="kit/img/prints/hud-8434-loots--quote.png" alt="" /></div></div>
+    </div>
+  </section>
+
+  <!-- end card: 15.724 - 19.45 -->
+  <section id="s7" class="clip" data-start="15.724" data-duration="3.726">
+    <div id="endBg"></div>
+    <div class="kz-end" id="s7in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye7" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk" style="max-width:420px">Você já viu <b>esse char?</b></div>
+    </div>
+    <svg id="pumpkin" viewBox="0 0 150 140">
+      <defs><radialGradient id="pg" cx="50%" cy="45%" r="60%"><stop offset="0%" stop-color="#ff9a3c"/><stop offset="100%" stop-color="#c2410c"/></radialGradient></defs>
+      <path d="M72 22 C70 10 78 4 86 6 L84 14 C80 14 78 18 79 24 Z" fill="#3f6212"/>
+      <ellipse cx="45" cy="80" rx="38" ry="48" fill="url(#pg)"/><ellipse cx="105" cy="80" rx="38" ry="48" fill="url(#pg)"/><ellipse cx="75" cy="80" rx="40" ry="52" fill="url(#pg)"/>
+      <path d="M58 104 Q75 116 92 104 L88 98 L82 104 L75 98 L68 104 L62 98 Z" fill="#1a0b02"/>
+      <circle cx="75" cy="66" r="15" fill="#1a0b02"/><circle id="pkEye" cx="75" cy="66" r="11" fill="#c084fc"/>
+    </svg>
+  </section>
+
+  <canvas id="grain" width="90" height="320"></canvas>
+  <div class="hz-scan" id="scan"></div>
+  <div id="track"></div>
+  <div class="hz-vig" id="vig"></div>
+  <div id="flick"></div>
+  <div class="hz-osd" id="osd1" style="left:70px; top:120px">▶ PLAY</div>
+  <div class="hz-osd" id="osdTc" style="left:70px; top:1580px">LENDA_04.VHS</div>
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+  <div id="loopCrt"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 19.45;
+  const b = KZ.beats(145);           // beat = 0.414 s, bar = 1.655 s
+
+  /* ---------- F15 horror helpers (inline, shared by 111-115) ---------- */
+  const HZ = {};
+  HZ.hash = function (n) { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+  // seven-segment LED display (SVG), chars like [" ", "3", ":", "3", "3"]
+  HZ.seg = function (el, chars) {
+    const T = 16, L = 76, V = 74;
+    const h = (cx, cy) => [[cx - L / 2, cy], [cx - L / 2 + T / 2, cy - T / 2], [cx + L / 2 - T / 2, cy - T / 2], [cx + L / 2, cy], [cx + L / 2 - T / 2, cy + T / 2], [cx - L / 2 + T / 2, cy + T / 2]];
+    const v = (cx, cy) => [[cx, cy - V / 2], [cx + T / 2, cy - V / 2 + T / 2], [cx + T / 2, cy + V / 2 - T / 2], [cx, cy + V / 2], [cx - T / 2, cy + V / 2 - T / 2], [cx - T / 2, cy - V / 2 + T / 2]];
+    const S = { a: h(50, 9), g: h(50, 90), d: h(50, 171), f: v(9, 49.5), b: v(91, 49.5), e: v(9, 130.5), c: v(91, 130.5) };
+    const MAP = { "0": "abcdef", "1": "bc", "2": "abged", "3": "abgcd", "4": "fgbc", "5": "afgcd", "6": "afgedc", "7": "abc", "8": "abcdefg", "9": "abcdfg", " ": "" };
+    let x = 26, out = "";
+    chars.forEach(function (c) {
+      if (c === ":") {
+        out += '<g class="colon"><rect class="on" x="' + (x + 4) + '" y="50" width="20" height="20" rx="3" transform="skewX(-8)"/><rect class="on" x="' + (x - 6) + '" y="112" width="20" height="20" rx="3" transform="skewX(-8)"/></g>';
+        x += 44; return;
+      }
+      const on = MAP[c] || "";
+      out += '<g transform="translate(' + x + ',0) skewX(-8)">';
+      "abcdefg".split("").forEach(function (k) {
+        out += '<polygon class="' + (on.indexOf(k) >= 0 ? "on" : "off") + '" points="' + S[k].map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" ") + '"/>';
+      });
+      out += "</g>";
+      x += 124;
+    });
+    el.innerHTML = '<svg viewBox="0 0 ' + (x + 6) + ' 182" width="100%">' + out + "</svg>";
+    return el.querySelector("svg");
+  };
+  // low-res VHS grain redrawn on a quantized clock (pure function of time)
+  HZ.grain = function (tl, canvas, D, fps) {
+    const ctx = canvas.getContext("2d"), W = canvas.width, H = canvas.height;
+    const img = ctx.createImageData(W, H);
+    let last = -1;
+    const draw = function (k) {
+      const r = KZ.rng(9000 + k * 7), d = img.data;
+      for (let y = 0; y < H; y++) {
+        const row = 0.75 + 0.5 * r();          // horizontal streaks
+        for (let x2 = 0; x2 < W; x2++) {
+          const i = (y * W + x2) * 4, vv = Math.min(255, r() * 255 * row);
+          d[i] = d[i + 1] = d[i + 2] = vv; d[i + 3] = 255;
+        }
+      }
+      ctx.putImageData(img, 0, 0);
+    };
+    const o = { t: 0 };
+    tl.fromTo(o, { t: 0 }, { t: D, duration: D, ease: "none", onUpdate: function () {
+      const k = Math.floor(o.t * (fps || 15));
+      if (k !== last) { last = k; draw(k); }
+    } }, 0);
+    draw(0);
+  };
+  // ambient flicker on an overlay between [from, to): pure function of quantized time
+  HZ.flicker = function (tl, el, from, to, seed, strength, rate) {
+    const o = { t: from };
+    tl.fromTo(o, { t: from }, { t: to, duration: to - from, ease: "none", immediateRender: false, onUpdate: function () {
+      if (o.t <= from + 0.001) { el.style.opacity = "0"; return; }
+      const k = Math.floor(o.t * (rate || 15));
+      const hsh = HZ.hash(k * 3.17 + seed);
+      el.style.opacity = hsh > 0.88 ? (strength * (0.45 + 0.55 * HZ.hash(k + seed * 2))).toFixed(3) : "0";
+    } }, from);
+    tl.set(el, { opacity: 0 }, to);
+  };
+  // RGB-split jitter on a .gl stack (base stays legible)
+  HZ.glitch = function (tl, stack, at, dur, amp) {
+    const el = typeof stack === "string" ? document.querySelector(stack) : stack;
+    const copies = el.querySelectorAll(".gr, .gc");
+    const o = { a: 0 };
+    tl.set(copies, { opacity: 0.85 }, at);
+    tl.fromTo(o, { a: 1 }, { a: 0, duration: dur, ease: "power3.in", immediateRender: false, onUpdate: function () {
+      const step = Math.floor(tl.time() * 30);
+      copies.forEach(function (c, i) {
+        gsap.set(c, { x: (HZ.hash(step * 13 + i * 7) * 2 - 1) * (amp || 12) * o.a, y: (HZ.hash(step * 29 + i * 11) * 2 - 1) * (amp || 12) * 0.35 * o.a });
+      });
+    } }, at);
+    tl.set(copies, { x: 0, y: 0, opacity: 0 }, at + dur);
+  };
+  // VHS tracking band sweep + tear jitter on a target
+  HZ.track = function (tl, at, dur, target, seed) {
+    tl.fromTo("#track", { y: -160, opacity: 0.9 }, { y: 1960, opacity: 0.9, duration: dur, ease: "none", immediateRender: false }, at);
+    tl.set("#track", { opacity: 0 }, at + dur);
+    if (target) {
+      const n = 5;
+      for (let i = 0; i < n; i++) tl.set(target, { x: (HZ.hash(seed * 5 + i) * 2 - 1) * 26, skewX: (HZ.hash(seed * 9 + i) * 2 - 1) * 4 }, at + i * 0.033);
+      tl.set(target, { x: 0, skewX: 0 }, at + n * 0.033);
+    }
+  };
+  // typed narration line
+  HZ.type = function (tl, el, text, at, cps) { KZ.typewriter(tl, el, text, at, cps || 40); };
+  // gold sparkle burst (deterministic)
+  HZ.sparks = function (tl, box, n, at, cx, cy, seed, color) {
+    const r = KZ.rng(seed);
+    for (let i = 0; i < n; i++) {
+      const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      s.setAttribute("viewBox", "0 0 40 40"); s.setAttribute("class", "spark");
+      s.innerHTML = '<path d="M20 0 L24 16 L40 20 L24 24 L20 40 L16 24 L0 20 L16 16 Z" fill="' + (color || "#ffd25a") + '"/>';
+      box.appendChild(s);
+      const ang = r() * Math.PI * 2, dist = 180 + r() * 360, sc = 0.5 + r() * 1.1;
+      tl.fromTo(s, { x: cx - 20, y: cy - 20, scale: 0, opacity: 1, rotation: 0 },
+        { x: cx - 20 + Math.cos(ang) * dist, y: cy - 20 + Math.sin(ang) * dist * 0.8 + 60, scale: sc, rotation: r() * 180, duration: 0.9 + r() * 0.5, ease: "power3.out" }, at + r() * 0.08);
+      tl.to(s, { opacity: 0, scale: 0, duration: 0.35, ease: "power2.in" }, at + 0.9 + r() * 0.4);
+    }
+  };
+
+
+  /* ---------- the night map (deterministic) ---------- */
+  const WP = [[160, 620], [300, 520], [470, 560], [620, 440], [780, 470], [840, 330], [700, 230], [520, 280], [360, 230], [210, 330], [160, 470], [160, 620]];
+  (function () {
+    const r = KZ.rng(112);
+    let s = '<rect width="1000" height="800" fill="#0a1d18"/>';
+    for (let i = 0; i < 260; i++) s += '<rect x="' + (r() * 1000).toFixed(0) + '" y="' + (r() * 800).toFixed(0) + '" width="' + (4 + r() * 10).toFixed(0) + '" height="3" fill="#123128" opacity="0.8"/>';
+    for (let i = 0; i < 26; i++) {
+      const x = r() * 1000, y = r() * 800, rr = 26 + r() * 40;
+      let near = false; WP.forEach(function (p) { if (Math.hypot(p[0] - x, p[1] - y) < rr + 40) near = true; });
+      if (near) continue;
+      s += '<circle cx="' + x.toFixed(0) + '" cy="' + y.toFixed(0) + '" r="' + rr.toFixed(0) + '" fill="#06120e"/><circle cx="' + (x - rr * 0.25).toFixed(0) + '" cy="' + (y - rr * 0.3).toFixed(0) + '" r="' + (rr * 0.55).toFixed(0) + '" fill="#0e2a22"/>';
+    }
+    s += '<polyline points="' + WP.map(function (p) { return p.join(","); }).join(" ") + '" fill="none" stroke="#e6d28a" stroke-width="4" stroke-dasharray="4 14" stroke-linecap="round" opacity="0.55"/>';
+    WP.slice(0, -1).forEach(function (p) { s += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="7" fill="none" stroke="#e6d28a" stroke-width="3" opacity="0.6"/>'; });
+    document.getElementById("mapSvg").innerHTML = s;
+  })();
+  // char walks the route: position is a pure function of time
+  const charEl = document.getElementById("char");
+  const segs = []; let tot = 0;
+  for (let i = 0; i < WP.length - 1; i++) { const L = Math.hypot(WP[i + 1][0] - WP[i][0], WP[i + 1][1] - WP[i][1]); segs.push(L); tot += L; }
+  function placeChar(t) {
+    let d = (t * 120) % tot, i = 0;
+    while (d > segs[i]) { d -= segs[i]; i++; }
+    const f = d / segs[i], x = WP[i][0] + (WP[i + 1][0] - WP[i][0]) * f, y = WP[i][1] + (WP[i + 1][1] - WP[i][1]) * f;
+    const bob = Math.abs(Math.sin(t * 9)) * 4;
+    charEl.style.transform = "translate(" + (x - 22).toFixed(1) + "px," + (y - 58 - bob).toFixed(1) + "px) scale(1.5)";
+    return [x, y];
+  }
+  placeChar(0);
+
+  /* ---------- global ---------- */
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  HZ.grain(tl, document.getElementById("grain"), D, 10);
+  tl.fromTo("#vig", { scale: 1, opacity: 1 }, { scale: 1.06, opacity: 0.85, duration: b(6), ease: "sine.inOut", yoyo: true, repeat: 2 }, 0);
+  const carets = document.querySelectorAll(".hz-caret"), hud = document.getElementById("scrHud");
+  const clk = { t: 0 };
+  tl.fromTo(clk, { t: 0 }, { t: D, duration: D, ease: "none", onUpdate: function () {
+    const on = Math.floor(clk.t * 3.4) % 2 === 0;
+    carets.forEach(function (c) { c.style.opacity = on ? 1 : 0; });
+    placeChar(Math.min(clk.t, 9.931));
+    hud.textContent = clk.t < 7.03 ? (clk.t < 4.97 ? "23:58" : "02:17") : (clk.t < 8.69 ? "04:00" : "25/12 04:00");
+  } }, 0);
+
+  /* ---------- hook ---------- */
+  tl.fromTo("#hk1", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0.04);
+  tl.fromTo("#hk2", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0.2);
+  KZ.shake(tl, "#hk2", 0.44, 10, 0.24, 3);
+  tl.fromTo("#crt", { scale: 0.96 }, { scale: 1.0, duration: 2.4, ease: "none" }, 0);
+  HZ.track(tl, 1.6, 0.4, null, 1);
+  tl.to(["#hk1", "#hk2"], { opacity: 0, duration: 0.14, ease: "power2.in" }, 2.483 - 0.14);
+
+  /* ---------- the legend ---------- */
+  const L = [["#n1w", "#n1", "Dizem que ele caça 24h por dia.", 2.483], ["#n2w", "#n2", "Ninguém nunca viu ele parar.", 4.966], ["#n3w", "#n3", "Nem às 4h da manhã.", 7.034], ["#n4w", "#n4", "Nem no Natal.", 8.69]];
+  L.forEach(function (l, i) {
+    tl.set(l[0], { opacity: 1 }, l[3]);
+    HZ.type(tl, l[1], l[2], l[3] + 0.05, 48);
+    const end = i < 3 ? L[i + 1][3] : 9.5;
+    tl.set(l[0], { opacity: 0 }, end);
+  });
+  tl.fromTo("#map", { scale: 1.0 }, { scale: 1.35, duration: 9.9, ease: "power1.in" }, 0);
+  // brand foreshadowing: the char's eye glints once
+  tl.fromTo("#charEye", { opacity: 0 }, { opacity: 1, duration: 0.08 }, 3.45);
+  tl.to("#charEye", { opacity: 0, duration: 0.15 }, 3.75);
+  HZ.flicker(tl, document.getElementById("flick"), 2.5, 9.4, 112, 0.45, 14);
+  HZ.track(tl, 6.95, 0.35, "#crt", 2);
+  HZ.track(tl, 8.6, 0.35, "#crt", 3);
+  tl.to("#crt", { scale: 1.12, duration: 0.6, ease: "power2.in" }, 9.3);
+  tl.set("#flick", { opacity: 0.9 }, 9.73);
+  tl.set("#flick", { opacity: 0 }, 9.931);
+
+  /* ---------- twist: it's YOUR char (the camera dives into the map) ---------- */
+  const TW = 9.931;
+  const cp = placeChar(TW); placeChar(0);
+  KZ.flash(tl, "#flash", TW, 0.85, "#efe0ff");
+  tl.set("#bgViolet", { opacity: 1 }, TW);
+  tl.set("#grain", { opacity: 0.02 }, TW);
+  tl.set(["#osd1", "#osdTc"], { opacity: 0 }, TW);
+  tl.to("#crt", { scale: 1.0, duration: 0.3, ease: "power2.out" }, TW);
+  tl.set("#map", { transformOrigin: cp[0] + "px " + (cp[1] - 30) + "px" }, TW);
+  tl.fromTo("#map", { scale: 1.35, x: 0, y: 0 }, { scale: 3.0, x: 400 - (cp[0] - 100), y: 400 - (cp[1] - 100), duration: 0.5, ease: "power4.out", immediateRender: false }, TW);
+  tl.set("#charEye", { opacity: 1 }, TW);
+  tl.fromTo("#ring", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, TW + 0.1);
+  tl.fromTo("#plate", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, TW + 0.35);
+  tl.to("#lantern", { opacity: 0, duration: 0.3 }, TW);
+  tl.to("#scrHud", { opacity: 0, duration: 0.2 }, TW);
+  tl.fromTo("#charEye", { scale: 1 }, { scale: 1.6, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, TW + 0.1);
+  KZ.shake(tl, "#crt", TW + 0.03, 12, 0.3, 11);
+  tl.fromTo("#tw1", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: "back.out(2.4)" }, 10.345);
+  KZ.pop(tl, "#ch1", 11.1, 0.35);
+  KZ.pop(tl, "#ch2", 11.3, 0.35);
+  tl.to("#crt", { opacity: 0, scale: 0.94, duration: 0.14, ease: "power2.in" }, 12.414 - 0.14);
+  tl.to("#s5in", { opacity: 0, duration: 0.14, ease: "power2.in" }, 12.414 - 0.14);
+
+  /* ---------- proof ---------- */
+  const TP = 12.414;
+  tl.fromTo("#hudWrap", { x: -500, rotation: -6 }, { x: 0, rotation: -1.5, duration: 0.42, ease: "power3.out" }, TP);
+  KZ.pop(tl, "#ptag", TP + 0.35, 0.35);
+  tl.fromTo("#hudOld", { opacity: 0 }, { opacity: 1, duration: 0.3 }, TP + 0.5);
+  KZ.rise(tl, "#stat", TP + 0.55, 0.4, 30);
+  KZ.countUp(tl, "#statN", 0, 8434, TP + 0.6, 0.8, "int", "power2.out");
+  tl.fromTo("#qWrap", { y: 260, opacity: 0, rotation: 3 }, { y: 0, opacity: 1, rotation: 0.6, duration: 0.4, ease: "back.out(1.8)" }, 13.65);
+  tl.to("#s6in", { opacity: 0, duration: 0.14, ease: "power2.in" }, 15.724 - 0.14);
+
+  /* ---------- end card ---------- */
+  const TE = 15.724;
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, TE);
+  KZ.eyePulse(tl, "#eye7", TE + 0.1, 2);
+  KZ.rise(tl, "#endUrl", TE + 0.46, 0.35, 30);
+  KZ.rise(tl, "#endAsk", TE + 0.92, 0.4, 30);
+  tl.fromTo("#pumpkin", { scale: 0, rotation: -20, opacity: 0 }, { scale: 1, rotation: -8, opacity: 1, duration: 0.45, ease: "back.out(2.4)" }, TE + 1.3);
+  tl.fromTo("#pkEye", { opacity: 0.3 }, { opacity: 1, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, TE + 1.45);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, TE + 0.9);
+  tl.fromTo("#loopCrt", { opacity: 0 }, { opacity: 1, duration: 0.32, ease: "power1.in" }, D - 0.4);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

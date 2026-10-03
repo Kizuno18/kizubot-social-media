@@ -1,0 +1,63 @@
+{
+  "id": "106",
+  "slug": "nao-botou-fe",
+  "family": "Prova Real",
+  "title": "Ele não botou fé no KizuBot",
+  "concept": "One real customer chat walked top to bottom: he 'não botou fé', seven days later 'Bot joga muito kkk', and the best part for him is that it runs virtually and alerts on WhatsApp; each line is zoomed in the print and made loud in a Pop Bold quote block.",
+  "neuro": [
+    "social-proof",
+    "emotional-contagion",
+    "negative-frame-pivot",
+    "curiosity-gap",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "ELE NÃO BOTOU FÉ.",
+  "duration": 15.69,
+  "music": {
+    "style": "funk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/prints/bot-joga-muito--nao-botei-fe.png",
+    "kit/img/prints/bot-joga-muito--quote.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "uso com PC desligado",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Ele não botou fé no KizuBot 👀 7 dias depois: 'Bot joga muito kkk'. Print real de cliente. Você botaria fé? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk",
+        "#provareal"
+      ]
+    },
+    "youtube": {
+      "title": "Ele não botou fé no KizuBot. 7 dias depois… 👀",
+      "description": "Print real de cliente: 'Eu não botei fé'. Depois de 7 dias usando o KizuBot: 'Bot joga muito kkk', 'Mais o mais top é bagulho ser virtual kkk', 'Os alertas', 'No waths'. Roda na nuvem com o PC desligado e avisa no WhatsApp. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Ele não botou fé no KizuBot 👀 7 dias depois: 'Bot joga muito kkk'. Você botaria fé? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk"
+      ]
+    }
+  },
+  "pinned_comment": "Você botaria fé? 👀",
+  "notes": "Camera walks down the two contiguous focus crops of the same print (bot-joga-muito--nao-botei-fe + --quote, source bot-joga-muito.png) stacked in chat order, as ASSETS.md asks for this 2115-px-tall print. Re-hook '7 DIAS DEPOIS…' comes from the owner's own line in the print ('fechou 7 dias usando o kizubot né?'), which also names KizuBot inside the proof. Quote 'o mais top é bagulho ser virtual' trimmed from 'Mais o mais top é bagulho ser virtual kkk'; explanatory chips '= roda com o PC desligado' / '= alarme no WhatsApp' are our words (approved claims), styled differently from quotes."
+}

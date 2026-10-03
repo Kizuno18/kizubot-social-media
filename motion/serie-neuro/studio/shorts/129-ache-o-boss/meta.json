@@ -1,0 +1,64 @@
+{
+  "id": "129",
+  "slug": "ache-o-boss",
+  "family": "Ache o Shiny",
+  "title": "Ache o boss",
+  "concept": "Rose-paper puzzle: a grid of turtles where the boss is 12% bigger with a faint pulsing red aura, a draining boss-HP timer with a halfway hint, a crosshair locks on; then KizuBot's real 'bossDetected' alarm print (Tangrowth + rare drop).",
+  "neuro": [
+    "participation",
+    "von-restorff",
+    "time-pressure",
+    "game-ui-familiarity",
+    "rewatch-loop",
+    "real-proof",
+    "comment-prompt"
+  ],
+  "hook": "ACHE O BOSS.",
+  "duration": 16,
+  "music": {
+    "style": "chiptune",
+    "bpm": 150
+  },
+  "assets": [
+    "kit/img/prints/boss-tangrowth-electivire--tangrowth.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Ache o boss 🐢 Dica: ele é maior. O KizuBot avisa sozinho: bossDetected (print real de cliente). Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#boss",
+        "#desafio"
+      ]
+    },
+    "youtube": {
+      "title": "Ache o boss em 4 segundos 🐢",
+      "description": "Desafio: ache o boss no meio das tartarugas antes do tempo acabar. O KizuBot avisa sozinho: bossDetected, com o drop raro no mesmo alarme (print real de cliente). kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Ache o boss 🐢 Qual boss você mais quer? O KizuBot avisa: bossDetected. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#boss"
+      ]
+    }
+  },
+  "pinned_comment": "Qual boss você mais quer? 💀",
+  "notes": "The boss is 12% bigger with a faint pulsing red aura (subtle, findable when paused); timer is a draining boss-HP bar with a halfway hint 'dica: ele é maior'; a crosshair locks on. Proof uses the Tangrowth alarm crop, which shows the real alarm format 'KizuBot™| kizubot.com:'. The alternative boss-loot-15kk print was not used."
+}

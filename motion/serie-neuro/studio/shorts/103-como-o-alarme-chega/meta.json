@@ -1,0 +1,40 @@
+{
+  "id": "103",
+  "slug": "como-o-alarme-chega",
+  "family": "Raio-X",
+  "title": "Como o alarme chega no seu pulso",
+  "concept": "Blueprint FIG. 3: a line-art smartwatch buzzes with a KizuBot alarm, then a packet travels a 4-node pipeline (nuvem → IA → zap → pulso) with a real artefact at each stop — the bot playing in the cloud 24/7 with the PC off, the real alarm names, a real KizuBot WhatsApp alarm (with 'KizuBot™| kizubot.com' inside), the alarm on a real wrist (drop) — and a customer's verdict: 'Chega certinho'.",
+  "neuro": ["curiosity-gap", "picture-superiority", "social-proof", "competence", "anticipation-drop", "self-reference", "loop", "comment-prompt"],
+  "hook": "COMO O ALARME CHEGA NO PULSO?",
+  "duration": 19.412,
+  "music": {"style": "tension", "bpm": 102},
+  "assets": [
+    "kit/img/prints/boss-tangrowth-electivire--tangrowth.png",
+    "kit/img/prints/smartwatch-alarm--photo.jpg",
+    "kit/img/prints/trampo-da-hora--zap.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "roda 24/7 na nuvem; uso com PC desligado",
+    "detecção de shinys, megas e bosses (nomes reais dos alarmes: shinyDetected, megaDetected, bossDetected)",
+    "alarmes no WhatsApp e Telegram",
+    "print real de cliente: \"Ativei msgs pelo zap também\" / \"Chega certinho\" (verbatim)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Como o alarme do KizuBot chega no seu pulso? ⌚ O bot joga na nuvem, a IA detecta shiny, mega e boss, manda no WhatsApp ou Telegram e chega até no relógio. Prints reais de clientes diferentes. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#alarme", "#afk"]
+    },
+    "youtube": {
+      "title": "Como o alarme do KizuBot chega no seu pulso ⌚ (raio-x)",
+      "description": "Raio-X do alarme do KizuBot: o bot roda 24/7 na nuvem (PC desligado), a IA detecta shiny, mega e boss, o alarme vai pro WhatsApp ou Telegram e chega no celular e até no relógio. Prints reais de clientes diferentes. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Como o alarme do KizuBot chega no seu pulso? ⌚ Nuvem → IA → zap → pulso. \"Chega certinho\" (print real de cliente). Você prefere WhatsApp ou Telegram? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#alarme"]
+    }
+  },
+  "pinned_comment": "Você prefere alarme no WhatsApp ou no Telegram?",
+  "notes": "Hook shortened from 'COMO O ALARME CHEGA NO SEU PULSO.' (7 words) to 'COMO O ALARME CHEGA NO PULSO?' (6), set as 4 lines (Chakra Petch is wide). Pipeline simplified to 4 stops (jogo/servidor merged into 'nuvem'; WhatsApp/Telegram + celular merged into 'zap'). Concept sources mapped to ASSETS slugs: boss-tangrowth-electivire.png → boss-tangrowth-electivire--tangrowth.png (real alarm format with 'KizuBot™| kizubot.com', nick pilled); smartwatch-alarm.jpg → smartwatch-alarm--photo.jpg; trampo-da-hora.png → trampo-da-hora--zap.png. Three different customers → 'prints reais de clientes diferentes' shown on screen; every print tagged 'print real de cliente'; the boss alarm and the watch alarm (dropStone) are different events and are not presented as the same alarm (the packet carries a generic alarm). The KizuBot 'alert' sound plays on the two watch-alarm moments. Audio master trimmed with \"lufs\": -14.4 (AAC true-peak margin). Loop bridge returns to the hook."
+}

@@ -1,0 +1,68 @@
+{
+  "id": "065",
+  "slug": "5-alarmes",
+  "family": "Top 5",
+  "title": "Os 5 alarmes que todo jogador quer receber",
+  "concept": "A sonar-style countdown of the five KizuBot alarm codes players want most (dropRare, pokemonCaught, megaDetected, bossDetected, shinyDetected), each pinging with the KizuBot alert sound and proven by a real alarm line from a customer print.",
+  "neuro": [
+    "open-loop",
+    "anticipation",
+    "conditioning-sound",
+    "variable-reward",
+    "visible-progress",
+    "social-proof",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "OS 5 ALARMES QUE TODO JOGADOR QUER RECEBER.",
+  "duration": 21.9,
+  "music": {
+    "style": "trap",
+    "bpm": 145
+  },
+  "assets": [
+    "kit/img/prints/drop-sablenite--alarm.png",
+    "kit/img/prints/shiny-venusaur--alarm.png",
+    "kit/img/prints/mega-scizor-8-alarms--alarms.png",
+    "kit/img/prints/boss-rhyperior-2am--alarm.png",
+    "kit/img/prints/shiny-raichu-7-alarms--alarms.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "alarmes no celular e notificações no WhatsApp",
+    "detecção de shinys, megas e bosses"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Os 5 alarmes que todo jogador quer receber 🔔 Teve boss às 02:02 da manhã e o #1 é o que faz pular da cama. Prints reais de clientes diferentes. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#top5"
+      ]
+    },
+    "youtube": {
+      "title": "Os 5 alarmes que todo jogador quer receber 🔔",
+      "description": "dropRare, pokemonCaught, megaDetected, bossDetected e shinyDetected: os alarmes reais do KizuBot no WhatsApp de clientes, com boss às 02:02 da manhã e 8 alertas de mega seguidos. Prints reais de clientes diferentes. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Os 5 alarmes que todo jogador quer receber 🔔 Qual alarme faria você pular da cama? Prints reais de clientes diferentes. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Qual alarme faria você pular da cama? 🔔",
+  "notes": "Prints chosen per alarm from the available crops: dropRare = drop-sablenite--alarm (concept's boss-tangrowth-electivire not needed), pokemonCaught = shiny-venusaur--alarm, megaDetected = mega-scizor-8-alarms--alarms, bossDetected = boss-rhyperior-2am--alarm (02:02), shinyDetected = shiny-raichu-7-alarms--alarms (5 shiny lines). Hook split into two cards and opens on the real alarm sender format 'KizuBot™ | kizubot.com' with the alert sound. Hook card B carries 'prints reais de clientes diferentes'."
+}

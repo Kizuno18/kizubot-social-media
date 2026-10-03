@@ -1,0 +1,34 @@
+{
+  "id": "098",
+  "slug": "kizuai",
+  "family": "Novidade no KizuBot",
+  "title": "Tem dúvida de config? Pergunta pra IA.",
+  "concept": "Patch-notes episode on the 20/04/2026 KizuAI update: an example chat in the panel answers a fishing-config question, then the two new tricks get the spotlight — it shows its sources and remembers the conversation context.",
+  "neuro": ["novelty", "self-reference", "curiosity-gap", "authority", "processing-fluency", "anticipation-drop", "loop", "comment-prompt"],
+  "hook": "TEM DÚVIDA DE CONFIG?",
+  "duration": 18.75,
+  "music": {"style": "synthwave", "bpm": 112},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png"],
+  "claims": [
+    "KizuAI (assistente de IA do painel) lembra o contexto da conversa e mostra as fontes — changelog 20/04/2026",
+    "modos de pesca: padrão, visão direta, água limpa, céu aberto, mesmo andar, agressivo — changelog 23/05/2026",
+    "minigames ficam no módulo Farming (13 módulos, kizubot.com/llms.txt)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Tem dúvida de config? Pergunta pra KizuAI, a IA do painel do KizuBot 🤖 Ela lembra o contexto da conversa e mostra de onde veio a resposta. Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#ia", "#afk"]
+    },
+    "youtube": {
+      "title": "Tem dúvida de config? Pergunta pra IA do KizuBot 🤖",
+      "description": "Novidade no KizuBot (atualização de 20/04/2026): a KizuAI, assistente de IA do painel, agora lembra o contexto da conversa e mostra as fontes da resposta. Conversa de exemplo no vídeo. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Tem dúvida de config? Pergunta pra KizuAI 🤖 A IA do painel do KizuBot lembra o contexto da conversa e mostra de onde veio a resposta. Que pergunta você faria? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#ia"]
+    }
+  },
+  "pinned_comment": "Que pergunta você faria pra KizuAI? 🤖",
+  "notes": "Concept hook 'TEM DÚVIDA DE CONFIG? PERGUNTA PRA IA.' (7 words) split into hook card 'TEM DÚVIDA DE CONFIG?' + second card 'PERGUNTA PRA KIZUAI' (≤6 words per card). The example answer is shown as 'Na aba Fishing, escolha um modo:' + the 6 real mode names as chips (instead of one 103-char sentence) to respect reading speed. Added a second example turn ('e os minigames?' → 'Ficam na aba Farming.', grounded in the module list where Farming = resources, minigames, headbutt, professions) plus a pinned 'contexto' chip to show context memory. Whole exchange labelled 'exemplo'; chat UI is a generic brand-styled design. Seamless loop bridge back to the hook frame."
+}

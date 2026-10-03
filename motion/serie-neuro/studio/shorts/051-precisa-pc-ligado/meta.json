@@ -1,0 +1,66 @@
+{
+  "id": "051",
+  "slug": "precisa-pc-ligado",
+  "family": "Mito ou Verdade?",
+  "title": "Mito ou verdade: precisa deixar o PC ligado?",
+  "concept": "Game-show quiz: the viewer guesses during a 3-2-1 countdown whether KizuBot needs the PC on; a MITO stamp slams, the PC powers off while the same hunt keeps walking on the phone, and a real customer print (away with the family, bot running, on the phone) proves it.",
+  "neuro": [
+    "curiosity-gap",
+    "commitment-guess",
+    "objection-handling",
+    "anticipation-drop",
+    "schema-violation",
+    "social-proof",
+    "loop"
+  ],
+  "hook": "MITO OU VERDADE? PRECISA DEIXAR O PC LIGADO?",
+  "duration": 19.18,
+  "music": {
+    "style": "gameshow",
+    "bpm": 122
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/prints/away-with-family--quote.png"
+  ],
+  "claims": [
+    "uso com PC desligado",
+    "roda na nuvem 24/7 (llms.txt: runs 24/7 on virtual machines)",
+    "100% AFK",
+    "acesso pelo celular"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Mito ou verdade: precisa deixar o PC ligado pro bot farmar? 🤔 Chuta antes do carimbo! (Mito: o KizuBot roda na nuvem 24/7, com o PC desligado.) Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mitoouverdade",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Mito ou verdade: precisa deixar o PC ligado? #pxg",
+      "description": "Precisa deixar o PC ligado pro bot farmar? MITO. O KizuBot roda na nuvem 24/7: você desliga o PC e o char continua na hunt, com tudo acompanhado pelo celular. Print real de cliente no vídeo. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Mito ou verdade: precisa deixar o PC ligado? 🤔 Pausa e chuta antes do carimbo. O KizuBot roda na nuvem, 24/7 — PC desligado, farm ligado. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mitoouverdade"
+      ]
+    }
+  },
+  "pinned_comment": "Você chutou MITO ou VERDADE? 👀",
+  "notes": "Hook split into the show plate ('MITO ou VERDADE?') + a 5-word question card to keep ≤6 words per card. Proof = away-with-family--quote, quotes verbatim ('Tô longe de casa cm a família' / 'O bot já tá rodando e liso'). The concept's 'Aqui tô pelo Cell' line was dropped: it only exists in the --phone crop next to a city name, so I kept the cleaner crop. PC-off/phone gag is a generic illustration (abstract hunt map), not a screenshot. Added a '100% AFK' stamp (approved claim)."
+}

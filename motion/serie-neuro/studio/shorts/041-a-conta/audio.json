@@ -1,0 +1,43 @@
+{
+  "duration": 20,
+  "style": "phonk",
+  "bpm": 130,
+  "seed": 41,
+  "sections": [
+    {"at": 0.0, "type": "groove"},
+    {"at": 3.69, "type": "groove", "energy": 0.8},
+    {"at": 7.38, "type": "build"},
+    {"at": 9.23, "type": "drop"},
+    {"at": 16.62, "type": "outro"}
+  ],
+  "stops": [{"at": 6.32, "len": 0.38, "tape": true}],
+  "sfx": [
+    {"t": 0.0, "name": "impact", "gain": -7},
+    {"t": 0.0, "name": "clock", "gain": -8},
+    {"t": 0.46, "name": "boom", "gain": -8},
+    {"t": 0.92, "name": "clock", "gain": -8},
+    {"t": 1.38, "name": "clock", "gain": -8},
+    {"t": 1.80, "name": "whoosh_fast", "gain": -10},
+    {"t": 2.55, "name": "pop", "gain": -9},
+    {"t": 2.95, "name": "wrong", "gain": -13},
+    {"t": 3.50, "name": "whoosh", "gain": -10},
+    {"t": 3.92, "name": "tick", "gain": -8},
+    {"t": 4.05, "name": "counter", "gain": -10},
+    {"t": 4.97, "name": "tick", "gain": -8},
+    {"t": 5.10, "name": "counter", "gain": -10},
+    {"t": 6.72, "name": "impact", "gain": -4},
+    {"t": 7.38, "name": "glitch", "gain": -10},
+    {"t": 9.23, "name": "impact", "gain": -5},
+    {"t": 9.30, "name": "sparkle", "gain": -10},
+    {"t": 9.85, "name": "tick", "gain": -7},
+    {"t": 10.40, "name": "tick", "gain": -7},
+    {"t": 10.96, "name": "tick", "gain": -7},
+    {"t": 11.51, "name": "tick", "gain": -7},
+    {"t": 12.60, "name": "pop", "gain": -8},
+    {"t": 13.06, "name": "pop", "gain": -8},
+    {"t": 14.60, "name": "whoosh_fast", "gain": -10},
+    {"t": 15.69, "name": "ding", "gain": -8},
+    {"t": 19.60, "name": "clock", "gain": -10}
+  ],
+  "logo": 16.66
+}

@@ -1,0 +1,65 @@
+{
+  "id": "060",
+  "slug": "notificacao-captura",
+  "family": "Espera o Alarme",
+  "title": "Primeiro a notificação. Depois…",
+  "concept": "A phone buzzing in a jeans pocket at 13:03 is pulled out; act 1 reveals the customer's real 'A notificação' print with the KizuBot alert sound, 'Depois…' holds on a blurred card with heartbeats and silence, act 2 flips in the real 'A captura' card (Shiny Rapidash), and the last line completes the hook.",
+  "neuro": [
+    "anticipation",
+    "sonic-conditioning",
+    "two-act-reveal",
+    "curiosity-gap",
+    "real-proof",
+    "loop-bridge",
+    "comment-prompt"
+  ],
+  "hook": "PRIMEIRO A NOTIFICAÇÃO. DEPOIS…",
+  "duration": 17,
+  "music": {
+    "style": "house",
+    "bpm": 124
+  },
+  "assets": [
+    "kit/img/prints/shiny-rapidash--alarm.png",
+    "kit/img/prints/shiny-rapidash--card.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Primeiro a notificação. Depois… o shiny. ✨ Shiny Rapidash: a notificação e a captura, no print real de cliente. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#rapidash"
+      ]
+    },
+    "youtube": {
+      "title": "Primeiro a notificação. Depois… o shiny (print real)",
+      "description": "13:03: primeiro chega a notificação do KizuBot, depois a captura: Shiny Rapidash (print real de cliente, em dois atos: “A notificação” e “A captura”). O KizuBot detecta shiny e avisa no seu celular. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Primeiro a notificação. Depois… o shiny. ✨ Shiny Rapidash no print real de cliente. Nota de 0 a 10? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Rapidash shiny: nota de 0 a 10? 🔥",
+  "notes": "Setting: phone in a jeans front pocket (generic CSS mock, punch-hole camera, blurred message), pulled out before act 1. Act 1 'A notificação' plays the KizuBot alert; act 2 'A captura' flips the real card in on the drop; the blurred 'Depois…' silhouette is the same card under heavy blur. Closing line 'Primeiro a notificação. Depois, o shiny.' completes the hook as a loop bridge. 'nível 100' / 'inegociável' chips restate the card text. Music: house 124."
+}

@@ -1,0 +1,260 @@
+{
+ "duration": 19,
+ "style": "trap",
+ "bpm": 145,
+ "seed": 42,
+ "sections": [
+  {
+   "at": 0.0,
+   "type": "groove",
+   "energy": 0.9
+  },
+  {
+   "at": 2.07,
+   "type": "groove",
+   "energy": 0.72
+  },
+  {
+   "at": 4.97,
+   "type": "groove",
+   "energy": 0.85
+  },
+  {
+   "at": 7.03,
+   "type": "build"
+  },
+  {
+   "at": 8.69,
+   "type": "drop"
+  },
+  {
+   "at": 15.72,
+   "type": "outro"
+  }
+ ],
+ "stops": [
+  {
+   "at": 4.58,
+   "len": 0.39,
+   "tape": true
+  }
+ ],
+ "sfx": [
+  {
+   "t": 0.0,
+   "name": "impact",
+   "gain": -6
+  },
+  {
+   "t": 0.0,
+   "name": "whoosh_fast",
+   "gain": -12
+  },
+  {
+   "t": 0.12,
+   "name": "snap",
+   "gain": -10
+  },
+  {
+   "t": 0.3,
+   "name": "pop2",
+   "gain": -12
+  },
+  {
+   "t": 0.84,
+   "name": "click",
+   "gain": -6
+  },
+  {
+   "t": 0.85,
+   "name": "impact",
+   "gain": -9
+  },
+  {
+   "t": 1.24,
+   "name": "kick",
+   "gain": -9
+  },
+  {
+   "t": 1.86,
+   "name": "whoosh",
+   "gain": -10
+  },
+  {
+   "t": 2.07,
+   "name": "pop",
+   "gain": -9
+  },
+  {
+   "t": 2.14,
+   "name": "fill",
+   "gain": -12
+  },
+  {
+   "t": 2.48,
+   "name": "tick",
+   "gain": -8
+  },
+  {
+   "t": 2.6,
+   "name": "counter",
+   "gain": -11
+  },
+  {
+   "t": 3.31,
+   "name": "tick",
+   "gain": -8
+  },
+  {
+   "t": 3.43,
+   "name": "counter",
+   "gain": -11
+  },
+  {
+   "t": 4.14,
+   "name": "tick2",
+   "gain": -8
+  },
+  {
+   "t": 4.24,
+   "name": "counter",
+   "gain": -12
+  },
+  {
+   "t": 4.97,
+   "name": "impact",
+   "gain": -4
+  },
+  {
+   "t": 4.97,
+   "name": "boom",
+   "gain": -9
+  },
+  {
+   "t": 5.45,
+   "name": "wrong",
+   "gain": -15
+  },
+  {
+   "t": 6.84,
+   "name": "whoosh_fast",
+   "gain": -11
+  },
+  {
+   "t": 7.03,
+   "name": "glitch",
+   "gain": -11
+  },
+  {
+   "t": 7.45,
+   "name": "pop2",
+   "gain": -10
+  },
+  {
+   "t": 7.86,
+   "name": "whoosh_down",
+   "gain": -8
+  },
+  {
+   "t": 8.16,
+   "name": "tick2",
+   "gain": -13
+  },
+  {
+   "t": 8.38,
+   "name": "tick2",
+   "gain": -13
+  },
+  {
+   "t": 8.69,
+   "name": "impact",
+   "gain": -5
+  },
+  {
+   "t": 8.69,
+   "name": "sparkle",
+   "gain": -10
+  },
+  {
+   "t": 8.82,
+   "name": "fill",
+   "gain": -9
+  },
+  {
+   "t": 8.94,
+   "name": "counter",
+   "gain": -11
+  },
+  {
+   "t": 9.1,
+   "name": "sparkle",
+   "gain": -14
+  },
+  {
+   "t": 9.93,
+   "name": "levelup",
+   "gain": -8
+  },
+  {
+   "t": 10.35,
+   "name": "pop",
+   "gain": -10
+  },
+  {
+   "t": 11.8,
+   "name": "whoosh",
+   "gain": -10
+  },
+  {
+   "t": 12.43,
+   "name": "snap",
+   "gain": -7
+  },
+  {
+   "t": 12.85,
+   "name": "click",
+   "gain": -7
+  },
+  {
+   "t": 13.26,
+   "name": "snap",
+   "gain": -7
+  },
+  {
+   "t": 13.68,
+   "name": "click",
+   "gain": -7
+  },
+  {
+   "t": 14.1,
+   "name": "impact",
+   "gain": -7
+  },
+  {
+   "t": 14.3,
+   "name": "sparkle",
+   "gain": -12
+  },
+  {
+   "t": 15.52,
+   "name": "whoosh_fast",
+   "gain": -11
+  },
+  {
+   "t": 16.15,
+   "name": "pop",
+   "gain": -10
+  },
+  {
+   "t": 16.55,
+   "name": "ding",
+   "gain": -9
+  },
+  {
+   "t": 18.67,
+   "name": "whoosh_down",
+   "gain": -16
+  }
+ ],
+ "logo": 15.76
+}

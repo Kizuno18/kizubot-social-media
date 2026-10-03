@@ -1,0 +1,65 @@
+{
+  "id": "056",
+  "slug": "16h42",
+  "family": "Espera o Alarme",
+  "title": "16:42. O celular vibrou.",
+  "concept": "Suspense on a wooden table under blind light: a phone buzzes at 16:42 with a blurred KizuBot alarm, a 3-2-1 countdown and a hard 0.4 s silence, then the real customer print reveals shiny Cubone detected and caught in the same minute.",
+  "neuro": [
+    "anticipation",
+    "reward-prediction-error",
+    "curiosity-gap",
+    "sonic-conditioning",
+    "precise-number",
+    "real-proof",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "16:42. O CELULAR VIBROU.",
+  "duration": 20.5,
+  "music": {
+    "style": "phonk",
+    "bpm": 96
+  },
+  "assets": [
+    "kit/img/prints/shiny-cubone.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "16:42. O celular vibrou. Era só mais uma notificação… ou não? 👀 Shiny Cubone detectado e capturado no mesmo minuto (print real de cliente). Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "16:42. O celular vibrou… e era shiny (print real)",
+      "description": "16:42: o celular vibra com um alarme do KizuBot. Era um shiny Cubone, detectado e capturado no mesmo minuto (print real de cliente). O KizuBot detecta shiny, mega e boss e avisa no seu WhatsApp. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "16:42. O celular vibrou. 👀 Shiny Cubone detectado e capturado no mesmo minuto (print real de cliente). O KizuBot avisa no zap. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Qual shiny você queria que cantasse aí? 👇",
+  "notes": "Music: one kzaudio style per track, so the concept's 'tension (96) then phonk drop' is a phonk track at 96 BPM with a muffled intro, heartbeat/clock SFX, a build, a 0.4 s stop and the drop on the reveal. The phone, lock screen and 'KizuBot™ | kizubot.com' notification are a generic illustrated mock with the message blurred; the real alarm is only shown via the customer print. Pre-reveal 'silence' is a near-black purple hush (pure black failed QC's black-segment check). Added captions '16:42 · shiny detectado' / '16:42 · capturado' and the quote 'cantou big' set verbatim with its print on screen ('a reação, 10 min depois' = 16:42 → 16:52 in the print). Final line uses the NEURO slogan 'Shiny apareceu? O zap avisou.'"
+}

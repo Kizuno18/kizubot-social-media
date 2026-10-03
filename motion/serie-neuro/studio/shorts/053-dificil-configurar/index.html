@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>053 Mito ou Verdade: é difícil de configurar?</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F03 · MITO OU VERDADE — show system (copy per episode) ================= */
+  :root {
+    /* stage palette: changes every episode (053 = cobalt) */
+    --st1: #3150d0; --st2: #121c60; --st3: #040822; --rim: #a3b8ff; --rimA: rgba(163, 184, 255, 0.30); --beam: rgba(205, 216, 255, 0.20);
+    /* fixed show colors */
+    --mito: #ff3b54; --mito-d: #a10f27; --verd: #2fe07f; --verd-d: #0a7a3c;
+    --card: #fff2de; --ink2: #170f1f; --gold: #ffcf3a;
+  }
+  #root { background: var(--st3); }
+  #stage { position: absolute; inset: 0; background: radial-gradient(90% 52% at 50% 30%, var(--st1) 0%, var(--st2) 55%, var(--st3) 100%); }
+  #qmarks { position: absolute; inset: 0; overflow: hidden; }
+  .qm { position: absolute; font-family: "Anton", sans-serif; font-size: 820px; line-height: 1; color: transparent; -webkit-text-stroke: 5px rgba(255, 255, 255, 0.07); }
+  #qm1 { left: -170px; top: 120px; }
+  #qm2 { right: -150px; top: 760px; }
+  #beams { position: absolute; inset: 0; overflow: hidden; mix-blend-mode: screen; }
+  .beam { position: absolute; top: -160px; width: 560px; height: 2300px; transform-origin: 50% 0; background: linear-gradient(180deg, var(--beam) 0%, rgba(255, 255, 255, 0) 80%); clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%); }
+  #beamL { left: -160px; }
+  #beamR { right: -160px; }
+  #floor { position: absolute; left: 0; right: 0; top: 1236px; bottom: 0; overflow: hidden; background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.6)); }
+  #floor::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--rim); box-shadow: 0 0 24px 4px var(--rimA); opacity: 0.8; }
+  #floorGrid { position: absolute; left: -540px; width: 2160px; top: 0; height: 1300px; transform-origin: 50% 0; transform: perspective(520px) rotateX(64deg);
+    background-image: linear-gradient(var(--rimA) 3px, transparent 3px), linear-gradient(90deg, var(--rimA) 3px, transparent 3px); background-size: 150px 150px; opacity: 0.55; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  .kz-progress > div { background: linear-gradient(90deg, var(--gold), #fff3b0); }
+
+  /* show plate */
+  #plateLayer { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+  #plate { position: absolute; left: 0; right: 0; top: 232px; display: flex; justify-content: center; }
+  .plate-in { display: flex; align-items: baseline; gap: 16px; padding: 10px 34px 12px; border-radius: 22px; background: #0d0811; border: 4px solid var(--gold); box-shadow: 0 10px 0 rgba(0, 0, 0, 0.35), 0 0 40px rgba(255, 207, 58, 0.25); }
+  .plate-in .pm, .plate-in .pv { font-family: "Anton", sans-serif; font-size: 66px; line-height: 1.12; letter-spacing: 0.02em; }
+  .plate-in .pm { color: var(--mito); }
+  .plate-in .pv { color: var(--verd); }
+  .plate-in .po { font-family: "Instrument Serif", serif; font-style: italic; font-size: 58px; color: #fff; }
+  .plate-in .pq { font-family: "Anton", sans-serif; font-size: 66px; color: var(--gold); }
+
+  /* podiums (buzzers) */
+  #podLayer { position: absolute; inset: 0; pointer-events: none; }
+  #pods { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  .pod { position: absolute; top: 1046px; width: 372px; height: 352px; }
+  #podM { left: 98px; --c: var(--mito); --cd: var(--mito-d); }
+  #podV { left: 508px; --c: var(--verd); --cd: var(--verd-d); }
+  .pod .halo { position: absolute; left: -90px; right: -90px; top: -170px; height: 520px; background: radial-gradient(50% 50% at 50% 42%, var(--c) 0%, rgba(0, 0, 0, 0) 70%); opacity: 0; mix-blend-mode: screen; }
+  .pod .collar { position: absolute; left: 46px; width: 280px; top: 96px; height: 56px; border-radius: 50%; background: linear-gradient(180deg, #57505f, #19161d); box-shadow: 0 7px 0 #0b0a0d; }
+  .pod .dome { position: absolute; left: 70px; width: 232px; top: 0; height: 128px; border-radius: 116px 116px 44px 44px / 116px 116px 32px 32px;
+    background: radial-gradient(38% 32% at 36% 26%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%), radial-gradient(95% 95% at 50% 85%, var(--c) 0%, var(--cd) 100%);
+    box-shadow: inset 0 -12px 18px rgba(0, 0, 0, 0.35), 0 0 0 4px rgba(0, 0, 0, 0.25); }
+  .pod .front { position: absolute; left: 0; right: 0; top: 136px; bottom: 0; clip-path: polygon(7% 0, 93% 0, 100% 100%, 0 100%); background: linear-gradient(180deg, var(--c) 0%, var(--cd) 100%); display: flex; align-items: center; justify-content: center; }
+  .pod .front::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 14px; background: rgba(255, 255, 255, 0.4); }
+  .pod .front::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 40px; background: rgba(0, 0, 0, 0.22); }
+  .pod .front span { position: relative; font-family: "Anton", sans-serif; font-size: 100px; line-height: 1.1; color: #fff; letter-spacing: 0.015em; text-shadow: 0 6px 0 rgba(0, 0, 0, 0.3); }
+
+  /* question card */
+  .full { position: absolute; inset: 0; }
+  #qcardW { position: absolute; left: 100px; top: 364px; width: 860px; height: 500px; transform-origin: 50% 0; }
+  #qcardF { position: absolute; inset: 0; }
+  .qcard { position: absolute; inset: 0; border-radius: 34px; background: var(--card); border: 8px solid var(--rim);
+    box-shadow: 0 0 0 6px var(--ink2), 0 28px 0 rgba(0, 0, 0, 0.35), 0 50px 90px rgba(0, 0, 0, 0.45); overflow: hidden; }
+  .qhead { position: absolute; left: 0; right: 0; top: 0; height: 84px; background: var(--ink2); display: flex; align-items: center; justify-content: space-between; padding: 0 30px 0 22px; }
+  .qhead .brand { display: flex; align-items: center; gap: 12px; font: 400 30px "JetBrains Mono", monospace; letter-spacing: 0.16em; color: #f5f0fa; }
+  .qhead .brand img { width: 60px; height: 58px; }
+  .qhead .num { font: 400 30px "JetBrains Mono", monospace; letter-spacing: 0.16em; color: var(--gold); }
+  .qbody { position: absolute; left: 0; right: 0; top: 84px; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 6px; }
+  .ql { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 112px; line-height: 1.16; color: var(--ink2); text-transform: uppercase; letter-spacing: -0.015em; white-space: nowrap; }
+  .ql .hlw { position: relative; display: inline-block; }
+  .ql .hl { position: absolute; left: -14px; right: -14px; top: 18%; bottom: 8%; background: var(--gold); transform-origin: 0 50%; border-radius: 8px; }
+  .ql .hlt { position: relative; }
+  /* countdown tape + timer */
+  #tapeW { position: absolute; left: 70px; width: 940px; top: 232px; height: 104px; z-index: 3; }
+  .tape { position: absolute; inset: 0; background: var(--gold); border: 5px solid var(--ink2); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 0 rgba(0, 0, 0, 0.3); transform-origin: 0 50%; }
+  .tape span { position: absolute; font-family: "Archivo Black", sans-serif; font-size: 60px; color: var(--ink2); text-transform: uppercase; letter-spacing: 0.01em; }
+  #timer { position: absolute; left: 418px; top: 808px; width: 244px; height: 244px; z-index: 3; }
+  #timer .disc { position: absolute; inset: 0; border-radius: 50%; background: #120b16; box-shadow: 0 0 0 7px var(--ink2), 0 0 0 13px var(--gold), 0 18px 40px rgba(0, 0, 0, 0.5); }
+  #timer svg { position: absolute; inset: 0; width: 244px; height: 244px; }
+  .tnum { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .tnum span { position: absolute; font-family: "Anton", sans-serif; font-size: 150px; line-height: 1; color: #fff; }
+  /* spotlights */
+  .spot { position: absolute; top: -60px; width: 520px; height: 1500px; background: linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(255, 255, 255, 0.28) 70%, rgba(255, 255, 255, 0.4) 100%);
+    clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%); mix-blend-mode: screen; opacity: 0; }
+  #spotL { left: 24px; }
+  #spotR { left: 434px; }
+  /* stamp */
+  .stampW { position: absolute; left: 100px; width: 860px; top: 448px; height: 416px; display: flex; align-items: center; justify-content: center; z-index: 4; }
+  .stamp { display: block; padding: 4px 50px 0; border: 16px solid currentColor; border-radius: 30px; outline: 7px solid currentColor; outline-offset: -34px;
+    font-family: "Anton", sans-serif; font-size: 250px; line-height: 1.12; letter-spacing: 0.03em; text-transform: uppercase; filter: url(#ink); }
+  .stamp.mito { color: var(--mito); }
+  .stamp.verd { color: var(--verd); }
+  .burst { position: absolute; left: 530px; top: 656px; width: 0; height: 0; z-index: 5; }
+  .ink-dot { position: absolute; border-radius: 50%; opacity: 0; }
+  .ring { position: absolute; left: -450px; top: -450px; width: 900px; height: 900px; border-radius: 50%; border: 8px solid #fff; opacity: 0; }
+
+  /* ================= 053 scenes ================= */
+  /* S5 — three real quotes as stickers */
+  #stTag { position: absolute; left: 0; right: 0; top: 240px; display: flex; justify-content: center; }
+  .ptag { display: inline-block; padding: 10px 24px; border-radius: 999px; background: rgba(0, 0, 0, 0.55); border: 3px solid var(--rim); font: 800 30px "Inter", sans-serif; letter-spacing: 0.08em; color: #fff; text-transform: uppercase; }
+  .stk { position: absolute; width: 770px; padding: 20px 26px 24px; border-radius: 34px; background: #fff; box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.35), 0 26px 50px rgba(0, 0, 0, 0.45); }
+  #sk1 { left: 104px; top: 316px; }
+  #sk2 { left: 110px; top: 574px; }
+  #sk3 { left: 100px; top: 882px; }
+  .stk-img { position: relative; border-radius: 14px; overflow: hidden; background: #0b141a; }
+  .stk-img img { display: block; width: 100%; }
+  .stk-q { margin-top: 14px; color: var(--ink2); }
+  .stk-q .sm { display: block; font: 800 44px "Inter", sans-serif; line-height: 1.2; color: #4a3f55; }
+  .stk-q .bg { display: block; font: 900 64px "Inter", sans-serif; line-height: 1.12; text-wrap: balance; }
+  .stk-q .bg em { font-style: normal; background-image: linear-gradient(var(--gold), var(--gold)); background-repeat: no-repeat; background-position: 0 90%; background-size: 0% 40%; }
+  .ph-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font: 700 30px "Inter", sans-serif; color: #8d8796; background: repeating-linear-gradient(45deg, #ece7f1 0 18px, #e2dcea 18px 36px); }
+
+  /* S6 — guided path + support */
+  #gpTop { position: absolute; left: 90px; right: 120px; top: 236px; display: flex; flex-direction: column; align-items: center; }
+  .gpt { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 90px; line-height: 1.08; color: #fff; text-transform: uppercase; letter-spacing: -0.015em; white-space: nowrap; }
+  .gpt.acc { color: var(--gold); }
+  #path { position: absolute; left: 140px; top: 470px; width: 760px; height: 250px; }
+  #path > svg { position: absolute; left: 0; top: 0; width: 760px; height: 250px; overflow: visible; }
+  .node { position: absolute; top: 55px; width: 140px; height: 140px; margin-left: -70px; border-radius: 50%; background: #17123a; border: 7px solid rgba(255, 255, 255, 0.25); display: flex; align-items: center; justify-content: center; }
+  .node svg { position: relative; width: 70px; height: 70px; }
+  .node .lit { position: absolute; inset: -7px; border-radius: 50%; border: 7px solid var(--kz-lime); background: rgba(198, 255, 61, 0.14); box-shadow: 0 0 30px rgba(198, 255, 61, 0.45); opacity: 0; }
+  #nd1 { left: 70px; } #nd2 { left: 380px; } #nd3 { left: 690px; }
+  #sup { position: absolute; left: 96px; width: 784px; top: 760px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .supline { font: 900 58px "Inter", sans-serif; color: #fff; line-height: 1.12; text-align: center; }
+  .supline b { color: var(--kz-lime); }
+  #supPrint { position: relative; width: 700px; height: 458px; border-radius: 24px; overflow: hidden; border: 6px solid #fff; background: #1a1620; box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5); }
+  #supPrint img { position: absolute; left: 0; top: 0; width: 100%; }
+  #supPrint .ph-ph { background: repeating-linear-gradient(45deg, #221d29 0 24px, #1c1822 24px 48px); color: #8d8796; }
+  #supTag { position: absolute; right: 16px; top: 14px; }
+  /* S7 — end card */
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  #endGlow { position: absolute; inset: 0; background: radial-gradient(60% 34% at 50% 40%, rgba(124, 58, 237, 0.75) 0%, rgba(59, 7, 100, 0.35) 45%, rgba(0, 0, 0, 0) 75%); opacity: 0; }
+  .ask { font: 900 64px "Inter", sans-serif; color: #fff; line-height: 1.14; text-align: center; }
+  .ask .m { color: var(--mito); }
+  .ask .v { color: var(--verd); }
+  .ask .g { color: var(--gold); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="ink" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" seed="7" result="noise" />
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.6 2.3" result="mask" />
+      <feComposite in="SourceGraphic" in2="mask" operator="in" result="speck" />
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="warp" />
+      <feDisplacementMap in="speck" in2="warp" scale="6" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <pattern id="tile" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="2" /></pattern>
+    <symbol id="hunt" viewBox="0 0 300 300">
+      <rect width="300" height="300" fill="#0f2b1d" />
+      <rect x="170" y="190" width="120" height="100" rx="18" fill="#0f3a52" />
+      <rect x="10" y="20" width="110" height="70" rx="16" fill="#18452b" />
+      <rect x="150" y="30" width="60" height="50" rx="12" fill="#18452b" />
+      <rect width="300" height="300" fill="url(#tile)" />
+      <polyline points="40,270 40,180 130,180 130,110 240,110 240,40" fill="none" stroke="#d8b4fe" stroke-width="5" stroke-dasharray="10 9" stroke-linecap="round" />
+      <circle cx="40" cy="270" r="7" fill="#d8b4fe" /><circle cx="40" cy="180" r="7" fill="#d8b4fe" /><circle cx="130" cy="180" r="7" fill="#d8b4fe" />
+      <circle cx="130" cy="110" r="7" fill="#d8b4fe" /><circle cx="240" cy="110" r="7" fill="#d8b4fe" /><circle cx="240" cy="40" r="7" fill="#d8b4fe" />
+      <circle cx="88" cy="180" r="9" fill="#ff5a6e" /><circle cx="190" cy="110" r="9" fill="#ff5a6e" /><circle cx="240" cy="72" r="9" fill="#ff5a6e" />
+    </symbol>
+  </defs>
+</svg>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="21.15" data-fps="30">
+  <!-- untimed: stage set -->
+  <div id="stage"></div>
+  <div id="qmarks"><div class="qm" id="qm1">?</div><div class="qm" id="qm2">?</div></div>
+  <div id="beams"><div class="beam" id="beamL"></div><div class="beam" id="beamR"></div></div>
+  <div id="floor"><div id="floorGrid"></div></div>
+  <div class="kz-vignette"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- untimed: podiums (leave during the explanation, come back for the loop) -->
+  <div id="podLayer">
+    <div id="pods">
+      <div class="pod" id="podM"><div class="halo" id="haloM"></div><div class="collar"></div><div class="dome" id="domeM"></div><div class="front" id="frontM"><span>MITO</span></div></div>
+      <div class="pod" id="podV"><div class="halo" id="haloV"></div><div class="collar"></div><div class="dome" id="domeV"></div><div class="front" id="frontV"><span>VERDADE</span></div></div>
+    </div>
+  </div>
+
+  <!-- untimed: show plate -->
+  <div id="plateLayer">
+    <div id="plate"><div class="plate-in" id="plateIn"><span class="pm">MITO</span><span class="po">ou</span><span class="pv">VERDADE</span><span class="pq">?</span></div></div>
+  </div>
+
+  <!-- SET: hook 0 · countdown b4 · suspense b10 · stamp b12 -->
+  <section id="sSet" class="clip" data-start="0" data-duration="7.87">
+    <div class="full" id="setIn">
+      <div class="spot" id="spotL"></div>
+      <div class="spot" id="spotR"></div>
+      <div id="qcardW">
+        <div id="qcardF">
+          <div class="qcard">
+            <div class="qhead"><div class="brand"><img src="kit/img/brand/kizubot-head.png" alt="" />KIZUBOT</div><div class="num">PERGUNTA 03</div></div>
+            <div class="qbody">
+              <div class="ql" id="ql1">É <span class="hlw"><span class="hl" id="hl"></span><span class="hlt">difícil</span></span> de</div>
+              <div class="ql" id="ql2">configurar?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="tapeW"><div class="tape" id="tape"><span id="tapeA">Pausa e responde!</span><span id="tapeB">E a resposta é…</span></div></div>
+      <div id="timer">
+        <div class="disc"></div>
+        <svg viewBox="0 0 244 244"><circle cx="122" cy="122" r="98" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="20" />
+          <circle id="arc" cx="122" cy="122" r="98" fill="none" stroke="#ffcf3a" stroke-width="20" stroke-linecap="round" stroke-dasharray="615.75" stroke-dashoffset="0" transform="rotate(-90 122 122)" /></svg>
+        <div class="tnum"><span id="n3">3</span><span id="n2">2</span><span id="n1">1</span></div>
+      </div>
+      <div class="stampW"><div class="stamp mito" id="stamp" style="font-size:232px">Mito</div></div>
+      <div class="burst" id="burst"><div class="ring" id="ring1"></div></div>
+    </div>
+  </section>
+
+  <!-- S5: 3 prints reais de clientes diferentes -->
+  <section id="s5" class="clip" data-start="7.87" data-duration="4.92">
+    <div class="full" id="s5in">
+      <div id="stTag"><span class="ptag" id="stTagIn">prints reais de clientes diferentes</span></div>
+      <div class="stk" id="sk1"><div class="stk-img"><img src="kit/img/prints/facil-configurar.png" alt="" /></div><div class="stk-q"><span class="sm">“Teu bot é mt bom e</span><span class="bg"><em id="em1">fácil configurar</em>”</span></div></div>
+      <div class="stk" id="sk2"><div class="stk-img"><img src="kit/img/prints/parece-que-sei-programar--programar.png" alt="" /></div><div class="stk-q"><span class="bg">“Até parece que <em id="em2">sei programar</em>”</span></div></div>
+      <div class="stk" id="sk3"><div class="stk-img"><img src="kit/img/prints/mamao-com-acucar--mamao.png" alt="" /></div><div class="stk-q"><span class="sm">“Hoje pra essa galera nova ficou</span><span class="bg"><em id="em3">mamão com açúcar</em>”</span></div></div>
+    </div>
+  </section>
+
+  <!-- S6: caminho guiado + suporte -->
+  <section id="s6" class="clip" data-start="12.79" data-duration="4.92">
+    <div class="full" id="s6in">
+      <div id="gpTop"><div class="gpt" id="gp1">Caminho guiado</div><div class="gpt acc" id="gp2">pra iniciante</div></div>
+      <div id="path">
+        <svg viewBox="0 0 760 250"><line x1="70" y1="125" x2="690" y2="125" stroke="rgba(255,255,255,0.18)" stroke-width="10" stroke-linecap="round" stroke-dasharray="4 22" />
+          <line id="pathLit" x1="70" y1="125" x2="690" y2="125" stroke="#c6ff3d" stroke-width="10" stroke-linecap="round" stroke-dasharray="620" stroke-dashoffset="620" /></svg>
+        <div class="node" id="nd1"><div class="lit" id="lt1"></div><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="4" /><circle cx="12" cy="12" r="0.8" fill="#fff" /></svg></div>
+        <div class="node" id="nd2"><div class="lit" id="lt2"></div><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11" /><path d="M4 6h.01M4 12h.01M4 18h.01" stroke-width="3.2" /></svg></div>
+        <div class="node" id="nd3"><div class="lit" id="lt3"></div><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></div>
+      </div>
+      <div id="sup">
+        <div class="supline" id="supLine"><div>+ <b>suporte</b> que te ajuda</div><div>a configurar</div></div>
+        <div id="supPrint"><img src="kit/img/prints/suporte-ajusta-sua-config--config.png" alt="" /><div id="supTag"><span class="ptag">print real</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7: end card -->
+  <section id="s7" class="clip" data-start="17.71" data-duration="3.44">
+    <div id="endGlow"></div>
+    <div class="kz-end" id="s7in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><div>Já desistiu de algum bot</div><div>por ser <span class="g">difícil</span>?</div></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  /* ---------- F03 helpers (inline, copy per episode) ---------- */
+  function lightPod(tl, which, at, peak, hold) {
+    const halo = which === "M" ? "#haloM" : "#haloV";
+    const dome = which === "M" ? "#domeM" : "#domeV";
+    tl.to(halo, { opacity: peak || 0.9, duration: 0.06, ease: "power2.out" }, at);
+    tl.to(dome, { y: 9, duration: 0.06, ease: "power2.out" }, at);
+    tl.to(dome, { y: 0, duration: 0.25, ease: "back.out(3)" }, at + 0.08);
+    if (!hold) tl.to(halo, { opacity: 0, duration: 0.4, ease: "power2.in" }, at + 0.1);
+  }
+  function inkBurst(tl, sel, at, color, seed, n) {
+    const c = document.querySelector(sel);
+    const r = KZ.rng(seed);
+    for (let i = 0; i < n; i++) {
+      const d = document.createElement("div");
+      d.className = "ink-dot";
+      const s = Math.round(12 + r() * 30);
+      d.style.width = s + "px"; d.style.height = s + "px";
+      d.style.marginLeft = (-s / 2) + "px"; d.style.marginTop = (-s / 2) + "px";
+      d.style.background = color;
+      c.appendChild(d);
+      const ang = r() * Math.PI * 2, dist = 300 + r() * 260, dur = 0.45 + r() * 0.25;
+      tl.fromTo(d, { opacity: 0 }, { opacity: 1, duration: 0.02, ease: "none" }, at);
+      tl.fromTo(d, { x: 0, y: 0, scale: 0.5 }, { x: Math.cos(ang) * dist, y: Math.sin(ang) * dist * 0.75, scale: 1, duration: dur, ease: "power3.out" }, at);
+      tl.to(d, { opacity: 0, duration: dur * 0.5, ease: "power1.in" }, at + dur * 0.5);
+    }
+  }
+  function stampIn(tl, sel, at, rot) {
+    tl.fromTo(sel, { scale: 2.5, opacity: 0, rotation: rot + 9 }, { scale: 0.97, opacity: 1, rotation: rot, duration: 0.13, ease: "power3.in" }, at - 0.13);
+    tl.to(sel, { scale: 1, duration: 0.2, ease: "back.out(3)" }, at);
+  }
+  // point along a polyline (t in 0..1) — pure function of t, seek-safe
+  const ROUTE = [[40, 270], [40, 180], [130, 180], [130, 110], [240, 110], [240, 40]];
+  function routeAt(t) {
+    const seg = []; let L = 0;
+    for (let i = 1; i < ROUTE.length; i++) { const dx = ROUTE[i][0] - ROUTE[i - 1][0], dy = ROUTE[i][1] - ROUTE[i - 1][1]; const l = Math.hypot(dx, dy); seg.push(l); L += l; }
+    let d = Math.max(0, Math.min(1, t)) * L;
+    for (let i = 0; i < seg.length; i++) {
+      if (d <= seg[i] || i === seg.length - 1) { const k = seg[i] ? d / seg[i] : 0; return [ROUTE[i][0] + (ROUTE[i + 1][0] - ROUTE[i][0]) * k, ROUTE[i][1] + (ROUTE[i + 1][1] - ROUTE[i][1]) * k]; }
+      d -= seg[i];
+    }
+    return ROUTE[ROUTE.length - 1];
+  }
+  function walk(tl, el, at, dur, t0, t1) {
+    const node = document.querySelector(el);
+    const o = { t: t0 };
+    const p0 = routeAt(t0); node.setAttribute("cx", p0[0]); node.setAttribute("cy", p0[1]);
+    tl.fromTo(o, { t: t0 }, { t: t1, duration: dur, ease: "none", onUpdate: function () { const p = routeAt(o.t); node.setAttribute("cx", p[0].toFixed(1)); node.setAttribute("cy", p[1].toFixed(1)); } }, at);
+  }
+
+  /* ---------- timeline ---------- */
+  const tl = gsap.timeline({ paused: true });
+  const D = 21.15;
+  const b = KZ.beats(122);                 // beat 0.4918 s, bar 1.967 s
+  const CD = b(4), SUS = b(10), REV = b(12), GAG = 7.87, PROOF = 12.79, END = 17.71;
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  // ambient set motion
+  tl.fromTo("#beamL", { rotation: 16 }, { rotation: -6, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0);
+  tl.fromTo("#beamR", { rotation: -16 }, { rotation: 6, duration: 2.7, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0);
+  tl.fromTo("#floorGrid", { backgroundPosition: "0px 0px" }, { backgroundPosition: "0px 600px", duration: D, ease: "none" }, 0);
+  KZ.drift(tl, "#qm1", D, 24, 40, 4.8);
+  KZ.drift(tl, "#qm2", D, -30, 30, 5.6);
+  tl.fromTo("#plateIn", { rotation: -2, y: 0 }, { rotation: 1.5, y: 6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+
+  /* HOOK 0 – b4 */
+  tl.fromTo("#qcardW", { rotationY: -38, scale: 1.1, transformPerspective: 1400 }, { rotationY: 0, rotation: 1, scale: 1, duration: 0.42, ease: "back.out(1.5)" }, 0);
+  ["#ql1", "#ql2"].forEach(function (s, i) {
+    tl.fromTo(s, { scale: 1.22, opacity: 0.55 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, i * 0.08);
+  });
+  tl.fromTo("#hl", { scaleX: 0 }, { scaleX: 1, duration: 0.24, ease: "power2.out" }, b(1));
+  tl.fromTo("#qcardF", { y: 0, rotation: 0 }, { y: -10, rotation: 0.6, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.45);
+  lightPod(tl, "M", b(2), 0.85);
+  lightPod(tl, "V", b(3), 0.85);
+
+  /* COUNTDOWN b4 – b10 */
+  tl.to("#qcardW", { scale: 0.84, duration: 0.3, ease: "power3.out" }, CD);
+  tl.to("#plate", { scaleY: 0, opacity: 0, duration: 0.14, ease: "power2.in" }, CD - 0.06);
+  tl.fromTo("#tape", { scaleX: 0, rotation: -3 }, { scaleX: 1, rotation: -2, duration: 0.24, ease: "power3.out" }, CD);
+  tl.fromTo("#tapeA", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, CD + 0.1);
+  tl.fromTo("#timer", { scale: 0, rotation: -120 }, { scale: 1, rotation: 0, duration: 0.38, ease: "back.out(2)" }, CD);
+  tl.fromTo("#arc", { attr: { "stroke-dashoffset": 0 } }, { attr: { "stroke-dashoffset": 615.75 }, duration: SUS - CD - 0.05, ease: "none" }, CD);
+  tl.to("#arc", { attr: { stroke: "#ff3b54" }, duration: 0.3, ease: "none" }, b(8));
+  [["#n3", b(4)], ["#n2", b(6)], ["#n1", b(8)]].forEach(function (p) {
+    tl.fromTo(p[0], { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "power4.out" }, p[1]);
+    tl.to(p[0], { scale: 0.5, opacity: 0, duration: 0.12, ease: "power2.in" }, p[1] + b(2) - 0.12);
+  });
+  [b(6), b(8)].forEach(function (t) { KZ.punch(tl, "#timer", t, 1.1, 0.3); });
+  [b(5), b(7), b(9)].forEach(function (t) { lightPod(tl, "M", t, 0.45); });
+  [b(5.5), b(7.5), b(9.5)].forEach(function (t) { lightPod(tl, "V", t, 0.45); });
+
+  /* SUSPENSE b10 – b12 */
+  tl.to("#timer", { scale: 0, rotation: 90, duration: 0.2, ease: "power3.in" }, SUS - 0.02);
+  tl.to("#qcardW", { scale: 1, duration: 0.3, ease: "power3.out" }, SUS);
+  tl.to("#tapeA", { y: -30, opacity: 0, duration: 0.12, ease: "power2.in" }, SUS - 0.05);
+  tl.fromTo("#tapeB", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, SUS + 0.05);
+  [[b(10), "#spotR"], [b(10.5), "#spotL"], [b(11), "#spotR"]].forEach(function (p) {
+    tl.to(p[1], { opacity: 1, duration: 0.04, ease: "none" }, p[0]);
+    tl.to(p[1], { opacity: 0, duration: 0.12, ease: "power1.in" }, p[0] + b(0.5) - 0.12);
+  });
+
+  /* REVEAL b12: MITO */
+  tl.to("#tape", { scaleX: 0, duration: 0.14, ease: "power3.in" }, REV - 0.14);
+  stampIn(tl, "#stamp", REV, -6);
+  tl.to(["#ql1", "#ql2"], { opacity: 0.22, duration: 0.2, ease: "power2.out" }, REV);
+  KZ.shake(tl, "#setIn", REV, 7, 0.22, 8);
+  KZ.flash(tl, "#flash", REV, 0.22, "#ffffff");
+  inkBurst(tl, "#burst", REV, "#ff3b54", 53, 16);
+  tl.fromTo("#ring1", { opacity: 0 }, { opacity: 0.85, duration: 0.02, ease: "none" }, REV);
+  tl.fromTo("#ring1", { scale: 0.05 }, { scale: 1, duration: 0.55, ease: "power2.out" }, REV);
+  tl.to("#ring1", { opacity: 0, duration: 0.35, ease: "power1.in" }, REV + 0.2);
+  tl.to("#spotL", { opacity: 1, duration: 0.05 }, REV);
+  lightPod(tl, "M", REV, 1, true);
+  tl.to("#podV", { opacity: 0.32, duration: 0.25, ease: "power2.out" }, REV);
+  tl.to("#stamp", { scale: 1.03, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, REV + 0.3);
+
+  /* SET exit */
+  tl.to("#setIn", { scale: 1.18, opacity: 0, duration: 0.24, ease: "power2.in" }, GAG - 0.26);
+  tl.to("#pods", { y: 1250, duration: 0.32, ease: "power3.in" }, GAG - 0.32);
+
+  /* S5: three real quotes */
+  KZ.pop(tl, "#stTagIn", GAG + 0.02, 0.35);
+  [["#sk1", GAG + 0.12, -3, -260], ["#sk2", b(19), 2.5, 260], ["#sk3", b(21.5), -2, -260]].forEach(function (p, i) {
+    tl.fromTo(p[0], { x: p[3], scale: 1.25, rotation: p[2] * 4, opacity: 0 }, { x: 0, scale: 1, rotation: p[2], opacity: 1, duration: 0.3, ease: "back.out(1.7)" }, p[1]);
+    tl.to("#em" + (i + 1), { backgroundSize: "100% 40%", duration: 0.3, ease: "power2.out" }, p[1] + 0.45);
+  });
+  tl.to("#sk1", { y: -8, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, GAG + 0.6);
+  tl.to("#sk2", { y: 8, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, b(19) + 0.5);
+  tl.to("#s5in", { x: -1100, duration: 0.24, ease: "power3.in" }, PROOF - 0.24);
+
+  /* S6: guided path + support */
+  tl.fromTo("#gp1", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, PROOF);
+  tl.fromTo("#gp2", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, PROOF + 0.1);
+  tl.fromTo("#path", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, PROOF + 0.2);
+  tl.fromTo("#pathLit", { attr: { "stroke-dashoffset": 620 } }, { attr: { "stroke-dashoffset": 0 }, duration: 1.1, ease: "power1.inOut" }, PROOF + 0.45);
+  [["#lt1", PROOF + 0.45], ["#lt2", PROOF + 0.95], ["#lt3", PROOF + 1.5]].forEach(function (p) {
+    tl.fromTo(p[0], { opacity: 0 }, { opacity: 1, duration: 0.12 }, p[1]);
+    KZ.punch(tl, p[0].replace("lt", "nd"), p[1], 1.15, 0.3);
+  });
+  KZ.rise(tl, "#supLine", b(29), 0.32, 40);
+  tl.fromTo("#supPrint", { y: 500, rotation: 5, opacity: 0 }, { y: 0, rotation: -1.2, opacity: 1, duration: 0.42, ease: "power3.out" }, b(30));
+  tl.to("#s6in", { scale: 0.94, opacity: 0, duration: 0.2, ease: "power2.in" }, END - 0.2);
+
+  /* S7: end card + sonic logo */
+  tl.fromTo("#endGlow", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, END);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, END + 0.02);
+  KZ.eyePulse(tl, "#eye2", END + 0.12, 2);
+  KZ.rise(tl, "#endUrl", END + 0.32, 0.35, 30);
+  KZ.rise(tl, "#endAsk", END + 0.6, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, END + 0.6);
+  KZ.eyePulse(tl, "#eye2", END + 1.9, 1);
+  // loop bridge: the set comes back so the replay lands on the hook
+  tl.to("#s7in", { scale: 0.92, opacity: 0, duration: 0.24, ease: "power2.in" }, D - 0.4);
+  tl.to("#endGlow", { opacity: 0, duration: 0.3, ease: "power1.in" }, D - 0.4);
+  tl.to("#pods", { y: 0, duration: 0.38, ease: "power3.out" }, D - 0.4);
+  tl.to("#podV", { opacity: 1, duration: 0.3 }, D - 0.4);
+  tl.to("#haloM", { opacity: 0, duration: 0.3 }, D - 0.4);
+  tl.to("#plate", { scaleY: 1, opacity: 1, duration: 0.3, ease: "back.out(1.6)" }, D - 0.34);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>061 Top 5 shinies que clientes pegaram com o KizuBot</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F05 TOP 5 — "Contagem" system (episode accent = gold / shiny) ===== */
+  :root { --acc: #ffc928; --acc-rgb: 255, 201, 40; --ink: #fff8ea; --bg0: #07050b; --dark: #170f00; }
+  #root { background: var(--bg0); }
+  .t5-bg { position: absolute; inset: 0; background: var(--bg0); }
+  .t5-glow { position: absolute; left: -200px; right: -200px; top: 0; height: 1500px;
+    background: radial-gradient(50% 40% at 50% 42%, rgba(var(--acc-rgb), 0.17) 0%, rgba(var(--acc-rgb), 0.05) 45%, rgba(7, 5, 11, 0) 72%); }
+  .t5-stripes { position: absolute; inset: -400px;
+    background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.032) 0 3px, transparent 3px 34px); }
+  .t5-vig { position: absolute; inset: 0; background: radial-gradient(110% 75% at 50% 45%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.78) 100%); }
+  .t5-sparks { position: absolute; inset: 0; pointer-events: none; z-index: 20; }
+  .spk { position: absolute; width: 34px; height: 34px; background: #fff3c4; opacity: 0;
+    clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+    filter: drop-shadow(0 0 10px rgba(var(--acc-rgb), 0.9)); }
+
+  /* HUD: five pips = visible progress */
+  .t5-hud { position: absolute; left: 120px; top: 236px; width: 760px; height: 66px; display: flex; gap: 18px; z-index: 30; opacity: 0; }
+  .t5-pip { position: relative; flex: 1; height: 66px; transform: skewX(-14deg); border: 3px solid rgba(var(--acc-rgb), 0.5); border-radius: 6px; overflow: hidden; background: rgba(0, 0, 0, 0.35); }
+  .t5-pip .pf { position: absolute; inset: 0; background: var(--acc); opacity: 0; }
+  .t5-pip .pn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; transform: skewX(14deg);
+    font-family: "Anton", sans-serif; font-size: 44px; color: rgba(var(--acc-rgb), 0.6); }
+  .t5-pip .pv { display: block; }
+
+  /* hook */
+  .t5-hook { position: absolute; left: 90px; right: 90px; top: 250px; height: 640px; }
+  .hA { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .top5 { display: flex; align-items: flex-end; gap: 34px; font-family: "Anton", sans-serif; line-height: 0.86; }
+  .t-top { font-size: 290px; color: var(--ink); display: block; }
+  .t-word { font-family: "Anton", sans-serif; font-size: 236px; line-height: 0.96; margin-top: 18px; display: block;
+    background: linear-gradient(105deg, var(--acc) 0%, var(--acc) 38%, #fffbe8 50%, var(--acc) 62%, var(--acc) 100%);
+    background-size: 300% 100%; background-position: 100% 0; -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 40px rgba(var(--acc-rgb), 0.35)); }
+  .hB { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .hb-l { font-family: "Anton", sans-serif; font-size: 138px; line-height: 1.02; color: var(--ink); display: block; opacity: 0; }
+  .hb-l.brand { color: #d8b4fe; }
+  .hb-tag { margin-top: 26px; font: 700 32px "JetBrains Mono", monospace; letter-spacing: 0.04em; color: rgba(var(--acc-rgb), 0.9); text-transform: uppercase; opacity: 0; display: block; }
+
+  /* numerals with echo trail */
+  .t5-num { position: relative; display: inline-block; font-family: "Anton", sans-serif; line-height: 1; color: var(--acc); }
+  .t5-num .f { position: relative; display: block; text-shadow: 0 0 90px rgba(var(--acc-rgb), 0.4); }
+  .t5-num .e1, .t5-num .e2 { position: absolute; left: 0; top: 0; display: block; color: transparent; -webkit-text-stroke: 5px rgba(var(--acc-rgb), 0.55); }
+  .t5-num .e2 { -webkit-text-stroke-color: rgba(var(--acc-rgb), 0.25); }
+  .h5 { font-size: 290px; }
+
+  /* item: shot A (rank) */
+  .t5-item { position: absolute; inset: 0; }
+  .t5-numwrap { position: absolute; left: 0; right: 0; top: 270px; height: 900px; display: flex; align-items: center; justify-content: center; }
+  .t5-numwrap .t5-num { font-size: 860px; }
+  .t5-slab { position: absolute; left: 0; right: 0; top: 700px; display: flex; justify-content: center; }
+  .t5-slab .sk { display: block; transform: skewX(-9deg); background: #000; border-left: 16px solid var(--acc); padding: 6px 46px 0 40px;
+    box-shadow: 16px 16px 0 rgba(var(--acc-rgb), 0.22); }
+  .t5-slab .nm { display: block; transform: skewX(9deg); font-family: "Anton", sans-serif; font-size: 164px; line-height: 1.04; color: #fff; letter-spacing: 0.01em; }
+
+  /* item: shot B (proof) */
+  .t5-lock { position: absolute; left: 120px; top: 336px; display: flex; align-items: flex-end; gap: 26px; opacity: 0; }
+  .t5-lock .ln { font-family: "Anton", sans-serif; font-size: 236px; line-height: 0.84; color: var(--acc); display: block; }
+  .t5-lock .lk { display: flex; flex-direction: column; padding-bottom: 4px; }
+  .t5-lock .kind { font: 800 42px "Inter", sans-serif; letter-spacing: 0.16em; color: var(--acc); display: block; }
+  .t5-lock .name { font-family: "Anton", sans-serif; font-size: 150px; line-height: 0.92; color: #fff; display: block; }
+  .t5-cap { position: absolute; left: 120px; right: 170px; top: 590px; transform-origin: 0% 50%; font: 900 66px/1.1 "Inter", sans-serif; color: #fff; opacity: 0; }
+  .t5-cap b { color: var(--acc); font-weight: 900; }
+  .t5-proof { position: absolute; left: 96px; width: 780px; top: 840px; }
+  .t5-card { position: relative; background: #121016; border: 4px solid var(--acc); border-radius: 22px; padding: 12px; overflow: hidden;
+    box-shadow: 16px 16px 0 rgba(var(--acc-rgb), 0.2), 0 30px 80px rgba(0, 0, 0, 0.6); }
+  .t5-card img, .t5-card .ph { display: block; width: 100%; border-radius: 12px; }
+  .ph { background: repeating-linear-gradient(45deg, #1d1a24 0 18px, #23202b 18px 36px); display: flex; align-items: center; justify-content: center; font: 700 34px "JetBrains Mono", monospace; color: #6d6680; }
+  .t5-tag { position: absolute; left: 22px; top: -30px; z-index: 3; background: var(--acc); color: var(--dark); font: 800 30px "Inter", sans-serif; letter-spacing: 0.05em;
+    padding: 8px 18px; border-radius: 8px; text-transform: uppercase; }
+  .m-lab { font: 800 30px "JetBrains Mono", monospace; color: var(--acc); text-transform: uppercase; letter-spacing: 0.08em; margin: 4px 0 6px; }
+  .m-crop { position: relative; overflow: hidden; border-radius: 10px; }
+  .t5-card .m-crop img { position: absolute; max-width: none; border-radius: 0; }
+  .t5-hl { position: absolute; border: 6px solid var(--acc); border-radius: 14px; opacity: 0; box-shadow: 0 0 24px rgba(var(--acc-rgb), 0.6); }
+
+  .t5-ghost { position: absolute; right: -140px; top: 430px; font-family: "Anton", sans-serif; font-size: 1250px; line-height: 1; color: transparent;
+    -webkit-text-stroke: 4px rgba(var(--acc-rgb), 0.14); opacity: 0; display: block; }
+  /* tension before #1 */
+  .t5-tension { position: absolute; left: 90px; right: 90px; top: 300px; height: 560px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .tt1 { font-family: "Anton", sans-serif; font-size: 140px; line-height: 1.1; color: var(--ink); display: block; }
+  .tt2 { font-family: "Anton", sans-serif; font-size: 168px; line-height: 1.12; color: var(--acc); display: block; }
+
+  /* #1 extras */
+  .t5-beam { position: absolute; top: -200px; width: 520px; height: 1500px; opacity: 0;
+    background: linear-gradient(180deg, rgba(var(--acc-rgb), 0.38) 0%, rgba(var(--acc-rgb), 0.06) 70%, rgba(var(--acc-rgb), 0) 100%);
+    clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%); }
+  .t5-proof2 { position: absolute; left: 96px; width: 780px; }
+
+  /* end card */
+  .eye { position: absolute; width: 100px; height: 100px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .t5-ask { font: 900 66px/1.1 "Inter", sans-serif; color: var(--ink); max-width: 800px; }
+  .t5-ask b { color: var(--acc); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  #blackout { position: absolute; inset: 0; background: var(--bg0); opacity: 0; pointer-events: none; z-index: 70; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="21.9" data-fps="30">
+  <div class="t5-bg"></div>
+  <div class="t5-glow" id="glow"></div>
+  <div class="t5-stripes" id="stripes"></div>
+  <div class="t5-vig"></div>
+
+  <!-- HUD pips (untimed) -->
+  <div class="t5-hud" id="hud">
+    <div class="t5-pip" id="pip5"><div class="pf"></div><div class="pn"><span class="pv">5</span></div></div>
+    <div class="t5-pip" id="pip4"><div class="pf"></div><div class="pn"><span class="pv">4</span></div></div>
+    <div class="t5-pip" id="pip3"><div class="pf"></div><div class="pn"><span class="pv">3</span></div></div>
+    <div class="t5-pip" id="pip2"><div class="pf"></div><div class="pn"><span class="pv">2</span></div></div>
+    <div class="t5-pip" id="pip1"><div class="pf"></div><div class="pn"><span class="pv">1</span></div></div>
+  </div>
+
+  <!-- HOOK 0 – b6 -->
+  <section id="s0" class="clip" data-start="0" data-duration="2.483">
+    <div class="t5-hook">
+      <div class="hA" id="hA">
+        <div class="top5" id="top5"><span class="t-top">TOP</span><span class="t5-num h5" id="h5"><span class="e2">5</span><span class="e1">5</span><span class="f">5</span></span></div>
+        <div class="t-word" id="hWord">SHINIES</div>
+      </div>
+      <div class="hB" id="hB">
+        <div class="hb-l" id="hb1">QUE CLIENTES</div>
+        <div class="hb-l" id="hb2">PEGARAM COM</div>
+        <div class="hb-l brand" id="hb3">O KIZUBOT</div>
+        <div class="hb-tag" id="hbt">prints reais de clientes diferentes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- #5 CUBONE  b6 – b13 -->
+  <section id="s5" class="clip" data-start="2.483" data-duration="2.897">
+    <div class="t5-item" id="i5">
+      <span class="t5-ghost" id="gh5">5</span>
+      <div class="t5-numwrap" id="nw5"><span class="t5-num"><span class="e2">5</span><span class="e1">5</span><span class="f">5</span></span></div>
+      <div class="t5-slab" id="sl5"><span class="sk"><span class="nm">CUBONE</span></span></div>
+      <div class="t5-lock" id="lk5"><span class="ln">#5</span><span class="lk"><span class="kind">SHINY</span><span class="name">CUBONE</span></span></div>
+      <div class="t5-cap" id="cp5">pego no <b>mesmo minuto</b></div>
+      <div class="t5-proof" id="pf5">
+        <div class="t5-tag">print real de cliente</div>
+        <div class="t5-card"><img src="kit/img/prints/shiny-cubone--alarm.png" alt="" /><div class="t5-hl" id="hl5" style="left:79%; top:29%; width:18.5%; height:21%"></div><div class="t5-hl" id="hl5b" style="left:79%; top:77%; width:18.5%; height:21%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- #4 RAICHU  b13 – b20 -->
+  <section id="s4" class="clip" data-start="5.379" data-duration="2.897">
+    <div class="t5-item" id="i4">
+      <span class="t5-ghost" id="gh4">4</span>
+      <div class="t5-numwrap" id="nw4"><span class="t5-num"><span class="e2">4</span><span class="e1">4</span><span class="f">4</span></span></div>
+      <div class="t5-slab" id="sl4"><span class="sk"><span class="nm">RAICHU</span></span></div>
+      <div class="t5-lock" id="lk4"><span class="ln">#4</span><span class="lk"><span class="kind">SHINY</span><span class="name">RAICHU</span></span></div>
+      <div class="t5-cap" id="cp4"><b><span id="c7">7</span> alarmes</b> em 29 min</div>
+      <div class="t5-proof" id="pf4">
+        <div class="t5-tag">print real de cliente</div>
+        <div class="t5-card"><img src="kit/img/prints/shiny-raichu-7-alarms--alarms.png" alt="" /><div class="t5-hl" id="hl4" style="left:88%; top:1%; width:11.5%; height:97%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- #3 VENUSAUR  b20 – b27 -->
+  <section id="s3" class="clip" data-start="8.276" data-duration="2.897">
+    <div class="t5-item" id="i3">
+      <span class="t5-ghost" id="gh3">3</span>
+      <div class="t5-numwrap" id="nw3"><span class="t5-num"><span class="e2">3</span><span class="e1">3</span><span class="f">3</span></span></div>
+      <div class="t5-slab" id="sl3"><span class="sk"><span class="nm">VENUSAUR</span></span></div>
+      <div class="t5-lock" id="lk3"><span class="ln">#3</span><span class="lk"><span class="kind">SHINY</span><span class="name" style="font-size:128px">VENUSAUR</span></span></div>
+      <div class="t5-cap" id="cp3">a reação: <b>“MANo” “MANO”</b></div>
+      <div class="t5-proof" id="pf3">
+        <div class="t5-tag">print real de cliente</div>
+        <div class="t5-card"><img src="kit/img/prints/shiny-venusaur.png" alt="" /><div class="t5-hl" id="hl3" style="left:0.5%; top:0.5%; width:33%; height:30%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- #2 MACHAMP  b27 – b34 -->
+  <section id="s2" class="clip" data-start="11.172" data-duration="2.897">
+    <div class="t5-item" id="i2">
+      <span class="t5-ghost" id="gh2">2</span>
+      <div class="t5-numwrap" id="nw2"><span class="t5-num"><span class="e2">2</span><span class="e1">2</span><span class="f">2</span></span></div>
+      <div class="t5-slab" id="sl2"><span class="sk"><span class="nm">MACHAMP</span></span></div>
+      <div class="t5-lock" id="lk2"><span class="ln">#2</span><span class="lk"><span class="kind">SHINY</span><span class="name" style="font-size:128px">MACHAMP</span></span></div>
+      <div class="t5-cap" id="cp2">em <b>2 chars</b> diferentes</div>
+      <div class="t5-proof" id="pf2" style="top:812px">
+        <div class="t5-tag">print real de cliente</div>
+        <div class="t5-card"><div class="m-lab">char 1</div><img src="kit/img/prints/shiny-machamp-2-chars--log1.png" alt="" />
+          <div class="m-lab">char 2</div><img src="kit/img/prints/shiny-machamp-2-chars--log2.png" alt="" />
+          <div class="m-crop" style="height:70px; margin:14px 0 0 auto; width:716px"><img src="kit/img/prints/shiny-machamp-2-chars--qa.png" alt="" style="width:1650px; left:-935px; top:-6px" /></div>
+          <div class="m-crop" style="height:178px; width:380px; margin-top:6px"><div style="position:absolute; inset:0; background: url(kit/img/prints/shiny-machamp-2-chars--qa.png) 0px -96px / 1700px auto no-repeat"></div><div class="t5-hl" id="hl2" style="left:0%; top:26%; width:46%; height:72%"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- tension b34 – b36 -->
+  <section id="st" class="clip" data-start="14.069" data-duration="0.828">
+    <div class="t5-tension" id="tin">
+      <div class="tt1" id="tt1">E O</div>
+      <div class="tt2" id="tt2">NÚMERO 1…</div>
+    </div>
+  </section>
+
+  <!-- #1 FERALIGATR  b36 – b45 -->
+  <section id="s1" class="clip" data-start="14.897" data-duration="3.724">
+    <div class="t5-item" id="i1">
+      <span class="t5-ghost" id="gh1">1</span>
+      <div class="t5-beam" id="bmL" style="left:-60px; transform-origin: 50% 0;"></div>
+      <div class="t5-beam" id="bmR" style="right:-60px; transform-origin: 50% 0;"></div>
+      <div class="t5-numwrap" id="nw1"><span class="t5-num"><span class="e2">1</span><span class="e1">1</span><span class="f">1</span></span></div>
+      <div class="t5-slab" id="sl1"><span class="sk"><span class="nm">FERALIGATR</span></span></div>
+      <div class="t5-lock" id="lk1"><span class="ln">#1</span><span class="lk"><span class="kind">SHINY</span><span class="name" style="font-size:118px">FERALIGATR</span></span></div>
+      <div class="t5-cap" id="cp1">pego enquanto ele <b>via um filme</b></div>
+      <div class="t5-proof2" id="pf1a" style="top:880px">
+        <div class="t5-tag">print real de cliente</div>
+        <div class="t5-card"><img src="kit/img/prints/shiny-feraligatr--quote.png" alt="" /><div class="t5-hl" id="hl1a" style="left:0.5%; top:4%; width:94%; height:90%"></div></div>
+      </div>
+      <div class="t5-proof2" id="pf1b" style="top:1110px">
+        <div class="t5-card"><img src="kit/img/prints/shiny-feraligatr--alarm.png" alt="" /><div class="t5-hl" id="hl1b" style="left:0.5%; top:4%; width:76%; height:90%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- END b45 – D -->
+  <section id="se" class="clip" data-start="18.621" data-duration="3.279">
+    <div class="kz-end" id="sein">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="t5-ask" id="endAsk">Qual seria o <b>seu #1?</b></div>
+    </div>
+  </section>
+
+  <div class="t5-sparks" id="sparks"></div>
+  <div id="flash"></div>
+  <div id="blackout"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 21.9;
+  const B = 60 / 145;                 // trap 145: beat 0.4138 s
+  const b = (n) => n * B;
+  const ACC = "#ffc928", DIM = "rgba(255, 201, 40, 0.6)", DARK = "#170f00";
+
+  // ---------- ambient ----------
+  KZ.drift(tl, "#stripes", D, 70, 110, 5.2);
+  tl.fromTo("#glow", { scale: 1, opacity: 0.85 }, { scale: 1.12, opacity: 1, duration: b(4), ease: "sine.inOut", yoyo: true, repeat: Math.floor(D / b(4)) - 1 }, 0);
+
+  // ---------- sparkles (deterministic) ----------
+  const sparkHost = document.getElementById("sparks");
+  const rnd = KZ.rng(61);
+  function sparkBurst(at, n, box, seed) {
+    const r = KZ.rng(seed);
+    for (let i = 0; i < n; i++) {
+      const el = document.createElement("div");
+      el.className = "spk";
+      const s = 0.5 + r() * 0.9;
+      el.style.left = (box[0] + r() * (box[2] - box[0])) + "px";
+      el.style.top = (box[1] + r() * (box[3] - box[1])) + "px";
+      sparkHost.appendChild(el);
+      const t = at + r() * 0.5;
+      tl.fromTo(el, { scale: 0, opacity: 0, rotation: 0 }, { scale: s, opacity: 1, rotation: 90, duration: 0.22, ease: "back.out(3)" }, t);
+      tl.to(el, { scale: 0, opacity: 0, rotation: 180, duration: 0.4, ease: "power2.in" }, t + 0.25 + r() * 0.3);
+    }
+  }
+
+  // ---------- pips ----------
+  function pipOn(id, at) {
+    tl.fromTo("#pip" + id + " .pf", { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "power2.out" }, at);
+    tl.to("#pip" + id + " .pn", { color: DARK, duration: 0.12 }, at);
+  }
+  function pipDone(id, at) {
+    tl.to("#pip" + id + " .pf", { opacity: 0.3, duration: 0.2 }, at);
+    tl.to("#pip" + id + " .pn", { color: ACC, duration: 0.15 }, at);
+  }
+
+  // ---------- HOOK ----------
+  // frame 0 already shows TOP 5 (scale settles), SHINIES lands right after
+  tl.fromTo("#top5", { scale: 1.32 }, { scale: 1, duration: 0.3, ease: "power4.out" }, 0);
+  tl.fromTo("#h5 .e1", { x: 40, y: 28 }, { x: 14, y: 10, duration: 0.6, ease: "expo.out" }, 0);
+  tl.fromTo("#h5 .e2", { x: 80, y: 56 }, { x: 28, y: 20, duration: 0.7, ease: "expo.out" }, 0);
+  tl.fromTo("#hWord", { scale: 1.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, 0.1);
+  KZ.shake(tl, "#hA", 0.1, 12, 0.22, 3);
+  tl.fromTo("#hWord", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 0.55, ease: "power2.inOut", immediateRender: false }, b(2));
+  sparkBurst(b(2) - 0.05, 12, [120, 560, 900, 900], 7);
+  tl.to("#hA", { scale: 1.05, duration: b(1), ease: "sine.inOut" }, b(1.5));
+  tl.to("#hA", { y: -60, opacity: 0, duration: 0.14, ease: "power2.in" }, b(3) - 0.14);
+  // card B: one line per half beat, brand on the third
+  tl.fromTo("#hb1", { scale: 1.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, b(3));
+  tl.fromTo("#hb2", { scale: 1.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, b(3.5));
+  tl.fromTo("#hb3", { scale: 1.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, b(4));
+  KZ.rise(tl, "#hbt", b(4.5), 0.3, 24);
+  // pips appear under the hook, then fly up to the HUD when #5 starts
+  tl.fromTo("#hud", { opacity: 1, y: 700 }, { opacity: 1, y: 700, duration: 0.1, ease: "none" }, 0);
+  ["#pip5", "#pip4", "#pip3", "#pip2", "#pip1"].forEach(function (p, i) {
+    tl.fromTo(p + " .pv", { scale: 0 }, { scale: 1, duration: 0.25, ease: "back.out(3)" }, 0.14 + i * 0.06);
+  });
+  // the #1 pip glows: the promise of the video
+  tl.fromTo("#pip1 .pf", { opacity: 0 }, { opacity: 0.55, duration: b(1), ease: "sine.inOut", yoyo: true, repeat: 3 }, b(1.5));
+  tl.to("#hB", { y: -80, opacity: 0, duration: 0.16, ease: "power2.in" }, b(6) - 0.16);
+  tl.to("#hud", { y: 0, duration: 0.32, ease: "power3.inOut" }, b(6) - 0.16);
+
+  // ---------- items ----------
+  function item(id, S, len, o) {
+    const nw = "#nw" + id;
+    // A: numeral slams huge with an echo trail, the name slab cuts across it
+    tl.fromTo(nw, { scale: 2.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, S);
+    tl.fromTo(nw + " .e1", { x: 90, y: 70 }, { x: 22, y: 18, duration: 0.6, ease: "expo.out" }, S + 0.04);
+    tl.fromTo(nw + " .e2", { x: 180, y: 140 }, { x: 44, y: 36, duration: 0.7, ease: "expo.out" }, S + 0.04);
+    KZ.shake(tl, "#i" + id, S + 0.06, o.shake || 12, 0.24, 10 + id);
+    tl.fromTo("#sl" + id, { x: -1100 }, { x: 0, duration: 0.26, ease: "power4.out" }, S + b(0.75));
+    tl.to(nw, { scale: 1.06, duration: b(1.2), ease: "sine.out" }, S + 0.32);
+    // dock: numeral shrinks into the lockup, proof comes in
+    const T = S + b(o.dock || 2);
+    tl.to(nw, { x: -330, y: -470, scale: 0.27, duration: 0.26, ease: "power3.in" }, T - 0.2);
+    tl.to(nw, { opacity: 0, duration: 0.06 }, T + 0.04);
+    tl.to("#sl" + id, { x: 1100, duration: 0.22, ease: "power3.in" }, T - 0.18);
+    tl.fromTo("#lk" + id, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.24, ease: "power3.out" }, T + 0.02);
+    tl.fromTo("#cp" + id, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, T + 0.14);
+    tl.fromTo("#gh" + id, { opacity: 0, y: 120 }, { opacity: 1, y: -40, duration: len - (T - S), ease: "power1.out" }, T);
+    if (!o.customProof) {
+      tl.fromTo("#pf" + id, { y: 1000, rotation: 7, opacity: 0 }, { y: 0, rotation: -1.2, opacity: 1, duration: 0.42, ease: "power4.out" }, T + 0.2);
+      tl.to("#pf" + id, { scale: 1.035, duration: len - (T - S) - 0.9, ease: "sine.inOut" }, T + 0.65);
+      tl.fromTo("#hl" + id, { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "back.out(2)" }, T + (o.hlAt || b(2)));
+    }
+    // exit: scissor (top block left, proof right)
+    const E = S + len - 0.2;
+    tl.to(["#lk" + id, "#cp" + id], { x: -1100, duration: 0.2, ease: "power3.in" }, E);
+    if (!o.customProof) tl.to("#pf" + id, { x: 1100, rotation: 6, duration: 0.2, ease: "power3.in" }, E);
+  }
+
+  const S5 = b(6), S4 = b(13), S3 = b(20), S2 = b(27), ST = b(34), S1 = b(36), SE = b(45);
+  pipOn(5, S5);                    item(5, S5, b(7), { hlAt: b(2.2) });
+  tl.fromTo("#hl5b", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "back.out(2)" }, S5 + b(2) + b(2.2) + 0.12);
+  pipDone(5, S4); pipOn(4, S4);    item(4, S4, b(7), { hlAt: b(1.6) });
+  KZ.countUp(tl, "#c7", 1, 7, 6.36, 0.95, "int", "none");
+  KZ.punch(tl, "#cp4", 7.35, 1.08);
+  pipDone(4, S3); pipOn(3, S3);    item(3, S3, b(7), { hlAt: b(1.8) });
+  pipDone(3, S2); pipOn(2, S2);    item(2, S2, b(7), { hlAt: b(2.0) });
+
+  // ---------- tension ----------
+  pipDone(2, ST);
+  KZ.slam(tl, "#tt1", ST, 1.8);
+  KZ.slam(tl, "#tt2", ST + b(0.5), 1.35);
+  tl.fromTo("#pip1 .pf", { opacity: 0 }, { opacity: 0.85, duration: 0.07, ease: "none", yoyo: true, repeat: 5, immediateRender: false }, ST + 0.05);
+  tl.to("#tin", { scale: 1.08, duration: 0.3, ease: "sine.inOut" }, ST + b(1));
+  tl.to("#tin", { scale: 0.86, opacity: 0.4, duration: 0.12, ease: "power2.in" }, b(35.3));
+
+  // ---------- #1 ----------
+  tl.to("#pip1 .pf", { opacity: 1, duration: 0.12 }, S1);
+  tl.to("#pip1 .pn", { color: DARK, duration: 0.1 }, S1);
+  KZ.flash(tl, "#flash", S1, 0.9, "#fff3c4");
+  tl.fromTo(["#bmL", "#bmR"], { opacity: 0, scaleY: 0.4 }, { opacity: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, S1);
+  tl.fromTo("#bmL", { rotation: 14 }, { rotation: 6, duration: 2.2, ease: "sine.inOut" }, S1);
+  tl.fromTo("#bmR", { rotation: -14 }, { rotation: -6, duration: 2.2, ease: "sine.inOut" }, S1);
+  sparkBurst(S1 + 0.02, 22, [60, 260, 1000, 1200], 99);
+  item(1, S1, b(9), { dock: 2.5, shake: 22, customProof: true });
+  const T1 = S1 + b(2.5);
+  tl.to(["#bmL", "#bmR"], { opacity: 0.35, duration: 0.4 }, T1);
+  tl.fromTo("#pf1a", { y: 1000, rotation: 7, opacity: 0 }, { y: 0, rotation: -1.5, opacity: 1, duration: 0.42, ease: "power4.out" }, T1 + 0.2);
+  tl.fromTo("#hl1a", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "back.out(2)" }, T1 + b(1.5));
+  tl.fromTo("#pf1b", { y: 1000, rotation: -6, opacity: 0 }, { y: 0, rotation: 1.2, opacity: 1, duration: 0.42, ease: "power4.out" }, T1 + b(2.5));
+  tl.fromTo("#hl1b", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "back.out(2)" }, T1 + b(3.5));
+  sparkBurst(T1 + b(3.5), 10, [120, 1060, 880, 1360], 5);
+  tl.to(["#pf1a", "#pf1b"], { x: 1100, duration: 0.2, ease: "power3.in" }, SE - 0.2);
+  tl.to(["#bmL", "#bmR"], { opacity: 0, duration: 0.2 }, SE - 0.2);
+
+  // ---------- END ----------
+  tl.to(["#pip5 .pf", "#pip4 .pf", "#pip3 .pf", "#pip2 .pf", "#pip1 .pf"], { opacity: 1, duration: 0.2, stagger: 0.04 }, SE - 0.1);
+  tl.to(["#pip5 .pn", "#pip4 .pn", "#pip3 .pn", "#pip2 .pn", "#pip1 .pn"], { color: DARK, duration: 0.1, stagger: 0.04 }, SE - 0.1);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, SE + 0.04);
+  KZ.eyePulse(tl, "#eye2", SE + 0.14, 3);
+  KZ.rise(tl, "#endUrl", SE + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", SE + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, SE + 0.6);
+  sparkBurst(SE + 0.05, 10, [200, 300, 880, 820], 41);
+  tl.to("#hud", { opacity: 0, duration: 0.3 }, D - 0.75);
+  // loop seam: back to the opening black
+  tl.fromTo("#blackout", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.in" }, D - 0.4);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

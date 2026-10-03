@@ -1,0 +1,65 @@
+{
+  "id": "063",
+  "slug": "5-reacoes",
+  "family": "Top 5",
+  "title": "As 5 reações mais insanas dos clientes do KizuBot",
+  "concept": "Countdown of five real customer reactions, each typeset verbatim in a speech bubble over a liquid-filling numeral and proven by the print, ending on the #1 'eu quero mt ter comprado isso antes' plus its own correction 'queria*'.",
+  "neuro": [
+    "open-loop",
+    "social-proof",
+    "emotional-contagion",
+    "humor",
+    "variable-reward",
+    "visible-progress",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "AS 5 REAÇÕES MAIS INSANAS DOS CLIENTES.",
+  "duration": 21.9,
+  "music": {
+    "style": "trap",
+    "bpm": 145
+  },
+  "assets": [
+    "kit/img/prints/bot-ta-um-monstro--quote.png",
+    "kit/img/prints/bot-joga-muito--alertas.png",
+    "kit/img/prints/bot-e-a-perfeicao--quote.png",
+    "kit/img/prints/bot-e-um-roubo--roubo.png",
+    "kit/img/prints/queria-ter-comprado-antes--quote.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [],
+  "platforms": {
+    "tiktok": {
+      "caption": "As 5 reações mais insanas dos clientes do KizuBot 😂 A #1 veio até com correção. Prints reais de clientes diferentes. Qual foi a melhor? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#top5",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "As 5 reações mais insanas dos clientes do KizuBot 😂",
+      "description": "'o bot tá um monstro', 'Bot joga muito kkk', 'esse bot é a perfeiçã ocara', 'Mas esse bot é um roubo / Faz tudo a desgrama' e a #1 com direito a correção. Prints reais de clientes diferentes. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "As 5 reações mais insanas dos clientes do KizuBot 😂 Qual foi a melhor? Prints reais de clientes diferentes. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#top5"
+      ]
+    }
+  },
+  "pinned_comment": "Qual foi a melhor? 😂",
+  "notes": "Hook split into two cards ('AS 5 REAÇÕES MAIS INSANAS' / 'DOS CLIENTES DO KIZUBOT'). #1 quoted verbatim from the print: 'eu quero mt ter comprado isso antes' followed by the customer's own correction 'queria*' (the concept paraphrased it as 'eu queria mt ter comprado isso antes'). #3 keeps the original typo 'perfeiçã ocara'. Small-source crops (bot-e-um-roubo--roubo 654 px, bot-e-a-perfeicao--quote 528 px) are shown at or below native width, per ASSETS.md."
+}

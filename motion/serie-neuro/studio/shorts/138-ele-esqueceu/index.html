@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>138 Ele esqueceu o que tinha pego</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ============ F20 PLOT TWIST — cinematic letterbox system (shared by 136-140) ============ */
+  :root { --cn-bg: #050403; --cn-gold: #d6b26e; --cn-ink: #f3ead8; --cn-warm: #ffb36b; --cn-cool: #dbe8ff; }
+  #root { background: var(--cn-bg); }
+  .cn-world { position: absolute; inset: 0; }
+  #barT, #barB { position: absolute; left: 0; right: 0; background: #000; z-index: 20; }
+  #barT { top: 0; height: 520px; box-shadow: 0 2px 0 rgba(214, 178, 110, 0.18); }
+  #barB { top: 972px; height: 948px; box-shadow: 0 -2px 0 rgba(214, 178, 110, 0.18); }
+  .cn-chap { position: absolute; left: 90px; right: 90px; top: 438px; z-index: 22; text-align: center; font: 700 34px "Cinzel", serif; letter-spacing: 0.32em; color: var(--cn-gold); text-transform: uppercase; }
+  .cn-sub { position: absolute; left: 90px; right: 200px; top: 1010px; z-index: 22; text-align: center; font: 700 64px "Cormorant Garamond", serif; color: var(--cn-ink); line-height: 1.12; }
+  .cn-title { font-family: "Cinzel", serif; font-weight: 700; color: var(--cn-ink); text-transform: uppercase; line-height: 1.08; text-align: center; letter-spacing: 0.02em;
+    text-shadow: 0 0 40px rgba(255, 190, 110, 0.25), 0 4px 0 rgba(0, 0, 0, 0.5); }
+  .cn-gold { color: var(--cn-gold); }
+  #grade { position: absolute; left: 0; right: 0; top: 520px; height: 452px; z-index: 15; pointer-events: none; mix-blend-mode: soft-light;
+    background: linear-gradient(180deg, rgba(255, 160, 70, 0.55), rgba(255, 120, 40, 0.35)); }
+  #grain { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.05; mix-blend-mode: screen; pointer-events: none; z-index: 30; }
+  #leak { position: absolute; left: -400px; top: 420px; width: 900px; height: 650px; z-index: 16; opacity: 0; pointer-events: none; mix-blend-mode: screen;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 150, 60, 0.75) 0%, rgba(255, 90, 30, 0.25) 40%, rgba(255, 60, 0, 0) 70%); }
+  .bokeh { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255, 196, 120, 0.35) 0%, rgba(255, 196, 120, 0.12) 55%, rgba(255, 196, 120, 0) 72%); }
+  /* evidence table */
+  #table { position: absolute; inset: 0; background:
+      radial-gradient(55% 34% at 50% 44%, rgba(225, 235, 255, 0.20) 0%, rgba(225, 235, 255, 0.06) 45%, rgba(0, 0, 0, 0) 75%),
+      repeating-linear-gradient(93deg, rgba(0, 0, 0, 0.16) 0 3px, rgba(0, 0, 0, 0) 3px 13px),
+      repeating-linear-gradient(87deg, rgba(255, 220, 180, 0.035) 0 2px, rgba(0, 0, 0, 0) 2px 29px),
+      linear-gradient(180deg, #2b1b11 0%, #1c110a 55%, #120a05 100%); }
+  #tableVig { position: absolute; inset: 0; background: radial-gradient(70% 55% at 50% 45%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 100%); }
+  .evid { position: absolute; background: #f4f1ea; padding: 16px 16px 58px 16px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 0 4px 10px rgba(0, 0, 0, 0.5); }
+  .evid img { display: block; width: 100%; }
+  .evid .cap { position: absolute; left: 22px; bottom: 12px; font: 700 30px "Cormorant Garamond", serif; color: #3b2a1a; letter-spacing: 0.04em; }
+  .clip-svg { position: absolute; width: 60px; height: 130px; }
+  .etag { position: absolute; padding: 12px 22px 12px 34px; background: #e8d6a8; color: #3a2814; font: 700 30px "Cinzel", serif; letter-spacing: 0.08em; text-transform: uppercase;
+    clip-path: polygon(16px 0, 100% 0, 100% 100%, 16px 100%, 0 50%); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  .kz-progress { z-index: 50; background: rgba(255, 255, 255, 0.05); }
+  .kz-progress > div { background: linear-gradient(90deg, #8a6a32, #d6b26e); }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .cn-chip { display: inline-block; padding: 14px 26px; border-radius: 999px; font: 800 40px "Inter", sans-serif; background: rgba(214, 178, 110, 0.14); border: 2px solid rgba(214, 178, 110, 0.7); color: #f3ead8; }
+  #endBg { position: absolute; inset: 0; background: radial-gradient(60% 40% at 50% 40%, rgba(91, 33, 182, 0.55) 0%, rgba(8, 4, 16, 0) 75%), #07050c; }
+  .ask { font: 900 62px "Inter", sans-serif; color: var(--kz-ink); max-width: 700px; line-height: 1.12; }
+  .ask b { color: var(--cn-gold); }
+
+  /* ============ 138 specifics: sepia memory, light beam and dust ============ */
+  #grade { background: linear-gradient(180deg, rgba(230, 190, 140, 0.6), rgba(150, 110, 70, 0.45)); }
+  #room { position: absolute; left: 0; right: 0; top: 520px; height: 452px; overflow: hidden; background: radial-gradient(80% 90% at 30% 20%, #2a2016 0%, #120d08 60%, #080604 100%); }
+  #beam { position: absolute; left: -120px; top: -60px; width: 900px; height: 640px; opacity: 0.9;
+    background: linear-gradient(115deg, rgba(255, 220, 160, 0.0) 0%, rgba(255, 220, 160, 0.30) 30%, rgba(255, 210, 150, 0.18) 55%, rgba(255, 200, 140, 0) 85%);
+    clip-path: polygon(18% 0, 38% 0, 100% 100%, 46% 100%); filter: blur(6px); }
+  #win { position: absolute; left: 70px; top: -30px; width: 230px; height: 150px; background: rgba(255, 236, 200, 0.55); filter: blur(10px); }
+  .mote { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: rgba(255, 236, 200, 0.85); box-shadow: 0 0 8px rgba(255, 220, 160, 0.9); }
+  #h1 { position: absolute; left: 90px; right: 90px; top: 572px; font-size: 104px; line-height: 1.05; }
+  #h2 { position: absolute; left: 90px; right: 90px; top: 681px; font-size: 104px; line-height: 1.05; }
+  #h3 { position: absolute; left: 90px; right: 90px; top: 790px; font-size: 104px; line-height: 1.05; color: var(--cn-gold); }
+  #inter1 { position: absolute; left: 90px; right: 90px; top: 590px; font-size: 150px; line-height: 1.0; }
+  #inter2 { position: absolute; left: 90px; right: 90px; top: 752px; font-size: 150px; line-height: 1.0; color: var(--cn-gold); }
+  /* evidence */
+  #ev1 { left: 150px; top: 540px; width: 792px; transform-origin: 396px 170px; }
+  #ev2 { left: 200px; top: 700px; width: 672px; transform-origin: 336px 260px; }
+  #evTag { left: 120px; top: 520px; z-index: 6; white-space: nowrap; }
+  #ul1w { position: absolute; left: 150px; top: 540px; width: 792px; height: 360px; pointer-events: none; transform-origin: 396px 170px; }
+  #ul2w { position: absolute; left: 200px; top: 700px; width: 672px; height: 520px; pointer-events: none; transform-origin: 336px 260px; }
+  #t1 { position: absolute; left: 90px; right: 200px; top: 720px; font-size: 120px; color: var(--cn-ink); }
+  #t2 { position: absolute; left: 90px; right: 200px; top: 850px; font-size: 120px; color: var(--cn-gold); text-shadow: 0 0 50px rgba(214, 178, 110, 0.5), 0 4px 0 rgba(0, 0, 0, 0.5); }
+  #chips { position: absolute; left: 90px; right: 200px; top: 1020px; display: flex; gap: 16px; justify-content: center; }
+  .spark { position: absolute; width: 40px; height: 40px; left: 0; top: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="18.4" data-fps="30">
+
+  <!-- the memory room (hook + chapter 1): 0 - 4.8 -->
+  <section id="s1" class="clip" data-start="0" data-duration="4.8">
+    <div id="room"><div id="win"></div><div id="beam"></div><div id="motes"></div></div>
+    <div id="s1in" class="cn-world">
+      <div class="cn-title" id="h1">Ele esqueceu</div>
+      <div class="cn-title" id="h2">o que tinha</div>
+      <div class="cn-title" id="h3">pego.</div>
+    </div>
+  </section>
+  <section id="s2" class="clip" data-start="4.8" data-duration="2.4">
+    <div id="s2in" class="cn-world">
+      <div class="cn-title" id="inter1">Uns dias</div>
+      <div class="cn-title" id="inter2">depois…</div>
+    </div>
+  </section>
+
+  <section id="s4" class="clip" data-start="7.2" data-duration="7.2">
+    <div id="table"></div><div id="tableVig"></div>
+    <div id="s4in" class="cn-world">
+      <div class="evid" id="ev2"><img src="kit/img/prints/shiny-venusaur-cp--quote.png" alt="" /><div class="cap">14:44 — o começo</div></div>
+      <svg id="ul2w" viewBox="0 0 672 520"><path id="ul2" d="M36 300 C80 306 140 296 188 302" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#d6b26e" stroke-width="8" stroke-linecap="round"/></svg>
+      <div class="evid" id="ev1"><img src="kit/img/prints/shiny-venusaur-cp--punchline.png" alt="" /><div class="cap">14:54 — o CP</div></div>
+      <svg id="ul1w" viewBox="0 0 792 360"><path id="ul1" d="M40 262 C100 268 170 258 232 264" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#d6b26e" stroke-width="8" stroke-linecap="round"/></svg>
+      <div class="etag" id="evTag">print real de cliente</div>
+      <div class="cn-title" id="t1">Um shiny</div>
+      <div class="cn-title" id="t2">Venusaur.</div>
+      <div id="chips"><span class="cn-chip" id="c1">detecção de shiny</span><span class="cn-chip" id="c2">100% AFK</span></div>
+    </div>
+  </section>
+
+  <section id="s6" class="clip" data-start="14.4" data-duration="4.0">
+    <div id="endBg"></div>
+    <div class="kz-end" id="s6in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye6" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk" style="max-width:560px">Você esqueceria <b>um shiny?</b></div>
+    </div>
+  </section>
+
+  <div id="grade"></div>
+  <div id="leak"></div>
+  <div id="barT"></div>
+  <div id="barB"></div>
+  <div class="cn-chap" id="chap0">KizuBot apresenta</div>
+  <div class="cn-chap" id="cred" style="top:1012px; right:200px; letter-spacing:0.18em; opacity:0">baseado em um print real</div>
+  <div class="cn-chap" id="chap1" style="opacity:0">Capítulo 1 — Um dia comum</div>
+  <div class="cn-chap" id="chap2" style="opacity:0">Capítulo 2 — O CP</div>
+  <div class="cn-sub" id="sub1" style="opacity:0">Um dia comum.</div>
+  <div class="cn-sub" id="sub2" style="opacity:0">ele foi ver o CP.</div>
+  <canvas id="grain" width="90" height="320"></canvas>
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 18.4;
+  const b = KZ.beats(100);           // beat = 0.6 s, bar = 2.4 s
+
+  /* ---------- F20 cinematic helpers (inline, shared by 136-140) ---------- */
+  const CN = {};
+  CN.hash = function (n) { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+  // film grain on a quantized clock (pure function of time)
+  CN.grain = function (tl, canvas, D, fps) {
+    const ctx = canvas.getContext("2d"), W = canvas.width, H = canvas.height, img = ctx.createImageData(W, H);
+    let last = -1;
+    const draw = function (k) {
+      const r = KZ.rng(7000 + k * 13), d = img.data;
+      for (let i = 0; i < d.length; i += 4) { const v = r() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
+      ctx.putImageData(img, 0, 0);
+    };
+    const o = { t: 0 };
+    tl.fromTo(o, { t: 0 }, { t: D, duration: D, ease: "none", onUpdate: function () { const k = Math.floor(o.t * (fps || 8)); if (k !== last) { last = k; draw(k); } } }, 0);
+    draw(0);
+  };
+  // chapter label: fade/track in, fade out
+  CN.chap = function (tl, el, at, out) {
+    tl.fromTo(el, { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, at);
+    if (out) tl.to(el, { opacity: 0, duration: 0.2, ease: "power2.in" }, out - 0.2);
+  };
+  // subtitle line
+  CN.sub = function (tl, el, at, out) {
+    tl.fromTo(el, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, at);
+    if (out) tl.to(el, { opacity: 0, duration: 0.18, ease: "power2.in" }, out - 0.18);
+  };
+  // anamorphic light leak sweeping across the band
+  CN.leak = function (tl, at, seed) {
+    tl.fromTo("#leak", { x: 0, opacity: 0 }, { x: 1100, opacity: 1, duration: 0.5, ease: "power1.inOut", immediateRender: false }, at);
+    tl.to("#leak", { opacity: 0, duration: 0.25, ease: "power1.in" }, at + 0.4);
+  };
+  // the letterbox opens to full frame (the twist)
+  CN.open = function (tl, at, dur) {
+    tl.to("#barT", { y: -540, duration: dur || 0.45, ease: "power3.inOut" }, at);
+    tl.to("#barB", { y: 960, duration: dur || 0.45, ease: "power3.inOut" }, at);
+    tl.to("#grade", { opacity: 0, duration: 0.3, ease: "power2.out" }, at);
+  };
+  // the letterbox closes again (loop bridge)
+  CN.close = function (tl, at, dur) {
+    tl.to("#barT", { y: 0, duration: dur || 0.4, ease: "power3.inOut" }, at);
+    tl.to("#barB", { y: 0, duration: dur || 0.4, ease: "power3.inOut" }, at);
+  };
+  // drifting bokeh inside a container (deterministic)
+  CN.bokeh = function (tl, box, n, D, seed, x0, y0, w, h) {
+    const r = KZ.rng(seed);
+    for (let i = 0; i < n; i++) {
+      const d = document.createElement("div"), s = 60 + r() * 160;
+      d.className = "bokeh"; d.style.width = s + "px"; d.style.height = s + "px";
+      d.style.left = (x0 + r() * w) + "px"; d.style.top = (y0 + r() * h) + "px"; d.style.opacity = (0.35 + r() * 0.65).toFixed(2);
+      box.appendChild(d);
+      tl.fromTo(d, { x: -30 - r() * 40 }, { x: 30 + r() * 40, duration: D, ease: "none" }, 0);
+    }
+  };
+  // hand-drawn underline (SVG stroke draw) — path must have pathLength="1"
+  CN.draw = function (tl, path, at, dur) {
+    tl.fromTo(path, { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: dur || 0.4, ease: "power2.inOut" }, at);
+  };
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  CN.grain(tl, document.getElementById("grain"), D, 8);
+  // dust motes drifting in the beam (deterministic)
+  (function () {
+    const box = document.getElementById("motes"), r = KZ.rng(138);
+    for (let i = 0; i < 34; i++) {
+      const m = document.createElement("div"); m.className = "mote";
+      const s = 3 + r() * 6; m.style.width = s + "px"; m.style.height = s + "px";
+      m.style.left = (120 + r() * 760) + "px"; m.style.top = (20 + r() * 400) + "px"; m.style.opacity = (0.3 + r() * 0.7).toFixed(2);
+      box.appendChild(m);
+      tl.fromTo(m, { x: -20 - r() * 30, y: 10 + r() * 20 }, { x: 30 + r() * 40, y: -30 - r() * 30, duration: 4.8, ease: "sine.inOut" }, 0);
+    }
+  })();
+  tl.fromTo("#beam", { opacity: 0.75 }, { opacity: 1, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+  tl.fromTo("#room", { scale: 1.0 }, { scale: 1.08, duration: 4.8, ease: "none" }, 0);
+
+  /* hook */
+  tl.fromTo("#h1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.0);
+  tl.fromTo("#h2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.12);
+  tl.fromTo("#h3", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 0.26);
+  CN.chap(tl, "#chap0", 0.0, 2.4);
+  tl.fromTo("#cred", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 0.5);
+  tl.to("#cred", { opacity: 0, duration: 0.2 }, 2.200);
+  tl.to("#s1in", { opacity: 0, duration: 0.3, ease: "power2.in" }, 2.15);
+
+  /* chapter 1: an ordinary day (just the light moving) */
+  const C1 = 2.4;
+  CN.chap(tl, "#chap1", C1, 4.8);
+  CN.sub(tl, "#sub1", C1 + 0.25, 4.8);
+  CN.leak(tl, 4.58, 1);
+
+  /* chapter 2: days later, the CP */
+  const C2 = 4.8;
+  CN.chap(tl, "#chap2", C2, 7.2);
+  tl.fromTo("#inter1", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, C2);
+  tl.fromTo("#inter2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, C2 + 0.3);
+  tl.fromTo("#s2in", { scale: 1.0 }, { scale: 1.06, duration: 2.4, ease: "none" }, C2);
+  CN.sub(tl, "#sub2", C2 + 0.6, 7.15);
+
+  /* twist */
+  const TW = 7.2;
+  CN.open(tl, TW, 0.45);
+  KZ.flash(tl, "#flash", TW, 0.5, "#e8f0ff");
+  tl.fromTo(["#ev1", "#ul1w"], { y: -900, rotation: -10 }, { y: 0, rotation: -2, duration: 0.4, ease: "power3.in" }, TW);
+  KZ.shake(tl, "#s4in", TW + 0.4, 8, 0.2, 3);
+  tl.fromTo("#evTag", { opacity: 0, x: -40, rotation: -10 }, { opacity: 1, x: 0, rotation: -4, duration: 0.35, ease: "back.out(2)" }, TW + 0.6);
+  CN.draw(tl, "#ul1", 8.1, 0.4);
+  // second evidence: the beginning ("até esqueci")
+  const T2 = 9.6;
+  tl.to(["#ev1", "#ul1w"], { y: -300, rotation: -3, duration: 0.45, ease: "power3.inOut" }, T2);
+  tl.to("#evTag", { y: -300, duration: 0.45, ease: "power3.inOut" }, T2);
+  tl.fromTo(["#ev2", "#ul2w"], { y: 1400, rotation: 9 }, { y: 0, rotation: 2.5, duration: 0.45, ease: "power3.out" }, T2 + 0.1);
+  CN.draw(tl, "#ul2", 10.6, 0.35);
+  // verdict
+  const T3 = 12.0;
+  tl.to(["#ev2", "#ul2w"], { y: 1400, rotation: 6, duration: 0.45, ease: "power3.in" }, T3);
+  tl.fromTo("#t1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, T3 + 0.2);
+  tl.fromTo("#t2", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, T3 + 0.45);
+  KZ.flash(tl, "#flash", T3 + 0.45, 0.22, "#ffe9b0");
+  (function () {
+    const box = document.getElementById("s4in"), r = KZ.rng(1380);
+    for (let i = 0; i < 16; i++) {
+      const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      s.setAttribute("viewBox", "0 0 40 40"); s.setAttribute("class", "spark");
+      s.innerHTML = '<path d="M20 0 L24 16 L40 20 L24 24 L20 40 L16 24 L0 20 L16 16 Z" fill="#e9cf8f"/>';
+      box.appendChild(s);
+      const a = r() * Math.PI * 2, dd = 200 + r() * 260;
+      tl.fromTo(s, { x: 485, y: 900, scale: 0, opacity: 1 }, { x: 485 + Math.cos(a) * dd, y: 900 + Math.sin(a) * dd * 0.55, scale: 0.4 + r() * 0.8, rotation: r() * 180, duration: 1.0, ease: "power3.out" }, T3 + 0.47);
+      tl.to(s, { opacity: 0, duration: 0.3 }, T3 + 1.25 + r() * 0.3);
+    }
+  })();
+  KZ.pop(tl, "#c1", 13.2, 0.35);
+  KZ.pop(tl, "#c2", 13.4, 0.35);
+  tl.to("#s4in", { opacity: 0, duration: 0.15, ease: "power2.in" }, 14.4 - 0.15);
+
+  /* end */
+  const TE = 14.4;
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, TE);
+  KZ.eyePulse(tl, "#eye6", TE + 0.1, 2);
+  KZ.rise(tl, "#endUrl", TE + 0.46, 0.35, 30);
+  KZ.rise(tl, "#endAsk", TE + 0.92, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, TE + 0.9);
+  CN.close(tl, D - 0.5, 0.42);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+{
+  "id": "076",
+  "slug": "seu-char-ligando",
+  "family": "Ligação Recebida",
+  "title": "Seu char está ligando…",
+  "concept": "Pattern interrupt: an incoming call from 'SEU CHAR' rings with the KizuBot motif; you answer and the char, in live captions, says it's hunting and you can go back to sleep — then 'apareceu um SHINY' (KizuBot alert) and a real customer print proves it; the call ends and 'O farm continua. 100% AFK'.",
+  "neuro": [
+    "pattern-interrupt",
+    "sonic-branding",
+    "curiosity-gap",
+    "humor",
+    "social-proof",
+    "anticipation-drop",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "SEU CHAR TÁ LIGANDO…",
+  "duration": 18.87,
+  "music": {
+    "style": "house",
+    "bpm": 124
+  },
+  "assets": [
+    "kit/img/prints/shiny-dratini-new-server--shot.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "detecção de shinys, megas e bosses"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Seu char tá ligando… 📞 Atende: ele tá caçando sozinho, você pode voltar a dormir. Ah… e apareceu um shiny ✨ Você atenderia? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Seu char está ligando… (e apareceu um shiny)",
+      "description": "Seu char liga pra avisar: tá caçando sozinho, 100% AFK, e apareceu um shiny. Print real de cliente no server novo. O KizuBot caça, captura e avisa no celular enquanto você dorme. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Seu char tá ligando… 📞 Ele tá caçando sozinho e apareceu um shiny ✨ Você atenderia? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny"
+      ]
+    }
+  },
+  "pinned_comment": "Você atenderia? 📞",
+  "notes": "Hook wording made informal ('SEU CHAR / tá ligando…', label 'chamada de voz'); the char's lines are a clearly fictional skit shown as live captions, the proof is the real print shiny-dratini-new-server--shot (customer's own message, tagged 'print real de cliente', quote typeset verbatim: 'Mais um shiny na conta no server novo'). Only the --shot crop is used because 'Esse aí tirou onda' in the full print is another member. Caption 4 trimmed to 'Ah… apareceu um SHINY.'; the call timer runs in real time and ends at 00:12 (concept said 00:14). Added the payoff 'O farm continua.' + '100% AFK' chip after the hang-up for clarity. No on-screen claim that KizuBot places calls (the top label is neutral). Rubric: hook 9, re-hooks 9, clarity 8, craft 9, truth 9, sound 9, brand 9, CTA 9, loop 8, distinct 9 = 8.8."
+}

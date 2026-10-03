@@ -1,0 +1,66 @@
+{
+  "id": "046",
+  "slug": "pov-acorda-com-shiny",
+  "family": "POV",
+  "title": "POV: você acorda e o shiny já tá na conta",
+  "concept": "First-person wake-up: eyelids open on a sunlit bedroom, the phone on the nightstand buzzes, the lock screen shows the real KizuBot alarms (shinyDetected → pokemonCaught 09:29) and the real 'MANo / MANO' reaction, then 'Parece roteiro, né?' flips into the real customer print on the drop.",
+  "neuro": [
+    "pov-self-reference",
+    "narrative-transport",
+    "curiosity-gap",
+    "schema-violation",
+    "social-proof-twist",
+    "peak-end",
+    "seamless-loop",
+    "comment-prompt"
+  ],
+  "hook": "POV: você acorda e o shiny já tá na conta.",
+  "duration": 17,
+  "music": {
+    "style": "house",
+    "bpm": 124
+  },
+  "assets": [
+    "kit/img/prints/shiny-venusaur.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "POV: você acorda e o shiny já tá na conta 😳 O KizuBot detectou, capturou e avisou no celular. Print real de cliente. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#pov"
+      ]
+    },
+    "youtube": {
+      "title": "POV: você acorda e o shiny já tá na conta (print real)",
+      "description": "POV: você acorda e o shiny Venusaur já foi detectado, capturado e avisado no celular — print real de cliente (09:29). O KizuBot roda 100% AFK, detecta shiny, mega e boss e manda alarme no WhatsApp/Telegram. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "POV: você acorda e o shiny já tá na conta. 🌅 Detectou, capturou e avisou no celular — print real de cliente. Com qual shiny você queria acordar? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shinyhunting"
+      ]
+    }
+  },
+  "pinned_comment": "Qual shiny você queria acordar com ele? 👇",
+  "notes": "Lock-screen notifications are a generic illustrated phone (no app trade dress) carrying the verbatim alarm text from shiny-venusaur.png (leading '- ' after the redacted nick trimmed); the first alarm shows no time because its timestamp is cut off in the print ('09:1…'). Added a 'Parece roteiro, né?' build before the reveal (concept: real print as the twist). Concept line 'Ele tava dormindo. O KizuBot não.' was changed to the POV 'Você tava dormindo. O KizuBot não.' because the print doesn't say the customer was asleep. Proof beat adds three checks (detectou o shiny / capturou sozinho / avisou no celular) that restate what the print shows. On-screen ask: 'Com qual shiny você queria acordar?'. Rubric: hook 8, re-hooks 9, clarity 8, craft 8, truth 9, sound 8, brand 9, CTA 9, loop 8, distinct 8 (avg 8.4). 1 render."
+}

@@ -1,0 +1,68 @@
+{
+  "id": "118",
+  "slug": "do-zero-ao-farm",
+  "family": "Speedrun",
+  "title": "Do zero ao farm em 3 passos",
+  "concept": "A three-phase speedrun HUD: PHASE_01 configure seu bot (illustrated brand panel, toggles click on), PHASE_02 defina os waypoints (route drawn over a stylized map, the robot walks the loop), PHASE_03 ligue e acompanhe pelo celular (phone: ONLINE, PC desligado, shiny alarm example), then RUN COMPLETO with a real customer line 'Teu bot é mt bom e fácil configurar' and an honest fine print.",
+  "neuro": [
+    "time-pressure",
+    "chunking",
+    "ikea-effect",
+    "visible-progress",
+    "social-proof",
+    "peak-end",
+    "seamless-loop",
+    "comment-prompt"
+  ],
+  "hook": "DO ZERO AO FARM. 3 PASSOS.",
+  "duration": 18.8,
+  "music": {
+    "style": "chiptune",
+    "bpm": 140
+  },
+  "assets": [
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/facil-configurar.png"
+  ],
+  "claims": [
+    "uso com PC desligado",
+    "acesso pelo celular",
+    "alarmes no celular e notificações no WhatsApp",
+    "cavebot com waypoints",
+    "o suporte te ajuda a configurar"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Do zero ao farm em 3 passos ⏱️ Configura o bot, define os waypoints, liga e acompanha pelo celular — com o PC desligado. (Na vida real leva mais que 10s, o suporte ajuda 😅) Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#speedrun",
+        "#farm"
+      ]
+    },
+    "youtube": {
+      "title": "Do zero ao farm em 3 passos (speedrun KizuBot)",
+      "description": "PHASE 1: configure seu bot. PHASE 2: defina os waypoints do cavebot. PHASE 3: ligue e acompanhe pelo celular, com o PC desligado e alarme no WhatsApp. Na vida real configurar leva mais que 10 segundos, mas o suporte te ajuda. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Do zero ao farm em 3 passos. ⏱️ Configura, define os waypoints, liga e acompanha pelo celular. Quanto tempo você levaria? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#speedrun"
+      ]
+    }
+  },
+  "pinned_comment": "Quanto tempo você levaria? 👀",
+  "notes": "Panel, map and phone are stylized brand illustrations labelled 'ilustração' / 'exemplo' (the site's panel screenshots show an old UI and are not used). Phases mirror the site's 'Como funciona' (Configure seu Bot / Defina Waypoints) + the phone panel. The real print facil-configurar.png is a 1080x85 strip whose text would be ~21 px on screen, so the line is also set large in type, verbatim and trimmed ('Teu bot é mt bom e fácil configurar'; the message continues 'parabéns pelo trampo'), with the strip itself shown beneath as proof. Fine print '*na vida real leva mais que 10s — o suporte ajuda' keeps the speedrun joke honest."
+}

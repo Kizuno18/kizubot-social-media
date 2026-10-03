@@ -1,0 +1,273 @@
+{
+ "duration": 20,
+ "style": "funk",
+ "bpm": 130,
+ "seed": 59,
+ "sections": [
+  {
+   "at": 0.0,
+   "type": "groove"
+  },
+  {
+   "at": 1.846,
+   "type": "groove",
+   "energy": 0.55
+  },
+  {
+   "at": 3.692,
+   "type": "build"
+  },
+  {
+   "at": 7.385,
+   "type": "drop"
+  },
+  {
+   "at": 12.923,
+   "type": "drop",
+   "energy": 0.9
+  },
+  {
+   "at": 16.615,
+   "type": "outro"
+  }
+ ],
+ "stops": [
+  {
+   "at": 7.0,
+   "len": 0.385
+  },
+  {
+   "at": 12.4,
+   "len": 0.523,
+   "tape": true
+  }
+ ],
+ "sfx": [
+  {
+   "t": 0.0,
+   "name": "impact",
+   "gain": -6
+  },
+  {
+   "t": 0.0,
+   "name": "glitch",
+   "gain": -15
+  },
+  {
+   "t": 0.14,
+   "name": "whoosh_fast",
+   "gain": -12
+  },
+  {
+   "t": 0.28,
+   "name": "boom",
+   "gain": -9
+  },
+  {
+   "t": 0.462,
+   "name": "glitch",
+   "gain": -17
+  },
+  {
+   "t": 0.923,
+   "name": "glitch",
+   "gain": -17
+  },
+  {
+   "t": 1.385,
+   "name": "glitch",
+   "gain": -17
+  },
+  {
+   "t": 1.7,
+   "name": "whoosh_fast",
+   "gain": -12
+  },
+  {
+   "t": 1.846,
+   "name": "type",
+   "gain": -13
+  },
+  {
+   "t": 2.45,
+   "name": "notif",
+   "gain": -13
+  },
+  {
+   "t": 2.45,
+   "name": "pop2",
+   "gain": -10.0
+  },
+  {
+   "t": 3.0,
+   "name": "notif",
+   "gain": -13
+  },
+  {
+   "t": 3.0,
+   "name": "pop2",
+   "gain": -9.5
+  },
+  {
+   "t": 3.5,
+   "name": "notif",
+   "gain": -13
+  },
+  {
+   "t": 3.5,
+   "name": "pop2",
+   "gain": -9.0
+  },
+  {
+   "t": 3.92,
+   "name": "notif",
+   "gain": -13
+  },
+  {
+   "t": 3.92,
+   "name": "pop2",
+   "gain": -8.5
+  },
+  {
+   "t": 4.55,
+   "name": "notif",
+   "gain": -13
+  },
+  {
+   "t": 4.55,
+   "name": "pop2",
+   "gain": -8.0
+  },
+  {
+   "t": 4.95,
+   "name": "notif",
+   "gain": -13
+  },
+  {
+   "t": 4.95,
+   "name": "pop2",
+   "gain": -8.0
+  },
+  {
+   "t": 5.3,
+   "name": "notif",
+   "gain": -13
+  },
+  {
+   "t": 5.3,
+   "name": "pop2",
+   "gain": -8.0
+  },
+  {
+   "t": 5.6,
+   "name": "notif",
+   "gain": -13
+  },
+  {
+   "t": 5.6,
+   "name": "pop2",
+   "gain": -8.0
+  },
+  {
+   "t": 6.0,
+   "name": "swoosh_hit",
+   "gain": -8
+  },
+  {
+   "t": 6.46,
+   "name": "heartbeat",
+   "gain": -5
+  },
+  {
+   "t": 7.385,
+   "name": "impact",
+   "gain": -4
+  },
+  {
+   "t": 7.385,
+   "name": "alert",
+   "gain": -4
+  },
+  {
+   "t": 7.425,
+   "name": "sparkle",
+   "gain": -11
+  },
+  {
+   "t": 7.735,
+   "name": "pop",
+   "gain": -13
+  },
+  {
+   "t": 7.885,
+   "name": "counter",
+   "gain": -11
+  },
+  {
+   "t": 9.98,
+   "name": "whoosh_fast",
+   "gain": -12
+  },
+  {
+   "t": 10.154,
+   "name": "swoosh_hit",
+   "gain": -9
+  },
+  {
+   "t": 10.604,
+   "name": "px-click-soft",
+   "gain": -11
+  },
+  {
+   "t": 11.704,
+   "name": "px-click-soft",
+   "gain": -11
+  },
+  {
+   "t": 12.304,
+   "name": "px-click-soft",
+   "gain": -11
+  },
+  {
+   "t": 12.4,
+   "name": "scratch",
+   "gain": -4
+  },
+  {
+   "t": 12.4,
+   "name": "impact",
+   "gain": -8
+  },
+  {
+   "t": 12.923,
+   "name": "pop",
+   "gain": -9
+  },
+  {
+   "t": 14.6,
+   "name": "whoosh_fast",
+   "gain": -12
+  },
+  {
+   "t": 14.769,
+   "name": "snap",
+   "gain": -8
+  },
+  {
+   "t": 15.231,
+   "name": "boom",
+   "gain": -9
+  },
+  {
+   "t": 15.461,
+   "name": "pop",
+   "gain": -9
+  },
+  {
+   "t": 16.45,
+   "name": "whoosh",
+   "gain": -11
+  }
+ ],
+ "logo": 16.655
+}

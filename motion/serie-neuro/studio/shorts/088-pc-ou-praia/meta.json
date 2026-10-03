@@ -1,0 +1,66 @@
+{
+  "id": "088",
+  "slug": "pc-ou-praia",
+  "family": "Você Prefere?",
+  "title": "Você prefere: sábado no PC ou na praia?",
+  "concept": "Dark room vs beach postcard: the option A is written on a glowing monitor while the wall clock burns the whole Saturday; option B is a vintage postcard with a real customer print taped on; B gets the postmark, then 'na real…': o char farma, você vai pra praia.",
+  "neuro": [
+    "forced-choice",
+    "contrast-effect",
+    "aspiration",
+    "loss-aversion",
+    "social-proof",
+    "comment-prompt"
+  ],
+  "hook": "VOCÊ PREFERE? SÁBADO NO PC OU NA PRAIA?",
+  "duration": 18.21,
+  "music": {
+    "style": "trap",
+    "bpm": 145
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/prints/beach-while-bot-farms--quote.png",
+    "kit/img/prints/beach-while-bot-farms--photo.jpg",
+    "kit/img/prints/beach-while-bot-farms--alarms.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "uso com PC desligado",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Você prefere: sábado no PC ou na praia? 🏖️ Na real, dá os dois: o char farma e você vai pra praia. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#voceprefere",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Você prefere: sábado no PC ou na praia? #pxg",
+      "description": "Sábado no PC ou na praia? Na real, dá os dois: o KizuBot farma 100% AFK e o alarme chega no celular. Print real de cliente na praia enquanto o bot farmava. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Você prefere: sábado no PC ou na praia? 🏖️ O char farma, você vai pra praia. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#voceprefere"
+      ]
+    }
+  },
+  "pinned_comment": "Praia ou PC? 🏖️🖥️",
+  "notes": "The postcard's postage stamp carries the KizuBot head as the early brand cue. The beach photo, alarms and quote are crops of the same print (same customer), so no 'clientes diferentes' label is needed. The proof line is narration, not a quote."
+}

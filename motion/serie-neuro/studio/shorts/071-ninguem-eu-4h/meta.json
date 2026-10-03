@@ -1,0 +1,66 @@
+{
+  "id": "071",
+  "slug": "ninguem-eu-4h",
+  "family": "Só Quem Joga PxG Entende",
+  "title": "Ninguém: / Eu às 4h da manhã",
+  "concept": "Classic 'Ninguém: / Eu:' meme: an original cartoon player farms by hand from 4h until the 7h40 server save, freeze-frame 'só quem joga PxG entende', then the KizuBot user sleeps while a real alarm (boss Rhyperior 02:02) arrives, the customer's own 'Eu tô deitado' line, a Discord 'de olho fechado' moral and a laser-eyed KizuBot callback.",
+  "neuro": [
+    "in-group-identity",
+    "benign-violation-humor",
+    "pattern-interrupt",
+    "curiosity-gap",
+    "social-proof",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "NINGUÉM: / EU ÀS 4H FARMANDO NA MÃO:",
+  "duration": 20.31,
+  "music": {
+    "style": "funk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-robot.png",
+    "kit/img/prints/boss-rhyperior-2am.png",
+    "kit/img/prints/olho-fechado-so-com-o-kizu.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "uso com PC desligado",
+    "detecção de shinys, megas e bosses"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Ninguém: Eu às 4h farmando na mão até o server save 💀 Quem usa KizuBot tá deitado enquanto o bot acha boss. Quem aí já farmou de madrugada? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#meme",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Ninguém: / Eu às 4h da manhã farmando na mão no PxG 💀",
+      "description": "Ninguém: Eu às 4h farmando na mão até o server save das 7h40. Quem usa KizuBot: deitado, enquanto o bot acha boss (print real de cliente: boss Rhyperior às 02:02). 100% AFK, com o PC desligado. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Ninguém: Eu às 4h da manhã farmando na mão 💀 Quem usa KizuBot tá deitado e o bot trabalhando. Quem aí já farmou de madrugada? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#memes"
+      ]
+    }
+  },
+  "pinned_comment": "Quem aí já farmou de madrugada? 😂",
+  "notes": "Hook trimmed to 6 words ('EU ÀS 4H FARMANDO NA MÃO:', dropped 'DA MANHÃ'). Added an in-group escalation to the daily 07:40 server save (BRIEF vocabulary) and a freeze-frame stamp with the series name. Turn caption is 'QUEM USA KIZUBOT:' (not 'às 4h') because the real alarm in boss-rhyperior-2am is 02:02; the bedroom clock flips 02:01->02:02 to match the print. Used the same print's own caption 'Eu tô deitado e o bot tá como ?' (verbatim). The Discord gem (olho-fechado-so-com-o-kizu) is typeset verbatim and shown with the print, tagged 'outro print real · Discord' (different people, customer status not stated in ASSETS.md). Original cartoon 'player' character drawn in SVG (no meme images, no stock faces). Laser-eye callback 'O KIZUBOT ÀS 4H:' uses the official robot art."
+}

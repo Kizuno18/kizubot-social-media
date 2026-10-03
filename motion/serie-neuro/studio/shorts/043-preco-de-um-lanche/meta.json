@@ -1,0 +1,69 @@
+{
+  "id": "043",
+  "slug": "preco-de-um-lanche",
+  "family": "A Conta",
+  "title": "R$ 250 é caro?",
+  "concept": "A price tag swings in ('R$ 250 por mês. É caro?'), splits into 30 day tags (R$ 250 ÷ 30 = R$ 8,33 por dia, menos que um lanche), then into a 720-dot matrix of farm hours (÷ 24) that collapses into the drop: R$ 0,35 por hora de farm; then 'Quanto vale 1 hora do seu tempo?' and your hour (dormir, trabalho, família) vs the bot's hour (hunt, captura, pesca), closing on a real customer reaction.",
+  "neuro": [
+    "anchoring",
+    "price-reframing",
+    "loss-aversion",
+    "self-reference",
+    "contrast",
+    "social-proof",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "R$ 250 POR MÊS. É CARO?",
+  "duration": 20.3,
+  "music": {
+    "style": "phonk",
+    "bpm": 130
+  },
+  "assets": [
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/queria-ter-comprado-antes--quote.png"
+  ],
+  "claims": [
+    "planos a partir de R$ 250/mês",
+    "R$ 250 ÷ 30 = R$ 8,33 por dia",
+    "R$ 250 ÷ 720 h ≈ R$ 0,35 por hora",
+    "roda 24/7 (720 h/mês)",
+    "caça, captura e pesca sozinho"
+  ],
+  "math": "250 / 30 = 8,333 → R$ 8,33/dia; 8,33 / 24 = 0,347; 250 / 720 = 0,347 → R$ 0,35/hora",
+  "platforms": {
+    "tiktok": {
+      "caption": "R$ 250 por mês é caro? Faz a conta: R$ 8,33 por dia, R$ 0,35 por hora de farm. Quanto vale 1 hora do SEU tempo? Planos a partir de R$ 250/mês, link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk",
+        "#farm"
+      ]
+    },
+    "youtube": {
+      "title": "R$ 250 por mês é caro? Faz a conta (R$ 0,35 por hora)",
+      "description": "R$ 250 ÷ 30 dias = R$ 8,33 por dia. ÷ 24 horas = R$ 0,35 por hora de farm, 100% AFK. Sua hora vai pra dormir, trabalhar e ficar com a família; a hora do bot vai pra hunt, captura e pesca. Planos a partir de R$ 250/mês. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "R$ 250 por mês é caro? 🧮 Dá R$ 8,33 por dia e R$ 0,35 por hora de farm. Quanto vale 1 hora sua? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afkfarm"
+      ]
+    }
+  },
+  "pinned_comment": "Quanto vale 1 hora do seu tempo? 👇",
+  "notes": "Division shown as an operation: the result reads 'R$ 250 ÷ 30' at rest, counts down without a unit and only shows 'por dia' when it lands on R$ 8,33 (coordinator note). R$ 0,35 is the rounded 250/720 = 0,347 (the equation shows R$ 8,33 ÷ 24 = ? before the drop). The 'captura' chip uses a crosshair (no ball silhouette). The concept's paraphrase 'eu queria mt ter comprado isso antes' is NOT typed on screen: the real print reads 'eu quero mt ter comprado isso antes' + 'queria*', so the print itself is shown (verbatim) with 'print real de cliente'. Proof print: queria-ter-comprado-antes--quote.png (4 bubbles, customer's words only) under the headline 'E quem já usa?'."
+}

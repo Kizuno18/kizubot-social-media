@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>041 A conta que ninguém faz</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  #bgGrid { opacity: 0.55; }
+  .line { font-family: "Archivo Black", sans-serif; text-transform: uppercase; line-height: 0.9; color: var(--kz-ink); }
+  .l-md { font-size: 104px; }
+  .l-xl { font-size: 150px; }
+  #s1 .kz-safe { gap: 6px; }
+  #big8 {
+    font-family: "Archivo Black", sans-serif; font-size: 560px; line-height: 0.8; letter-spacing: -0.04em;
+    background: linear-gradient(180deg, #f5f0fa 0%, #d8b4fe 45%, #a855f7 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.55));
+  }
+  /* status card */
+  .status { margin-top: 70px; width: 760px; display: flex; align-items: center; gap: 30px; padding: 30px 36px; border-radius: 34px;
+    background: rgba(255, 255, 255, 0.06); border: 3px solid rgba(216, 180, 254, 0.28); text-align: left; }
+  .avatar { width: 128px; height: 128px; border-radius: 50%; background: #241536; border: 4px solid #4b3a63; display: flex; align-items: center; justify-content: center; flex: none; }
+  .avatar svg { width: 70px; height: 70px; }
+  .st-name { font: 800 46px "Inter", sans-serif; color: var(--kz-ink); }
+  .st-sub { font: 600 30px "Inter", sans-serif; color: var(--kz-gray); margin-top: 6px; }
+  .pill-off { margin-left: auto; padding: 12px 24px; border-radius: 999px; background: #3a3344; color: #b8b0c4; font: 800 32px "Inter", sans-serif; letter-spacing: 0.06em; }
+  .zzz { position: absolute; font: 800 60px "Inter", sans-serif; color: var(--kz-lav); }
+  /* calculator */
+  .calc { width: 860px; padding: 46px 50px 40px; border-radius: 40px; background: #120b1d; border: 3px solid rgba(168, 85, 247, 0.5);
+    box-shadow: 0 40px 120px rgba(124, 58, 237, 0.35); text-align: left; }
+  .calc .kz-label { font-size: 28px; margin-bottom: 26px; display: block; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 0; border-bottom: 2px dashed rgba(216, 180, 254, 0.18); }
+  .row .k { font: 700 52px "Inter", sans-serif; color: #cfc6dc; }
+  .row .v { font: 900 72px "Inter", sans-serif; color: var(--kz-ink); font-variant-numeric: tabular-nums; }
+  .result { margin-top: 26px; }
+  .result .eq { font: 900 64px "Inter", sans-serif; color: var(--kz-red); }
+  .result .num { font-family: "Archivo Black", sans-serif; font-size: 190px; line-height: 0.9; color: var(--kz-red); font-variant-numeric: tabular-nums; text-shadow: 0 0 50px rgba(239, 68, 68, 0.45); }
+  .result .unit { font-family: "Archivo Black", sans-serif; font-size: 100px; color: var(--kz-red); }
+  .result .cap { font: 800 50px "Inter", sans-serif; color: var(--kz-ink); margin-top: 6px; }
+  /* reveal */
+  #robot { width: 860px; }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .checks { width: 860px; display: flex; flex-direction: column; gap: 18px; }
+  .chk { display: flex; align-items: center; gap: 26px; padding: 22px 30px; border-radius: 26px; background: rgba(255, 255, 255, 0.06); border: 2px solid rgba(216, 180, 254, 0.22); }
+  .tickbox { width: 64px; height: 64px; border-radius: 18px; background: var(--kz-green); display: flex; align-items: center; justify-content: center; flex: none; }
+  .tickbox svg { width: 40px; height: 40px; }
+  .chk .t { font: 800 50px "Inter", sans-serif; color: var(--kz-ink); text-align: left; }
+  .chips { display: flex; gap: 20px; justify-content: center; }
+  /* price */
+  .price { font-family: "Archivo Black", sans-serif; font-size: 300px; line-height: 0.9; color: var(--kz-lime); text-shadow: 0 0 60px rgba(198, 255, 61, 0.35); }
+  .price small { font-size: 120px; }
+  .fine { font: 700 40px "Inter", sans-serif; color: var(--kz-lav); margin-top: 26px; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 40; }
+  #blackout { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 45; }
+  .ask { font: 900 62px "Inter", sans-serif; color: var(--kz-ink); max-width: 820px; line-height: 1.1; }
+  .ask b { color: var(--kz-lime); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="20" data-fps="30">
+  <div class="kz-bg-glow"></div>
+  <div class="kz-bg-grid" id="bgGrid"></div>
+  <div class="kz-vignette"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- S1 hook: 0 - 1.85 -->
+  <section id="s1" class="clip" data-start="0" data-duration="1.85">
+    <div class="kz-safe" id="s1in">
+      <div class="line l-md" id="h1">Você dorme</div>
+      <div id="big8">8H</div>
+      <div class="line l-md" id="h3">por dia.</div>
+    </div>
+  </section>
+
+  <!-- S2: 1.85 - 3.69 -->
+  <section id="s2" class="clip" data-start="1.85" data-duration="1.84">
+    <div class="kz-safe" id="s2in">
+      <div class="line l-xl" id="c1">Seu char</div>
+      <div class="line l-xl kz-accent" id="c2">também.</div>
+      <div class="status" id="status">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="#8f80a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"/><path d="M13 19l6-6"/><path d="M16 16l4 4"/><path d="M19 21l2-2"/></svg></div>
+        <div><div class="st-name">Seu char</div><div class="st-sub">parado no mapa</div></div>
+        <div class="pill-off" id="off">OFFLINE</div>
+      </div>
+      <div class="zzz" id="z1" style="right:250px; top:880px">z</div>
+      <div class="zzz" id="z2" style="right:210px; top:830px; font-size:76px">z</div>
+      <div class="zzz" id="z3" style="right:160px; top:770px; font-size:92px">Z</div>
+    </div>
+  </section>
+
+  <!-- S3 calculator: 3.69 - 7.38 -->
+  <section id="s3" class="clip" data-start="3.69" data-duration="3.69">
+    <div class="kz-safe" id="s3in">
+      <div class="calc" id="calc">
+        <span class="kz-label">A conta que ninguém faz</span>
+        <div class="row" id="r1"><span class="k">8h × 30 dias</span><span class="v" id="v1">0h</span></div>
+        <div class="row" id="r2"><span class="k">× 12 meses</span><span class="v" id="v2">0h</span></div>
+        <div class="result" id="res">
+          <div><span class="eq">= </span><span class="num" id="v3">0</span> <span class="unit">dias</span></div>
+          <div class="cap">com o char parado. Por ano.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 turn: 7.38 - 9.23 -->
+  <section id="s4" class="clip" data-start="7.38" data-duration="1.85">
+    <div class="kz-safe" id="s4in">
+      <div class="line l-xl" id="t1">E se esse</div>
+      <div class="line l-xl" id="t2">tempo</div>
+      <div class="line l-xl" id="t3">virasse</div>
+      <div class="line" id="t4" style="font-size:230px; color: var(--kz-lime)">farm?</div>
+    </div>
+  </section>
+
+  <!-- S5 reveal: 9.23 - 14.77 -->
+  <section id="s5" class="clip" data-start="9.23" data-duration="5.54">
+    <div class="kz-safe" id="s5in" style="justify-content:flex-start; gap: 26px; padding-top: 10px">
+      <div class="kz-label" id="meet">Conheça o KizuBot</div>
+      <div class="checks">
+        <div class="chk" id="k1"><div class="tickbox"><svg viewBox="0 0 24 24" fill="none" stroke="#06210f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div class="t">Caça e coleta sozinho</div></div>
+        <div class="chk" id="k2"><div class="tickbox"><svg viewBox="0 0 24 24" fill="none" stroke="#06210f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div class="t">Detecta shiny, mega e boss</div></div>
+        <div class="chk" id="k3"><div class="tickbox"><svg viewBox="0 0 24 24" fill="none" stroke="#06210f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div class="t">Pesca no AFK</div></div>
+        <div class="chk" id="k4"><div class="tickbox"><svg viewBox="0 0 24 24" fill="none" stroke="#06210f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div class="t">Alarme no WhatsApp</div></div>
+      </div>
+      <div class="chips" id="chips" style="margin-top: 14px">
+        <span class="kz-chip lime" id="cp1" style="font-size:50px; padding: 18px 34px">100% AFK</span>
+        <span class="kz-chip" id="cp2" style="font-size:50px; padding: 18px 34px">PC desligado</span>
+      </div>
+    </div>
+    <div id="robotWrap" style="position:absolute; left:110px; top:1010px; width:860px;">
+      <img id="robot" src="kit/img/brand/kizubot-robot.png" alt="" />
+      <div class="eye" id="eye1" style="left:288px; top:30px"></div>
+    </div>
+  </section>
+
+  <!-- S6 price anchor: 14.77 - 16.62 -->
+  <section id="s6" class="clip" data-start="14.77" data-duration="1.85">
+    <div class="kz-safe" id="s6in">
+      <div class="line l-md" id="p1">Tudo isso por</div>
+      <div class="line l-md" id="p2">menos de</div>
+      <div class="price" id="p3">R$9<small>/dia</small></div>
+      <div class="fine" id="p4">planos a partir de R$ 250/mês</div>
+    </div>
+  </section>
+
+  <!-- S7 end card: 16.62 - 20 -->
+  <section id="s7" class="clip" data-start="16.62" data-duration="3.38">
+    <div class="kz-end" id="s7in">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk">E você, dorme <b>quantas horas?</b></div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+  <div id="blackout"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 20;
+  const b = KZ.beats(130);           // beat = 0.4615 s
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  KZ.drift(tl, "#bgGrid", D, 45, 60, 5);
+
+  // S1 hook — words land on the beat
+  KZ.slam(tl, "#h1", 0.0, 1.6);
+  tl.fromTo("#big8", { scale: 2.6, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.3, ease: "power4.out" }, b(1));
+  KZ.shake(tl, "#s1in", b(1) + 0.05, 16, 0.3, 3);
+  KZ.slam(tl, "#h3", b(2), 1.6);
+  tl.to("#big8", { scale: 1.06, duration: 0.5, ease: "sine.inOut" }, b(2.2));
+  tl.to("#s1in", { scale: 0.9, opacity: 0, duration: 0.18, ease: "power2.in" }, 1.85 - 0.18);
+
+  // S2
+  KZ.slam(tl, "#c1", 1.85, 1.5);
+  KZ.slam(tl, "#c2", 1.85 + b(1), 1.5);
+  KZ.rise(tl, "#status", 1.85 + b(1.5), 0.4, 80);
+  tl.fromTo("#off", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)" }, 1.85 + b(2.4));
+  ["#z1", "#z2", "#z3"].forEach(function (z, i) {
+    tl.fromTo(z, { y: 30, opacity: 0 }, { y: -30, opacity: 1, duration: 0.6, ease: "power1.out" }, 2.75 + i * 0.18);
+  });
+  tl.to("#s2in", { x: -1100, duration: 0.22, ease: "power3.in" }, 3.69 - 0.22);
+
+  // S3 calculator
+  tl.fromTo("#calc", { x: 1100, rotation: 4 }, { x: 0, rotation: 0, duration: 0.35, ease: "power3.out" }, 3.69);
+  KZ.rise(tl, "#r1", 3.9, 0.3, 30);
+  KZ.countUp(tl, "#v1", 0, 240, 4.05, 0.7, "int", "power2.out", "h");
+  KZ.rise(tl, "#r2", 4.95, 0.3, 30);
+  KZ.countUp(tl, "#v2", 0, 2880, 5.1, 0.8, "int", "power2.out", "h");
+  KZ.rise(tl, "#res", 6.05, 0.25, 30);
+  KZ.countUp(tl, "#v3", 0, 120, 6.15, 0.55, "int", "power1.in");
+  tl.fromTo("#v3", { scale: 1 }, { scale: 1.18, duration: 0.1, ease: "power3.out" }, 6.72);
+  tl.to("#v3", { scale: 1, duration: 0.35, ease: "power2.out" }, 6.82);
+  KZ.shake(tl, "#calc", 6.72, 22, 0.4, 9);
+  KZ.flash(tl, "#flash", 6.72, 0.35, "#ef4444");
+
+  // S4 turn — one word per beat during the build
+  KZ.slam(tl, "#t1", 7.38, 1.7);
+  KZ.slam(tl, "#t2", 7.38 + b(1), 1.7);
+  KZ.slam(tl, "#t3", 7.38 + b(2), 1.7);
+  tl.fromTo("#t4", { scale: 0.2, opacity: 0, rotation: 8 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.35, ease: "back.out(2.6)" }, 7.38 + b(3));
+  KZ.shake(tl, "#s4in", 9.0, 14, 0.22, 4);
+
+  // S5 reveal on the drop
+  KZ.flash(tl, "#flash", 9.23, 0.9);
+  tl.fromTo("#robotWrap", { y: 700 }, { y: 0, duration: 0.6, ease: "power4.out" }, 9.23);
+  KZ.eyePulse(tl, "#eye1", 9.6, 3);
+  KZ.rise(tl, "#meet", 9.35, 0.3, 30);
+  ["#k1", "#k2", "#k3", "#k4"].forEach(function (k, i) {
+    tl.fromTo(k, { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 9.7 + i * b(1.2));
+    tl.fromTo(k + " .tickbox", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 9.85 + i * b(1.2));
+  });
+  KZ.pop(tl, "#cp1", 12.6);
+  KZ.pop(tl, "#cp2", 12.6 + b(1));
+  tl.to("#robotWrap", { y: -20, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.0);
+  tl.to(["#s5in", "#robotWrap"], { opacity: 0, scale: 0.92, duration: 0.2, ease: "power2.in" }, 14.77 - 0.2);
+
+  // S6 price anchor
+  KZ.slam(tl, "#p1", 14.77, 1.5);
+  KZ.slam(tl, "#p2", 14.77 + b(1), 1.5);
+  tl.fromTo("#p3", { scale: 3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 14.77 + b(2));
+  KZ.rise(tl, "#p4", 14.77 + b(2.6), 0.3, 20);
+
+  // S7 end card + sonic logo at 16.7
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, 16.66);
+  KZ.eyePulse(tl, "#eye2", 16.75, 2);
+  KZ.rise(tl, "#endUrl", 17.1, 0.35, 30);
+  KZ.rise(tl, "#endAsk", 17.5, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 17.4);
+  // loop bridge: fade to black so the replay lands on "Você dorme"
+  tl.fromTo("#blackout", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.in" }, D - 0.4);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>049 POV: 2h da manhã. O boss nasceu.</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ================= F02 POV system (shared by 046-050) ================= */
+  :root { --pov-ink: #0a0d18; --pov-box: #ffffff; --pov-hl: #ff3b3b; --pov-tag: #ff2d2d; --pov-tag-ink: #ffffff; }
+  .layer { position: absolute; inset: 0; }
+  .pov { position: absolute; left: 90px; right: 120px; top: 300px; display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 30; }
+  .pov-tag { font: 900 62px/1 "Inter", sans-serif; color: var(--pov-tag-ink); background: var(--pov-tag); padding: 14px 30px 16px; border-radius: 20px; letter-spacing: 0.02em; margin-bottom: 20px; box-shadow: 0 0 40px rgba(255, 45, 45, 0.45); }
+  .pov-line { font: 800 124px/1.08 "Inter", sans-serif; letter-spacing: -0.035em; color: var(--pov-ink); background: var(--pov-box); padding: 6px 30px 14px; border-radius: 26px; box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5); white-space: nowrap; }
+  .pov-line + .pov-line { margin-top: -6px; }
+  .pov-line.xxl { font-size: 148px; padding: 4px 34px 16px; border-radius: 30px; }
+  .pov-line.md { font-size: 112px; }
+  .pov-line .hl { background: var(--pov-hl); color: #fff; border-radius: 16px; padding: 0 14px; }
+  .pov-line.inv { background: #7c3aed; color: #fff; }
+  .ptag { position: absolute; font: 900 32px "Inter", sans-serif; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: #ff2d2d; padding: 12px 22px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 6; }
+  .printcard { position: absolute; border-radius: 30px; overflow: hidden; background: #111; border: 5px solid #e6ecff; box-shadow: 0 50px 120px rgba(0, 0, 0, 0.7), 0 0 80px rgba(120, 160, 255, 0.18); }
+  .printcard .zoom { position: absolute; inset: 0; }
+  .printcard .zoom img { display: block; width: 100%; }
+  .printcard svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(45deg, #2a2d33 0 24px, #212328 24px 48px); font: 700 34px "JetBrains Mono", monospace; color: #8a8f99; }
+  .eye { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .ask { display: flex; flex-direction: column; align-items: center; }
+  .ask span { font: 800 64px/1.1 "Inter", sans-serif; letter-spacing: -0.03em; color: #120c18; background: #fff; padding: 6px 26px 12px; border-radius: 20px; white-space: nowrap; }
+  .ask span + span { margin-top: -4px; }
+  .ask span b { color: #dc2626; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  #blk { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 59; }
+  .kz-progress > div { background: linear-gradient(90deg, #ff2d2d, #8ab4ff); }
+
+  /* ================= 049: 2 a.m., lying in bed, looking up ================= */
+  #ceil { background: radial-gradient(90% 60% at 50% 30%, #121a33 0%, #070a16 70%, #04050c 100%); }
+  #moon { position: absolute; inset: 0; background: repeating-linear-gradient(-28deg, rgba(140, 170, 255, 0.07) 0 34px, rgba(140, 170, 255, 0) 34px 70px); -webkit-mask-image: linear-gradient(115deg, #000 0%, #000 30%, transparent 62%); }
+  #lamp { position: absolute; left: 400px; top: 470px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, #1b2340 0%, #121831 60%, #0b1022 100%); box-shadow: inset 0 0 0 10px #161d38; }
+  #glowW { position: absolute; left: 40px; top: 160px; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(closest-side, rgba(190, 220, 255, 0.55), rgba(140, 180, 255, 0.18) 45%, rgba(120, 160, 255, 0)); mix-blend-mode: screen; opacity: 0; }
+  #glowP { position: absolute; left: 40px; top: 160px; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(closest-side, rgba(200, 140, 255, 0.7), rgba(168, 85, 247, 0.25) 45%, rgba(168, 85, 247, 0)); mix-blend-mode: screen; opacity: 0; }
+  #clockBox { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 1130px; }
+  #clockSvg { position: absolute; left: 105px; top: 990px; width: 870px; height: 300px; filter: drop-shadow(0 0 14px rgba(255, 40, 40, 0.85)) drop-shadow(0 0 40px rgba(255, 40, 40, 0.45)); }
+  #clockRed { position: absolute; left: 0; top: 820px; width: 1080px; height: 640px; background: radial-gradient(closest-side, rgba(255, 30, 30, 0.22), rgba(255, 30, 30, 0)); }
+  /* phone held above the face */
+  #phoneWrap { position: absolute; left: 150px; top: 210px; width: 780px; height: 1230px; }
+  .phone { position: absolute; inset: 0; border-radius: 100px; background: #0a0a0e; padding: 20px; box-shadow: 0 0 0 4px #24232b, 0 60px 140px rgba(0, 0, 0, 0.8), 0 0 120px rgba(140, 180, 255, 0.25); }
+  .screen { position: relative; width: 100%; height: 100%; border-radius: 82px; overflow: hidden; background: #0e1219; }
+  .chat-h { position: absolute; left: 0; right: 0; top: 0; height: 150px; background: #161b24; display: flex; align-items: center; gap: 18px; padding: 40px 40px 0; }
+  .chat-h .ico { width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: #1a1124; position: relative; flex: none; }
+  .chat-h .ico img { position: absolute; width: 100px; left: -15px; top: -6px; }
+  .chat-h b { font: 800 32px "Inter", sans-serif; color: #e8ecf5; }
+  .chat-h .tm { margin-left: auto; font: 800 30px "Inter", sans-serif; color: #ff5b5b; font-variant-numeric: tabular-nums; }
+  .msg { position: absolute; left: 30px; max-width: 680px; padding: 18px 26px 16px; border-radius: 30px 30px 30px 8px; background: #232a35; text-align: left; }
+  .msg .t { font: 700 56px/1.14 "Inter", sans-serif; color: #f1f4fa; letter-spacing: -0.02em; }
+  .msg .t .gold { color: #fbbf24; }
+  .msg .s { font: 600 30px "Inter", sans-serif; color: #8f9aab; text-align: right; margin-top: 4px; }
+  .out { position: absolute; right: 30px; max-width: 640px; padding: 18px 26px 16px; border-radius: 30px 30px 8px 30px; background: #6d28d9; text-align: left; }
+  .out .t { font: 700 56px/1.14 "Inter", sans-serif; color: #fff; letter-spacing: -0.02em; }
+  .out .s { font: 600 30px "Inter", sans-serif; color: #ddd6fe; text-align: right; margin-top: 4px; }
+  .heart { position: absolute; right: 70px; width: 84px; height: 84px; border-radius: 50%; background: #232a35; display: flex; align-items: center; justify-content: center; font-size: 46px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); }
+  .inbar { position: absolute; left: 24px; right: 24px; bottom: 34px; height: 104px; border-radius: 52px; background: #1c222d; display: flex; align-items: center; padding: 0 30px; font: 600 44px "Inter", sans-serif; color: #f1f4fa; white-space: nowrap; overflow: hidden; }
+  .inbar .ph2 { color: #6b7587; position: absolute; left: 34px; }
+  .caret { display: inline-block; width: 4px; height: 54px; background: #a78bfa; margin-left: 4px; vertical-align: middle; }
+  #dim { background: #03040a; opacity: 0; }
+  .afk { display: inline-block; margin-top: 34px; font: 900 64px "Inter", sans-serif; color: #0d0f0a; background: #c6ff3d; padding: 14px 34px 16px; border-radius: 999px; box-shadow: 0 0 40px rgba(198, 255, 61, 0.45); }
+  #endTint { background: radial-gradient(70% 45% at 50% 40%, rgba(59, 20, 112, 0.94) 0%, rgba(11, 7, 18, 0.97) 70%); opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="15" data-fps="30">
+
+  <!-- ===== untimed: the dark bedroom ceiling + the red clock ===== -->
+  <div class="layer" id="world">
+    <div class="layer" id="worldIn">
+      <div class="layer" id="ceil"></div>
+      <div class="layer" id="moon"></div>
+      <div id="lamp"></div>
+      <div id="glowW"></div>
+      <div id="glowP"></div>
+      <div id="clockBox">
+        <div id="clockRed"></div>
+        <svg id="clockSvg" viewBox="0 0 870 300"><g id="clkStatic"></g><g id="d2"></g><g id="d3" opacity="0"></g><g id="d4" opacity="0"></g></svg>
+      </div>
+    </div>
+  </div>
+  <div class="layer" id="dim"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- ===== C1 hook: 0 - 1.655 ===== -->
+  <section id="c1" class="clip" data-start="0" data-duration="1.655">
+    <div class="pov" id="hookBox" style="top:280px">
+      <div class="pov-tag" id="povTag">POV:</div>
+      <div class="pov-line" id="h1">2h da manhã.</div>
+      <div id="h2" style="display:flex; flex-direction:column; align-items:center; position:absolute; top:112px">
+        <div class="pov-line xxl" id="h2a">O <span class="hl">boss</span></div>
+        <div class="pov-line xxl" id="h2b">nasceu.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== C2 the phone (live chat): 1.655 - 6.621 ===== -->
+  <section id="c2" class="clip" data-start="1.655" data-duration="4.966">
+    <div class="layer" id="c2in">
+      <div id="phoneWrap"><div class="layer" id="phoneMove"><div class="layer" id="phoneBuzz">
+        <div class="phone"><div class="screen">
+          <div class="chat-h"><span class="ico"><img src="kit/img/brand/kizubot-head.png" alt="" /></span><b>KizuBot™ | kizubot.com</b><span class="tm" id="phTime" style="position:relative; width:96px; height:36px"><span id="pt2" style="position:absolute; right:0">02:02</span><span id="pt3" style="position:absolute; right:0; opacity:0">02:03</span><span id="pt4" style="position:absolute; right:0; opacity:0">02:04</span></span></div>
+          <div class="msg" id="m1" style="top:200px"><div class="t"><div>bossDetected ~ --&gt;</div><div>boss Rhyperior</div></div><div class="s">02:02</div></div>
+          <div class="msg" id="m2" style="top:430px"><div class="t">dropRare ~ <span class="gold">Protector</span></div><div class="s">02:03</div></div>
+          <div class="out" id="o1" style="top:600px"><div class="t"><div>Eu tô deitado e o bot</div><div>tá como ?</div></div><div class="s">02:04</div></div>
+          <div class="heart" id="hrt" style="top:800px">❤️</div>
+          <div class="inbar"><span class="ph2" id="ph2">Mensagem</span><span id="typed"></span><span class="caret" id="caret"></span></div>
+        </div></div>
+      </div></div></div>
+    </div>
+  </section>
+
+  <!-- ===== C3 the real print (drop): 6.621 - 9.931 ===== -->
+  <section id="c3" class="clip" data-start="6.621" data-duration="3.31">
+    <div class="layer" id="c3in">
+      <div class="ptag" id="ptag" style="left:110px; top:312px">print real de cliente</div>
+      <div class="printcard" id="card" style="left:110px; top:380px; width:860px; height:454px">
+        <div class="zoom" id="cardZoom"><img src="kit/img/prints/boss-rhyperior-2am.png" alt="" /></div>
+        <svg viewBox="0 0 860 454" preserveAspectRatio="none">
+          <rect id="hl1" x="425" y="28" width="222" height="54" rx="12" fill="none" stroke="#ff3b3b" stroke-width="6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <rect id="hl2" x="306" y="108" width="156" height="54" rx="12" fill="none" stroke="#fbbf24" stroke-width="6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <path id="hl3" d="M30 396 L514 396" stroke="#c6ff3d" stroke-width="7" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+        </svg>
+      </div>
+      <div id="pq" style="position:absolute; left:90px; right:120px; top:900px; display:flex; flex-direction:column; align-items:center; text-align:center">
+        <div id="pq1" style="font:800 68px/1.15 'Inter',sans-serif; letter-spacing:-0.02em; color:#fff; white-space:nowrap">“Eu tô deitado e o bot</div>
+        <div id="pq2" style="font:800 68px/1.15 'Inter',sans-serif; letter-spacing:-0.02em; color:#c6ff3d; white-space:nowrap">tá como ?”</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== C4 POV close: 9.931 - 11.586 ===== -->
+  <section id="c4" class="clip" data-start="9.931" data-duration="1.655">
+    <div class="pov" id="povEnd" style="top:360px">
+      <div class="pov-line md" id="e1">Nem levantou</div>
+      <div class="pov-line md" id="e2">da cama.</div>
+      <div class="afk" id="afk">100% AFK</div>
+    </div>
+  </section>
+
+  <!-- ===== C5 end card: 11.586 - 15 ===== -->
+  <section id="c5" class="clip" data-start="11.586" data-duration="3.414">
+    <div class="layer" id="endTint"></div>
+    <div class="kz-end" id="c5in">
+      <div style="position:relative; width:560px" id="logoBox">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="kz-url" id="endUrl">kizubot.com</div>
+      <div class="ask" id="endAsk"><span>Seu <b>boss</b> mais tarde</span><span>foi que horas?</span></div>
+    </div>
+  </section>
+
+  <div id="blk"></div>
+  <div id="flash"></div>
+</div>
+<script>
+  // ---------- seven-segment clock (build-time, deterministic) ----------
+  (function () {
+    const NS = "http://www.w3.org/2000/svg";
+    const W = 150, H = 270, T = 28, G = 6;
+    const ON = "#ff2b2b", OFF = "#2a0a0e";
+    const MAP = { "0": "abcdef", "1": "bc", "2": "abged", "3": "abgcd", "4": "fgbc", "5": "afgcd", "6": "afgedc", "7": "abc", "8": "abcdefg", "9": "abcdfg" };
+    function hseg(x, y, L) { return [[x + G, y], [x + G + T / 2, y - T / 2], [x + L - G - T / 2, y - T / 2], [x + L - G, y], [x + L - G - T / 2, y + T / 2], [x + G + T / 2, y + T / 2]]; }
+    function vseg(x, y, L) { return [[x, y + G], [x + T / 2, y + G + T / 2], [x + T / 2, y + L - G - T / 2], [x, y + L - G], [x - T / 2, y + L - G - T / 2], [x - T / 2, y + G + T / 2]]; }
+    function poly(g, pts, fill) {
+      const p = document.createElementNS(NS, "polygon");
+      p.setAttribute("points", pts.map(function (q) { return q[0].toFixed(1) + "," + q[1].toFixed(1); }).join(" "));
+      p.setAttribute("fill", fill); g.appendChild(p);
+    }
+    function digit(g, ox, oy, ch, offOnly) {
+      const segs = { a: hseg(ox, oy, W), g: hseg(ox, oy + H / 2, W), d: hseg(ox, oy + H, W), f: vseg(ox, oy, H / 2), b: vseg(ox + W, oy, H / 2), e: vseg(ox, oy + H / 2, H / 2), c: vseg(ox + W, oy + H / 2, H / 2) };
+      Object.keys(segs).forEach(function (k) {
+        const lit = MAP[ch].indexOf(k) >= 0;
+        if (offOnly) poly(g, segs[k], OFF); else if (lit) poly(g, segs[k], ON);
+      });
+    }
+    const st = document.getElementById("clkStatic");
+    const xs = [30, 230, 500, 700], oy = 16;
+    // unlit ghosts for all four digits
+    xs.forEach(function (x) { digit(st, x, oy, "8", true); });
+    digit(st, xs[0], oy, "0"); digit(st, xs[1], oy, "2"); digit(st, xs[2], oy, "0");
+    [[195, 0], [0, 0]].forEach(function () {});
+    [[415, 95], [415, 205]].forEach(function (c) {
+      const r = document.createElementNS(NS, "rect");
+      r.setAttribute("x", c[0] - 15); r.setAttribute("y", c[1] - 15); r.setAttribute("width", 30); r.setAttribute("height", 30); r.setAttribute("rx", 4);
+      r.setAttribute("fill", ON); st.appendChild(r);
+    });
+    digit(document.getElementById("d2"), xs[3], oy, "2");
+    digit(document.getElementById("d3"), xs[3], oy, "3");
+    digit(document.getElementById("d4"), xs[3], oy, "4");
+  })();
+
+  const tl = gsap.timeline({ paused: true });
+  const D = 15;
+  const b = KZ.beats(145);                 // beat 0.4138 s, bar 1.655 s
+  const T2 = b(4), T3 = b(8), T4 = b(12), T5 = b(16), T7 = b(24), T8 = b(28);
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+
+  // ---------- ambient: slow breathing push + the phone light on the ceiling ----------
+  tl.fromTo("#worldIn", { scale: 1.0 }, { scale: 1.06, duration: T2, ease: "sine.inOut" }, 0);
+  // buzz flicker on frame 0 (phone vibrating face-down on the bed)
+  tl.fromTo("#glowW", { opacity: 0.0 }, { opacity: 0.85, duration: 0.08, ease: "power2.out" }, 0.0);
+  tl.to("#glowW", { opacity: 0.35, duration: 0.25, ease: "power2.in" }, 0.1);
+  tl.to("#glowW", { opacity: 0.9, duration: 0.08, ease: "power2.out" }, b(2));
+  tl.to("#glowW", { opacity: 0.45, duration: 0.3, ease: "power2.in" }, b(2) + 0.1);
+  tl.fromTo("#clockSvg", { opacity: 1 }, { opacity: 0.82, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.4);
+
+  // ---------- C1 hook ----------
+  tl.fromTo("#povTag", { scale: 1.15 }, { scale: 1, duration: 0.3, ease: "power3.out" }, 0);
+  tl.fromTo("#h1", { scale: 1.08, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, 0);
+  tl.to("#h1", { y: -30, opacity: 0, duration: 0.12, ease: "power2.in" }, b(2) - 0.12);
+  tl.fromTo("#h2a", { scale: 1.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, b(2));
+  tl.fromTo("#h2b", { scale: 1.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, b(2) + 0.12);
+  KZ.shake(tl, "#h2", b(2) + 0.1, 16, 0.3, 5);
+  tl.to("#hookBox", { scale: 0.86, opacity: 0, y: -60, duration: 0.16, ease: "power2.in" }, T2 - 0.16);
+
+  // ---------- C2 phone comes down over your face ----------
+  tl.to("#clockBox", { scale: 0.5, y: 470, duration: 0.5, ease: "power3.inOut" }, T2 - 0.1);
+  tl.to("#glowW", { opacity: 1, duration: 0.4 }, T2);
+  tl.fromTo("#phoneMove", { y: -1500, rotation: -6 }, { y: 0, rotation: 2, duration: 0.5, ease: "power4.out" }, T2);
+  tl.to("#phoneMove", { y: 14, rotation: 1, duration: 1.6, ease: "sine.inOut" }, T2 + 0.5);
+  tl.fromTo("#m1", { x: -80, opacity: 0, scale: 0.9 }, { x: 0, opacity: 1, scale: 1, duration: 0.32, ease: "back.out(1.8)" }, b(5));
+  KZ.shake(tl, "#phoneBuzz", b(5), 9, 0.3, 61);
+  // 02:03 - the rare drop
+  tl.set("#d2", { opacity: 0 }, T3); tl.set("#d3", { opacity: 1 }, T3);
+  tl.set("#pt2", { opacity: 0 }, T3); tl.set("#pt3", { opacity: 1 }, T3);
+  tl.to("#clockBox", { scale: 0.58, duration: 0.08, ease: "power3.out" }, T3);
+  tl.to("#clockBox", { scale: 0.5, duration: 0.3, ease: "power2.out" }, T3 + 0.08);
+  tl.fromTo("#m2", { x: -80, opacity: 0, scale: 0.9 }, { x: 0, opacity: 1, scale: 1, duration: 0.32, ease: "back.out(1.8)" }, T3 + 0.05);
+  KZ.shake(tl, "#phoneBuzz", T3 + 0.05, 9, 0.3, 62);
+  tl.fromTo("#m2 .gold", { color: "#f1f4fa" }, { color: "#fbbf24", duration: 0.2, ease: "none" }, b(9));
+  tl.fromTo("#m2", { boxShadow: "0 0 0 0 rgba(251,191,36,0)" }, { boxShadow: "0 0 50px 6px rgba(251,191,36,0.55)", duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, b(9));
+  // 02:04 - you type the real line
+  tl.set("#d3", { opacity: 0 }, T4); tl.set("#d4", { opacity: 1 }, T4);
+  tl.set("#pt3", { opacity: 0 }, T4); tl.set("#pt4", { opacity: 1 }, T4);
+  tl.to("#clockBox", { scale: 0.58, duration: 0.08, ease: "power3.out" }, T4);
+  tl.to("#clockBox", { scale: 0.5, duration: 0.3, ease: "power2.out" }, T4 + 0.08);
+  tl.set("#ph2", { opacity: 0 }, T4 + 0.1);
+  KZ.typewriter(tl, "#typed", "Eu tô deitado e o bot tá como ?", T4 + 0.1, 26);
+  tl.fromTo("#caret", { opacity: 1 }, { opacity: 0, duration: 0.12, ease: "steps(1)", yoyo: true, repeat: 9 }, T2);
+  tl.set("#typed", { opacity: 0 }, b(15));
+  tl.set("#ph2", { opacity: 1 }, b(15));
+  tl.fromTo("#o1", { y: 120, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, b(15));
+  tl.fromTo("#hrt", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)" }, b(15.5));
+  tl.fromTo("#blk", { opacity: 0 }, { opacity: 0.7, duration: 0.1, ease: "power2.in" }, T5 - 0.2);
+  tl.to("#blk", { opacity: 0, duration: 0.05, ease: "none" }, T5 - 0.02);
+
+  // ---------- C3 the real print on the drop ----------
+  KZ.flash(tl, "#flash", T5, 0.75);
+  tl.to("#dim", { opacity: 0.6, duration: 0.05, ease: "none" }, T5);
+  tl.to("#clockBox", { opacity: 0.25, duration: 0.2 }, T5);
+  tl.fromTo("#card", { scale: 1.35, rotation: 5, opacity: 0 }, { scale: 1, rotation: -1.2, opacity: 1, duration: 0.38, ease: "power4.out" }, T5);
+  KZ.shake(tl, "#c3in", T5 + 0.06, 12, 0.26, 63);
+  tl.fromTo("#ptag", { scale: 2.4, opacity: 0, rotation: -14 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.24, ease: "power4.out" }, T5 + 0.2);
+  tl.to("#hl1", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, b(18));
+  tl.to("#hl2", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, b(19));
+  tl.to("#hl3", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, b(20));
+  tl.fromTo("#pq1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, b(20) + 0.1);
+  tl.fromTo("#pq2", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.5)" }, b(20) + 0.3);
+  tl.to("#card", { rotation: 0.4, duration: 2.6, ease: "sine.inOut" }, T5 + 0.4);
+  tl.to("#c3in", { scale: 0.94, opacity: 0, duration: 0.18, ease: "power2.in" }, T7 - 0.18);
+
+  // ---------- C4 "Nem levantou da cama." ----------
+  tl.to("#dim", { opacity: 0.1, duration: 0.35 }, T7);
+  tl.to("#glowW", { opacity: 0, duration: 0.4 }, T7);
+  tl.to("#glowP", { opacity: 1, duration: 0.5, ease: "power2.out" }, T7);
+  tl.to("#clockBox", { opacity: 1, scale: 0.6, y: 420, duration: 0.4, ease: "power3.out" }, T7);
+  tl.fromTo("#e1", { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2.2)" }, T7);
+  tl.fromTo("#e2", { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2.2)" }, T7 + 0.12);
+  tl.fromTo("#afk", { scale: 0.3, opacity: 0, rotation: -10 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.3, ease: "back.out(3)" }, b(26));
+  tl.to("#povEnd", { scale: 0.9, opacity: 0, duration: 0.16, ease: "power2.in" }, T8 - 0.16);
+
+  // ---------- C5 end card + sonic logo ----------
+  tl.to("#endTint", { opacity: 1, duration: 0.3, ease: "power2.out" }, T8);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T8 + 0.05);
+  KZ.eyePulse(tl, "#eye2", T8 + 0.15, 3);
+  KZ.rise(tl, "#endUrl", T8 + 0.45, 0.35, 30);
+  KZ.rise(tl, "#endAsk", T8 + 0.8, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, T8 + 0.6);
+  // loop seam: back to the dark ceiling and the big red 02:02
+  tl.set("#d4", { opacity: 0 }, D - 0.45); tl.set("#d2", { opacity: 1 }, D - 0.45);
+  tl.to(["#c5in", "#endTint"], { opacity: 0, duration: 0.38, ease: "power1.in" }, D - 0.45);
+  tl.to("#clockBox", { scale: 1, y: 0, duration: 0.38, ease: "power2.inOut" }, D - 0.45);
+  tl.to("#glowP", { opacity: 0, duration: 0.38 }, D - 0.45);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

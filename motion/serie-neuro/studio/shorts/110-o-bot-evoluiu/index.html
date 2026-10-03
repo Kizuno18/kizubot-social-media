@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>110 O bot evoluiu muito</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F14 PROVA REAL — "Pop Bold" system, episode 110 (dominant = paper white, before/after split, changelog counter) ===== */
+  :root { --dom: #f7f5ee; --purple: #8a3cff; --lime: #c6ff3d; --pink: #ff4fd8; --ink: #111111; --paper: #ffffff; }
+  #root { background: var(--dom); }
+  .pb-bg { position: absolute; inset: 0; background: var(--dom); }
+  .pb-dots { position: absolute; inset: -200px; background-image: radial-gradient(rgba(17, 17, 17, 0.12) 3px, transparent 3.5px); background-size: 34px 34px; }
+  .pb-blob { position: absolute; border: 5px solid var(--ink); }
+  .pb-chip { display: inline-block; background: var(--ink); color: var(--lime); font: 800 34px "Bricolage Grotesque", sans-serif; letter-spacing: 0.06em;
+    padding: 12px 24px 14px; border-radius: 14px; text-transform: uppercase; }
+
+  .pb-hook { position: absolute; left: 90px; right: 90px; top: 280px; height: 620px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; }
+  .hk1 { font: 800 150px/1.04 "Bricolage Grotesque", sans-serif; color: var(--ink); display: block; letter-spacing: -0.035em; }
+  .hk2 { font: 800 172px/1.08 "Bricolage Grotesque", sans-serif; color: #fff; background: var(--purple); border: 6px solid var(--ink); border-radius: 24px;
+    box-shadow: 12px 12px 0 var(--ink); padding: 0 36px 14px; display: block; letter-spacing: -0.035em; }
+  .hk3 { font: 800 150px/1.04 "Bricolage Grotesque", sans-serif; color: var(--ink); display: block; letter-spacing: -0.035em; }
+
+  .qzone { position: absolute; left: 90px; right: 120px; top: 250px; height: 320px; }
+  .q { position: absolute; left: 0; top: 0; display: block; background: var(--lime); color: var(--ink); border: 5px solid var(--ink); border-radius: 26px; box-shadow: 12px 12px 0 var(--ink);
+    padding: 22px 32px 26px; font: 800 70px/1.12 "Bricolage Grotesque", sans-serif; letter-spacing: -0.02em; opacity: 0; max-width: 880px; }
+  .q .tail { position: absolute; left: 70px; bottom: -34px; width: 50px; height: 34px; }
+  .q.purple { background: var(--purple); color: #fff; }
+  .q.pink { background: var(--pink); }
+
+  .pb-card { position: absolute; left: 96px; width: 780px; background: var(--ink); border: 5px solid var(--ink); border-radius: 28px; box-shadow: 12px 12px 0 var(--purple); padding: 12px; }
+  .crop { position: relative; overflow: hidden; border-radius: 14px; background: #1f2c33; }
+  .crop img { position: absolute; left: 0; display: block; }
+  .crop + .crop { margin-top: 10px; }
+  .tab { position: absolute; left: 30px; top: -30px; background: var(--paper); color: var(--ink); border: 4px solid var(--ink); font: 800 30px "Bricolage Grotesque", sans-serif; letter-spacing: 0.05em;
+    padding: 6px 18px 8px; border-radius: 12px; text-transform: uppercase; z-index: 3; white-space: nowrap; }
+  .hlb { position: absolute; border: 6px solid var(--lime); border-radius: 12px; box-shadow: 0 0 0 4px var(--ink); transform-origin: 0% 50%; opacity: 0; }
+
+  .xp { position: absolute; left: 96px; width: 780px; top: 940px; display: flex; align-items: center; gap: 20px; opacity: 0; }
+  .xp .xpl { font: 800 46px "Bricolage Grotesque", sans-serif; color: var(--ink); flex: none; }
+  .xp .xpb { position: relative; flex: 1; height: 54px; border: 5px solid var(--ink); border-radius: 14px; background: #fff; overflow: hidden; box-shadow: 8px 8px 0 var(--ink); }
+  .xp .xpf { position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, #c6ff3d 0 18px, #b4ef22 18px 36px); transform-origin: 0 50%; }
+  .xp .xpu { position: absolute; right: 10px; top: -84px; font: 800 64px "Bricolage Grotesque", sans-serif; color: #fff; background: var(--purple); border: 5px solid var(--ink);
+    border-radius: 16px; padding: 0 20px 8px; box-shadow: 8px 8px 0 var(--ink); }
+  /* before / after */
+  .half { position: absolute; left: 90px; right: 110px; }
+  .tag2 { display: inline-block; font: 800 40px "Bricolage Grotesque", sans-serif; letter-spacing: 0.08em; padding: 8px 20px 10px; border-radius: 12px; border: 4px solid var(--ink); text-transform: uppercase; }
+  .ba-q { display: block; margin-top: 18px; font: 800 74px/1.08 "Bricolage Grotesque", sans-serif; color: var(--ink); letter-spacing: -0.025em; border: 5px solid var(--ink); border-radius: 24px;
+    box-shadow: 10px 10px 0 var(--ink); padding: 18px 28px 24px; }
+  .arrow { position: absolute; left: 470px; top: 760px; width: 120px; height: 120px; }
+  .src2 { position: absolute; left: 96px; top: 1344px; font: 800 30px "Bricolage Grotesque", sans-serif; color: var(--ink); letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* authority */
+  .auth { position: absolute; left: 90px; right: 110px; top: 300px; height: 900px; }
+  .big { font: 800 330px/0.9 "Bricolage Grotesque", sans-serif; color: var(--ink); letter-spacing: -0.06em; display: block; }
+  .big .pl { color: var(--purple); display: inline-block; }
+  .bigsub { display: inline-block; margin-top: 18px; font: 800 70px/1.08 "Bricolage Grotesque", sans-serif; color: #fff; background: var(--ink); padding: 10px 26px 16px; border-radius: 18px; letter-spacing: -0.02em; }
+  .tick { position: absolute; left: 0; right: 0; top: 560px; height: 300px; overflow: hidden; border-top: 5px solid var(--ink); border-bottom: 5px solid var(--ink); }
+  .tick .row { position: absolute; left: 0; right: 0; height: 74px; display: flex; align-items: center; gap: 22px; font: 800 52px "Bricolage Grotesque", sans-serif; color: var(--ink); }
+  .tick .row .d { font: 400 40px "JetBrains Mono", monospace; color: var(--purple); flex: none; }
+  .srcL { position: absolute; left: 0; top: 890px; font: 400 32px "JetBrains Mono", monospace; color: #444; }
+
+  .pb-end-bg { position: absolute; inset: 0; background: var(--ink); }
+  .pb-end-dots { position: absolute; inset: -100px; background-image: radial-gradient(rgba(198, 255, 61, 0.12) 3px, transparent 3.5px); background-size: 34px 34px; }
+  .eye { position: absolute; width: 100px; height: 100px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(244, 214, 255, 1) 0%, rgba(192, 132, 252, 0.85) 30%, rgba(168, 85, 247, 0) 70%); mix-blend-mode: screen; }
+  .pb-ask { font: 800 70px/1.1 "Bricolage Grotesque", sans-serif; color: #fff; max-width: 820px; }
+  .pb-ask b { color: var(--lime); }
+  .pb-url { font: 800 64px "Bricolage Grotesque", sans-serif; color: #fff; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+  #wipe { position: absolute; left: 540px; top: 960px; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--ink); z-index: 40; opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="16.15" data-fps="30">
+  <div class="pb-bg"></div>
+  <div class="pb-dots" id="dots"></div>
+  <div class="pb-blob" id="blobA" style="left:-140px; top:1300px; width:360px; height:360px; border-radius:50%; background: var(--purple);"></div>
+  <div class="pb-blob" id="blobB" style="right:-100px; top:150px; width:240px; height:240px; border-radius:44px; background: var(--lime);"></div>
+
+  <!-- HOOK -->
+  <section id="s0" class="clip" data-start="0" data-duration="1.846">
+    <div class="pb-hook" id="hk">
+      <span class="pb-chip" id="bug" style="margin-bottom: 20px">Prova real</span>
+      <span class="hk1" id="hk1">“O BOT</span>
+      <span class="hk2" id="hk2">EVOLUIU</span>
+      <span class="hk3" id="hk3">MUITO.”</span>
+    </div>
+  </section>
+
+  <!-- P1 b4 – b10 -->
+  <section id="s1" class="clip" data-start="1.846" data-duration="2.769">
+    <div class="qzone"><div class="q" id="q1" style="top:40px">“está mais fluído, está <span style="background:#111; color:#c6ff3d; padding:0 12px; border-radius:10px">muito top.</span>”<svg class="tail" viewBox="0 0 50 34"><polygon points="0,0 50,0 6,34" fill="#c6ff3d" stroke="#111" stroke-width="5" stroke-linejoin="round"/></svg></div></div>
+    <div class="pb-card" id="c1" style="top:700px; padding-top:34px">
+      <div class="tab">print real de cliente</div>
+      <div class="crop" style="height:46px"><img src="kit/img/prints/bot-evoluiu-muito.png" alt="" style="width:756px; top:-96px" /><div class="hlb" id="h1a" style="left:4px; top:3px; width:320px; height:40px"></div></div>
+      <div class="crop" style="height:50px"><div style="position:absolute; inset:0; background: url(kit/img/prints/bot-evoluiu-muito.png) 0px -178px / 756px auto no-repeat"></div><div class="hlb" id="h1b" style="left:4px; top:4px; width:712px; height:42px"></div></div>
+    </div>
+    <div class="xp" id="xp"><span class="xpl">BOT</span><div class="xpb"><div class="xpf" id="xpf"></div></div><span class="xpu" id="xpu">UPOU!</span></div>
+  </section>
+
+  <!-- P2 before / after b10 – b18 -->
+  <section id="s2" class="clip" data-start="4.615" data-duration="3.693">
+    <div class="half" id="ha" style="top:260px">
+      <span class="tag2" style="background:#ff4fd8; color:#111">antes</span>
+      <span class="ba-q" style="background:#fff">“no início era hardcore”</span>
+      <div class="crop" style="margin-top:22px; height:56px; width:620px; border:4px solid #111"><img src="kit/img/prints/antes-hardcore-hoje-tranquilo--painel.png" alt="" style="width:760px; top:-262px" /></div>
+    </div>
+    <svg class="arrow" id="arr" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v16"/><path d="M5 13l7 7 7-7"/></svg>
+    <div class="half" id="hb" style="top:950px">
+      <span class="tag2" style="background:#c6ff3d; color:#111">hoje</span>
+      <span class="ba-q" style="background:#c6ff3d">“Hoje em dia eu achei tranquilo”</span>
+      <div class="crop" style="margin-top:22px; height:56px; width:620px; border:4px solid #111"><img src="kit/img/prints/antes-hardcore-hoje-tranquilo--hoje.png" alt="" style="width:760px; top:-200px" /></div>
+    </div>
+    <div class="src2" id="src2">print real de cliente · mesma conversa</div>
+  </section>
+
+  <!-- P3 b18 – b23 -->
+  <section id="s3" class="clip" data-start="8.308" data-duration="2.307">
+    <div class="qzone"><div class="q purple" id="q3" style="top:40px">“Bot tá cada dia <span style="color:#c6ff3d">melhor</span>, parabéns”<svg class="tail" viewBox="0 0 50 34"><polygon points="0,0 50,0 6,34" fill="#8a3cff" stroke="#111" stroke-width="5" stroke-linejoin="round"/></svg></div></div>
+    <div class="pb-card" id="c3" style="top:680px; padding-top:34px; box-shadow: 12px 12px 0 #ff4fd8">
+      <div class="tab">prints reais de clientes diferentes</div>
+      <div class="crop" style="height:94px"><img src="kit/img/prints/bot-cada-dia-melhor--quote.png" alt="" style="width:756px; top:0" /><div class="hlb" id="h3" style="left:30px; top:10px; width:690px; height:56px"></div></div>
+    </div>
+  </section>
+
+  <!-- AUTHORITY b23 – b29 -->
+  <section id="s4" class="clip" data-start="10.615" data-duration="2.77">
+    <div class="auth" id="auth">
+      <span class="big" id="big"><span id="cnt">0</span><span class="pl" id="pl">+</span></span>
+      <span class="bigsub" id="bigsub">atualizações desde 2024</span>
+      <div class="tick" id="tick">
+        <div id="tickin" style="position:absolute; left:0; right:0; top:0">
+          <div class="row" style="top:0px"><span class="d">2025-08</span>alarmes no Telegram</div>
+          <div class="row" style="top:74px"><span class="d">2025-10</span>catch all</div>
+          <div class="row" style="top:148px"><span class="d">2026-02</span>cavebot mais esperto</div>
+          <div class="row" style="top:222px"><span class="d">2026-04</span>KizuAI mostra as fontes</div>
+          <div class="row" style="top:296px"><span class="d">2026-05</span>novos modos de pesca</div>
+          <div class="row" style="top:370px"><span class="d">2026-09</span>Offline Cam</div>
+        </div>
+      </div>
+      <div class="srcL" id="srcL">fonte: kizubot.com/changelog</div>
+    </div>
+  </section>
+
+  <!-- END -->
+  <section id="se" class="clip" data-start="13.385" data-duration="2.765">
+    <div class="pb-end-bg"></div>
+    <div class="pb-end-dots" id="edots"></div>
+    <div class="kz-end" id="sein">
+      <div style="position:relative; width:560px">
+        <img class="kz-end-logo" id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px"></div>
+      </div>
+      <div class="pb-url" id="endUrl">kizubot.com</div>
+      <div class="pb-ask" id="endAsk">Qual atualização <b>você mais curtiu?</b></div>
+    </div>
+  </section>
+
+  <div id="wipe"></div>
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 16.15;
+  const B = 60 / 130;
+  const b = (n) => n * B;
+
+  KZ.drift(tl, "#dots", D, 30, 40, 4.6);
+  tl.fromTo("#blobA", { rotation: 0, scale: 1 }, { rotation: 40, scale: 1.08, duration: D, ease: "sine.inOut" }, 0);
+  tl.fromTo("#blobB", { rotation: 8, y: 0 }, { rotation: -8, y: 50, duration: b(4), ease: "sine.inOut", yoyo: true, repeat: Math.floor(D / b(4)) - 1 }, 0);
+
+  function hl(id, at) { tl.fromTo(id, { scaleX: 0, opacity: 1 }, { scaleX: 1, opacity: 1, duration: 0.3, ease: "power2.out" }, at); }
+  function qIn(id, at) { tl.fromTo(id, { scale: 0.6, opacity: 0, rotation: -5 }, { scale: 1, opacity: 1, rotation: -1.5, duration: 0.36, ease: "back.out(2.2)" }, at); }
+
+  // ---------- HOOK ----------
+  tl.fromTo("#hk2", { scale: 1.08, rotation: -6 }, { scale: 1, rotation: -3, duration: 0.3, ease: "power4.out" }, 0);
+  tl.fromTo("#hk1", { y: -40, opacity: 0.4 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 0);
+  tl.fromTo("#hk3", { y: 40, opacity: 0.4 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 0.06);
+  tl.fromTo("#bug", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 0.2);
+  // "evoluiu": the block levels up (grows in steps)
+  tl.to("#hk2", { scale: 1.08, duration: 0.12, ease: "steps(2)" }, b(1));
+  tl.to("#hk2", { scale: 1.16, duration: 0.12, ease: "steps(2)" }, b(2));
+  tl.to("#hk2", { scale: 1.1, duration: 0.3, ease: "back.out(2)" }, b(3));
+  KZ.shake(tl, "#hk", b(3), 9, 0.2, 4);
+  tl.to("#hk", { y: -900, duration: 0.24, ease: "power3.in" }, b(4) - 0.24);
+
+  // ---------- P1 ----------
+  const S1 = b(4);
+  tl.fromTo("#c1", { y: 1200, rotation: -9 }, { y: 0, rotation: -1.5, duration: 0.45, ease: "power4.out" }, S1);
+  hl("#h1a", b(5)); hl("#h1b", b(5.8));
+  qIn("#q1", b(5.6));
+  tl.to("#c1", { scale: 1.04, duration: b(4), ease: "sine.inOut" }, b(5.5));
+  tl.fromTo("#xp", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, b(6.4));
+  tl.fromTo("#xpf", { scaleX: 0.18 }, { scaleX: 1, duration: 1.15, ease: "power2.inOut" }, b(6.6));
+  tl.fromTo("#xpu", { scale: 0, rotation: -14 }, { scale: 1, rotation: -4, duration: 0.34, ease: "back.out(3)" }, b(6.6) + 1.15);
+  KZ.shake(tl, "#xp", b(6.6) + 1.2, 8, 0.2, 61);
+  tl.to(["#q1", "#c1", "#xp"], { x: -1100, duration: 0.22, ease: "power3.in" }, b(10) - 0.22);
+
+  // ---------- P2: antes -> hoje ----------
+  const S2 = b(10);
+  tl.fromTo("#ha", { x: -1000, rotation: -4 }, { x: 0, rotation: -1, duration: 0.42, ease: "power4.out" }, S2 + b(0.3));
+  tl.fromTo("#arr", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2)" }, b(12.6));
+  tl.fromTo("#arr", { y: 0 }, { y: 20, duration: b(0.5), ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, b(13.2));
+  KZ.flash(tl, "#flash", b(13.5), 0.45, "#c6ff3d");
+  tl.fromTo("#hb", { x: 1000, rotation: 4 }, { x: 0, rotation: 1, duration: 0.42, ease: "power4.out" }, b(13.5));
+  KZ.shake(tl, "#hb", b(13.5) + 0.35, 10, 0.22, 13);
+  KZ.rise(tl, "#src2", b(14.5), 0.3, 20);
+  tl.to("#ha", { opacity: 0.45, duration: 0.3 }, b(14));
+  tl.to(["#ha", "#hb", "#arr", "#src2"], { y: -60, opacity: 0, duration: 0.2, ease: "power2.in" }, b(18) - 0.2);
+
+  // ---------- P3 ----------
+  const S3 = b(18);
+  tl.fromTo("#c3", { y: 900, rotation: 8 }, { y: 0, rotation: 1.5, duration: 0.42, ease: "power4.out" }, S3);
+  qIn("#q3", S3 + b(0.5));
+  hl("#h3", S3 + b(1.2));
+  tl.to(["#q3", "#c3"], { y: -80, opacity: 0, duration: 0.2, ease: "power2.in" }, b(23) - 0.2);
+
+  // ---------- AUTHORITY: mais de 170 atualizações desde 2024 ----------
+  const S4 = b(23);
+  tl.fromTo("#big", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, S4);
+  KZ.countUp(tl, "#cnt", 0, 170, S4 + 0.05, 1.3, "int", "power2.out");
+  tl.fromTo("#pl", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.3, ease: "back.out(3)" }, S4 + 1.35);
+  KZ.punch(tl, "#big", S4 + 1.35, 1.08);
+  tl.fromTo("#bigsub", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, S4 + b(1));
+  tl.fromTo("#tick", { opacity: 0 }, { opacity: 1, duration: 0.2 }, S4 + b(1.5));
+  tl.fromTo("#tickin", { y: 220 }, { y: -150, duration: 2.0, ease: "power1.inOut" }, S4 + b(1.5));
+  KZ.rise(tl, "#srcL", S4 + b(2.5), 0.3, 16);
+  tl.fromTo("#wipe", { scale: 0, opacity: 1 }, { scale: 460, opacity: 1, duration: 0.42, ease: "power3.in" }, b(29) - 0.42);
+  tl.to("#wipe", { opacity: 0, duration: 0.01 }, b(29) + 0.02);
+
+  // ---------- END ----------
+  const E = b(29);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, E + 0.04);
+  KZ.eyePulse(tl, "#eye2", E + 0.14, 3);
+  KZ.rise(tl, "#endUrl", E + 0.42, 0.35, 30);
+  KZ.rise(tl, "#endAsk", E + 0.75, 0.4, 30);
+  tl.to("#endLogo", { scale: 1.04, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, E + 0.6);
+  KZ.drift(tl, "#edots", D, 20, 30, 3);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

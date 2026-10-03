@@ -1,0 +1,64 @@
+{
+  "id": "052",
+  "slug": "controla-pelo-celular",
+  "family": "Mito ou Verdade?",
+  "title": "Mito ou verdade: dá pra controlar pelo celular?",
+  "concept": "Game-show quiz on the 'can I control it from my phone?' objection: VERDADE stamp, an illustrated phone panel with big buttons toggles the bot on, the panel installs as an app, and a real customer print says he set the bot to farm mato from his phone.",
+  "neuro": [
+    "curiosity-gap",
+    "commitment-guess",
+    "objection-handling",
+    "anticipation-drop",
+    "picture-superiority",
+    "social-proof"
+  ],
+  "hook": "MITO OU VERDADE? DÁ PRA CONTROLAR PELO CELULAR?",
+  "duration": 19.18,
+  "music": {
+    "style": "gameshow",
+    "bpm": 122
+  },
+  "assets": [
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/prints/farmar-mato-pelo-celular.png"
+  ],
+  "claims": [
+    "acesso pelo celular",
+    "painel instala como app no celular ou PC (changelog 2026-07-03)",
+    "painel do celular com botões maiores (changelog 2026-09-05)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Mito ou verdade: dá pra controlar o bot pelo celular? 📱 Chuta antes do carimbo! (Verdade: o painel do KizuBot abre no celular e até instala como app.) Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mitoouverdade",
+        "#celular"
+      ]
+    },
+    "youtube": {
+      "title": "Mito ou verdade: dá pra controlar o bot pelo celular? #pxg",
+      "description": "Dá pra controlar pelo celular? VERDADE. O painel do KizuBot funciona no celular, com botões grandes, e instala como app no celular ou no PC. Print real de cliente no vídeo. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Mito ou verdade: dá pra controlar pelo celular? 📱 O painel do KizuBot cabe no bolso — e instala como app. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mitoouverdade"
+      ]
+    }
+  },
+  "pinned_comment": "Você joga mais no PC ou no celular?",
+  "notes": "Phone panel is a stylized illustration with big buttons (not a screenshot). Added 'instala como app' (changelog 2026-07-03). Proof: the full farmar-mato-pelo-celular print, zoomed onto the verbatim line 'Configurei bot p farmar mato no meu celular, super de boa..'."
+}

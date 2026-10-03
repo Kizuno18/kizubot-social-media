@@ -50,6 +50,10 @@ Forty-one motion-graphics shorts made in code (HyperFrames + GSAP) from real cus
 
 <p align="center"><a href="motion/"><img src="assets/motion-serie-grid.jpg" width="100%" alt="One frame from each of the series shorts 01 to 20"></a></p>
 
+**Série Neuro (041–140).** One hundred more shorts in twenty recurring formats, each built on purpose around a neuromarketing lever: loss aversion and price anchoring (*A Conta*), curiosity gaps (*Mito ou Verdade?*, *Raio-X*), open loops (*Top 5*), in-group humor (*Só Quem Joga PxG Entende*, *Dicionário PxG*), real social proof (*Prova Real*) and participation (*Ache o Shiny*), plus parodies from a job interview to a late-night infomercial. Every short has a hook readable at 0.4 s, drops its reveal on the beat, ends on the same sonic logo and loops back to its first frame. Each one ships with its HTML source, an original synthesized soundtrack and captions for TikTok, YouTube Shorts and Instagram Reels. **[See Série Neuro →](motion/serie-neuro/)**
+
+<p align="center"><a href="motion/serie-neuro/"><img src="assets/serie-neuro-grid.jpg" width="100%" alt="One frame from each of the Série Neuro shorts 041 to 140"></a></p>
+
 ## What makes a KizuBot Short
 
 - **Gameplay leads.** The hook comes from something viewers can actually see: movement, a hunt, an encounter or a replay.
@@ -75,6 +79,7 @@ A finished master gets its own metadata for each platform. Production stages sta
 | **viral-shorts-factory** | Guides short-video production, editorial checks and media QC. |
 | **[FFmpeg and ffprobe](https://ffmpeg.org/)** | Cut and assemble footage, encode delivery files and inspect audio/video properties. |
 | **[Python](https://www.python.org/)** | Connects edit specifications, metadata, manifests and verification steps. |
+| **[HyperFrames](https://github.com/heygen-com/hyperframes) and GSAP** | Render the motion-graphics shorts from HTML compositions. |
 | **Codex and built-in imagegen** | Coordinate the project work and create this presentation's original cover artwork. |
 
 ## Explore this presentation
@@ -87,6 +92,7 @@ Delivery MP4s are also preserved at the [repository root](https://github.com/Kiz
 README.md                 Project introduction and official channels
 assets/                   Cover, official mascot and selected video frames
 motion/                   Motion-graphics series (41 MP4s) and its index
+motion/serie-neuro/       Série Neuro: 100 MP4s, per-platform metadata and the studio that made them
 artwork.md                Cover prompt and artwork provenance
 sources.md                Reference study and channel-link evidence
 ```

@@ -2,6 +2,8 @@
 
 Forty-one vertical motion-graphics shorts for KizuBot, made in code with [HyperFrames](https://github.com/heygen-com/hyperframes) and GSAP. Each one is 1080×1920 at 30 fps (v3 at 60 fps), 17–25 seconds long, with Brazilian Portuguese on-screen text, an original synthesized soundtrack and audio normalized to about −14 LUFS.
 
+**New: [Série Neuro (041–140)](serie-neuro/)**, one hundred more shorts built around neuromarketing techniques, with per-platform captions and their sources.
+
 <p align="center"><img src="../assets/motion-serie-grid.jpg" width="100%" alt="One frame from each of the series shorts 01 to 20"></p>
 
 <p align="center"><img src="../assets/motion-serie-grid-21-40.jpg" width="100%" alt="One frame from each of the series shorts 21 to 40"></p>

@@ -4,7 +4,9 @@ Cem shorts verticais (1080×1920, 30 fps, 12–25 s) para o KizuBot, feitos inte
 
 <p align="center"><img src="grid-01.jpg" width="100%" alt="Um frame de cada short de 051 a 080"></p>
 
-<p align="center"><img src="grid-02.jpg" width="100%" alt="Um frame de cada short de 081 a 130"></p>
+<p align="center"><img src="grid-02.jpg" width="100%" alt="Um frame de cada short de 081 a 100"></p>
+
+<p align="center"><img src="grid-03.jpg" width="100%" alt="Um frame de cada short de 101 a 130"></p>
 
 ## Como a série foi pensada
 
@@ -72,6 +74,16 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 | 093 | [`093-farm.mp4`](093-farm.mp4) | F11 Dicionário PxG | Dicionário PxG: Farm | FARM | in-group-identity, incongruity-humor, processing-fluency, benign-violation-humor, social-proof, comment-prompt |
 | 094 | [`094-hunt.mp4`](094-hunt.mp4) | F11 Dicionário PxG | Dicionário PxG: Hunt | HUNT | in-group-identity, incongruity-humor, processing-fluency, competence, social-proof, comment-prompt |
 | 095 | [`095-mato.mp4`](095-mato.mp4) | F11 Dicionário PxG | Dicionário PxG: Mato | MATO | in-group-identity, incongruity-humor, processing-fluency, social-proof, relief, comment-prompt |
+| 096 | [`096-offline-cam.mp4`](096-offline-cam.mp4) | F12 Novidade no KizuBot | Agora dá pra assistir sua hunt depois | ASSISTA SUA HUNT DEPOIS. | novelty, curiosity-gap, visible-progress, anticipation-drop, picture-superiority, authority, loop, comment-prompt |
+| 097 | [`097-painel-novo.mp4`](097-painel-novo.mp4) | F12 Novidade no KizuBot | O painel do KizuBot mudou | O PAINEL DO KIZUBOT MUDOU. | novelty, authority, visible-progress, anticipation-drop, satisfying-micro-motion, social-proof, loop, comment-prompt |
+| 098 | [`098-kizuai.mp4`](098-kizuai.mp4) | F12 Novidade no KizuBot | Tem dúvida de config? Pergunta pra IA. | TEM DÚVIDA DE CONFIG? | novelty, self-reference, curiosity-gap, authority, processing-fluency, anticipation-drop, loop, comment-prompt |
+| 099 | [`099-pesca-6-modos.mp4`](099-pesca-6-modos.mp4) | F12 Novidade no KizuBot | A pesca do KizuBot ganhou 6 modos | A PESCA GANHOU 6 MODOS. | novelty, visible-progress, curiosity-gap, anticipation-drop, satisfying-micro-motion, authority, loop, comment-prompt |
+| 100 | [`100-ia-aprendeu-sozinha.mp4`](100-ia-aprendeu-sozinha.mp4) | F12 Novidade no KizuBot | O alarme de mega aprendeu sozinho | O ALARME DE MEGA APRENDEU SOZINHO. | schema-violation, curiosity-gap, anticipation-drop, novelty, authority, picture-superiority, loop, comment-prompt |
+| 101 | [`101-dentro-do-kizubot.mp4`](101-dentro-do-kizubot.mp4) | F13 Raio-X | O que tem dentro do KizuBot? | O QUE TEM DENTRO DO KIZUBOT? | curiosity-gap, picture-superiority, visible-progress, competence, anticipation-drop, loop, comment-prompt |
+| 102 | [`102-como-ele-decide.mp4`](102-como-ele-decide.mp4) | F13 Raio-X | Como o bot decide o que fazer | COMO O BOT DECIDE O QUE FAZER | curiosity-gap, visible-progress, competence, picture-superiority, anticipation-drop, loop, comment-prompt |
+| 103 | [`103-como-o-alarme-chega.mp4`](103-como-o-alarme-chega.mp4) | F13 Raio-X | Como o alarme chega no seu pulso | COMO O ALARME CHEGA NO PULSO? | curiosity-gap, picture-superiority, social-proof, competence, anticipation-drop, self-reference, loop, comment-prompt |
+| 104 | [`104-como-ele-anda.mp4`](104-como-ele-anda.mp4) | F13 Raio-X | Como ele anda sozinho | COMO ELE ANDA SOZINHO? | curiosity-gap, picture-superiority, visible-progress, competence, anticipation-drop, satisfying-micro-motion, loop, comment-prompt |
+| 105 | [`105-como-ele-pesca.mp4`](105-como-ele-pesca.mp4) | F13 Raio-X | Como o KizuBot pesca | COMO O KIZUBOT PESCA. | curiosity-gap, picture-superiority, competence, visible-progress, anticipation-drop, humor, loop, comment-prompt |
 | 126 | [`126-ache-o-shiny-facil.mp4`](126-ache-o-shiny-facil.mp4) | F18 Ache o Shiny | Ache o shiny em 3 segundos | ACHE O SHINY EM 3 SEGUNDOS. | participation, von-restorff, time-pressure, rewatch-loop, effort-contrast, real-proof, comment-prompt |
 | 127 | [`127-ache-o-shiny-medio.mp4`](127-ache-o-shiny-medio.mp4) | F18 Ache o Shiny | Nível 2: ache o shiny | NÍVEL 2: ACHE O SHINY. | participation, von-restorff, decoy-effect, time-pressure, rewatch-loop, loss-aversion, real-proof, comment-prompt |
 | 128 | [`128-ache-o-shiny-impossivel.mp4`](128-ache-o-shiny-impossivel.mp4) | F18 Ache o Shiny | Nível impossível | NÍVEL IMPOSSÍVEL. | participation, challenge, von-restorff, rewatch-loop, effort-contrast, real-proof, status-identity, comment-prompt |

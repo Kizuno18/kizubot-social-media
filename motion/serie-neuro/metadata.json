@@ -1813,6 +1813,527 @@
     ]
   },
   {
+    "id": "096",
+    "file": "096-offline-cam.mp4",
+    "series": "F12 Novidade no KizuBot",
+    "title": "Agora dá pra assistir sua hunt depois",
+    "hook": "ASSISTA SUA HUNT DEPOIS.",
+    "neuro": "novelty, curiosity-gap, visible-progress, anticipation-drop, picture-superiority, authority, loop, comment-prompt",
+    "duration": 20.4,
+    "size_mb": 10.5,
+    "platforms": {
+      "tiktok": {
+        "caption": "Agora dá pra assistir sua hunt depois 🎥 Offline Cam do KizuBot: Alt+G abre a lista, baixa a sessão e assiste dentro do jogo em 1x, 2x, 4x ou 8x. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#hunt"
+        ]
+      },
+      "youtube": {
+        "title": "Agora dá pra assistir sua hunt depois (Offline Cam do KizuBot)",
+        "description": "Novidade no KizuBot (atualização de 05/09/2026): Offline Cam. Alt+G abre a lista de sessões gravadas, você baixa e assiste dentro do cliente do jogo, em 1x, 2x, 4x ou 8x, com fps e ping da sessão. Gameplay real do KizuBot no vídeo. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Agora dá pra assistir sua hunt depois 🎥 Offline Cam do KizuBot: baixa a sessão e assiste no jogo em 1x, 2x, 4x ou 8x. Em que velocidade você assistiria? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#hunt"
+        ]
+      }
+    },
+    "pinned_comment": "Em que velocidade você assistiria: 1x ou 8x? ⏩",
+    "claims": [
+      "Offline Cam: gravações offline das hunts; Alt+G abre a lista; baixa as sessões e assiste dentro do cliente do jogo — changelog 05/09/2026",
+      "velocidades 1x, 2x, 4x e 8x escolhidas antes de dar play; mostra fps e ping da sessão — changelog 05/09/2026",
+      "mais de 170 atualizações desde 2024 (177 entradas no changelog)"
+    ],
+    "assets": [
+      "kit/video/rypherior.mp4",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "097",
+    "file": "097-painel-novo.mp4",
+    "series": "F12 Novidade no KizuBot",
+    "title": "O painel do KizuBot mudou",
+    "hook": "O PAINEL DO KIZUBOT MUDOU.",
+    "neuro": "novelty, authority, visible-progress, anticipation-drop, satisfying-micro-motion, social-proof, loop, comment-prompt",
+    "duration": 21.3,
+    "size_mb": 9.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "O painel do KizuBot mudou 🎨 12 telas refeitas, estilo guiado pra quem tá começando, slim, compacto, tema terminal, tecla Home liga e desliga o bot e botões maiores no celular. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#novidade"
+        ]
+      },
+      "youtube": {
+        "title": "O painel do KizuBot mudou: guiado, slim, compacto e terminal",
+        "description": "Novidade no KizuBot (atualização de 05/09/2026): as 12 telas de configuração foram refeitas com explicações mais claras, caminho guiado pra iniciantes, estilos guiado e slim, modos padrão e compacto, tema terminal, tecla Home pra ligar/desligar o bot e botões maiores no celular. O painel no vídeo é uma ilustração. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "O painel do KizuBot mudou 🎨 Guiado, slim, compacto ou tema terminal — e a tecla Home liga e desliga o bot. Qual estilo você usaria? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#novidade"
+        ]
+      }
+    },
+    "pinned_comment": "Qual estilo você usaria? 🎨",
+    "claims": [
+      "12 telas de configuração refeitas com explicações mais claras — changelog 05/09/2026",
+      "caminho guiado pra iniciantes; estilos guiado e slim; modos padrão e compacto; tema terminal — changelog 05/09/2026",
+      "tecla Home liga e desliga o bot — changelog 05/09/2026",
+      "painel no celular com botões maiores — changelog 05/09/2026",
+      "print real de cliente: \"as configuracoes novas ficaram dahora demais\" (verbatim)"
+    ],
+    "assets": [
+      "kit/img/prints/configuracoes-novas-espetacular.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "098",
+    "file": "098-kizuai.mp4",
+    "series": "F12 Novidade no KizuBot",
+    "title": "Tem dúvida de config? Pergunta pra IA.",
+    "hook": "TEM DÚVIDA DE CONFIG?",
+    "neuro": "novelty, self-reference, curiosity-gap, authority, processing-fluency, anticipation-drop, loop, comment-prompt",
+    "duration": 18.767,
+    "size_mb": 7.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "Tem dúvida de config? Pergunta pra KizuAI, a IA do painel do KizuBot 🤖 Ela lembra o contexto da conversa e mostra de onde veio a resposta. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#ia",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Tem dúvida de config? Pergunta pra IA do KizuBot 🤖",
+        "description": "Novidade no KizuBot (atualização de 20/04/2026): a KizuAI, assistente de IA do painel, agora lembra o contexto da conversa e mostra as fontes da resposta. Conversa de exemplo no vídeo. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Tem dúvida de config? Pergunta pra KizuAI 🤖 A IA do painel do KizuBot lembra o contexto da conversa e mostra de onde veio a resposta. Que pergunta você faria? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#ia"
+        ]
+      }
+    },
+    "pinned_comment": "Que pergunta você faria pra KizuAI? 🤖",
+    "claims": [
+      "KizuAI (assistente de IA do painel) lembra o contexto da conversa e mostra as fontes — changelog 20/04/2026",
+      "modos de pesca: padrão, visão direta, água limpa, céu aberto, mesmo andar, agressivo — changelog 23/05/2026",
+      "minigames ficam no módulo Farming (13 módulos, kizubot.com/llms.txt)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "099",
+    "file": "099-pesca-6-modos.mp4",
+    "series": "F12 Novidade no KizuBot",
+    "title": "A pesca do KizuBot ganhou 6 modos",
+    "hook": "A PESCA GANHOU 6 MODOS.",
+    "neuro": "novelty, visible-progress, curiosity-gap, anticipation-drop, satisfying-micro-motion, authority, loop, comment-prompt",
+    "duration": 18.0,
+    "size_mb": 7.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "A pesca do KizuBot ganhou 6 modos 🎣 padrão, visão direta, água limpa, céu aberto, mesmo andar e agressivo. E os minigames ficaram mais confiáveis. Pesca no AFK. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#pesca",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "A pesca do KizuBot ganhou 6 modos 🎣 (pesca no AFK)",
+        "description": "Novidade no KizuBot (atualização de 23/05/2026): 6 modos de pesca — padrão, visão direta, água limpa, céu aberto, mesmo andar e agressivo — e minigames (pesca, cards, cook, music, mastermind) mais confiáveis. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "A pesca do KizuBot ganhou 6 modos 🎣 Padrão, visão direta, água limpa, céu aberto, mesmo andar e agressivo — pesca no AFK. Qual você usaria? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#pesca"
+        ]
+      }
+    },
+    "pinned_comment": "Qual modo você usaria? 🎣",
+    "claims": [
+      "modos de pesca: padrão, visão direta, água limpa, céu aberto, mesmo andar, agressivo — changelog 23/05/2026",
+      "minigames (pesca, cards, cook, music, mastermind) mais confiáveis — changelog 23/05/2026",
+      "tempo da fisgada configurável (módulo Fishing: modes, hook timing — 13 módulos configuráveis)",
+      "pesca no AFK (100% AFK)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "100",
+    "file": "100-ia-aprendeu-sozinha.mp4",
+    "series": "F12 Novidade no KizuBot",
+    "title": "O alarme de mega aprendeu sozinho",
+    "hook": "O ALARME DE MEGA APRENDEU SOZINHO.",
+    "neuro": "schema-violation, curiosity-gap, anticipation-drop, novelty, authority, picture-superiority, loop, comment-prompt",
+    "duration": 20.0,
+    "size_mb": 10.1,
+    "platforms": {
+      "tiktok": {
+        "caption": "O alarme de mega do KizuBot aprendeu sozinho 🧠 Ele aprende o visual da mega olhando o corpo no chão. E a IA não para: +100 itens novos, estatísticas por espécie... mais de 170 atualizações desde 2024. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mega",
+          "#ia"
+        ]
+      },
+      "youtube": {
+        "title": "O alarme de mega do KizuBot aprendeu sozinho 🧠",
+        "description": "Novidade no KizuBot: desde 20/04/2026 o alarme de mega aprende sozinho o visual da mega olhando o corpo no chão. A IA também aprendeu +100 itens novos (25/02/2026) e as estatísticas mostram megas, shinies e bosses por espécie (05/09/2026). Mais de 170 atualizações desde 2024. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "O alarme de mega do KizuBot aprendeu sozinho 🧠 Ele olha o corpo da mega no chão e aprende o visual. Mais de 170 atualizações desde 2024. O que a IA devia aprender agora? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mega"
+        ]
+      }
+    },
+    "pinned_comment": "O que você queria que a IA aprendesse agora? 🧠",
+    "claims": [
+      "o alarme de mega aprende sozinho o visual da mega a partir do corpo no chão — changelog 20/04/2026",
+      "a IA aprendeu a reconhecer +100 itens novos — changelog 25/02/2026",
+      "estatísticas da sessão mostram megas, shinies e bosses por espécie — changelog 05/09/2026",
+      "mais de 170 atualizações desde 2024 (177 entradas no changelog, out/2024–set/2026)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "101",
+    "file": "101-dentro-do-kizubot.mp4",
+    "series": "F13 Raio-X",
+    "title": "O que tem dentro do KizuBot?",
+    "hook": "O QUE TEM DENTRO DO KIZUBOT?",
+    "neuro": "curiosity-gap, picture-superiority, visible-progress, competence, anticipation-drop, loop, comment-prompt",
+    "duration": 19.4,
+    "size_mb": 6.9,
+    "platforms": {
+      "tiktok": {
+        "caption": "O que tem dentro do KizuBot? 🔧 Raio-X peça por peça: olho que detecta shiny, mega e boss, antena que avisa no WhatsApp, coração com pausas e ritmo variáveis... Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#raiox",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "O que tem dentro do KizuBot? (raio-x peça por peça)",
+        "description": "Raio-X do KizuBot: olho = detecção de shiny, mega e boss; cérebro = IA que decide o que fazer; antena = alarmes no WhatsApp e Telegram; coração = humanização (pausas e ritmo variáveis); braços = combate e captura; pernas = cavebot pela rota gravada. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "O que tem dentro do KizuBot? 🔧 Raio-X peça por peça: detecção de shiny, mega e boss, IA, alarmes no WhatsApp, humanização, combate e cavebot. Qual peça é a mais importante pra você? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#raiox"
+        ]
+      }
+    },
+    "pinned_comment": "Qual peça é a mais importante? 🔧",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "IA que decide o que fazer (combate com IA, cavebot com prioridades — changelog 21/02/2026)",
+      "alarmes no WhatsApp e Telegram",
+      "sistema de Humanização (pausas e ritmo variáveis)",
+      "combate e captura (módulos Combat e Catch)",
+      "cavebot: anda pela rota gravada (waypoints, recorder)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "102",
+    "file": "102-como-ele-decide.mp4",
+    "series": "F13 Raio-X",
+    "title": "Como o bot decide o que fazer",
+    "hook": "COMO O BOT DECIDE O QUE FAZER",
+    "neuro": "curiosity-gap, visible-progress, competence, picture-superiority, anticipation-drop, loop, comment-prompt",
+    "duration": 17.9,
+    "size_mb": 5.7,
+    "platforms": {
+      "tiktok": {
+        "caption": "Como o bot decide o que fazer? 🤔 A ordem do KizuBot: loot, catch, tall grass, bush/madeira/minério, headbutt e só depois anda a rota. E ainda detecta a speed do char e considera o ping. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#cavebot",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Como o KizuBot decide o que fazer (raio-x das prioridades)",
+        "description": "Raio-X do cavebot do KizuBot (atualização de 21/02/2026): prioridades Loot > Catch > Tall Grass > bush/madeira/minério > headbutt > andar a rota. A IA detecta a speed do char e considera o ping. Tudo isso sem você encostar no mouse. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Como o bot decide o que fazer? 🤔 Loot, catch, tall grass, bush/madeira/minério, headbutt e só depois andar a rota. Você faria nessa ordem? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#cavebot"
+        ]
+      }
+    },
+    "pinned_comment": "Você faria nessa ordem? 🤔",
+    "claims": [
+      "prioridades do cavebot: Loot > Catch > Tall Grass > bush/madeira/minério > headbutt > andar — changelog 21/02/2026",
+      "a IA detecta a speed do char e considera o ping — changelog 21/02/2026",
+      "100% AFK (sem encostar no mouse)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "103",
+    "file": "103-como-o-alarme-chega.mp4",
+    "series": "F13 Raio-X",
+    "title": "Como o alarme chega no seu pulso",
+    "hook": "COMO O ALARME CHEGA NO PULSO?",
+    "neuro": "curiosity-gap, picture-superiority, social-proof, competence, anticipation-drop, self-reference, loop, comment-prompt",
+    "duration": 19.433,
+    "size_mb": 6.5,
+    "platforms": {
+      "tiktok": {
+        "caption": "Como o alarme do KizuBot chega no seu pulso? ⌚ O bot joga na nuvem, a IA detecta shiny, mega e boss, manda no WhatsApp ou Telegram e chega até no relógio. Prints reais de clientes diferentes. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#alarme",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Como o alarme do KizuBot chega no seu pulso ⌚ (raio-x)",
+        "description": "Raio-X do alarme do KizuBot: o bot roda 24/7 na nuvem (PC desligado), a IA detecta shiny, mega e boss, o alarme vai pro WhatsApp ou Telegram e chega no celular e até no relógio. Prints reais de clientes diferentes. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Como o alarme do KizuBot chega no seu pulso? ⌚ Nuvem → IA → zap → pulso. \"Chega certinho\" (print real de cliente). Você prefere WhatsApp ou Telegram? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#alarme"
+        ]
+      }
+    },
+    "pinned_comment": "Você prefere alarme no WhatsApp ou no Telegram?",
+    "claims": [
+      "roda 24/7 na nuvem; uso com PC desligado",
+      "detecção de shinys, megas e bosses (nomes reais dos alarmes: shinyDetected, megaDetected, bossDetected)",
+      "alarmes no WhatsApp e Telegram",
+      "print real de cliente: \"Ativei msgs pelo zap também\" / \"Chega certinho\" (verbatim)"
+    ],
+    "assets": [
+      "kit/img/prints/boss-tangrowth-electivire--tangrowth.png",
+      "kit/img/prints/smartwatch-alarm--photo.jpg",
+      "kit/img/prints/trampo-da-hora--zap.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "104",
+    "file": "104-como-ele-anda.mp4",
+    "series": "F13 Raio-X",
+    "title": "Como ele anda sozinho",
+    "hook": "COMO ELE ANDA SOZINHO?",
+    "neuro": "curiosity-gap, picture-superiority, visible-progress, competence, anticipation-drop, satisfying-micro-motion, loop, comment-prompt",
+    "duration": 18.767,
+    "size_mb": 9.0,
+    "platforms": {
+      "tiktok": {
+        "caption": "Como o KizuBot anda sozinho? 🗺️ Você grava a rota uma vez, ela vira waypoints e o cavebot repete — com lure, escada e loot no caminho. Gameplay real no final. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#cavebot",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Como o KizuBot anda sozinho? (raio-x do cavebot) 🗺️",
+        "description": "Raio-X do cavebot do KizuBot: você grava a rota uma vez com o recorder, ela vira waypoints e o bot repete a rota sozinho, resolvendo lure, escada e loot no caminho. Gameplay real do KizuBot no vídeo. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Como o KizuBot anda sozinho? 🗺️ Grava uma vez. Ele repete. Qual hunt você gravaria primeiro? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#cavebot"
+        ]
+      }
+    },
+    "pinned_comment": "Qual hunt você gravaria primeiro? 🗺️",
+    "claims": [
+      "cavebot: rotas por waypoints com recorder (grava a rota)",
+      "o cavebot repete a rota sozinho (100% AFK)",
+      "combate com lure e loot; escadas no cavebot (changelog 21/02/2026: escadas corrigidas)",
+      "gameplay real do KizuBot (kit/video/rypherior.mp4, 29.3–32.0 s: o char segue sozinho pro próximo ponto)"
+    ],
+    "assets": [
+      "kit/video/rypherior.mp4",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "105",
+    "file": "105-como-ele-pesca.mp4",
+    "series": "F13 Raio-X",
+    "title": "Como o KizuBot pesca",
+    "hook": "COMO O KIZUBOT PESCA.",
+    "neuro": "curiosity-gap, picture-superiority, competence, visible-progress, anticipation-drop, humor, loop, comment-prompt",
+    "duration": 19.2,
+    "size_mb": 6.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "Como o KizuBot pesca? 🎣 Escolhe o modo, espera a fisgada, puxa na hora certa da fisgada, resolve o minigame e repete sozinho. Pesca no AFK. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#pesca",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Como o KizuBot pesca? (raio-x da pesca no AFK) 🎣",
+        "description": "Raio-X da pesca do KizuBot: escolhe um dos 6 modos (padrão, visão direta, água limpa, céu aberto, mesmo andar, agressivo), espera a fisgada, puxa na hora da fisgada, resolve o minigame e repete sozinho. Pesca no AFK. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Como o KizuBot pesca? 🎣 Modo, espera, fisgada, minigame e repete — sozinho. Pesca no AFK. Pesca na mão: paciência ou sofrimento? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#pesca"
+        ]
+      }
+    },
+    "pinned_comment": "Pesca na mão: paciência ou sofrimento? 🎣",
+    "claims": [
+      "modos de pesca: padrão, visão direta, água limpa, céu aberto, mesmo andar, agressivo — changelog 23/05/2026",
+      "módulo Fishing: modos e tempo da fisgada (hook timing)",
+      "minigames (incl. pesca) mais confiáveis — changelog 23/05/2026",
+      "pesca no AFK (100% AFK)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
     "id": "126",
     "file": "126-ache-o-shiny-facil.mp4",
     "series": "F18 Ache o Shiny",

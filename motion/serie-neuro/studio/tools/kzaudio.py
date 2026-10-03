@@ -1297,6 +1297,41 @@ def master(mix, dur, target=-14.0, fade_out=0.6):
     return mix, meter.integrated_loudness(mix)
 
 
+def aac_guard(mix, ceiling_db=-1.4, rounds=4):
+    """Encode like kz.py's mux (ffmpeg AAC 192k), decode, and dip the gain locally (±25 ms) wherever
+    the decoded true peak would pass `ceiling_db`. A loud transient right after a quiet moment can
+    gain 2 dB in the AAC encode even when the PCM true peak is well under the limiter's ceiling."""
+    import shutil
+    import subprocess
+    import tempfile
+    from scipy.ndimage import minimum_filter1d
+    if not shutil.which("ffmpeg"):
+        return mix
+    ceiling = db(ceiling_db)
+    w = int(0.025 * SR)
+    hann = np.hanning(2 * w + 1)
+    hann /= hann.sum()
+    with tempfile.TemporaryDirectory() as tmp:
+        src, enc, dec = (os.path.join(tmp, f) for f in ("in.wav", "enc.m4a", "dec.wav"))
+        for _ in range(rounds):
+            sf.write(src, mix.astype(np.float32), SR, subtype="FLOAT")
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+                            "-ac", "2", enc], check=True)
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", enc, "-f", "wav", "-acodec", "pcm_f32le", dec], check=True)
+            y, _ = sf.read(dec, dtype="float64")
+            n = min(len(y), len(mix))
+            env = np.abs(signal.resample_poly(y[:n], 4, 1, axis=0)).max(axis=1)[: 4 * n].reshape(n, 4).max(axis=1)
+            if env.max() <= ceiling:
+                break
+            need = np.minimum(1.0, ceiling * 0.97 / np.maximum(env, 1e-9))
+            gain = np.convolve(np.pad(minimum_filter1d(need, 2 * w + 1), w, mode="edge"), hann, mode="valid")
+            mix = mix.copy()
+            mix[:n] *= gain[:, None]
+            print(f"aac guard: {20 * np.log10(env.max()):.1f} dBTP after AAC -> dipped {20 * np.log10(gain.min()):.1f} dB "
+                  f"at {int((need < 1).sum())} samples")
+    return mix
+
+
 def render(spec_path, out_path, stems=False):
     with open(spec_path) as f:
         spec = json.load(f)
@@ -1318,6 +1353,7 @@ def render(spec_path, out_path, stems=False):
         music *= g[:, None]
     mix = music + sfx_bus
     mix, lufs = master(mix, dur, float(spec.get("lufs", -14.0)), float(spec.get("fade_out", 0.6)))
+    mix = aac_guard(mix)
     os.makedirs(os.path.dirname(os.path.abspath(out_path)), exist_ok=True)
     sf.write(out_path, mix.astype(np.float32), SR, subtype="PCM_24")
     if stems:

@@ -1,18 +1,66 @@
 {
-  "id": "000",
-  "slug": "slug",
-  "family": "",
-  "title": "",
-  "concept": "",
-  "neuro": [],
-  "hook": "",
-  "duration": 20,
-  "assets": [],
-  "claims": [],
-  "platforms": {
-    "tiktok": {"caption": "", "hashtags": []},
-    "youtube": {"title": "", "description": "", "hashtags": []},
-    "instagram": {"caption": "", "hashtags": []}
+  "id": "049",
+  "slug": "pov-2h-da-manha",
+  "family": "POV",
+  "title": "POV: 2h da manhã, o boss nasceu e você tá deitado",
+  "concept": "Lying in bed looking at a dark ceiling, a huge red 02:02 seven-segment clock; the phone comes down over your face and the real alarms arrive minute by minute as the clock flips (bossDetected ~ --> boss Rhyperior 02:02, dropRare ~ Protector 02:03), you type the real line 'Eu tô deitado e o bot tá como ?' at 02:04, then the real print lands on the drop.",
+  "neuro": [
+    "pov-self-reference",
+    "narrative-transport",
+    "precise-timestamps",
+    "anticipation",
+    "social-proof-twist",
+    "peak-end",
+    "seamless-loop",
+    "comment-prompt"
+  ],
+  "hook": "POV: 2h da manhã. O boss nasceu.",
+  "duration": 15,
+  "music": {
+    "style": "trap",
+    "bpm": 145
   },
-  "pinned_comment": ""
+  "assets": [
+    "kit/img/prints/boss-rhyperior-2am.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "POV: 2h da manhã, o boss nasceu e você tá deitado 🌙 02:02 bossDetected, 02:03 dropRare — print real de cliente. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#boss",
+        "#pov"
+      ]
+    },
+    "youtube": {
+      "title": "POV: 2h da manhã, o boss nasceu e você tá deitado (print real)",
+      "description": "POV: 2h da manhã. O boss Rhyperior nasce às 02:02, o drop raro vem às 02:03 e o cliente manda às 02:04: 'Eu tô deitado e o bot tá como ?'. Print real. O KizuBot detecta shiny, mega e boss e avisa no celular, 100% AFK. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "POV: 2h da manhã. O boss nasceu. 🌙 Ele nem levantou da cama — print real de cliente. Seu boss mais tarde foi que horas? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#madrugada"
+      ]
+    }
+  },
+  "pinned_comment": "Que horas foi o seu boss mais tarde? 🌙",
+  "notes": "The phone shows a generic dark chat (no app trade dress) where the verbatim alarms from boss-rhyperior-2am.png arrive at their real minutes as the seven-segment clock flips 02:02 → 02:03 → 02:04; the customer's verbatim line 'Eu tô deitado e o bot tá como ?' is typed and sent in the POV. The real print lands on the drop with highlights (boss Rhyperior / Protector / caption) and a big verbatim pull quote. Concept closing line 'Ele não levantou da cama.' shortened to 'Nem levantou da cama.' + '100% AFK' chip. On-screen ask: 'Seu boss mais tarde foi que horas?'. Audio: first render failed QC on AAC true peak (-0.8 dBFS); impacts/booms/heartbeats were lowered and music_gain -1 dB, then the new mix was re-muxed onto the same rendered video (same ffmpeg settings as kz.py) and kz.py qc passed (TP -1.1). Rubric: hook 9, re-hooks 9, clarity 8, craft 8, truth 9, sound 8, brand 9, CTA 9, loop 9, distinct 9 (avg 8.7). 1 render + audio remux."
 }

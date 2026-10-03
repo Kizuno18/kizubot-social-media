@@ -1,18 +1,65 @@
 {
-  "id": "000",
-  "slug": "slug",
-  "family": "",
-  "title": "",
-  "concept": "",
-  "neuro": [],
-  "hook": "",
-  "duration": 20,
-  "assets": [],
-  "claims": [],
-  "platforms": {
-    "tiktok": {"caption": "", "hashtags": []},
-    "youtube": {"title": "", "description": "", "hashtags": []},
-    "instagram": {"caption": "", "hashtags": []}
+  "id": "133",
+  "slug": "enquanto-o-bot-caca",
+  "family": "O Dia de Quem Usa",
+  "title": "Enquanto o bot caça, a família",
+  "concept": "Golden-hour vlog with warm bokeh and no shakes: 'ENQUANTO O BOT CAÇA…' is completed by the real customer photo of family handprints at 15:37 ('eu me divertido com a família', verbatim), then 16:24 chat lines from a different customer away from home ('Tô longe de casa cm a família / O bot já tá rodando e liso'), the phone-access claim, and the peak line 'O tempo é seu. O farm é dele.'",
+  "neuro": [
+    "aspiration-future-pacing",
+    "emotional-warmth",
+    "social-proof",
+    "curiosity-gap-ellipsis",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "ENQUANTO O BOT CAÇA…",
+  "duration": 18.4,
+  "music": {
+    "style": "lofi",
+    "bpm": 84
   },
-  "pinned_comment": ""
+  "assets": [
+    "kit/img/prints/family-handprints--photo.jpg",
+    "kit/img/prints/family-handprints--quote.png",
+    "kit/img/prints/away-with-family--quote.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "acesso pelo celular",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Enquanto o bot caça… 🫶 'eu me divertido com a família' — prints reais de clientes diferentes. O tempo é seu, o farm é dele. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#familia",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Enquanto o bot caça, ele curte a família (prints reais)",
+      "description": "Enquanto o bot caça… prints reais de clientes: 'enquanto bot caça, eu me divertido com a família' e 'Tô longe de casa cm a família / O bot já tá rodando e liso'. Acesso pelo celular, 100% AFK. O tempo é seu. O farm é dele. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Enquanto o bot caça… 🫶 Prints reais de clientes diferentes curtindo a família com o bot rodando — tudo pelo celular. O que você faria com o tempo livre? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#tempolivre"
+      ]
+    }
+  },
+  "pinned_comment": "O que você faria com o tempo livre?",
+  "notes": "Concept's family-handprints.png = family-handprints (photo + caption shown together as in the original; quote verbatim with the typo 'divertido'); aproveitando-com-a-familia = away-with-family (different customer → 'prints reais de clientes diferentes'). 'Aqui tô pelo Cell' was dropped: its print (--phone) also names the customer's city and is a complaint about lag on the phone, so only the --quote lines are used ('Tô longe de casa cm a família' / 'O bot já tá rodando e liso'). The phone-access claim is shown as a brand illustration (phone with the robot) + chips 'acesso pelo celular' / '100% AFK'. Gentle motion only, no shakes (as briefed). Added a 'KizuBot rodando' chip in the hook as the early brand cue. Rubric: hook 8, re-hooks 8, clarity 8, craft 8, truth 9, sound 8, brand 8, CTA 9, loop 8, distinct 9 (avg 8.3). 1 render."
 }

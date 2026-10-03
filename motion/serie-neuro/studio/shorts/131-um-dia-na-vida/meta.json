@@ -1,18 +1,69 @@
 {
-  "id": "000",
-  "slug": "slug",
-  "family": "",
-  "title": "",
-  "concept": "",
-  "neuro": [],
-  "hook": "",
-  "duration": 20,
-  "assets": [],
-  "claims": [],
-  "platforms": {
-    "tiktok": {"caption": "", "hashtags": []},
-    "youtube": {"title": "", "description": "", "hashtags": []},
-    "instagram": {"caption": "", "hashtags": []}
+  "id": "131",
+  "slug": "um-dia-na-vida",
+  "family": "O Dia de Quem Usa",
+  "title": "Um dia na vida de quem usa KizuBot",
+  "concept": "Camcorder vlog of one composite day: the sky turns from dawn to night behind a city skyline while big timestamps flip with a shutter (07:00, 09:29, 12:30, 19:19, 20:29, 02:02); each real-print stop sits at the print's own time with a handwritten note, and a 24 h ring fills purple: 'e o char farmou o dia todo'.",
+  "neuro": [
+    "aspiration-future-pacing",
+    "narrative-arc",
+    "precise-timestamps",
+    "social-proof",
+    "visible-progress",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "UM DIA NA VIDA DE QUEM USA KIZUBOT.",
+  "duration": 22,
+  "music": {
+    "style": "lofi",
+    "bpm": 96
   },
-  "pinned_comment": ""
+  "assets": [
+    "kit/img/prints/shiny-venusaur--alarm.png",
+    "kit/img/prints/shiny-feraligatr--card.png",
+    "kit/img/prints/gym-smartwatch-alarm--watch.jpg",
+    "kit/img/prints/boss-rhyperior-2am--alarm.png",
+    "kit/img/prints/boss-rhyperior-2am--quote.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp",
+    "roda 24/7 em máquinas virtuais (llms.txt)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Um dia na vida de quem usa KizuBot ⏰ Shiny às 09:29, Shiny Feraligatr no meio do filme, alarme no treino, boss às 02:02 — prints reais de clientes diferentes. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#umdianavida",
+        "#vlog"
+      ]
+    },
+    "youtube": {
+      "title": "Um dia na vida de quem usa KizuBot (prints reais)",
+      "description": "Um dia na vida de quem usa KizuBot: shiny capturado às 09:29, Shiny Feraligatr no meio do filme às 19:19, alarme no relógio no treino às 20:29, boss às 02:02 com o cara deitado. Dia montado com prints reais de clientes diferentes, cada um no horário do print. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Um dia na vida de quem usa KizuBot. ⏰ Você vive o dia, o char farma o dia todo — prints reais de clientes diferentes. Como seria o seu dia? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#umdianavida"
+      ]
+    }
+  },
+  "pinned_comment": "Como seria o seu dia? 👇",
+  "notes": "Timestamps on print stops are each print's real time, so the order differs from the concept: 07:00 acorda (illustration) → 09:29 shiny Venusaur alarm → 12:30 almoço (illustration) → 19:19 Shiny Feraligatr card ('no meio do filme') → 20:29 gym watch alarm ('no meio do treino') → 02:02 boss alarm + 'Eu tô deitado e o bot tá como ?' ('e ele deitado'). Concept times 09:00 trabalho / 18:30 academia / 22:00 filme / 02:00 were replaced by the real print times; 'trabalho' was dropped because the Venusaur print doesn't say where the customer was. One persistent label 'prints reais de clientes diferentes' covers the composite day. Render 2 fixed the 24 h ring caption hold time and moved the dawn sun off the 07:00 note. Rubric: hook 8, re-hooks 9, clarity 8, craft 8, truth 9, sound 8, brand 9, CTA 9, loop 8, distinct 9 (avg 8.5). 2 renders."
 }

@@ -41,22 +41,22 @@
     {
       "t": 0.0,
       "name": "impact",
-      "gain": -6
+      "gain": -9
     },
     {
       "t": 0.0,
       "name": "heartbeat",
-      "gain": -6
+      "gain": -8
     },
     {
       "t": 0.828,
       "name": "boom",
-      "gain": -6
+      "gain": -9
     },
     {
       "t": 0.83,
       "name": "heartbeat",
-      "gain": -8
+      "gain": -10
     },
     {
       "t": 1.56,
@@ -111,7 +111,7 @@
     {
       "t": 6.621,
       "name": "impact",
-      "gain": -4
+      "gain": -8
     },
     {
       "t": 6.621,
@@ -174,5 +174,6 @@
       "gain": -14
     }
   ],
-  "logo": 11.64
+  "logo": 11.64,
+  "music_gain": -1.0
 }

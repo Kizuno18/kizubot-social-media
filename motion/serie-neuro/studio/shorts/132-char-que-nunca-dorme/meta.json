@@ -1,18 +1,64 @@
 {
-  "id": "000",
-  "slug": "slug",
-  "family": "",
-  "title": "",
-  "concept": "",
-  "neuro": [],
-  "hook": "",
-  "duration": 20,
-  "assets": [],
-  "claims": [],
-  "platforms": {
-    "tiktok": {"caption": "", "hashtags": []},
-    "youtube": {"title": "", "description": "", "hashtags": []},
-    "instagram": {"caption": "", "hashtags": []}
+  "id": "132",
+  "slug": "char-que-nunca-dorme",
+  "family": "O Dia de Quem Usa",
+  "title": "A rotina de um char que nunca dorme",
+  "concept": "The char's own vlog: a game-style sun/moon day dial turns as the sky changes colour — 06:00 caçando, 11:00 pescando, 15:00 coletando mato, 03:00 capturando — then 'pausa pro café?' gets a NUNCA stamp, the real customer print 'Bagui tá rodando desde cedo hj' lands on the drop, and the payoff: 'Ele nunca dorme. Você pode.'",
+  "neuro": [
+    "anthropomorphic-humor",
+    "aspiration",
+    "visible-progress",
+    "social-proof",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "A ROTINA DE UM CHAR QUE NUNCA DORME.",
+  "duration": 17.6,
+  "music": {
+    "style": "chiptune",
+    "bpm": 150
   },
-  "pinned_comment": ""
+  "assets": [
+    "kit/img/prints/hud-8434-loots--quote.png",
+    "kit/img/prints/hud-8434-loots--hud.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "roda 24/7 em máquinas virtuais (llms.txt)",
+    "módulos de caça, pesca, farming e captura"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "A rotina de um char que nunca dorme 😂 Caça às 6h, pesca às 11h, mato às 15h, captura às 3h. Pausa pro café? Nunca. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk",
+        "#rotina"
+      ]
+    },
+    "youtube": {
+      "title": "A rotina de um char que nunca dorme (24h no KizuBot)",
+      "description": "A rotina de um char que nunca dorme: caçando, pescando, coletando mato e capturando, 24h por dia na nuvem. Print real de cliente: 'Bagui tá rodando desde cedo hj'. Ele nunca dorme. Você pode. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "A rotina de um char que nunca dorme. 😂 Pausa pro café? Nunca. Ele nunca dorme — você pode. Seu char tem rotina? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afkfarm"
+      ]
+    }
+  },
+  "pinned_comment": "Seu char tem rotina? 😂",
+  "notes": "The concept's hud-8434-loots.png = hud-8434-loots. ASSETS.md flags the HUD as OLD UI, so the HUD crop is labelled 'interface antiga' and only used as proof of activity (highlights on walkTimes: 4774 and collectedLoots: 8434); the caption bubble crop carries 'print real de cliente'. The routine times (06:00 caçando, 11:00 pescando, 15:00 coletando mato, 03:00 capturando) are an illustrative char diary, framed as humor, not a log. Added a 'KIZUBOT ON' pill as the early brand cue and the payoff 'Ele nunca dorme. Você pode.' Rubric: hook 8, re-hooks 9, clarity 8, craft 8, truth 9, sound 8, brand 8, CTA 9, loop 8, distinct 9 (avg 8.4). 1 render."
 }

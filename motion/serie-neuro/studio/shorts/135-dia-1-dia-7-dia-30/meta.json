@@ -1,18 +1,65 @@
 {
-  "id": "000",
-  "slug": "slug",
-  "family": "",
-  "title": "",
-  "concept": "",
-  "neuro": [],
-  "hook": "",
-  "duration": 20,
-  "assets": [],
-  "claims": [],
-  "platforms": {
-    "tiktok": {"caption": "", "hashtags": []},
-    "youtube": {"title": "", "description": "", "hashtags": []},
-    "instagram": {"caption": "", "hashtags": []}
+  "id": "135",
+  "slug": "dia-1-dia-7-dia-30",
+  "family": "O Dia de Quem Usa",
+  "title": "Dia 1, dia 7, dia 30 usando KizuBot",
+  "concept": "A tear-off desk calendar in the vlog frame: three pages fan in on the beat (DIA 1 / DIA 7 / DIA 30), then each page tears off with a shutter to reveal a real customer print for that stage — setting up with support ('Até parece que sei programar'), 'fechou 7 dias usando o kizubot né?' → 'Bot joga muito kkk', and '600kkzin pra conta' (no primeiro mês) → a 0→600kk count-up.",
+  "neuro": [
+    "future-pacing",
+    "commitment-ladder",
+    "visible-progress",
+    "social-proof",
+    "precise-number",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "DIA 1. DIA 7. DIA 30.",
+  "duration": 19,
+  "music": {
+    "style": "house",
+    "bpm": 124
   },
-  "pinned_comment": ""
+  "assets": [
+    "kit/img/prints/parece-que-sei-programar--quote.png",
+    "kit/img/prints/bot-joga-muito--quote.png",
+    "kit/img/prints/primeiro-mes-600kk--600kk.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "o suporte te ajuda a configurar",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Dia 1, dia 7, dia 30 usando KizuBot 📅 Da primeira config ao '600kkzin pra conta' no primeiro mês — prints reais de clientes diferentes. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk",
+        "#farm"
+      ]
+    },
+    "youtube": {
+      "title": "Dia 1, dia 7, dia 30 usando KizuBot (prints reais)",
+      "description": "Dia 1: 'Até parece que sei programar'. Dia 7: 'fechou 7 dias usando o kizubot né?' — 'Bot joga muito kkk'. Dia 30: '600kkzin pra conta' no primeiro mês (dinheiro do jogo). Prints reais de clientes diferentes; o suporte te ajuda a configurar. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Dia 1, dia 7, dia 30. 📅 Começa no dia 1 — o resto é com ele. Prints reais de clientes diferentes. Em que dia você tá? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#progresso"
+      ]
+    }
+  },
+  "pinned_comment": "Em que dia você tá? 👀",
+  "notes": "DIA 1 = parece-que-sei-programar (customer setting up a rule with the owner's guidance; note 'configurando'); DIA 7 = bot-joga-muito (owner's 'fechou 7 dias usando o kizubot né?' + customer's 'Bot joga muito kkk', both highlighted); DIA 30 = primeiro-mes-600kk--600kk ('600kkzin pra conta') with the handwritten caption 'no primeiro mês' — the full print isn't shown because its first line names the legacy plan 'vip2' (orchestrator instruction). 600kk is in-game currency, counted up 0→600 with no money visuals. The calendar pages carry a small 'KizuBot™ | kizubot.com' footer as the early brand cue. Rubric: hook 8, re-hooks 9, clarity 8, craft 8, truth 9, sound 8, brand 9, CTA 9, loop 9, distinct 9 (avg 8.6). 1 render."
 }

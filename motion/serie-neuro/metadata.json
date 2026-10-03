@@ -1,5 +1,267 @@
 [
   {
+    "id": "046",
+    "file": "046-pov-acorda-com-shiny.mp4",
+    "series": "F02 POV",
+    "title": "POV: você acorda e o shiny já tá na conta",
+    "hook": "POV: você acorda e o shiny já tá na conta.",
+    "neuro": "pov-self-reference, narrative-transport, curiosity-gap, schema-violation, social-proof-twist, peak-end, seamless-loop, comment-prompt",
+    "duration": 17.0,
+    "size_mb": 7.6,
+    "platforms": {
+      "tiktok": {
+        "caption": "POV: você acorda e o shiny já tá na conta 😳 O KizuBot detectou, capturou e avisou no celular. Print real de cliente. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#pov"
+        ]
+      },
+      "youtube": {
+        "title": "POV: você acorda e o shiny já tá na conta (print real)",
+        "description": "POV: você acorda e o shiny Venusaur já foi detectado, capturado e avisado no celular — print real de cliente (09:29). O KizuBot roda 100% AFK, detecta shiny, mega e boss e manda alarme no WhatsApp/Telegram. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "POV: você acorda e o shiny já tá na conta. 🌅 Detectou, capturou e avisou no celular — print real de cliente. Com qual shiny você queria acordar? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shinyhunting"
+        ]
+      }
+    },
+    "pinned_comment": "Qual shiny você queria acordar com ele? 👇",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-venusaur.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "047",
+    "file": "047-pov-academia.mp4",
+    "series": "F02 POV",
+    "title": "POV: treino de perna e o relógio vibra",
+    "hook": "POV: treino de perna e o relógio vibra.",
+    "neuro": "pov-self-reference, narrative-transport, precise-number, humor-benign-violation, match-cut-proof, social-proof, peak-end, comment-prompt",
+    "duration": 19.0,
+    "size_mb": 6.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "POV: treino de perna e o relógio vibra 💪 Alarme real do KizuBot no pulso: 4.585 itens dropados enquanto o cara treinava. Prints reais de clientes. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#academia",
+          "#pov"
+        ]
+      },
+      "youtube": {
+        "title": "POV: treino de perna e o relógio vibra (alarme real do bot)",
+        "description": "POV: você tá no treino de perna e o relógio vibra com o alarme do KizuBot — 'Total dropped items: 4585'. Foto real de cliente na academia + outro cliente upando o char principal enquanto o bot upa a segundária. Alarmes no celular/WhatsApp/Telegram, 100% AFK. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "POV: treino de perna e o relógio vibra. 💪 Alarme real do KizuBot no pulso, no meio do treino. Treino rendendo, farm também. E você, treina ou farma? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#gymlife"
+        ]
+      }
+    },
+    "pinned_comment": "Treina ou farma? Agora dá os dois 💪",
+    "claims": [
+      "alarmes no celular e notificações no WhatsApp (Telegram também)",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/gym-smartwatch-alarm--photo.jpg",
+      "kit/img/prints/gym-main-char-bot-alt--quote.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "048",
+    "file": "048-pov-praia.mp4",
+    "series": "F02 POV",
+    "title": "POV: você foi pra praia e o bot ficou farmando",
+    "hook": "POV: você foi pra praia.",
+    "neuro": "pov-self-reference, narrative-transport, countdown-anticipation, social-proof, in-group-identity, peak-end, comment-prompt",
+    "duration": 20.0,
+    "size_mb": 7.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "POV: você foi pra praia e o bot ficou farmando 🏖️ Earth Stone caindo às 16:19 e 16:21 enquanto o cara tava na areia. Prints reais de clientes. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#praia",
+          "#pov"
+        ]
+      },
+      "youtube": {
+        "title": "POV: você foi pra praia e o bot ficou farmando (prints reais)",
+        "description": "POV: você foi pra praia e o KizuBot ficou farmando — alarmes reais de Earth Stone às 16:19 e 16:21, 'Enquanto bot moie / Eu tô na praia'. E não foi só ele: represa, cachoeira… 100% AFK, alarmes no celular e no WhatsApp. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "POV: você foi pra praia e o bot ficou farmando. 🏖️ Você na praia, o bot no farm — prints reais de clientes. Praia, represa ou cachoeira? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#praia"
+        ]
+      }
+    },
+    "pinned_comment": "Praia, represa ou cachoeira? 🏖️",
+    "claims": [
+      "100% AFK",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/prints/beach-while-bot-farms.png",
+      "kit/img/prints/beach-satire-group--historia.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "049",
+    "file": "049-pov-2h-da-manha.mp4",
+    "series": "F02 POV",
+    "title": "POV: 2h da manhã, o boss nasceu e você tá deitado",
+    "hook": "POV: 2h da manhã. O boss nasceu.",
+    "neuro": "pov-self-reference, narrative-transport, precise-timestamps, anticipation, social-proof-twist, peak-end, seamless-loop, comment-prompt",
+    "duration": 15.0,
+    "size_mb": 5.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "POV: 2h da manhã, o boss nasceu e você tá deitado 🌙 02:02 bossDetected, 02:03 dropRare — print real de cliente. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#boss",
+          "#pov"
+        ]
+      },
+      "youtube": {
+        "title": "POV: 2h da manhã, o boss nasceu e você tá deitado (print real)",
+        "description": "POV: 2h da manhã. O boss Rhyperior nasce às 02:02, o drop raro vem às 02:03 e o cliente manda às 02:04: 'Eu tô deitado e o bot tá como ?'. Print real. O KizuBot detecta shiny, mega e boss e avisa no celular, 100% AFK. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "POV: 2h da manhã. O boss nasceu. 🌙 Ele nem levantou da cama — print real de cliente. Seu boss mais tarde foi que horas? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#madrugada"
+        ]
+      }
+    },
+    "pinned_comment": "Que horas foi o seu boss mais tarde? 🌙",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/boss-rhyperior-2am.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "050",
+    "file": "050-pov-filme-com-a-namorada.mp4",
+    "series": "F02 POV",
+    "title": "POV: filme com a namorada e o celular vibra",
+    "hook": "POV: filme com a namorada e o celular vibra.",
+    "neuro": "pov-self-reference, curiosity-gap, variable-reward-reveal, narrative-transport, social-proof-twist, peak-end, comment-prompt",
+    "duration": 17.2,
+    "size_mb": 5.6,
+    "platforms": {
+      "tiktok": {
+        "caption": "POV: filme com a namorada e o celular vibra 🍿 Adivinha o que era? Shiny Feraligatr, capturado sozinho às 19:19. Print real de cliente. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#pov"
+        ]
+      },
+      "youtube": {
+        "title": "POV: filme com a namorada e o celular vibra (era um SHINY)",
+        "description": "POV: filme com a namorada e o celular vibra — 'pokemonCaught ~ I've caught feraligatr' às 19:19. Era um Shiny Feraligatr. Print real de cliente: 'eu tava relaxado assistindo um filme c a minha mulher'. O KizuBot detecta e captura shiny e avisa no celular. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "POV: filme com a namorada e o celular vibra. 🍿 Play no filme, shiny no automático — print real de cliente. Você pausaria o filme? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shinyhunting"
+        ]
+      }
+    },
+    "pinned_comment": "Filme ou shiny: você pausaria? 😂",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-feraligatr--card.png",
+      "kit/img/prints/shiny-feraligatr--quote.png",
+      "kit/img/prints/shiny-feraligatr--alarm.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
     "id": "051",
     "file": "051-precisa-pc-ligado.mp4",
     "series": "F03 Mito ou Verdade?",
@@ -2588,6 +2850,271 @@
       "kit/img/prints/mega-stone-barbaracite--card.png",
       "kit/img/brand/kizubot-logo.png",
       "kit/img/brand/kizubot-head.png"
+    ]
+  },
+  {
+    "id": "131",
+    "file": "131-um-dia-na-vida.mp4",
+    "series": "F19 O Dia de Quem Usa",
+    "title": "Um dia na vida de quem usa KizuBot",
+    "hook": "UM DIA NA VIDA DE QUEM USA KIZUBOT.",
+    "neuro": "aspiration-future-pacing, narrative-arc, precise-timestamps, social-proof, visible-progress, peak-end, comment-prompt",
+    "duration": 22.0,
+    "size_mb": 6.1,
+    "platforms": {
+      "tiktok": {
+        "caption": "Um dia na vida de quem usa KizuBot ⏰ Shiny às 09:29, Shiny Feraligatr no meio do filme, alarme no treino, boss às 02:02 — prints reais de clientes diferentes. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#umdianavida",
+          "#vlog"
+        ]
+      },
+      "youtube": {
+        "title": "Um dia na vida de quem usa KizuBot (prints reais)",
+        "description": "Um dia na vida de quem usa KizuBot: shiny capturado às 09:29, Shiny Feraligatr no meio do filme às 19:19, alarme no relógio no treino às 20:29, boss às 02:02 com o cara deitado. Dia montado com prints reais de clientes diferentes, cada um no horário do print. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Um dia na vida de quem usa KizuBot. ⏰ Você vive o dia, o char farma o dia todo — prints reais de clientes diferentes. Como seria o seu dia? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#umdianavida"
+        ]
+      }
+    },
+    "pinned_comment": "Como seria o seu dia? 👇",
+    "claims": [
+      "100% AFK",
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp",
+      "roda 24/7 em máquinas virtuais (llms.txt)"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-venusaur--alarm.png",
+      "kit/img/prints/shiny-feraligatr--card.png",
+      "kit/img/prints/gym-smartwatch-alarm--watch.jpg",
+      "kit/img/prints/boss-rhyperior-2am--alarm.png",
+      "kit/img/prints/boss-rhyperior-2am--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "132",
+    "file": "132-char-que-nunca-dorme.mp4",
+    "series": "F19 O Dia de Quem Usa",
+    "title": "A rotina de um char que nunca dorme",
+    "hook": "A ROTINA DE UM CHAR QUE NUNCA DORME.",
+    "neuro": "anthropomorphic-humor, aspiration, visible-progress, social-proof, peak-end, comment-prompt",
+    "duration": 17.6,
+    "size_mb": 5.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "A rotina de um char que nunca dorme 😂 Caça às 6h, pesca às 11h, mato às 15h, captura às 3h. Pausa pro café? Nunca. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#rotina"
+        ]
+      },
+      "youtube": {
+        "title": "A rotina de um char que nunca dorme (24h no KizuBot)",
+        "description": "A rotina de um char que nunca dorme: caçando, pescando, coletando mato e capturando, 24h por dia na nuvem. Print real de cliente: 'Bagui tá rodando desde cedo hj'. Ele nunca dorme. Você pode. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "A rotina de um char que nunca dorme. 😂 Pausa pro café? Nunca. Ele nunca dorme — você pode. Seu char tem rotina? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afkfarm"
+        ]
+      }
+    },
+    "pinned_comment": "Seu char tem rotina? 😂",
+    "claims": [
+      "100% AFK",
+      "roda 24/7 em máquinas virtuais (llms.txt)",
+      "módulos de caça, pesca, farming e captura"
+    ],
+    "assets": [
+      "kit/img/prints/hud-8434-loots--quote.png",
+      "kit/img/prints/hud-8434-loots--hud.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "133",
+    "file": "133-enquanto-o-bot-caca.mp4",
+    "series": "F19 O Dia de Quem Usa",
+    "title": "Enquanto o bot caça, a família",
+    "hook": "ENQUANTO O BOT CAÇA…",
+    "neuro": "aspiration-future-pacing, emotional-warmth, social-proof, curiosity-gap-ellipsis, peak-end, comment-prompt",
+    "duration": 18.4,
+    "size_mb": 6.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "Enquanto o bot caça… 🫶 'eu me divertido com a família' — prints reais de clientes diferentes. O tempo é seu, o farm é dele. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#familia",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Enquanto o bot caça, ele curte a família (prints reais)",
+        "description": "Enquanto o bot caça… prints reais de clientes: 'enquanto bot caça, eu me divertido com a família' e 'Tô longe de casa cm a família / O bot já tá rodando e liso'. Acesso pelo celular, 100% AFK. O tempo é seu. O farm é dele. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Enquanto o bot caça… 🫶 Prints reais de clientes diferentes curtindo a família com o bot rodando — tudo pelo celular. O que você faria com o tempo livre? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#tempolivre"
+        ]
+      }
+    },
+    "pinned_comment": "O que você faria com o tempo livre?",
+    "claims": [
+      "acesso pelo celular",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/family-handprints--photo.jpg",
+      "kit/img/prints/family-handprints--quote.png",
+      "kit/img/prints/away-with-family--quote.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "134",
+    "file": "134-dois-chars.mp4",
+    "series": "F19 O Dia de Quem Usa",
+    "title": "Ele upa dois chars ao mesmo tempo",
+    "hook": "ELE UPA DOIS CHARS AO MESMO TEMPO.",
+    "neuro": "aspiration, contrast-split, visible-progress, social-proof, peak-end, comment-prompt",
+    "duration": 20.0,
+    "size_mb": 6.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "Ele upa dois chars ao mesmo tempo 🎮🤖 Main com você, alt com o KizuBot na nuvem. Prints reais de clientes diferentes. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#main",
+          "#alt"
+        ]
+      },
+      "youtube": {
+        "title": "Ele upa dois chars ao mesmo tempo (main + alt no bot)",
+        "description": "Ele upa dois chars ao mesmo tempo: você joga no main, o KizuBot farma o alt na nuvem. Prints reais de clientes diferentes: 'Eu na academia upando o char principal e o bot upando a segundaria' e 'Tá farmando automático pra mim enquanto eu fico na main jogando de boa'. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Ele upa dois chars ao mesmo tempo. 🎮🤖 Main: você. Alt: KizuBot. Prints reais de clientes diferentes. Main ou alt: qual fica no bot? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mmorpg"
+        ]
+      }
+    },
+    "pinned_comment": "Main ou alt: qual você deixaria no bot?",
+    "claims": [
+      "100% AFK",
+      "roda 24/7 em máquinas virtuais (llms.txt)"
+    ],
+    "assets": [
+      "kit/img/prints/gym-main-char-bot-alt--quote.png",
+      "kit/img/prints/absurdo-os-recursos--thread.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "135",
+    "file": "135-dia-1-dia-7-dia-30.mp4",
+    "series": "F19 O Dia de Quem Usa",
+    "title": "Dia 1, dia 7, dia 30 usando KizuBot",
+    "hook": "DIA 1. DIA 7. DIA 30.",
+    "neuro": "future-pacing, commitment-ladder, visible-progress, social-proof, precise-number, peak-end, comment-prompt",
+    "duration": 19.0,
+    "size_mb": 6.0,
+    "platforms": {
+      "tiktok": {
+        "caption": "Dia 1, dia 7, dia 30 usando KizuBot 📅 Da primeira config ao '600kkzin pra conta' no primeiro mês — prints reais de clientes diferentes. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#farm"
+        ]
+      },
+      "youtube": {
+        "title": "Dia 1, dia 7, dia 30 usando KizuBot (prints reais)",
+        "description": "Dia 1: 'Até parece que sei programar'. Dia 7: 'fechou 7 dias usando o kizubot né?' — 'Bot joga muito kkk'. Dia 30: '600kkzin pra conta' no primeiro mês (dinheiro do jogo). Prints reais de clientes diferentes; o suporte te ajuda a configurar. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Dia 1, dia 7, dia 30. 📅 Começa no dia 1 — o resto é com ele. Prints reais de clientes diferentes. Em que dia você tá? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#progresso"
+        ]
+      }
+    },
+    "pinned_comment": "Em que dia você tá? 👀",
+    "claims": [
+      "o suporte te ajuda a configurar",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/parece-que-sei-programar--quote.png",
+      "kit/img/prints/bot-joga-muito--quote.png",
+      "kit/img/prints/primeiro-mes-600kk--600kk.png",
+      "kit/img/brand/kizubot-logo.png"
     ]
   }
 ]

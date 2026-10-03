@@ -196,6 +196,7 @@
   KZ.shake(tl, "#world", S[2] + b(1) + 0.05, 12, 0.3, 31);
   tl.to(["#lvT", "#lvB"], { scale: 1.08, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, S[2] + 0.35);
   // ---------- S3 build ----------
+  tl.to(["#lvT", "#lvB"], { opacity: 0, scale: 0.7, duration: 0.18, ease: "power2.in" }, S[3]);
   tl.to("#dim", { opacity: 0.55, duration: 0.25 }, S[3]);
   tl.to("#x2", { scale: 0.6, opacity: 0, duration: 0.2, ease: "power2.in" }, S[3]);
   tl.fromTo("#bld", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: "back.out(2)" }, S[3] + 0.05);

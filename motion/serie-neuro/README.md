@@ -2,11 +2,11 @@
 
 Cem shorts verticais (1080×1920, 30 fps, 12–25 s) para o KizuBot, feitos inteiramente em código: composições HTML/GSAP renderizadas com [HyperFrames](https://github.com/heygen-com/hyperframes), trilha original sintetizada (sem samples nem licenças) e efeitos sonoros, com áudio normalizado em −14 LUFS. Cada short aplica de propósito uma ou mais técnicas de neuromarketing e retenção, e usa só material real: o logo oficial, prints de clientes publicados no kizubot.com (com nomes, rostos e dados pessoais removidos) e gameplay real do site.
 
-<p align="center"><img src="grid-01.jpg" width="100%" alt="Um frame de cada short de 051 a 080"></p>
+<p align="center"><img src="grid-01.jpg" width="100%" alt="Um frame de cada short de 046 a 075"></p>
 
-<p align="center"><img src="grid-02.jpg" width="100%" alt="Um frame de cada short de 081 a 100"></p>
+<p align="center"><img src="grid-02.jpg" width="100%" alt="Um frame de cada short de 076 a 095"></p>
 
-<p align="center"><img src="grid-03.jpg" width="100%" alt="Um frame de cada short de 101 a 130"></p>
+<p align="center"><img src="grid-03.jpg" width="100%" alt="Um frame de cada short de 096 a 135"></p>
 
 ## Como a série foi pensada
 
@@ -39,6 +39,11 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 
 | # | Arquivo | Série | Título | Gancho | Técnicas |
 | --- | --- | --- | --- | --- | --- |
+| 046 | [`046-pov-acorda-com-shiny.mp4`](046-pov-acorda-com-shiny.mp4) | F02 POV | POV: você acorda e o shiny já tá na conta | POV: você acorda e o shiny já tá na conta. | pov-self-reference, narrative-transport, curiosity-gap, schema-violation, social-proof-twist, peak-end, seamless-loop, comment-prompt |
+| 047 | [`047-pov-academia.mp4`](047-pov-academia.mp4) | F02 POV | POV: treino de perna e o relógio vibra | POV: treino de perna e o relógio vibra. | pov-self-reference, narrative-transport, precise-number, humor-benign-violation, match-cut-proof, social-proof, peak-end, comment-prompt |
+| 048 | [`048-pov-praia.mp4`](048-pov-praia.mp4) | F02 POV | POV: você foi pra praia e o bot ficou farmando | POV: você foi pra praia. | pov-self-reference, narrative-transport, countdown-anticipation, social-proof, in-group-identity, peak-end, comment-prompt |
+| 049 | [`049-pov-2h-da-manha.mp4`](049-pov-2h-da-manha.mp4) | F02 POV | POV: 2h da manhã, o boss nasceu e você tá deitado | POV: 2h da manhã. O boss nasceu. | pov-self-reference, narrative-transport, precise-timestamps, anticipation, social-proof-twist, peak-end, seamless-loop, comment-prompt |
+| 050 | [`050-pov-filme-com-a-namorada.mp4`](050-pov-filme-com-a-namorada.mp4) | F02 POV | POV: filme com a namorada e o celular vibra | POV: filme com a namorada e o celular vibra. | pov-self-reference, curiosity-gap, variable-reward-reveal, narrative-transport, social-proof-twist, peak-end, comment-prompt |
 | 051 | [`051-precisa-pc-ligado.mp4`](051-precisa-pc-ligado.mp4) | F03 Mito ou Verdade? | Mito ou verdade: precisa deixar o PC ligado? | MITO OU VERDADE? PRECISA DEIXAR O PC LIGADO? | curiosity-gap, commitment-guess, objection-handling, anticipation-drop, schema-violation, social-proof, loop |
 | 052 | [`052-controla-pelo-celular.mp4`](052-controla-pelo-celular.mp4) | F03 Mito ou Verdade? | Mito ou verdade: dá pra controlar pelo celular? | MITO OU VERDADE? DÁ PRA CONTROLAR PELO CELULAR? | curiosity-gap, commitment-guess, objection-handling, anticipation-drop, picture-superiority, social-proof |
 | 053 | [`053-dificil-configurar.mp4`](053-dificil-configurar.mp4) | F03 Mito ou Verdade? | Mito ou verdade: é difícil de configurar? | MITO OU VERDADE? É DIFÍCIL DE CONFIGURAR? | curiosity-gap, commitment-guess, objection-handling, social-proof, ikea-effect, anticipation-drop |
@@ -89,6 +94,11 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 | 128 | [`128-ache-o-shiny-impossivel.mp4`](128-ache-o-shiny-impossivel.mp4) | F18 Ache o Shiny | Nível impossível | NÍVEL IMPOSSÍVEL. | participation, challenge, von-restorff, rewatch-loop, effort-contrast, real-proof, status-identity, comment-prompt |
 | 129 | [`129-ache-o-boss.mp4`](129-ache-o-boss.mp4) | F18 Ache o Shiny | Ache o boss | ACHE O BOSS. | participation, von-restorff, time-pressure, game-ui-familiarity, rewatch-loop, real-proof, comment-prompt |
 | 130 | [`130-ache-a-mega.mp4`](130-ache-a-mega.mp4) | F18 Ache o Shiny | Ache a mega | ACHE A MEGA. | participation, von-restorff, radar-metaphor, time-pressure, rewatch-loop, real-proof, comment-prompt |
+| 131 | [`131-um-dia-na-vida.mp4`](131-um-dia-na-vida.mp4) | F19 O Dia de Quem Usa | Um dia na vida de quem usa KizuBot | UM DIA NA VIDA DE QUEM USA KIZUBOT. | aspiration-future-pacing, narrative-arc, precise-timestamps, social-proof, visible-progress, peak-end, comment-prompt |
+| 132 | [`132-char-que-nunca-dorme.mp4`](132-char-que-nunca-dorme.mp4) | F19 O Dia de Quem Usa | A rotina de um char que nunca dorme | A ROTINA DE UM CHAR QUE NUNCA DORME. | anthropomorphic-humor, aspiration, visible-progress, social-proof, peak-end, comment-prompt |
+| 133 | [`133-enquanto-o-bot-caca.mp4`](133-enquanto-o-bot-caca.mp4) | F19 O Dia de Quem Usa | Enquanto o bot caça, a família | ENQUANTO O BOT CAÇA… | aspiration-future-pacing, emotional-warmth, social-proof, curiosity-gap-ellipsis, peak-end, comment-prompt |
+| 134 | [`134-dois-chars.mp4`](134-dois-chars.mp4) | F19 O Dia de Quem Usa | Ele upa dois chars ao mesmo tempo | ELE UPA DOIS CHARS AO MESMO TEMPO. | aspiration, contrast-split, visible-progress, social-proof, peak-end, comment-prompt |
+| 135 | [`135-dia-1-dia-7-dia-30.mp4`](135-dia-1-dia-7-dia-30.mp4) | F19 O Dia de Quem Usa | Dia 1, dia 7, dia 30 usando KizuBot | DIA 1. DIA 7. DIA 30. | future-pacing, commitment-ladder, visible-progress, social-proof, precise-number, peak-end, comment-prompt |
 
 Legendas, títulos, descrições, hashtags e comentário fixado por plataforma (TikTok, YouTube Shorts e Instagram Reels) estão em [`metadata.json`](metadata.json) e [`metadata.csv`](metadata.csv).
 

@@ -1,18 +1,64 @@
 {
-  "id": "000",
-  "slug": "slug",
-  "family": "",
-  "title": "",
-  "concept": "",
-  "neuro": [],
-  "hook": "",
+  "id": "134",
+  "slug": "dois-chars",
+  "family": "O Dia de Quem Usa",
+  "title": "Ele upa dois chars ao mesmo tempo",
+  "concept": "Dual-cam vlog split top/bottom: CAM 1 'VOCÊ · main' at the PC, CAM 2 'KIZUBOT · alt' in the cloud; both XP bars fill and LEVEL UP together (2x), then 'Quem usa, conta:' brings two real quotes from different customers about the bot farming the alt while they play the main, and the payoff lands back on the split: 'Main: você. Alt: KizuBot.'",
+  "neuro": [
+    "aspiration",
+    "contrast-split",
+    "visible-progress",
+    "social-proof",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "ELE UPA DOIS CHARS AO MESMO TEMPO.",
   "duration": 20,
-  "assets": [],
-  "claims": [],
-  "platforms": {
-    "tiktok": {"caption": "", "hashtags": []},
-    "youtube": {"title": "", "description": "", "hashtags": []},
-    "instagram": {"caption": "", "hashtags": []}
+  "music": {
+    "style": "phonk",
+    "bpm": 130
   },
-  "pinned_comment": ""
+  "assets": [
+    "kit/img/prints/gym-main-char-bot-alt--quote.png",
+    "kit/img/prints/absurdo-os-recursos--thread.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "roda 24/7 em máquinas virtuais (llms.txt)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Ele upa dois chars ao mesmo tempo 🎮🤖 Main com você, alt com o KizuBot na nuvem. Prints reais de clientes diferentes. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#main",
+        "#alt"
+      ]
+    },
+    "youtube": {
+      "title": "Ele upa dois chars ao mesmo tempo (main + alt no bot)",
+      "description": "Ele upa dois chars ao mesmo tempo: você joga no main, o KizuBot farma o alt na nuvem. Prints reais de clientes diferentes: 'Eu na academia upando o char principal e o bot upando a segundaria' e 'Tá farmando automático pra mim enquanto eu fico na main jogando de boa'. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Ele upa dois chars ao mesmo tempo. 🎮🤖 Main: você. Alt: KizuBot. Prints reais de clientes diferentes. Main ou alt: qual fica no bot? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#mmorpg"
+      ]
+    }
+  },
+  "pinned_comment": "Main ou alt: qual você deixaria no bot?",
+  "notes": "Concept's gym-main-char-bot-alt.png = gym-main-char-bot-alt; absurdo-os-recursos.png = absurdo-os-recursos (its 'vender e tirar um extra' line is already covered by a pill in the safe file; the thread crop is shown with a highlight on the quoted line). Split screen is top/bottom (concept said left/right) because the right action rail would cover half of a left/right split. XP bars and LEVEL UP carry no numbers (none are invented). Rubric: hook 8, re-hooks 9, clarity 8, craft 8, truth 9, sound 8, brand 9, CTA 9, loop 8, distinct 9 (avg 8.5). 1 render."
 }

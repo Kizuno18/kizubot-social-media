@@ -1,18 +1,67 @@
 {
-  "id": "000",
-  "slug": "slug",
-  "family": "",
-  "title": "",
-  "concept": "",
-  "neuro": [],
-  "hook": "",
-  "duration": 20,
-  "assets": [],
-  "claims": [],
-  "platforms": {
-    "tiktok": {"caption": "", "hashtags": []},
-    "youtube": {"title": "", "description": "", "hashtags": []},
-    "instagram": {"caption": "", "hashtags": []}
+  "id": "050",
+  "slug": "pov-filme-com-a-namorada",
+  "family": "POV",
+  "title": "POV: filme com a namorada e o celular vibra",
+  "concept": "Movie night on the couch (TV glow, popcorn): the phone on the cushion buzzes, the real alarm 'pokemonCaught ~ I've caught feraligatr' (19:19) flies out of it, the real item image arrives blurred under 'adivinha o que era?', and on the drop it snaps sharp: Shiny Feraligatr — then the real context line 'eu tava relaxado assistindo um filme c a minha mulher'.",
+  "neuro": [
+    "pov-self-reference",
+    "curiosity-gap",
+    "variable-reward-reveal",
+    "narrative-transport",
+    "social-proof-twist",
+    "peak-end",
+    "comment-prompt"
+  ],
+  "hook": "POV: filme com a namorada e o celular vibra.",
+  "duration": 17.2,
+  "music": {
+    "style": "synthwave",
+    "bpm": 104
   },
-  "pinned_comment": ""
+  "assets": [
+    "kit/img/prints/shiny-feraligatr--card.png",
+    "kit/img/prints/shiny-feraligatr--quote.png",
+    "kit/img/prints/shiny-feraligatr--alarm.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "alarmes no celular e notificações no WhatsApp",
+    "100% AFK"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "POV: filme com a namorada e o celular vibra 🍿 Adivinha o que era? Shiny Feraligatr, capturado sozinho às 19:19. Print real de cliente. Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shiny",
+        "#pov"
+      ]
+    },
+    "youtube": {
+      "title": "POV: filme com a namorada e o celular vibra (era um SHINY)",
+      "description": "POV: filme com a namorada e o celular vibra — 'pokemonCaught ~ I've caught feraligatr' às 19:19. Era um Shiny Feraligatr. Print real de cliente: 'eu tava relaxado assistindo um filme c a minha mulher'. O KizuBot detecta e captura shiny e avisa no celular. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "POV: filme com a namorada e o celular vibra. 🍿 Play no filme, shiny no automático — print real de cliente. Você pausaria o filme? Link na bio.",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#shinyhunting"
+      ]
+    }
+  },
+  "pinned_comment": "Filme ou shiny: você pausaria? 😂",
+  "notes": "Hook keeps the concept's 'namorada' for the viewer's POV; the real quote says 'minha mulher' and is shown verbatim (trimmed: leading 'mas' dropped in the pull quote, full line visible in the print card). The alarm card floats out of a generic illustrated phone (no app trade dress). The real item image arrives blurred under 'adivinha o que era?' and snaps sharp on the drop with gold highlights on 'Shiny Feraligatr' and '100 / Inegociável'. Pinned comment changed from 'Ele nem pausou o filme 😂 Você pausaria?' to 'Filme ou shiny: você pausaria? 😂' — the print doesn't say whether he paused. Rubric: hook 8, re-hooks 9, clarity 8, craft 8, truth 9, sound 8, brand 9, CTA 9, loop 8, distinct 8 (avg 8.4). 1 render."
 }

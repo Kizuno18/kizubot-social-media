@@ -3334,6 +3334,269 @@
     ]
   },
   {
+    "id": "111",
+    "file": "111-3h33.mp4",
+    "series": "F15 Terror no PxG",
+    "title": "3:33 da manhã. O celular acende sozinho.",
+    "hook": "3:33 DA MANHÃ.",
+    "neuro": "arousal-suspense, curiosity-gap, pattern-interrupt, benign-violation, seasonality, social-proof, peak-end, loop",
+    "duration": 20.3,
+    "size_mb": 19.9,
+    "platforms": {
+      "tiktok": {
+        "caption": "3:33 da manhã. O celular acende sozinho. Uma mensagem... 👻 Era o alarme do KizuBot: shiny detectado. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween",
+          "#shiny"
+        ]
+      },
+      "youtube": {
+        "title": "3:33 da manhã. O celular acende sozinho... (era um SHINY)",
+        "description": "Você acorda com um barulho. O celular acende sozinho. Uma mensagem... era o alarme do KizuBot avisando um shiny. A cena é ficção; o shiny do print é real (print real de cliente). O KizuBot farma 100% AFK, com o PC desligado, e avisa no celular e no WhatsApp quando aparece shiny, mega ou boss. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween"
+        ]
+      },
+      "instagram": {
+        "caption": "3:33 da manhã. O celular acende sozinho... 👻 Calma: era o KizuBot avisando um shiny. Dorme tranquilo, ele tá acordado. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween"
+        ]
+      }
+    },
+    "pinned_comment": "Que horas o seu celular já te assustou? 👻",
+    "claims": [
+      "alarmes no celular e notificações no WhatsApp",
+      "detecção de shinys, megas e bosses",
+      "uso com PC desligado"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-dratini-new-server--shot.png",
+      "kit/img/prints/shiny-dratini-new-server--quote.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "112",
+    "file": "112-lenda-do-char.mp4",
+    "series": "F15 Terror no PxG",
+    "title": "A lenda do char que nunca dorme",
+    "hook": "O CHAR QUE NUNCA DORME.",
+    "neuro": "arousal-suspense, self-reference, benign-violation, seasonality, precise-number, social-proof, peak-end, comment-prompt",
+    "duration": 19.467,
+    "size_mb": 15.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "A lenda do char que nunca dorme 👁️ Dizem que ele caça 24h por dia. Nem às 4h. Nem no Natal. Spoiler: pode ser o seu. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween",
+          "#lenda"
+        ]
+      },
+      "youtube": {
+        "title": "A lenda do char que nunca dorme (pode ser o seu)",
+        "description": "Dizem que existe um char que caça 24h por dia. Ninguém nunca viu ele parar. Nem às 4h da manhã. Nem no Natal. É o seu char com o KizuBot: roda 24h na nuvem, com o PC desligado. Print real de cliente (HUD antigo do bot): \"Bagui tá rodando desde cedo hj\". kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween"
+        ]
+      },
+      "instagram": {
+        "caption": "A lenda do char que nunca dorme 👁️ Nem às 4h. Nem no Natal. É o seu char, com o KizuBot rodando 24h na nuvem. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween"
+        ]
+      }
+    },
+    "pinned_comment": "Você já viu esse char? 👁️",
+    "claims": [
+      "runs 24/7 on virtual machines (\"24h na nuvem\")",
+      "uso com PC desligado"
+    ],
+    "assets": [
+      "kit/img/prints/hud-8434-loots--hud.png",
+      "kit/img/prints/hud-8434-loots--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "113",
+    "file": "113-terror-do-farm-manual.mp4",
+    "series": "F15 Terror no PxG",
+    "title": "O verdadeiro terror do PxG",
+    "hook": "O VERDADEIRO TERROR DO PXG.",
+    "neuro": "arousal-suspense, benign-violation, pattern-interrupt, loss-aversion, seasonality, in-group-humor, peak-end, comment-prompt",
+    "duration": 19.4,
+    "size_mb": 15.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "O verdadeiro terror do PxG: 8 horas clicando, sozinho, o sono vem... e o shiny foge 😱 FARM MANUAL, em breve no seu PC. Ou não. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "O verdadeiro terror do PxG (FARM MANUAL, em breve no seu PC)",
+        "description": "8 horas. Clicando. Sozinho. O sono vem. O shiny foge. O verdadeiro terror do PxG tem nome: farm manual. Ou não: o KizuBot farma 100% AFK, com o PC desligado, e você acompanha tudo pelo celular. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween"
+        ]
+      },
+      "instagram": {
+        "caption": "O verdadeiro terror do PxG 😱 8 horas clicando, sozinho, e o shiny foge. Ou não: PC desligado, farm ligado. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween"
+        ]
+      }
+    },
+    "pinned_comment": "Qual o seu pior pesadelo no PxG? 😱",
+    "claims": [
+      "100% AFK",
+      "uso com PC desligado"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-robot.png",
+      "kit/img/brand/kizubot-wordmark.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "114",
+    "file": "114-nao-olha-pra-tras.mp4",
+    "series": "F15 Terror no PxG",
+    "title": "Não olha pra trás (alguém está jogando no seu lugar)",
+    "hook": "NÃO OLHA PRA TRÁS.",
+    "neuro": "self-reference, arousal-suspense, benign-violation, pattern-interrupt, seasonality, picture-superiority, peak-end, comment-prompt",
+    "duration": 17.733,
+    "size_mb": 15.0,
+    "platforms": {
+      "tiktok": {
+        "caption": "Não olha pra trás 👀 Enquanto você assiste esse vídeo, alguém está jogando no seu lugar... relaxa, é o KizuBot farmando pra você. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Não olha pra trás... alguém está jogando no seu lugar",
+        "description": "Enquanto você assiste esse vídeo, alguém está jogando no seu lugar. Relaxa: é o KizuBot farmando pra você, 100% AFK e com o PC desligado (gameplay real no vídeo). kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween"
+        ]
+      },
+      "instagram": {
+        "caption": "Não olha pra trás 👀 Alguém está jogando no seu lugar... relaxa, é o KizuBot: 100% AFK, PC desligado. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween"
+        ]
+      }
+    },
+    "pinned_comment": "Olhou pra trás? Confessa 😂",
+    "claims": [
+      "100% AFK",
+      "uso com PC desligado"
+    ],
+    "assets": [
+      "kit/video/tangrowth.mp4",
+      "kit/img/brand/kizubot-robot.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "115",
+    "file": "115-o-shiny-que-piscou.mp4",
+    "series": "F15 Terror no PxG",
+    "title": "O shiny que piscou (e ninguém estava olhando)",
+    "hook": "O SHINY QUE PISCOU.",
+    "neuro": "arousal-suspense, curiosity-gap, loss-aversion, schema-violation, seasonality, social-proof, peak-end, comment-prompt",
+    "duration": 20.8,
+    "size_mb": 12.6,
+    "platforms": {
+      "tiktok": {
+        "caption": "O shiny que piscou 👀 Apareceu por um segundo, brilhou... e ninguém estava olhando. Quase ninguém. Print real de cliente: 'pena que n vi piscar, tava afk'. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#halloween"
+        ]
+      },
+      "youtube": {
+        "title": "O shiny que piscou (e ninguém estava olhando)",
+        "description": "Ele apareceu por um segundo. Brilhou. E ninguém estava olhando... mas o KizuBot estava. Print real de cliente: Shiny Muk, 'pena que n vi piscar / tava afk'. O KizuBot detecta shinys, megas e bosses, captura 100% AFK e avisa no celular. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      },
+      "instagram": {
+        "caption": "O shiny que piscou 👀 Ninguém viu. Mas o KizuBot pegou. (print real de cliente: 'pena que n vi piscar / tava afk') Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#halloween"
+        ]
+      }
+    },
+    "pinned_comment": "Já perdeu um shiny que piscou? 👀",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "100% AFK",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-muk--card.png",
+      "kit/img/prints/shiny-muk--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
     "id": "117",
     "file": "117-13-modulos.mp4",
     "series": "F16 Speedrun",
@@ -4065,6 +4328,262 @@
       "kit/img/prints/parece-que-sei-programar--quote.png",
       "kit/img/prints/bot-joga-muito--quote.png",
       "kit/img/prints/primeiro-mes-600kk--600kk.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "136",
+    "file": "136-tres-horas.mp4",
+    "series": "F20 Plot Twist",
+    "title": "3 horas de hunt. Ele mandou uma foto... e uma legenda",
+    "hook": "3 HORAS DE HUNT.",
+    "neuro": "narrative-transport, curiosity-gap, schema-violation, precise-number, social-proof, peak-end, comment-prompt",
+    "duration": 16.5,
+    "size_mb": 11.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "3 horas de hunt 🎬 Ele mandou uma foto do Pokémon Center e só uma legenda: \"Pega esse doublé smeargle 7 ai\". Print real de cliente. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#smeargle",
+          "#plottwist"
+        ]
+      },
+      "youtube": {
+        "title": "3 horas de hunt... e ele voltou com DOIS Smeargle 7",
+        "description": "Uma história real em 3 capítulos, contada a partir de um print real de cliente: uma foto do Pokémon Center e a legenda \"Pega esse doublé smeargle 7 ai / 3h de hunt\". O KizuBot caça 100% AFK, com o PC desligado. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#smeargle"
+        ]
+      },
+      "instagram": {
+        "caption": "3 horas de hunt. Dois Smeargle 7. 🎬 (print real de cliente: \"Pega esse doublé smeargle 7 ai / 3h de hunt\") Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#smeargle"
+        ]
+      }
+    },
+    "pinned_comment": "O que você faria em 3 horas fora? ⏳",
+    "claims": [
+      "100% AFK",
+      "uso com PC desligado"
+    ],
+    "assets": [
+      "kit/img/prints/smeargle-7-em-3h.png",
+      "kit/img/prints/smeargle-7-em-3h--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "137",
+    "file": "137-dois-meses.mp4",
+    "series": "F20 Plot Twist",
+    "title": "Ele farmou por 2 meses. O que ele fez com 1.5kkk?",
+    "hook": "ELE FARMOU POR 2 MESES.",
+    "neuro": "narrative-transport, curiosity-gap, anchoring, satisfying-progress, social-proof, peak-end, comment-prompt",
+    "duration": 18.0,
+    "size_mb": 11.8,
+    "platforms": {
+      "tiktok": {
+        "caption": "Ele farmou por 2 meses 🎬 No fim: 1.5kkk. E o que ele fez com isso? \"Com os 1.5kkk montei rotação ice pb full com Tm burst\" (print real de cliente). Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#rotacao",
+          "#plottwist"
+        ]
+      },
+      "youtube": {
+        "title": "Ele farmou por 2 meses... e montou a rotação inteira",
+        "description": "Print real de cliente: \"2 meses de Kizu, farmei 1.5kkk / Com os 1.5kkk montei rotação ice pb full com Tm burst\". O KizuBot farma 100% AFK, com o PC desligado, e você acompanha pelo celular. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Ele farmou por 2 meses e montou a rotação inteira 🎬 (print real de cliente) Que rotação você montaria? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#rotacao"
+        ]
+      }
+    },
+    "pinned_comment": "Que rotação você montaria? ❄️",
+    "claims": [
+      "100% AFK",
+      "uso com PC desligado"
+    ],
+    "assets": [
+      "kit/img/prints/2-meses-1-5kkk.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "138",
+    "file": "138-ele-esqueceu.mp4",
+    "series": "F20 Plot Twist",
+    "title": "Ele esqueceu o que tinha pego (tava lá o bixão)",
+    "hook": "ELE ESQUECEU O QUE TINHA PEGO.",
+    "neuro": "narrative-transport, curiosity-gap, benign-violation, schema-violation, social-proof, peak-end, comment-prompt",
+    "duration": 18.4,
+    "size_mb": 12.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "Ele esqueceu o que tinha pego 😂 Uns dias depois foi ver o CP... \"tava la o bixao\". Um shiny Venusaur. Print real de cliente. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#plottwist"
+        ]
+      },
+      "youtube": {
+        "title": "Ele esqueceu que tinha pego um shiny Venusaur",
+        "description": "Print real de cliente: \"qe peguei o venu? / até esqueci\" ... \"fui ver no cp uns dias dps / tava la o bixao\". O KizuBot detecta shinys, megas e bosses e farma 100% AFK, com o PC desligado. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      },
+      "instagram": {
+        "caption": "Ele esqueceu o que tinha pego. Uns dias depois, no CP: um shiny Venusaur 😂 (print real de cliente) Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Você esqueceria um shiny? 😂",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-venusaur-cp--punchline.png",
+      "kit/img/prints/shiny-venusaur-cp--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "139",
+    "file": "139-acabei-o-projeto.mp4",
+    "series": "F20 Plot Twist",
+    "title": "Ele disse: \"acabei o projeto\". Que projeto?",
+    "hook": "ELE DISSE: \"ACABEI O PROJETO.\"",
+    "neuro": "narrative-transport, curiosity-gap, zeigarnik-open-loop, schema-violation, social-proof, peak-end, comment-prompt",
+    "duration": 17.333,
+    "size_mb": 12.0,
+    "platforms": {
+      "tiktok": {
+        "caption": "Ele disse: \"acabei o projeto\" 🎬 47 minutos depois: \"qual projeto?\". 15 minutos de silêncio. A resposta: shiny tangela e mais dois shinys. Print real de cliente. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#plottwist"
+        ]
+      },
+      "youtube": {
+        "title": "Ele disse \"acabei o projeto\"... o projeto eram 3 shinies",
+        "description": "Uma história real em 3 capítulos, contada a partir de um print real de cliente: \"Acabei o projeto kkk\" / \"qual projeto?\" / \"Shiny tangela\" / \"E outros dois shinys eu peguei então acabou kkkk\". O KizuBot detecta shinys, megas e bosses e farma 100% AFK. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      },
+      "instagram": {
+        "caption": "Ele disse: \"acabei o projeto\". O projeto? Shiny tangela e mais dois shinys 🎬 (print real de cliente) Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Qual é o seu projeto no PxG? 🎯",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/acabei-o-projeto.png",
+      "kit/img/prints/acabei-o-projeto--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "140",
+    "file": "140-so-desligo-quando.mp4",
+    "series": "F20 Plot Twist",
+    "title": "\"Só desligo o bot quando eu pegar esse Pokémon\"",
+    "hook": "\"SÓ DESLIGO O BOT… QUANDO EU PEGAR ESSE POKÉMON.\"",
+    "neuro": "narrative-transport, zeigarnik-open-loop, commitment, identity, social-proof, comment-prompt",
+    "duration": 17.767,
+    "size_mb": 11.7,
+    "platforms": {
+      "tiktok": {
+        "caption": "\"Só desligo o bot quando eu pegar esse Pokémon\" 🔥 Print real de cliente. O bot não cansa. Ele também não. Será que ele pegou? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#projeto",
+          "#plottwist"
+        ]
+      },
+      "youtube": {
+        "title": "\"Só desligo o bot quando eu pegar esse Pokémon\" (continua...)",
+        "description": "Print real de cliente: \"Só desligo o bot quando eu pegar esse Pokémon\". O KizuBot roda 24h na nuvem, 100% AFK, até o projeto acabar. Será que ele pegou? kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "\"Só desligo o bot quando eu pegar esse Pokémon\" 🔥 (print real de cliente) O bot não cansa. Ele também não. E você, desligaria? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#projeto"
+        ]
+      }
+    },
+    "pinned_comment": "Qual pokémon faria você deixar o bot ligado até pegar? 🔥",
+    "claims": [
+      "runs 24/7 on virtual machines (\"24h na nuvem\")",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/so-desligo-quando-pegar.png",
       "kit/img/brand/kizubot-logo.png"
     ]
   }

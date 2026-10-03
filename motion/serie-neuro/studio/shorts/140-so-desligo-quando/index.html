@@ -70,7 +70,7 @@
   #ul { position: absolute; left: 60px; top: 560px; width: 960px; height: 560px; pointer-events: none; transform-origin: 480px 260px; }
   #t1 { position: absolute; left: 90px; right: 90px; top: 250px; font-size: 84px; color: var(--cn-ink); }
   #t2 { position: absolute; left: 90px; right: 90px; top: 350px; font-size: 84px; color: var(--cn-gold); text-shadow: 0 0 40px rgba(214, 178, 110, 0.5); }
-  #chips { position: absolute; left: 90px; right: 200px; top: 1150px; display: flex; gap: 16px; justify-content: center; }
+  #chips { position: absolute; left: 90px; right: 200px; top: 1150px; display: flex; flex-wrap: wrap; gap: 14px 16px; justify-content: center; }
   #cont { position: absolute; left: 90px; right: 90px; top: 680px; font-size: 120px; color: var(--cn-ink); letter-spacing: 0.06em; z-index: 25; }
   #contSub { position: absolute; left: 90px; right: 200px; top: 800px; text-align: center; font: 700 64px "Cormorant Garamond", serif; color: var(--cn-gold); }
   #dim { position: absolute; inset: 0; background: #000; opacity: 0; }
@@ -105,7 +105,7 @@
       <div class="etag" id="evTag">print real de cliente</div>
       <div class="cn-title" id="t1">O bot não cansa.</div>
       <div class="cn-title" id="t2">Ele também não.</div>
-      <div id="chips"><span class="cn-chip" id="ch1">24h na nuvem</span><span class="cn-chip" id="ch2">100% AFK</span></div>
+      <div id="chips"><span class="cn-chip" id="ch1">KizuBot: 24h na nuvem</span><span class="cn-chip" id="ch2">100% AFK</span></div>
       <div id="dim"></div>
     </div>
   </section>
@@ -254,8 +254,8 @@
   CN.draw(tl, "#ul2", 10.05, 0.4);
   tl.fromTo("#t1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 10.6);
   tl.fromTo("#t2", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 11.0);
-  KZ.pop(tl, "#ch1", 11.5, 0.35);
-  KZ.pop(tl, "#ch2", 11.7, 0.35);
+  KZ.pop(tl, "#ch1", 11.1, 0.35);
+  KZ.pop(tl, "#ch2", 11.3, 0.35);
   // open ending: the table clears, the letterbox closes, "Continua…"
   tl.to(["#ev", "#ul", "#evTag", "#t1", "#t2", "#chips"], { opacity: 0, duration: 0.3, ease: "power2.in" }, 12.3);
   CN.close(tl, 12.35, 0.4);

@@ -8,7 +8,9 @@ Cem shorts verticais (1080×1920, 30 fps, 12–25 s) para o KizuBot, feitos inte
 
 <p align="center"><img src="grid-03.jpg" width="100%" alt="Um frame de cada short de 086 a 105"></p>
 
-<p align="center"><img src="grid-04.jpg" width="100%" alt="Um frame de cada short de 106 a 135"></p>
+<p align="center"><img src="grid-04.jpg" width="100%" alt="Um frame de cada short de 106 a 132"></p>
+
+<p align="center"><img src="grid-05.jpg" width="100%" alt="Um frame de cada short de 133 a 140"></p>
 
 ## Como a série foi pensada
 
@@ -105,6 +107,11 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 | 107 | [`107-queria-ter-comprado-antes.mp4`](107-queria-ter-comprado-antes.mp4) | F14 Prova Real | Ele queria ter comprado o KizuBot antes | ELE QUERIA* TER COMPRADO ANTES. | social-proof, regret-loss-aversion, humor, pattern-recognition, peak-end, comment-prompt |
 | 109 | [`109-cinco-estrelas.mp4`](109-cinco-estrelas.mp4) | F14 Prova Real | Um cliente mandou isso: ⭐⭐⭐⭐⭐ | UM CLIENTE MANDOU ISSO: ⭐⭐⭐⭐⭐ | social-proof, picture-superiority, commitment-checklist, variable-reward, peak-end, comment-prompt |
 | 110 | [`110-o-bot-evoluiu.mp4`](110-o-bot-evoluiu.mp4) | F14 Prova Real | "O bot evoluiu muito." — prova real | “O BOT EVOLUIU MUITO.” | social-proof, before-after-contrast, authority, visible-progress, peak-end, comment-prompt |
+| 111 | [`111-3h33.mp4`](111-3h33.mp4) | F15 Terror no PxG | 3:33 da manhã. O celular acende sozinho. | 3:33 DA MANHÃ. | arousal-suspense, curiosity-gap, pattern-interrupt, benign-violation, seasonality, social-proof, peak-end, loop |
+| 112 | [`112-lenda-do-char.mp4`](112-lenda-do-char.mp4) | F15 Terror no PxG | A lenda do char que nunca dorme | O CHAR QUE NUNCA DORME. | arousal-suspense, self-reference, benign-violation, seasonality, precise-number, social-proof, peak-end, comment-prompt |
+| 113 | [`113-terror-do-farm-manual.mp4`](113-terror-do-farm-manual.mp4) | F15 Terror no PxG | O verdadeiro terror do PxG | O VERDADEIRO TERROR DO PXG. | arousal-suspense, benign-violation, pattern-interrupt, loss-aversion, seasonality, in-group-humor, peak-end, comment-prompt |
+| 114 | [`114-nao-olha-pra-tras.mp4`](114-nao-olha-pra-tras.mp4) | F15 Terror no PxG | Não olha pra trás (alguém está jogando no seu lugar) | NÃO OLHA PRA TRÁS. | self-reference, arousal-suspense, benign-violation, pattern-interrupt, seasonality, picture-superiority, peak-end, comment-prompt |
+| 115 | [`115-o-shiny-que-piscou.mp4`](115-o-shiny-que-piscou.mp4) | F15 Terror no PxG | O shiny que piscou (e ninguém estava olhando) | O SHINY QUE PISCOU. | arousal-suspense, curiosity-gap, loss-aversion, schema-violation, seasonality, social-proof, peak-end, comment-prompt |
 | 117 | [`117-13-modulos.mp4`](117-13-modulos.mp4) | F16 Speedrun | 13 módulos em 13 segundos | 13 MÓDULOS. 13 SEGUNDOS. | time-pressure, chunking, visible-progress, open-loop-timer, rewatch-bait, peak-end, seamless-loop, comment-prompt |
 | 118 | [`118-do-zero-ao-farm.mp4`](118-do-zero-ao-farm.mp4) | F16 Speedrun | Do zero ao farm em 3 passos | DO ZERO AO FARM. 3 PASSOS. | time-pressure, chunking, ikea-effect, visible-progress, social-proof, peak-end, seamless-loop, comment-prompt |
 | 119 | [`119-speedrun-de-shiny.mp4`](119-speedrun-de-shiny.mp4) | F16 Speedrun | Speedrun de shiny: mesmo minuto | SPEEDRUN DE SHINY: NOVO RECORDE. | anticipation, variable-reward, precise-numbers, social-proof, time-pressure, peak-end, seamless-loop, comment-prompt |
@@ -119,6 +126,11 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 | 133 | [`133-enquanto-o-bot-caca.mp4`](133-enquanto-o-bot-caca.mp4) | F19 O Dia de Quem Usa | Enquanto o bot caça, a família | ENQUANTO O BOT CAÇA… | aspiration-future-pacing, emotional-warmth, social-proof, curiosity-gap-ellipsis, peak-end, comment-prompt |
 | 134 | [`134-dois-chars.mp4`](134-dois-chars.mp4) | F19 O Dia de Quem Usa | Ele upa dois chars ao mesmo tempo | ELE UPA DOIS CHARS AO MESMO TEMPO. | aspiration, contrast-split, visible-progress, social-proof, peak-end, comment-prompt |
 | 135 | [`135-dia-1-dia-7-dia-30.mp4`](135-dia-1-dia-7-dia-30.mp4) | F19 O Dia de Quem Usa | Dia 1, dia 7, dia 30 usando KizuBot | DIA 1. DIA 7. DIA 30. | future-pacing, commitment-ladder, visible-progress, social-proof, precise-number, peak-end, comment-prompt |
+| 136 | [`136-tres-horas.mp4`](136-tres-horas.mp4) | F20 Plot Twist | 3 horas de hunt. Ele mandou uma foto... e uma legenda | 3 HORAS DE HUNT. | narrative-transport, curiosity-gap, schema-violation, precise-number, social-proof, peak-end, comment-prompt |
+| 137 | [`137-dois-meses.mp4`](137-dois-meses.mp4) | F20 Plot Twist | Ele farmou por 2 meses. O que ele fez com 1.5kkk? | ELE FARMOU POR 2 MESES. | narrative-transport, curiosity-gap, anchoring, satisfying-progress, social-proof, peak-end, comment-prompt |
+| 138 | [`138-ele-esqueceu.mp4`](138-ele-esqueceu.mp4) | F20 Plot Twist | Ele esqueceu o que tinha pego (tava lá o bixão) | ELE ESQUECEU O QUE TINHA PEGO. | narrative-transport, curiosity-gap, benign-violation, schema-violation, social-proof, peak-end, comment-prompt |
+| 139 | [`139-acabei-o-projeto.mp4`](139-acabei-o-projeto.mp4) | F20 Plot Twist | Ele disse: "acabei o projeto". Que projeto? | ELE DISSE: "ACABEI O PROJETO." | narrative-transport, curiosity-gap, zeigarnik-open-loop, schema-violation, social-proof, peak-end, comment-prompt |
+| 140 | [`140-so-desligo-quando.mp4`](140-so-desligo-quando.mp4) | F20 Plot Twist | "Só desligo o bot quando eu pegar esse Pokémon" | "SÓ DESLIGO O BOT… QUANDO EU PEGAR ESSE POKÉMON." | narrative-transport, zeigarnik-open-loop, commitment, identity, social-proof, comment-prompt |
 
 Legendas, títulos, descrições, hashtags e comentário fixado por plataforma (TikTok, YouTube Shorts e Instagram Reels) estão em [`metadata.json`](metadata.json) e [`metadata.csv`](metadata.csv).
 

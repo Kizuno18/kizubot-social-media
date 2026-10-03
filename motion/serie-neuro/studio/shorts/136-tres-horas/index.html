@@ -67,7 +67,7 @@
   #ul { position: absolute; left: 240px; top: 990px; width: 732px; height: 300px; pointer-events: none; transform-origin: 366px 140px; }
   #t1 { position: absolute; left: 90px; right: 90px; top: 250px; font-size: 150px; color: var(--cn-gold); text-shadow: 0 0 50px rgba(214, 178, 110, 0.5), 0 4px 0 rgba(0, 0, 0, 0.5); }
   #t2 { position: absolute; left: 90px; right: 90px; top: 410px; font-size: 120px; }
-  #chips { position: absolute; left: 90px; right: 200px; top: 1318px; display: flex; gap: 16px; justify-content: center; }
+  #chips { position: absolute; left: 90px; right: 200px; top: 1318px; display: flex; flex-wrap: wrap; gap: 14px 16px; justify-content: center; }
   .spark { position: absolute; width: 40px; height: 40px; left: 0; top: 0; }
   .cn-ptag { position: absolute; right: 200px; top: 540px; z-index: 18; padding: 8px 18px; border-radius: 999px; background: rgba(5, 4, 3, 0.82); border: 2px solid var(--cn-gold); font: 800 30px "Inter", sans-serif; letter-spacing: 0.06em; color: var(--cn-gold); text-transform: uppercase; opacity: 0; }
 </style>
@@ -101,7 +101,7 @@
       </svg>
       <div class="cn-title" id="t1">Dois</div>
       <div class="cn-title" id="t2">Smeargle 7.</div>
-      <div id="chips"><span class="cn-chip" id="c1">caça 100% AFK</span><span class="cn-chip" id="c2">PC desligado</span></div>
+      <div id="chips"><span class="cn-chip" id="c1">KizuBot: 100% AFK</span><span class="cn-chip" id="c2">PC desligado</span></div>
     </div>
   </section>
 
@@ -252,8 +252,8 @@
       tl.to(s, { opacity: 0, duration: 0.3 }, T5 + 0.8 + r() * 0.3);
     }
   })();
-  KZ.pop(tl, "#c1", 11.2, 0.35);
-  KZ.pop(tl, "#c2", 11.4, 0.35);
+  KZ.pop(tl, "#c1", 10.55, 0.35);
+  KZ.pop(tl, "#c2", 10.75, 0.35);
   tl.to("#s4in", { opacity: 0, duration: 0.15, ease: "power2.in" }, 12.5 - 0.15);
 
   /* end card */

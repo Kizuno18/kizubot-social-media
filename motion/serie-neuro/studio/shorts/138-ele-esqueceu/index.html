@@ -70,7 +70,7 @@
   #ul2w { position: absolute; left: 200px; top: 700px; width: 672px; height: 520px; pointer-events: none; transform-origin: 336px 260px; }
   #t1 { position: absolute; left: 90px; right: 200px; top: 720px; font-size: 120px; color: var(--cn-ink); }
   #t2 { position: absolute; left: 90px; right: 200px; top: 850px; font-size: 120px; color: var(--cn-gold); text-shadow: 0 0 50px rgba(214, 178, 110, 0.5), 0 4px 0 rgba(0, 0, 0, 0.5); }
-  #chips { position: absolute; left: 90px; right: 200px; top: 1020px; display: flex; gap: 16px; justify-content: center; }
+  #chips { position: absolute; left: 90px; right: 200px; top: 1010px; display: flex; flex-wrap: wrap; gap: 14px 16px; justify-content: center; }
   .spark { position: absolute; width: 40px; height: 40px; left: 0; top: 0; }
 </style>
 </head>
@@ -103,7 +103,7 @@
       <div class="etag" id="evTag">print real de cliente</div>
       <div class="cn-title" id="t1">Um shiny</div>
       <div class="cn-title" id="t2">Venusaur.</div>
-      <div id="chips"><span class="cn-chip" id="c1">detecção de shiny</span><span class="cn-chip" id="c2">100% AFK</span></div>
+      <div id="chips"><span class="cn-chip" id="c1">KizuBot: detecção de shiny</span><span class="cn-chip" id="c2">100% AFK</span></div>
     </div>
   </section>
 
@@ -267,8 +267,8 @@
       tl.to(s, { opacity: 0, duration: 0.3 }, T3 + 1.25 + r() * 0.3);
     }
   })();
-  KZ.pop(tl, "#c1", 13.2, 0.35);
-  KZ.pop(tl, "#c2", 13.4, 0.35);
+  KZ.pop(tl, "#c1", 12.8, 0.35);
+  KZ.pop(tl, "#c2", 13.0, 0.35);
   tl.to("#s4in", { opacity: 0, duration: 0.15, ease: "power2.in" }, 14.4 - 0.15);
 
   /* end */

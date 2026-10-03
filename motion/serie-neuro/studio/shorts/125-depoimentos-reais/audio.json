@@ -1,0 +1,41 @@
+{
+  "duration": 15.246,
+  "style": "gameshow",
+  "bpm": 122,
+  "seed": 125,
+  "sections": [
+    {"at": 0.0, "type": "groove"},
+    {"at": 1.967, "type": "groove", "energy": 0.8},
+    {"at": 9.836, "type": "drop"},
+    {"at": 11.803, "type": "outro"}
+  ],
+  "stops": [{"at": 9.62, "len": 0.2, "tape": false}],
+  "sfx": [
+    {"t": 0.0, "name": "impact", "gain": -6},
+    {"t": 0.0, "name": "ding", "gain": -10},
+    {"t": 0.14, "name": "boom", "gain": -9},
+    {"t": 0.62, "name": "snap", "gain": -7},
+    {"t": 0.66, "name": "wrong", "gain": -11},
+    {"t": 1.967, "name": "glitch", "gain": -10},
+    {"t": 2.0, "name": "pop", "gain": -10},
+    {"t": 2.22, "name": "whoosh_fast", "gain": -14},
+    {"t": 3.52, "name": "click", "gain": -9},
+    {"t": 3.54, "name": "pop2", "gain": -12},
+    {"t": 4.918, "name": "glitch", "gain": -10},
+    {"t": 4.95, "name": "pop", "gain": -10},
+    {"t": 5.17, "name": "whoosh_fast", "gain": -14},
+    {"t": 7.869, "name": "glitch", "gain": -10},
+    {"t": 7.90, "name": "pop", "gain": -10},
+    {"t": 8.09, "name": "boom", "gain": -9},
+    {"t": 8.29, "name": "pop2", "gain": -10},
+    {"t": 9.836, "name": "impact", "gain": -5},
+    {"t": 9.84, "name": "swoosh_hit", "gain": -9},
+    {"t": 9.95, "name": "whoosh", "gain": -12},
+    {"t": 10.05, "name": "whoosh", "gain": -12},
+    {"t": 10.33, "name": "coin", "gain": -8},
+    {"t": 11.65, "name": "whoosh", "gain": -11},
+    {"t": 14.79, "name": "whoosh_down", "gain": -9},
+    {"t": 14.95, "name": "glitch", "gain": -14}
+  ],
+  "logo": 11.85
+}

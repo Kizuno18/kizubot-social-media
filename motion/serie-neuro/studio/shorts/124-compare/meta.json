@@ -1,0 +1,82 @@
+{
+  "id": "124",
+  "slug": "compare",
+  "family": "Infomercial",
+  "title": "Compare!",
+  "concept": "The classic infomercial comparison board: 'COMPARE!' then five rows stamp in on the beat, ✗ for farming by hand (grey column, sad 'wrong') and ✓ for KizuBot (color column, 'right'), a '0 × 5' scoreboard re-hook, 'E o preço?' + drumroll → 'menos de R$ 9 por dia' with 'planos a partir de R$ 250 por mês'.",
+  "neuro": [
+    "contrast-comparison",
+    "commitment-ladder",
+    "visible-progress",
+    "anticipation-drop",
+    "anchoring",
+    "nostalgia",
+    "comment-prompt",
+    "loop"
+  ],
+  "hook": "COMPARE!",
+  "duration": 17.213,
+  "music": {
+    "style": "gameshow",
+    "bpm": 122
+  },
+  "assets": [
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "uso com PC desligado",
+    "farma enquanto você dorme (100% AFK)",
+    "alarmes no celular e notificações no WhatsApp",
+    "detecção de shinys, megas e bosses",
+    "pesca no AFK",
+    "planos a partir de R$ 250/mês",
+    "menos de R$ 9 por dia (R$ 250 ÷ 30 = R$ 8,33)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "COMPARE! 📺 Farmar na mão x KizuBot: PC desligado, farm enquanto você dorme, aviso no WhatsApp, detecção de shiny/mega/boss e pesca no AFK. E o preço? Menos de R$ 9 por dia. Link na bio. Qual linha pesou mais pra você?",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk",
+        "#comercial"
+      ]
+    },
+    "youtube": {
+      "title": "Compare! Farmar na mão x KizuBot (e o preço?) 📺",
+      "description": "Na mão você precisa do PC ligado, não farma dormindo, não recebe aviso no WhatsApp, não tem detecção de shiny, mega e boss e não pesca no AFK. Com o KizuBot, sim. Planos a partir de R$ 250/mês: menos de R$ 9 por dia. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Compare! 📺 Farmar na mão x KizuBot, linha por linha. E o preço? Menos de R$ 9 por dia (planos a partir de R$ 250/mês). Link na bio. Qual linha pesou mais pra você?",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk"
+      ]
+    }
+  },
+  "pinned_comment": "Qual linha pesou mais pra você? 🤔",
+  "rubric": {
+    "hook": 8,
+    "rehooks": 9,
+    "clarity": 9,
+    "craft": 8,
+    "truth": 8,
+    "sound": 8,
+    "brand": 8,
+    "cta": 8,
+    "loop": 8,
+    "distinct": 9,
+    "avg": 8.3
+  },
+  "notes": "Compares only with playing by hand ('NA MÃO'), never with other bots or brands. Dropped the concept's 6th row 'Acompanha pelo celular': the ✗ for manual play isn't cleanly factual (and five rows read better on the beat). The '0 × 5' scoreboard only counts the five rows shown. Price beat: 'E o preço?' + drumroll → 'menos de R$ 9 por dia' with 'planos a partir de R$ 250 por mês' under it; no de/por, no urgency. No LINK NA BIO bar in this episode (the board needs the space); the CTA is the end-card question (the pinned question as a question). Full-screen broadcast framing (rounded CRT vignette + scanlines + AO VIVO bug) on a yellow studio, so it differs from 121–123."
+}

@@ -1,0 +1,77 @@
+{
+  "id": "125",
+  "slug": "depoimentos-reais",
+  "family": "Infomercial",
+  "title": "Depoimentos reais. Sem ator.",
+  "concept": "The TV-shopping testimonial set, minus the actors: the director's chair labelled ATOR gets a red ✗, then three real client prints play on the CRT with 'CLIENTE KIZUBOT' lower thirds and big verbatim quotes, labelled 'prints reais de clientes diferentes', recap '3 clientes. 0 atores.' and the end card.",
+  "neuro": [
+    "social-proof",
+    "authenticity",
+    "humor-benign-violation",
+    "regret-loss-aversion",
+    "nostalgia",
+    "comment-prompt",
+    "loop"
+  ],
+  "hook": "DEPOIMENTOS REAIS. SEM ATOR.",
+  "duration": 15.246,
+  "music": {
+    "style": "gameshow",
+    "bpm": 122
+  },
+  "assets": [
+    "kit/img/prints/queria-ter-comprado-antes--antes.png",
+    "kit/img/prints/facil-configurar.png",
+    "kit/img/prints/bot-e-um-roubo--roubo.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "verbatim client quotes only (no other product claims)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Depoimentos reais. Sem ator. 📺 \"eu quero mt ter comprado isso antes / queria*\", \"Teu bot é mt bom e fácil configurar\", \"Faz tudo a desgrama\". Prints reais de clientes diferentes. Link na bio. Qual depoimento você daria?",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#depoimento",
+        "#comercial"
+      ]
+    },
+    "youtube": {
+      "title": "Depoimentos reais. Sem ator. (prints de clientes do KizuBot) 📺",
+      "description": "Comercial de TV, mas sem ator: três prints reais de clientes diferentes do KizuBot, com as frases exatamente como eles escreveram. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Depoimentos reais. Sem ator. 📺 Três prints reais de clientes diferentes, do jeitinho que eles escreveram. Link na bio. Qual depoimento você daria?",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#depoimento"
+      ]
+    }
+  },
+  "pinned_comment": "Qual depoimento você daria? 👇",
+  "rubric": {
+    "hook": 8,
+    "rehooks": 8,
+    "clarity": 8,
+    "craft": 8,
+    "truth": 9,
+    "sound": 8,
+    "brand": 8,
+    "cta": 8,
+    "loop": 8,
+    "distinct": 9,
+    "avg": 8.2
+  },
+  "notes": "Quotes are verbatim from the images: the concept's 'eu queria mt ter comprado isso antes' is NOT what the print says; the print (queria-ter-comprado-antes--antes.png, source queria-ter-comprado-antes.png) says 'eu quero mt ter comprado isso antes' + 'queria*', shown exactly that way (the self-correction as a handwritten-style line). 'returning-doug.png' isn't in ASSETS.md; the quote 'Teu bot é mt bom e fácil configurar' lives in facil-configurar.png (source bot-evoluiu-muito.png), trimmed before 'parabéns pelo trampo'. 'Faz tudo a desgrama' from bot-e-um-roubo--roubo.png (source bot-e-um-roubo.png; the print also shows 'Mas esse bot é um roubo'). Each print is in a card tagged 'print real de cliente'; the label 'prints reais de clientes diferentes' stays on screen during all three; '3 clientes' counts the three different-source prints. Lower thirds say only 'CLIENTE KIZUBOT': no names, cities, faces or star ratings."
+}

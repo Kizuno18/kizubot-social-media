@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>125 Depoimentos reais. Sem ator.</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F17 Infomercial — ep.125: magenta testimonial set, real prints instead of actors ===== */
+  :root {
+    --tv-yel: #ffd60a; --tv-red: #e3242b; --tv-navy: #0a1b5e; --tv-wht: #fffaf0;
+    --ol-red: -7px -7px 0 #e3242b, 7px -7px 0 #e3242b, -7px 7px 0 #e3242b, 7px 7px 0 #e3242b, 0 -9px 0 #e3242b, 0 9px 0 #e3242b, -9px 0 0 #e3242b, 9px 0 0 #e3242b;
+    --ol-navy: -6px -6px 0 #0a1b5e, 6px -6px 0 #0a1b5e, -6px 6px 0 #0a1b5e, 6px 6px 0 #0a1b5e, 0 -8px 0 #0a1b5e, 0 8px 0 #0a1b5e, -8px 0 0 #0a1b5e, 8px 0 0 #0a1b5e;
+    --ex-navy: 5px 7px 0 #0a1b5e, 8px 11px 0 #0a1b5e, 11px 15px 0 #0a1b5e, 14px 19px 0 #0a1b5e, 16px 22px 0 #0a1b5e;
+    --ex-plum: 5px 7px 0 #3b0a45, 8px 11px 0 #3b0a45, 11px 15px 0 #3b0a45, 14px 19px 0 #3b0a45, 16px 22px 0 #3b0a45;
+  }
+  #root { background: #2a0633; }
+  .kz-progress { background: rgba(255,255,255,0.15); }
+  .kz-progress > div { background: linear-gradient(90deg, #ffd60a, #f0abfc); }
+  .chunk { font-family: "Anton", sans-serif; text-transform: uppercase; line-height: 0.98; letter-spacing: 0.01em; white-space: nowrap; }
+  .sk { display: inline-block; transform: skewX(-9deg); }
+  .yel { color: var(--tv-yel); text-shadow: var(--ol-red), var(--ex-navy); }
+  .wht { color: var(--tv-wht); text-shadow: var(--ol-navy), var(--ex-navy); }
+
+  #studio { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(60% 36% at 50% 32%, #f472d0 0%, #c026a8 40%, #6b0f6e 76%, #2a0633 100%); }
+  #rays { position: absolute; left: -760px; top: -685px; width: 2600px; height: 2600px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(255,255,255,0) 0deg, rgba(255,255,255,0.11) 7.5deg, rgba(255,255,255,0) 15deg); }
+  #curtL, #curtR { position: absolute; top: 0; bottom: 0; width: 120px; background: repeating-linear-gradient(90deg, #7a0b3a 0 22px, #b0124f 22px 40px, #7a0b3a 40px 60px); box-shadow: 0 0 60px rgba(0,0,0,0.6); }
+  #curtL { left: -40px; } #curtR { right: -40px; }
+  #stageF { position: absolute; left: 0; right: 0; top: 1420px; bottom: 0; background: linear-gradient(180deg, #4a0d3f 0%, #22051f 100%); border-top: 12px solid #ffd60a; }
+
+  #tvBody { position: absolute; left: 46px; top: 236px; width: 988px; height: 806px; border-radius: 72px;
+    background: linear-gradient(175deg, #3c414d 0%, #1c1f26 36%, #0e1014 100%); box-shadow: 0 40px 90px rgba(0,0,0,0.6), inset 0 3px 0 rgba(255,255,255,0.22), inset 0 -8px 16px rgba(0,0,0,0.65); }
+  #scrHole { position: absolute; left: 70px; top: 260px; width: 940px; height: 710px; border-radius: 60px / 66px; background: #030405; box-shadow: inset 0 0 0 3px #000, 0 3px 0 rgba(255,255,255,0.14); }
+  .grille { position: absolute; top: 984px; width: 330px; height: 34px; border-radius: 17px; background: repeating-linear-gradient(90deg, #06070a 0 7px, #2b2f38 7px 13px); }
+  #led { position: absolute; left: 529px; top: 990px; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #b6ffb0, #22c55e 60%, #0b5a28); box-shadow: 0 0 14px rgba(34,197,94,0.9); }
+  .scr { position: absolute; left: 80px; top: 270px; width: 920px; height: 690px; border-radius: 50px / 58px; overflow: hidden; }
+  .set { position: absolute; inset: 0; background: radial-gradient(40% 40% at 20% 30%, rgba(255,214,10,0.25), rgba(255,214,10,0) 70%), radial-gradient(35% 35% at 80% 70%, rgba(244,114,208,0.35), rgba(244,114,208,0) 70%), linear-gradient(160deg, #3b1250 0%, #1a0626 100%); }
+  .card { position: absolute; border-radius: 22px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.65), 0 0 0 5px rgba(255,255,255,0.9); }
+  .card img { display: block; width: 100%; }
+  .ptag { position: absolute; left: 0; right: 0; text-align: center; }
+  .ptag span { display: inline-block; padding: 8px 20px; border-radius: 999px; background: rgba(5,6,10,0.85); border: 2px solid #ffd60a; font: 800 30px "Inter", sans-serif; color: #ffd60a; letter-spacing: 0.05em; }
+  .titleCard { position: absolute; inset: 0; background: radial-gradient(70% 70% at 50% 45%, #2b0b3a 0%, #0f0316 100%); }
+  .zap { position: absolute; left: 0; width: 920px; height: 40px; background: rgba(255,255,255,0.85); opacity: 0; }
+  #crt { position: absolute; left: 80px; top: 270px; width: 920px; height: 690px; border-radius: 50px / 58px; pointer-events: none;
+    background: linear-gradient(158deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 26%, rgba(255,255,255,0) 40%), radial-gradient(ellipse 78% 72% at 50% 50%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.5) 100%), repeating-linear-gradient(0deg, rgba(0,0,0,0.16) 0 2px, rgba(0,0,0,0) 2px 5px);
+    box-shadow: inset 0 0 46px rgba(0,0,0,0.75); }
+  #bug { position: absolute; left: 112px; top: 300px; display: flex; align-items: center; gap: 12px; padding: 10px 20px 10px 16px; border-radius: 12px; background: #fffaf0; color: #b0124f; font: 900 30px "Inter", sans-serif; letter-spacing: 0.06em; box-shadow: 0 5px 0 #6b0f6e; }
+  #bug i { width: 16px; height: 16px; border-radius: 50%; background: #e3242b; display: block; }
+  #ltClip { position: absolute; left: 80px; top: 270px; width: 920px; height: 690px; border-radius: 50px / 58px; overflow: hidden; pointer-events: none; }
+  .ltBar { position: absolute; left: 0; top: 606px; width: 920px; height: 76px; display: flex; }
+  .ltBar .ph { width: 128px; background: var(--tv-red); display: flex; align-items: center; justify-content: center; font: 900 30px "Inter", sans-serif; color: #fff; letter-spacing: 0.04em; }
+  .ltBar .ph svg { width: 46px; height: 46px; }
+  .ltBar .tx { flex: 1; background: var(--tv-yel); display: flex; align-items: center; padding-left: 26px; font-family: "Anton", sans-serif; font-size: 54px; color: var(--tv-navy); letter-spacing: 0.03em; }
+
+  /* hook */
+  #hk { position: absolute; left: 80px; top: 352px; width: 920px; display: flex; flex-direction: column; align-items: center; }
+  #h1 { font-size: 112px; } #h2 { font-size: 112px; margin-top: 4px; } #h3 { font-size: 172px; margin-top: 10px; }
+  #chairWrap { position: absolute; left: 330px; top: 1062px; width: 380px; height: 360px; }
+  #spot { position: absolute; left: 260px; top: 1000px; width: 520px; height: 420px; background: radial-gradient(50% 50% at 50% 70%, rgba(255,240,180,0.55), rgba(255,240,180,0) 70%); }
+  #xStamp { position: absolute; left: 92px; top: 18px; width: 200px; height: 120px; }
+
+  /* deck quotes */
+  #diff { position: absolute; left: 90px; width: 790px; top: 1062px; text-align: center; }
+  #diff span { display: inline-block; padding: 8px 22px; border-radius: 999px; background: rgba(20,3,26,0.85); border: 2px solid #f0abfc; font: 800 30px "Inter", sans-serif; color: #f5d0fe; letter-spacing: 0.06em; }
+  .quote { position: absolute; left: 90px; width: 790px; top: 1124px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .q { font-family: "Instrument Serif", serif; font-style: italic; font-size: 92px; line-height: 1.0; color: #fffaf0; text-shadow: 0 6px 0 rgba(42,6,51,0.9); white-space: nowrap; }
+  .q .m { color: #ffd60a; font-style: normal; }
+  .qfix { margin-top: 6px; font-family: "Caveat", cursive; font-size: 84px; line-height: 1; color: #ffd60a; transform-origin: 50% 50%; }
+  /* recap */
+  #wall { position: absolute; inset: 0; }
+  #rc { position: absolute; left: 90px; width: 790px; top: 1086px; display: flex; flex-direction: column; align-items: center; }
+  #rc1 { font-size: 132px; } #rc2 { font-size: 132px; margin-top: 4px; }
+
+  /* end card */
+  #endBg { position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 38%, #4c1d95 0%, #1e0b3a 55%, #0b0712 100%); overflow: hidden; }
+  #endRays { position: absolute; left: -760px; top: -730px; width: 2600px; height: 2600px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(216,180,254,0) 0deg, rgba(216,180,254,0.10) 7.5deg, rgba(216,180,254,0) 15deg); }
+  #endCol { position: absolute; left: 90px; right: 120px; top: 250px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; }
+  #endLogoWrap { position: relative; width: 520px; }
+  #endLogo { width: 520px; display: block; }
+  #endUrl { font: 800 66px "Inter", sans-serif; color: #fff; letter-spacing: -0.01em; }
+  #endAsk { margin-top: 10px; font-size: 92px; line-height: 1.0; }
+  #endAsk .sk > div { display: block; }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,0.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+  #offT, #offB { position: absolute; left: 0; width: 1080px; height: 962px; background: #000; }
+  #offT { top: 0; } #offB { top: 958px; }
+  #offLine { position: absolute; left: 0; top: 954px; width: 1080px; height: 12px; background: #fff; box-shadow: 0 0 30px 8px rgba(200,220,255,0.9); opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="15.246" data-fps="30">
+  <div id="studio"><div id="rays"></div></div>
+  <div id="stageF"></div>
+  <div id="curtL"></div><div id="curtR"></div>
+  <div id="tvBody"></div>
+  <div id="scrHole"></div>
+  <div class="grille" style="left:120px"></div><div class="grille" style="left:630px"></div><div id="led"></div>
+
+  <!-- ===== screen content ===== -->
+  <section id="sc0" class="clip" data-start="0" data-duration="1.967"><div class="scr"><div class="titleCard"></div></div></section>
+  <section id="sc1" class="clip" data-start="1.967" data-duration="2.951">
+    <div class="scr" id="scr1"><div class="set"></div>
+      <div class="card" id="pc1" style="left:50px; top:118px; width:820px"><img src="kit/img/prints/queria-ter-comprado-antes--antes.png" alt="" /></div>
+      <div class="ptag" id="pt1" style="top:410px"><span>PRINT REAL DE CLIENTE</span></div>
+      <div class="zap" id="za1" style="top:120px"></div><div class="zap" id="zb1" style="top:420px"></div>
+    </div>
+  </section>
+  <section id="sc2" class="clip" data-start="4.918" data-duration="2.951">
+    <div class="scr" id="scr2"><div class="set"></div>
+      <div class="card" id="pc2" style="left:20px; top:228px; width:880px"><img src="kit/img/prints/facil-configurar.png" alt="" /></div>
+      <div class="ptag" id="pt2" style="top:350px"><span>PRINT REAL DE CLIENTE</span></div>
+      <div class="zap" id="za2" style="top:160px"></div><div class="zap" id="zb2" style="top:470px"></div>
+    </div>
+  </section>
+  <section id="sc3" class="clip" data-start="7.869" data-duration="1.967">
+    <div class="scr" id="scr3"><div class="set"></div>
+      <div class="card" id="pc3" style="left:140px; top:110px; width:640px"><img src="kit/img/prints/bot-e-um-roubo--roubo.png" alt="" /></div>
+      <div class="ptag" id="pt3" style="top:388px"><span>PRINT REAL DE CLIENTE</span></div>
+      <div class="zap" id="za3" style="top:100px"></div><div class="zap" id="zb3" style="top:440px"></div>
+    </div>
+  </section>
+  <section id="sc4" class="clip" data-start="9.836" data-duration="1.967">
+    <div class="scr"><div class="set"></div>
+      <div id="wall">
+        <div class="card" id="w1" style="left:40px; top:52px; width:560px"><img src="kit/img/prints/queria-ter-comprado-antes--antes.png" alt="" /></div>
+        <div class="card" id="w2" style="left:150px; top:262px; width:730px"><img src="kit/img/prints/facil-configurar.png" alt="" /></div>
+        <div class="card" id="w3" style="left:470px; top:350px; width:400px"><img src="kit/img/prints/bot-e-um-roubo--roubo.png" alt="" /></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="crt"></div>
+  <div id="bug"><i id="bugDot"></i>DEPOIMENTO REAL</div>
+  <div id="ltClip">
+    <div class="ltBar" id="lt1"><div class="ph">REAL</div><div class="tx">CLIENTE KIZUBOT</div></div>
+    <div class="ltBar" id="lt2"><div class="ph"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div><div class="tx" style="color:#e3242b">LINK NA BIO</div></div>
+  </div>
+
+  <!-- ===== hook: title on the TV + the empty actor chair ===== -->
+  <section id="s1" class="clip" data-start="0" data-duration="1.967">
+    <div id="hk">
+      <div class="chunk wht" id="h1"><span class="sk">DEPOIMENTOS</span></div>
+      <div class="chunk wht" id="h2"><span class="sk">REAIS.</span></div>
+      <div class="chunk yel" id="h3"><span class="sk">SEM ATOR.</span></div>
+    </div>
+    <div id="spot"></div>
+    <div id="chairWrap">
+      <svg viewBox="0 0 380 360" width="380" height="360">
+        <path d="M70,170 L50,350 M310,170 L330,350 M90,170 L300,350 M290,170 L80,350" stroke="#3b2414" stroke-width="16" stroke-linecap="round"/>
+        <rect x="40" y="150" width="300" height="34" rx="8" fill="#5a3a22"/>
+        <rect x="60" y="20" width="18" height="150" fill="#3b2414"/><rect x="302" y="20" width="18" height="150" fill="#3b2414"/>
+        <rect x="56" y="22" width="268" height="96" rx="6" fill="#16080f"/>
+        <text x="190" y="94" text-anchor="middle" font-family="Anton" font-size="66" fill="#fffaf0" letter-spacing="6">ATOR</text>
+        <rect x="40" y="120" width="300" height="16" rx="6" fill="#16080f"/>
+      </svg>
+      <svg id="xStamp" viewBox="0 0 200 120"><path d="M20,12 L180,108 M180,12 L20,108" stroke="#e3242b" stroke-width="20" stroke-linecap="round"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== deck: label + verbatim quotes ===== -->
+  <section id="sD" class="clip" data-start="1.967" data-duration="7.869">
+    <div id="diff"><span>PRINTS REAIS DE CLIENTES DIFERENTES</span></div>
+  </section>
+  <section id="sq1" class="clip" data-start="1.967" data-duration="2.951">
+    <div class="quote"><div class="q" id="q1a"><span class="m">“</span>eu quero mt ter</div><div class="q" id="q1b">comprado isso antes<span class="m">”</span></div><div class="qfix" id="q1c">queria*</div></div>
+  </section>
+  <section id="sq2" class="clip" data-start="4.918" data-duration="2.951">
+    <div class="quote" style="top:1150px"><div class="q" id="q2a"><span class="m">“</span>Teu bot é mt bom</div><div class="q" id="q2b">e fácil configurar<span class="m">”</span></div></div>
+  </section>
+  <section id="sq3" class="clip" data-start="7.869" data-duration="1.967">
+    <div class="quote" style="top:1150px"><div class="q" id="q3a" style="font-size:112px"><span class="m">“</span>Faz tudo</div><div class="q" id="q3b" style="font-size:112px">a desgrama<span class="m">”</span></div></div>
+  </section>
+  <section id="sR" class="clip" data-start="9.836" data-duration="1.967">
+    <div id="rc">
+      <div class="chunk wht" id="rc1"><span class="sk">3 CLIENTES.</span></div>
+      <div class="chunk yel" id="rc2"><span class="sk">0 ATORES.</span></div>
+    </div>
+  </section>
+
+  <!-- end card (11.803 - 15.246) -->
+  <section id="s9" class="clip" data-start="11.803" data-duration="3.443">
+    <div id="endIn" style="position:absolute; inset:0">
+      <div id="endBg"><div id="endRays"></div></div>
+      <div id="endCol">
+        <div id="endLogoWrap"><img id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" /><div class="eye" id="eyeEnd" style="left:161px; top:4px; width:100px; height:100px"></div></div>
+        <div id="endUrl">kizubot.com</div>
+        <div class="chunk yel" id="endAsk"><span class="sk"><div>QUAL DEPOIMENTO</div><div>VOCÊ DARIA?</div></span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+  <div id="offT"></div><div id="offB"></div><div id="offLine"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 15.246;
+  const B = 60 / 122;
+  const b = function (n) { return n * B; };
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#rays", { rotation: 0 }, { rotation: 34, duration: D, ease: "none" }, 0);
+  tl.fromTo("#bugDot", { opacity: 1 }, { opacity: 0.15, duration: 0.45, ease: "steps(1)", yoyo: true, repeat: 25 }, 0);
+
+  // ---------- hook ----------
+  tl.fromTo("#h1", { scale: 1.3 }, { scale: 1, duration: 0.24, ease: "power4.out" }, 0);
+  tl.fromTo("#h2", { scale: 1.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0.06);
+  tl.fromTo("#h3", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.32, ease: "back.out(2.6)" }, 0.14);
+  KZ.shake(tl, "#hk", 0.36, 12, 0.26, 3);
+  tl.to("#hk", { scale: 1.04, duration: 1.2, ease: "sine.inOut" }, 0.6);
+  tl.fromTo("#chairWrap", { y: 80, opacity: 0.4 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2)" }, 0);
+  tl.fromTo("#xStamp", { scale: 2.6, opacity: 0, rotation: -12 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.2, ease: "power4.out" }, 0.62);
+  KZ.shake(tl, "#chairWrap", 0.82, 10, 0.22, 4);
+  tl.fromTo("#spot", { opacity: 0.6 }, { opacity: 1, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0);
+
+  // ---------- testimonial segments ----------
+  function zap(id, t) {
+    tl.fromTo("#scr" + id, { y: -60, scaleY: 1.08 }, { y: 0, scaleY: 1, duration: 0.18, ease: "power3.out" }, t);
+    tl.fromTo("#za" + id, { opacity: 0.9, y: -60 }, { opacity: 0, y: 120, duration: 0.16, ease: "none" }, t);
+    tl.fromTo("#zb" + id, { opacity: 0.7, y: 40 }, { opacity: 0, y: -140, duration: 0.16, ease: "none" }, t);
+  }
+  function card(sel, at, rot) {
+    tl.fromTo(sel, { scale: 0.6, opacity: 0, rotation: rot * 3 }, { scale: 1, opacity: 1, rotation: rot, duration: 0.36, ease: "back.out(2)" }, at);
+    tl.to(sel, { scale: 1.04, duration: 2.0, ease: "sine.inOut" }, at + 0.4);
+  }
+  const T1 = b(4), T2 = b(10), T3 = b(16), T4 = b(20);
+  KZ.flash(tl, "#flash", T1, 0.5);
+  zap(1, T1); card("#pc1", T1 + 0.08, -1.5); KZ.rise(tl, "#pt1", T1 + 0.4, 0.3, 20);
+  tl.fromTo("#lt1", { x: -940 }, { x: 0, duration: 0.4, ease: "power3.out" }, T1 + 0.2);
+  KZ.rise(tl, "#diff", T1 + 0.1, 0.3, 20);
+  KZ.rise(tl, "#q1a", T1 + 0.25, 0.35, 40);
+  KZ.rise(tl, "#q1b", T1 + 0.45, 0.35, 40);
+  tl.fromTo("#q1c", { scale: 0.3, opacity: 0, rotation: -14 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.35, ease: "back.out(3)" }, T1 + 1.55);
+
+  zap(2, T2); card("#pc2", T2 + 0.08, 1.2); KZ.rise(tl, "#pt2", T2 + 0.4, 0.3, 20);
+  KZ.rise(tl, "#q2a", T2 + 0.25, 0.35, 40);
+  KZ.rise(tl, "#q2b", T2 + 0.45, 0.35, 40);
+
+  zap(3, T3); card("#pc3", T3 + 0.08, -1); KZ.rise(tl, "#pt3", T3 + 0.4, 0.3, 20);
+  tl.fromTo("#q3a", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, T3 + 0.22);
+  tl.fromTo("#q3b", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, T3 + 0.42);
+  KZ.shake(tl, "#sq3 .quote", T3 + 0.7, 8, 0.2, 7);
+
+  // ---------- recap: 3 clientes. 0 atores. ----------
+  KZ.flash(tl, "#flash", T4, 0.6, "#ffd60a");
+  tl.fromTo("#w1", { x: -700, rotation: -12 }, { x: 0, rotation: -3, duration: 0.32, ease: "back.out(1.6)" }, T4);
+  tl.fromTo("#w2", { x: 800, rotation: 10 }, { x: 0, rotation: 2, duration: 0.32, ease: "back.out(1.6)" }, T4 + 0.1);
+  tl.fromTo("#w3", { y: 600, rotation: 10 }, { y: 0, rotation: 4, duration: 0.32, ease: "back.out(1.6)" }, T4 + 0.2);
+  tl.fromTo("#rc1", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, T4 + 0.05);
+  tl.fromTo("#rc2", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.34, ease: "back.out(2.6)" }, T4 + b(1));
+  KZ.shake(tl, "#rc", T4 + b(1) + 0.25, 12, 0.24, 9);
+  tl.to("#lt1", { x: 940, duration: 0.25, ease: "power2.in" }, T4 - 0.25);
+  tl.fromTo("#lt2", { x: -940 }, { x: 0, duration: 0.4, ease: "power3.out" }, T4 + 0.3);
+
+  // ---------- end card (11.803) ----------
+  const T9 = b(24);
+  tl.fromTo("#endIn", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "none" }, T9);
+  tl.fromTo("#endRays", { rotation: 0 }, { rotation: 18, duration: D - T9, ease: "none" }, T9);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T9 + 0.04);
+  KZ.eyePulse(tl, "#eyeEnd", T9 + 0.14, 2);
+  KZ.rise(tl, "#endUrl", T9 + 0.42, 0.35, 30);
+  tl.fromTo("#endAsk", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, T9 + 0.75);
+  tl.to("#endLogoWrap", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, T9 + 0.7);
+  const TO = D - 0.44;
+  tl.fromTo("#offT", { yPercent: -100 }, { yPercent: 0, duration: 0.17, ease: "power3.in" }, TO);
+  tl.fromTo("#offB", { yPercent: 100 }, { yPercent: 0, duration: 0.17, ease: "power3.in" }, TO);
+  tl.fromTo("#offLine", { opacity: 0, scaleX: 1 }, { opacity: 1, duration: 0.03 }, TO + 0.13);
+  tl.to("#offLine", { scaleX: 0.006, duration: 0.17, ease: "power3.in" }, TO + 0.17);
+  tl.to("#offLine", { opacity: 0, duration: 0.06 }, TO + 0.36);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

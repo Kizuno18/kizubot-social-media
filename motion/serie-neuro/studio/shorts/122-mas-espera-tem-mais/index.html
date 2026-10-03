@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>122 Mas espera… tem mais!</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F17 Infomercial — ep.122: red studio, zoom into the broadcast, value-stack tower ===== */
+  :root {
+    --tv-yel: #ffd60a; --tv-red: #e3242b; --tv-blue: #1739b8; --tv-navy: #0a1b5e; --tv-wht: #fffaf0;
+    --ol-red: -7px -7px 0 #e3242b, 7px -7px 0 #e3242b, -7px 7px 0 #e3242b, 7px 7px 0 #e3242b, 0 -9px 0 #e3242b, 0 9px 0 #e3242b, -9px 0 0 #e3242b, 9px 0 0 #e3242b;
+    --ol-wht: -7px -7px 0 #fffaf0, 7px -7px 0 #fffaf0, -7px 7px 0 #fffaf0, 7px 7px 0 #fffaf0, 0 -9px 0 #fffaf0, 0 9px 0 #fffaf0, -9px 0 0 #fffaf0, 9px 0 0 #fffaf0;
+    --ol-navy: -6px -6px 0 #0a1b5e, 6px -6px 0 #0a1b5e, -6px 6px 0 #0a1b5e, 6px 6px 0 #0a1b5e, 0 -8px 0 #0a1b5e, 0 8px 0 #0a1b5e, -8px 0 0 #0a1b5e, 8px 0 0 #0a1b5e;
+    --ex-navy: 5px 7px 0 #0a1b5e, 8px 11px 0 #0a1b5e, 11px 15px 0 #0a1b5e, 14px 19px 0 #0a1b5e, 16px 22px 0 #0a1b5e;
+    --ex-blood: 5px 7px 0 #5c0408, 8px 11px 0 #5c0408, 11px 15px 0 #5c0408, 14px 19px 0 #5c0408, 16px 22px 0 #5c0408;
+  }
+  #root { background: #4a0306; }
+  .kz-progress { background: rgba(255,255,255,0.15); }
+  .kz-progress > div { background: linear-gradient(90deg, #ffd60a, #fffaf0); }
+  .chunk { font-family: "Anton", sans-serif; text-transform: uppercase; line-height: 0.98; letter-spacing: 0.01em; white-space: nowrap; }
+  .sk { display: inline-block; transform: skewX(-9deg); }
+  .yel { color: var(--tv-yel); text-shadow: var(--ol-red), var(--ex-navy); }
+  .yelN { color: var(--tv-yel); text-shadow: var(--ol-navy), var(--ex-blood); }
+  .wht { color: var(--tv-wht); text-shadow: var(--ol-navy), var(--ex-navy); }
+  .burst { position: absolute; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .burst svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .burst .bt { position: relative; font-family: "Bangers", sans-serif; line-height: 0.9; letter-spacing: 0.03em; color: var(--tv-navy); }
+
+  /* ---------- broadcast set (untimed) ---------- */
+  #bstudio { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(70% 42% at 50% 30%, #ff5b3a 0%, #d3121c 40%, #8a050c 75%, #4a0306 100%); }
+  #rays { position: absolute; left: -760px; top: -1000px; width: 2600px; height: 2600px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(255,214,10,0) 0deg, rgba(255,214,10,0.16) 7.5deg, rgba(255,214,10,0) 15deg); }
+  #world { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  #tower { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  #cTop { position: absolute; left: -40px; width: 1160px; top: 1250px; height: 40px; background: linear-gradient(180deg, #ffe66b, #ffd60a); border-radius: 10px; box-shadow: 0 6px 0 #b38f00; }
+  #cFront { position: absolute; left: -40px; width: 1160px; top: 1290px; height: 760px; background: repeating-linear-gradient(115deg, #0f2a9c 0 50px, #0a1b5e 50px 100px); }
+  #cFront::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0) 30%); }
+  .blk { position: absolute; display: flex; align-items: center; justify-content: center; gap: 18px; border-radius: 18px; border: 6px solid #0a1b5e; box-shadow: 0 10px 0 rgba(10,27,94,0.85); }
+  .blk .n { position: absolute; left: 16px; top: 50%; margin-top: -30px; width: 60px; height: 60px; border-radius: 50%; background: #0a1b5e; color: #fff; font: 400 34px "Bangers", sans-serif; display: flex; align-items: center; justify-content: center; letter-spacing: 0.02em; }
+  .blk .l { font-family: "Anton", sans-serif; font-size: 74px; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; }
+  .blk .l2 { font: 900 40px "Inter", sans-serif; line-height: 1; letter-spacing: 0.01em; }
+  .c-yel { background: #ffd60a; color: #0a1b5e; } .c-wht { background: #fffaf0; color: #e3242b; } .c-blu { background: #1739b8; color: #ffd60a; } .c-red { background: #0a1b5e; color: #fffaf0; border-color: #ffd60a; }
+  .c-vio { background: linear-gradient(180deg, #b26bff, #7c3aed); color: #fff; box-shadow: 0 10px 0 #3b0764, 0 0 50px rgba(216,180,254,0.8); }
+  #robotTop { position: absolute; left: 255px; top: -486px; width: 460px; }
+  #robotTop img { width: 460px; display: block; }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,0.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+
+  #crtFull { position: absolute; inset: 0; border-radius: 74px; pointer-events: none;
+    box-shadow: 0 0 0 220px #05060a, inset 0 0 140px rgba(0,0,0,0.65);
+    background: linear-gradient(160deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 28%), repeating-linear-gradient(0deg, rgba(0,0,0,0.13) 0 2px, rgba(0,0,0,0) 2px 5px); }
+  #bug { position: absolute; left: 96px; top: 236px; display: flex; align-items: center; gap: 12px; padding: 10px 20px 10px 16px; border-radius: 12px; background: #fffaf0; color: var(--tv-red); font: 900 32px "Inter", sans-serif; letter-spacing: 0.06em; box-shadow: 0 5px 0 #8a050c; }
+  #bug i { width: 18px; height: 18px; border-radius: 50%; background: var(--tv-red); display: block; }
+  #chip { position: absolute; right: 120px; top: 236px; padding: 10px 22px; border-radius: 12px; background: var(--tv-navy); border: 3px solid var(--tv-yel); font: 900 32px "Inter", sans-serif; color: #fff; letter-spacing: 0.04em; }
+  #chip b { color: var(--tv-yel); font-variant-numeric: tabular-nums; }
+  #lt { position: absolute; left: 90px; top: 1312px; width: 790px; height: 76px; display: flex; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 0 rgba(0,0,0,0.35); }
+  #lt .ph { width: 118px; background: var(--tv-red); display: flex; align-items: center; justify-content: center; }
+  #lt .ph svg { width: 44px; height: 44px; }
+  #lt .tx { flex: 1; background: var(--tv-yel); display: flex; align-items: center; padding-left: 24px; font-family: "Anton", sans-serif; font-size: 54px; color: var(--tv-navy); letter-spacing: 0.03em; }
+
+  /* ---------- S1 hook: TV object, then zoom into the screen ---------- */
+  #s1in { position: absolute; inset: 0; transform-origin: 540px 615px; }
+  #s1bg { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(60% 36% at 50% 32%, #ff5b3a 0%, #c8101a 45%, #6e040a 100%); }
+  #s1rays { position: absolute; left: -760px; top: -685px; width: 2600px; height: 2600px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(255,255,255,0) 0deg, rgba(255,255,255,0.12) 7.5deg, rgba(255,255,255,0) 15deg); }
+  #tvBody { position: absolute; left: 46px; top: 236px; width: 988px; height: 806px; border-radius: 72px;
+    background: linear-gradient(175deg, #3c414d 0%, #1c1f26 36%, #0e1014 100%); box-shadow: 0 40px 90px rgba(0,0,0,0.6), inset 0 3px 0 rgba(255,255,255,0.22); }
+  #scrHole { position: absolute; left: 70px; top: 260px; width: 940px; height: 710px; border-radius: 60px / 66px; background: #030405; }
+  .grille { position: absolute; top: 984px; width: 330px; height: 34px; border-radius: 17px; background: repeating-linear-gradient(90deg, #06070a 0 7px, #2b2f38 7px 13px); }
+  #led { position: absolute; left: 529px; top: 990px; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #b6ffb0, #22c55e 60%, #0b5a28); box-shadow: 0 0 14px rgba(34,197,94,0.9); }
+  .scr { position: absolute; left: 80px; top: 270px; width: 920px; height: 690px; border-radius: 50px / 58px; overflow: hidden; }
+  .scrSun { position: absolute; left: -540px; top: -655px; width: 2000px; height: 2000px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, #1739b8 0deg 9deg, #0f2a9c 9deg 18deg); }
+  .crt { position: absolute; left: 80px; top: 270px; width: 920px; height: 690px; border-radius: 50px / 58px; pointer-events: none;
+    background: linear-gradient(158deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 36%), radial-gradient(ellipse 78% 72% at 50% 50%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.5) 100%), repeating-linear-gradient(0deg, rgba(0,0,0,0.17) 0 2px, rgba(0,0,0,0) 2px 5px);
+    box-shadow: inset 0 0 46px rgba(0,0,0,0.75); }
+  #hk { position: absolute; left: 80px; top: 300px; width: 920px; display: flex; flex-direction: column; align-items: center; }
+  #h1 { font-size: 136px; } #h2 { font-size: 200px; margin-top: 6px; }
+  #s1robot { position: absolute; left: 230px; top: 1090px; width: 560px; }
+  #s1robot img { width: 560px; display: block; }
+  #s1counter { position: absolute; left: -20px; right: -20px; top: 1365px; bottom: -20px; background: repeating-linear-gradient(115deg, #0f2a9c 0 46px, #0a1b5e 46px 92px); border-top: 14px solid #ffd60a; }
+
+  /* ---------- overlays ---------- */
+  #dimW { position: absolute; inset: 0; background: rgba(20,2,4,0.62); }
+  #band { position: absolute; left: -60px; right: -60px; top: 470px; height: 230px; background: var(--tv-navy); display: flex; align-items: center; justify-content: center;
+    border-top: 8px solid var(--tv-yel); border-bottom: 8px solid var(--tv-yel); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+  #wait { font-size: 156px; }
+  #more { position: absolute; left: 70px; right: 70px; top: 760px; display: flex; justify-content: center; }
+  #moreT { font-size: 210px; }
+  #zt { position: absolute; left: 80px; right: 120px; top: 300px; display: flex; flex-direction: column; align-items: center; }
+  #z1 { font-size: 150px; } #z2 { font-size: 112px; margin-top: 6px; }
+  #dimP { position: absolute; inset: 0; background: rgba(20,2,4,0.72); }
+  #tudo { position: absolute; left: 80px; right: 120px; top: 268px; display: flex; justify-content: center; }
+  #tudoT { font-size: 120px; }
+  #tagWrap { position: absolute; left: 150px; top: 330px; width: 720px; height: 640px; transform-origin: 360px -40px; }
+  #tag { position: absolute; left: 0; top: 70px; width: 720px; height: 560px; border-radius: 40px; background: #ffd60a; border: 10px solid #0a1b5e; box-shadow: 0 18px 0 #0a1b5e, 0 40px 80px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  #tagHole { position: absolute; left: 330px; top: 20px; width: 60px; height: 60px; border-radius: 50%; background: #4a0306; border: 10px solid #0a1b5e; z-index: 2; }
+  #tagStr { position: absolute; left: 356px; top: -330px; width: 8px; height: 360px; background: #fffaf0; }
+  .pl1 { font: 900 58px "Inter", sans-serif; color: var(--tv-navy); }
+  .pl2 { font-family: "Anton", sans-serif; font-size: 236px; line-height: 0.95; color: #e3242b; text-shadow: var(--ex-navy); white-space: nowrap; }
+  .pl3 { font-family: "Anton", sans-serif; font-size: 100px; line-height: 0.95; color: var(--tv-navy); }
+  #p9 { position: absolute; left: 90px; width: 790px; top: 1030px; display: flex; flex-direction: column; align-items: center; }
+  #p9a { font-size: 84px; } #p9b { font-size: 130px; margin-top: 4px; }
+
+  /* end card */
+  #endBg { position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 38%, #4c1d95 0%, #1e0b3a 55%, #0b0712 100%); overflow: hidden; }
+  #endRays { position: absolute; left: -760px; top: -730px; width: 2600px; height: 2600px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(216,180,254,0) 0deg, rgba(216,180,254,0.10) 7.5deg, rgba(216,180,254,0) 15deg); }
+  #endCol { position: absolute; left: 90px; right: 120px; top: 250px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; }
+  #endLogoWrap { position: relative; width: 520px; }
+  #endLogo { width: 520px; display: block; }
+  #endUrl { font: 800 66px "Inter", sans-serif; color: #fff; letter-spacing: -0.01em; }
+  #endAsk { margin-top: 10px; font-size: 90px; line-height: 1.0; }
+  #endAsk .sk > div { display: block; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+  #offT, #offB { position: absolute; left: 0; width: 1080px; height: 962px; background: #000; }
+  #offT { top: 0; } #offB { top: 958px; }
+  #offLine { position: absolute; left: 0; top: 954px; width: 1080px; height: 12px; background: #fff; box-shadow: 0 0 30px 8px rgba(200,220,255,0.9); opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="21.15" data-fps="30">
+  <!-- broadcast set (revealed after the zoom into the TV) -->
+  <div id="bstudio"><div id="rays"></div></div>
+  <div id="world">
+    <div id="cTop"></div><div id="cFront"></div>
+    <div id="tower">
+      <div id="robotTop"><img src="kit/img/brand/kizubot-robot.png" alt="" /><div class="eye" id="eyeT" style="left:150px; top:12px; width:76px; height:76px"></div></div>
+    </div>
+  </div>
+  <div id="crtFull"></div>
+  <div id="bug"><i id="bugDot"></i>AO VIVO</div>
+  <div id="chip">MÓDULOS <b id="cnt">0</b><b>/13</b></div>
+  <div id="lt"><div class="ph"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div><div class="tx">LINK NA BIO</div></div>
+
+  <!-- "E TEM MAIS!" stamps -->
+  <section id="sSt" class="clip" data-start="1.967" data-duration="9.84">
+    <div id="stampBox" style="position:absolute; inset:0"></div>
+  </section>
+
+  <!-- MAS ESPERA… (7.869 - 8.852) -->
+  <section id="sW" class="clip" data-start="7.869" data-duration="0.983">
+    <div id="dimW"></div>
+    <div id="band"><div class="chunk yelN" id="wait"><span class="sk">MAS ESPERA…</span></div></div>
+    <div id="more"><div class="chunk yel" id="moreT"><span class="sk">TEM MAIS!</span></div></div>
+  </section>
+
+  <!-- 13 MÓDULOS NUM BOT SÓ (11.95 - 13.77) -->
+  <section id="sZ" class="clip" data-start="11.95" data-duration="1.82">
+    <div id="zt">
+      <div class="chunk yel" id="z1"><span class="sk">13 MÓDULOS</span></div>
+      <div class="chunk wht" id="z2"><span class="sk">NUM BOT SÓ!</span></div>
+    </div>
+  </section>
+
+  <!-- price (13.77 - 17.705) -->
+  <section id="sP" class="clip" data-start="13.77" data-duration="3.935">
+    <div id="dimP"></div>
+    <div id="tagWrap"><div id="tagStr"></div><div id="tagHole"></div>
+      <div id="tag"><div class="pl1">A PARTIR DE</div><div class="pl2" id="pnum">R$ 250</div><div class="pl3">POR MÊS</div></div>
+    </div>
+    <div id="tudo"><div class="chunk wht" id="tudoT"><span class="sk">TUDO ISSO</span></div></div>
+    <div id="p9">
+      <div class="chunk wht" id="p9a"><span class="sk">MENOS DE</span></div>
+      <div class="chunk yel" id="p9b"><span class="sk">R$ 9 POR DIA</span></div>
+    </div>
+  </section>
+
+  <!-- S1 hook: the TV object (0 - 1.967), covers the broadcast set -->
+  <section id="s1" class="clip" data-start="0" data-duration="1.967">
+    <div id="s1in">
+      <div id="s1bg"><div id="s1rays"></div></div>
+      <div id="s1counter"></div>
+      <div id="tvBody"></div><div id="scrHole"></div>
+      <div class="grille" style="left:120px"></div><div class="grille" style="left:630px"></div><div id="led"></div>
+      <div class="scr"><div class="scrSun" id="scrSun"></div></div>
+      <div class="crt"></div>
+      <div id="hk">
+        <div class="chunk wht" id="h1"><span class="sk">MAS ESPERA…</span></div>
+        <div class="chunk yel" id="h2"><span class="sk">TEM MAIS!</span></div>
+      </div>
+      <div id="s1robot"><img src="kit/img/brand/kizubot-robot.png" alt="" /><div class="eye" id="eyeS1" style="left:182px; top:20px; width:80px; height:80px"></div></div>
+    </div>
+  </section>
+
+  <!-- end card (17.705 - 21.15) -->
+  <section id="s9" class="clip" data-start="17.705" data-duration="3.445">
+    <div id="endIn" style="position:absolute; inset:0">
+      <div id="endBg"><div id="endRays"></div></div>
+      <div id="endCol">
+        <div id="endLogoWrap"><img id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" /><div class="eye" id="eyeEnd" style="left:161px; top:4px; width:100px; height:100px"></div></div>
+        <div id="endUrl">kizubot.com</div>
+        <div class="chunk yel" id="endAsk"><span class="sk"><div>QUAL MÓDULO</div><div>VOCÊ MAIS</div><div>USARIA?</div></span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+  <div id="offT"></div><div id="offB"></div><div id="offLine"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 21.15;
+  const B = 60 / 122;
+  const b = function (n) { return n * B; };
+
+  function burstSvg(n, fill, stroke, sw, seed) {
+    const r = KZ.rng(seed); const pts = [];
+    for (let i = 0; i < n * 2; i++) {
+      const a = -Math.PI / 2 + i * Math.PI / n;
+      const rr = i % 2 === 0 ? 100 - r() * 5 : 74 + r() * 8;
+      pts.push((Math.cos(a) * rr).toFixed(1) + "," + (Math.sin(a) * rr).toFixed(1));
+    }
+    return '<svg viewBox="-108 -108 216 216"><polygon points="' + pts.join(" ") + '" fill="' + fill + '" stroke="' + stroke + '" stroke-width="' + sw + '" stroke-linejoin="round"/></svg>';
+  }
+
+  // ---------- the 13 modules (BRIEF.md list) ----------
+  const MODS = [
+    ["CAVEBOT", "c-yel"], ["COMBATE", "c-wht"], ["CURA", "c-blu"], ["CAPTURA", "c-red"],
+    ["FARMING", "c-yel"], ["PESCA", "c-wht"], ["ALARMES", "c-blu"], ["PARTY", "c-red"],
+    ["ACTIONS", "c-vio", "50+ CONDIÇÕES · 30+ AÇÕES"], ["HUMANIZAÇÃO", "c-wht"], ["ENGINE", "c-blu"], ["CONTA", "c-red"], ["SETUP POKÉMON", "c-yel"]
+  ];
+  // land times: slow, then every beat, pause (MAS ESPERA), then faster
+  const LAND = [b(4), b(6), b(8), b(10), b(12), b(13), b(14), b(15), b(18), b(20), b(21), b(21.5), b(22)];
+  const tower = document.getElementById("tower");
+  const rr = KZ.rng(122);
+  let topY = 1250;
+  const blocks = [];
+  MODS.forEach(function (m, i) {
+    const h = m[2] ? 170 : 112;
+    const w = m[2] ? 760 : Math.round(560 + rr() * 140);
+    const cx = 485 + Math.round((rr() * 2 - 1) * 24);
+    topY -= h;
+    const el = document.createElement("div");
+    el.className = "blk " + m[1];
+    el.style.left = (cx - w / 2) + "px"; el.style.top = topY + "px"; el.style.width = w + "px"; el.style.height = h + "px";
+    el.innerHTML = '<div class="n">' + String(i + 1).padStart(2, "0") + '</div>' + (m[2]
+      ? '<div style="display:flex; flex-direction:column; align-items:center; gap:8px; padding-left:40px"><div class="l" style="font-size:80px">' + m[0] + '</div><div class="l2">' + m[2] + '</div></div>'
+      : '<div class="l" style="padding-left:40px">' + m[0] + '</div>');
+    tower.insertBefore(el, document.getElementById("robotTop"));
+    blocks.push({ el: el, top: topY, rot: (rr() * 2 - 1) * 1.6 });
+  });
+  const towerTop = topY; // world y of the last block's top
+
+  // stamps: one per landing except the ACTIONS one (it gets the big "TEM MAIS!")
+  const stampBox = document.getElementById("stampBox");
+  const stamps = [];
+  const sCols = [["#ffd60a", "#0a1b5e", "#0a1b5e"], ["#fffaf0", "#e3242b", "#e3242b"], ["#1739b8", "#ffd60a", "#ffd60a"]];
+  LAND.forEach(function (t, i) {
+    if (i === 8) return;
+    const right = i % 2 === 0;
+    const c = sCols[i % 3];
+    const d = document.createElement("div");
+    d.className = "burst";
+    d.style.left = (right ? 650 : 110) + "px"; d.style.top = (right ? 300 : 316) + "px"; d.style.width = "290px"; d.style.height = "290px";
+    d.innerHTML = burstSvg(16, c[0], c[1], 7, 30 + i) + '<div class="bt" style="font-size:60px; color:' + c[2] + '"><div>E TEM</div><div>MAIS!</div></div>';
+    stampBox.appendChild(d);
+    stamps.push({ el: d, t: t, rot: right ? 8 : -8 });
+  });
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#rays", { rotation: 0 }, { rotation: 36, duration: D, ease: "none" }, 0);
+
+  // ---------- S1 hook on the TV, zoom into the screen ----------
+  tl.fromTo("#h1", { scale: 1.3 }, { scale: 1, duration: 0.24, ease: "power4.out" }, 0);
+  tl.fromTo("#h2", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.32, ease: "back.out(2.6)" }, 0.1);
+  KZ.shake(tl, "#hk", 0.3, 12, 0.26, 3);
+  tl.to("#hk", { scale: 1.05, duration: 1.2, ease: "sine.inOut" }, 0.5);
+  tl.fromTo("#scrSun", { rotation: 0 }, { rotation: 30, duration: 1.97, ease: "none" }, 0);
+  tl.fromTo("#s1rays", { rotation: 0 }, { rotation: 8, duration: 1.97, ease: "none" }, 0);
+  tl.fromTo("#s1robot", { y: 60 }, { y: 0, duration: 0.4, ease: "back.out(2)" }, 0.05);
+  KZ.eyePulse(tl, "#eyeS1", 0.6, 2);
+  tl.fromTo("#s1in", { scale: 1 }, { scale: 2.6, duration: 0.42, ease: "power3.in" }, b(4) - 0.42);
+  KZ.flash(tl, "#flash", b(4), 0.9);
+
+  // ---------- tower ----------
+  tl.fromTo("#bugDot", { opacity: 1 }, { opacity: 0.15, duration: 0.45, ease: "steps(1)", yoyo: true, repeat: 41 }, 0);
+  const cntEl = document.getElementById("cnt");
+  gsap.set("#world", { transformOrigin: "485px 1250px" });
+  gsap.set("#tagWrap", { transformOrigin: "360px -40px" });
+  gsap.set("#tower", { transformOrigin: "485px 1250px" });
+  blocks.forEach(function (bk, i) {
+    const t = LAND[i];
+    const fd = i === 8 ? 0.2 : 0.26;
+    tl.fromTo(bk.el, { opacity: 0 }, { opacity: 1, duration: 0.01, ease: "none" }, t - fd);
+    tl.fromTo(bk.el, { y: -1100, rotation: bk.rot * 4 }, { y: 0, rotation: bk.rot, duration: fd, ease: "power2.in" }, t - fd);
+    tl.fromTo(bk.el, { scaleY: 0.82, scaleX: 1.06 }, { scaleY: 1, scaleX: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, t);
+    if (i > 0) KZ.shake(tl, "#tower", t, i === 8 ? 16 : 5, 0.18, 20 + i);
+    // camera tilt: keep the newest block top near y 560
+    const camY = Math.max(0, 650 - bk.top);
+    if (camY > 0) tl.to("#world", { y: camY, duration: 0.32, ease: "power2.out" }, t + 0.02);
+  });
+  tl.to({}, { duration: D, ease: "none", onUpdate: function () { const t = tl.time(); let n = 0; LAND.forEach(function (x) { if (t >= x - 0.001) n++; }); cntEl.textContent = String(n); } }, 0);
+  stamps.forEach(function (s) {
+    tl.fromTo(s.el, { scale: 0, rotation: s.rot - 40, opacity: 1 }, { scale: 1, rotation: s.rot, duration: 0.24, ease: "back.out(3)" }, s.t);
+    tl.to(s.el, { scale: 0.6, opacity: 0, duration: 0.14, ease: "power2.in" }, s.t + 0.42);
+  });
+
+  // ---------- MAS ESPERA… TEM MAIS! (7.869) ----------
+  const TW = b(16);
+  tl.fromTo("#dimW", { opacity: 0 }, { opacity: 1, duration: 0.12 }, TW);
+  tl.fromTo("#band", { x: -1250, rotation: 6 }, { x: 0, rotation: 4, duration: 0.24, ease: "power4.out" }, TW);
+  tl.fromTo("#moreT", { scale: 0.2, opacity: 0, rotation: -10 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.3, ease: "back.out(2.6)" }, TW + b(1));
+  KZ.shake(tl, "#more", TW + b(1) + 0.2, 14, 0.24, 9);
+  KZ.flash(tl, "#flash", LAND[8], 0.75, "#ffd60a");
+
+  // ---------- zoom out: the whole tower + robot on top ----------
+  const TZ = b(24);
+  const S = 0.41;
+  tl.to("#world", { scale: S, y: 1300 - 1250, duration: 0.7, ease: "power3.inOut" }, TZ);
+  tl.fromTo("#robotTop", { y: -700, opacity: 1 }, { y: 0, duration: 0.3, ease: "power2.in" }, TZ + 0.55);
+  KZ.eyePulse(tl, "#eyeT", TZ + 0.95, 2);
+  tl.fromTo("#tower", { rotation: 0 }, { rotation: 1.6, duration: 0.42, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, TZ + 0.9);
+  tl.fromTo("#z1", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, 11.95);
+  tl.fromTo("#z2", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.34, ease: "back.out(2.4)" }, 11.95 + b(1));
+
+  // ---------- price (13.77) ----------
+  const TP = b(28);
+  tl.fromTo("#dimP", { opacity: 0 }, { opacity: 1, duration: 0.15 }, TP);
+  tl.fromTo("#tudoT", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, TP);
+  tl.fromTo("#tagWrap", { y: -1100, rotation: 0 }, { y: 0, rotation: 0, duration: 0.34, ease: "power3.out" }, TP + 0.08);
+  tl.fromTo("#tagWrap", { rotation: -9 }, { rotation: 6, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, TP + 0.4);
+  tl.to("#tagWrap", { rotation: 0, duration: 0.4, ease: "sine.out" }, TP + 2.4);
+  KZ.flash(tl, "#flash", TP + 0.4, 0.45);
+  tl.fromTo("#pnum", { scale: 0.6 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, TP + 0.38);
+  tl.fromTo("#p9a", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, b(32));
+  tl.fromTo("#p9b", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.34, ease: "back.out(2.4)" }, b(32) + 0.12);
+
+  // ---------- end card (17.705) ----------
+  const T9 = b(36);
+  tl.fromTo("#endIn", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "none" }, T9);
+  tl.fromTo("#endRays", { rotation: 0 }, { rotation: -18, duration: D - T9, ease: "none" }, T9);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T9 + 0.04);
+  KZ.eyePulse(tl, "#eyeEnd", T9 + 0.14, 2);
+  KZ.rise(tl, "#endUrl", T9 + 0.42, 0.35, 30);
+  tl.fromTo("#endAsk", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, T9 + 0.75);
+  tl.to("#endLogoWrap", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, T9 + 0.7);
+  const TO = D - 0.44;
+  tl.fromTo("#offT", { yPercent: -100 }, { yPercent: 0, duration: 0.17, ease: "power3.in" }, TO);
+  tl.fromTo("#offB", { yPercent: 100 }, { yPercent: 0, duration: 0.17, ease: "power3.in" }, TO);
+  tl.fromTo("#offLine", { opacity: 0, scaleX: 1 }, { opacity: 1, duration: 0.03 }, TO + 0.13);
+  tl.to("#offLine", { scaleX: 0.006, duration: 0.17, ease: "power3.in" }, TO + 0.17);
+  tl.to("#offLine", { opacity: 0, duration: 0.06 }, TO + 0.36);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{
+  "id": "122",
+  "slug": "mas-espera-tem-mais",
+  "family": "Infomercial",
+  "title": "Mas espera… tem mais!",
+  "concept": "The 'mas espera, tem mais!' running gag as a value-stack tower: after zooming into the TV broadcast, all 13 KizuBot modules drop one by one onto the counter with an 'E TEM MAIS!' stamp and a MÓDULOS x/13 counter; the camera tilts up as the tower grows, 'MAS ESPERA… TEM MAIS!' cuts the music before ACTIONS (50+ condições · 30+ ações) slams down, the camera pulls back to the whole comically tall tower with the robot on top ('13 MÓDULOS NUM BOT SÓ!'), then a swinging price tag 'tudo isso a partir de R$ 250 por mês' + 'menos de R$ 9 por dia'.",
+  "neuro": [
+    "value-stacking",
+    "running-gag-humor",
+    "visible-progress",
+    "anticipation-drop",
+    "anchoring",
+    "nostalgia",
+    "loop",
+    "comment-prompt"
+  ],
+  "hook": "MAS ESPERA… TEM MAIS!",
+  "duration": 21.15,
+  "music": {
+    "style": "gameshow",
+    "bpm": 122
+  },
+  "assets": [
+    "kit/img/brand/kizubot-robot.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "13 módulos configuráveis: Cavebot, Combate, Cura, Captura, Farming, Pesca, Alarmes, Party, Actions, Humanização, Engine, Conta, Setup Pokémon",
+    "Actions: 50+ tipos de condição e 30+ tipos de ação",
+    "planos a partir de R$ 250/mês",
+    "menos de R$ 9 por dia (R$ 250 ÷ 30 = R$ 8,33)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Mas espera… TEM MAIS! 📺 Cavebot, combate, cura, captura, farming, pesca, alarmes, Actions com 50+ condições… 13 módulos num bot só, a partir de R$ 250/mês. Link na bio. Qual módulo você mais usaria?",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#temmais",
+        "#comercial"
+      ]
+    },
+    "youtube": {
+      "title": "Mas espera… tem mais! 13 módulos num bot só 📺",
+      "description": "O comercial que não acaba nunca: o KizuBot tem 13 módulos (Cavebot, Combate, Cura, Captura, Farming, Pesca, Alarmes, Party, Actions com 50+ condições e 30+ ações, Humanização, Engine, Conta e Setup Pokémon). Tudo isso a partir de R$ 250/mês, menos de R$ 9 por dia. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Mas espera… tem mais! 📺 13 módulos num bot só pra PxG, a partir de R$ 250/mês (menos de R$ 9 por dia). Link na bio. Qual módulo você mais usaria?",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#temmais"
+      ]
+    }
+  },
+  "pinned_comment": "Qual foi o melhor 'tem mais'? 😂",
+  "rubric": {
+    "hook": 8,
+    "rehooks": 9,
+    "clarity": 8,
+    "craft": 8,
+    "truth": 9,
+    "sound": 8,
+    "brand": 9,
+    "cta": 8,
+    "loop": 8,
+    "distinct": 9,
+    "avg": 8.4
+  },
+  "notes": "All 13 modules come from BRIEF.md's list (Party and Humanização are both in that list; Humanização is also an approved claim), shown as module names only, so '13 MÓDULOS' is true; the concept listed 10, I added Engine, Conta and Setup Pokémon. Actions block uses the approved '50+ condições · 30+ ações'. Price is a swinging tag ('tudo isso a partir de R$ 250 por mês' + 'menos de R$ 9 por dia'), no crossed-out price, no valor total, no urgency. On-screen ask changed to 'Qual módulo você mais usaria?' (a genuine question); the concept's line stays as the pinned comment. The episode opens on the TV object, then zooms into a full-screen broadcast (rounded CRT frame, scanlines, AO VIVO bug, LINK NA BIO bar) so it doesn't copy 121's layout."
+}

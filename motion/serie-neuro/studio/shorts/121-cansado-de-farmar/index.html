@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>121 Cansado de farmar na mão?</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F17 Infomercial — series system. ep.121: blue studio, B&W problem -> color ===== */
+  :root {
+    --tv-yel: #ffd60a; --tv-red: #e3242b; --tv-blue: #1739b8; --tv-navy: #0a1b5e; --tv-wht: #fffaf0; --tv-grn: #25d366;
+    --ol-red: -7px -7px 0 #e3242b, 7px -7px 0 #e3242b, -7px 7px 0 #e3242b, 7px 7px 0 #e3242b, 0 -9px 0 #e3242b, 0 9px 0 #e3242b, -9px 0 0 #e3242b, 9px 0 0 #e3242b;
+    --ol-wht: -7px -7px 0 #fffaf0, 7px -7px 0 #fffaf0, -7px 7px 0 #fffaf0, 7px 7px 0 #fffaf0, 0 -9px 0 #fffaf0, 0 9px 0 #fffaf0, -9px 0 0 #fffaf0, 9px 0 0 #fffaf0;
+    --ol-navy: -6px -6px 0 #0a1b5e, 6px -6px 0 #0a1b5e, -6px 6px 0 #0a1b5e, 6px 6px 0 #0a1b5e, 0 -8px 0 #0a1b5e, 0 8px 0 #0a1b5e, -8px 0 0 #0a1b5e, 8px 0 0 #0a1b5e;
+    --ol-vio: -6px -6px 0 #7c3aed, 6px -6px 0 #7c3aed, -6px 6px 0 #7c3aed, 6px 6px 0 #7c3aed, 0 -8px 0 #7c3aed, 0 8px 0 #7c3aed, -8px 0 0 #7c3aed, 8px 0 0 #7c3aed;
+    --ex-navy: 5px 7px 0 #0a1b5e, 8px 11px 0 #0a1b5e, 11px 15px 0 #0a1b5e, 14px 19px 0 #0a1b5e, 16px 22px 0 #0a1b5e;
+    --ex-deep: 5px 7px 0 #2e0a5c, 8px 11px 0 #2e0a5c, 11px 15px 0 #2e0a5c, 14px 19px 0 #2e0a5c, 16px 22px 0 #2e0a5c;
+  }
+  #root { background: #0a1b5e; }
+  #studio { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(60% 36% at 50% 32%, #4f7bff 0%, #1f47d1 42%, #0c2275 78%, #071450 100%); }
+  #rays { position: absolute; left: -760px; top: -685px; width: 2600px; height: 2600px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(255,255,255,0) 0deg, rgba(255,255,255,0.12) 7.5deg, rgba(255,255,255,0) 15deg); }
+  #stage { position: absolute; left: 0; right: 0; top: 1150px; bottom: 0; background: linear-gradient(180deg, rgba(5,12,48,0) 0%, rgba(5,12,48,0.8) 35%, #040a2a 100%); }
+  #counter { position: absolute; left: -20px; right: -20px; top: 1428px; bottom: -20px; background: repeating-linear-gradient(115deg, #c8141c 0 46px, #9e0d14 46px 92px); border-top: 14px solid #ffd60a; box-shadow: 0 -10px 40px rgba(0,0,0,0.45); }
+  #counter::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 160px; background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0)); }
+  .kz-progress { background: rgba(255,255,255,0.15); }
+  .kz-progress > div { background: linear-gradient(90deg, #ffd60a, #e3242b); }
+
+  /* the CRT set */
+  #tvBody { position: absolute; left: 46px; top: 236px; width: 988px; height: 806px; border-radius: 72px;
+    background: linear-gradient(175deg, #3c414d 0%, #1c1f26 36%, #0e1014 100%);
+    box-shadow: 0 40px 90px rgba(0,0,0,0.6), inset 0 3px 0 rgba(255,255,255,0.22), inset 0 -8px 16px rgba(0,0,0,0.65); }
+  #scrHole { position: absolute; left: 70px; top: 260px; width: 940px; height: 710px; border-radius: 60px / 66px; background: #030405;
+    box-shadow: inset 0 0 0 3px #000, 0 3px 0 rgba(255,255,255,0.14); }
+  .grille { position: absolute; top: 984px; width: 330px; height: 34px; border-radius: 17px; background: repeating-linear-gradient(90deg, #06070a 0 7px, #2b2f38 7px 13px); }
+  #led { position: absolute; left: 529px; top: 990px; width: 22px; height: 22px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #ff9a90, #e3242b 60%, #6e0b0e); box-shadow: 0 0 14px rgba(255,70,70,0.9); }
+  .scr { position: absolute; left: 80px; top: 270px; width: 920px; height: 690px; border-radius: 50px / 58px; overflow: hidden; background: #0d0f14; }
+  #crt { position: absolute; left: 80px; top: 270px; width: 920px; height: 690px; border-radius: 50px / 58px; pointer-events: none;
+    background:
+      linear-gradient(158deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.03) 26%, rgba(255,255,255,0) 40%),
+      radial-gradient(ellipse 78% 72% at 50% 50%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.5) 100%),
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.17) 0 2px, rgba(0,0,0,0) 2px 5px);
+    box-shadow: inset 0 0 46px rgba(0,0,0,0.75); }
+  #bug { position: absolute; left: 112px; top: 300px; display: flex; align-items: center; gap: 12px; padding: 10px 20px 10px 16px;
+    border-radius: 12px; background: var(--tv-red); color: #fff; font: 900 32px "Inter", sans-serif; letter-spacing: 0.06em; box-shadow: 0 5px 0 #6e0b0e; }
+  #bug i { width: 18px; height: 18px; border-radius: 50%; background: #fff; display: block; }
+  #ltClip { position: absolute; left: 80px; top: 270px; width: 920px; height: 690px; border-radius: 50px / 58px; overflow: hidden; pointer-events: none; }
+  #ltIn { position: absolute; left: 0; top: 606px; width: 920px; height: 76px; display: flex; }
+  #ltIn .ph { width: 128px; background: var(--tv-blue); display: flex; align-items: center; justify-content: center; }
+  #ltIn .ph svg { width: 46px; height: 46px; }
+  #ltIn .tx { flex: 1; background: var(--tv-yel); display: flex; align-items: center; padding-left: 26px; gap: 22px;
+    font-family: "Anton", sans-serif; font-size: 54px; color: var(--tv-red); letter-spacing: 0.03em; }
+  #ltIn .tx small { font: 800 30px "Inter", sans-serif; color: var(--tv-navy); letter-spacing: 0.02em; }
+
+  /* type */
+  .chunk { font-family: "Anton", sans-serif; text-transform: uppercase; line-height: 0.98; letter-spacing: 0.01em; white-space: nowrap; }
+  .sk { display: inline-block; transform: skewX(-9deg); }
+  .yel { color: var(--tv-yel); text-shadow: var(--ol-red), var(--ex-navy); }
+  .wht { color: var(--tv-wht); text-shadow: var(--ol-navy), var(--ex-navy); }
+  .red { color: #ff2a2a; text-shadow: var(--ol-wht), var(--ex-navy); }
+  .grn { color: var(--tv-grn); text-shadow: var(--ol-navy), var(--ex-navy); }
+  .brand { color: #ffffff; text-shadow: var(--ol-vio), var(--ex-deep); }
+  .deck { position: absolute; left: 90px; width: 790px; top: 1066px; height: 330px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .ttl { position: absolute; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+  /* starbursts */
+  .burst { position: absolute; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .burst svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .burst .bt { position: relative; font-family: "Bangers", sans-serif; line-height: 0.9; letter-spacing: 0.03em; color: var(--tv-navy); }
+
+  /* S1 B&W problem */
+  #zzz { position: absolute; left: 744px; top: 470px; font-family: "Bangers", sans-serif; color: #fff; font-size: 90px; }
+  #zzz span { display: inline-block; }
+  .lcdLbl { font: 800 46px "Inter", sans-serif; color: #e9eef7; letter-spacing: 0.04em; text-transform: uppercase; }
+  .lcd { margin-top: 6px; padding: 6px 40px 0; border-radius: 22px; background: #120607; border: 4px solid #3a1214;
+    font-family: "VT323", monospace; font-size: 200px; line-height: 0.95; color: #ff4b3a; text-shadow: 0 0 26px rgba(255,75,58,0.7); }
+  #cap { position: absolute; left: 80px; right: 80px; top: 292px; display: flex; flex-direction: column; align-items: center; }
+  #c1 { font-size: 112px; } #c2 { font-size: 178px; margin-top: 2px; } #c3 { font-size: 150px; margin-top: 6px; }
+  #bw { position: absolute; inset: 0; background: #808080; mix-blend-mode: saturation; pointer-events: none; }
+
+  /* S2 burst */
+  .sunb { position: absolute; left: -540px; top: -715px; width: 2000px; height: 2000px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, #ffd60a 0deg 9deg, #ffb703 9deg 18deg); }
+  .sunc { position: absolute; inset: 0; background: radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 60%); }
+  #s2ttl { top: 300px; }
+  #t21 { font-size: 128px; } #t22 { font-size: 150px; margin-top: -2px; } #t23 { font-size: 186px; margin-top: -2px; }
+  .conf { position: absolute; left: 532px; top: 600px; width: 18px; height: 34px; border-radius: 3px; }
+
+  /* S3 robot */
+  .studio2 { position: absolute; inset: 0; background: radial-gradient(70% 60% at 50% 30%, #3b2a7a 0%, #160d36 60%, #07040f 100%); }
+  .spot { position: absolute; left: 160px; top: -40px; width: 600px; height: 640px; background: linear-gradient(180deg, rgba(255,255,255,0.32), rgba(255,255,255,0)); clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%); }
+  #presents { position: absolute; left: 0; right: 0; top: 104px; text-align: center; font-family: "Anton", sans-serif; font-size: 50px; letter-spacing: 0.14em; color: #fff; text-shadow: -3px 0 rgba(255,0,80,0.55), 3px 0 rgba(0,220,255,0.55); }
+  #ttBase { position: absolute; left: 140px; top: 520px; width: 640px; height: 80px; border-radius: 0 0 320px 320px / 0 0 60px 60px; background: linear-gradient(90deg, #1b1230, #4a3a7a 50%, #1b1230); }
+  #ttDisc { position: absolute; left: 140px; top: 200px; width: 640px; height: 640px; transform: scaleY(0.2); }
+  #rGlow { position: absolute; left: 110px; top: 120px; width: 700px; height: 460px; background: radial-gradient(50% 50% at 50% 55%, rgba(233,213,255,0.75) 0%, rgba(168,85,247,0.35) 45%, rgba(168,85,247,0) 72%); }
+  #ttSpin { position: absolute; inset: 0; border-radius: 50%; border: 10px solid #d8b4fe;
+    background: repeating-conic-gradient(from 0deg, #7c3aed 0deg 15deg, #2e1065 15deg 30deg); }
+  #robotWrap { position: absolute; left: 100px; top: 178px; width: 720px; height: 361px; transform-origin: 50% 100%; }
+  #robotWrap img { width: 720px; display: block; }
+  .eye { position: absolute; width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,0.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+  #kzName { font-size: 210px; }
+
+  /* S4 feature screens */
+  .fscr { position: absolute; inset: 0; }
+  #f1bg { background: radial-gradient(60% 60% at 50% 45%, #ff5a4f 0%, #c8141c 55%, #6e070b 100%); }
+  #f2bg { background: radial-gradient(60% 60% at 50% 45%, #4f8bff 0%, #1739b8 55%, #08195e 100%); }
+  #f3bg { background: radial-gradient(60% 60% at 50% 45%, #2ee6c8 0%, #0e8f8a 55%, #054445 100%); }
+  .icon { position: absolute; left: 260px; top: 90px; width: 400px; height: 400px; }
+
+  /* S5 alarm */
+  .slate { position: absolute; inset: 0; background: radial-gradient(70% 70% at 50% 40%, #2a2f3b 0%, #12151b 70%); }
+  #alarmWrap { position: absolute; left: 30px; top: 96px; width: 860px; }
+  #alarmWrap img { width: 860px; display: block; border-radius: 26px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+  .ptag { position: absolute; left: 0; right: 0; top: 516px; text-align: center; }
+  .ptag span { display: inline-block; padding: 8px 20px; border-radius: 999px; background: rgba(5,6,10,0.85); border: 2px solid #ffd60a; font: 800 30px "Inter", sans-serif; color: #ffd60a; letter-spacing: 0.05em; }
+
+  /* S6 wait */
+  #dim6 { position: absolute; inset: 0; background: rgba(4,8,30,0.62); }
+  #band { position: absolute; left: -60px; right: -60px; top: 520px; height: 230px; background: var(--tv-red); display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 16px 0 #7a0d10, 0 30px 60px rgba(0,0,0,0.5); border-top: 8px solid var(--tv-yel); border-bottom: 8px solid var(--tv-yel); }
+  #wait { font-size: 160px; }
+
+  /* S7 PC off */
+  .room { position: absolute; inset: 0; background: linear-gradient(180deg, #d9e8ff 0%, #a9c6f5 70%, #7c9fdc 100%); }
+  #desk { position: absolute; left: 30px; top: 470px; width: 860px; height: 26px; border-radius: 8px; background: #9a6440; box-shadow: 0 8px 0 #6b4128; }
+  #tower { position: absolute; left: 44px; top: 220px; width: 130px; height: 252px; border-radius: 14px; background: linear-gradient(90deg, #1b2030, #2b3246); }
+  #pwr { position: absolute; left: 41px; top: 34px; width: 48px; height: 48px; border-radius: 50%; border: 6px solid #22c55e; box-shadow: 0 0 18px rgba(34,197,94,0.9); }
+  #mon { position: absolute; left: 196px; top: 130px; width: 330px; height: 236px; border-radius: 16px; background: #1b2030; }
+  #monScr { position: absolute; left: 14px; top: 14px; width: 302px; height: 196px; border-radius: 6px; overflow: hidden;
+    background: linear-gradient(180deg, #7dd3fc 0%, #7dd3fc 45%, #4ade80 45%, #16a34a 100%); }
+  #monChar { position: absolute; left: 80px; top: 98px; width: 26px; height: 40px; border-radius: 6px; background: #f97316; box-shadow: 0 0 0 4px #7c2d12 inset; }
+  #monLine { position: absolute; left: 14px; top: 110px; width: 302px; height: 6px; background: #fff; box-shadow: 0 0 16px #fff; opacity: 0; }
+  #monStand { position: absolute; left: 336px; top: 366px; width: 50px; height: 92px; background: #1b2030; }
+  #monFoot { position: absolute; left: 286px; top: 452px; width: 150px; height: 18px; border-radius: 6px; background: #1b2030; }
+  #offStamp { position: absolute; left: 150px; top: 196px; }
+  #offStamp span { display: inline-block; transform: rotate(-12deg); padding: 6px 18px; border: 6px solid var(--tv-red); border-radius: 12px; font-family: "Anton", sans-serif; font-size: 52px; color: var(--tv-red); background: rgba(255,255,255,0.88); letter-spacing: 0.04em; }
+  #cloud { position: absolute; left: 556px; top: 120px; width: 330px; height: 380px; border-radius: 34px; background: #fff; box-shadow: 0 18px 0 #6d8fd6, 0 30px 60px rgba(10,27,94,0.35);
+    display: flex; flex-direction: column; align-items: center; padding-top: 22px; }
+  #cloud img { width: 150px; display: block; }
+  #cloud .nv { font-family: "Anton", sans-serif; font-size: 60px; color: var(--tv-navy); line-height: 1; margin-top: 6px; }
+  #cloud .nv b { color: #7c3aed; font-weight: 400; }
+  #farmPill { margin-top: 16px; display: flex; align-items: center; gap: 12px; padding: 10px 22px; border-radius: 999px; background: #16a34a; font: 900 34px "Inter", sans-serif; color: #fff; }
+  #farmPill i { width: 18px; height: 18px; border-radius: 50%; background: #c6ff3d; display: block; }
+  #t71 { font-size: 104px; } #t72 { font-size: 132px; margin-top: 4px; }
+
+  /* S8 price */
+  .spots { position: absolute; inset: 0; background: radial-gradient(40% 70% at 25% 0%, rgba(255,255,255,0.35), rgba(255,255,255,0) 70%), radial-gradient(40% 70% at 75% 0%, rgba(255,255,255,0.35), rgba(255,255,255,0) 70%), linear-gradient(180deg, #1f47d1, #0a1b5e); }
+  #bPrice { left: 120px; top: 186px; width: 840px; height: 840px; }
+  #bPrice .bt { font-family: "Anton", sans-serif; color: var(--tv-navy); letter-spacing: 0; }
+  .pl1 { font: 900 56px "Inter", sans-serif; color: var(--tv-navy); letter-spacing: 0.01em; }
+  .pl2 { font-size: 250px; line-height: 0.95; color: #e3242b; text-shadow: var(--ex-navy); white-space: nowrap; }
+  .pl2 small { font-size: 130px; }
+  .pl3 { font-size: 104px; line-height: 0.95; color: var(--tv-navy); }
+  #p8a { font-size: 82px; } #p8b { font-size: 128px; margin-top: 4px; }
+
+  /* S9 end card */
+  #endBg { position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 38%, #4c1d95 0%, #1e0b3a 55%, #0b0712 100%); overflow: hidden; }
+  #endRays { position: absolute; left: -760px; top: -730px; width: 2600px; height: 2600px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(216,180,254,0) 0deg, rgba(216,180,254,0.10) 7.5deg, rgba(216,180,254,0) 15deg); }
+  #endCol { position: absolute; left: 90px; right: 120px; top: 250px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; }
+  #endLogoWrap { position: relative; width: 520px; }
+  #endLogo { width: 520px; display: block; }
+  #endUrl { font: 800 66px "Inter", sans-serif; color: #fff; letter-spacing: -0.01em; }
+  #endAsk { margin-top: 10px; font-size: 86px; line-height: 1.0; }
+  #endAsk .sk > div { display: block; }
+
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+  #offT, #offB { position: absolute; left: 0; width: 1080px; height: 962px; background: #000; }
+  #offT { top: 0; } #offB { top: 958px; }
+  #offLine { position: absolute; left: 0; top: 954px; width: 1080px; height: 12px; background: #fff; box-shadow: 0 0 30px 8px rgba(200,220,255,0.9); opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="21.15" data-fps="30">
+  <!-- untimed: studio + TV -->
+  <div id="studio"><div id="rays"></div><div id="stage"></div><div id="counter"></div></div>
+  <div id="tvBody"></div>
+  <div id="scrHole"></div>
+  <div class="grille" style="left:120px"></div>
+  <div class="grille" style="left:630px"></div>
+  <div id="led"></div>
+
+  <!-- ================= SCREEN CONTENT (under the CRT glass) ================= -->
+  <!-- S1 B&W problem: 0 - 2.951 -->
+  <section id="s1" class="clip" data-start="0" data-duration="2.951">
+    <div class="scr">
+      <svg id="face" viewBox="0 0 920 690" width="920" height="690">
+        <defs>
+          <radialGradient id="fg1" cx="50%" cy="112%" r="95%"><stop offset="0" stop-color="#b9c7d6"/><stop offset="0.5" stop-color="#36404e"/><stop offset="1" stop-color="#0d1015"/></radialGradient>
+          <clipPath id="ceL"><ellipse cx="372" cy="520" rx="58" ry="44"/></clipPath>
+          <clipPath id="ceR"><ellipse cx="548" cy="520" rx="58" ry="44"/></clipPath>
+        </defs>
+        <rect width="920" height="690" fill="url(#fg1)"/>
+        <g id="headG">
+          <ellipse cx="460" cy="548" rx="200" ry="235" fill="#d9c4b1"/>
+          <path d="M262,520 C250,380 340,300 460,298 C590,296 676,380 660,520 C640,452 600,412 540,404 C500,432 420,438 360,412 C310,432 280,470 262,520 Z" fill="#2a211c"/>
+          <path d="M228,566 C214,356 326,256 460,256 C594,256 706,356 692,566" fill="none" stroke="#15181d" stroke-width="36" stroke-linecap="round"/>
+          <rect x="196" y="474" width="82" height="156" rx="36" fill="#15181d"/>
+          <rect x="642" y="474" width="82" height="156" rx="36" fill="#15181d"/>
+          <path d="M316,456 Q370,438 424,462" stroke="#2a211c" stroke-width="15" fill="none" stroke-linecap="round"/>
+          <path d="M496,462 Q550,438 604,456" stroke="#2a211c" stroke-width="15" fill="none" stroke-linecap="round"/>
+          <g clip-path="url(#ceL)">
+            <ellipse cx="372" cy="520" rx="58" ry="44" fill="#f6f6f6"/>
+            <circle cx="380" cy="530" r="21" fill="#141414"/><circle cx="373" cy="522" r="6" fill="#fff"/>
+            <rect id="lidL" x="300" y="474" width="150" height="96" fill="#c4ab96"/>
+          </g>
+          <g clip-path="url(#ceR)">
+            <ellipse cx="548" cy="520" rx="58" ry="44" fill="#f6f6f6"/>
+            <circle cx="556" cy="530" r="21" fill="#141414"/><circle cx="549" cy="522" r="6" fill="#fff"/>
+            <rect id="lidR" x="476" y="474" width="150" height="96" fill="#c4ab96"/>
+          </g>
+          <path d="M316,580 Q372,606 428,580" stroke="#8f7766" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M492,580 Q548,606 604,580" stroke="#8f7766" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M462,548 Q448,606 474,616" stroke="#a68c78" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <ellipse id="mouth" cx="462" cy="672" rx="44" ry="16" fill="#3a1f1f"/>
+        </g>
+      </svg>
+      <div id="zzz"><span id="z1">Z</span> <span id="z2" style="font-size:70px">z</span> <span id="z3" style="font-size:54px">z</span></div>
+    </div>
+  </section>
+
+  <!-- S2 color burst screen: 2.951 - 4.918 -->
+  <section id="s2" class="clip" data-start="2.951" data-duration="1.967">
+    <div class="scr" style="background:#ffd60a"><div id="s2in" style="position:absolute; inset:0"><div class="sunb" id="sunb"></div><div class="sunc"></div></div></div>
+  </section>
+
+  <!-- S3 robot on the turntable: 4.918 - 6.885 -->
+  <section id="s3" class="clip" data-start="4.918" data-duration="1.967">
+    <div class="scr">
+      <div class="studio2"></div>
+      <div class="spot"></div>
+      <div id="presents">APRESENTAMOS</div>
+      <div id="ttBase"></div>
+      <div id="ttDisc"><div id="ttSpin"></div></div>
+      <div id="rGlow"></div><div id="robotWrap"><img src="kit/img/brand/kizubot-robot.png" alt="" /><div class="eye" id="eyeR" style="left:241px; top:28px; width:100px; height:100px"></div></div>
+    </div>
+  </section>
+
+  <!-- S4 feature screens: 6.885 - 9.836 -->
+  <section id="s4a" class="clip" data-start="6.885" data-duration="0.984">
+    <div class="scr"><div class="fscr" id="f1bg"></div>
+      <svg class="icon" id="ic1" viewBox="-200 -200 400 400"><circle r="150" fill="none" stroke="#fff" stroke-width="22"/><circle r="62" fill="none" stroke="#fff" stroke-width="16"/><circle r="14" fill="#ffd60a"/>
+        <path d="M0,-196 V-96 M0,96 V196 M-196,0 H-96 M96,0 H196" stroke="#fff" stroke-width="22" stroke-linecap="round"/></svg>
+    </div>
+  </section>
+  <section id="s4b" class="clip" data-start="7.869" data-duration="0.983">
+    <div class="scr"><div class="fscr" id="f2bg"></div>
+      <svg class="icon" id="ic2" viewBox="-200 -200 400 400">
+        <path d="M-180,-110 V-180 H-110 M110,-180 H180 V-110 M180,110 V180 H110 M-110,180 H-180 V110" fill="none" stroke="#fff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="spk" d="M0,-120 C12,-30 30,-12 120,0 C30,12 12,30 0,120 C-12,30 -30,12 -120,0 C-30,-12 -12,-30 0,-120 Z" fill="#ffd60a" stroke="#fff" stroke-width="6"/>
+        <path d="M118,-112 C122,-92 128,-86 148,-82 C128,-78 122,-72 118,-52 C114,-72 108,-78 88,-82 C108,-86 114,-92 118,-112 Z" fill="#fff"/>
+        <path d="M-112,70 C-109,84 -104,89 -90,92 C-104,95 -109,100 -112,114 C-115,100 -120,95 -134,92 C-120,89 -115,84 -112,70 Z" fill="#fff"/></svg>
+    </div>
+  </section>
+  <section id="s4c" class="clip" data-start="8.852" data-duration="0.984">
+    <div class="scr"><div class="fscr" id="f3bg"></div>
+      <svg class="icon" id="ic3" viewBox="-200 -200 400 400">
+        <path d="M-170,170 Q-60,-150 150,-190" fill="none" stroke="#3b2414" stroke-width="16" stroke-linecap="round"/>
+        <path d="M150,-190 L120,70" fill="none" stroke="#fff" stroke-width="4"/>
+        <g id="bob"><circle cx="120" cy="86" r="22" fill="#fff"/><path d="M98,86 A22,22 0 0 0 142,86 Z" fill="#e3242b"/></g>
+        <ellipse id="rip1" cx="120" cy="110" rx="60" ry="14" fill="none" stroke="#fff" stroke-width="6"/>
+        <ellipse id="rip2" cx="120" cy="110" rx="60" ry="14" fill="none" stroke="#fff" stroke-width="5"/>
+        <path d="M-200,150 Q-150,135 -100,150 T0,150 T100,150 T200,150" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="8"/></svg>
+    </div>
+  </section>
+
+  <!-- S5 alarm print: 9.836 - 11.803 -->
+  <section id="s5" class="clip" data-start="9.836" data-duration="1.967">
+    <div class="scr"><div class="slate"></div>
+      <div id="alarmWrap"><img src="kit/img/prints/boss-tangrowth-electivire--tangrowth.png" alt="" /></div>
+      <div class="ptag" id="ptag5"><span>PRINT REAL DE CLIENTE</span></div>
+    </div>
+  </section>
+
+  <!-- S6 freeze: 11.803 - 12.787 -->
+  <section id="s6" class="clip" data-start="11.803" data-duration="0.984">
+    <div class="scr"><div class="slate"></div>
+      <div style="position:absolute; left:30px; top:96px; width:860px; filter: grayscale(0.85) brightness(0.7)"><img src="kit/img/prints/boss-tangrowth-electivire--tangrowth.png" alt="" style="width:860px; display:block; border-radius:26px" /></div>
+    </div>
+  </section>
+
+  <!-- S7 PC off, farm on: 12.787 - 15.246 -->
+  <section id="s7" class="clip" data-start="12.787" data-duration="2.459">
+    <div class="scr"><div class="room"></div>
+      <div id="tower"><div id="pwr"></div></div>
+      <div id="mon"><div id="monScr"><div id="monChar"></div></div><div id="monLine"></div></div>
+      <div id="monStand"></div><div id="monFoot"></div>
+      <div id="desk"></div>
+      <div id="offStamp"><span>DESLIGADO</span></div>
+      <div id="cloud"><img src="kit/img/brand/kizubot-head.png" alt="" /><div class="nv">NA NUVEM <b>24/7</b></div><div id="farmPill"><i id="farmDot"></i>FARMANDO</div></div>
+    </div>
+  </section>
+
+  <!-- S8 price screen: 15.246 - 17.705 -->
+  <section id="s8" class="clip" data-start="15.246" data-duration="2.459">
+    <div class="scr"><div class="spots"></div></div>
+  </section>
+
+  <!-- CRT glass, bug, phone banner -->
+  <div id="crt"></div>
+  <div id="bug"><i id="bugDot"></i>AO VIVO</div>
+  <div id="ltClip"><div id="ltIn"><div class="ph"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div><div class="tx">LINK NA BIO</div></div></div>
+
+  <!-- ================= DECK + OVERLAYS (over the glass) ================= -->
+  <section id="s1o" class="clip" data-start="0" data-duration="2.951">
+    <div class="deck" id="s1deck"><div class="lcdLbl">ainda na hunt às</div><div class="lcd" id="clock">03:12</div></div>
+  </section>
+
+  <section id="s2o" class="clip" data-start="2.951" data-duration="1.967">
+    <div id="confBox" style="position:absolute; inset:0"></div>
+    <div class="ttl" id="s2ttl">
+      <div class="chunk wht" id="t21"><span class="sk">SEUS</span></div>
+      <div class="chunk yel" id="t22"><span class="sk">PROBLEMAS</span></div>
+      <div class="chunk red" id="t23"><span class="sk">ACABARAM!</span></div>
+    </div>
+  </section>
+
+  <section id="s3o" class="clip" data-start="4.918" data-duration="1.967">
+    <div class="deck"><div class="chunk brand" id="kzName"><span class="sk">KIZUBOT</span></div></div>
+    <div class="burst" id="bAfk" style="left:700px; top:150px; width:330px; height:330px"><svg id="bAfkS"></svg><div class="bt" style="font-size:78px"><div>100%</div><div>AFK!</div></div></div>
+  </section>
+
+  <section id="s4o" class="clip" data-start="6.885" data-duration="2.951">
+    <div class="burst" id="bf1" style="left:84px; top:1080px; width:290px; height:290px"><svg id="bf1S"></svg><div class="bt" style="font-size:76px">CAÇA!</div></div>
+    <div class="burst" id="bf2" style="left:338px; top:1100px; width:300px; height:300px"><svg id="bf2S"></svg><div class="bt" style="font-size:66px; color:#ffd60a">CAPTURA!</div></div>
+    <div class="burst" id="bf3" style="left:600px; top:1080px; width:290px; height:290px"><svg id="bf3S"></svg><div class="bt" style="font-size:76px; color:#fff">PESCA!</div></div>
+  </section>
+
+  <section id="s5o" class="clip" data-start="9.836" data-duration="1.967">
+    <div class="deck">
+      <div class="chunk wht" id="t51" style="font-size:104px"><span class="sk">AVISA NO</span></div>
+      <div class="chunk grn" id="t52" style="font-size:150px; margin-top:2px"><span class="sk">WHATSAPP!</span></div>
+    </div>
+  </section>
+
+  <section id="s6o" class="clip" data-start="11.803" data-duration="0.984">
+    <div id="dim6"></div>
+    <div id="band"><div class="chunk wht" id="wait"><span class="sk">MAS ESPERA…</span></div></div>
+  </section>
+
+  <section id="s7o" class="clip" data-start="12.787" data-duration="2.459">
+    <div class="deck">
+      <div class="chunk wht" id="t71"><span class="sk">FUNCIONA COM O</span></div>
+      <div class="chunk yel" id="t72"><span class="sk">PC DESLIGADO!</span></div>
+    </div>
+  </section>
+
+  <section id="s8o" class="clip" data-start="15.246" data-duration="2.459">
+    <div class="burst" id="bPrice"><svg id="bPriceS"></svg>
+      <div class="bt">
+        <div class="pl1">PLANOS A PARTIR DE</div>
+        <div class="pl2" id="pnum">R$ 250</div>
+        <div class="pl3">POR MÊS</div>
+      </div>
+    </div>
+    <div class="deck" style="top:1086px">
+      <div class="chunk wht" id="p8a"><span class="sk">MENOS DE</span></div>
+      <div class="chunk yel" id="p8b"><span class="sk">R$ 9 POR DIA</span></div>
+    </div>
+  </section>
+
+  <!-- B&W "old footage" filter for the problem scene (everything below it) -->
+  <div id="bw"></div>
+
+  <!-- hook caption stays in color, above the B&W filter -->
+  <section id="s1cap" class="clip" data-start="0" data-duration="2.951">
+    <div id="cap">
+      <div class="chunk yel" id="c1"><span class="sk">CANSADO DE</span></div>
+      <div class="chunk yel" id="c2"><span class="sk">FARMAR</span></div>
+      <div class="chunk red" id="c3"><span class="sk">NA MÃO?</span></div>
+    </div>
+  </section>
+
+  <!-- S9 end card: 17.705 - 21.15 -->
+  <section id="s9" class="clip" data-start="17.705" data-duration="3.445">
+    <div id="endIn" style="position:absolute; inset:0">
+      <div id="endBg"><div id="endRays"></div></div>
+      <div id="endCol">
+        <div id="endLogoWrap"><img id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" /><div class="eye" id="eyeEnd" style="left:161px; top:4px; width:100px; height:100px"></div></div>
+        <div id="endUrl">kizubot.com</div>
+        <div class="chunk yel" id="endAsk"><span class="sk"><div>LEMBRA DOS</div><div>COMERCIAIS DA</div><div>MADRUGADA?</div></span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+  <div id="offT"></div><div id="offB"></div><div id="offLine"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 21.15;
+  const B = 60 / 122;
+  const b = function (n) { return n * B; };
+
+  // ---------- starburst builder (deterministic) ----------
+  function burst(svgId, n, fill, stroke, sw, seed, inner) {
+    const r = KZ.rng(seed);
+    const pts = [];
+    for (let i = 0; i < n * 2; i++) {
+      const a = -Math.PI / 2 + i * Math.PI / n;
+      const rr = i % 2 === 0 ? 100 - r() * 4 : (inner || 76) + r() * 6;
+      pts.push((Math.cos(a) * rr).toFixed(1) + "," + (Math.sin(a) * rr).toFixed(1));
+    }
+    const svg = document.getElementById(svgId);
+    svg.setAttribute("viewBox", "-108 -108 216 216");
+    svg.innerHTML = '<polygon points="' + pts.join(" ") + '" fill="' + fill + '" stroke="' + stroke + '" stroke-width="' + sw + '" stroke-linejoin="round"/>';
+  }
+  burst("bAfkS", 18, "#ffd60a", "#e3242b", 7, 3);
+  burst("bf1S", 16, "#ffd60a", "#e3242b", 7, 5);
+  burst("bf2S", 16, "#e3242b", "#ffd60a", 7, 7);
+  burst("bf3S", 16, "#1739b8", "#ffd60a", 7, 9);
+  burst("bPriceS", 26, "#ffd60a", "#e3242b", 5, 11, 84);
+
+  // ---------- confetti (seeded) ----------
+  const confBox = document.getElementById("confBox");
+  const cr = KZ.rng(121);
+  const cols = ["#ffd60a", "#e3242b", "#ffffff", "#2ad4ff", "#c6ff3d"];
+  const conf = [];
+  for (let i = 0; i < 26; i++) {
+    const d = document.createElement("div");
+    d.className = "conf";
+    d.style.background = cols[i % cols.length];
+    confBox.appendChild(d);
+    const ang = (i / 26) * Math.PI * 2 + cr() * 0.3;
+    const dist = 360 + cr() * 300;
+    conf.push({ el: d, dx: Math.cos(ang) * dist, dy: Math.sin(ang) * dist * 0.9, rot: (cr() * 2 - 1) * 540 });
+  }
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#rays", { rotation: 0 }, { rotation: 42, duration: D, ease: "none" }, 0);
+
+  // ---------- S1: B&W problem + hook (0 - 2.951) ----------
+  tl.fromTo("#c1", { scale: 1.3 }, { scale: 1, duration: 0.24, ease: "power4.out" }, 0);
+  tl.fromTo("#c2", { scale: 1.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "power4.out" }, 0.06);
+  tl.fromTo("#c3", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.3, ease: "back.out(2.6)" }, 0.12);
+  KZ.shake(tl, "#cap", 0.16, 10, 0.24, 3);
+  tl.to("#cap", { scale: 1.035, duration: 2.0, ease: "sine.inOut" }, 0.5);
+  gsap.set(["#lidL", "#lidR"], { transformOrigin: "50% 0%" });
+  tl.fromTo(["#lidL", "#lidR"], { scaleY: 0.42 }, { scaleY: 0.5, duration: 0.7, ease: "sine.inOut" }, 0);
+  tl.to(["#lidL", "#lidR"], { scaleY: 1, duration: 0.07, ease: "power2.in" }, 0.86);
+  tl.to(["#lidL", "#lidR"], { scaleY: 0.56, duration: 0.14, ease: "power2.out" }, 0.94);
+  tl.to(["#lidL", "#lidR"], { scaleY: 0.86, duration: 0.7, ease: "sine.inOut" }, 1.35);
+  tl.to(["#lidL", "#lidR"], { scaleY: 1, duration: 0.18, ease: "power2.in" }, 2.1);
+  tl.fromTo("#mouth", { scaleY: 0.6, scaleX: 0.8 }, { scaleY: 2.6, scaleX: 1.1, duration: 0.5, ease: "power2.out", svgOrigin: "462 672" }, 1.2);
+  tl.to("#mouth", { scaleY: 0.8, scaleX: 0.9, duration: 0.3, ease: "power2.in", svgOrigin: "462 672" }, 1.85);
+  tl.fromTo("#headG", { rotation: 0, y: 0 }, { rotation: 8, y: 86, duration: 0.2, ease: "power3.in", svgOrigin: "460 700" }, 2.3);
+  KZ.shake(tl, "#face", 2.5, 8, 0.2, 4);
+  ["#z1", "#z2", "#z3"].forEach(function (z, i) {
+    tl.fromTo(z, { y: 40, opacity: 0 }, { y: -30, opacity: 1, duration: 0.42, ease: "power1.out" }, 2.42 + i * 0.1);
+  });
+  const clk = { m: 12 };
+  const clockEl = document.getElementById("clock");
+  tl.to(clk, { m: 47, duration: 2.3, ease: "power1.in", onUpdate: function () { clockEl.textContent = "03:" + String(Math.round(clk.m)).padStart(2, "0"); } }, 0.2);
+  tl.fromTo("#s1deck", { y: 30, opacity: 0.6 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 0);
+
+  // ---------- S2: SEUS PROBLEMAS ACABARAM! (2.951) ----------
+  const T2 = b(6);
+  tl.to("#bw", { opacity: 0, duration: 0.1, ease: "none" }, T2);
+  KZ.flash(tl, "#flash", T2, 0.95);
+  tl.fromTo("#s2in", { scale: 0.5 }, { scale: 1, duration: 0.45, ease: "expo.out" }, T2);
+  tl.fromTo("#sunb", { rotation: 0 }, { rotation: 40, duration: 1.97, ease: "none" }, T2);
+  tl.fromTo("#t21", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, T2 + 0.03);
+  tl.fromTo("#t22", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, T2 + b(0.5));
+  tl.fromTo("#t23", { scale: 0.2, opacity: 0, rotation: 10 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.4, ease: "back.out(2.4)" }, T2 + b(1));
+  KZ.shake(tl, "#s2ttl", T2 + b(1) + 0.08, 16, 0.3, 5);
+  tl.to("#s2ttl", { scale: 1.05, duration: 1.0, ease: "sine.inOut" }, T2 + 0.85);
+  conf.forEach(function (c, i) {
+    tl.fromTo(c.el, { x: 0, y: 0, rotation: 0, scale: 0.2, opacity: 1 }, { x: c.dx, y: c.dy, rotation: c.rot, scale: 1, duration: 0.8, ease: "power3.out" }, T2 + 0.02 + (i % 4) * 0.02);
+    tl.to(c.el, { y: c.dy + 420, rotation: c.rot * 1.6, opacity: 0, duration: 0.9, ease: "power1.in" }, T2 + 0.84);
+  });
+  tl.to("#s2ttl", { scale: 0.7, opacity: 0, duration: 0.15, ease: "power2.in" }, b(10) - 0.15);
+  tl.fromTo("#bug", { x: -280, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "back.out(2)" }, T2 + 0.45);
+  tl.fromTo("#bugDot", { opacity: 1 }, { opacity: 0.15, duration: 0.45, ease: "steps(1)", yoyo: true, repeat: 39 }, T2 + 0.5);
+  tl.fromTo("#ltIn", { x: -940 }, { x: 0, duration: 0.42, ease: "power3.out" }, T2 + 0.8);
+
+  // ---------- S3: robot on the turntable (4.918) ----------
+  const T3 = b(10);
+  tl.fromTo("#presents", { y: -50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T3);
+  tl.fromTo("#ttSpin", { rotation: 0 }, { rotation: 600, duration: 1.97, ease: "power2.out" }, T3);
+  tl.fromTo("#robotWrap", { scaleX: 0.04, y: -300 }, { scaleX: 1, y: 0, duration: 0.45, ease: "back.out(1.5)" }, T3 + 0.04);
+  tl.to("#robotWrap", { scaleX: 0.1, duration: 0.11, ease: "power1.in" }, T3 + 0.55);
+  tl.to("#robotWrap", { scaleX: 1, duration: 0.17, ease: "power2.out" }, T3 + 0.66);
+  tl.to("#robotWrap", { scaleX: 0.1, duration: 0.11, ease: "power1.in" }, T3 + 0.86);
+  tl.to("#robotWrap", { scaleX: 1, duration: 0.2, ease: "back.out(2)" }, T3 + 0.97);
+  KZ.eyePulse(tl, "#eyeR", T3 + 1.15, 2);
+  tl.fromTo("#kzName", { scale: 2.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, T3 + b(1));
+  KZ.shake(tl, "#kzName", T3 + b(1) + 0.2, 10, 0.24, 6);
+  tl.fromTo("#bAfk", { scale: 0, rotation: -60 }, { scale: 1, rotation: -10, duration: 0.45, ease: "back.out(2.6)" }, T3 + b(2));
+  tl.fromTo("#bAfkS", { rotation: 0 }, { rotation: 24, duration: 1.0, ease: "none" }, T3 + b(2));
+  tl.to(["#kzName", "#bAfk"], { scale: 0.7, opacity: 0, duration: 0.15, ease: "power2.in" }, b(14) - 0.15);
+
+  // ---------- S4: CAÇA! CAPTURA! PESCA! (6.885) ----------
+  const T4 = b(14);
+  tl.fromTo("#ic1", { scale: 2.2, rotation: -90, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, T4);
+  tl.to("#ic1", { rotation: 20, scale: 1.06, duration: 0.6, ease: "sine.inOut" }, T4 + 0.36);
+  tl.fromTo("#ic2", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, T4 + b(2));
+  tl.fromTo("#spk", { rotation: 0, scale: 0.9 }, { rotation: 45, scale: 1.12, duration: 0.8, ease: "sine.inOut", svgOrigin: "0 0" }, T4 + b(2));
+  tl.fromTo("#ic3", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T4 + b(4));
+  tl.fromTo("#bob", { y: 0 }, { y: 16, duration: 0.22, ease: "sine.inOut", yoyo: true, repeat: 3 }, T4 + b(4) + 0.1);
+  tl.fromTo("#rip1", { scale: 0.4, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.7, ease: "power1.out", svgOrigin: "120 110" }, T4 + b(4) + 0.12);
+  tl.fromTo("#rip2", { scale: 0.4, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.7, ease: "power1.out", svgOrigin: "120 110" }, T4 + b(4) + 0.42);
+  [["#bf1", -10], ["#bf2", 6], ["#bf3", -5]].forEach(function (p, i) {
+    tl.fromTo(p[0], { scale: 0, rotation: p[1] - 50 }, { scale: 1, rotation: p[1], duration: 0.42, ease: "back.out(2.8)" }, T4 + i * b(2));
+    tl.fromTo(p[0] + "S", { rotation: 0 }, { rotation: 18, duration: 2.9 - i * b(2), ease: "none" }, T4 + i * b(2));
+  });
+  tl.to(["#bf1", "#bf2", "#bf3"], { scale: 0.75, opacity: 0, duration: 0.15, ease: "power2.in" }, b(20) - 0.15);
+
+  // ---------- S5: AVISA NO WHATSAPP! (9.836) ----------
+  const T5 = b(20);
+  tl.fromTo("#alarmWrap", { scale: 0.45, opacity: 0, y: 80 }, { scale: 1, opacity: 1, y: 0, duration: 0.36, ease: "back.out(2)" }, T5 + 0.1);
+  KZ.shake(tl, "#alarmWrap", T5 + 0.5, 9, 0.36, 2);
+  tl.to("#alarmWrap", { scale: 1.04, duration: 1.2, ease: "sine.inOut" }, T5 + 0.75);
+  KZ.rise(tl, "#ptag5", T5 + 0.45, 0.3, 20);
+  tl.fromTo("#t51", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, T5 + 0.02);
+  tl.fromTo("#t52", { scale: 0.3, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.36, ease: "back.out(2.4)" }, T5 + b(1));
+
+  // ---------- S6: MAS ESPERA… (11.803) ----------
+  const T6 = b(24);
+  tl.fromTo("#dim6", { opacity: 0 }, { opacity: 1, duration: 0.12 }, T6);
+  tl.fromTo("#band", { x: -1250, rotation: -7 }, { x: 0, rotation: -5, duration: 0.24, ease: "power4.out" }, T6);
+  tl.fromTo("#wait", { scale: 1.6 }, { scale: 1, duration: 0.3, ease: "power3.out" }, T6 + 0.1);
+  tl.to("#band", { rotation: -3, duration: 0.6, ease: "sine.inOut" }, T6 + 0.3);
+
+  // ---------- S7: PC DESLIGADO! (12.787) ----------
+  const T7 = b(26);
+  KZ.flash(tl, "#flash", T7, 0.6, "#ffd60a");
+  tl.fromTo("#t71", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.26, ease: "power4.out" }, T7 + 0.02);
+  tl.fromTo("#t72", { scale: 0.3, opacity: 0, rotation: 6 }, { scale: 1, opacity: 1, rotation: -2, duration: 0.38, ease: "back.out(2.4)" }, T7 + b(1));
+  KZ.shake(tl, "#t72", T7 + b(1) + 0.3, 10, 0.24, 8);
+  tl.fromTo("#monChar", { x: 0 }, { x: 150, duration: 0.6, ease: "none" }, T7);
+  tl.to("#pwr", { borderColor: "#ef4444", boxShadow: "0 0 18px rgba(239,68,68,0.9)", duration: 0.05 }, T7 + 0.45);
+  tl.to("#monScr", { scaleY: 0.03, duration: 0.12, ease: "power3.in" }, T7 + 0.5);
+  tl.fromTo("#monLine", { opacity: 0, scaleX: 1 }, { opacity: 1, duration: 0.03 }, T7 + 0.6);
+  tl.set("#monScr", { opacity: 0 }, T7 + 0.62);
+  tl.to("#monLine", { scaleX: 0.02, duration: 0.14, ease: "power3.in" }, T7 + 0.64);
+  tl.to("#monLine", { opacity: 0, duration: 0.05 }, T7 + 0.8);
+  tl.fromTo("#offStamp", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "power4.out" }, T7 + 0.84);
+  tl.fromTo("#cloud", { x: 420, rotation: 8 }, { x: 0, rotation: 0, duration: 0.4, ease: "back.out(1.6)" }, T7 + b(2.2));
+  tl.fromTo("#farmDot", { opacity: 1 }, { opacity: 0.2, duration: 0.25, yoyo: true, repeat: 5, ease: "steps(1)" }, T7 + b(2.2) + 0.4);
+  tl.to("#cloud", { y: -12, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, T7 + b(2.2) + 0.45);
+
+  // ---------- S8: price (15.246) ----------
+  const T8 = b(31);
+  tl.fromTo("#bPrice", { scale: 0.05, rotation: -200 }, { scale: 1, rotation: -4, duration: 0.42, ease: "back.out(1.7)" }, T8);
+  KZ.flash(tl, "#flash", T8, 0.5);
+  KZ.shake(tl, "#bPrice", T8 + 0.42, 10, 0.25, 10);
+  tl.fromTo("#bPriceS", { rotation: 0 }, { rotation: 14, duration: 2.4, ease: "none" }, T8);
+  tl.fromTo("#pnum", { scale: 0.6 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, T8 + 0.3);
+  tl.fromTo("#p8a", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, T8 + b(2.4));
+  tl.fromTo("#p8b", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.34, ease: "back.out(2.4)" }, T8 + b(2.4) + 0.12);
+  tl.to(["#bPrice"], { scale: 1.6, opacity: 0, duration: 0.18, ease: "power2.in" }, b(36) - 0.18);
+
+  // ---------- S9: end card (17.705) ----------
+  const T9 = b(36);
+  tl.fromTo("#endIn", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "none" }, T9);
+  tl.fromTo("#endRays", { rotation: 0 }, { rotation: 18, duration: D - T9, ease: "none" }, T9);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T9 + 0.04);
+  KZ.eyePulse(tl, "#eyeEnd", T9 + 0.14, 2);
+  KZ.rise(tl, "#endUrl", T9 + 0.42, 0.35, 30);
+  tl.fromTo("#endAsk", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, T9 + 0.75);
+  tl.to("#endLogoWrap", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, T9 + 0.7);
+  // loop bridge: the TV switches off (collapses to a line, then a dot) -> replay opens on the B&W hook
+  const TO = D - 0.44;
+  tl.fromTo("#offT", { yPercent: -100 }, { yPercent: 0, duration: 0.17, ease: "power3.in" }, TO);
+  tl.fromTo("#offB", { yPercent: 100 }, { yPercent: 0, duration: 0.17, ease: "power3.in" }, TO);
+  tl.fromTo("#offLine", { opacity: 0, scaleX: 1 }, { opacity: 1, duration: 0.03 }, TO + 0.13);
+  tl.to("#offLine", { scaleX: 0.006, duration: 0.17, ease: "power3.in" }, TO + 0.17);
+  tl.to("#offLine", { opacity: 0, duration: 0.06 }, TO + 0.36);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -4184,6 +4184,276 @@
     ]
   },
   {
+    "id": "121",
+    "file": "121-cansado-de-farmar.mp4",
+    "series": "F17 Infomercial",
+    "title": "Cansado de farmar na mão?",
+    "hook": "CANSADO DE FARMAR NA MÃO?",
+    "neuro": "pattern-interrupt, bw-to-color-contrast, nostalgia, humor-benign-violation, value-stacking, social-proof, anchoring, peak-end, loop, comment-prompt",
+    "duration": 21.167,
+    "size_mb": 10.4,
+    "platforms": {
+      "tiktok": {
+        "caption": "Cansado de farmar na mão? 📺 SEUS PROBLEMAS ACABARAM! O KizuBot caça, captura, pesca e te avisa no WhatsApp, com o PC desligado. Planos a partir de R$ 250/mês. Link na bio. Quem lembra dos comerciais da madrugada?",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#comercial"
+        ]
+      },
+      "youtube": {
+        "title": "Cansado de farmar na mão? SEUS PROBLEMAS ACABARAM! 📺",
+        "description": "Comercial da madrugada, versão PxG: o KizuBot caça, captura e pesca 100% AFK, roda 24/7 na nuvem (funciona com o PC desligado) e te avisa no WhatsApp quando aparece algo importante. Planos a partir de R$ 250/mês (menos de R$ 9 por dia). kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Cansado de farmar na mão? 📺 Seus problemas acabaram: o KizuBot farma 100% AFK, com o PC desligado, e te avisa no WhatsApp. Link na bio. Você lembra dos comerciais da madrugada?",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk"
+        ]
+      }
+    },
+    "pinned_comment": "Quem lembra dos comerciais da madrugada? 📺",
+    "claims": [
+      "100% AFK",
+      "caça, captura e pesca sozinho (módulos Combat, Catch, Fishing)",
+      "alarmes no celular e notificações no WhatsApp",
+      "uso com PC desligado",
+      "roda 24/7 na nuvem (máquinas virtuais)",
+      "planos a partir de R$ 250/mês",
+      "menos de R$ 9 por dia (R$ 250 ÷ 30 = R$ 8,33)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-robot.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/boss-tangrowth-electivire--tangrowth.png"
+    ]
+  },
+  {
+    "id": "122",
+    "file": "122-mas-espera-tem-mais.mp4",
+    "series": "F17 Infomercial",
+    "title": "Mas espera… tem mais!",
+    "hook": "MAS ESPERA… TEM MAIS!",
+    "neuro": "value-stacking, running-gag-humor, visible-progress, anticipation-drop, anchoring, nostalgia, loop, comment-prompt",
+    "duration": 21.167,
+    "size_mb": 13.4,
+    "platforms": {
+      "tiktok": {
+        "caption": "Mas espera… TEM MAIS! 📺 Cavebot, combate, cura, captura, farming, pesca, alarmes, Actions com 50+ condições… 13 módulos num bot só, a partir de R$ 250/mês. Link na bio. Qual módulo você mais usaria?",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#temmais",
+          "#comercial"
+        ]
+      },
+      "youtube": {
+        "title": "Mas espera… tem mais! 13 módulos num bot só 📺",
+        "description": "O comercial que não acaba nunca: o KizuBot tem 13 módulos (Cavebot, Combate, Cura, Captura, Farming, Pesca, Alarmes, Party, Actions com 50+ condições e 30+ ações, Humanização, Engine, Conta e Setup Pokémon). Tudo isso a partir de R$ 250/mês, menos de R$ 9 por dia. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Mas espera… tem mais! 📺 13 módulos num bot só pra PxG, a partir de R$ 250/mês (menos de R$ 9 por dia). Link na bio. Qual módulo você mais usaria?",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#temmais"
+        ]
+      }
+    },
+    "pinned_comment": "Qual foi o melhor 'tem mais'? 😂",
+    "claims": [
+      "13 módulos configuráveis: Cavebot, Combate, Cura, Captura, Farming, Pesca, Alarmes, Party, Actions, Humanização, Engine, Conta, Setup Pokémon",
+      "Actions: 50+ tipos de condição e 30+ tipos de ação",
+      "planos a partir de R$ 250/mês",
+      "menos de R$ 9 por dia (R$ 250 ÷ 30 = R$ 8,33)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-robot.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "123",
+    "file": "123-demonstracao-ao-vivo.mp4",
+    "series": "F17 Infomercial",
+    "title": "Demonstração ao vivo!",
+    "hook": "DEMONSTRAÇÃO AO VIVO!",
+    "neuro": "demonstration-proof, picture-superiority, curiosity-gap, social-proof, nostalgia, peak-end, loop, comment-prompt",
+    "duration": 19.7,
+    "size_mb": 11.0,
+    "platforms": {
+      "tiktok": {
+        "caption": "DEMONSTRAÇÃO AO VIVO! 📺 Gameplay real do KizuBot: caçando sozinho, usando os golpes certinho e coletando o loot. E se aparecer shiny? Ele te avisa no WhatsApp. Link na bio. Quer ver mais gameplay?",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#gameplay",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Demonstração ao vivo: o KizuBot caçando sozinho no PxG 📺",
+        "description": "Gameplay real do KizuBot: ninguém no teclado, ele caça sozinho, usa os golpes certinho e coleta o loot. E se aparecer shiny, ele te avisa no WhatsApp. Você dorme, ele farma. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Demonstração ao vivo! 📺 Gameplay real do KizuBot caçando sozinho, e o alarme de shiny chegando no WhatsApp. Link na bio. Quer ver mais gameplay?",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#gameplay"
+        ]
+      }
+    },
+    "pinned_comment": "Quer ver mais gameplay? 👀",
+    "claims": [
+      "100% AFK",
+      "gameplay real do KizuBot (clip de kizubot.com/download)",
+      "loot (módulo Combat)",
+      "detecção de shinys",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/video/rypherior.mp4",
+      "kit/img/prints/shiny-cubone--alarm.png",
+      "kit/img/brand/kizubot-robot.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "124",
+    "file": "124-compare.mp4",
+    "series": "F17 Infomercial",
+    "title": "Compare!",
+    "hook": "COMPARE!",
+    "neuro": "contrast-comparison, commitment-ladder, visible-progress, anticipation-drop, anchoring, nostalgia, comment-prompt, loop",
+    "duration": 17.233,
+    "size_mb": 7.7,
+    "platforms": {
+      "tiktok": {
+        "caption": "COMPARE! 📺 Farmar na mão x KizuBot: PC desligado, farm enquanto você dorme, aviso no WhatsApp, detecção de shiny/mega/boss e pesca no AFK. E o preço? Menos de R$ 9 por dia. Link na bio. Qual linha pesou mais pra você?",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#comercial"
+        ]
+      },
+      "youtube": {
+        "title": "Compare! Farmar na mão x KizuBot (e o preço?) 📺",
+        "description": "Na mão você precisa do PC ligado, não farma dormindo, não recebe aviso no WhatsApp, não tem detecção de shiny, mega e boss e não pesca no AFK. Com o KizuBot, sim. Planos a partir de R$ 250/mês: menos de R$ 9 por dia. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Compare! 📺 Farmar na mão x KizuBot, linha por linha. E o preço? Menos de R$ 9 por dia (planos a partir de R$ 250/mês). Link na bio. Qual linha pesou mais pra você?",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk"
+        ]
+      }
+    },
+    "pinned_comment": "Qual linha pesou mais pra você? 🤔",
+    "claims": [
+      "uso com PC desligado",
+      "farma enquanto você dorme (100% AFK)",
+      "alarmes no celular e notificações no WhatsApp",
+      "detecção de shinys, megas e bosses",
+      "pesca no AFK",
+      "planos a partir de R$ 250/mês",
+      "menos de R$ 9 por dia (R$ 250 ÷ 30 = R$ 8,33)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "125",
+    "file": "125-depoimentos-reais.mp4",
+    "series": "F17 Infomercial",
+    "title": "Depoimentos reais. Sem ator.",
+    "hook": "DEPOIMENTOS REAIS. SEM ATOR.",
+    "neuro": "social-proof, authenticity, humor-benign-violation, regret-loss-aversion, nostalgia, comment-prompt, loop",
+    "duration": 15.267,
+    "size_mb": 5.6,
+    "platforms": {
+      "tiktok": {
+        "caption": "Depoimentos reais. Sem ator. 📺 \"eu quero mt ter comprado isso antes / queria*\", \"Teu bot é mt bom e fácil configurar\", \"Faz tudo a desgrama\". Prints reais de clientes diferentes. Link na bio. Qual depoimento você daria?",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#depoimento",
+          "#comercial"
+        ]
+      },
+      "youtube": {
+        "title": "Depoimentos reais. Sem ator. (prints de clientes do KizuBot) 📺",
+        "description": "Comercial de TV, mas sem ator: três prints reais de clientes diferentes do KizuBot, com as frases exatamente como eles escreveram. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Depoimentos reais. Sem ator. 📺 Três prints reais de clientes diferentes, do jeitinho que eles escreveram. Link na bio. Qual depoimento você daria?",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#depoimento"
+        ]
+      }
+    },
+    "pinned_comment": "Qual depoimento você daria? 👇",
+    "claims": [
+      "verbatim client quotes only (no other product claims)"
+    ],
+    "assets": [
+      "kit/img/prints/queria-ter-comprado-antes--antes.png",
+      "kit/img/prints/facil-configurar.png",
+      "kit/img/prints/bot-e-um-roubo--roubo.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
     "id": "126",
     "file": "126-ache-o-shiny-facil.mp4",
     "series": "F18 Ache o Shiny",

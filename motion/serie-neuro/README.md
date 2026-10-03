@@ -10,7 +10,7 @@ Cem shorts verticais (1080×1920, 30 fps, 12–25 s) para o KizuBot, feitos inte
 
 <p align="center"><img src="grid-04.jpg" width="100%" alt="Um frame de cada short de 101 a 120"></p>
 
-<p align="center"><img src="grid-05.jpg" width="100%" alt="Um frame de cada short de 126 a 140"></p>
+<p align="center"><img src="grid-05.jpg" width="100%" alt="Um frame de cada short de 121 a 140"></p>
 
 ## Como a série foi pensada
 
@@ -123,6 +123,11 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 | 118 | [`118-do-zero-ao-farm.mp4`](118-do-zero-ao-farm.mp4) | F16 Speedrun | Do zero ao farm em 3 passos | DO ZERO AO FARM. 3 PASSOS. | time-pressure, chunking, ikea-effect, visible-progress, social-proof, peak-end, seamless-loop, comment-prompt |
 | 119 | [`119-speedrun-de-shiny.mp4`](119-speedrun-de-shiny.mp4) | F16 Speedrun | Speedrun de shiny: mesmo minuto | SPEEDRUN DE SHINY: NOVO RECORDE. | anticipation, variable-reward, precise-numbers, social-proof, time-pressure, peak-end, seamless-loop, comment-prompt |
 | 120 | [`120-30-dias-em-15s.mp4`](120-30-dias-em-15s.mp4) | F16 Speedrun | 30 dias de farm em 15 segundos | 30 DIAS DE FARM EM 15 SEGUNDOS. | time-pressure, visible-progress, acceleration, social-proof, precise-numbers, peak-end, comment-prompt |
+| 121 | [`121-cansado-de-farmar.mp4`](121-cansado-de-farmar.mp4) | F17 Infomercial | Cansado de farmar na mão? | CANSADO DE FARMAR NA MÃO? | pattern-interrupt, bw-to-color-contrast, nostalgia, humor-benign-violation, value-stacking, social-proof, anchoring, peak-end, loop, comment-prompt |
+| 122 | [`122-mas-espera-tem-mais.mp4`](122-mas-espera-tem-mais.mp4) | F17 Infomercial | Mas espera… tem mais! | MAS ESPERA… TEM MAIS! | value-stacking, running-gag-humor, visible-progress, anticipation-drop, anchoring, nostalgia, loop, comment-prompt |
+| 123 | [`123-demonstracao-ao-vivo.mp4`](123-demonstracao-ao-vivo.mp4) | F17 Infomercial | Demonstração ao vivo! | DEMONSTRAÇÃO AO VIVO! | demonstration-proof, picture-superiority, curiosity-gap, social-proof, nostalgia, peak-end, loop, comment-prompt |
+| 124 | [`124-compare.mp4`](124-compare.mp4) | F17 Infomercial | Compare! | COMPARE! | contrast-comparison, commitment-ladder, visible-progress, anticipation-drop, anchoring, nostalgia, comment-prompt, loop |
+| 125 | [`125-depoimentos-reais.mp4`](125-depoimentos-reais.mp4) | F17 Infomercial | Depoimentos reais. Sem ator. | DEPOIMENTOS REAIS. SEM ATOR. | social-proof, authenticity, humor-benign-violation, regret-loss-aversion, nostalgia, comment-prompt, loop |
 | 126 | [`126-ache-o-shiny-facil.mp4`](126-ache-o-shiny-facil.mp4) | F18 Ache o Shiny | Ache o shiny em 3 segundos | ACHE O SHINY EM 3 SEGUNDOS. | participation, von-restorff, time-pressure, rewatch-loop, effort-contrast, real-proof, comment-prompt |
 | 127 | [`127-ache-o-shiny-medio.mp4`](127-ache-o-shiny-medio.mp4) | F18 Ache o Shiny | Nível 2: ache o shiny | NÍVEL 2: ACHE O SHINY. | participation, von-restorff, decoy-effect, time-pressure, rewatch-loop, loss-aversion, real-proof, comment-prompt |
 | 128 | [`128-ache-o-shiny-impossivel.mp4`](128-ache-o-shiny-impossivel.mp4) | F18 Ache o Shiny | Nível impossível | NÍVEL IMPOSSÍVEL. | participation, challenge, von-restorff, rewatch-loop, effort-contrast, real-proof, status-identity, comment-prompt |

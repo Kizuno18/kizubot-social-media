@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>124 Compare!</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F17 Infomercial — ep.124: yellow studio, the comparison board (na mão x KizuBot) ===== */
+  :root {
+    --tv-yel: #ffd60a; --tv-red: #e3242b; --tv-navy: #0a1b5e; --tv-wht: #fffaf0;
+    --ol-wht: -7px -7px 0 #fffaf0, 7px -7px 0 #fffaf0, -7px 7px 0 #fffaf0, 7px 7px 0 #fffaf0, 0 -9px 0 #fffaf0, 0 9px 0 #fffaf0, -9px 0 0 #fffaf0, 9px 0 0 #fffaf0;
+    --ol-red: -7px -7px 0 #e3242b, 7px -7px 0 #e3242b, -7px 7px 0 #e3242b, 7px 7px 0 #e3242b, 0 -9px 0 #e3242b, 0 9px 0 #e3242b, -9px 0 0 #e3242b, 9px 0 0 #e3242b;
+    --ex-navy: 5px 7px 0 #0a1b5e, 8px 11px 0 #0a1b5e, 11px 15px 0 #0a1b5e, 14px 19px 0 #0a1b5e, 16px 22px 0 #0a1b5e;
+  }
+  #root { background: #b45309; }
+  .kz-progress { background: rgba(10,27,94,0.2); }
+  .kz-progress > div { background: linear-gradient(90deg, #e3242b, #0a1b5e); }
+  .chunk { font-family: "Anton", sans-serif; text-transform: uppercase; line-height: 0.98; letter-spacing: 0.01em; white-space: nowrap; }
+  .sk { display: inline-block; transform: skewX(-9deg); }
+  .redW { color: #e3242b; text-shadow: var(--ol-wht), var(--ex-navy); }
+  .navW { color: #0a1b5e; text-shadow: var(--ol-wht), 5px 7px 0 #b45309, 9px 12px 0 #b45309, 13px 17px 0 #b45309; }
+  .yelR { color: #ffd60a; text-shadow: var(--ol-red), var(--ex-navy); }
+  .burst { position: absolute; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .burst svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+  #studio { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(64% 40% at 50% 34%, #fff6b0 0%, #ffd60a 38%, #f59e0b 72%, #b45309 100%); }
+  #rays { position: absolute; left: -760px; top: -900px; width: 2600px; height: 2600px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(255,255,255,0) 0deg, rgba(255,255,255,0.22) 7.5deg, rgba(255,255,255,0) 15deg); }
+  #crtFull { position: absolute; inset: 0; border-radius: 74px; pointer-events: none;
+    box-shadow: 0 0 0 220px #05060a, inset 0 0 140px rgba(90,40,0,0.45);
+    background: linear-gradient(160deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 28%), repeating-linear-gradient(0deg, rgba(0,0,0,0.10) 0 2px, rgba(0,0,0,0) 2px 5px); }
+  #bug { position: absolute; left: 96px; top: 236px; display: flex; align-items: center; gap: 12px; padding: 10px 20px 10px 16px; border-radius: 12px; background: var(--tv-red); color: #fff; font: 900 32px "Inter", sans-serif; letter-spacing: 0.06em; box-shadow: 0 5px 0 #6e0b0e; }
+  #bug i { width: 18px; height: 18px; border-radius: 50%; background: #fff; display: block; }
+
+  /* hook + scoreboard */
+  #hk { position: absolute; left: 80px; right: 80px; top: 304px; display: flex; justify-content: center; }
+  #h1 { font-size: 184px; }
+  #score { position: absolute; left: 110px; right: 110px; top: 306px; height: 190px; border-radius: 26px; background: #120a02; border: 6px solid #0a1b5e; box-shadow: 0 12px 0 #0a1b5e;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 30px; }
+  #score .tm { font-family: "Anton", sans-serif; font-size: 58px; line-height: 1; letter-spacing: 0.02em; }
+  #score .dg { font-family: "VT323", monospace; font-size: 190px; line-height: 0.8; color: #ffb703; text-shadow: 0 0 24px rgba(255,183,3,0.7); white-space: nowrap; }
+
+  /* board */
+  #tabs { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  .tab { position: absolute; top: 530px; height: 92px; border-radius: 18px 18px 0 0; display: flex; align-items: center; justify-content: center; gap: 10px;
+    font-family: "Anton", sans-serif; font-size: 54px; color: #fff; letter-spacing: 0.02em; border: 6px solid #0a1b5e; border-bottom: 0; }
+  #tabA { left: 532px; width: 180px; background: #6b7280; }
+  #tabB { left: 712px; width: 248px; background: linear-gradient(180deg, #a855f7, #7c3aed); box-shadow: 0 0 30px rgba(168,85,247,0.6); }
+  #tabB img { width: 46px; display: block; }
+  #board { position: absolute; left: 84px; top: 616px; width: 802px; height: 768px; border-radius: 24px; background: #fffaf0; border: 8px solid #0a1b5e; box-shadow: 0 16px 0 #0a1b5e, 0 40px 80px rgba(90,40,0,0.35); overflow: hidden; }
+  #colA { position: absolute; left: 448px; top: 0; bottom: 0; width: 170px; background: #d6d6d6; border-left: 5px solid #0a1b5e; }
+  #colB { position: absolute; left: 618px; top: 0; bottom: 0; width: 170px; background: #efe4ff; border-left: 5px solid #0a1b5e; }
+  .row { position: absolute; left: 0; width: 786px; border-bottom: 4px solid rgba(10,27,94,0.25); }
+  .lab { position: absolute; left: 22px; top: 0; bottom: 0; width: 420px; display: flex; flex-direction: column; justify-content: center; font-family: "Anton", sans-serif; font-size: 60px; line-height: 1.02; color: #0a1b5e; text-transform: uppercase; }
+  .mk { position: absolute; top: 0; bottom: 0; width: 170px; display: flex; align-items: center; justify-content: center; }
+  .mk svg { width: 96px; height: 96px; }
+  .mA { left: 448px; } .mB { left: 618px; }
+  .glowB { position: absolute; left: 618px; top: 0; bottom: 0; width: 170px; background: radial-gradient(circle, rgba(198,255,61,0.9) 0%, rgba(198,255,61,0) 70%); opacity: 0; }
+
+  /* price */
+  #ask { position: absolute; left: 80px; right: 80px; top: 640px; display: flex; justify-content: center; }
+  #askT { font-size: 176px; }
+  #bP { left: 190px; top: 420px; width: 700px; height: 700px; }
+  #bP .bt { position: relative; display: flex; flex-direction: column; align-items: center; }
+  .pq1 { font-family: "Anton", sans-serif; font-size: 92px; line-height: 1; color: #fffaf0; text-shadow: 0 6px 0 #6e0b0e; }
+  .pq2 { font-family: "Anton", sans-serif; font-size: 250px; line-height: 0.95; color: #ffd60a; text-shadow: var(--ex-navy); white-space: nowrap; }
+  .pq3 { font-family: "Anton", sans-serif; font-size: 96px; line-height: 1; color: #fffaf0; text-shadow: 0 6px 0 #6e0b0e; }
+  #plan { position: absolute; left: 90px; width: 790px; top: 1150px; display: flex; flex-direction: column; align-items: center; }
+  #plan div { font-family: "Anton", sans-serif; font-size: 70px; line-height: 1.04; color: #0a1b5e; text-transform: uppercase; }
+  #plan b { color: #e3242b; font-weight: 400; }
+
+  /* end card */
+  #endBg { position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 38%, #4c1d95 0%, #1e0b3a 55%, #0b0712 100%); overflow: hidden; }
+  #endRays { position: absolute; left: -760px; top: -730px; width: 2600px; height: 2600px; border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(216,180,254,0) 0deg, rgba(216,180,254,0.10) 7.5deg, rgba(216,180,254,0) 15deg); }
+  #endCol { position: absolute; left: 90px; right: 120px; top: 250px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; }
+  #endLogoWrap { position: relative; width: 520px; }
+  #endLogo { width: 520px; display: block; }
+  #endUrl { font: 800 66px "Inter", sans-serif; color: #fff; letter-spacing: -0.01em; }
+  #endAsk { margin-top: 10px; font-size: 88px; line-height: 1.0; }
+  #endAsk .sk > div { display: block; }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,0.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+  #offT, #offB { position: absolute; left: 0; width: 1080px; height: 962px; background: #000; }
+  #offT { top: 0; } #offB { top: 958px; }
+  #offLine { position: absolute; left: 0; top: 954px; width: 1080px; height: 12px; background: #fff; box-shadow: 0 0 30px 8px rgba(200,220,255,0.9); opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="17.213" data-fps="30">
+  <div id="studio"><div id="rays"></div></div>
+
+  <!-- the comparison board (0 - 9.836) -->
+  <section id="sB" class="clip" data-start="0" data-duration="9.836">
+    <div id="boardIn" style="position:absolute; inset:0">
+      <div id="tabs">
+        <div class="tab" id="tabA">NA MÃO</div>
+        <div class="tab" id="tabB"><img src="kit/img/brand/kizubot-head.png" alt="" />KIZUBOT</div>
+      </div>
+      <div id="board"><div id="colA"></div><div id="colB"></div><div id="rows"></div></div>
+    </div>
+  </section>
+
+  <!-- hook title, then the scoreboard -->
+  <section id="sH" class="clip" data-start="0" data-duration="8.852">
+    <div id="hk"><div class="chunk redW" id="h1"><span class="sk">COMPARE!</span></div></div>
+  </section>
+  <section id="sS" class="clip" data-start="8.852" data-duration="0.984">
+    <div id="score"><div class="tm" style="color:#9ca3af">NA MÃO</div><div class="dg" id="dg">0 × 5</div><div class="tm" style="color:#c084fc">KIZUBOT</div></div>
+  </section>
+
+  <!-- price (9.836 - 13.77) -->
+  <section id="sP" class="clip" data-start="9.836" data-duration="3.934">
+    <div id="ask"><div class="chunk navW" id="askT"><span class="sk">E O PREÇO?</span></div></div>
+    <div class="burst" id="bP"><svg id="bPS"></svg><div class="bt"><div class="pq1">MENOS DE</div><div class="pq2" id="pq2">R$ 9</div><div class="pq3">POR DIA</div></div></div>
+    <div id="plan"><div>PLANOS A PARTIR DE</div><div><b>R$ 250</b> POR MÊS</div></div>
+  </section>
+
+  <div id="crtFull"></div>
+  <div id="bug"><i id="bugDot"></i>AO VIVO</div>
+
+  <!-- end card (13.77 - 17.213) -->
+  <section id="s9" class="clip" data-start="13.77" data-duration="3.443">
+    <div id="endIn" style="position:absolute; inset:0">
+      <div id="endBg"><div id="endRays"></div></div>
+      <div id="endCol">
+        <div id="endLogoWrap"><img id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" /><div class="eye" id="eyeEnd" style="left:161px; top:4px; width:100px; height:100px"></div></div>
+        <div id="endUrl">kizubot.com</div>
+        <div class="chunk yelR" id="endAsk"><span class="sk"><div>QUAL LINHA</div><div>PESOU MAIS</div><div>PRA VOCÊ?</div></span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="kz-progress"><div id="prog"></div></div>
+  <div id="flash"></div>
+  <div id="offT"></div><div id="offB"></div><div id="offLine"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 17.213;
+  const B = 60 / 122;
+  const b = function (n) { return n * B; };
+
+  const X = '<svg viewBox="0 0 24 24"><path d="M5 5L19 19M19 5L5 19" stroke="#4b5563" stroke-width="4.2" stroke-linecap="round"/></svg>';
+  const V = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#16a34a"/><path d="M6.5 12.5l3.6 3.6L17.8 8" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const ROWS = [
+    ["FUNCIONA COM O", "PC DESLIGADO"],
+    ["FARMA ENQUANTO", "VOCÊ DORME"],
+    ["TE AVISA NO", "WHATSAPP"],
+    ["DETECTA SHINY,", "MEGA E BOSS"],
+    ["PESCA NO AFK"]
+  ];
+  const H = [150, 150, 150, 150, 152];
+  const rowsEl = document.getElementById("rows");
+  let y = 0;
+  ROWS.forEach(function (r, i) {
+    const d = document.createElement("div");
+    d.className = "row"; d.style.top = y + "px"; d.style.height = H[i] + "px";
+    d.innerHTML = '<div class="glowB" id="g' + i + '"></div><div class="lab" id="l' + i + '">' + r.map(function (x) { return "<div>" + x + "</div>"; }).join("") + '</div>' +
+      '<div class="mk mA" id="xa' + i + '">' + X + '</div><div class="mk mB" id="vb' + i + '">' + V + '</div>';
+    rowsEl.appendChild(d);
+    y += H[i];
+  });
+
+  (function () {
+    const r = KZ.rng(124); const pts = [];
+    for (let i = 0; i < 48; i++) { const a = -Math.PI / 2 + i * Math.PI / 24; const rr = i % 2 === 0 ? 100 - r() * 4 : 82 + r() * 5; pts.push((Math.cos(a) * rr).toFixed(1) + "," + (Math.sin(a) * rr).toFixed(1)); }
+    const s = document.getElementById("bPS"); s.setAttribute("viewBox", "-108 -108 216 216");
+    s.innerHTML = '<polygon points="' + pts.join(" ") + '" fill="#e3242b" stroke="#0a1b5e" stroke-width="5" stroke-linejoin="round"/>';
+  })();
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+  tl.fromTo("#rays", { rotation: 0 }, { rotation: 36, duration: D, ease: "none" }, 0);
+  tl.fromTo("#bugDot", { opacity: 1 }, { opacity: 0.15, duration: 0.45, ease: "steps(1)", yoyo: true, repeat: 29 }, 0);
+
+  // ---------- hook: COMPARE! + the board slides in ----------
+  tl.fromTo("#h1", { scale: 1.35, rotation: -4 }, { scale: 1, rotation: 0, duration: 0.26, ease: "power4.out" }, 0);
+  KZ.shake(tl, "#hk", 0.22, 14, 0.26, 3);
+  tl.to("#hk", { scale: 1.05, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0.5);
+  tl.fromTo("#board", { y: 1100 }, { y: 0, duration: 0.45, ease: "power3.out" }, 0);
+  tl.fromTo("#tabA", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 0.35);
+  tl.fromTo("#tabB", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 0.6);
+
+  // ---------- rows: label, ✗ (na mão), ✓ (KizuBot) ----------
+  const RT = [b(4), b(7), b(10), b(13), b(15.5)];
+  RT.forEach(function (t, i) {
+    tl.fromTo("#l" + i, { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, t);
+    tl.fromTo("#xa" + i, { scale: 2.4, opacity: 0, rotation: -20 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.2, ease: "power4.out" }, t + 0.3);
+    KZ.shake(tl, "#xa" + i, t + 0.5, 6, 0.16, 30 + i);
+    tl.fromTo("#vb" + i, { scale: 0.2, opacity: 0, rotation: -30 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.32, ease: "back.out(3)" }, t + 0.62);
+    tl.fromTo("#g" + i, { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, t + 0.62);
+    tl.to("#g" + i, { opacity: 0, duration: 0.5, ease: "power2.in" }, t + 0.8);
+  });
+
+  // ---------- scoreboard re-hook (8.852) ----------
+  const TS = b(18);
+  tl.fromTo("#score", { scaleY: 0.1, opacity: 0 }, { scaleY: 1, opacity: 1, duration: 0.22, ease: "back.out(2)" }, TS);
+  tl.fromTo("#dg", { scale: 1.6 }, { scale: 1, duration: 0.3, ease: "power3.out" }, TS + 0.1);
+  KZ.flash(tl, "#flash", TS, 0.5);
+  KZ.shake(tl, "#boardIn", TS + 0.05, 10, 0.25, 5);
+  tl.to("#boardIn", { y: 1300, duration: 0.3, ease: "power3.in" }, b(20) - 0.3);
+
+  // ---------- price (9.836) ----------
+  const TP = b(20);
+  tl.fromTo("#askT", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, TP + 0.02);
+  KZ.shake(tl, "#ask", TP + b(1), 8, 0.9, 12);
+  tl.to("#ask", { y: -410, scale: 0.0, opacity: 0, duration: 0.22, ease: "power2.in" }, b(22) - 0.22);
+  tl.fromTo("#bP", { scale: 0.05, rotation: -200 }, { scale: 1, rotation: -5, duration: 0.42, ease: "back.out(1.7)" }, b(22));
+  KZ.flash(tl, "#flash", b(22), 0.6);
+  tl.fromTo("#bPS", { rotation: 0 }, { rotation: 16, duration: 2.9, ease: "none" }, b(22));
+  tl.fromTo("#pq2", { scale: 0.5 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, b(22) + 0.3);
+  tl.fromTo("#plan", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: "power3.out" }, b(22) + b(1.5));
+  tl.to("#bP", { scale: 1.04, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, b(22) + 0.9);
+
+  // ---------- end card (13.77) ----------
+  const T9 = b(28);
+  tl.fromTo("#endIn", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "none" }, T9);
+  tl.fromTo("#endRays", { rotation: 0 }, { rotation: 18, duration: D - T9, ease: "none" }, T9);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, T9 + 0.04);
+  KZ.eyePulse(tl, "#eyeEnd", T9 + 0.14, 2);
+  KZ.rise(tl, "#endUrl", T9 + 0.42, 0.35, 30);
+  tl.fromTo("#endAsk", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, T9 + 0.75);
+  tl.to("#endLogoWrap", { scale: 1.04, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, T9 + 0.7);
+  const TO = D - 0.44;
+  tl.fromTo("#offT", { yPercent: -100 }, { yPercent: 0, duration: 0.17, ease: "power3.in" }, TO);
+  tl.fromTo("#offB", { yPercent: 100 }, { yPercent: 0, duration: 0.17, ease: "power3.in" }, TO);
+  tl.fromTo("#offLine", { opacity: 0, scaleX: 1 }, { opacity: 1, duration: 0.03 }, TO + 0.13);
+  tl.to("#offLine", { scaleX: 0.006, duration: 0.17, ease: "power3.in" }, TO + 0.17);
+  tl.to("#offLine", { opacity: 0, duration: 0.06 }, TO + 0.36);
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

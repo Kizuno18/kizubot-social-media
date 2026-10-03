@@ -1,0 +1,82 @@
+{
+  "id": "123",
+  "slug": "demonstracao-ao-vivo",
+  "family": "Infomercial",
+  "title": "Demonstração ao vivo!",
+  "concept": "TV-shopping live-demo parody: the real KizuBot gameplay clip plays inside the CRT while presenter speech bubbles and a telestrator point at it ('Olha ele caçando sozinho!', 'Ninguém no teclado!', 'Usando os golpes certinho!', 'E ainda coleta o loot!'), then 'E se aparecer shiny?' → 'Ele te avisa!' with a real shiny-alarm print, the slogan 'Você dorme. Ele farma.' and the end card.",
+  "neuro": [
+    "demonstration-proof",
+    "picture-superiority",
+    "curiosity-gap",
+    "social-proof",
+    "nostalgia",
+    "peak-end",
+    "loop",
+    "comment-prompt"
+  ],
+  "hook": "DEMONSTRAÇÃO AO VIVO!",
+  "duration": 19.672,
+  "music": {
+    "style": "gameshow",
+    "bpm": 122
+  },
+  "assets": [
+    "kit/video/rypherior.mp4",
+    "kit/img/prints/shiny-cubone--alarm.png",
+    "kit/img/brand/kizubot-robot.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "gameplay real do KizuBot (clip de kizubot.com/download)",
+    "loot (módulo Combat)",
+    "detecção de shinys",
+    "alarmes no celular e notificações no WhatsApp"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "DEMONSTRAÇÃO AO VIVO! 📺 Gameplay real do KizuBot: caçando sozinho, usando os golpes certinho e coletando o loot. E se aparecer shiny? Ele te avisa no WhatsApp. Link na bio. Quer ver mais gameplay?",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#gameplay",
+        "#afk"
+      ]
+    },
+    "youtube": {
+      "title": "Demonstração ao vivo: o KizuBot caçando sozinho no PxG 📺",
+      "description": "Gameplay real do KizuBot: ninguém no teclado, ele caça sozinho, usa os golpes certinho e coleta o loot. E se aparecer shiny, ele te avisa no WhatsApp. Você dorme, ele farma. kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Demonstração ao vivo! 📺 Gameplay real do KizuBot caçando sozinho, e o alarme de shiny chegando no WhatsApp. Link na bio. Quer ver mais gameplay?",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#gameplay"
+      ]
+    }
+  },
+  "pinned_comment": "Quer ver mais gameplay? 👀",
+  "rubric": {
+    "hook": 8,
+    "rehooks": 9,
+    "clarity": 9,
+    "craft": 8,
+    "truth": 8,
+    "sound": 8,
+    "brand": 9,
+    "cta": 8,
+    "loop": 8,
+    "distinct": 9,
+    "avg": 8.4
+  },
+  "notes": "Clip: kit/video/rypherior.mp4 (original, no safe version needed), seven cuts at media 12.4, 4.5, 18.6, 0.4, 26.1, 29.4 and 13.0 s, each a muted root-level-window <video> with its own data-start/data-duration/data-media-start; frames verified advancing in snapshots. The lower third says 'GAMEPLAY REAL DO KIZUBOT'; 'AO VIVO' is the parody TV bug (the clip is a recording); nothing is captioned 'boss'. Added 'E ainda coleta o loot!' (telestrator on the loot icons that pop at ~27.5 s; loot is part of BRIEF's Combat module). The shiny alarm is a separate real customer print (shiny-cubone--alarm.png, tagged 'print real de cliente') and isn't presented as coming from this clip. Added the approved slogan 'Você dorme. Ele farma.' before the end card. End ask = the pinned question as a question."
+}

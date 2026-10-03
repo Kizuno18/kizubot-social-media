@@ -1,0 +1,86 @@
+{
+  "id": "121",
+  "slug": "cansado-de-farmar",
+  "family": "Infomercial",
+  "title": "Cansado de farmar na mão?",
+  "concept": "90s/2000s TV-shopping parody: a black-and-white 'problem' scene (a tired player still farming by hand at 03:47, eyes closing) bursts into color with 'SEUS PROBLEMAS ACABARAM!', KizuBot spins in on a turntable, Caça! Captura! Pesca! pop as starbursts, a real alarm print proves 'Avisa no WhatsApp!', 'MAS ESPERA…' leads to 'funciona com o PC desligado!', then the price card and the end card; the TV switches off to loop back to the B&W hook.",
+  "neuro": [
+    "pattern-interrupt",
+    "bw-to-color-contrast",
+    "nostalgia",
+    "humor-benign-violation",
+    "value-stacking",
+    "social-proof",
+    "anchoring",
+    "peak-end",
+    "loop",
+    "comment-prompt"
+  ],
+  "hook": "CANSADO DE FARMAR NA MÃO?",
+  "duration": 21.15,
+  "music": {
+    "style": "gameshow",
+    "bpm": 122
+  },
+  "assets": [
+    "kit/img/brand/kizubot-robot.png",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png",
+    "kit/img/prints/boss-tangrowth-electivire--tangrowth.png"
+  ],
+  "claims": [
+    "100% AFK",
+    "caça, captura e pesca sozinho (módulos Combat, Catch, Fishing)",
+    "alarmes no celular e notificações no WhatsApp",
+    "uso com PC desligado",
+    "roda 24/7 na nuvem (máquinas virtuais)",
+    "planos a partir de R$ 250/mês",
+    "menos de R$ 9 por dia (R$ 250 ÷ 30 = R$ 8,33)"
+  ],
+  "platforms": {
+    "tiktok": {
+      "caption": "Cansado de farmar na mão? 📺 SEUS PROBLEMAS ACABARAM! O KizuBot caça, captura, pesca e te avisa no WhatsApp, com o PC desligado. Planos a partir de R$ 250/mês. Link na bio. Quem lembra dos comerciais da madrugada?",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk",
+        "#comercial"
+      ]
+    },
+    "youtube": {
+      "title": "Cansado de farmar na mão? SEUS PROBLEMAS ACABARAM! 📺",
+      "description": "Comercial da madrugada, versão PxG: o KizuBot caça, captura e pesca 100% AFK, roda 24/7 na nuvem (funciona com o PC desligado) e te avisa no WhatsApp quando aparece algo importante. Planos a partir de R$ 250/mês (menos de R$ 9 por dia). kizubot.com",
+      "hashtags": [
+        "#shorts",
+        "#pokexgames",
+        "#pxg",
+        "#kizubot"
+      ]
+    },
+    "instagram": {
+      "caption": "Cansado de farmar na mão? 📺 Seus problemas acabaram: o KizuBot farma 100% AFK, com o PC desligado, e te avisa no WhatsApp. Link na bio. Você lembra dos comerciais da madrugada?",
+      "hashtags": [
+        "#pokexgames",
+        "#pxg",
+        "#kizubot",
+        "#afk"
+      ]
+    }
+  },
+  "pinned_comment": "Quem lembra dos comerciais da madrugada? 📺",
+  "rubric": {
+    "hook": 8,
+    "rehooks": 9,
+    "clarity": 9,
+    "craft": 8,
+    "truth": 9,
+    "sound": 8,
+    "brand": 9,
+    "cta": 8,
+    "loop": 8,
+    "distinct": 9,
+    "avg": 8.5
+  },
+  "notes": "Deviations: the B&W hook uses an illustrated tired gamer (clearly a dramatization) with an LED clock 03:12→03:47 instead of a click counter, to tie into 'comerciais da madrugada'. No 'OFERTA!' starburst (there is no offer); the starburst says '100% AFK!'. Added the real alarm print boss-tangrowth-electivire--tangrowth.png (tagged 'print real de cliente', shows 'KizuBot™ | kizubot.com') as proof for 'Avisa no WhatsApp!'. Price card 'planos a partir de R$ 250 por mês' plus 'menos de R$ 9 por dia'; no valor total, no de/por, no countdown, no scarcity. 'LINK NA BIO' lower third replaces the 0800 number. On-screen ask is the pinned question as a question ('Lembra dos comerciais da madrugada?'). Loop bridge: the TV switches off (black < 0.3 s). Rendered 3 times: renders 2 and 3 only re-built the audio for the shared AAC true-peak guard fix (final TP -1.6 dBFS)."
+}

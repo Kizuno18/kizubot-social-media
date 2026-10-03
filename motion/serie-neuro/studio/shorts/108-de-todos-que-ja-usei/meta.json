@@ -23,15 +23,17 @@
     "kit/img/prints/mais-completo-com-suporte--quote.png",
     "kit/img/brand/kizubot-logo.png"
   ],
-  "claims": [],
+  "claims": [
+    "100% AFK"
+  ],
   "platforms": {
     "tiktok": {
-      "caption": "'De todos q ja usei até hoje desde a minha época de tibia…' 👴 E outro cliente: 'Dentre todos, foi o mais completo e com o suporte.' Prints reais de clientes diferentes. Quem lembra do Tibia? Link na bio.",
+      "caption": "'De todos q ja usei até hoje desde a minha época de tibia…' 👴 E outro cliente: 'Dentre todos, foi o mais completo e com o suporte.' Prints reais de clientes diferentes. Desde quando você joga PxG? Link na bio.",
       "hashtags": [
         "#pokexgames",
         "#pxg",
         "#kizubot",
-        "#tibia",
+        "#mmorpg",
         "#provareal"
       ]
     },
@@ -46,15 +48,15 @@
       ]
     },
     "instagram": {
-      "caption": "'De todos q ja usei…' 👴 Desde a época do Tibia… quem lembra? Prints reais de clientes diferentes. Link na bio.",
+      "caption": "'De todos q ja usei…' 👴 Desde quando você joga PxG? Prints reais de clientes diferentes. Link na bio.",
       "hashtags": [
         "#pokexgames",
         "#pxg",
         "#kizubot",
-        "#tibia"
+        "#mmorpg"
       ]
     }
   },
-  "pinned_comment": "Desde a época do Tibia… quem lembra? 👴",
-  "notes": "Hook keeps the customer's spelling ('q ja usei') instead of the concept's normalised 'QUE JÁ USEI'. Second print is shown only down to 'e com o suporte.' so the line about 'lucro' (possible real-money earnings) stays out of frame. No competitor names appear. The terminal label repeats the verbatim fragment 'desde a minha época de tibia'."
+  "pinned_comment": "Desde quando você joga PxG? 👴",
+  "notes": "Hook keeps the customer's spelling ('q ja usei') instead of the concept's normalised 'QUE JÁ USEI'. Second print is shown only down to 'e com o suporte.' so the line about 'lucro' (possible real-money earnings) stays out of frame. No competitor names appear. The terminal label repeats the verbatim fragment 'desde a minha época de tibia'. Peak adds a 'COMPLETO' stamp (echoing both prints' word) and the approved-claim chip 'o bot farma 100% AFK'. Orchestrator edit: the end-card ask, captions and pinned comment no longer invite talk about Tibia (a third-party game where botting is banned) and #tibia was replaced by #mmorpg; the verbatim quote still shows the customer's own words. Ask max-width 700 px to stay inside the right-rail line."
 }

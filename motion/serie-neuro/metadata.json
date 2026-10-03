@@ -3232,6 +3232,56 @@
     ]
   },
   {
+    "id": "108",
+    "file": "108-de-todos-que-ja-usei.mp4",
+    "series": "F14 Prova Real",
+    "title": "\"De todos que já usei…\" — clientes sobre o KizuBot",
+    "hook": "“DE TODOS Q JA USEI…”",
+    "neuro": "social-proof, authority-by-experience, nostalgia, in-group-identity, peak-end, comment-prompt",
+    "duration": 16.167,
+    "size_mb": 9.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "'De todos q ja usei até hoje desde a minha época de tibia…' 👴 E outro cliente: 'Dentre todos, foi o mais completo e com o suporte.' Prints reais de clientes diferentes. Desde quando você joga PxG? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mmorpg",
+          "#provareal"
+        ]
+      },
+      "youtube": {
+        "title": "\"De todos que já usei…\" — clientes sobre o KizuBot",
+        "description": "Print real: 'De todos q ja usei até hoje desde a minha época de tibia esse seu me surpreendeu de mais!!!' / 'Ele é bem completo quase n tem bug'. Outro cliente: 'Dentre todos, foi o mais completo e com o suporte.' Prints reais de clientes diferentes. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "'De todos q ja usei…' 👴 Desde quando você joga PxG? Prints reais de clientes diferentes. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mmorpg"
+        ]
+      }
+    },
+    "pinned_comment": "Desde quando você joga PxG? 👴",
+    "claims": [
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/de-todos-que-ja-usei.png",
+      "kit/img/prints/mais-completo-com-suporte--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
     "id": "109",
     "file": "109-cinco-estrelas.mp4",
     "series": "F14 Prova Real",
@@ -3593,6 +3643,60 @@
     "assets": [
       "kit/img/prints/shiny-muk--card.png",
       "kit/img/prints/shiny-muk--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "116",
+    "file": "116-kizubot-em-10s.mp4",
+    "series": "F16 Speedrun",
+    "title": "KizuBot em 10 segundos",
+    "hook": "KIZUBOT EM 10 SEGUNDOS. VALENDO!",
+    "neuro": "time-pressure, open-loop-timer, chunking, anticipation, peak-end, seamless-loop, challenge-question, brand-sound",
+    "duration": 16.8,
+    "size_mb": 5.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "KizuBot em 10 segundos. Valendo! ⏱️ Configura, grava a rota, desliga o PC, vai dormir… e o alarme de shiny chega no zap. WR? 😎 Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#speedrun",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "KizuBot em 10 segundos (speedrun Any%)",
+        "description": "Speedrun da explicação: configura o bot, grava a rota do cavebot, desliga o PC, vai dormir e o alarme de shiny chega no WhatsApp. Na vida real configurar leva mais que 10 segundos — o suporte te ajuda. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#speedrun"
+        ]
+      },
+      "instagram": {
+        "caption": "KizuBot em 10 segundos. ⏱️ Configura, grava a rota, desliga o PC, vai dormir — e o alarme de shiny chega no zap. Consegue bater esse tempo? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#speedrun"
+        ]
+      }
+    },
+    "pinned_comment": "Bate esse tempo aí 😎 Qual seria o seu primeiro split?",
+    "claims": [
+      "uso com PC desligado",
+      "alarmes no celular e notificações no WhatsApp",
+      "detecção de shinys",
+      "cavebot com gravação de rota (13 módulos, llms.txt)",
+      "o suporte te ajuda a configurar"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
       "kit/img/brand/kizubot-logo.png"
     ]
   },

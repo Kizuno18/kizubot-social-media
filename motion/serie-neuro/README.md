@@ -8,9 +8,9 @@ Cem shorts verticais (1080×1920, 30 fps, 12–25 s) para o KizuBot, feitos inte
 
 <p align="center"><img src="grid-03.jpg" width="100%" alt="Um frame de cada short de 086 a 105"></p>
 
-<p align="center"><img src="grid-04.jpg" width="100%" alt="Um frame de cada short de 106 a 132"></p>
+<p align="center"><img src="grid-04.jpg" width="100%" alt="Um frame de cada short de 106 a 130"></p>
 
-<p align="center"><img src="grid-05.jpg" width="100%" alt="Um frame de cada short de 133 a 140"></p>
+<p align="center"><img src="grid-05.jpg" width="100%" alt="Um frame de cada short de 131 a 140"></p>
 
 ## Como a série foi pensada
 
@@ -105,6 +105,7 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 | 105 | [`105-como-ele-pesca.mp4`](105-como-ele-pesca.mp4) | F13 Raio-X | Como o KizuBot pesca | COMO O KIZUBOT PESCA. | curiosity-gap, picture-superiority, competence, visible-progress, anticipation-drop, humor, loop, comment-prompt |
 | 106 | [`106-nao-botou-fe.mp4`](106-nao-botou-fe.mp4) | F14 Prova Real | Ele não botou fé no KizuBot | ELE NÃO BOTOU FÉ. | social-proof, emotional-contagion, negative-frame-pivot, curiosity-gap, peak-end, comment-prompt |
 | 107 | [`107-queria-ter-comprado-antes.mp4`](107-queria-ter-comprado-antes.mp4) | F14 Prova Real | Ele queria ter comprado o KizuBot antes | ELE QUERIA* TER COMPRADO ANTES. | social-proof, regret-loss-aversion, humor, pattern-recognition, peak-end, comment-prompt |
+| 108 | [`108-de-todos-que-ja-usei.mp4`](108-de-todos-que-ja-usei.mp4) | F14 Prova Real | "De todos que já usei…" — clientes sobre o KizuBot | “DE TODOS Q JA USEI…” | social-proof, authority-by-experience, nostalgia, in-group-identity, peak-end, comment-prompt |
 | 109 | [`109-cinco-estrelas.mp4`](109-cinco-estrelas.mp4) | F14 Prova Real | Um cliente mandou isso: ⭐⭐⭐⭐⭐ | UM CLIENTE MANDOU ISSO: ⭐⭐⭐⭐⭐ | social-proof, picture-superiority, commitment-checklist, variable-reward, peak-end, comment-prompt |
 | 110 | [`110-o-bot-evoluiu.mp4`](110-o-bot-evoluiu.mp4) | F14 Prova Real | "O bot evoluiu muito." — prova real | “O BOT EVOLUIU MUITO.” | social-proof, before-after-contrast, authority, visible-progress, peak-end, comment-prompt |
 | 111 | [`111-3h33.mp4`](111-3h33.mp4) | F15 Terror no PxG | 3:33 da manhã. O celular acende sozinho. | 3:33 DA MANHÃ. | arousal-suspense, curiosity-gap, pattern-interrupt, benign-violation, seasonality, social-proof, peak-end, loop |
@@ -112,6 +113,7 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 | 113 | [`113-terror-do-farm-manual.mp4`](113-terror-do-farm-manual.mp4) | F15 Terror no PxG | O verdadeiro terror do PxG | O VERDADEIRO TERROR DO PXG. | arousal-suspense, benign-violation, pattern-interrupt, loss-aversion, seasonality, in-group-humor, peak-end, comment-prompt |
 | 114 | [`114-nao-olha-pra-tras.mp4`](114-nao-olha-pra-tras.mp4) | F15 Terror no PxG | Não olha pra trás (alguém está jogando no seu lugar) | NÃO OLHA PRA TRÁS. | self-reference, arousal-suspense, benign-violation, pattern-interrupt, seasonality, picture-superiority, peak-end, comment-prompt |
 | 115 | [`115-o-shiny-que-piscou.mp4`](115-o-shiny-que-piscou.mp4) | F15 Terror no PxG | O shiny que piscou (e ninguém estava olhando) | O SHINY QUE PISCOU. | arousal-suspense, curiosity-gap, loss-aversion, schema-violation, seasonality, social-proof, peak-end, comment-prompt |
+| 116 | [`116-kizubot-em-10s.mp4`](116-kizubot-em-10s.mp4) | F16 Speedrun | KizuBot em 10 segundos | KIZUBOT EM 10 SEGUNDOS. VALENDO! | time-pressure, open-loop-timer, chunking, anticipation, peak-end, seamless-loop, challenge-question, brand-sound |
 | 117 | [`117-13-modulos.mp4`](117-13-modulos.mp4) | F16 Speedrun | 13 módulos em 13 segundos | 13 MÓDULOS. 13 SEGUNDOS. | time-pressure, chunking, visible-progress, open-loop-timer, rewatch-bait, peak-end, seamless-loop, comment-prompt |
 | 118 | [`118-do-zero-ao-farm.mp4`](118-do-zero-ao-farm.mp4) | F16 Speedrun | Do zero ao farm em 3 passos | DO ZERO AO FARM. 3 PASSOS. | time-pressure, chunking, ikea-effect, visible-progress, social-proof, peak-end, seamless-loop, comment-prompt |
 | 119 | [`119-speedrun-de-shiny.mp4`](119-speedrun-de-shiny.mp4) | F16 Speedrun | Speedrun de shiny: mesmo minuto | SPEEDRUN DE SHINY: NOVO RECORDE. | anticipation, variable-reward, precise-numbers, social-proof, time-pressure, peak-end, seamless-loop, comment-prompt |

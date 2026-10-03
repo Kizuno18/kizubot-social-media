@@ -4,6 +4,8 @@ Cem shorts verticais (1080×1920, 30 fps, 12–25 s) para o KizuBot, feitos inte
 
 <p align="center"><img src="grid-01.jpg" width="100%" alt="Um frame de cada short de 051 a 080"></p>
 
+<p align="center"><img src="grid-02.jpg" width="100%" alt="Um frame de cada short de 081 a 130"></p>
+
 ## Como a série foi pensada
 
 Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz o público reconhecer o vídeo em meio segundo, maratonar a série e lembrar da marca (efeito de mera exposição). Todos seguem as mesmas regras: gancho legível em 0,4 s com movimento e som no primeiro frame, um novo motivo para continuar assistindo a cada 5–7 s, revelação no drop da música, prova real, card final com logo, brilho no olho do robô, kizubot.com e o mesmo logo sonoro, e final que emenda no começo para virar loop.
@@ -55,6 +57,26 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 | 078 | [`078-mensagem-de-voz.mp4`](078-mensagem-de-voz.mp4) | F08 Ligação Recebida | Mensagem de voz do seu bot | MENSAGEM DE VOZ: KIZUBOT (0:12) | pattern-interrupt, sonic-branding, curiosity-gap, social-proof, precise-number, visible-progress, comment-prompt |
 | 079 | [`079-videochamada.mp4`](079-videochamada.mp4) | F08 Ligação Recebida | Videochamada com a sua hunt | VIDEOCHAMADA: SUA HUNT. | pattern-interrupt, sonic-branding, self-reference, picture-superiority, anticipation-drop, comment-prompt |
 | 080 | [`080-despertador-shiny.mp4`](080-despertador-shiny.mp4) | F08 Ligação Recebida | Despertador: 03:00 — SHINY | 03:00 — SHINY | pattern-interrupt, sonic-branding, humor, social-proof, anticipation-drop, peak-end, comment-prompt |
+| 081 | [`081-todos-os-modulos-on.mp4`](081-todos-os-modulos-on.mp4) | F09 Satisfatório | Todos os módulos: ON | TODOS OS MÓDULOS: OFF → ON | sensory-reward, closure, visible-progress, anticipation, seamless-loop, comment-prompt |
+| 082 | [`082-barras-de-loot.mp4`](082-barras-de-loot.mp4) | F09 Satisfatório | Relatório de loot: 12.335 itens | RELATÓRIO DE LOOT. | sensory-reward, closure, visible-progress, precise-number, social-proof, seamless-loop, comment-prompt |
+| 083 | [`083-checklist-perfeito.mp4`](083-checklist-perfeito.mp4) | F09 Satisfatório | Checklist do farm (perfeito) | CHECKLIST DO FARM. | sensory-reward, closure, visible-progress, humor, seamless-loop, comment-prompt |
+| 084 | [`084-encaixe-perfeito.mp4`](084-encaixe-perfeito.mp4) | F09 Satisfatório | Encaixe perfeito | ENCAIXE PERFEITO. | sensory-reward, closure, social-proof, anticipation, seamless-loop, comment-prompt |
+| 085 | [`085-inventario-organizado.mp4`](085-inventario-organizado.mp4) | F09 Satisfatório | Inventário se arrumando sozinho | INVENTÁRIO SE ARRUMANDO SOZINHO… | sensory-reward, closure, visible-progress, order-from-chaos, seamless-loop, identity-question |
+| 086 | [`086-farmar-ou-dormir.mp4`](086-farmar-ou-dormir.mp4) | F10 Você Prefere? | Você prefere: farmar 8h na mão ou dormir 8h? | VOCÊ PREFERE? FARMAR 8H NA MÃO OU DORMIR 8H? | forced-choice, contrast-effect, loss-aversion, humor, anticipation-drop, social-proof, comment-prompt |
+| 087 | [`087-perder-ou-vibrar.mp4`](087-perder-ou-vibrar.mp4) | F10 Você Prefere? | Você prefere: perder o shiny ou sentir o relógio vibrar? | VOCÊ PREFERE? PERDER O SHINY OU SENTIR O RELÓGIO VIBRAR? | forced-choice, contrast-effect, loss-aversion, nostalgia, pavlovian-sound, social-proof, comment-prompt |
+| 088 | [`088-pc-ou-praia.mp4`](088-pc-ou-praia.mp4) | F10 Você Prefere? | Você prefere: sábado no PC ou na praia? | VOCÊ PREFERE? SÁBADO NO PC OU NA PRAIA? | forced-choice, contrast-effect, aspiration, loss-aversion, social-proof, comment-prompt |
+| 089 | [`089-clicar-ou-configurar.mp4`](089-clicar-ou-configurar.mp4) | F10 Você Prefere? | Você prefere: clicar 8 mil vezes ou configurar uma? | VOCÊ PREFERE? CLICAR 8 MIL VEZES OU CONFIGURAR UMA? | forced-choice, contrast-effect, effort-heuristic, humor, precise-number, social-proof, comment-prompt |
+| 090 | [`090-um-ou-dois-chars.mp4`](090-um-ou-dois-chars.mp4) | F10 Você Prefere? | Você prefere: upar um char ou dois ao mesmo tempo? | VOCÊ PREFERE? UPAR UM CHAR OU DOIS AO MESMO TEMPO? | forced-choice, contrast-effect, humor, social-proof, aspiration, comment-prompt |
+| 091 | [`091-afk.mp4`](091-afk.mp4) | F11 Dicionário PxG | Dicionário PxG: AFK | AFK | in-group-identity, incongruity-humor, processing-fluency, pattern-interrupt, social-proof, comment-prompt |
+| 092 | [`092-shiny.mp4`](092-shiny.mp4) | F11 Dicionário PxG | Dicionário PxG: Shiny | SHINY | in-group-identity, incongruity-humor, processing-fluency, loss-aversion, social-proof, comment-prompt |
+| 093 | [`093-farm.mp4`](093-farm.mp4) | F11 Dicionário PxG | Dicionário PxG: Farm | FARM | in-group-identity, incongruity-humor, processing-fluency, benign-violation-humor, social-proof, comment-prompt |
+| 094 | [`094-hunt.mp4`](094-hunt.mp4) | F11 Dicionário PxG | Dicionário PxG: Hunt | HUNT | in-group-identity, incongruity-humor, processing-fluency, competence, social-proof, comment-prompt |
+| 095 | [`095-mato.mp4`](095-mato.mp4) | F11 Dicionário PxG | Dicionário PxG: Mato | MATO | in-group-identity, incongruity-humor, processing-fluency, social-proof, relief, comment-prompt |
+| 126 | [`126-ache-o-shiny-facil.mp4`](126-ache-o-shiny-facil.mp4) | F18 Ache o Shiny | Ache o shiny em 3 segundos | ACHE O SHINY EM 3 SEGUNDOS. | participation, von-restorff, time-pressure, rewatch-loop, effort-contrast, real-proof, comment-prompt |
+| 127 | [`127-ache-o-shiny-medio.mp4`](127-ache-o-shiny-medio.mp4) | F18 Ache o Shiny | Nível 2: ache o shiny | NÍVEL 2: ACHE O SHINY. | participation, von-restorff, decoy-effect, time-pressure, rewatch-loop, loss-aversion, real-proof, comment-prompt |
+| 128 | [`128-ache-o-shiny-impossivel.mp4`](128-ache-o-shiny-impossivel.mp4) | F18 Ache o Shiny | Nível impossível | NÍVEL IMPOSSÍVEL. | participation, challenge, von-restorff, rewatch-loop, effort-contrast, real-proof, status-identity, comment-prompt |
+| 129 | [`129-ache-o-boss.mp4`](129-ache-o-boss.mp4) | F18 Ache o Shiny | Ache o boss | ACHE O BOSS. | participation, von-restorff, time-pressure, game-ui-familiarity, rewatch-loop, real-proof, comment-prompt |
+| 130 | [`130-ache-a-mega.mp4`](130-ache-a-mega.mp4) | F18 Ache o Shiny | Ache a mega | ACHE A MEGA. | participation, von-restorff, radar-metaphor, time-pressure, rewatch-loop, real-proof, comment-prompt |
 
 Legendas, títulos, descrições, hashtags e comentário fixado por plataforma (TikTok, YouTube Shorts e Instagram Reels) estão em [`metadata.json`](metadata.json) e [`metadata.csv`](metadata.csv).
 

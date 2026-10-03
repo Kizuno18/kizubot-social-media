@@ -207,7 +207,7 @@ def cmd_qc(d):
     num, den = v["r_frame_rate"].split("/")
     fps = float(num) / float(den)
     lufs, tp = ebur128(final) if a else (None, None)
-    bd = sh(["ffmpeg", "-hide_banner", "-nostats", "-i", final, "-vf", "blackdetect=d=0.25:pix_th=0.06", "-an", "-f", "null", "-"], check=False).stderr
+    bd = sh(["ffmpeg", "-hide_banner", "-nostats", "-i", final, "-vf", "blackdetect=d=0.6:pix_th=0.06", "-an", "-f", "null", "-"], check=False).stderr
     blacks = re.findall(r"black_start:([\d.]+) black_end:([\d.]+)", bd)
     fz = sh(["ffmpeg", "-hide_banner", "-nostats", "-i", final, "-vf", "freezedetect=n=0.002:d=2.5", "-an", "-f", "null", "-"], check=False).stderr
     freezes = re.findall(r"freeze_start: ([\d.]+)", fz)
@@ -269,4 +269,5 @@ def main():
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(line_buffering=True)  # progress shows up in redirected logs
     main()

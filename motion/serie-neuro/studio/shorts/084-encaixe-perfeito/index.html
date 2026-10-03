@@ -21,6 +21,10 @@
   #title { position: absolute; left: 0; right: 0; top: 262px; text-align: center; font: 700 128px/1.04 var(--f-soft); color: var(--s-ink); letter-spacing: -0.01em; }
   #title .ln { display: block; }
   #title .acc { color: var(--s-lime); }
+  #cap { position: absolute; left: 0; right: 0; top: 300px; text-align: center; font-family: var(--f-soft); font-weight: 700; }
+  #cap .ln { display: block; line-height: 1.04; }
+  #cap .c1 { font-size: 66px; color: var(--s-lav); margin-bottom: 8px; }
+  #cap .c2 { font-size: 132px; color: var(--s-lime); }
   .ptag { position: absolute; left: 0; right: 0; top: 1346px; text-align: center; opacity: 0; }
   .ptag span { display: inline-block; padding: 8px 20px; border-radius: 999px; background: rgba(8, 6, 16, 0.85); border: 2px solid var(--s-lav);
     font: 700 32px/1 "Sora", sans-serif; letter-spacing: 0.01em; color: var(--s-lav); }
@@ -51,6 +55,7 @@
   <div id="bg"></div>
   <div id="halo"></div>
   <div id="title"><div class="ln">ENCAIXE</div><div class="ln acc">PERFEITO.</div></div>
+  <div id="cap"><div class="ln c1">shiny, boss e loot</div><div class="ln c2">NO AFK.</div></div>
   <div id="board">
     <div class="layer" id="slots"></div>
     <div class="layer" id="tiles"></div>
@@ -128,11 +133,14 @@
   tl.to("#board", { scale: 1, duration: 0.45, ease: "power2.inOut" }, T_DONE + 0.15);
   tl.fromTo("#tag", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, T_DONE + 0.2);
 
+  // caption swap: what the prints are
+  tl.to("#title", { opacity: 0, y: -30, duration: 0.22, ease: "power2.in" }, T_DONE - 0.05);
+  tl.fromTo("#cap .ln", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.38, ease: "back.out(1.8)", stagger: 0.12 }, T_DONE + 0.18);
   // carve: the grid becomes the mascot silhouette
   tl.fromTo("#carve", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut", immediateRender: false }, T_CARVE);
   tl.to("#tiles", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, T_CARVE);
   tl.to("#slots", { opacity: 0, duration: 0.4 }, T_CARVE);
-  tl.to(["#title", "#tag"], { opacity: 0, y: -30, duration: 0.3, ease: "power2.in" }, T_LOGO - 0.3);
+  tl.to(["#cap", "#tag"], { opacity: 0, y: -30, duration: 0.3, ease: "power2.in" }, T_LOGO - 0.3);
   // real logo + eye: the end card
   tl.to("#endLogo", { opacity: 1, duration: 0.45, ease: "power2.inOut" }, T_LOGO);
   tl.to("#carve", { opacity: 0, duration: 0.45, ease: "power2.inOut" }, T_LOGO + 0.1);

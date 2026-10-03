@@ -18,8 +18,29 @@
     "style": "house",
     "bpm": 126
   },
-  "assets": [],
-  "claims": [],
+  "assets": [
+    "kit/img/prints/shiny-cubone--alarm.png",
+    "kit/img/prints/shiny-muk--card.png",
+    "kit/img/prints/drop-sablenite--inventory.png",
+    "kit/img/prints/boss-rhyperior-2am--alarm.png",
+    "kit/img/prints/gym-smartwatch-alarm--watch.jpg",
+    "kit/img/prints/shiny-dratini-new-server--shot.png",
+    "kit/img/prints/shiny-raichu-7-alarms--alarms.png",
+    "kit/img/prints/shiny-feraligatr--card.png",
+    "kit/img/prints/boss-metagross-metal-coat--alarms.png",
+    "kit/img/prints/family-handprints.png",
+    "kit/img/prints/shiny-rapidash--card.png",
+    "kit/img/prints/alarme-12335-itens--alarm.png",
+    "kit/img/prints/beach-while-bot-farms.png",
+    "kit/img/prints/boss-tangrowth-electivire--tangrowth.png",
+    "kit/img/prints/boss-loot-15kk--photo.png",
+    "kit/img/prints/shiny-venusaur--alarm.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
+  "claims": [
+    "detecção de shinys, megas e bosses",
+    "100% AFK"
+  ],
   "platforms": {
     "tiktok": {
       "caption": "Encaixe perfeito 🧩 Prints reais de clientes do KizuBot se encaixando até formar o robô. Achou algum print que você conhece? Link na bio.",
@@ -52,5 +73,5 @@
     }
   },
   "pinned_comment": "Achou algum print que você conhece? 👀",
-  "notes": ""
+  "notes": "16 real prints from 16 different slugs (no memes, owner posts or old-UI HUD), tagged 'prints reais de clientes diferentes' (lowercase so it stays inside x≤880). Tiles are square cover-crops of the safe files; redaction pills are untouched (some are partly outside a tile, never made to look like text). After review (clarity was ~7 because tiles are illegible), render 2 swaps the title to 'shiny, boss e loot / NO AFK.' when the grid completes, describing what the prints show; the hook title returns for the loop. The mascot 'carve' uses the official logo's alpha as a CSS mask, then crossfades to the logo with the eye glow (end card). Rubric (render 2): hook 8, re-hooks 8, clarity 8, craft 8, truth 9, sound 8, brand 9, CTA 8, loop 9, distinct 8 = 8.3."
 }

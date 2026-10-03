@@ -1,0 +1,30 @@
+{
+  "id": "069",
+  "slug": "cartas-de-recomendacao",
+  "family": "Currículo do KizuBot",
+  "title": "Cartas de recomendação do KizuBot",
+  "concept": "Three wax-sealed envelopes open one by one; each letter of recommendation is a real customer print quoted verbatim in big serif type and signed '— cliente KizuBot', ending with '3 cartas. 3 clientes.'",
+  "neuro": ["social-proof", "authority", "curiosity-gap", "personification", "peak-end", "comment-prompt"],
+  "hook": "CARTAS DE RECOMENDAÇÃO DO KIZUBOT.",
+  "duration": 17.67,
+  "music": {"style": "epic", "bpm": 90},
+  "assets": ["kit/img/brand/kizubot-logo.png", "kit/img/prints/foda-programando.png", "kit/img/prints/trampo-da-hora--zap.png", "kit/img/prints/trampo-da-hora--quote.png", "kit/img/prints/avaliacao-5-estrelas--renovar.png"],
+  "claims": ["prints reais de clientes diferentes", "alarmes no WhatsApp (per the print: 'Ativei msgs pelo zap também / Chega certinho')"],
+  "platforms": {
+    "tiktok": {
+      "caption": "Cartas de recomendação do KizuBot ✉️ 3 cartas, 3 clientes, prints reais. 'irei renovar e tbm indicar para meu ciclo de amigos'. O que você escreveria na sua carta? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#feedback", "#afk"]
+    },
+    "youtube": {
+      "title": "Cartas de recomendação do KizuBot (prints reais de clientes)",
+      "description": "Abrimos as cartas de recomendação do KizuBot, o bot que farma no PxG por você: três prints reais de clientes diferentes — 'na moral vc e foda programando', 'Você mano, fez um trampo da hora' e 'irei renovar e tbm indicar para meu ciclo de amigos'. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Cartas de recomendação do KizuBot ✉️ Três prints reais de clientes diferentes. O que você escreveria na sua carta? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#pxgbrasil"]
+    }
+  },
+  "pinned_comment": "O que você escreveria na sua carta pro KizuBot? 👇",
+  "notes": "Per the orchestrator, the concept's whisper-recomendo whisper ('sempre usei umas paradinha…', whisper-recomendo.png) is NOT used; it was replaced by avaliacao-5-estrelas--renovar.png (source avaliacao-5-estrelas.png), a literal recommendation: big type is the verbatim substring 'irei renovar e tbm indicar para meu ciclo de amigos' and the full line is visible in the print. Letter 1 big type trims foda-programando.png to its verbatim start 'na moral vc e foda programando' (full line in the print). Letter 2 stacks trampo-da-hora--zap.png + trampo-da-hora--quote.png (same print, consecutive bubbles; source trampo-da-hora.png). Each letter carries 'print real de cliente'; 'prints reais de clientes diferentes' is on screen in the hook and the finale. Greeting 'A quem interessar possa:' and signature '— cliente KizuBot' are the letter frame, not quotes. Render 2 added the hook line 'o bot que farma no PxG por você' for clarity."
+}

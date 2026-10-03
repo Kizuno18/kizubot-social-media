@@ -1318,6 +1318,276 @@
     ]
   },
   {
+    "id": "066",
+    "file": "066-entrevista-de-emprego.mp4",
+    "series": "F06 Currículo do KizuBot",
+    "title": "Entrevista de emprego do KizuBot",
+    "hook": "ENTREVISTA DE EMPREGO: KIZUBOT.",
+    "neuro": "benign-violation-humor, personification, schema-violation-hook, anchoring, authority, progress-cue, peak-end, comment-prompt",
+    "duration": 21.667,
+    "size_mb": 9.1,
+    "platforms": {
+      "tiktok": {
+        "caption": "Entrevista de emprego do KizuBot 👔 Disponibilidade: 24/7. Ponto fraco: não sei dormir. Pretensão salarial: a partir de R$ 250/mês. Você contrataria? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#humor",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Entrevista de emprego do KizuBot (ponto fraco: não sei dormir)",
+        "description": "Fizemos a entrevista de emprego do KizuBot: disponibilidade 24/7 (roda na nuvem, com o seu PC desligado), mais de 170 atualizações desde 2024, 13 módulos e pretensão salarial a partir de R$ 250/mês — menos de R$ 9 por dia. Por que contratar? Porque você precisa dormir. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Entrevista de emprego do KizuBot 👔 Ponto fraco: não sei dormir. Por que contratar? Porque você precisa dormir 😴 Você contrataria? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#humorgamer"
+        ]
+      }
+    },
+    "pinned_comment": "Você contrataria? 😂 Qual pergunta você faria pro KizuBot na entrevista?",
+    "claims": [
+      "roda 24/7 na nuvem (disponibilidade do bot)",
+      "uso com PC desligado",
+      "mais de 170 atualizações desde 2024",
+      "13 módulos",
+      "planos a partir de R$ 250/mês",
+      "menos de R$ 9 por dia (R$ 250 ÷ 30 = R$ 8,33)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/meme-testador-meme-testador-aprovado.png"
+    ]
+  },
+  {
+    "id": "067",
+    "file": "067-curriculo.mp4",
+    "series": "F06 Currículo do KizuBot",
+    "title": "O currículo do KizuBot",
+    "hook": "O CURRÍCULO DO KIZUBOT.",
+    "neuro": "benign-violation-humor, personification, self-reference, progress-cue, asmr-typing, social-proof, comment-prompt",
+    "duration": 20.0,
+    "size_mb": 8.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "O currículo do KizuBot 📄 Objetivo: fazer seu char upar enquanto você vive. Disponibilidade: 24/7, inclusive feriado. Melhor que o seu currículo? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#humor",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "O currículo do KizuBot (melhor que o seu?)",
+        "description": "O currículo do KizuBot: objetivo — fazer seu char upar enquanto você vive. Experiência em caça, captura, pesca e coleta, 13 módulos configuráveis, funciona com o jogo em PT, EN, ES e PL e roda 24/7 na nuvem. Referências: prints reais de clientes. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "O currículo do KizuBot 📄 Objetivo: fazer seu char upar enquanto você vive. Referências: prints reais de clientes. Melhor que o seu currículo? 👀 Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#humorgamer"
+        ]
+      }
+    },
+    "pinned_comment": "Melhor que o seu currículo? 👀 O que você colocaria no currículo do seu char?",
+    "claims": [
+      "caça, captura, pesca e coleta (Cavebot/Combat, Catch, Fishing, Farming)",
+      "13 módulos configuráveis",
+      "funciona com o jogo em PT, EN, ES e PL (changelog 2026-09-05)",
+      "roda 24/7 na nuvem (disponibilidade do bot)",
+      "prints reais de clientes"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/bot-ta-um-monstro--quote.png",
+      "kit/img/prints/bot-insano-2-maquinas--quote.png"
+    ]
+  },
+  {
+    "id": "068",
+    "file": "068-avaliacao-de-desempenho.mp4",
+    "series": "F06 Currículo do KizuBot",
+    "title": "Avaliação de desempenho do KizuBot",
+    "hook": "AVALIAÇÃO DE DESEMPENHO: KIZUBOT.",
+    "neuro": "benign-violation-humor, personification, variable-reward-stars, progress-cue, social-proof, peak-end, comment-prompt",
+    "duration": 19.867,
+    "size_mb": 5.6,
+    "platforms": {
+      "tiktok": {
+        "caption": "Avaliação de desempenho do KizuBot ⭐ Pontualidade: nunca atrasou, roda 24/7. Horas extras: todas. Funcionário do mês. De novo. E o seu chefe, quantas estrelas? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#humor",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Avaliação de desempenho do KizuBot (funcionário do mês de novo)",
+        "description": "A avaliação de desempenho (de zoeira) do KizuBot: pontualidade — roda 24/7; trabalho em equipe — tem até módulo Party; comunicação — avisa no WhatsApp; proatividade — print real de cliente elogiando as configurações novas; horas extras: todas. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Avaliação de desempenho do KizuBot ⭐ Horas extras: todas. Comentário do gestor: funcionário do mês. De novo. 😂 E o seu chefe, ganharia quantas estrelas? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#humorgamer"
+        ]
+      }
+    },
+    "pinned_comment": "Qual nota você daria pro seu chefe? 😂",
+    "claims": [
+      "roda 24/7 (disponibilidade do bot)",
+      "módulo Party (um dos 13 módulos)",
+      "alarmes no celular e notificações no WhatsApp",
+      "print real de cliente sobre as configurações novas"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/configuracoes-novas-espetacular--quote.png"
+    ]
+  },
+  {
+    "id": "069",
+    "file": "069-cartas-de-recomendacao.mp4",
+    "series": "F06 Currículo do KizuBot",
+    "title": "Cartas de recomendação do KizuBot",
+    "hook": "CARTAS DE RECOMENDAÇÃO DO KIZUBOT.",
+    "neuro": "social-proof, authority, curiosity-gap, personification, peak-end, comment-prompt",
+    "duration": 17.7,
+    "size_mb": 5.5,
+    "platforms": {
+      "tiktok": {
+        "caption": "Cartas de recomendação do KizuBot ✉️ 3 cartas, 3 clientes, prints reais. 'irei renovar e tbm indicar para meu ciclo de amigos'. O que você escreveria na sua carta? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#feedback",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Cartas de recomendação do KizuBot (prints reais de clientes)",
+        "description": "Abrimos as cartas de recomendação do KizuBot, o bot que farma no PxG por você: três prints reais de clientes diferentes — 'na moral vc e foda programando', 'Você mano, fez um trampo da hora' e 'irei renovar e tbm indicar para meu ciclo de amigos'. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Cartas de recomendação do KizuBot ✉️ Três prints reais de clientes diferentes. O que você escreveria na sua carta? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#pxgbrasil"
+        ]
+      }
+    },
+    "pinned_comment": "O que você escreveria na sua carta pro KizuBot? 👇",
+    "claims": [
+      "prints reais de clientes diferentes",
+      "alarmes no WhatsApp (per the print: 'Ativei msgs pelo zap também / Chega certinho')"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/foda-programando.png",
+      "kit/img/prints/trampo-da-hora--zap.png",
+      "kit/img/prints/trampo-da-hora--quote.png",
+      "kit/img/prints/avaliacao-5-estrelas--renovar.png"
+    ]
+  },
+  {
+    "id": "070",
+    "file": "070-primeiro-dia.mp4",
+    "series": "F06 Currículo do KizuBot",
+    "title": "Primeiro dia de trabalho do KizuBot",
+    "hook": "PRIMEIRO DIA DE TRABALHO DO KIZUBOT.",
+    "neuro": "benign-violation-humor, personification, commitment-ladder-checklist, ikea-setup-steps, social-proof, fluent-slogan, comment-prompt",
+    "duration": 17.567,
+    "size_mb": 5.7,
+    "platforms": {
+      "tiktok": {
+        "caption": "Primeiro dia de trabalho do KizuBot 🪪 Crachá ✅ Configurar o char ✅ Gravar a rota ✅ Ligar os alarmes ✅ Bater o ponto: 24h. Você dorme, ele farma. Como foi o seu primeiro dia de trabalho? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#humor",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Primeiro dia de trabalho do KizuBot (bateu o ponto: 24h)",
+        "description": "O primeiro dia de trabalho do KizuBot: crachá, configurar o char, gravar a rota, ligar os alarmes e bater o ponto — 24h. Prova real de cliente: 'Bagui tá rodando desde cedo hj' (print com a interface antiga). Você dorme. Ele farma. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Primeiro dia de trabalho do KizuBot 🪪 Checklist completo, ponto batido: 24h. Você dorme. Ele farma. 😴 Como foi o seu primeiro dia de trabalho? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#humorgamer"
+        ]
+      }
+    },
+    "pinned_comment": "Como foi seu primeiro dia de trabalho? 😅",
+    "claims": [
+      "configurar o char, gravar a rota (Cavebot recorder), ligar os alarmes",
+      "roda 24/7 (bater o ponto: 24h)",
+      "100% AFK (Você dorme. Ele farma.)",
+      "print real de cliente (interface antiga)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-wordmark.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/hud-8434-loots.png"
+    ]
+  },
+  {
     "id": "071",
     "file": "071-ninguem-eu-4h.mp4",
     "series": "F07 Só Quem Joga PxG Entende",

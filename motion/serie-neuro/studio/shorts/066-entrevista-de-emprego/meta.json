@@ -1,0 +1,30 @@
+{
+  "id": "066",
+  "slug": "entrevista-de-emprego",
+  "family": "Currículo do KizuBot",
+  "title": "Entrevista de emprego do KizuBot",
+  "concept": "An HR clipboard interviews KizuBot as a job candidate: six rapid page-flip questions (disponibilidade 24/7, ponto fraco 'não sei dormir', +170 atualizações, 13 módulos, pretensão salarial R$ 250/mês) end with 'Porque você precisa dormir.' and a CONTRATADO stamp plus the team's in-game APROVADO! cameo.",
+  "neuro": ["benign-violation-humor", "personification", "schema-violation-hook", "anchoring", "authority", "progress-cue", "peak-end", "comment-prompt"],
+  "hook": "ENTREVISTA DE EMPREGO: KIZUBOT.",
+  "duration": 21.64,
+  "music": {"style": "gameshow", "bpm": 122},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png", "kit/img/prints/meme-testador-meme-testador-aprovado.png"],
+  "claims": ["roda 24/7 na nuvem (disponibilidade do bot)", "uso com PC desligado", "mais de 170 atualizações desde 2024", "13 módulos", "planos a partir de R$ 250/mês", "menos de R$ 9 por dia (R$ 250 ÷ 30 = R$ 8,33)"],
+  "platforms": {
+    "tiktok": {
+      "caption": "Entrevista de emprego do KizuBot 👔 Disponibilidade: 24/7. Ponto fraco: não sei dormir. Pretensão salarial: a partir de R$ 250/mês. Você contrataria? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#humor", "#afk"]
+    },
+    "youtube": {
+      "title": "Entrevista de emprego do KizuBot (ponto fraco: não sei dormir)",
+      "description": "Fizemos a entrevista de emprego do KizuBot: disponibilidade 24/7 (roda na nuvem, com o seu PC desligado), mais de 170 atualizações desde 2024, 13 módulos e pretensão salarial a partir de R$ 250/mês — menos de R$ 9 por dia. Por que contratar? Porque você precisa dormir. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Entrevista de emprego do KizuBot 👔 Ponto fraco: não sei dormir. Por que contratar? Porque você precisa dormir 😴 Você contrataria? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#humorgamer"]
+    }
+  },
+  "pinned_comment": "Você contrataria? 😂 Qual pergunta você faria pro KizuBot na entrevista?",
+  "notes": "Concept order changed for rhythm: Disponibilidade → Ponto fraco → Experiência → Habilidades → Pretensão salarial → Por que contratar (price after the value stack; punchline last). '24/7' answer carries the footnote 'roda na nuvem · PC desligado' so it only describes the bot running on cloud machines. Experiência shown as '+170 atualizações desde 2024' (BRIEF: mais de 170). Module chips use only the 13 module names from BRIEF. The APROVADO! cameo is meme-testador-meme-testador-aprovado.png (source meme-testador-aprovado.png), captioned 'personagem da equipe' and not tagged as a testimonial. Music drop at 9.34 s (43%) on Habilidades; the punchline + stamp peak lands at 68–77% because the Q&A escalates to the joke. Sticky note 'candidato não dorme?!' is decorative desk art."
+}

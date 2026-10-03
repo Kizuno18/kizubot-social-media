@@ -174,6 +174,10 @@ def cmd_render(d, draft=False):
     print(f"  rendered video in {took:.0f}s")
     final = os.path.join(d, "renders", "final.mp4")
     if mix:
+        # audio.json or the audio engine may have changed while the render waited in the queue
+        srcs = [os.path.join(d, "audio.json"), os.path.join(TOOLS, "kzaudio.py")]
+        if not os.path.exists(mix) or max(os.path.getmtime(p) for p in srcs) > os.path.getmtime(mix):
+            mix = cmd_audio(d)
         sh(["ffmpeg", "-v", "error", "-y", "-i", silent, "-i", mix, "-map", "0:v:0", "-map", "1:a:0",
             "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2",
             "-t", f"{dur:.3f}", "-movflags", "+faststart", final])

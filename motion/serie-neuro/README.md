@@ -4,13 +4,13 @@ Cem shorts verticais (1080×1920, 30 fps, 12–25 s) para o KizuBot, feitos inte
 
 <p align="center"><img src="grid-01.jpg" width="100%" alt="Um frame de cada short de 041 a 060"></p>
 
-<p align="center"><img src="grid-02.jpg" width="100%" alt="Um frame de cada short de 061 a 085"></p>
+<p align="center"><img src="grid-02.jpg" width="100%" alt="Um frame de cada short de 061 a 080"></p>
 
-<p align="center"><img src="grid-03.jpg" width="100%" alt="Um frame de cada short de 086 a 105"></p>
+<p align="center"><img src="grid-03.jpg" width="100%" alt="Um frame de cada short de 081 a 100"></p>
 
-<p align="center"><img src="grid-04.jpg" width="100%" alt="Um frame de cada short de 106 a 130"></p>
+<p align="center"><img src="grid-04.jpg" width="100%" alt="Um frame de cada short de 101 a 120"></p>
 
-<p align="center"><img src="grid-05.jpg" width="100%" alt="Um frame de cada short de 131 a 140"></p>
+<p align="center"><img src="grid-05.jpg" width="100%" alt="Um frame de cada short de 126 a 140"></p>
 
 ## Como a série foi pensada
 
@@ -68,6 +68,11 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 | 063 | [`063-5-reacoes.mp4`](063-5-reacoes.mp4) | F05 Top 5 | As 5 reações mais insanas dos clientes do KizuBot | AS 5 REAÇÕES MAIS INSANAS DOS CLIENTES. | open-loop, social-proof, emotional-contagion, humor, variable-reward, visible-progress, peak-end, comment-prompt |
 | 064 | [`064-5-motivos.mp4`](064-5-motivos.mp4) | F05 Top 5 | 5 motivos pra parar de farmar na mão | 5 MOTIVOS PRA PARAR DE FARMAR NA MÃO. | loss-aversion, open-loop, humor, self-reference, visible-progress, contrast, peak-end, comment-prompt |
 | 065 | [`065-5-alarmes.mp4`](065-5-alarmes.mp4) | F05 Top 5 | Os 5 alarmes que todo jogador quer receber | OS 5 ALARMES QUE TODO JOGADOR QUER RECEBER. | open-loop, anticipation, conditioning-sound, variable-reward, visible-progress, social-proof, peak-end, comment-prompt |
+| 066 | [`066-entrevista-de-emprego.mp4`](066-entrevista-de-emprego.mp4) | F06 Currículo do KizuBot | Entrevista de emprego do KizuBot | ENTREVISTA DE EMPREGO: KIZUBOT. | benign-violation-humor, personification, schema-violation-hook, anchoring, authority, progress-cue, peak-end, comment-prompt |
+| 067 | [`067-curriculo.mp4`](067-curriculo.mp4) | F06 Currículo do KizuBot | O currículo do KizuBot | O CURRÍCULO DO KIZUBOT. | benign-violation-humor, personification, self-reference, progress-cue, asmr-typing, social-proof, comment-prompt |
+| 068 | [`068-avaliacao-de-desempenho.mp4`](068-avaliacao-de-desempenho.mp4) | F06 Currículo do KizuBot | Avaliação de desempenho do KizuBot | AVALIAÇÃO DE DESEMPENHO: KIZUBOT. | benign-violation-humor, personification, variable-reward-stars, progress-cue, social-proof, peak-end, comment-prompt |
+| 069 | [`069-cartas-de-recomendacao.mp4`](069-cartas-de-recomendacao.mp4) | F06 Currículo do KizuBot | Cartas de recomendação do KizuBot | CARTAS DE RECOMENDAÇÃO DO KIZUBOT. | social-proof, authority, curiosity-gap, personification, peak-end, comment-prompt |
+| 070 | [`070-primeiro-dia.mp4`](070-primeiro-dia.mp4) | F06 Currículo do KizuBot | Primeiro dia de trabalho do KizuBot | PRIMEIRO DIA DE TRABALHO DO KIZUBOT. | benign-violation-humor, personification, commitment-ladder-checklist, ikea-setup-steps, social-proof, fluent-slogan, comment-prompt |
 | 071 | [`071-ninguem-eu-4h.mp4`](071-ninguem-eu-4h.mp4) | F07 Só Quem Joga PxG Entende | Ninguém: / Eu às 4h da manhã | NINGUÉM: / EU ÀS 4H FARMANDO NA MÃO: | in-group-identity, benign-violation-humor, pattern-interrupt, curiosity-gap, social-proof, peak-end, comment-prompt |
 | 072 | [`072-antigamente-x-hoje.mp4`](072-antigamente-x-hoje.mp4) | F07 Só Quem Joga PxG Entende | Antigamente no PxG x hoje | ANTIGAMENTE NO PXG: | nostalgia, in-group-identity, contrast, social-proof, loop, comment-prompt |
 | 073 | [`073-so-mais-uma-hunt.mp4`](073-so-mais-uma-hunt.mp4) | F07 Só Quem Joga PxG Entende | "Só mais uma hunt." | “SÓ MAIS UMA HUNT.” | in-group-identity, benign-violation-humor, contrast, future-pacing, social-proof, comment-prompt |

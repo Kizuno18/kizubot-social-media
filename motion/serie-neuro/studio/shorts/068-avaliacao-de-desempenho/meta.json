@@ -1,0 +1,30 @@
+{
+  "id": "068",
+  "slug": "avaliacao-de-desempenho",
+  "family": "Currículo do KizuBot",
+  "title": "Avaliação de desempenho do KizuBot",
+  "concept": "A joke HR performance review: criterion cards are dealt onto a pile (pontualidade, trabalho em equipe, comunicação, proatividade, horas extras), each stamping five gold stars, with a real customer print as the proatividade evidence, then the manager's sticky note 'Funcionário do mês. De novo.' and a Nº1 rosette.",
+  "neuro": ["benign-violation-humor", "personification", "variable-reward-stars", "progress-cue", "social-proof", "peak-end", "comment-prompt"],
+  "hook": "AVALIAÇÃO DE DESEMPENHO: KIZUBOT.",
+  "duration": 19.84,
+  "music": {"style": "house", "bpm": 124},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png", "kit/img/prints/configuracoes-novas-espetacular--quote.png"],
+  "claims": ["roda 24/7 (disponibilidade do bot)", "módulo Party (um dos 13 módulos)", "alarmes no celular e notificações no WhatsApp", "print real de cliente sobre as configurações novas"],
+  "platforms": {
+    "tiktok": {
+      "caption": "Avaliação de desempenho do KizuBot ⭐ Pontualidade: nunca atrasou, roda 24/7. Horas extras: todas. Funcionário do mês. De novo. E o seu chefe, quantas estrelas? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#humor", "#afk"]
+    },
+    "youtube": {
+      "title": "Avaliação de desempenho do KizuBot (funcionário do mês de novo)",
+      "description": "A avaliação de desempenho (de zoeira) do KizuBot: pontualidade — roda 24/7; trabalho em equipe — tem até módulo Party; comunicação — avisa no WhatsApp; proatividade — print real de cliente elogiando as configurações novas; horas extras: todas. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Avaliação de desempenho do KizuBot ⭐ Horas extras: todas. Comentário do gestor: funcionário do mês. De novo. 😂 E o seu chefe, ganharia quantas estrelas? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#humorgamer"]
+    }
+  },
+  "pinned_comment": "Qual nota você daria pro seu chefe? 😂",
+  "notes": "Stars are the bot's humorous internal HR review (RH · avaliação anual, comentário do gestor) — never labelled as reviews or customer scores. Proatividade evidence = configuracoes-novas-espetacular--quote.png (source configuracoes-novas-espetacular.png) with the first line set verbatim in big type ('as configuracoes novas ficaram dahora demais') + tag 'print real de cliente'; it is praise, not a rating. 'Trabalho em equipe' joke uses the real Party module ('tem até módulo Party'). 'Comunicação: avisa tudo no WhatsApp' from the concept shortened to 'avisa no WhatsApp' (avoid overclaiming 'tudo'). 'Funcionário do mês' rosette reads 'Nº1' (≥30 px text). On-screen ask: 'E o seu chefe: quantas estrelas?'. Render 2 made the Horas extras card taller so the print tag of the card below no longer peeks out next to 'todas.'."
+}

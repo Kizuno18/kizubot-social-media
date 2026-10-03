@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>069 Cartas de recomendação do KizuBot</title>
+<link rel="stylesheet" href="kit/css/fonts.css" />
+<link rel="stylesheet" href="kit/css/kz.css" />
+<script src="kit/js/gsap.min.js"></script>
+<script src="kit/js/kz.js"></script>
+<style>
+  /* ===== F06 series system (paper on a desk) — episode 069: sealed letters on a wine desk ===== */
+  :root {
+    --paper: #fbf6ea; --rule: #ddd2bd; --kraft: #e3cfa6; --kraft-2: #cdb383;
+    --ink: #1d1828; --ink-2: #625a72; --red: #d42f2c; --brand: #6d28d9; --hl: #c6ff3d; --gold: #f5c542;
+    --desk-1: #6b2235; --desk-2: #3a101d; --desk-3: #1c060d;
+  }
+  #desk { position: absolute; inset: 0; background: radial-gradient(120% 75% at 50% 40%, var(--desk-1) 0%, var(--desk-2) 55%, var(--desk-3) 100%); }
+  #deskShade { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(130% 90% at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.5) 100%); }
+  .prop { position: absolute; }
+  .fpen { width: 600px; height: 46px; border-radius: 23px; background: linear-gradient(180deg, #2b2b33, #0f0f14); box-shadow: 0 18px 30px rgba(0,0,0,0.5); }
+  .fpen::before { content: ""; position: absolute; left: -70px; top: 6px; border-right: 74px solid #d9b45a; border-top: 17px solid transparent; border-bottom: 17px solid transparent; }
+  .fpen::after { content: ""; position: absolute; left: 150px; top: 0; width: 26px; height: 46px; background: #d9b45a; }
+
+  .htitle { position: absolute; left: 110px; right: 110px; top: 300px; text-align: center; font: 800 104px "Bricolage Grotesque", sans-serif; line-height: 1.04; letter-spacing: -0.035em; text-transform: uppercase; color: #fbf6ea; }
+  .htitle div { display: block; }
+  .htitle em { font-style: normal; color: var(--gold); }
+  .hwhat { position: absolute; left: 110px; right: 110px; top: 690px; text-align: center; font: 800 46px "Inter", sans-serif; letter-spacing: -0.01em; color: #fbf6ea; }
+  .hsub { position: absolute; left: 110px; right: 110px; top: 690px; text-align: center; font: 800 30px "Inter", sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: #f3d9de; }
+
+  /* envelopes */
+  .env { position: absolute; width: 470px; height: 300px; }
+  .env .body { position: absolute; inset: 0; background: linear-gradient(170deg, var(--kraft), var(--kraft-2)); border-radius: 10px; box-shadow: 0 24px 40px rgba(0,0,0,0.5); }
+  .env .body::before { content: ""; position: absolute; inset: 0; border-radius: 10px; background: linear-gradient(32deg, rgba(0,0,0,0) 49.6%, rgba(0,0,0,0.12) 50%, rgba(0,0,0,0) 50.4%), linear-gradient(-32deg, rgba(0,0,0,0) 49.6%, rgba(0,0,0,0.12) 50%, rgba(0,0,0,0) 50.4%); }
+  .env .flap { position: absolute; left: 0; top: 0; width: 470px; height: 190px; background: linear-gradient(180deg, #d8c08f, #c9ac74); clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: 50% 0%; }
+  .env .flapin { position: absolute; left: 0; top: -190px; width: 470px; height: 190px; background: linear-gradient(0deg, #a88a55, #8e7343); clip-path: polygon(50% 0, 100% 100%, 0 100%); transform-origin: 50% 100%; }
+  .seal { position: absolute; width: 110px; height: 110px; border-radius: 50%; background: radial-gradient(circle at 38% 35%, #a970ff 0%, #6d28d9 55%, #3b0764 100%); box-shadow: 0 6px 12px rgba(0,0,0,0.45), inset 0 0 0 8px rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center; font: 700 62px "Cinzel", serif; color: #e9d5ff; }
+  .env .seal { left: 180px; top: 132px; }
+  .env .no { position: absolute; left: 24px; bottom: 18px; font: 700 40px "Caveat", cursive; color: #5b4523; }
+
+  /* letters */
+  .letter { position: absolute; left: 110px; top: 250px; width: 860px; height: 1090px; background: var(--paper); border-radius: 6px; box-shadow: 0 40px 80px rgba(0,0,0,0.55); overflow: hidden; z-index: 30; }
+  .letter::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 14px; background: var(--brand); }
+  .lhead { position: absolute; left: 50px; right: 90px; top: 50px; display: flex; justify-content: space-between; font: 800 28px "Inter", sans-serif; letter-spacing: 0.14em; color: var(--ink-2); }
+  .lrule { position: absolute; left: 50px; right: 90px; top: 98px; height: 3px; background: var(--ink); }
+  .greet { position: absolute; left: 50px; top: 126px; font: 400 44px "Instrument Serif", serif; font-style: italic; color: var(--ink-2); }
+  .lq { position: absolute; left: 50px; right: 60px; top: 190px; font: 400 98px "Instrument Serif", serif; line-height: 0.98; color: var(--ink); letter-spacing: -0.01em; }
+  .lq div { display: block; }
+  .lq .mk { position: absolute; left: -12px; top: -46px; font: 400 170px "Instrument Serif", serif; color: var(--brand); opacity: 0.22; line-height: 1; }
+  .lcard { position: absolute; left: 50px; background: #fff; padding: 10px; box-shadow: 0 12px 24px rgba(0,0,0,0.22); }
+  .lcard img { display: block; width: 100%; }
+  .tag { position: absolute; left: 50px; font: 800 30px "Inter", sans-serif; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand); border: 3px solid var(--brand); border-radius: 999px; padding: 6px 18px; background: rgba(109,40,217,0.06); }
+  .sign { position: absolute; left: 50px; font: 700 66px "Caveat", cursive; color: #22315e; white-space: nowrap; }
+  .letter .seal { left: 650px; top: 900px; width: 130px; height: 130px; font-size: 72px; }
+
+  .fin { position: absolute; left: 90px; right: 120px; top: 1150px; text-align: center; font: 800 76px "Bricolage Grotesque", sans-serif; letter-spacing: -0.03em; color: #fbf6ea; }
+  .fin em { font-style: normal; color: var(--gold); }
+  .fin2 { position: absolute; left: 90px; right: 120px; top: 1255px; text-align: center; font: 800 30px "Inter", sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: #f3d9de; }
+
+  .kz-progress { background: rgba(255,255,255,0.10); height: 9px; }
+  .kz-progress > div { background: linear-gradient(90deg, var(--gold), #fbf6ea); }
+
+  /* end card */
+  .endwrap { position: absolute; left: 90px; right: 120px; top: 250px; bottom: 520px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; text-align: center; }
+  .logoWrap { position: relative; width: 560px; }
+  .logoWrap img { display: block; width: 560px; }
+  .eye { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(244,214,255,1) 0%, rgba(192,132,252,0.85) 30%, rgba(168,85,247,0) 70%); mix-blend-mode: screen; }
+  .endUrl { font: 800 64px "Inter", sans-serif; color: var(--kz-ink); letter-spacing: -0.01em; }
+  .endAsk { font: 800 72px "Bricolage Grotesque", sans-serif; letter-spacing: -0.02em; line-height: 1.06; color: var(--kz-ink); }
+  .endAsk div { display: block; }
+  .endAsk .w { position: relative; z-index: 0; display: inline-block; color: #1d1828; padding: 0 14px; }
+  .endAsk .w i { position: absolute; left: 0; right: 0; top: 8%; bottom: 4%; background: var(--gold); border-radius: 10px; z-index: -1; transform-origin: 0 50%; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 60; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="17.67" data-fps="30">
+  <div id="desk"></div>
+  <div class="prop fpen" style="left:560px; top:1720px; transform: rotate(-14deg)"></div>
+  <div id="deskShade"></div>
+  <div class="kz-progress"><div id="prog"></div></div>
+
+  <!-- END CARD -->
+  <section id="send" class="clip" data-start="14.2" data-duration="3.47">
+    <div class="endwrap">
+      <div class="logoWrap" id="logoWrap">
+        <img id="endLogo" src="kit/img/brand/kizubot-logo.png" alt="" />
+        <div class="eye" id="eye2" style="left:177px; top:8px; width:100px; height:100px"></div>
+      </div>
+      <div class="endUrl" id="endUrl">kizubot.com</div>
+      <div class="endAsk">
+        <div id="ask1">O que você escreveria</div>
+        <div id="ask2"><span class="w"><i id="askHl"></i>na sua carta?</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LETTERS -->
+  <section id="sl" class="clip" data-start="0" data-duration="14.6">
+    <div id="stage" style="position:absolute; inset:0">
+      <div class="htitle" id="htitle"><div id="h1">Cartas de</div><div id="h2">recomendação</div><div id="h3">do <em>KizuBot.</em></div></div>
+      <div class="hwhat" id="hwhat">o bot que farma no PxG por você</div>
+      <div class="hsub" id="hsub" style="top:760px">prints reais de clientes diferentes</div>
+
+      <div class="env" id="e1" style="left:40px; top:1010px"><div class="body"></div><div class="flapin" id="e1i"></div><div class="flap" id="e1f"></div><div class="seal" id="e1s">K</div><div class="no">nº 1</div></div>
+      <div class="env" id="e3" style="left:570px; top:1010px"><div class="body"></div><div class="flapin" id="e3i"></div><div class="flap" id="e3f"></div><div class="seal" id="e3s">K</div><div class="no">nº 3</div></div>
+      <div class="env" id="e2" style="left:305px; top:1110px"><div class="body"></div><div class="flapin" id="e2i"></div><div class="flap" id="e2f"></div><div class="seal" id="e2s">K</div><div class="no">nº 2</div></div>
+
+      <div class="fin" id="fin">3 cartas. <em>3 clientes.</em></div>
+      <div class="fin2" id="fin2">prints reais de clientes diferentes</div>
+
+      <!-- letter 1 -->
+      <div class="letter" id="L1">
+        <div class="lhead"><span>CARTA DE RECOMENDAÇÃO</span><span>Nº 1</span></div><div class="lrule"></div>
+        <div class="greet">A quem interessar possa:</div>
+        <div class="lq" id="q1"><span class="mk">“</span><div>na moral vc e</div><div>foda programando</div></div>
+        <div class="lcard" id="c1" style="top:460px; width:760px"><img src="kit/img/prints/foda-programando.png" alt="" /></div>
+        <div class="tag" id="t1" style="top:580px">print real de cliente</div>
+        <div class="sign" id="g1" style="top:700px">— cliente KizuBot</div>
+        <div class="seal">K</div>
+      </div>
+      <!-- letter 2 -->
+      <div class="letter" id="L2">
+        <div class="lhead"><span>CARTA DE RECOMENDAÇÃO</span><span>Nº 2</span></div><div class="lrule"></div>
+        <div class="greet">A quem interessar possa:</div>
+        <div class="lq" id="q2"><span class="mk">“</span><div>Você mano, fez um</div><div>trampo da hora</div></div>
+        <div class="lcard" id="c2" style="top:445px; width:600px"><img src="kit/img/prints/trampo-da-hora--zap.png" alt="" /><img src="kit/img/prints/trampo-da-hora--quote.png" alt="" /></div>
+        <div class="tag" id="t2" style="top:890px">print real de cliente</div>
+        <div class="sign" id="g2" style="top:960px">— cliente KizuBot</div>
+        <div class="seal">K</div>
+      </div>
+      <!-- letter 3 -->
+      <div class="letter" id="L3">
+        <div class="lhead"><span>CARTA DE RECOMENDAÇÃO</span><span>Nº 3</span></div><div class="lrule"></div>
+        <div class="greet">A quem interessar possa:</div>
+        <div class="lq" id="q3"><span class="mk">“</span><div>irei renovar e tbm</div><div>indicar para meu</div><div>ciclo de amigos</div></div>
+        <div class="lcard" id="c3" style="top:530px; width:720px"><img src="kit/img/prints/avaliacao-5-estrelas--renovar.png" alt="" /></div>
+        <div class="tag" id="t3" style="top:755px">print real de cliente</div>
+        <div class="sign" id="g3" style="top:850px">— cliente KizuBot</div>
+        <div class="seal">K</div>
+      </div>
+    </div>
+  </section>
+
+  <div id="flash"></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const D = 17.67;
+  const b = KZ.beats(90);            // beat = 0.667 s
+
+  KZ.progress(tl, "#prog", 0, D - 0.05);
+
+  // envelope positions (centre of the open position)
+  function openEnv(k, T) {
+    tl.fromTo("#e" + k + "s", { scale: 1, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.2, ease: "power2.out", immediateRender: false }, T);
+    tl.fromTo("#e" + k + "f", { scaleY: 1 }, { scaleY: 0, duration: 0.14, ease: "power2.in" }, T);
+    tl.fromTo("#e" + k + "i", { scaleY: 0 }, { scaleY: 1, duration: 0.16, ease: "power2.out" }, T + 0.14);
+  }
+  function letterIn(k, T, fromX) {
+    const L = "#L" + k;
+    tl.fromTo(L, { x: fromX, y: 820, scale: 0.42, rotation: (k === 2 ? 0 : (k === 1 ? -8 : 8)), opacity: 0 },
+      { x: 0, y: 0, scale: 1, rotation: (k === 2 ? 0.8 : -0.8), opacity: 1, duration: 0.5, ease: "power3.out" }, T + 0.25);
+    gsap.utils.toArray("#q" + k + " div").forEach(function (ln, i) {
+      tl.fromTo(ln, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, T + 0.75 + i * 0.16);
+    });
+    tl.fromTo("#q" + k + " .mk", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 0.22, duration: 0.35, ease: "back.out(2)" }, T + 0.7);
+    tl.fromTo("#c" + k, { y: 50, opacity: 0, rotation: -3 }, { y: 0, opacity: 1, rotation: -1, duration: 0.35, ease: "back.out(1.6)" }, T + 1.3);
+    KZ.rise(tl, "#t" + k, T + 1.55, 0.3, 16);
+    tl.fromTo("#g" + k, { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power1.inOut" }, T + 1.8);
+  }
+  function letterOut(k, at, toX) {
+    tl.to("#L" + k, { x: toX, y: -300, rotation: (toX < 0 ? -14 : 14), opacity: 0, duration: 0.32, ease: "power3.in" }, at);
+  }
+
+  // ---------- HOOK ----------
+  KZ.slam(tl, "#h1", 0.0, 1.5);
+  KZ.slam(tl, "#h2", 0.1, 1.4);
+  KZ.slam(tl, "#h3", 0.2, 1.6);
+  tl.fromTo("#e1", { y: 700, rotation: -30 }, { y: 0, rotation: -9, duration: 0.45, ease: "back.out(1.4)" }, 0.05);
+  tl.fromTo("#e3", { y: 700, rotation: 30 }, { y: 0, rotation: 9, duration: 0.45, ease: "back.out(1.4)" }, 0.12);
+  tl.fromTo("#e2", { y: 700, rotation: 0 }, { y: 0, rotation: -1, duration: 0.45, ease: "back.out(1.4)" }, 0.19);
+  ["#e1s", "#e2s", "#e3s"].forEach(function (s, i) { KZ.pop(tl, s, 0.45 + i * 0.14, 0.35); });
+  KZ.rise(tl, "#hwhat", 0.7, 0.35, 20);
+  KZ.rise(tl, "#hsub", 1.0, 0.35, 20);
+  tl.fromTo("#htitle", { scale: 1 }, { scale: 1.03, duration: 1.4, ease: "sine.inOut" }, 0.6);
+  // title + subtitle make room when the first letter opens
+  tl.to(["#htitle", "#hwhat", "#hsub"], { y: -60, opacity: 0, duration: 0.3, ease: "power2.in" }, b(3) + 0.1);
+
+  // ---------- LETTER 1 (2.0) ----------
+  openEnv(1, b(3));
+  letterIn(1, b(3), -260);
+  letterOut(1, b(8) - 0.32, -1200);
+  // ---------- LETTER 2 (5.33) ----------
+  openEnv(2, b(8));
+  letterIn(2, b(8), 0);
+  letterOut(2, b(14) - 0.32, 1200);
+  // ---------- LETTER 3 on the drop (9.33) ----------
+  openEnv(3, b(14));
+  KZ.flash(tl, "#flash", b(14) + 0.3, 0.3, "#f5c542");
+  letterIn(3, b(14), 260);
+  // ---------- FINALE (13.0): the three letters fanned ----------
+  tl.to("#L3", { x: 250, y: -150, scale: 0.42, rotation: 9, duration: 0.45, ease: "power3.inOut" }, b(19.5));
+  tl.fromTo("#L1", { x: -250, y: -150, scale: 0.42, rotation: -9, opacity: 0 }, { x: -250, y: -150, scale: 0.42, rotation: -9, opacity: 1, duration: 0.3, ease: "power2.out", immediateRender: false }, b(19.5) + 0.1);
+  tl.fromTo("#L2", { x: 0, y: -60, scale: 0.42, rotation: 0, opacity: 0 }, { x: 0, y: -110, scale: 0.44, rotation: 0, opacity: 1, duration: 0.3, ease: "power2.out", immediateRender: false }, b(19.5) + 0.18);
+  tl.to(["#e1", "#e2", "#e3"], { y: 900, duration: 0.4, ease: "power3.in" }, b(19.5));
+  KZ.slam(tl, "#fin", b(19.5) + 0.35, 1.5);
+  KZ.rise(tl, "#fin2", b(19.5) + 0.6, 0.3, 16);
+
+  // ---------- exit + END CARD ----------
+  tl.to("#stage", { y: 1700, rotation: 4, duration: 0.42, ease: "power3.in" }, 14.2);
+  tl.fromTo("#endLogo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, b(21.5));
+  KZ.eyePulse(tl, "#eye2", b(21.5) + 0.1, 3);
+  KZ.rise(tl, "#endUrl", b(22.5), 0.35, 30);
+  KZ.rise(tl, "#ask1", b(23.3), 0.35, 40);
+  KZ.rise(tl, "#ask2", b(23.3) + 0.18, 0.35, 40);
+  tl.fromTo("#askHl", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, b(23.3) + 0.55);
+  tl.to("#logoWrap", { scale: 1.04, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, b(23));
+
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

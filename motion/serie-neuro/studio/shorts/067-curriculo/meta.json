@@ -1,0 +1,30 @@
+{
+  "id": "067",
+  "slug": "curriculo",
+  "family": "Currículo do KizuBot",
+  "title": "O currículo do KizuBot",
+  "concept": "KizuBot's résumé is typed section by section while the camera glides down the page — objetivo, experiência, formação (13 módulos), idiomas, disponibilidade 24/7 — and closes with two real customer prints as references.",
+  "neuro": ["benign-violation-humor", "personification", "self-reference", "progress-cue", "asmr-typing", "social-proof", "comment-prompt"],
+  "hook": "O CURRÍCULO DO KIZUBOT.",
+  "duration": 20,
+  "music": {"style": "lofi", "bpm": 84},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-logo.png", "kit/img/prints/bot-ta-um-monstro--quote.png", "kit/img/prints/bot-insano-2-maquinas--quote.png"],
+  "claims": ["caça, captura, pesca e coleta (Cavebot/Combat, Catch, Fishing, Farming)", "13 módulos configuráveis", "funciona com o jogo em PT, EN, ES e PL (changelog 2026-09-05)", "roda 24/7 na nuvem (disponibilidade do bot)", "prints reais de clientes"],
+  "platforms": {
+    "tiktok": {
+      "caption": "O currículo do KizuBot 📄 Objetivo: fazer seu char upar enquanto você vive. Disponibilidade: 24/7, inclusive feriado. Melhor que o seu currículo? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#humor", "#afk"]
+    },
+    "youtube": {
+      "title": "O currículo do KizuBot (melhor que o seu?)",
+      "description": "O currículo do KizuBot: objetivo — fazer seu char upar enquanto você vive. Experiência em caça, captura, pesca e coleta, 13 módulos configuráveis, funciona com o jogo em PT, EN, ES e PL e roda 24/7 na nuvem. Referências: prints reais de clientes. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "O currículo do KizuBot 📄 Objetivo: fazer seu char upar enquanto você vive. Referências: prints reais de clientes. Melhor que o seu currículo? 👀 Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#humorgamer"]
+    }
+  },
+  "pinned_comment": "Melhor que o seu currículo? 👀 O que você colocaria no currículo do seu char?",
+  "notes": "Idiomas line changed from the concept's 'lê o chat em português, espanhol e polonês' (not supported) to 'funciona com o jogo em: PT EN ES PL' per BRIEF changelog 2026-09-05 (game language PT/EN/ES/PL) and the orchestrator's note. Formação shown as '13 módulos configuráveis' (llms.txt: 13 configurable modules). References quoted verbatim in big type with the print shown under each: 'o bot tá um monstro' (bot-ta-um-monstro--quote, source bot-ta-um-monstro) and 'Bot insano irmao!! mt foda' (bot-insano-2-maquinas--quote, source bot-insano-2-maquinas; only the quote crop is used, so no plan names appear); labelled 'prints reais de clientes diferentes' + 'print real de cliente' on each. '24/7' only as the bot's availability."
+}

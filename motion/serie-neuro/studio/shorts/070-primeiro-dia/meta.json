@@ -1,0 +1,30 @@
+{
+  "id": "070",
+  "slug": "primeiro-dia",
+  "family": "Currículo do KizuBot",
+  "title": "Primeiro dia de trabalho do KizuBot",
+  "concept": "KizuBot's first day: a crachá swings in on a lanyard, the onboarding checklist gets ticked (crachá, configurar o char, gravar a rota, ligar os alarmes, bater o ponto: 24h), then a real customer HUD print proves it — 'Bagui tá rodando desde cedo hj' — and the slogan 'Você dorme. Ele farma.'",
+  "neuro": ["benign-violation-humor", "personification", "commitment-ladder-checklist", "ikea-setup-steps", "social-proof", "fluent-slogan", "comment-prompt"],
+  "hook": "PRIMEIRO DIA DE TRABALHO DO KIZUBOT.",
+  "duration": 17.54,
+  "music": {"style": "funk", "bpm": 130},
+  "assets": ["kit/img/brand/kizubot-head.png", "kit/img/brand/kizubot-wordmark.png", "kit/img/brand/kizubot-logo.png", "kit/img/prints/hud-8434-loots.png"],
+  "claims": ["configurar o char, gravar a rota (Cavebot recorder), ligar os alarmes", "roda 24/7 (bater o ponto: 24h)", "100% AFK (Você dorme. Ele farma.)", "print real de cliente (interface antiga)"],
+  "platforms": {
+    "tiktok": {
+      "caption": "Primeiro dia de trabalho do KizuBot 🪪 Crachá ✅ Configurar o char ✅ Gravar a rota ✅ Ligar os alarmes ✅ Bater o ponto: 24h. Você dorme, ele farma. Como foi o seu primeiro dia de trabalho? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#humor", "#afk"]
+    },
+    "youtube": {
+      "title": "Primeiro dia de trabalho do KizuBot (bateu o ponto: 24h)",
+      "description": "O primeiro dia de trabalho do KizuBot: crachá, configurar o char, gravar a rota, ligar os alarmes e bater o ponto — 24h. Prova real de cliente: 'Bagui tá rodando desde cedo hj' (print com a interface antiga). Você dorme. Ele farma. kizubot.com",
+      "hashtags": ["#shorts", "#pokexgames", "#pxg", "#kizubot"]
+    },
+    "instagram": {
+      "caption": "Primeiro dia de trabalho do KizuBot 🪪 Checklist completo, ponto batido: 24h. Você dorme. Ele farma. 😴 Como foi o seu primeiro dia de trabalho? Link na bio.",
+      "hashtags": ["#pokexgames", "#pxg", "#kizubot", "#humorgamer"]
+    }
+  },
+  "pinned_comment": "Como foi seu primeiro dia de trabalho? 😅",
+  "notes": "Checklist item 'Configurar o personagem' shortened to 'Configurar o char' (PxG vocabulary) so it fits the readable box at ≥56 px. Per the orchestrator, hud-8434-loots.png (source hud-8434-loots.png) is the OLD in-game HUD: tagged 'print real de cliente · interface antiga' and used only as proof that the bot was running ('Bagui tá rodando desde cedo hj', quoted verbatim, also visible in the print), never as a feature demo or current panel; no zoom on its counters. 'Ligar os alarmes' uses the KizuBot alert sound (no alarm message is shown, so nothing is fabricated). Added the fluent slogan 'Você dorme. Ele farma.' (NEURO.md) as the positive last beat before the end card. Render 2 darkened the lanyard behind the hook title and gave 'Ele farma.' a longer hold."
+}

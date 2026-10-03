@@ -18,7 +18,11 @@
     "style": "funk",
     "bpm": 130
   },
-  "assets": [],
+  "assets": [
+    "kit/video/rypherior.mp4",
+    "kit/img/brand/kizubot-head.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
   "claims": [
     "acesso pelo celular"
   ],
@@ -54,5 +58,5 @@
     }
   },
   "pinned_comment": "Você ficaria assistindo a hunt? 👀",
-  "notes": ""
+  "notes": "Real KizuBot gameplay (kit/video/rypherior.mp4, original per ASSETS.md, muted) from media 6.0 s so the push-in 'Olha ele lá.' lands on the 12–15.5 s Ancient Power → explosion segment; the focus ring sits on the trainer. Lower third 'gameplay real do KizuBot'; no 'boss' wording (ASSETS.md: nothing on screen says boss). The background is the same clip blurred (offset 0.05 s to avoid duplicate media discovery). Hook adds a slide-to-answer bar instead of round buttons for variety. Claim limited to 'acesso pelo celular' (live view via the panel/VNC). Captions sized to stay inside x≤880. Rubric: hook 9, re-hooks 9, clarity 8, craft 8, truth 8, sound 8, brand 9, CTA 8, loop 8, distinct 9 = 8.4."
 }

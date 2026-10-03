@@ -19,7 +19,11 @@
     "style": "trap",
     "bpm": 145
   },
-  "assets": [],
+  "assets": [
+    "kit/img/prints/shiny-muk--card.png",
+    "kit/img/prints/shiny-muk--quote.png",
+    "kit/img/brand/kizubot-logo.png"
+  ],
   "claims": [
     "detecção de shinys, megas e bosses",
     "100% AFK"
@@ -56,5 +60,5 @@
     }
   },
   "pinned_comment": "Você levantaria às 3h por um shiny? ⏰",
-  "notes": ""
+  "notes": "The 03:00 alarm is a hypothetical skit; the proof is the real print shiny-muk (--card then --quote, same customer, tagged 'print real de cliente'), which shows its own 13:08 time, so nothing claims the capture happened at 3 a.m. Quotes verbatim ('pena que n vi piscar' / 'tava afk'); the card text says 'Particle Aura' (not the site's 'Partíde Aura'). Label 'SHINY MUK ✓' restates the card. Pinned question shortened on screen to 'Levantaria às 3h por um shiny?' to fit the safe zone. Rubric: hook 9, re-hooks 9, clarity 8, craft 8, truth 8, sound 9, brand 8, CTA 9, loop 8, distinct 9 = 8.5."
 }

@@ -1,0 +1,1041 @@
+[
+  {
+    "id": "051",
+    "file": "051-precisa-pc-ligado.mp4",
+    "series": "F03 Mito ou Verdade?",
+    "title": "Mito ou verdade: precisa deixar o PC ligado?",
+    "hook": "MITO OU VERDADE? PRECISA DEIXAR O PC LIGADO?",
+    "neuro": "curiosity-gap, commitment-guess, objection-handling, anticipation-drop, schema-violation, social-proof, loop",
+    "duration": 19.2,
+    "size_mb": 9.0,
+    "platforms": {
+      "tiktok": {
+        "caption": "Mito ou verdade: precisa deixar o PC ligado pro bot farmar? 🤔 Chuta antes do carimbo! (Mito: o KizuBot roda na nuvem 24/7, com o PC desligado.) Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mitoouverdade",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Mito ou verdade: precisa deixar o PC ligado? #pxg",
+        "description": "Precisa deixar o PC ligado pro bot farmar? MITO. O KizuBot roda na nuvem 24/7: você desliga o PC e o char continua na hunt, com tudo acompanhado pelo celular. Print real de cliente no vídeo. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Mito ou verdade: precisa deixar o PC ligado? 🤔 Pausa e chuta antes do carimbo. O KizuBot roda na nuvem, 24/7 — PC desligado, farm ligado. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mitoouverdade"
+        ]
+      }
+    },
+    "pinned_comment": "Você chutou MITO ou VERDADE? 👀",
+    "claims": [
+      "uso com PC desligado",
+      "roda na nuvem 24/7 (llms.txt: runs 24/7 on virtual machines)",
+      "100% AFK",
+      "acesso pelo celular"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/prints/away-with-family--quote.png"
+    ]
+  },
+  {
+    "id": "052",
+    "file": "052-controla-pelo-celular.mp4",
+    "series": "F03 Mito ou Verdade?",
+    "title": "Mito ou verdade: dá pra controlar pelo celular?",
+    "hook": "MITO OU VERDADE? DÁ PRA CONTROLAR PELO CELULAR?",
+    "neuro": "curiosity-gap, commitment-guess, objection-handling, anticipation-drop, picture-superiority, social-proof",
+    "duration": 19.2,
+    "size_mb": 9.1,
+    "platforms": {
+      "tiktok": {
+        "caption": "Mito ou verdade: dá pra controlar o bot pelo celular? 📱 Chuta antes do carimbo! (Verdade: o painel do KizuBot abre no celular e até instala como app.) Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mitoouverdade",
+          "#celular"
+        ]
+      },
+      "youtube": {
+        "title": "Mito ou verdade: dá pra controlar o bot pelo celular? #pxg",
+        "description": "Dá pra controlar pelo celular? VERDADE. O painel do KizuBot funciona no celular, com botões grandes, e instala como app no celular ou no PC. Print real de cliente no vídeo. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Mito ou verdade: dá pra controlar pelo celular? 📱 O painel do KizuBot cabe no bolso — e instala como app. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mitoouverdade"
+        ]
+      }
+    },
+    "pinned_comment": "Você joga mais no PC ou no celular?",
+    "claims": [
+      "acesso pelo celular",
+      "painel instala como app no celular ou PC (changelog 2026-07-03)",
+      "painel do celular com botões maiores (changelog 2026-09-05)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/prints/farmar-mato-pelo-celular.png"
+    ]
+  },
+  {
+    "id": "053",
+    "file": "053-dificil-configurar.mp4",
+    "series": "F03 Mito ou Verdade?",
+    "title": "Mito ou verdade: é difícil de configurar?",
+    "hook": "MITO OU VERDADE? É DIFÍCIL DE CONFIGURAR?",
+    "neuro": "curiosity-gap, commitment-guess, objection-handling, social-proof, ikea-effect, anticipation-drop",
+    "duration": 21.167,
+    "size_mb": 9.6,
+    "platforms": {
+      "tiktok": {
+        "caption": "Mito ou verdade: bot é difícil de configurar? ⚙️ Chuta antes do carimbo! Prints reais de clientes diferentes + o caminho guiado do painel novo. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mitoouverdade",
+          "#bot"
+        ]
+      },
+      "youtube": {
+        "title": "Mito ou verdade: é difícil configurar o bot? #pxg",
+        "description": "É difícil de configurar? MITO, segundo os próprios clientes (prints reais de clientes diferentes). O painel novo do KizuBot tem caminho guiado para iniciante e o suporte te ajuda a configurar. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Mito ou verdade: é difícil de configurar? ⚙️ Três clientes respondem (prints reais) + caminho guiado pra iniciante e suporte que ajuda. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mitoouverdade"
+        ]
+      }
+    },
+    "pinned_comment": "Já desistiu de algum bot por ser difícil? 😅",
+    "claims": [
+      "painel com caminho guiado para iniciantes (changelog 2026-09-05)",
+      "o suporte te ajuda a configurar"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/prints/facil-configurar.png",
+      "kit/img/prints/parece-que-sei-programar--programar.png",
+      "kit/img/prints/mamao-com-acucar--mamao.png",
+      "kit/img/prints/suporte-ajusta-sua-config--config.png"
+    ]
+  },
+  {
+    "id": "054",
+    "file": "054-avisa-shiny.mp4",
+    "series": "F03 Mito ou Verdade?",
+    "title": "Mito ou verdade: ele te avisa quando nasce shiny?",
+    "hook": "MITO OU VERDADE? ELE TE AVISA QUANDO NASCE SHINY?",
+    "neuro": "curiosity-gap, commitment-guess, anticipation-drop, variable-reward, pavlovian-sound, social-proof",
+    "duration": 19.2,
+    "size_mb": 9.1,
+    "platforms": {
+      "tiktok": {
+        "caption": "Mito ou verdade: o bot te avisa quando nasce shiny? ✨ Chuta antes do carimbo! (Verdade: alarme no zap — e chega até no relógio.) Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#mitoouverdade"
+        ]
+      },
+      "youtube": {
+        "title": "Mito ou verdade: o bot avisa quando nasce shiny? #pxg",
+        "description": "Ele te avisa quando nasce shiny? VERDADE. O KizuBot detecta shiny, mega e boss e manda alarme no WhatsApp ou Telegram — chega até no relógio. Prints reais de clientes no vídeo. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      },
+      "instagram": {
+        "caption": "Mito ou verdade: ele te avisa quando nasce shiny? ✨ Shiny nasceu? O zap avisa. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Qual alarme você mais queria receber?",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp (Telegram também)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/prints/shiny-cubone--alarm.png",
+      "kit/img/prints/smartwatch-alarm--watch.jpg"
+    ]
+  },
+  {
+    "id": "055",
+    "file": "055-joga-igual-robo.mp4",
+    "series": "F03 Mito ou Verdade?",
+    "title": "Mito ou verdade: ele joga igual robô?",
+    "hook": "MITO OU VERDADE? ELE JOGA IGUAL ROBÔ?",
+    "neuro": "curiosity-gap, commitment-guess, objection-handling, contrast, social-proof, anticipation-drop",
+    "duration": 19.2,
+    "size_mb": 8.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "Mito ou verdade: bot joga igual robô? 🤖 Chuta antes do carimbo! (Mito: a Humanização do KizuBot varia pausas e ritmo.) Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mitoouverdade",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Mito ou verdade: o bot joga igual robô? #pxg",
+        "description": "Ele joga igual robô? MITO. O sistema de Humanização do KizuBot varia pausas e ritmo, com comportamento humano. Print real de cliente no vídeo. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Mito ou verdade: ele joga igual robô? 🤖 Humanização: pausas e ritmo variáveis. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mitoouverdade"
+        ]
+      }
+    },
+    "pinned_comment": "Bot que parece player: é ou não é o sonho? 😂",
+    "claims": [
+      "sistema de Humanização (pausas e ritmo variáveis, comportamento humano)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/prints/parece-player-dms.png"
+    ]
+  },
+  {
+    "id": "056",
+    "file": "056-16h42.mp4",
+    "series": "F04 Espera o Alarme",
+    "title": "16:42. O celular vibrou.",
+    "hook": "16:42. O CELULAR VIBROU.",
+    "neuro": "anticipation, reward-prediction-error, curiosity-gap, sonic-conditioning, precise-number, real-proof, peak-end, comment-prompt",
+    "duration": 20.5,
+    "size_mb": 11.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "16:42. O celular vibrou. Era só mais uma notificação… ou não? 👀 Shiny Cubone detectado e capturado no mesmo minuto (print real de cliente). Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "16:42. O celular vibrou… e era shiny (print real)",
+        "description": "16:42: o celular vibra com um alarme do KizuBot. Era um shiny Cubone, detectado e capturado no mesmo minuto (print real de cliente). O KizuBot detecta shiny, mega e boss e avisa no seu WhatsApp. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "16:42. O celular vibrou. 👀 Shiny Cubone detectado e capturado no mesmo minuto (print real de cliente). O KizuBot avisa no zap. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Qual shiny você queria que cantasse aí? 👇",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-cubone.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png"
+    ]
+  },
+  {
+    "id": "057",
+    "file": "057-7-alarmes.mp4",
+    "series": "F04 Espera o Alarme",
+    "title": "7 alarmes em 29 minutos",
+    "hook": "7 ALARMES EM 29 MINUTOS.",
+    "neuro": "anticipation, variable-reward, counting, precise-number, curiosity-gap, real-proof, self-reference, comment-prompt",
+    "duration": 19.9,
+    "size_mb": 9.9,
+    "platforms": {
+      "tiktok": {
+        "caption": "7 alarmes em 29 minutos: 5 de shiny, 1 drop raro e 1 captura, tudo no celular (print real de cliente). E ele só: “vou la conferir” 👀 Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#alarme"
+        ]
+      },
+      "youtube": {
+        "title": "7 alarmes em 29 minutos (print real de cliente)",
+        "description": "16:08 até 16:37: 7 alarmes do KizuBot, com 5 shinies detectados, 1 drop raro e 1 captura (print real de cliente). Você não precisa ficar olhando: o alarme chega no seu celular. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "7 alarmes em 29 minutos. 📳 5 de shiny, 1 drop raro, 1 captura (print real de cliente). Você não precisa ficar olhando. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "7 em 29 minutos… qual foi o seu recorde?",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-raichu-7-alarms--alarms.png",
+      "kit/img/prints/shiny-raichu-7-alarms.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png"
+    ]
+  },
+  {
+    "id": "058",
+    "file": "058-13h36-boss.mp4",
+    "series": "F04 Espera o Alarme",
+    "title": "13:36. Alarme de boss.",
+    "hook": "13:36. ALARME DE BOSS.",
+    "neuro": "anticipation, curiosity-gap, variable-reward, precise-number, real-proof, emotional-contagion, game-ui-familiarity, comment-prompt",
+    "duration": 19.0,
+    "size_mb": 8.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "13:36. Alarme de boss. Qual boss? E o drop? 💥 Boss Metagross + Tech Ball, Ironhard Backpack e Metal Coat, tudo às 13:36 (print real de cliente). Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#boss",
+          "#drop"
+        ]
+      },
+      "youtube": {
+        "title": "13:36. Alarme de boss… e o drop estourou (print real)",
+        "description": "13:36: o alarme do KizuBot avisa: bossDetected. Era o boss Metagross, com 3 drops raros no mesmo minuto (Tech Ball, Ironhard Backpack, Metal Coat). Print real de cliente. O KizuBot detecta boss, shiny e mega e avisa na hora. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "13:36. Alarme de boss. ⌚ Boss Metagross e 3 drops raros no mesmo minuto (print real de cliente). O alarme toca na hora. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#boss"
+        ]
+      }
+    },
+    "pinned_comment": "Já estourou um boss assim? 💥",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/prints/boss-metagross-metal-coat--alarms.png",
+      "kit/img/prints/boss-metagross-metal-coat.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png"
+    ]
+  },
+  {
+    "id": "059",
+    "file": "059-oito-megas.mp4",
+    "series": "F04 Espera o Alarme",
+    "title": "Oito alarmes de mega seguidos…",
+    "hook": "OITO ALARMES DE MEGA SEGUIDOS…",
+    "neuro": "anticipation, humor-benign-violation, expectation-subversion, precise-number, real-proof, self-reference, comment-prompt",
+    "duration": 20.0,
+    "size_mb": 8.7,
+    "platforms": {
+      "tiktok": {
+        "caption": "Oito alarmes de mega seguidos às 00:17… “Vc pensa Nossa dropei. Quando vai vê, dropo foi Metal Stone kkkkkk” 😂 (print real de cliente) Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mega",
+          "#humor"
+        ]
+      },
+      "youtube": {
+        "title": "Oito alarmes de mega seguidos… e o drop foi Metal Stone 😂",
+        "description": "00:17 e 00:18: oito alarmes megaDetected do KizuBot, um atrás do outro. A legenda do cliente: “Vc pensa Nossa dropei. Quando vai vê, dropo foi Metal Stone kkkkkk”. Print real de cliente. O KizuBot detecta mega, shiny e boss e avisa no celular. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Oito alarmes de mega seguidos… e o drop foi Metal Stone 😂 Print real de cliente. Já passou por isso? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#mega"
+        ]
+      }
+    },
+    "pinned_comment": "Já passou por isso? 😂",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/prints/mega-scizor-8-alarms--alarms.png",
+      "kit/img/prints/mega-scizor-8-alarms--quote.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png"
+    ]
+  },
+  {
+    "id": "060",
+    "file": "060-notificacao-captura.mp4",
+    "series": "F04 Espera o Alarme",
+    "title": "Primeiro a notificação. Depois…",
+    "hook": "PRIMEIRO A NOTIFICAÇÃO. DEPOIS…",
+    "neuro": "anticipation, sonic-conditioning, two-act-reveal, curiosity-gap, real-proof, loop-bridge, comment-prompt",
+    "duration": 17.0,
+    "size_mb": 15.1,
+    "platforms": {
+      "tiktok": {
+        "caption": "Primeiro a notificação. Depois… o shiny. ✨ Shiny Rapidash: a notificação e a captura, no print real de cliente. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#rapidash"
+        ]
+      },
+      "youtube": {
+        "title": "Primeiro a notificação. Depois… o shiny (print real)",
+        "description": "13:03: primeiro chega a notificação do KizuBot, depois a captura: Shiny Rapidash (print real de cliente, em dois atos: “A notificação” e “A captura”). O KizuBot detecta shiny e avisa no seu celular. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Primeiro a notificação. Depois… o shiny. ✨ Shiny Rapidash no print real de cliente. Nota de 0 a 10? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Rapidash shiny: nota de 0 a 10? 🔥",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-rapidash--alarm.png",
+      "kit/img/prints/shiny-rapidash--card.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png"
+    ]
+  },
+  {
+    "id": "071",
+    "file": "071-ninguem-eu-4h.mp4",
+    "series": "F07 Só Quem Joga PxG Entende",
+    "title": "Ninguém: / Eu às 4h da manhã",
+    "hook": "NINGUÉM: / EU ÀS 4H FARMANDO NA MÃO:",
+    "neuro": "in-group-identity, benign-violation-humor, pattern-interrupt, curiosity-gap, social-proof, peak-end, comment-prompt",
+    "duration": 20.333,
+    "size_mb": 7.1,
+    "platforms": {
+      "tiktok": {
+        "caption": "Ninguém: Eu às 4h farmando na mão até o server save 💀 Quem usa KizuBot tá deitado enquanto o bot acha boss. Quem aí já farmou de madrugada? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#meme",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Ninguém: / Eu às 4h da manhã farmando na mão no PxG 💀",
+        "description": "Ninguém: Eu às 4h farmando na mão até o server save das 7h40. Quem usa KizuBot: deitado, enquanto o bot acha boss (print real de cliente: boss Rhyperior às 02:02). 100% AFK, com o PC desligado. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Ninguém: Eu às 4h da manhã farmando na mão 💀 Quem usa KizuBot tá deitado e o bot trabalhando. Quem aí já farmou de madrugada? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#memes"
+        ]
+      }
+    },
+    "pinned_comment": "Quem aí já farmou de madrugada? 😂",
+    "claims": [
+      "100% AFK",
+      "uso com PC desligado",
+      "detecção de shinys, megas e bosses"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-robot.png",
+      "kit/img/prints/boss-rhyperior-2am.png",
+      "kit/img/prints/olho-fechado-so-com-o-kizu.png"
+    ]
+  },
+  {
+    "id": "072",
+    "file": "072-antigamente-x-hoje.mp4",
+    "series": "F07 Só Quem Joga PxG Entende",
+    "title": "Antigamente no PxG x hoje",
+    "hook": "ANTIGAMENTE NO PXG:",
+    "neuro": "nostalgia, in-group-identity, contrast, social-proof, loop, comment-prompt",
+    "duration": 19.4,
+    "size_mb": 6.5,
+    "platforms": {
+      "tiktok": {
+        "caption": "Antigamente no PxG: farmar mato na mão, perder shiny por 1 segundo, dormir na cadeira 👴 Hoje: PC desligado e alarme no WhatsApp. Desde quando você joga PxG? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#nostalgia",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Antigamente no PxG x hoje 👴 (quem é das antigas entende)",
+        "description": "Antigamente no PxG: farmar mato na mão, perder shiny por 1 segundo e dormir na cadeira. Hoje: PC desligado, alarme no WhatsApp e o char farmando enquanto você dorme. Print real de cliente das antigas: \"Hoje pra essa galera nova ficou mamão com açúcar\". kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Antigamente no PxG x hoje 👴 Quem é das antigas lembra. Desde quando você joga PxG? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#nostalgia"
+        ]
+      }
+    },
+    "pinned_comment": "Desde quando você joga PxG? 👴",
+    "claims": [
+      "100% AFK",
+      "uso com PC desligado",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/mamao-com-acucar--mamao.png"
+    ]
+  },
+  {
+    "id": "073",
+    "file": "073-so-mais-uma-hunt.mp4",
+    "series": "F07 Só Quem Joga PxG Entende",
+    "title": "\"Só mais uma hunt.\"",
+    "hook": "“SÓ MAIS UMA HUNT.”",
+    "neuro": "in-group-identity, benign-violation-humor, contrast, future-pacing, social-proof, comment-prompt",
+    "duration": 19.4,
+    "size_mb": 5.6,
+    "platforms": {
+      "tiktok": {
+        "caption": "\"Só mais uma hunt.\" 22h... 5h30 🧟 Ou você vai dormir e o char continua. Que horas foi sua última hunt? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#meme",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "\"Só mais uma hunt.\" (expectativa x realidade no PxG) 🧟",
+        "description": "Expectativa: só mais uma hunt e dormir às 22h30. Realidade: 5h30 da manhã e o despertador tocando. Ou você vai dormir e o char continua: 100% AFK, com o PC desligado. Print real de cliente: curtindo a família enquanto o bot caça. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "\"Só mais uma hunt.\" Expectativa: 22h30. Realidade: 5h30 🧟 Que horas foi sua última hunt? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#memes"
+        ]
+      }
+    },
+    "pinned_comment": "Que horas você já foi dormir por causa do PxG? 🕔",
+    "claims": [
+      "100% AFK",
+      "uso com PC desligado"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/prints/family-handprints--photo.jpg",
+      "kit/img/prints/family-handprints--quote.png"
+    ]
+  },
+  {
+    "id": "074",
+    "file": "074-tipos-de-jogador.mp4",
+    "series": "F07 Só Quem Joga PxG Entende",
+    "title": "Os 4 tipos de jogador de PxG",
+    "hook": "OS 4 TIPOS DE JOGADOR DE PXG:",
+    "neuro": "in-group-identity, self-reference, open-loop, benign-violation-humor, social-proof, comment-prompt",
+    "duration": 17.567,
+    "size_mb": 4.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "Os 4 tipos de jogador de PxG 👇 1) farma mato na mão 2) perde shiny por 1 segundo 3) esquece de dormir 4) tá na praia. Qual número é você? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#meme",
+          "#tiposdejogador"
+        ]
+      },
+      "youtube": {
+        "title": "Os 4 tipos de jogador de PxG (o 4 tá na praia) 🏖️",
+        "description": "Os 4 tipos de jogador de PxG: o que farma mato na mão, o que perde shiny por 1 segundo, o que esquece de dormir e o que tá na praia enquanto o bot farma (print real de cliente: \"Enquanto bot moie / Eu tô na praia kkkk\"). kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Os 4 tipos de jogador de PxG. O número 4 tá na praia 🏖️ Qual número é você? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#memes"
+        ]
+      }
+    },
+    "pinned_comment": "Qual número é você? 👇",
+    "claims": [
+      "100% AFK",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/beach-while-bot-farms--photo.jpg",
+      "kit/img/prints/beach-while-bot-farms--alarms.png",
+      "kit/img/prints/beach-while-bot-farms--quote.png"
+    ]
+  },
+  {
+    "id": "075",
+    "file": "075-quando-o-alarme-toca.mp4",
+    "series": "F07 Só Quem Joga PxG Entende",
+    "title": "Quando o alarme do KizuBot toca:",
+    "hook": "QUANDO O ALARME DO KIZUBOT TOCA:",
+    "neuro": "in-group-identity, emotional-contagion, social-proof, variable-reward, sonic-branding, comment-prompt",
+    "duration": 17.567,
+    "size_mb": 7.0,
+    "platforms": {
+      "tiktok": {
+        "caption": "Quando o alarme do KizuBot toca: MANO MANO 😂 Reações reais de clientes quando o shiny, o boss e o drop raro aparecem. Qual seria sua reação? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#reacao"
+        ]
+      },
+      "youtube": {
+        "title": "Quando o alarme do KizuBot toca: (reações reais) 🔔",
+        "description": "Reações reais de clientes quando o alarme do KizuBot toca: MANO MANO (shiny Venusaur), carai/estourou (boss Metagross e Metal Coat), cantou big (shiny Cubone), kkkk (shiny Feraligatr vendo filme com a esposa) e que chique (12335 itens dropados). Prints reais de clientes diferentes. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Quando o alarme do KizuBot toca: 🔔 Reações reais de clientes diferentes. Qual seria a sua reação? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Qual é a sua reação quando o alarme toca? 🔔",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/prints/shiny-venusaur.png",
+      "kit/img/prints/boss-metagross-metal-coat.png",
+      "kit/img/prints/shiny-cubone.png",
+      "kit/img/prints/shiny-feraligatr--quote.png",
+      "kit/img/prints/shiny-feraligatr--alarm-card.png",
+      "kit/img/prints/alarme-12335-itens--alarm.png"
+    ]
+  },
+  {
+    "id": "076",
+    "file": "076-seu-char-ligando.mp4",
+    "series": "F08 Ligação Recebida",
+    "title": "Seu char está ligando…",
+    "hook": "SEU CHAR TÁ LIGANDO…",
+    "neuro": "pattern-interrupt, sonic-branding, curiosity-gap, humor, social-proof, anticipation-drop, peak-end, comment-prompt",
+    "duration": 18.9,
+    "size_mb": 6.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "Seu char tá ligando… 📞 Atende: ele tá caçando sozinho, você pode voltar a dormir. Ah… e apareceu um shiny ✨ Você atenderia? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Seu char está ligando… (e apareceu um shiny)",
+        "description": "Seu char liga pra avisar: tá caçando sozinho, 100% AFK, e apareceu um shiny. Print real de cliente no server novo. O KizuBot caça, captura e avisa no celular enquanto você dorme. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Seu char tá ligando… 📞 Ele tá caçando sozinho e apareceu um shiny ✨ Você atenderia? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Você atenderia? 📞",
+    "claims": [
+      "100% AFK",
+      "detecção de shinys, megas e bosses"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-dratini-new-server--shot.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "077",
+    "file": "077-chamada-perdida-shiny.mp4",
+    "series": "F08 Ligação Recebida",
+    "title": "1 chamada perdida: SHINY",
+    "hook": "SHINY — 1 CHAMADA PERDIDA.",
+    "neuro": "pattern-interrupt, loss-aversion, contrast, social-proof, precise-number, anticipation-drop, peak-end, comment-prompt",
+    "duration": 17.333,
+    "size_mb": 5.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "1 chamada perdida: SHINY 😭 Sem alarme, você descobre tarde demais. Com KizuBot o zap avisa na hora — print real: detectou e capturou às 16:42. Já perdeu algum shiny assim? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "1 chamada perdida: SHINY (com KizuBot nem precisa atender)",
+        "description": "Sem alarme, o shiny some antes de você ver. Com o KizuBot, o alarme chega no WhatsApp na hora: shiny detectado às 16:42 e capturado às 16:42 (print real de cliente). kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "1 chamada perdida: SHINY 😭 Com KizuBot o alarme chega no WhatsApp na hora — e ele ainda captura. Já perdeu algum shiny assim? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Já perdeu algum shiny assim? 😭",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-cubone--alarm.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "078",
+    "file": "078-mensagem-de-voz.mp4",
+    "series": "F08 Ligação Recebida",
+    "title": "Mensagem de voz do seu bot",
+    "hook": "MENSAGEM DE VOZ: KIZUBOT (0:12)",
+    "neuro": "pattern-interrupt, sonic-branding, curiosity-gap, social-proof, precise-number, visible-progress, comment-prompt",
+    "duration": 14.3,
+    "size_mb": 5.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "Mensagem de voz do seu bot 🎧 Relatório da hunt: 12.335 itens dropados (alarme real de cliente). Direto no zap. Que relatório você queria receber? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#loot",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Mensagem de voz do seu bot: 12.335 itens no relatório",
+        "description": "Alarme real de cliente no WhatsApp: Total dropped items 12.335 — Screw 11.616, Electric Box 542 e mais. O KizuBot farma 100% AFK e manda o relatório direto no zap. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Mensagem de voz do seu bot 🎧 12.335 itens no relatório da hunt, direto no zap. Que relatório você queria receber? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#loot"
+        ]
+      }
+    },
+    "pinned_comment": "Que relatório você queria acordar recebendo? 📩",
+    "claims": [
+      "alarmes no celular e notificações no WhatsApp",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/alarme-12335-itens--alarm.png",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "079",
+    "file": "079-videochamada.mp4",
+    "series": "F08 Ligação Recebida",
+    "title": "Videochamada com a sua hunt",
+    "hook": "VIDEOCHAMADA: SUA HUNT.",
+    "neuro": "pattern-interrupt, sonic-branding, self-reference, picture-superiority, anticipation-drop, comment-prompt",
+    "duration": 13.167,
+    "size_mb": 7.4,
+    "platforms": {
+      "tiktok": {
+        "caption": "Videochamada com a sua hunt 📹 Dá pra acompanhar pelo celular. Gameplay real do KizuBot. Você ficaria assistindo? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#hunt",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Videochamada: sua hunt pelo celular 📹",
+        "description": "Quer ver sua hunt? Com o KizuBot dá pra acompanhar tudo pelo celular. Gameplay real do KizuBot no PokeXGames. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Videochamada: sua hunt 📹 Dá pra acompanhar pelo celular. Você ficaria assistindo? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#hunt"
+        ]
+      }
+    },
+    "pinned_comment": "Você ficaria assistindo a hunt? 👀",
+    "claims": [
+      "acesso pelo celular"
+    ],
+    "assets": [
+      "kit/video/rypherior.mp4",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "080",
+    "file": "080-despertador-shiny.mp4",
+    "series": "F08 Ligação Recebida",
+    "title": "Despertador: 03:00 — SHINY",
+    "hook": "03:00 — SHINY",
+    "neuro": "pattern-interrupt, sonic-branding, humor, social-proof, anticipation-drop, peak-end, comment-prompt",
+    "duration": 14.5,
+    "size_mb": 4.8,
+    "platforms": {
+      "tiktok": {
+        "caption": "Despertador 03:00: SHINY ⏰ Soneca? Não precisa: ele já capturou. Print real: 'pena que n vi piscar… tava afk'. Ele tava AFK. O bot não. Você levantaria às 3h por um shiny? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Despertador 03:00: SHINY ⏰ (ele tava AFK, o bot não)",
+        "description": "Levantar às 3h pra caçar shiny? Não precisa. Print real de cliente: Shiny Muk na conta e 'tava afk'. O KizuBot detecta e captura shiny 100% AFK. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Despertador 03:00: SHINY ⏰ Ele tava AFK. O bot não. Você levantaria às 3h por um shiny? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Você levantaria às 3h por um shiny? ⏰",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-muk--card.png",
+      "kit/img/prints/shiny-muk--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  }
+]

@@ -2,11 +2,13 @@
 
 Cem shorts verticais (1080×1920, 30 fps, 12–25 s) para o KizuBot, feitos inteiramente em código: composições HTML/GSAP renderizadas com [HyperFrames](https://github.com/heygen-com/hyperframes), trilha original sintetizada (sem samples nem licenças) e efeitos sonoros, com áudio normalizado em −14 LUFS. Cada short aplica de propósito uma ou mais técnicas de neuromarketing e retenção, e usa só material real: o logo oficial, prints de clientes publicados no kizubot.com (com nomes, rostos e dados pessoais removidos) e gameplay real do site.
 
-<p align="center"><img src="grid-01.jpg" width="100%" alt="Um frame de cada short de 046 a 075"></p>
+<p align="center"><img src="grid-01.jpg" width="100%" alt="Um frame de cada short de 041 a 060"></p>
 
-<p align="center"><img src="grid-02.jpg" width="100%" alt="Um frame de cada short de 076 a 095"></p>
+<p align="center"><img src="grid-02.jpg" width="100%" alt="Um frame de cada short de 061 a 085"></p>
 
-<p align="center"><img src="grid-03.jpg" width="100%" alt="Um frame de cada short de 096 a 135"></p>
+<p align="center"><img src="grid-03.jpg" width="100%" alt="Um frame de cada short de 086 a 105"></p>
+
+<p align="center"><img src="grid-04.jpg" width="100%" alt="Um frame de cada short de 106 a 135"></p>
 
 ## Como a série foi pensada
 
@@ -39,6 +41,11 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 
 | # | Arquivo | Série | Título | Gancho | Técnicas |
 | --- | --- | --- | --- | --- | --- |
+| 041 | [`041-a-conta.mp4`](041-a-conta.mp4) | F01 A Conta | A conta que ninguém faz | VOCÊ DORME 8H POR DIA. | loss-aversion, anchoring, self-reference, pattern-interrupt, peak-end, comment-prompt |
+| 042 | [`042-seu-expediente.mp4`](042-seu-expediente.mp4) | F01 A Conta | Seu char trabalha menos que você | SEU CHAR TRABALHA MENOS QUE VOCÊ. | loss-aversion, anchoring, self-reference, pattern-interrupt, benign-violation-humor, peak-end, bookend-loop, comment-prompt |
+| 043 | [`043-preco-de-um-lanche.mp4`](043-preco-de-um-lanche.mp4) | F01 A Conta | R$ 250 é caro? | R$ 250 POR MÊS. É CARO? | anchoring, price-reframing, loss-aversion, self-reference, contrast, social-proof, peak-end, comment-prompt |
+| 044 | [`044-oito-mil-loots.mp4`](044-oito-mil-loots.mp4) | F01 A Conta | 8.434 loots desde cedo | 8.434 LOOTS. NINGUÉM ENCOSTOU NO MOUSE. | precise-numbers, social-proof, loss-aversion, benign-violation-humor, anchoring, peak-end, comment-prompt |
+| 045 | [`045-fim-de-semana.mp4`](045-fim-de-semana.mp4) | F01 A Conta | Seu fim de semana tem 48 horas | SEU FIM DE SEMANA TEM 48 HORAS. | loss-aversion, self-reference, aspiration, social-proof, contrast, peak-end, comment-prompt |
 | 046 | [`046-pov-acorda-com-shiny.mp4`](046-pov-acorda-com-shiny.mp4) | F02 POV | POV: você acorda e o shiny já tá na conta | POV: você acorda e o shiny já tá na conta. | pov-self-reference, narrative-transport, curiosity-gap, schema-violation, social-proof-twist, peak-end, seamless-loop, comment-prompt |
 | 047 | [`047-pov-academia.mp4`](047-pov-academia.mp4) | F02 POV | POV: treino de perna e o relógio vibra | POV: treino de perna e o relógio vibra. | pov-self-reference, narrative-transport, precise-number, humor-benign-violation, match-cut-proof, social-proof, peak-end, comment-prompt |
 | 048 | [`048-pov-praia.mp4`](048-pov-praia.mp4) | F02 POV | POV: você foi pra praia e o bot ficou farmando | POV: você foi pra praia. | pov-self-reference, narrative-transport, countdown-anticipation, social-proof, in-group-identity, peak-end, comment-prompt |
@@ -54,6 +61,11 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 | 058 | [`058-13h36-boss.mp4`](058-13h36-boss.mp4) | F04 Espera o Alarme | 13:36. Alarme de boss. | 13:36. ALARME DE BOSS. | anticipation, curiosity-gap, variable-reward, precise-number, real-proof, emotional-contagion, game-ui-familiarity, comment-prompt |
 | 059 | [`059-oito-megas.mp4`](059-oito-megas.mp4) | F04 Espera o Alarme | Oito alarmes de mega seguidos… | OITO ALARMES DE MEGA SEGUIDOS… | anticipation, humor-benign-violation, expectation-subversion, precise-number, real-proof, self-reference, comment-prompt |
 | 060 | [`060-notificacao-captura.mp4`](060-notificacao-captura.mp4) | F04 Espera o Alarme | Primeiro a notificação. Depois… | PRIMEIRO A NOTIFICAÇÃO. DEPOIS… | anticipation, sonic-conditioning, two-act-reveal, curiosity-gap, real-proof, loop-bridge, comment-prompt |
+| 061 | [`061-top-5-shinies.mp4`](061-top-5-shinies.mp4) | F05 Top 5 | Top 5 shinies que clientes pegaram com o KizuBot | TOP 5 SHINIES QUE CLIENTES PEGARAM COM O KIZUBOT. | open-loop, curiosity-gap, variable-reward, serial-position, visible-progress, social-proof, anticipation-drop, peak-end, comment-prompt |
+| 062 | [`062-5-funcoes-escondidas.mp4`](062-5-funcoes-escondidas.mp4) | F05 Top 5 | 5 funções do KizuBot que quase ninguém conhece | 5 FUNÇÕES QUE QUASE NINGUÉM CONHECE (DO KIZUBOT). | open-loop, curiosity-gap, novelty, visible-progress, authority, picture-superiority, peak-end, comment-prompt |
+| 063 | [`063-5-reacoes.mp4`](063-5-reacoes.mp4) | F05 Top 5 | As 5 reações mais insanas dos clientes do KizuBot | AS 5 REAÇÕES MAIS INSANAS DOS CLIENTES. | open-loop, social-proof, emotional-contagion, humor, variable-reward, visible-progress, peak-end, comment-prompt |
+| 064 | [`064-5-motivos.mp4`](064-5-motivos.mp4) | F05 Top 5 | 5 motivos pra parar de farmar na mão | 5 MOTIVOS PRA PARAR DE FARMAR NA MÃO. | loss-aversion, open-loop, humor, self-reference, visible-progress, contrast, peak-end, comment-prompt |
+| 065 | [`065-5-alarmes.mp4`](065-5-alarmes.mp4) | F05 Top 5 | Os 5 alarmes que todo jogador quer receber | OS 5 ALARMES QUE TODO JOGADOR QUER RECEBER. | open-loop, anticipation, conditioning-sound, variable-reward, visible-progress, social-proof, peak-end, comment-prompt |
 | 071 | [`071-ninguem-eu-4h.mp4`](071-ninguem-eu-4h.mp4) | F07 Só Quem Joga PxG Entende | Ninguém: / Eu às 4h da manhã | NINGUÉM: / EU ÀS 4H FARMANDO NA MÃO: | in-group-identity, benign-violation-humor, pattern-interrupt, curiosity-gap, social-proof, peak-end, comment-prompt |
 | 072 | [`072-antigamente-x-hoje.mp4`](072-antigamente-x-hoje.mp4) | F07 Só Quem Joga PxG Entende | Antigamente no PxG x hoje | ANTIGAMENTE NO PXG: | nostalgia, in-group-identity, contrast, social-proof, loop, comment-prompt |
 | 073 | [`073-so-mais-uma-hunt.mp4`](073-so-mais-uma-hunt.mp4) | F07 Só Quem Joga PxG Entende | "Só mais uma hunt." | “SÓ MAIS UMA HUNT.” | in-group-identity, benign-violation-humor, contrast, future-pacing, social-proof, comment-prompt |
@@ -89,6 +101,14 @@ Vinte formatos recorrentes × cinco episódios. Formato recorrente é o que faz 
 | 103 | [`103-como-o-alarme-chega.mp4`](103-como-o-alarme-chega.mp4) | F13 Raio-X | Como o alarme chega no seu pulso | COMO O ALARME CHEGA NO PULSO? | curiosity-gap, picture-superiority, social-proof, competence, anticipation-drop, self-reference, loop, comment-prompt |
 | 104 | [`104-como-ele-anda.mp4`](104-como-ele-anda.mp4) | F13 Raio-X | Como ele anda sozinho | COMO ELE ANDA SOZINHO? | curiosity-gap, picture-superiority, visible-progress, competence, anticipation-drop, satisfying-micro-motion, loop, comment-prompt |
 | 105 | [`105-como-ele-pesca.mp4`](105-como-ele-pesca.mp4) | F13 Raio-X | Como o KizuBot pesca | COMO O KIZUBOT PESCA. | curiosity-gap, picture-superiority, competence, visible-progress, anticipation-drop, humor, loop, comment-prompt |
+| 106 | [`106-nao-botou-fe.mp4`](106-nao-botou-fe.mp4) | F14 Prova Real | Ele não botou fé no KizuBot | ELE NÃO BOTOU FÉ. | social-proof, emotional-contagion, negative-frame-pivot, curiosity-gap, peak-end, comment-prompt |
+| 107 | [`107-queria-ter-comprado-antes.mp4`](107-queria-ter-comprado-antes.mp4) | F14 Prova Real | Ele queria ter comprado o KizuBot antes | ELE QUERIA* TER COMPRADO ANTES. | social-proof, regret-loss-aversion, humor, pattern-recognition, peak-end, comment-prompt |
+| 109 | [`109-cinco-estrelas.mp4`](109-cinco-estrelas.mp4) | F14 Prova Real | Um cliente mandou isso: ⭐⭐⭐⭐⭐ | UM CLIENTE MANDOU ISSO: ⭐⭐⭐⭐⭐ | social-proof, picture-superiority, commitment-checklist, variable-reward, peak-end, comment-prompt |
+| 110 | [`110-o-bot-evoluiu.mp4`](110-o-bot-evoluiu.mp4) | F14 Prova Real | "O bot evoluiu muito." — prova real | “O BOT EVOLUIU MUITO.” | social-proof, before-after-contrast, authority, visible-progress, peak-end, comment-prompt |
+| 117 | [`117-13-modulos.mp4`](117-13-modulos.mp4) | F16 Speedrun | 13 módulos em 13 segundos | 13 MÓDULOS. 13 SEGUNDOS. | time-pressure, chunking, visible-progress, open-loop-timer, rewatch-bait, peak-end, seamless-loop, comment-prompt |
+| 118 | [`118-do-zero-ao-farm.mp4`](118-do-zero-ao-farm.mp4) | F16 Speedrun | Do zero ao farm em 3 passos | DO ZERO AO FARM. 3 PASSOS. | time-pressure, chunking, ikea-effect, visible-progress, social-proof, peak-end, seamless-loop, comment-prompt |
+| 119 | [`119-speedrun-de-shiny.mp4`](119-speedrun-de-shiny.mp4) | F16 Speedrun | Speedrun de shiny: mesmo minuto | SPEEDRUN DE SHINY: NOVO RECORDE. | anticipation, variable-reward, precise-numbers, social-proof, time-pressure, peak-end, seamless-loop, comment-prompt |
+| 120 | [`120-30-dias-em-15s.mp4`](120-30-dias-em-15s.mp4) | F16 Speedrun | 30 dias de farm em 15 segundos | 30 DIAS DE FARM EM 15 SEGUNDOS. | time-pressure, visible-progress, acceleration, social-proof, precise-numbers, peak-end, comment-prompt |
 | 126 | [`126-ache-o-shiny-facil.mp4`](126-ache-o-shiny-facil.mp4) | F18 Ache o Shiny | Ache o shiny em 3 segundos | ACHE O SHINY EM 3 SEGUNDOS. | participation, von-restorff, time-pressure, rewatch-loop, effort-contrast, real-proof, comment-prompt |
 | 127 | [`127-ache-o-shiny-medio.mp4`](127-ache-o-shiny-medio.mp4) | F18 Ache o Shiny | Nível 2: ache o shiny | NÍVEL 2: ACHE O SHINY. | participation, von-restorff, decoy-effect, time-pressure, rewatch-loop, loss-aversion, real-proof, comment-prompt |
 | 128 | [`128-ache-o-shiny-impossivel.mp4`](128-ache-o-shiny-impossivel.mp4) | F18 Ache o Shiny | Nível impossível | NÍVEL IMPOSSÍVEL. | participation, challenge, von-restorff, rewatch-loop, effort-contrast, real-proof, status-identity, comment-prompt |

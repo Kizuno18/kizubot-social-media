@@ -23,7 +23,9 @@
     "kit/img/prints/mato-sem-player-q-paz.png",
     "kit/img/brand/kizubot-logo.png"
   ],
-  "claims": [],
+  "claims": [
+    "100% AFK"
+  ],
   "platforms": {
     "tiktok": {
       "caption": "Ele queria ter comprado o KizuBot antes 😅 E não foi só ele. Prints reais de clientes diferentes. Quanto tempo você perdeu farmando na mão? Link na bio.",
@@ -56,5 +58,5 @@
     }
   },
   "pinned_comment": "Quanto tempo você perdeu farmando na mão? 😅",
-  "notes": "Hook is narration ('ELE QUERIA* TER COMPRADO ANTES.', no quote marks) because the verbatim line is 'eu quero mt ter comprado isso antes' + 'queria*'; the quote is shown verbatim with the correction drawn over 'quero'. Second proof uses mato-sem-player-q-paz.png (source mato-sem-player-q-paz.png) zoomed on 'q paz' / 'como não peguei esse BOT antes?' (profanity already blurred by the asset editor; first line is cut in the safe crop, so it is not quoted). Label 'prints reais de clientes diferentes'."
+  "notes": "Hook is narration ('ELE QUERIA* TER COMPRADO ANTES.', no quote marks) because the verbatim line is 'eu quero mt ter comprado isso antes' + 'queria*'; the quote is shown verbatim with the correction drawn over 'quero'. Second proof uses mato-sem-player-q-paz.png (source mato-sem-player-q-paz.png) zoomed on 'q paz' / 'como não peguei esse BOT antes?' (profanity already blurred by the asset editor; first line is cut in the safe crop, so it is not quoted). Label 'prints reais de clientes diferentes'. Peak screen adds the approved-claim chip 'o bot farma 100% AFK' (our words, styled as a chip, not a quote) so newcomers know what the bot does."
 }

@@ -1298,7 +1298,7 @@ def master(mix, dur, target=-14.0, fade_out=0.6):
 
 
 def aac_guard(mix, ceiling_db=-1.4, rounds=4):
-    """Encode like kz.py's mux (ffmpeg AAC 192k), decode, and dip the gain locally (±25 ms) wherever
+    """Encode like kz.py's mux (ffmpeg AAC 192k), decode, and dip the gain locally (±40 ms) wherever
     the decoded true peak would pass `ceiling_db`. A loud transient right after a quiet moment can
     gain 2 dB in the AAC encode even when the PCM true peak is well under the limiter's ceiling."""
     import shutil
@@ -1308,13 +1308,13 @@ def aac_guard(mix, ceiling_db=-1.4, rounds=4):
     if not shutil.which("ffmpeg"):
         return mix
     ceiling = db(ceiling_db)
-    w = int(0.025 * SR)
+    w = int(0.04 * SR)  # about one long AAC frame each side: pre-echo spreads before the transient
     hann = np.hanning(2 * w + 1)
     hann /= hann.sum()
     with tempfile.TemporaryDirectory() as tmp:
         src, enc, dec = (os.path.join(tmp, f) for f in ("in.wav", "enc.m4a", "dec.wav"))
         for _ in range(rounds):
-            sf.write(src, mix.astype(np.float32), SR, subtype="FLOAT")
+            sf.write(src, mix.astype(np.float32), SR, subtype="PCM_24")  # exactly what render() writes and kz.py muxes
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
                             "-ac", "2", enc], check=True)
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", enc, "-f", "wav", "-acodec", "pcm_f32le", dec], check=True)

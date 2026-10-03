@@ -1,5 +1,273 @@
 [
   {
+    "id": "041",
+    "file": "041-a-conta.mp4",
+    "series": "F01 A Conta",
+    "title": "A conta que ninguém faz",
+    "hook": "VOCÊ DORME 8H POR DIA.",
+    "neuro": "loss-aversion, anchoring, self-reference, pattern-interrupt, peak-end, comment-prompt",
+    "duration": 20.0,
+    "size_mb": 7.7,
+    "platforms": {
+      "tiktok": {
+        "caption": "Você dorme 8h por dia. Seu char também. Faz a conta: são 120 dias parado por ano 😴 E se esse tempo virasse farm? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#farm"
+        ]
+      },
+      "youtube": {
+        "title": "Você dorme 8h por dia. Seu char também. (a conta assusta)",
+        "description": "8h por dia x 30 dias x 12 meses = 120 dias com o char parado por ano. O KizuBot caça, captura, pesca e te avisa no WhatsApp enquanto você dorme — 100% AFK, com o PC desligado. Planos a partir de R$ 250/mês (menos de R$ 9 por dia). kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Você dorme 8h por dia. Seu char também. 😴 São 120 dias parado por ano. O KizuBot transforma esse tempo em farm, 100% AFK. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afkfarm"
+        ]
+      }
+    },
+    "pinned_comment": "Quantas horas você dorme por noite? 👇",
+    "claims": [
+      "100% AFK",
+      "uso com PC desligado",
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp",
+      "planos a partir de R$ 250/mês"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-robot.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "042",
+    "file": "042-seu-expediente.mp4",
+    "series": "F01 A Conta",
+    "title": "Seu char trabalha menos que você",
+    "hook": "SEU CHAR TRABALHA MENOS QUE VOCÊ.",
+    "neuro": "loss-aversion, anchoring, self-reference, pattern-interrupt, benign-violation-humor, peak-end, bookend-loop, comment-prompt",
+    "duration": 19.0,
+    "size_mb": 8.6,
+    "platforms": {
+      "tiktok": {
+        "caption": "Seu char trabalha menos que você 😅 8h de trabalho × 22 dias + 8h de sono × 30 = 416h parado. É 58% do mês! Com o KizuBot ele farma 24h por dia, 100% AFK, com o PC desligado. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#farm"
+        ]
+      },
+      "youtube": {
+        "title": "Seu char trabalha menos que você (58% do mês parado)",
+        "description": "8h de trabalho × 22 dias + 8h de sono × 30 dias = 416h com o char parado: 58% do mês. Com o KizuBot ele farma 24h por dia, 30 dias, 100% AFK e com o PC desligado — e você acompanha tudo pelo celular. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Seu char trabalha menos que você. 😅 São 416h parado por mês — 58% do mês. Com o KizuBot ele farma 24h por dia, 100% AFK, com o PC desligado. Qual sua profissão? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afkfarm"
+        ]
+      }
+    },
+    "pinned_comment": "Seu char trabalha mais ou menos que você? 😅",
+    "claims": [
+      "100% AFK",
+      "uso com PC desligado",
+      "acesso pelo celular",
+      "roda 24/7 em máquinas virtuais (24h por dia, 30 dias)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "043",
+    "file": "043-preco-de-um-lanche.mp4",
+    "series": "F01 A Conta",
+    "title": "R$ 250 é caro?",
+    "hook": "R$ 250 POR MÊS. É CARO?",
+    "neuro": "anchoring, price-reframing, loss-aversion, self-reference, contrast, social-proof, peak-end, comment-prompt",
+    "duration": 20.3,
+    "size_mb": 8.1,
+    "platforms": {
+      "tiktok": {
+        "caption": "R$ 250 por mês é caro? Faz a conta: R$ 8,33 por dia, R$ 0,35 por hora de farm. Quanto vale 1 hora do SEU tempo? Planos a partir de R$ 250/mês, link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#farm"
+        ]
+      },
+      "youtube": {
+        "title": "R$ 250 por mês é caro? Faz a conta (R$ 0,35 por hora)",
+        "description": "R$ 250 ÷ 30 dias = R$ 8,33 por dia. ÷ 24 horas = R$ 0,35 por hora de farm, 100% AFK. Sua hora vai pra dormir, trabalhar e ficar com a família; a hora do bot vai pra hunt, captura e pesca. Planos a partir de R$ 250/mês. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "R$ 250 por mês é caro? 🧮 Dá R$ 8,33 por dia e R$ 0,35 por hora de farm. Quanto vale 1 hora sua? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afkfarm"
+        ]
+      }
+    },
+    "pinned_comment": "Quanto vale 1 hora do seu tempo? 👇",
+    "claims": [
+      "planos a partir de R$ 250/mês",
+      "R$ 250 ÷ 30 = R$ 8,33 por dia",
+      "R$ 250 ÷ 720 h ≈ R$ 0,35 por hora",
+      "roda 24/7 (720 h/mês)",
+      "caça, captura e pesca sozinho"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/queria-ter-comprado-antes--quote.png"
+    ]
+  },
+  {
+    "id": "044",
+    "file": "044-oito-mil-loots.mp4",
+    "series": "F01 A Conta",
+    "title": "8.434 loots desde cedo",
+    "hook": "8.434 LOOTS. NINGUÉM ENCOSTOU NO MOUSE.",
+    "neuro": "precise-numbers, social-proof, loss-aversion, benign-violation-humor, anchoring, peak-end, comment-prompt",
+    "duration": 16.2,
+    "size_mb": 6.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "8.434 loots desde cedo e ninguém encostou no mouse 🖱️ Somando o HUD: 14.344 ações, todas do bot. Agora imagina fazer na mão 😂 Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#farm"
+        ]
+      },
+      "youtube": {
+        "title": "8.434 loots desde cedo. Ninguém encostou no mouse.",
+        "description": "HUD real de cliente: collectedLoots 8434, walkTimes 4774, mapClickTimes 1136 — 14.344 ações do bot desde cedo. Cavebot anda sozinho, farming coleta sozinho, 100% AFK. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "8.434 loots. Ninguém encostou no mouse. 🖱️ No HUD real de um cliente: 14.344 ações, todas do bot. Quantos cliques você aguenta? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afkfarm"
+        ]
+      }
+    },
+    "pinned_comment": "Quantos cliques você aguenta antes da tendinite? 😂",
+    "claims": [
+      "100% AFK",
+      "cavebot (anda sozinho)",
+      "farming / coleta automática"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-robot.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/hud-8434-loots.png",
+      "kit/img/prints/hud-8434-loots--quote.png"
+    ]
+  },
+  {
+    "id": "045",
+    "file": "045-fim-de-semana.mp4",
+    "series": "F01 A Conta",
+    "title": "Seu fim de semana tem 48 horas",
+    "hook": "SEU FIM DE SEMANA TEM 48 HORAS.",
+    "neuro": "loss-aversion, self-reference, aspiration, social-proof, contrast, peak-end, comment-prompt",
+    "duration": 19.7,
+    "size_mb": 7.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "Seu fim de semana tem 48 horas. Praia, família, futebol… e o seu char? Parado as 48 😴 Com o KizuBot ele farma as 48. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#fimdesemana"
+        ]
+      },
+      "youtube": {
+        "title": "Seu fim de semana tem 48 horas. Seu char fica parado as 48?",
+        "description": "Sábado e domingo: 48 horas de praia, família e futebol. Seu char parado as 48. Com o KizuBot ele farma as 48 — 100% AFK, com o PC desligado. Prints reais de clientes diferentes. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Seu fim de semana tem 48 horas. 🏖️ Enquanto você vive, o KizuBot farma as 48. O que você faz no fim de semana? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afkfarm"
+        ]
+      }
+    },
+    "pinned_comment": "O que você faz no fim de semana? 👇",
+    "claims": [
+      "100% AFK",
+      "uso com PC desligado",
+      "roda 24/7 (48h no fim de semana)"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/beach-while-bot-farms--photo.jpg",
+      "kit/img/prints/beach-while-bot-farms--quote.png",
+      "kit/img/prints/family-handprints--photo.jpg",
+      "kit/img/prints/family-handprints--quote.png"
+    ]
+  },
+  {
     "id": "046",
     "file": "046-pov-acorda-com-shiny.mp4",
     "series": "F02 POV",
@@ -780,6 +1048,273 @@
       "kit/img/prints/shiny-rapidash--card.png",
       "kit/img/brand/kizubot-logo.png",
       "kit/img/brand/kizubot-head.png"
+    ]
+  },
+  {
+    "id": "061",
+    "file": "061-top-5-shinies.mp4",
+    "series": "F05 Top 5",
+    "title": "Top 5 shinies que clientes pegaram com o KizuBot",
+    "hook": "TOP 5 SHINIES QUE CLIENTES PEGARAM COM O KIZUBOT.",
+    "neuro": "open-loop, curiosity-gap, variable-reward, serial-position, visible-progress, social-proof, anticipation-drop, peak-end, comment-prompt",
+    "duration": 21.9,
+    "size_mb": 11.7,
+    "platforms": {
+      "tiktok": {
+        "caption": "Top 5 shinies que clientes pegaram com o KizuBot ✨ Do Cubone pego no mesmo minuto ao Feraligatr que caiu enquanto o cliente via um filme 🍿 Prints reais de clientes diferentes. Qual seria o seu #1? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#top5"
+        ]
+      },
+      "youtube": {
+        "title": "Top 5 shinies que clientes pegaram com o KizuBot ✨",
+        "description": "Do #5 ao #1: Cubone pego no mesmo minuto do alarme, Raichu com 7 alarmes em 29 minutos, Venusaur, Machamp em 2 chars diferentes e um Feraligatr pego enquanto o cliente via um filme. Prints reais de clientes diferentes. O KizuBot detecta shiny, mega e boss e avisa no WhatsApp. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Top 5 shinies que clientes pegaram com o KizuBot ✨ O #1 caiu no meio de um filme 🍿 Qual seria o seu #1? Prints reais de clientes diferentes. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Qual seria o seu #1? 👇",
+    "claims": [
+      "detecção de shinys, megas e bosses",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-cubone--alarm.png",
+      "kit/img/prints/shiny-raichu-7-alarms--alarms.png",
+      "kit/img/prints/shiny-venusaur.png",
+      "kit/img/prints/shiny-machamp-2-chars--log1.png",
+      "kit/img/prints/shiny-machamp-2-chars--log2.png",
+      "kit/img/prints/shiny-machamp-2-chars--qa.png",
+      "kit/img/prints/shiny-feraligatr--quote.png",
+      "kit/img/prints/shiny-feraligatr--alarm.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "062",
+    "file": "062-5-funcoes-escondidas.mp4",
+    "series": "F05 Top 5",
+    "title": "5 funções do KizuBot que quase ninguém conhece",
+    "hook": "5 FUNÇÕES QUE QUASE NINGUÉM CONHECE (DO KIZUBOT).",
+    "neuro": "open-loop, curiosity-gap, novelty, visible-progress, authority, picture-superiority, peak-end, comment-prompt",
+    "duration": 21.3,
+    "size_mb": 10.1,
+    "platforms": {
+      "tiktok": {
+        "caption": "5 funções do KizuBot que quase ninguém conhece 👀 A #1 vai no pulso ⌚ Qual dessas você não conhecia? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#top5"
+        ]
+      },
+      "youtube": {
+        "title": "5 funções do KizuBot que quase ninguém conhece 👀",
+        "description": "Modo streamer que esconde os nicks, responder PM pelo Telegram, Offline Cam pra rever a hunt em até 8x, KizuAI que mostra as fontes e o alarme que chega até no relógio (print real de cliente). Tudo 100% AFK. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "5 funções do KizuBot que quase ninguém conhece 👀 A #1 chega até no relógio ⌚ Qual dessas você não conhecia? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk"
+        ]
+      }
+    },
+    "pinned_comment": "Qual dessas você não conhecia? 👀",
+    "claims": [
+      "alarmes no celular e notificações no WhatsApp",
+      "modo streamer (changelog 2026-03-30)",
+      "Offline Cam 1x/2x/4x/8x (changelog 2026-09-05)",
+      "KizuAI mostra as fontes (changelog 2026-04-20)"
+    ],
+    "assets": [
+      "kit/img/prints/responder-pm-pelo-telegram.png",
+      "kit/img/prints/smartwatch-alarm--watch.jpg",
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "063",
+    "file": "063-5-reacoes.mp4",
+    "series": "F05 Top 5",
+    "title": "As 5 reações mais insanas dos clientes do KizuBot",
+    "hook": "AS 5 REAÇÕES MAIS INSANAS DOS CLIENTES.",
+    "neuro": "open-loop, social-proof, emotional-contagion, humor, variable-reward, visible-progress, peak-end, comment-prompt",
+    "duration": 21.9,
+    "size_mb": 7.3,
+    "platforms": {
+      "tiktok": {
+        "caption": "As 5 reações mais insanas dos clientes do KizuBot 😂 A #1 veio até com correção. Prints reais de clientes diferentes. Qual foi a melhor? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#top5",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "As 5 reações mais insanas dos clientes do KizuBot 😂",
+        "description": "'o bot tá um monstro', 'Bot joga muito kkk', 'esse bot é a perfeiçã ocara', 'Mas esse bot é um roubo / Faz tudo a desgrama' e a #1 com direito a correção. Prints reais de clientes diferentes. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "As 5 reações mais insanas dos clientes do KizuBot 😂 Qual foi a melhor? Prints reais de clientes diferentes. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#top5"
+        ]
+      }
+    },
+    "pinned_comment": "Qual foi a melhor? 😂",
+    "claims": [],
+    "assets": [
+      "kit/img/prints/bot-ta-um-monstro--quote.png",
+      "kit/img/prints/bot-joga-muito--alertas.png",
+      "kit/img/prints/bot-e-a-perfeicao--quote.png",
+      "kit/img/prints/bot-e-um-roubo--roubo.png",
+      "kit/img/prints/queria-ter-comprado-antes--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "064",
+    "file": "064-5-motivos.mp4",
+    "series": "F05 Top 5",
+    "title": "5 motivos pra parar de farmar na mão",
+    "hook": "5 MOTIVOS PRA PARAR DE FARMAR NA MÃO.",
+    "neuro": "loss-aversion, open-loop, humor, self-reference, visible-progress, contrast, peak-end, comment-prompt",
+    "duration": 19.367,
+    "size_mb": 6.4,
+    "platforms": {
+      "tiktok": {
+        "caption": "5 motivos pra parar de farmar na mão 😵 O #1 dói: o shiny que piscou com você AFK. Mas o KizuBot pegou (print real de cliente). Qual motivo é o seu? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#farm"
+        ]
+      },
+      "youtube": {
+        "title": "5 motivos pra parar de farmar na mão 😵",
+        "description": "Seu sono, seu trabalho, sua família, o shiny do banheiro... e o #1: o shiny que piscou enquanto você tava AFK. No print real, o cliente não viu piscar, mas o KizuBot pegou o Shiny Muk. Farm 100% AFK com detecção de shiny. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "5 motivos pra parar de farmar na mão 😵 O #1 é o shiny que pisca quando você tá AFK. Qual motivo é o seu? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk"
+        ]
+      }
+    },
+    "pinned_comment": "Qual motivo é o seu? 👇",
+    "claims": [
+      "100% AFK",
+      "detecção de shinys, megas e bosses"
+    ],
+    "assets": [
+      "kit/img/prints/shiny-muk--card.png",
+      "kit/img/prints/shiny-muk--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "065",
+    "file": "065-5-alarmes.mp4",
+    "series": "F05 Top 5",
+    "title": "Os 5 alarmes que todo jogador quer receber",
+    "hook": "OS 5 ALARMES QUE TODO JOGADOR QUER RECEBER.",
+    "neuro": "open-loop, anticipation, conditioning-sound, variable-reward, visible-progress, social-proof, peak-end, comment-prompt",
+    "duration": 21.9,
+    "size_mb": 11.4,
+    "platforms": {
+      "tiktok": {
+        "caption": "Os 5 alarmes que todo jogador quer receber 🔔 Teve boss às 02:02 da manhã e o #1 é o que faz pular da cama. Prints reais de clientes diferentes. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#top5"
+        ]
+      },
+      "youtube": {
+        "title": "Os 5 alarmes que todo jogador quer receber 🔔",
+        "description": "dropRare, pokemonCaught, megaDetected, bossDetected e shinyDetected: os alarmes reais do KizuBot no WhatsApp de clientes, com boss às 02:02 da manhã e 8 alertas de mega seguidos. Prints reais de clientes diferentes. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Os 5 alarmes que todo jogador quer receber 🔔 Qual alarme faria você pular da cama? Prints reais de clientes diferentes. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Qual alarme faria você pular da cama? 🔔",
+    "claims": [
+      "alarmes no celular e notificações no WhatsApp",
+      "detecção de shinys, megas e bosses"
+    ],
+    "assets": [
+      "kit/img/prints/drop-sablenite--alarm.png",
+      "kit/img/prints/shiny-venusaur--alarm.png",
+      "kit/img/prints/mega-scizor-8-alarms--alarms.png",
+      "kit/img/prints/boss-rhyperior-2am--alarm.png",
+      "kit/img/prints/shiny-raichu-7-alarms--alarms.png",
+      "kit/img/brand/kizubot-logo.png"
     ]
   },
   {
@@ -2593,6 +3128,422 @@
     ],
     "assets": [
       "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "106",
+    "file": "106-nao-botou-fe.mp4",
+    "series": "F14 Prova Real",
+    "title": "Ele não botou fé no KizuBot",
+    "hook": "ELE NÃO BOTOU FÉ.",
+    "neuro": "social-proof, emotional-contagion, negative-frame-pivot, curiosity-gap, peak-end, comment-prompt",
+    "duration": 15.7,
+    "size_mb": 7.6,
+    "platforms": {
+      "tiktok": {
+        "caption": "Ele não botou fé no KizuBot 👀 7 dias depois: 'Bot joga muito kkk'. Print real de cliente. Você botaria fé? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk",
+          "#provareal"
+        ]
+      },
+      "youtube": {
+        "title": "Ele não botou fé no KizuBot. 7 dias depois… 👀",
+        "description": "Print real de cliente: 'Eu não botei fé'. Depois de 7 dias usando o KizuBot: 'Bot joga muito kkk', 'Mais o mais top é bagulho ser virtual kkk', 'Os alertas', 'No waths'. Roda na nuvem com o PC desligado e avisa no WhatsApp. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Ele não botou fé no KizuBot 👀 7 dias depois: 'Bot joga muito kkk'. Você botaria fé? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk"
+        ]
+      }
+    },
+    "pinned_comment": "Você botaria fé? 👀",
+    "claims": [
+      "uso com PC desligado",
+      "alarmes no celular e notificações no WhatsApp"
+    ],
+    "assets": [
+      "kit/img/prints/bot-joga-muito--nao-botei-fe.png",
+      "kit/img/prints/bot-joga-muito--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "107",
+    "file": "107-queria-ter-comprado-antes.mp4",
+    "series": "F14 Prova Real",
+    "title": "Ele queria ter comprado o KizuBot antes",
+    "hook": "ELE QUERIA* TER COMPRADO ANTES.",
+    "neuro": "social-proof, regret-loss-aversion, humor, pattern-recognition, peak-end, comment-prompt",
+    "duration": 15.7,
+    "size_mb": 8.8,
+    "platforms": {
+      "tiktok": {
+        "caption": "Ele queria ter comprado o KizuBot antes 😅 E não foi só ele. Prints reais de clientes diferentes. Quanto tempo você perdeu farmando na mão? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#provareal",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "\"Queria ter comprado antes\" (e não foi só ele) 😅",
+        "description": "Print real: 'eu quero mt ter comprado isso antes' / 'queria*'. Outro cliente: 'q paz' / 'como não peguei esse BOT antes?'. Prints reais de clientes diferentes. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Ele queria ter comprado o KizuBot antes 😅 E não foi só ele. Quanto tempo você perdeu farmando na mão? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk"
+        ]
+      }
+    },
+    "pinned_comment": "Quanto tempo você perdeu farmando na mão? 😅",
+    "claims": [
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/queria-ter-comprado-antes--quote.png",
+      "kit/img/prints/mato-sem-player-q-paz.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "109",
+    "file": "109-cinco-estrelas.mp4",
+    "series": "F14 Prova Real",
+    "title": "Um cliente mandou isso: ⭐⭐⭐⭐⭐",
+    "hook": "UM CLIENTE MANDOU ISSO: ⭐⭐⭐⭐⭐",
+    "neuro": "social-proof, picture-superiority, commitment-checklist, variable-reward, peak-end, comment-prompt",
+    "duration": 15.7,
+    "size_mb": 8.2,
+    "platforms": {
+      "tiktok": {
+        "caption": "Um cliente mandou isso ⭐⭐⭐⭐⭐ 'O bot, na sua essência, entrega exatamente o que promete.' Print real de cliente. Que nota você daria pro seu farm manual? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#provareal",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "Um cliente mandou isso sobre o KizuBot ⭐⭐⭐⭐⭐",
+        "description": "Feedback real de um cliente: 'O bot, na sua essência, entrega exatamente o que promete.' Eficiência, intuitividade e indicação marcadas por ele, e no fim: 'enfim, bot maravilhoso'. Print real de cliente. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Um cliente mandou isso ⭐⭐⭐⭐⭐ Que nota você daria pro seu farm manual? 😂 Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk"
+        ]
+      }
+    },
+    "pinned_comment": "Que nota você daria pro seu farm manual? 😂",
+    "claims": [
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/prints/avaliacao-5-estrelas.png",
+      "kit/img/prints/avaliacao-5-estrelas--renovar.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "110",
+    "file": "110-o-bot-evoluiu.mp4",
+    "series": "F14 Prova Real",
+    "title": "\"O bot evoluiu muito.\" — prova real",
+    "hook": "“O BOT EVOLUIU MUITO.”",
+    "neuro": "social-proof, before-after-contrast, authority, visible-progress, peak-end, comment-prompt",
+    "duration": 16.167,
+    "size_mb": 7.7,
+    "platforms": {
+      "tiktok": {
+        "caption": "'O bot evoluiu muito.' 🚀 No início era hardcore, hoje é tranquilo. Mais de 170 atualizações desde 2024. Prints reais de clientes diferentes. Qual atualização você mais curtiu? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#provareal",
+          "#afk"
+        ]
+      },
+      "youtube": {
+        "title": "\"O bot evoluiu muito.\" Mais de 170 atualizações desde 2024",
+        "description": "Prints reais de clientes diferentes: 'O bot evoluiu muito.' / 'Não se trapa mais, está mais fluído, está muito top.' / 'no início era hardcore' / 'Hoje em dia eu achei tranquilo' / 'Bot tá cada dia melhor, parabéns'. Changelog público com mais de 170 atualizações desde 2024. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "'O bot evoluiu muito.' 🚀 Mais de 170 atualizações desde 2024. Qual atualização você mais curtiu? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#afk"
+        ]
+      }
+    },
+    "pinned_comment": "Qual atualização você mais curtiu?",
+    "claims": [
+      "mais de 170 atualizações desde 2024 (changelog)"
+    ],
+    "assets": [
+      "kit/img/prints/bot-evoluiu-muito.png",
+      "kit/img/prints/antes-hardcore-hoje-tranquilo--painel.png",
+      "kit/img/prints/antes-hardcore-hoje-tranquilo--hoje.png",
+      "kit/img/prints/bot-cada-dia-melhor--quote.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "117",
+    "file": "117-13-modulos.mp4",
+    "series": "F16 Speedrun",
+    "title": "13 módulos em 13 segundos",
+    "hook": "13 MÓDULOS. 13 SEGUNDOS.",
+    "neuro": "time-pressure, chunking, visible-progress, open-loop-timer, rewatch-bait, peak-end, seamless-loop, comment-prompt",
+    "duration": 18.0,
+    "size_mb": 5.9,
+    "platforms": {
+      "tiktok": {
+        "caption": "13 módulos em 13 segundos ⏱️ Cavebot, combate, cura, captura, farm, pesca, alarme no zap… tudo num bot só. Qual você mais usaria? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#speedrun",
+          "#farm"
+        ]
+      },
+      "youtube": {
+        "title": "13 módulos em 13 segundos: tudo num bot só (PxG)",
+        "description": "Speedrun dos 13 módulos do KizuBot: Cavebot, Combat, Healing, Catch, Farming, Fishing, Alarms, Party, Engine, Actions (50+ condições), Account, Setup Pokémon e Humanização. Tudo num bot só, 100% AFK. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "13 módulos em 13 segundos. ⏱️ Do cavebot à humanização: tudo num bot só. Qual módulo você mais usaria? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#speedrun"
+        ]
+      }
+    },
+    "pinned_comment": "Qual módulo você mais usaria? 👇",
+    "claims": [
+      "13 módulos configuráveis (kizubot.com/llms.txt)",
+      "Actions: 50+ tipos de condição",
+      "Humanização (pausas e ritmo variáveis)",
+      "alarmes no WhatsApp",
+      "pesca no AFK",
+      "combate com IA"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-robot.png",
+      "kit/img/brand/kizubot-logo.png"
+    ]
+  },
+  {
+    "id": "118",
+    "file": "118-do-zero-ao-farm.mp4",
+    "series": "F16 Speedrun",
+    "title": "Do zero ao farm em 3 passos",
+    "hook": "DO ZERO AO FARM. 3 PASSOS.",
+    "neuro": "time-pressure, chunking, ikea-effect, visible-progress, social-proof, peak-end, seamless-loop, comment-prompt",
+    "duration": 18.8,
+    "size_mb": 5.7,
+    "platforms": {
+      "tiktok": {
+        "caption": "Do zero ao farm em 3 passos ⏱️ Configura o bot, define os waypoints, liga e acompanha pelo celular — com o PC desligado. (Na vida real leva mais que 10s, o suporte ajuda 😅) Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#speedrun",
+          "#farm"
+        ]
+      },
+      "youtube": {
+        "title": "Do zero ao farm em 3 passos (speedrun KizuBot)",
+        "description": "PHASE 1: configure seu bot. PHASE 2: defina os waypoints do cavebot. PHASE 3: ligue e acompanhe pelo celular, com o PC desligado e alarme no WhatsApp. Na vida real configurar leva mais que 10 segundos, mas o suporte te ajuda. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "Do zero ao farm em 3 passos. ⏱️ Configura, define os waypoints, liga e acompanha pelo celular. Quanto tempo você levaria? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#speedrun"
+        ]
+      }
+    },
+    "pinned_comment": "Quanto tempo você levaria? 👀",
+    "claims": [
+      "uso com PC desligado",
+      "acesso pelo celular",
+      "alarmes no celular e notificações no WhatsApp",
+      "cavebot com waypoints",
+      "o suporte te ajuda a configurar"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/facil-configurar.png"
+    ]
+  },
+  {
+    "id": "119",
+    "file": "119-speedrun-de-shiny.mp4",
+    "series": "F16 Speedrun",
+    "title": "Speedrun de shiny: mesmo minuto",
+    "hook": "SPEEDRUN DE SHINY: NOVO RECORDE.",
+    "neuro": "anticipation, variable-reward, precise-numbers, social-proof, time-pressure, peak-end, seamless-loop, comment-prompt",
+    "duration": 14.6,
+    "size_mb": 5.5,
+    "platforms": {
+      "tiktok": {
+        "caption": "Speedrun de shiny: detectado às 16:42, capturado às 16:42. Mesmo minuto, 100% AFK ✨ Print real de cliente. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny",
+          "#speedrun"
+        ]
+      },
+      "youtube": {
+        "title": "Speedrun de shiny: detectado e capturado no mesmo minuto",
+        "description": "O alarme do KizuBot chegou no WhatsApp: shinyDetected ~ shiny Cubone às 16:42. E às 16:42 mesmo: pokemonCaught ~ I've caught cubone. Detecção de shiny e captura automática, 100% AFK. Print real de cliente. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      },
+      "instagram": {
+        "caption": "Speedrun de shiny: 16:42 → 16:42. Detectado e capturado no mesmo minuto ✨ Qual shiny você quer no próximo run? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#shiny"
+        ]
+      }
+    },
+    "pinned_comment": "Qual shiny você quer no próximo run? ✨",
+    "claims": [
+      "detecção de shinys",
+      "alarmes no celular e notificações no WhatsApp",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/shiny-cubone.png"
+    ]
+  },
+  {
+    "id": "120",
+    "file": "120-30-dias-em-15s.mp4",
+    "series": "F16 Speedrun",
+    "title": "30 dias de farm em 15 segundos",
+    "hook": "30 DIAS DE FARM EM 15 SEGUNDOS.",
+    "neuro": "time-pressure, visible-progress, acceleration, social-proof, precise-numbers, peak-end, comment-prompt",
+    "duration": 15.0,
+    "size_mb": 4.8,
+    "platforms": {
+      "tiktok": {
+        "caption": "30 dias de farm em 15 segundos ⏱️ Resultado real de um cliente no primeiro mês: 600kk pra conta. Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#farm",
+          "#speedrun"
+        ]
+      },
+      "youtube": {
+        "title": "30 dias de farm em 15 segundos (resultado real: 600kk)",
+        "description": "Um mês de farm passando em 15 segundos e o resultado real de um cliente no primeiro mês: 600kkzin pra conta. Print real de cliente; resultados variam. kizubot.com",
+        "hashtags": [
+          "#shorts",
+          "#pokexgames",
+          "#pxg",
+          "#kizubot"
+        ]
+      },
+      "instagram": {
+        "caption": "30 dias de farm em 15 segundos. ⏱️ No primeiro mês dele: 600kk pra conta (print real de cliente). Qual seria o seu resultado em 30 dias? Link na bio.",
+        "hashtags": [
+          "#pokexgames",
+          "#pxg",
+          "#kizubot",
+          "#farm"
+        ]
+      }
+    },
+    "pinned_comment": "Qual seria o seu resultado em 30 dias? 👀",
+    "claims": [
+      "roda 24/7 (farmando todo dia)",
+      "100% AFK"
+    ],
+    "assets": [
+      "kit/img/brand/kizubot-head.png",
+      "kit/img/brand/kizubot-logo.png",
+      "kit/img/prints/primeiro-mes-600kk--600kk.png"
     ]
   },
   {

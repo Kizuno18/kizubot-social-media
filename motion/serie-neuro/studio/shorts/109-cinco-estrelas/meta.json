@@ -23,7 +23,9 @@
     "kit/img/prints/avaliacao-5-estrelas--renovar.png",
     "kit/img/brand/kizubot-logo.png"
   ],
-  "claims": [],
+  "claims": [
+    "100% AFK"
+  ],
   "platforms": {
     "tiktok": {
       "caption": "Um cliente mandou isso ⭐⭐⭐⭐⭐ 'O bot, na sua essência, entrega exatamente o que promete.' Print real de cliente. Que nota você daria pro seu farm manual? Link na bio.",
@@ -56,5 +58,5 @@
     }
   },
   "pinned_comment": "Que nota você daria pro seu farm manual? 😂",
-  "notes": "The stars are the customer's own 'Avaliação Geral' in the print (not a rating system). The scorecard uses verbatim fragments only: header, stars, '… entrega exatamente o que promete.' and the category names Eficiência / Intuitividade / Indicação (full sentences shown highlighted in the print; 'na maior parte do tempo' kept visible). Lines about 'investimento' and 'renovação é garantida' are visible in the print but never quoted or highlighted. Labelled 'trechos do print real de um cliente'. Per ASSETS.md the review's 'Pontos de Atenção' (VNC lag, outdated tutorials) were cropped by the asset editor; the short never claims the review had no criticism (it shows 'trechos' = excerpts)."
+  "notes": "The stars are the customer's own 'Avaliação Geral' in the print (not a rating system). The scorecard uses verbatim fragments only: header, stars, '… entrega exatamente o que promete.' and the category names Eficiência / Intuitividade / Indicação (full sentences shown highlighted in the print; 'na maior parte do tempo' kept visible). Lines about 'investimento' and 'renovação é garantida' are visible in the print but never quoted or highlighted. Labelled 'trechos do print real de um cliente'. Per ASSETS.md the review's 'Pontos de Atenção' (VNC lag, outdated tutorials) were cropped by the asset editor; the short never claims the review had no criticism (it shows 'trechos' = excerpts). Peak adds the approved-claim chip 'o bot farma 100% AFK'."
 }
